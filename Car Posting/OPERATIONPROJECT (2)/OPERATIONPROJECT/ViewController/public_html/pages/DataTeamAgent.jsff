@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsRegionTemplateNoStretch.jsf">
+        <!-- DEBUG:BEGIN:FORM_PAGE_CONTENT : default/page/formPageContent.vm, nesting level: 2 -->
+        <!-- DEBUG:BEGIN:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3 -->
+        <f:facet name="pageContent">
+            <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+            <af:panelGroupLayout id="pcpg" layout="scroll">
+                <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4 -->
+                <af:panelGroupLayout layout="vertical" id="DataTeamAgentTopLc"
+                                     partialTriggers=" DataTeamAgentSaveButton DataTeamAgentCancelButton">
+                    <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                    <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                    <f:facet name="separator">
+                        <af:spacer width="10" height="10" id="sp0"/>
+                    </f:facet>
+                    <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+                    <af:panelHeader id="ph0" text="#{nls['FORM_TITLE_DATATEAMAGENT']}">
+                        <f:facet name="toolbar">
+                            <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5 -->
+                            <af:toolbox id="tbox0">
+                                <af:toolbar id="tbar0">
+                                    <!-- DEBUG:BEGIN:FORM_BROWSE_BUTTONS : custom/pageComponent/MtsformBrowseButtons.vm, nesting level: 6 -->
+                                    <!-- DEBUG:END:FORM_BROWSE_BUTTONS : custom/pageComponent/MtsformBrowseButtons.vm, nesting level: 6-->
+                                    <af:group id="gr0">
+                                        <!-- DEBUG:BEGIN:NEW_BUTTON : custom/button/MtsnewButton.vm, nesting level: 6 -->
+                                        <!-- DEBUG:END:NEW_BUTTON : custom/button/MtsnewButton.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:DELETE_BUTTON : default/button/deleteButton.vm, nesting level: 6 -->
+                                        <!-- DEBUG:END:DELETE_BUTTON : default/button/deleteButton.vm, nesting level: 6-->
+                                    </af:group>
+                                    <af:group id="gr1"></af:group>
+                                    <af:group id="gr2">
+                                        <!-- DEBUG:BEGIN:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6 -->
+                                        <af:button action="#{SaveDataTeamAgent.execute}"
+                                            rendered="false"
+                                                   textAndAccessKey="#{nls['SAVE_BUTTON_LABEL']}"
+                                                   id="DataTeamAgentSaveButton" partialSubmit="true"></af:button>
+                                        <!-- DEBUG:END:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6 -->
+                                        <af:button textAndAccessKey="#{nls['CANCEL']}" immediate="true"
+                                                   partialSubmit="true" rendered="false"
+                                                   actionListener="#{jhsRollback.execute}" action="Cancel"
+                                                   id="DataTeamAgentCancelButton"></af:button>
+                                        <!-- DEBUG:END:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6-->
+                                    </af:group>
+                                </af:toolbar>
+                            </af:toolbox>
+                            <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5-->
+                        </f:facet>
+                        <f:facet name="context">
+                            <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5 -->
+                            <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5-->
+                        </f:facet>
+                        <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+                        <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+                    </af:panelHeader>
+                    <!-- DEBUG:BEGIN:FORM_GROUP : custom/pageComponent/MtsformGroup.vm, nesting level: 5 -->
+                    <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+                    <af:panelGroupLayout id="DataTeamAgentFC" layout="vertical">
+                        <f:facet name="separator">
+                            <af:spacer width="10" height="10" id="sp1"/>
+                        </f:facet>
+                        <af:panelFormLayout rows="1" labelAlignment="start" maxColumns="1" id="DataTeamAgentFI"></af:panelFormLayout>
+                        <!-- DEBUG:BEGIN:STACKED_REGION_CONTAINER : default/pageComponent/stackedRegionContainer.vm, nesting level: 6 -->
+                        <af:panelTabbed position="above" childCreation="lazy" dimensionsFrom="auto" inlineStyle="    "
+                                        id="DataTeamAgentRegionsTabs">
+                            <af:showDetailItem stretchChildren="first"
+                                               textAndAccessKey="#{nls['DATATEAMAGENTPENDINGWORK_TITLE']}"
+                                               rendered="#{true}" disabled="#{!(true)}"
+                                               id="DataTeamAgentRegionsDataTeamAgentPendingWorkTab">
+                                <af:panelGroupLayout id="pgl0" layout="scroll">
+                                    <!-- DEBUG:BEGIN:GROUP_REGION : default/pageComponent/groupRegion.vm, nesting level: 7 -->
+                                    <af:region value="#{bindings.DataTeamAgentPendingWorkTaskFlowBinding.regionModel}"
+                                               id="r0"></af:region>
+                                    <!-- DEBUG:END:GROUP_REGION : default/pageComponent/groupRegion.vm, nesting level: 7-->
+                                </af:panelGroupLayout>
+                            </af:showDetailItem>
+                            <af:showDetailItem stretchChildren="first" textAndAccessKey="#{nls['NOTESREVIEW_TITLE']}"
+                                               rendered="#{true}" disabled="#{!(true)}"
+                                               id="DataTeamAgentRegionsNotesReviewTab">
+                                <af:panelGroupLayout id="pgl1" layout="scroll">
+                                    <!-- DEBUG:BEGIN:GROUP_REGION : default/pageComponent/groupRegion.vm, nesting level: 7 -->
+                                    <af:region value="#{bindings.NotesReviewTaskFlowBinding.regionModel}" id="r1"></af:region>
+                                    <!-- DEBUG:END:GROUP_REGION : default/pageComponent/groupRegion.vm, nesting level: 7-->
+                                </af:panelGroupLayout>
+                            </af:showDetailItem>
+                            <af:showDetailItem stretchChildren="first" textAndAccessKey="#{nls['CONTRACTREVIEW_TITLE']}"
+                                               rendered="#{true}" disabled="#{!(true)}"
+                                               id="DataTeamAgentRegionsContractReviewTab">
+                                <af:panelGroupLayout id="pgl2" layout="scroll">
+                                    <!-- DEBUG:BEGIN:GROUP_REGION : default/pageComponent/groupRegion.vm, nesting level: 7 -->
+                                    <af:region value="#{bindings.ContractReviewTaskFlowBinding.regionModel}" id="r2"></af:region>
+                                    <!-- DEBUG:END:GROUP_REGION : default/pageComponent/groupRegion.vm, nesting level: 7-->
+                                </af:panelGroupLayout>
+                            </af:showDetailItem>
+                            <af:showDetailItem stretchChildren="first" textAndAccessKey="#{nls['ENDOFDAYREVIEW_TITLE']}"
+                                               rendered="#{true}" disabled="#{!(true)}"
+                                               id="DataTeamAgentRegionsEndOfDayReviewTab">
+                                <af:panelGroupLayout id="pgl3" layout="scroll">
+                                    <!-- DEBUG:BEGIN:GROUP_REGION : default/pageComponent/groupRegion.vm, nesting level: 7 -->
+                                    <af:region value="#{bindings.EndOfDayReviewTaskFlowBinding.regionModel}" id="r3"></af:region>
+                                    <!-- DEBUG:END:GROUP_REGION : default/pageComponent/groupRegion.vm, nesting level: 7-->
+                                </af:panelGroupLayout>
+                            </af:showDetailItem>
+                            <af:showDetailItem stretchChildren="first"
+                                               textAndAccessKey="#{nls['DATATEAMAGENTDASHBOARD_TITLE']}"
+                                               rendered="#{true}" disabled="#{!(true)}"
+                                               id="DataTeamAgentRegionsDataTeamAgentDashboardTab">
+                                <af:panelGroupLayout id="pgl4" layout="scroll">
+                                    <!-- DEBUG:BEGIN:GROUP_REGION : default/pageComponent/groupRegion.vm, nesting level: 7 -->
+                                    <af:region value="#{bindings.DataTeamAgentDashboardTaskFlowBinding.regionModel}"
+                                               id="r4"></af:region>
+                                    <!-- DEBUG:END:GROUP_REGION : default/pageComponent/groupRegion.vm, nesting level: 7-->
+                                </af:panelGroupLayout>
+                            </af:showDetailItem>
+                        </af:panelTabbed>
+                        <!-- DEBUG:END:STACKED_REGION_CONTAINER : default/pageComponent/stackedRegionContainer.vm, nesting level: 6-->
+                    </af:panelGroupLayout>
+                    <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+                    <!-- DEBUG:END:FORM_GROUP : custom/pageComponent/MtsformGroup.vm, nesting level: 5-->
+                    <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+                </af:panelGroupLayout>
+                <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4-->
+            </af:panelGroupLayout>
+            <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+        </f:facet>
+        <f:facet name="popups">
+            <af:panelGroupLayout id="popupsPgl"></af:panelGroupLayout>
+        </f:facet>
+        <!-- DEBUG:END:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3-->
+        <!-- DEBUG:END:FORM_PAGE_CONTENT : default/page/formPageContent.vm, nesting level: 2-->
+    </af:pageTemplate>
+</ui:composition>
+
+
+

@@ -1,0 +1,7 @@
+## revision_history
+## 14-aug-2009   Steven Davelaar
+## 1.0           Initial creation
+<af:button textAndAccessKey="#FORM_REGION_BUTTON_LABEL($pageModel)"
+     action="${JHS.facesConfigGenerator.addNavigationCase(${JHS.current.group},${JHS.page.name}, "${pageModel.name}", "${pageModel.name}")}" 
+     id="#NEW_ID("cb")"
+     />

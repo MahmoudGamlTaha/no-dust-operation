@@ -1,0 +1,25 @@
+## revision_history
+## 08-oct-2010   Steven Davelaar
+## 1.2           Added call to REGION_CONTAINER_HELP macro
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+## Only generate title if this is top-level container, otherwise title is generated in subregions loop
+#if (!${JHS.current.regionContainer.parentRegionContainer} && !($JHS.current.regionContainer.title == ""))
+<af:panelHeader text="#REGION_CONTAINER_TITLE()" #JHS_PROP("rendered" $JHS.current.regionContainer.rendered) id="#REGION_ID()Ph" #REGION_CONTAINER_HELP()>
+#end 
+<af:pannelTabbed position="above" #JHS_PROP("rendered" $JHS.current.regionContainer.rendered) id="#REGION_ID()Tabs">
+#foreach($subRegion in ${JHS.current.regionContainer.subRegions})
+  #if ((${JHS.current.pageComponent.processingAdvancedSearchArea} && ${subRegion.groupRegion})
+       || (${JHS.current.pageComponent.tableLayout} && ${JHS.current.group.hasTableFormLayout}&& ${subRegion.groupRegion}))
+    ## do nothing, we always skip group regions in advanced search and 
+    ## with table overflow, we skip it when the parent group has table-form layout
+  #else    
+    <af:showDetailItem text="#REGION_TITLE($subRegion)" id="#REGION_ID()${subRegion.name}Tab">
+      #JHS_PARSE($subRegion.templateIdentifier $subRegion)
+    </af:showDetailItem>
+  #end  
+#end
+</af:pannelTabbed>
+#if (!${JHS.current.regionContainer.parentRegionContainer} && !($JHS.current.regionContainer.title == ""))
+</af:panelHeader>
+#end 

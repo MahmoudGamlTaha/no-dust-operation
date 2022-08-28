@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="StreetEO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="STREET"
+  AliasName="StreetEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="StreetId"
+    IsNotNull="true"
+    Precision="38"
+    Scale="0"
+    ColumnName="STREET_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    TableName="STREET"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="StreetName"
+    Precision="4000"
+    ColumnName="STREET_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="STREET">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="AreaId"
+    Precision="38"
+    Scale="0"
+    ColumnName="AREA_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    TableName="STREET"
+    IsNotNull="true"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="RegionId"
+    Precision="38"
+    Scale="0"
+    ColumnName="REGION_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    TableName="STREET"
+    IsNotNull="true"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="CityId"
+    Precision="38"
+    Scale="0"
+    ColumnName="CITY_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    TableName="STREET"
+    IsNotNull="true"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="OldStreet"
+    Precision="38"
+    Scale="0"
+    ColumnName='"old_street"'
+    SQLType="NUMERIC"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    TableName="STREET"/>
+  <Key
+    Name="StreetAreaIdCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_checkCondition" Value='"AREA_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="STREET_AREA_ID_CHECK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.StreetEO.AreaId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="StreetCityIdCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_checkCondition" Value='"CITY_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="STREET_CITY_ID_CHECK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.StreetEO.CityId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="StreetPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="STREET_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.StreetEO.StreetId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.EO.StreetEO.AreaId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.EO.StreetEO.RegionId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.EO.StreetEO.CityId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="StreetRegionIdCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_checkCondition" Value='"REGION_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="STREET_REGION_ID_CHECK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.StreetEO.RegionId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="StreetFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="AREA_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="STREET_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.StreetEO.AreaId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.EO.StreetEO.RegionId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.EO.StreetEO.CityId"/>
+    </AttrArray>
+  </Key>
+</Entity>

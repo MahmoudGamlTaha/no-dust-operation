@@ -1,0 +1,471 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsRegionTemplate.jsf">
+        <!-- DEBUG:BEGIN:FORM_PAGE_CONTENT : default/page/formPageContent.vm, nesting level: 2 -->
+        <!-- DEBUG:BEGIN:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3 -->
+        <f:facet name="pageContent">
+            <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4 -->
+            <af:panelStretchLayout topHeight="auto" id="psl0"
+                                   partialTriggers=" DataTeamAgentPendingWorkfbb DataTeamAgentPendingWorkCancelButton">
+                <f:facet name="top">
+                    <af:panelGroupLayout layout="scroll" id="DataTeamAgentPendingWorkTopLc"
+                                         partialTriggers=" DataTeamAgentPendingWorkfbb DataTeamAgentPendingWorkCancelButton">
+                        <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                        <f:facet name="separator">
+                            <af:spacer width="10" height="10" id="sp0"/>
+                        </f:facet>
+                        <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                        <af:panelHeader id="ph0" text="#{nls['FORM_TITLE_DATATEAMAGENTPENDINGWORK']}">
+                            <f:facet name="toolbar">
+                                <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5 -->
+                                <af:toolbox id="tbox0">
+                                    <af:toolbar id="tbar0">
+                                        <!-- DEBUG:BEGIN:FORM_BROWSE_BUTTONS : custom/pageComponent/MtsformBrowseButtons.vm, nesting level: 6 -->
+                                        <af:panelGroupLayout id="DataTeamAgentPendingWorkfbb" layout="horizontal"
+                                                             rendered="#{ bindings.DataTeamAgentPendingWorkIterator.currentRow!=null  and bindings.DataTeamAgentPendingWorkIterator.estimatedRowCount>1 and !pageFlowScope.createModes.CreateDataTeamAgentPendingWork and !pageFlowScope.hideFormBrowseButtons}"
+                                                             partialTriggers="DataTeamAgentPendingWorkFirst DataTeamAgentPendingWorkPrevious DataTeamAgentPendingWorkNext DataTeamAgentPendingWorkLast">
+                                            <af:button actionListener="#{bindings.FirstDataTeamAgentPendingWork.execute}"
+                                                       id="DataTeamAgentPendingWorkFirst" partialSubmit="true"
+                                                       icon="/afr/shuttleleftall_ena.png"
+                                                       shortDesc="#{nls['FIRST_ROW']}"
+                                                       rendered="#{bindings.DataTeamAgentPendingWorkIterator.rangeStart+bindings.DataTeamAgentPendingWorkIterator.currentRowIndexInRange+1>1}"></af:button>
+                                            <af:image source="/afr/shuttleleftall_dis.png"
+                                                      rendered="#{!(bindings.DataTeamAgentPendingWorkIterator.rangeStart+bindings.DataTeamAgentPendingWorkIterator.currentRowIndexInRange+1>1)}"
+                                                      id="img0"/>
+                                            <af:button actionListener="#{bindings.PreviousDataTeamAgentPendingWork.execute}"
+                                                       icon="/afr/shuttleleft_ena.png"
+                                                       shortDesc="#{nls['PREVIOUS_ROW']}"
+                                                       id="DataTeamAgentPendingWorkPrevious" partialSubmit="true"
+                                                       rendered="#{bindings.DataTeamAgentPendingWorkIterator.rangeStart+bindings.DataTeamAgentPendingWorkIterator.currentRowIndexInRange+1>1}"></af:button>
+                                            <af:image source="/afr/shuttleleft_dis.png"
+                                                      rendered="#{!(bindings.DataTeamAgentPendingWorkIterator.rangeStart+bindings.DataTeamAgentPendingWorkIterator.currentRowIndexInRange+1>1)}"
+                                                      id="img1"/>
+                                            <af:spacer width="4" height="1" id="sp1"/>
+                                            <af:outputFormatted styleUsage="instruction"
+                                                                inlineStyle="white-space:nowrap; vertical-align:bottom;"
+                                                                value=" [#{bindings.DataTeamAgentPendingWorkIterator.rangeStart+bindings.DataTeamAgentPendingWorkIterator.currentRowIndexInRange+1} / #{bindings.DataTeamAgentPendingWorkIterator.estimatedRowCount}] "
+                                                                id="of0"/>
+                                            <af:button actionListener="#{bindings.NextDataTeamAgentPendingWork.execute}"
+                                                       icon="/afr/shuttleright_ena.png" shortDesc="#{nls['NEXT_ROW']}"
+                                                       id="DataTeamAgentPendingWorkNext" partialSubmit="true"
+                                                       rendered="#{bindings.DataTeamAgentPendingWorkIterator.rangeStart+bindings.DataTeamAgentPendingWorkIterator.currentRowIndexInRange+1 lt bindings.DataTeamAgentPendingWorkIterator.estimatedRowCount}"></af:button>
+                                            <af:image source="/afr/shuttleright_dis.png"
+                                                      rendered="#{!(bindings.DataTeamAgentPendingWorkIterator.rangeStart+bindings.DataTeamAgentPendingWorkIterator.currentRowIndexInRange+1 lt bindings.DataTeamAgentPendingWorkIterator.estimatedRowCount)}"
+                                                      id="img2"/>
+                                            <af:button actionListener="#{bindings.LastDataTeamAgentPendingWork.execute}"
+                                                       icon="/afr/shuttlerightall_ena.png"
+                                                       shortDesc="#{nls['LAST_ROW']}" id="DataTeamAgentPendingWorkLast"
+                                                       partialSubmit="true"
+                                                       rendered="#{bindings.DataTeamAgentPendingWorkIterator.rangeStart+bindings.DataTeamAgentPendingWorkIterator.currentRowIndexInRange+1 lt bindings.DataTeamAgentPendingWorkIterator.estimatedRowCount}"></af:button>
+                                            <af:image source="/afr/shuttlerightall_dis.png"
+                                                      rendered="#{!(bindings.DataTeamAgentPendingWorkIterator.rangeStart+bindings.DataTeamAgentPendingWorkIterator.currentRowIndexInRange+1 lt bindings.DataTeamAgentPendingWorkIterator.estimatedRowCount)}"
+                                                      id="img3"/>
+                                        </af:panelGroupLayout>
+                                        <!-- DEBUG:END:FORM_BROWSE_BUTTONS : custom/pageComponent/MtsformBrowseButtons.vm, nesting level: 6-->
+                                        <af:group id="gr0">
+                                            <!-- DEBUG:BEGIN:NEW_BUTTON : custom/button/MtsnewButton.vm, nesting level: 6 -->
+                                            <!-- DEBUG:END:NEW_BUTTON : custom/button/MtsnewButton.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:DELETE_BUTTON : default/button/deleteButton.vm, nesting level: 6 -->
+                                            <!-- DEBUG:END:DELETE_BUTTON : default/button/deleteButton.vm, nesting level: 6-->
+                                        </af:group>
+                                        <af:group id="gr1"></af:group>
+                                        <af:group id="gr2">
+                                            <!-- DEBUG:BEGIN:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6 -->
+                                            <!-- DEBUG:END:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6 -->
+                                            <af:button textAndAccessKey="#{nls['CANCEL']}" immediate="true"
+                                                       partialSubmit="true"
+                                                       rendered="#{!pageFlowScope.hideCancelButton}"
+                                                       actionListener="#{jhsRollback.execute}" action="Cancel"
+                                                       id="DataTeamAgentPendingWorkCancelButton"></af:button>
+                                            <!-- DEBUG:END:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6-->
+                                        </af:group>
+                                    </af:toolbar>
+                                </af:toolbox>
+                                <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5-->
+                            </f:facet>
+                            <f:facet name="context">
+                                <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5 -->
+                                <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5-->
+                            </f:facet>
+                            <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+                            <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+                            <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+                            <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+                        </af:panelHeader>
+                        <!-- DEBUG:BEGIN:FORM_GROUP : custom/pageComponent/MtsformGroup.vm, nesting level: 5 -->
+                        <af:switcher rendered="#{bindings.DataTeamAgentPendingWorkIterator.findMode!='true'}"
+                                     id="DataTeamAgentPendingWorkSw" defaultFacet="hasRows"
+                                     facetName="#{( bindings.DataTeamAgentPendingWorkIterator.currentRow!=null ) ? 'hasRows' : 'noRows'}">
+                            <f:facet name="noRows">
+                                <af:outputFormatted value="#{nls['NO_ROWS_FOUND']}" styleUsage="pageStamp"
+                                                    id="DataTeamAgentPendingWorkNoRowsFound"/>
+                            </f:facet>
+                            <f:facet name="hasRows">
+                                <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm), disabled (custom/pageComponent/MtsformGroup.vm) -->
+                                <af:panelGroupLayout id="DataTeamAgentPendingWorkFC" layout="vertical">
+                                    <f:facet name="separator">
+                                        <af:spacer width="10" height="10" id="sp2"/>
+                                    </f:facet>
+                                    <af:panelFormLayout rows="3" labelAlignment="start" maxColumns="2"
+                                                        id="DataTeamAgentPendingWorkFI">
+                                        <!-- DEBUG:BEGIN:FORM_DATE_FIELD : default/item/form/formDateField.vm, nesting level: 6 -->
+                                        <af:inputDate id="DataTeamAgentPendingWorkAssignDate"
+                                                      value="#{bindings.DataTeamAgentPendingWorkAssignDate.inputValue}"
+                                                      label="#{bindings.DataTeamAgentPendingWorkAssignDate.hints.label}"
+                                                      required="#{bindings.DataTeamAgentPendingWorkAssignDate.hints.mandatory}"
+                                                      readOnly="true"
+                                                      shortDesc="#{bindings.DataTeamAgentPendingWorkAssignDate.hints.tooltip}">
+                                            <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                        </af:inputDate>
+                                        <!-- DEBUG:END:FORM_DATE_FIELD : default/item/form/formDateField.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                        <af:inputText id="DataTeamAgentPendingWorkAreaName"
+                                                      value="#{bindings.DataTeamAgentPendingWorkAreaName.inputValue}"
+                                                      label="#{bindings.DataTeamAgentPendingWorkAreaName.hints.label}"
+                                                      required="#{bindings.DataTeamAgentPendingWorkAreaName.hints.mandatory}"
+                                                      rows="#{bindings.DataTeamAgentPendingWorkAreaName.hints.displayHeight}"
+                                                      columns="#{bindings.DataTeamAgentPendingWorkAreaName.hints.displayWidth}"
+                                                      maximumLength="4000" readOnly="true"
+                                                      shortDesc="#{bindings.DataTeamAgentPendingWorkAreaName.hints.tooltip}">
+                                            <f:validator binding="#{bindings.DataTeamAgentPendingWorkAreaName.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                        <af:inputText id="DataTeamAgentPendingWorkDriverName"
+                                                      value="#{bindings.DataTeamAgentPendingWorkDriverName.inputValue}"
+                                                      label="#{bindings.DataTeamAgentPendingWorkDriverName.hints.label}"
+                                                      required="#{bindings.DataTeamAgentPendingWorkDriverName.hints.mandatory}"
+                                                      rows="#{bindings.DataTeamAgentPendingWorkDriverName.hints.displayHeight}"
+                                                      columns="#{bindings.DataTeamAgentPendingWorkDriverName.hints.displayWidth}"
+                                                      maximumLength="161" readOnly="true"
+                                                      shortDesc="#{bindings.DataTeamAgentPendingWorkDriverName.hints.tooltip}">
+                                            <f:validator binding="#{bindings.DataTeamAgentPendingWorkDriverName.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                        <af:inputText id="DataTeamAgentPendingWorkPilotName"
+                                                      value="#{bindings.DataTeamAgentPendingWorkPilotName.inputValue}"
+                                                      label="#{bindings.DataTeamAgentPendingWorkPilotName.hints.label}"
+                                                      required="#{bindings.DataTeamAgentPendingWorkPilotName.hints.mandatory}"
+                                                      rows="#{bindings.DataTeamAgentPendingWorkPilotName.hints.displayHeight}"
+                                                      columns="#{bindings.DataTeamAgentPendingWorkPilotName.hints.displayWidth}"
+                                                      maximumLength="161" readOnly="true"
+                                                      shortDesc="#{bindings.DataTeamAgentPendingWorkPilotName.hints.tooltip}">
+                                            <f:validator binding="#{bindings.DataTeamAgentPendingWorkPilotName.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                        <af:inputText id="DataTeamAgentPendingWorkTotalAssignemnt"
+                                                      value="#{bindings.DataTeamAgentPendingWorkTotalAssignemnt.inputValue}"
+                                                      label="#{bindings.DataTeamAgentPendingWorkTotalAssignemnt.hints.label}"
+                                                      required="#{bindings.DataTeamAgentPendingWorkTotalAssignemnt.hints.mandatory}"
+                                                      rows="#{bindings.DataTeamAgentPendingWorkTotalAssignemnt.hints.displayHeight}"
+                                                      columns="#{bindings.DataTeamAgentPendingWorkTotalAssignemnt.hints.displayWidth}"
+                                                      readOnly="true"
+                                                      shortDesc="#{bindings.DataTeamAgentPendingWorkTotalAssignemnt.hints.tooltip}">
+                                            <f:validator binding="#{bindings.DataTeamAgentPendingWorkTotalAssignemnt.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.DataTeamAgentPendingWorkTotalAssignemnt.format}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                    </af:panelFormLayout>
+                                    <!-- DEBUG:BEGIN:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 6 -->
+                                    <!-- DEBUG:END:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 6-->
+                                </af:panelGroupLayout>
+                                <!-- Popped "disabled" from stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                            </f:facet>
+                        </af:switcher>
+                        <!-- DEBUG:END:FORM_GROUP : custom/pageComponent/MtsformGroup.vm, nesting level: 5-->
+                        <!-- Popped "disabled" from stretchContext, now: enabled (default) -->
+                        <af:spacer width="10" height="10" id="sp3"/>
+                    </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="center">
+                    <!-- DEBUG:BEGIN:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 5 -->
+                    <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 6 -->
+                    <af:panelStretchLayout topHeight="auto" id="PendingWorkAssTopLc"
+                                           partialTriggers=" DataTeamAgentPendingWorkTopLc">
+                        <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 7 -->
+                        <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 7-->
+                        <f:facet name="top">
+                            <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                            <af:group id="g0">
+                                <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 7 -->
+                                <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 7-->
+                                <af:panelHeader id="ph1" text="#{nls['TABLE_TITLE_PENDINGWORKASS']}">
+                                    <f:facet name="toolbar">
+                                        <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 7 -->
+                                        <af:toolbox id="tbox1">
+                                            <af:toolbar id="tbar1">
+                                                <af:group id="gr3">
+                                                    <!-- DEBUG:BEGIN:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 8 -->
+                                                    <!-- DEBUG:END:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 8-->
+                                                </af:group>
+                                                <af:group id="gr4"></af:group>
+                                            </af:toolbar>
+                                        </af:toolbox>
+                                        <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 7-->
+                                    </f:facet>
+                                    <f:facet name="context">
+                                        <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 7-->
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 7-->
+                                </af:panelHeader>
+                            </af:group>
+                            <!-- Popped "disabled" from stretchContext, now: enabled (default) -->
+                        </f:facet>
+                        <f:facet name="center">
+                            <!-- DEBUG:BEGIN:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 7 -->
+                            <af:panelStretchLayout topHeight="0" id="psl1">
+                                <f:facet name="top"></f:facet>
+                                <f:facet name="center">
+                                    <af:panelCollection id="PendingWorkAssPC" featuresOff=" wrap    freeze "
+                                                        styleClass="AFStretchWidth">
+                                        <f:facet name="menus">
+                                            <!-- DEBUG:BEGIN:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 8 -->
+                                            <af:menu textAndAccessKey="#{nls['ACTION_MENU_LABEL']}" id="menu0">
+                                                <af:menu textAndAccessKey="#{nls['GO_TO_MENU_LABEL']}" id="menu1">
+                                                    <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9 -->
+                                                    <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9-->
+                                                    <!-- DEBUG:BEGIN:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 9 -->
+                                                    <af:group id="PendingWorkAsstbb"
+                                                              rendered="#{ bindings.PendingWorkAssIterator.currentRow!=null }">
+                                                        <af:commandMenuItem actionListener="#{bindings.FirstPendingWorkAss.execute}"
+                                                                            id="PendingWorkAssFirst"
+                                                                            partialSubmit="true"
+                                                                            icon="/afr/shuttleleftall_ena.png"
+                                                                            textAndAccessKey="#{nls['FIRST_ROW']}"></af:commandMenuItem>
+                                                        <af:commandMenuItem actionListener="#{bindings.PreviousPendingWorkAss.execute}"
+                                                                            icon="/afr/shuttleleft_ena.png"
+                                                                            textAndAccessKey="#{nls['PREVIOUS_ROW']}"
+                                                                            id="PendingWorkAssPrevious"
+                                                                            partialSubmit="true"></af:commandMenuItem>
+                                                        <af:commandMenuItem actionListener="#{bindings.NextPendingWorkAss.execute}"
+                                                                            icon="/afr/shuttleright_ena.png"
+                                                                            textAndAccessKey="#{nls['NEXT_ROW']}"
+                                                                            id="PendingWorkAssNext"
+                                                                            partialSubmit="true"></af:commandMenuItem>
+                                                        <af:commandMenuItem actionListener="#{bindings.LastPendingWorkAss.execute}"
+                                                                            icon="/afr/shuttlerightall_ena.png"
+                                                                            textAndAccessKey="#{nls['LAST_ROW']}"
+                                                                            id="PendingWorkAssLast"
+                                                                            partialSubmit="true"></af:commandMenuItem>
+                                                    </af:group>
+                                                    <!-- DEBUG:END:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 9-->
+                                                </af:menu>
+                                                <!-- DEBUG:BEGIN:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 9-->
+                                            </af:menu>
+                                            <!-- DEBUG:END:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 8-->
+                                        </f:facet>
+                                        <f:facet name="toolbar">
+                                            <!-- DEBUG:BEGIN:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 8 -->
+                                            <af:toolbar id="tbar2">
+                                                <!-- DEBUG:BEGIN:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 9-->
+                                            </af:toolbar>
+                                            <!-- DEBUG:END:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 8-->
+                                        </f:facet>
+                                        <f:facet name="statusbar"/>
+                                        <af:table id="PendingWorkAssTab" contentDelivery="immediate"
+                                                  value="#{bindings.PendingWorkAssTable.collectionModel}"
+                                                  columnStretching="last" rowBandingInterval="0" editingMode="editAll"
+                                                  columnSelection="multiple" contextMenuSelect="true"
+                                                  rowSelection="single"
+                                                  selectionListener="#{pageFlowScope.PendingWorkAssTable.makeCurrent}"
+                                                  selectedRowKeys="#{pageFlowScope.PendingWorkAssTable.selectedRow}"
+                                                  rowDisclosureListener="#{pageFlowScope.PendingWorkAssTable.discloseRow}"
+                                                  var="row" varStatus="status"
+                                                  fetchSize="#{bindings.PendingWorkAssTable.rangeSize}"
+                                                  emptyText="#{nls['NO_ROWS_FOUND']}"
+                                                  queryListener="#{bindings.PendingWorkAssIteratorQuery.processQuery}"
+                                                  filterModel="#{bindings.PendingWorkAssIteratorQuery.queryDescriptor}"
+                                                  filterVisible="true"
+                                                  binding="#{pageFlowScope.PendingWorkAssTable.table}"
+                                                  partialTriggers=" :::PendingWorkAssPC ::PendingWorkAssFirst ::PendingWorkAssPrevious ::PendingWorkAssNext ::PendingWorkAssLast"
+                                                  styleClass="AFStretchWidth"
+                                                  summary="#{nls['TABLE_TITLE_PENDINGWORKASS']}">
+                                            <!-- DEBUG:BEGIN:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 8 -->
+                                            <f:facet name="contextMenu">
+                                                <af:popup id="PendingWorkAssTablePopup" childCreation="deferred">
+                                                    <af:menu id="menu2">
+                                                        <af:menu text="#{nls['GO_TO_MENU_LABEL']}" id="menu3">
+                                                            <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9 -->
+                                                            <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9-->
+                                                        </af:menu>
+                                                        <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9-->
+                                                    </af:menu>
+                                                </af:popup>
+                                            </f:facet><!-- DEBUG:END:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 8--><!-- DEBUG:BEGIN:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 8 --><!-- DEBUG:END:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 8--><!-- DEBUG:BEGIN:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 8 -->
+                                            <af:column id="PendingWorkAssIndexColumn" width="20" align="center"
+                                                       headerText="#">
+                                                <af:outputFormatted value="#{status.index+1}" id="of1"/>
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 8-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                            <af:column id="PendingWorkAssCardNoCol" sortable="true" filterable="true"
+                                                       noWrap="true" width="100" sortProperty="CardNo" align="right"
+                                                       rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{bindings.PendingWorkAssTable.hints.CardNo.label}"
+                                                                    id="ol0"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                <af:inputText id="PendingWorkAssCardNo"
+                                                              value="#{row.bindings.CardNo.inputValue}"
+                                                              label="#{bindings.PendingWorkAssTable.hints.CardNo.label}"
+                                                              required="#{bindings.PendingWorkAssTable.hints.CardNo.mandatory}"
+                                                              rows="#{bindings.PendingWorkAssTable.hints.CardNo.displayHeight}"
+                                                              columns="#{bindings.PendingWorkAssTable.hints.CardNo.displayWidth}"
+                                                              readOnly="true"
+                                                              shortDesc="#{bindings.PendingWorkAssTable.hints.CardNo.tooltip}">
+                                                    <f:validator binding="#{row.bindings.CardNo.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.PendingWorkAssTable.hints.CardNo.format}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                            </af:column>
+                                            <af:column headerText="#{bindings.PendingWorkAssTable.hints.ClientName.label}"
+                                                    width="300"   id="c1">
+                                                       <f:facet name="header">
+                                                    <af:outputLabel value="Client Name" id="ol3"/>
+                                                </f:facet>
+                                                <af:inputText value="#{row.bindings.ClientName.inputValue}"
+                                                              label="#{bindings.PendingWorkAssTable.hints.ClientName.label}"
+                                                              required="#{bindings.PendingWorkAssTable.hints.ClientName.mandatory}"
+                                                          readOnly="true"    columns="#{bindings.PendingWorkAssTable.hints.ClientName.displayWidth}"
+                                                              maximumLength="#{bindings.PendingWorkAssTable.hints.ClientName.precision}"
+                                                              shortDesc="#{bindings.PendingWorkAssTable.hints.ClientName.tooltip}"
+                                                              id="it1">
+                                                    <f:validator binding="#{row.bindings.ClientName.validator}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                            <af:column headerText="#{bindings.PendingWorkAssTable.hints.ContractStatus.label}"
+                                                   width="150"    id="c2">
+                                                       <f:facet name="header">
+                                                    <af:outputLabel value="Close Code" id="ol4"/>
+                                                </f:facet>
+                                                <af:selectOneChoice value="#{row.bindings.ContractStatus.inputValue}"
+                                                                    label="#{row.bindings.ContractStatus.label}"
+                                                               readOnly="true"     required="#{bindings.PendingWorkAssTable.hints.ContractStatus.mandatory}"
+                                                                    shortDesc="#{bindings.PendingWorkAssTable.hints.ContractStatus.tooltip}"
+                                                                    id="soc1">
+                                                    <f:selectItems value="#{row.bindings.ContractStatus.items}"
+                                                                   id="si1"/>
+                                                    <f:validator binding="#{row.bindings.ContractStatus.validator}"/>
+                                                </af:selectOneChoice>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.PendingWorkAssTable.hints.CloseCode.label}"
+                                                      width="150" id="c3">
+                                                       <f:facet name="header">
+                                                    <af:outputLabel value="Close Reason" id="ol5"/>
+                                                </f:facet>
+                                                <af:selectOneChoice value="#{row.bindings.CloseCode.inputValue}"
+                                                                    label="#{row.bindings.CloseCode.label}"
+                                                               readOnly="true"     required="#{bindings.PendingWorkAssTable.hints.CloseCode.mandatory}"
+                                                                    shortDesc="#{bindings.PendingWorkAssTable.hints.CloseCode.tooltip}"
+                                                                    id="soc2">
+                                                    <f:selectItems value="#{row.bindings.CloseCode.items}" id="si2"/>
+                                                    <f:validator binding="#{row.bindings.CloseCode.validator}"/>
+                                                </af:selectOneChoice>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.PendingWorkAssTable.hints.DataStatus.label}"
+                                                       id="c4">
+                                                       <f:facet name="header">
+                                                    <af:outputLabel value="Data Status" id="ol6"/>
+                                                </f:facet>
+                                                <af:selectOneChoice value="#{row.bindings.DataStatus.inputValue}"
+                                                                    label="#{row.bindings.DataStatus.label}"
+                                                           readOnly="true"         required="#{bindings.PendingWorkAssTable.hints.DataStatus.mandatory}"
+                                                                    shortDesc="#{bindings.PendingWorkAssTable.hints.DataStatus.tooltip}"
+                                                                    id="soc3">
+                                                    <f:selectItems value="#{row.bindings.DataStatus.items}" id="si3"/>
+                                                    <f:validator binding="#{row.bindings.DataStatus.validator}"/>
+                                                </af:selectOneChoice>
+                                            </af:column>
+                                            <af:column id="PendingWorkAssDataCommentCol" sortable="true"
+                                                       filterable="true" noWrap="true" width="200"
+                                                       sortProperty="DataComment" rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{bindings.PendingWorkAssTable.hints.DataComment.label}"
+                                                                    id="ol1"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                <af:inputText id="PendingWorkAssDataComment"
+                                                              value="#{row.bindings.DataComment.inputValue}"
+                                                              label="#{bindings.PendingWorkAssTable.hints.DataComment.label}"
+                                                              required="#{bindings.PendingWorkAssTable.hints.DataComment.mandatory}"
+                                                              rows="#{bindings.PendingWorkAssTable.hints.DataComment.displayHeight}"
+                                                              columns="#{bindings.PendingWorkAssTable.hints.DataComment.displayWidth}"
+                                                              maximumLength="4000" readOnly="true"
+                                                              shortDesc="#{bindings.PendingWorkAssTable.hints.DataComment.tooltip}">
+                                                    <f:validator binding="#{row.bindings.DataComment.validator}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                            <af:column id="PendingWorkAssProductsListCol" noWrap="true" width="50"
+                                                      rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{nls['PENDINGWORKASS_TABLE_PRODUCTSLIST']}"
+                                                                    id="ol2"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : custom/item/table/tableTextInputProductsList.vm, nesting level: 9 -->
+                                                <af:link text="Products" id="l1" action="GoToProductContractPage"
+                                                         useWindow="true" windowHeight="500" windowWidth="1100"
+                                                         returnListener="#{DataTeamAgentBean.RefreshPendingAssView}">
+                                                    <af:setActionListener from="#{row.bindings.AssignmentId.inputValue}"
+                                                                          to="#{pageFlowScope.AssignmentId}"/>
+                                                </af:link>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : custom/item/table/tableTextInputProductsList.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                        </af:table>
+                                    </af:panelCollection>
+                                </f:facet>
+                            </af:panelStretchLayout>
+                            <!-- DEBUG:END:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 7-->
+                        </f:facet>
+                    </af:panelStretchLayout>
+                    <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 6-->
+                    <!-- DEBUG:END:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 5-->
+                </f:facet>
+            </af:panelStretchLayout>
+            <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4-->
+        </f:facet>
+        <f:facet name="popups">
+            <af:panelGroupLayout id="popupsPgl"></af:panelGroupLayout>
+        </f:facet>
+        <!-- DEBUG:END:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3-->
+        <!-- DEBUG:END:FORM_PAGE_CONTENT : default/page/formPageContent.vm, nesting level: 2-->
+    </af:pageTemplate>
+</ui:composition>
+
+
+

@@ -1,0 +1,345 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsRegionTemplateNoStretch.jsf">
+        <!-- DEBUG:BEGIN:TABLE_PAGE_CONTENT : default/page/tablePageContent.vm, nesting level: 2 -->
+        <!-- DEBUG:BEGIN:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3 -->
+        <f:facet name="pageContent">
+            <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+            <af:panelGroupLayout id="pcpg" layout="scroll">
+                <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4 -->
+                <af:panelGroupLayout layout="vertical" id="CustomerPaymentPlanTopLc"
+                                     partialTriggers=" CustomerPaymentPlanCancelButton as_CustomerPaymentPlan">
+                    <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                    <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                    <f:facet name="separator">
+                        <af:spacer width="10" height="10" id="sp0"/>
+                    </f:facet>
+                    <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+                    <af:panelHeader id="ph0" text="#{nls['TABLE_TITLE_CUSTOMERPAYMENTPLAN']}">
+                        <f:facet name="toolbar">
+                            <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5 -->
+                            <af:toolbox id="tbox0">
+                                <af:toolbar id="tbar0">
+                                    <af:group id="gr0">
+                                        <!-- DEBUG:BEGIN:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6 -->
+                                        <!-- DEBUG:END:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6-->
+                                    </af:group>
+                                    <af:group id="gr1"></af:group>
+                                    <af:group id="gr2">
+                                        <!-- DEBUG:BEGIN:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6 -->
+                                        <!-- DEBUG:END:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6 -->
+                                        <af:button textAndAccessKey="#{nls['CANCEL']}" immediate="true"
+                                                   partialSubmit="true" rendered="#{!pageFlowScope.hideCancelButton}"
+                                                   actionListener="#{jhsRollback.execute}" action="Cancel"
+                                                   id="CustomerPaymentPlanCancelButton"></af:button>
+                                        <!-- DEBUG:END:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6-->
+                                    </af:group>
+                                </af:toolbar>
+                            </af:toolbox>
+                            <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5-->
+                        </f:facet>
+                        <f:facet name="context">
+                            <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5 -->
+                            <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5-->
+                        </f:facet>
+                        <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+                        <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+                        <!-- DEBUG:BEGIN:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 6 -->
+                        <af:panelGroupLayout id="modelSearchAreaCustomerPaymentPlan"
+                                             rendered="#{!pageFlowScope.createModes.CreateCustomerPaymentPlan and !pageFlowScope.hideSearchArea}"
+                                             partialTriggers="">
+                            <f:attribute name="JhsIgnoreChanges" value="true"/>
+                            <!-- DEBUG:BEGIN:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 7 -->
+                            <af:query id="as_CustomerPaymentPlan" headerText="#{nls['ADVANCED_SEARCH']}"
+                                      disclosed="true"
+                                      value="#{bindings.CustomerPaymentPlanIteratorQuery.queryDescriptor}"
+                                      model="#{bindings.CustomerPaymentPlanIteratorQuery.queryModel}"
+                                      queryListener="#{bindings.CustomerPaymentPlanIteratorQuery.processQuery}"
+                                      queryOperationListener="#{bindings.CustomerPaymentPlanIteratorQuery.processQueryOperation}"
+                                      rows="1" labelAlignment="start" maxColumns="3"></af:query>
+                            <!-- DEBUG:END:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 7-->
+                        </af:panelGroupLayout>
+                        <!-- DEBUG:END:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 6-->
+                        <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+                    </af:panelHeader>
+                    <!-- DEBUG:BEGIN:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5 -->
+                    <af:panelGroupLayout layout="vertical" id="pgl0">
+                        <af:panelCollection id="CustomerPaymentPlanPC" featuresOff="   freeze "
+                                            styleClass="AFStretchWidth">
+                            <f:facet name="menus">
+                                <!-- DEBUG:BEGIN:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6 -->
+                                <af:menu textAndAccessKey="#{nls['ACTION_MENU_LABEL']}" id="menu0">
+                                    <af:menu textAndAccessKey="#{nls['GO_TO_MENU_LABEL']}" id="menu1">
+                                        <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7 -->
+                                        <af:group id="CustomerPaymentPlantbb"
+                                                  rendered="#{ bindings.CustomerPaymentPlanIterator.currentRow!=null }">
+                                            <af:commandMenuItem actionListener="#{bindings.FirstCustomerPaymentPlan.execute}"
+                                                                id="CustomerPaymentPlanFirst" partialSubmit="true"
+                                                                icon="/afr/shuttleleftall_ena.png"
+                                                                textAndAccessKey="#{nls['FIRST_ROW']}"></af:commandMenuItem>
+                                            <af:commandMenuItem actionListener="#{bindings.PreviousCustomerPaymentPlan.execute}"
+                                                                icon="/afr/shuttleleft_ena.png"
+                                                                textAndAccessKey="#{nls['PREVIOUS_ROW']}"
+                                                                id="CustomerPaymentPlanPrevious" partialSubmit="true"></af:commandMenuItem>
+                                            <af:commandMenuItem actionListener="#{bindings.NextCustomerPaymentPlan.execute}"
+                                                                icon="/afr/shuttleright_ena.png"
+                                                                textAndAccessKey="#{nls['NEXT_ROW']}"
+                                                                id="CustomerPaymentPlanNext" partialSubmit="true"></af:commandMenuItem>
+                                            <af:commandMenuItem actionListener="#{bindings.LastCustomerPaymentPlan.execute}"
+                                                                icon="/afr/shuttlerightall_ena.png"
+                                                                textAndAccessKey="#{nls['LAST_ROW']}"
+                                                                id="CustomerPaymentPlanLast" partialSubmit="true"></af:commandMenuItem>
+                                        </af:group>
+                                        <!-- DEBUG:END:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7-->
+                                    </af:menu>
+                                    <!-- DEBUG:BEGIN:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7 -->
+                                    <af:commandMenuItem partialSubmit="true" textAndAccessKey="#{nls['EXPORT']}"
+                                                        icon="/jheadstart/images/excel.png" immediate="true" id="cmi0">
+                                        <af:exportCollectionActionListener exportedId="CustomerPaymentPlanTab"
+                                                                           type="excelHTML"/>
+                                    </af:commandMenuItem>
+                                    <!-- DEBUG:END:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7-->
+                                </af:menu>
+                                <!-- DEBUG:END:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6-->
+                            </f:facet>
+                            <f:facet name="toolbar">
+                                <!-- DEBUG:BEGIN:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6 -->
+                                <af:toolbar id="tbar1">
+                                    <!-- DEBUG:BEGIN:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7 -->
+                                    <af:link immediate="true" partialSubmit="true" id="cl0" shortDesc="#{nls['EXPORT']}"
+                                             icon="/jheadstart/images/excel.png">
+                                        <af:exportCollectionActionListener exportedId="CustomerPaymentPlanTab"
+                                                                           type="excelHTML"/>
+                                    </af:link>
+                                    <!-- DEBUG:END:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7-->
+                                </af:toolbar>
+                                <!-- DEBUG:END:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6-->
+                            </f:facet>
+                            <f:facet name="statusbar"/>
+                            <af:table id="CustomerPaymentPlanTab" contentDelivery="immediate"
+                                      value="#{bindings.CustomerPaymentPlanTable.collectionModel}"
+                                      columnStretching="last" rowBandingInterval="0" editingMode="editAll"
+                                      columnSelection="multiple" contextMenuSelect="true" rowSelection="single"
+                                      selectionListener="#{pageFlowScope.CustomerPaymentPlanTable.makeCurrent}"
+                                      selectedRowKeys="#{pageFlowScope.CustomerPaymentPlanTable.selectedRow}"
+                                      rowDisclosureListener="#{pageFlowScope.CustomerPaymentPlanTable.discloseRow}"
+                                      var="row" varStatus="status" rows="#{bindings.CustomerPaymentPlanTable.rangeSize}"
+                                      autoHeightRows="#{bindings.CustomerPaymentPlanTable.rangeSize}"
+                                      fetchSize="#{bindings.CustomerPaymentPlanTable.rangeSize}"
+                                      emptyText="#{nls['NO_ROWS_FOUND']}"
+                                      queryListener="#{bindings.CustomerPaymentPlanIteratorQuery.processQuery}"
+                                      filterModel="#{bindings.CustomerPaymentPlanIteratorQuery.queryDescriptor}"
+                                      filterVisible="true" binding="#{pageFlowScope.CustomerPaymentPlanTable.table}"
+                                      partialTriggers=" :::as_CustomerPaymentPlan :::CustomerPaymentPlanPC ::CustomerPaymentPlanFirst ::CustomerPaymentPlanPrevious ::CustomerPaymentPlanNext ::CustomerPaymentPlanLast"
+                                      styleClass="AFStretchWidth" summary="#{nls['TABLE_TITLE_CUSTOMERPAYMENTPLAN']}">
+                                <!-- DEBUG:BEGIN:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6 -->
+                                <f:facet name="contextMenu">
+                                    <af:popup id="CustomerPaymentPlanTablePopup" childCreation="deferred">
+                                        <af:menu id="menu2">
+                                            <af:menu text="#{nls['GO_TO_MENU_LABEL']}" id="menu3">
+                                                <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                            </af:menu>
+                                            <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                            <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                            <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                        </af:menu>
+                                    </af:popup>
+                                </f:facet><!-- DEBUG:END:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6 --><!-- DEBUG:END:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6 --><!-- DEBUG:END:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                <af:column id="CustomerPaymentPlanPlanIdCol" sortable="true" filterable="true"
+                                           noWrap="true" width="100" sortProperty="PlanId" align="right"
+                                           rowHeader="false">
+                                    <f:facet name="header">
+                                        <af:outputLabel value="#{bindings.CustomerPaymentPlanTable.hints.PlanId.label}"
+                                                        id="ol0"/>
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 7 -->
+                                    <af:selectOneChoice id="CustomerPaymentPlanPlanId"
+                                                        value="#{row.bindings.PlanId.inputValue}"
+                                                        label="#{bindings.CustomerPaymentPlanTable.hints.PlanId.label}"
+                                                        required="#{bindings.CustomerPaymentPlanTable.hints.PlanId.mandatory}"
+                                                        readOnly="true"
+                                                        shortDesc="#{bindings.CustomerPaymentPlanTable.hints.PlanId.tooltip}">
+                                        <f:selectItems value="#{row.bindings.PlanId.items}"/>
+                                    </af:selectOneChoice>
+                                    <!-- DEBUG:END:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                <af:column id="CustomerPaymentPlanDiscountRatioCol" sortable="true" filterable="true"
+                                           noWrap="true" width="75" sortProperty="DiscountRatio" rowHeader="false">
+                                    <f:facet name="header">
+                                        <af:outputLabel value="#{bindings.CustomerPaymentPlanTable.hints.DiscountRatio.label}"
+                                                        id="ol1"/>
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                    <af:inputText id="CustomerPaymentPlanDiscountRatio"
+                                                  value="#{row.bindings.DiscountRatio.inputValue}"
+                                                  label="#{bindings.CustomerPaymentPlanTable.hints.DiscountRatio.label}"
+                                                  required="#{bindings.CustomerPaymentPlanTable.hints.DiscountRatio.mandatory}"
+                                                  rows="#{bindings.CustomerPaymentPlanTable.hints.DiscountRatio.displayHeight}"
+                                                  columns="#{bindings.CustomerPaymentPlanTable.hints.DiscountRatio.displayWidth}"
+                                                  readOnly="true"
+                                                  shortDesc="#{bindings.CustomerPaymentPlanTable.hints.DiscountRatio.tooltip}">
+                                        <f:validator binding="#{row.bindings.DiscountRatio.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.CustomerPaymentPlanTable.hints.DiscountRatio.format}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                <af:column id="CustomerPaymentPlanPostPaidDurationCol" sortable="true" filterable="true"
+                                           noWrap="true" width="75" sortProperty="PostPaidDuration" align="right"
+                                           rowHeader="false">
+                                    <f:facet name="header">
+                                        <af:outputLabel value="#{bindings.CustomerPaymentPlanTable.hints.PostPaidDuration.label}"
+                                                        id="ol2"/>
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                    <af:inputText id="CustomerPaymentPlanPostPaidDuration"
+                                                  value="#{row.bindings.PostPaidDuration.inputValue}"
+                                                  label="#{bindings.CustomerPaymentPlanTable.hints.PostPaidDuration.label}"
+                                                  required="#{bindings.CustomerPaymentPlanTable.hints.PostPaidDuration.mandatory}"
+                                                  rows="#{bindings.CustomerPaymentPlanTable.hints.PostPaidDuration.displayHeight}"
+                                                  columns="#{bindings.CustomerPaymentPlanTable.hints.PostPaidDuration.displayWidth}"
+                                                  readOnly="true"
+                                                  shortDesc="#{bindings.CustomerPaymentPlanTable.hints.PostPaidDuration.tooltip}">
+                                        <f:validator binding="#{row.bindings.PostPaidDuration.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.CustomerPaymentPlanTable.hints.PostPaidDuration.format}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                <af:column id="CustomerPaymentPlanFromDateCol" sortable="true" filterable="true"
+                                           noWrap="true" width="75" sortProperty="FromDate" rowHeader="false">
+                                    <f:facet name="header">
+                                        <af:outputLabel value="#{bindings.CustomerPaymentPlanTable.hints.FromDate.label}"
+                                                        id="ol3"/>
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 7 -->
+                                    <f:facet name="filter">
+                                        <af:inputDate value="#{status.filterCriteria.FromDate}" id="id0">
+                                            <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                        </af:inputDate>
+                                    </f:facet>
+                                    <af:inputDate id="CustomerPaymentPlanFromDate"
+                                                  value="#{row.bindings.FromDate.inputValue}"
+                                                  label="#{bindings.CustomerPaymentPlanTable.hints.FromDate.label}"
+                                                  required="#{bindings.CustomerPaymentPlanTable.hints.FromDate.mandatory}"
+                                                  readOnly="true"
+                                                  shortDesc="#{bindings.CustomerPaymentPlanTable.hints.FromDate.tooltip}">
+                                        <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                    </af:inputDate>
+                                    <!-- DEBUG:END:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                <af:column id="CustomerPaymentPlanToDateCol" sortable="true" filterable="true"
+                                           noWrap="true" width="75" sortProperty="ToDate" rowHeader="false">
+                                    <f:facet name="header">
+                                        <af:outputLabel value="#{bindings.CustomerPaymentPlanTable.hints.ToDate.label}"
+                                                        id="ol4"/>
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 7 -->
+                                    <f:facet name="filter">
+                                        <af:inputDate value="#{status.filterCriteria.ToDate}" id="id1">
+                                            <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                        </af:inputDate>
+                                    </f:facet>
+                                    <af:inputDate id="CustomerPaymentPlanToDate"
+                                                  value="#{row.bindings.ToDate.inputValue}"
+                                                  label="#{bindings.CustomerPaymentPlanTable.hints.ToDate.label}"
+                                                  required="#{bindings.CustomerPaymentPlanTable.hints.ToDate.mandatory}"
+                                                  readOnly="true"
+                                                  shortDesc="#{bindings.CustomerPaymentPlanTable.hints.ToDate.tooltip}">
+                                        <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                    </af:inputDate>
+                                    <!-- DEBUG:END:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                <af:column id="CustomerPaymentPlanActiveCol" sortable="true" filterable="true"
+                                           noWrap="true" width="100" sortProperty="Active" align="right"
+                                           rowHeader="false">
+                                    <f:facet name="header">
+                                        <af:outputLabel value="#{bindings.CustomerPaymentPlanTable.hints.Active.label}"
+                                                        id="ol5"/>
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:TABLE_CHECK_BOX : default/item/table/tableCheckbox.vm, nesting level: 7 -->
+                                    <af:selectBooleanCheckbox id="CustomerPaymentPlanActive"
+                                                              label="#{bindings.CustomerPaymentPlanTable.hints.Active.label}"
+                                                              value="#{CustomerPaymentPlanActivecheckboxInTable.value}"
+                                                              readOnly="true"
+                                                              shortDesc="#{bindings.CustomerPaymentPlanTable.hints.Active.tooltip}"></af:selectBooleanCheckbox>
+                                    <!-- DEBUG:END:TABLE_CHECK_BOX : default/item/table/tableCheckbox.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+                                <f:facet name="detailStamp">
+                                    <!-- DEBUG:BEGIN:TABLE_OVERFLOW_AREA : default/pageComponent/tableOverflowArea.vm, nesting level: 6 -->
+                                    <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+                                    <af:panelGroupLayout id="pgl1"
+                                                         rendered="#{bindings.CustomerPaymentPlanIterator.estimatedRowCount>0}"
+                                                         layout="scroll">
+                                        <f:facet name="separator">
+                                            <af:spacer width="10" height="10" id="sp1"/>
+                                        </f:facet>
+                                        <af:panelFormLayout rows="1" maxColumns="1" labelAlignment="start" id="pfl0"></af:panelFormLayout>
+                                        <!-- DEBUG:BEGIN:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 7-->
+                                    </af:panelGroupLayout>
+                                    <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+                                    <!-- DEBUG:END:TABLE_OVERFLOW_AREA : default/pageComponent/tableOverflowArea.vm, nesting level: 6-->
+                                </f:facet><!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+                            </af:table>
+                        </af:panelCollection>
+                    </af:panelGroupLayout>
+                    <!-- DEBUG:END:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5-->
+                    <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+                </af:panelGroupLayout>
+                <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4-->
+            </af:panelGroupLayout>
+            <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+        </f:facet>
+        <f:facet name="popups">
+            <af:panelGroupLayout id="popupsPgl"></af:panelGroupLayout>
+        </f:facet>
+        <!-- DEBUG:END:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3-->
+        <!-- DEBUG:END:TABLE_PAGE_CONTENT : default/page/tablePageContent.vm, nesting level: 2-->
+    </af:pageTemplate>
+</ui:composition>
+
+
+

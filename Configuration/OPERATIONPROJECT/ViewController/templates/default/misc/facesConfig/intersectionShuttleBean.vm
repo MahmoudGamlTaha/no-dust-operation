@@ -1,0 +1,38 @@
+## revision_history
+## 21-aug-2013   Steven Davelaar / Paco van der Linden
+## 1.4           Moved to viewScope, changed managed properties (can't use bindings anymore)
+## 18-may-2010   Steven Davelaar
+## 1.3           Added id property to all elements
+## 14-okt-2008   Evert-Jan de Bruin
+## 1.2           Removed jhsPageLifeCycle property
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+#set ($bean = ${JHS.current.managedBean})
+#set ($group = ${JHS.current.group})
+
+<managed-bean id="#NEW_ID("__")">
+  <managed-bean-name id="#NEW_ID("__")">${bean.beanName}</managed-bean-name>
+  <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.IntersectionShuttleBean</managed-bean-class>
+  <managed-bean-scope id="#NEW_ID("__")">view</managed-bean-scope>
+
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">selectedRangeBindingName</property-name>
+    <value id="#NEW_ID("__")">${group.name}Table</value>
+  </managed-property>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">processShuttleMethodBindingName</property-name>
+      <value id="#NEW_ID("__")">process${group.name}Shuttle</value>
+    </managed-property>
+
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">otherParentChildRefAttrs</property-name>
+      <map-entries id="#NEW_ID("__")">
+        #foreach ($parentKeyAttr in $group.otherParentChildRefAttrs.keySet())
+        <map-entry id="#NEW_ID("__")">
+          <key id="#NEW_ID("__")">$parentKeyAttr</key>
+          <value id="#NEW_ID("__")">$group.otherParentChildRefAttrs.get($parentKeyAttr)</value>
+        </map-entry>
+       #end 
+      </map-entries>
+    </managed-property>
+</managed-bean>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CustomerClassEO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="CUSTOMER_CLASSIFICATION"
+  AliasName="CustomerClassEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="ClassificationId"
+    IsNotNull="true"
+    Precision="38"
+    Scale="0"
+    ColumnName="CLASSIFICATION_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    TableName="CUSTOMER_CLASSIFICATION"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="ClassificationName"
+    Precision="4000"
+    ColumnName="CLASSIFICATION_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CUSTOMER_CLASSIFICATION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="CustomerProfile"
+    Association="OPERATIONPROJECT.model.BC.EO.CustomerClassificationFk1Assoc"
+    AssociationEnd="OPERATIONPROJECT.model.BC.EO.CustomerClassificationFk1Assoc.CustomerProfile"
+    AssociationOtherEnd="OPERATIONPROJECT.model.BC.EO.CustomerClassificationFk1Assoc.CustomerClass"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="CustomerClassificationPkey"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="customer_classification_pkey"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.CustomerClassEO.ClassificationId"/>
+    </AttrArray>
+  </Key>
+</Entity>

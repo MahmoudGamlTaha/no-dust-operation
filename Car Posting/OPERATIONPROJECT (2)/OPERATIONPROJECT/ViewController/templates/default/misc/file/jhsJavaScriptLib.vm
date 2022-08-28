@@ -1,0 +1,97 @@
+## revision_history
+## 14-dec-2011   Steven Davelaar
+## 1.2           Added check for ctrl L, UP, Shift UP, DOWN and shift DOWN
+## 09-nov-2011   Steven Davelaar
+## 1.1           Use keyRegistry.push, so we dont have to assign unique index to each key
+##               obsolete logger line removed
+## 04-nov-2010   Steven Davelaar
+## 1.0           Initial creation
+
+function popupClosedListener(event) 
+{ 
+  var source = event.getSource(); 
+  var popupId = source.getClientId(); 
+  var params = {}; 
+  params['popupId'] = popupId; 
+  var type = "serverPopupClosed";
+  var immediate = true;
+  AdfCustomEvent.queue(source, type, params, immediate);
+}
+#if( ${JHS.application.enableFunctionKeys} )
+
+#JHS_PARSE_NO_DEBUG("REGISTER_FUNCTION_KEYS" ${JHS.service})
+
+//private variables
+var _serverListener = null;
+var _document       = null;
+
+function registerKeyBoardHandler(serverListener, afdocument) {
+    _serverListener = serverListener;
+    var document = AdfPage.PAGE.findComponentByAbsoluteId(afdocument);
+    _document = document;
+    for (var i = keyRegistry.length - 1; i >= 0; i--)
+    {
+      var keyStroke = AdfKeyStroke.getKeyStrokeFromMarshalledString(keyRegistry[i]);       
+      AdfRichUIPeer.registerKeyStroke(document, keyStroke, callBack);
+    }
+}
+
+function callBack(keyCode) 
+{
+    var activeComponent = AdfPage.PAGE.getActiveComponent();      
+    var marshalledKeyCode = keyCode.toMarshalledString(keyCode);
+    var componentType = activeComponent.getComponentType();
+    //users that press the back space key on a non-input component actually force 
+    //the browser to navigate back. To suppress this behavior while preserving the 
+    //backspace functionality for input text fields, the following code is used
+    if(marshalledKeyCode == "BACK_SPACE")
+    {  
+      if(activeComponent instanceof AdfUIValue)
+      {
+        activeComponent.focus();
+        return false;
+      }
+      else
+      {
+        return true;
+      }
+    }
+    else if(marshalledKeyCode == "UP" 
+            || marshalledKeyCode == "DOWN"
+            || marshalledKeyCode == "shift UP"
+            || marshalledKeyCode == "shift DOWN"
+            )
+    {  
+      // Ignore arrow actions in drop down list and mult-line text fields
+      // NOTE: for getRows to return correct value, clientComponent must be set to true on inputText!
+      if(componentType=='oracle.adf.RichSelectOneChoice' || activeComponent.getProperty("rows")>1)
+      {
+        // don't handle as function key up/down
+        return false;
+      }
+    }
+    else if (marshalledKeyCode == "ctrl L")
+    {
+      if (componentType=='oracle.adf.RichInputListOfValues')
+      {
+        AdfLaunchPopupEvent.queue(activeComponent,true);
+      }
+      return true;
+    }
+    var activeComponentClientId = AdfPage.PAGE.getActiveComponentId();      
+    AdfCustomEvent.queue(_document,_serverListener,{keycode:marshalledKeyCode, activeComponentClientId:activeComponentClientId},true); 
+    //indicate to the client that the key was handled and that there is no need to pass the event to the browser to handle it
+    return true;
+}
+
+/*
+ * The array below defines the keys that are registered for client to server notification. 
+ */
+var keyRegistry = new Array();
+#set ($counter = 0)
+#foreach ($functionKey in ${JHS.registeredFunctionKeys})
+keyRegistry.push("${functionKey.keyCode}");  // ${functionKey.label}   
+#set ($counter = $counter + 1)   
+#end
+
+#end

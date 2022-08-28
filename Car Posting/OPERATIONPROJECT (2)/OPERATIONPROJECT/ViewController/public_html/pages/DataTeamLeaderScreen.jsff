@@ -1,0 +1,1092 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsRegionTemplateNoStretch.jsf">
+        <!-- DEBUG:BEGIN:FORM_PAGE_CONTENT : default/page/formPageContent.vm, nesting level: 2 -->
+        <!-- DEBUG:BEGIN:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3 -->
+        <f:facet name="pageContent">
+            <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+            <af:panelGroupLayout id="pcpg" layout="scroll">
+                <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4 -->
+                <af:panelGroupLayout  layout="vertical" id="DataTeamLeaderScreenTopLc"
+                                     partialTriggers=" DataTeamLeaderScreenSaveButton DataTeamLeaderScreenCancelButton">
+                    <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                    <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                    <f:facet name="separator">
+                        <af:spacer width="10" height="10" id="sp0"/>
+                    </f:facet>
+                    <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+                    <af:panelHeader id="ph0" text="#{nls['FORM_TITLE_DATATEAMLEADERSCREEN']}">
+                        <f:facet name="toolbar">
+                            <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5 -->
+                            <af:toolbox id="tbox0">
+                                <af:toolbar id="tbar0">
+                                    <!-- DEBUG:BEGIN:FORM_BROWSE_BUTTONS : custom/pageComponent/MtsformBrowseButtons.vm, nesting level: 6 -->
+                                    <!-- DEBUG:END:FORM_BROWSE_BUTTONS : custom/pageComponent/MtsformBrowseButtons.vm, nesting level: 6-->
+                                    <af:group id="gr0">
+                                        <!-- DEBUG:BEGIN:NEW_BUTTON : custom/button/MtsnewButton.vm, nesting level: 6 -->
+                                        <!-- DEBUG:END:NEW_BUTTON : custom/button/MtsnewButton.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:DELETE_BUTTON : default/button/deleteButton.vm, nesting level: 6 -->
+                                        <!-- DEBUG:END:DELETE_BUTTON : default/button/deleteButton.vm, nesting level: 6-->
+                                    </af:group>
+                                    <af:group id="gr1"></af:group>
+                                    <af:group id="gr2" rendered="false">
+                                        <!-- DEBUG:BEGIN:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6 -->
+                                        <af:button action="#{SaveDataTeamLeaderScreen.execute}"
+                                                   rendered="#{(MTSPermission['DataTeamLeaderScreen.update']) and (!pageFlowScope.hideSaveButton)}"
+                                                   textAndAccessKey="#{nls['SAVE_BUTTON_LABEL']}"
+                                                   id="DataTeamLeaderScreenSaveButton" partialSubmit="true"></af:button>
+                                        <!-- DEBUG:END:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6 -->
+                                        <af:button textAndAccessKey="#{nls['CANCEL']}" immediate="true"
+                                                   partialSubmit="true" rendered="#{!pageFlowScope.hideCancelButton}"
+                                                   actionListener="#{jhsRollback.execute}" action="Cancel"
+                                                   id="DataTeamLeaderScreenCancelButton"></af:button>
+                                        <!-- DEBUG:END:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6-->
+                                    </af:group>
+                                </af:toolbar>
+                            </af:toolbox>
+                            <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5-->
+                        </f:facet>
+                        <f:facet name="context">
+                            <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5 -->
+                            <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5-->
+                        </f:facet>
+                        <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+                        <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+                    </af:panelHeader>
+                    <!-- DEBUG:BEGIN:FORM_GROUP : custom/pageComponent/MtsformGroup.vm, nesting level: 5 -->
+                    <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+                    <af:panelGroupLayout id="DataTeamLeaderScreenFC" layout="vertical">
+                        <f:facet name="separator">
+                            <af:spacer width="10" height="10" id="sp1"/>
+                        </f:facet>
+                        <af:panelFormLayout rows="1" labelAlignment="start" maxColumns="1" id="DataTeamLeaderScreenFI">
+                            <af:panelGroupLayout id="pgl1">
+                                <af:panelTabbed position="above" id="pt1">
+                                    <af:showDetailItem id="tab1" text="Pending Work" disclosed="true">
+                                        <af:spacer width="10" height="10" id="s8"/>
+                                        <af:panelGroupLayout id="pgl4" layout="horizontal">
+                                            <af:selectOneChoice value="#{bindings.DataAgentVO1.inputValue}"
+                                                                label="Data Agent :"
+                                                                required="#{bindings.DataAgentVO1.hints.mandatory}"
+                                                                shortDesc="#{bindings.DataAgentVO1.hints.tooltip}"
+                                                                id="soc2" unselectedLabel="Select Data Agent">
+                                                <f:selectItems value="#{bindings.DataAgentVO1.items}" id="si2"/>
+                                                <f:validator binding="#{bindings.DataAgentVO1.validator}"/>
+                                            </af:selectOneChoice>
+                                            <af:button text="Bulk Assign Data Agent" id="b2" inlineStyle="background:#008400; margin-left: 25px; font-weight:bold;color: White;">
+                                                <af:showPopupBehavior popupId="::p3"/>
+                                            </af:button>
+                                            <af:button text="Assign To Data Agent " id="b1" inlineStyle="background:#008400; margin-left: 25px; font-weight:bold;color: White;">
+                                                <af:showPopupBehavior popupId="::p4"/>
+                                            </af:button>
+                                        </af:panelGroupLayout>
+                                        <af:panelGroupLayout id="pgl3">
+                                        
+                                            <af:spacer width="10" height="10" id="s2"/>
+                                            <af:table value="#{bindings.DataTeamLeaderPendingWorkVO1.collectionModel}"
+                                                      var="row"
+                                                      rows="#{bindings.DataTeamLeaderPendingWorkVO1.rangeSize}"
+                                                      emptyText="#{bindings.DataTeamLeaderPendingWorkVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                      rowBandingInterval="0"
+                                                      selectedRowKeys="#{bindings.DataTeamLeaderPendingWorkVO1.collectionModel.selectedRow}"
+                                                      selectionListener="#{bindings.DataTeamLeaderPendingWorkVO1.collectionModel.makeCurrent}"
+                                                      rowSelection="single"
+                                                      fetchSize="#{bindings.DataTeamLeaderPendingWorkVO1.rangeSize}"
+                                                      filterModel="#{bindings.DataTeamLeaderPendingWorkVO1Query.queryDescriptor}"
+                                                      filterVisible="true"
+                                                      queryListener="#{bindings.DataTeamLeaderPendingWorkVO1Query.processQuery}"
+                                                      varStatus="vs" id="t2" styleClass="AFStretchWidth">
+                                                <af:column headerText=""
+                                                     width="25"      id="c32">
+                                                    <af:selectBooleanCheckbox value="#{row.bindings.PendingWorkFlag.inputValue}"
+                                                                              label=""
+                                                                          autoSubmit="true"    shortDesc="#{bindings.DataTeamLeaderPendingWorkVO1.hints.PendingWorkFlag.tooltip}"
+                                                                              id="sbc2"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderPendingWorkVO1.hints.AreaId.name}"
+                                                           rendered="false" filterable="true" sortable="true"
+                                                           headerText="#{bindings.DataTeamLeaderPendingWorkVO1.hints.AreaId.label}"
+                                                           id="c7">
+                                                    <af:inputText value="#{row.bindings.AreaId.inputValue}"
+                                                                  label="#{bindings.DataTeamLeaderPendingWorkVO1.hints.AreaId.label}"
+                                                                  required="#{bindings.DataTeamLeaderPendingWorkVO1.hints.AreaId.mandatory}"
+                                                                  columns="#{bindings.DataTeamLeaderPendingWorkVO1.hints.AreaId.displayWidth}"
+                                                                  maximumLength="#{bindings.DataTeamLeaderPendingWorkVO1.hints.AreaId.precision}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderPendingWorkVO1.hints.AreaId.tooltip}"
+                                                                  id="it1">
+                                                        <f:validator binding="#{row.bindings.AreaId.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.DataTeamLeaderPendingWorkVO1.hints.AreaId.format}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderPendingWorkVO1.hints.AreaName.name}"
+                                                           filterable="true" sortable="true" width="150"
+                                                           headerText="#{bindings.DataTeamLeaderPendingWorkVO1.hints.AreaName.label}"
+                                                           id="c8">
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="Area name" id="ol5"/>
+                                                    </f:facet>
+                                                    <af:inputText value="#{row.bindings.AreaName.inputValue}"
+                                                                  label="#{bindings.DataTeamLeaderPendingWorkVO1.hints.AreaName.label}"
+                                                                  readOnly="true"
+                                                                  required="#{bindings.DataTeamLeaderPendingWorkVO1.hints.AreaName.mandatory}"
+                                                                  columns="#{bindings.DataTeamLeaderPendingWorkVO1.hints.AreaName.displayWidth}"
+                                                                  maximumLength="#{bindings.DataTeamLeaderPendingWorkVO1.hints.AreaName.precision}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderPendingWorkVO1.hints.AreaName.tooltip}"
+                                                                  id="it2">
+                                                        <f:validator binding="#{row.bindings.AreaName.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderPendingWorkVO1.hints.AssignDate.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.DataTeamLeaderPendingWorkVO1.hints.AssignDate.label}"
+                                                           id="c9">
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="Assignment Date" id="ol6"/>
+                                                    </f:facet>
+                                                    <f:facet name="filter">
+                                                        <af:inputDate value="#{bindings.DataTeamLeaderPendingWorkVO1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.AssignDate.value}"
+                                                                      id="id2">
+                                                            <af:convertDateTime pattern="dd-MM-yyyy"/>
+                                                        </af:inputDate>
+                                                    </f:facet>
+                                                    <af:inputDate value="#{row.bindings.AssignDate.inputValue}"
+                                                                  readOnly="true"
+                                                                  label="#{bindings.DataTeamLeaderPendingWorkVO1.hints.AssignDate.label}"
+                                                                  required="#{bindings.DataTeamLeaderPendingWorkVO1.hints.AssignDate.mandatory}"
+                                                                  columns="#{bindings.DataTeamLeaderPendingWorkVO1.hints.AssignDate.displayWidth}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderPendingWorkVO1.hints.AssignDate.tooltip}"
+                                                                  id="id3">
+                                                        <f:validator binding="#{row.bindings.AssignDate.validator}"/>
+                                                        <af:convertDateTime pattern="dd-MM-yyyy"/>
+                                                    </af:inputDate>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderPendingWorkVO1.hints.DrivId.name}"
+                                                           filterable="true" sortable="true" rendered="false"
+                                                           headerText="#{bindings.DataTeamLeaderPendingWorkVO1.hints.DrivId.label}"
+                                                           id="c11">
+                                                    <af:inputText value="#{row.bindings.DrivId.inputValue}"
+                                                                  label="#{bindings.DataTeamLeaderPendingWorkVO1.hints.DrivId.label}"
+                                                                  required="#{bindings.DataTeamLeaderPendingWorkVO1.hints.DrivId.mandatory}"
+                                                                  columns="#{bindings.DataTeamLeaderPendingWorkVO1.hints.DrivId.displayWidth}"
+                                                                  maximumLength="#{bindings.DataTeamLeaderPendingWorkVO1.hints.DrivId.precision}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderPendingWorkVO1.hints.DrivId.tooltip}"
+                                                                  id="it3">
+                                                        <f:validator binding="#{row.bindings.DrivId.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderPendingWorkVO1.hints.DriverName.name}"
+                                                   width="250"        filterable="true" sortable="true"
+                                                           headerText="#{bindings.DataTeamLeaderPendingWorkVO1.hints.DriverName.label}"
+                                                           id="c12">
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="Driver" id="ol8"/>
+                                                    </f:facet>
+                                                    <af:inputText value="#{row.bindings.DriverName.inputValue}"
+                                                                  label="#{bindings.DataTeamLeaderPendingWorkVO1.hints.DriverName.label}"
+                                                                  readOnly="true"
+                                                                  required="#{bindings.DataTeamLeaderPendingWorkVO1.hints.DriverName.mandatory}"
+                                                                  columns="#{bindings.DataTeamLeaderPendingWorkVO1.hints.DriverName.displayWidth}"
+                                                                  maximumLength="#{bindings.DataTeamLeaderPendingWorkVO1.hints.DriverName.precision}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderPendingWorkVO1.hints.DriverName.tooltip}"
+                                                                  id="it4">
+                                                        <f:validator binding="#{row.bindings.DriverName.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderPendingWorkVO1.hints.PilotId.name}"
+                                                           filterable="true" sortable="true" rendered="false"
+                                                           headerText="#{bindings.DataTeamLeaderPendingWorkVO1.hints.PilotId.label}"
+                                                           id="c13">
+                                                    <af:inputText value="#{row.bindings.PilotId.inputValue}"
+                                                                  label="#{bindings.DataTeamLeaderPendingWorkVO1.hints.PilotId.label}"
+                                                                  required="#{bindings.DataTeamLeaderPendingWorkVO1.hints.PilotId.mandatory}"
+                                                                  columns="#{bindings.DataTeamLeaderPendingWorkVO1.hints.PilotId.displayWidth}"
+                                                                  maximumLength="#{bindings.DataTeamLeaderPendingWorkVO1.hints.PilotId.precision}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderPendingWorkVO1.hints.PilotId.tooltip}"
+                                                                  id="it5">
+                                                        <f:validator binding="#{row.bindings.PilotId.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderPendingWorkVO1.hints.PilotName.name}"
+                                                     width="250"        filterable="true" sortable="true"
+                                                           headerText="#{bindings.DataTeamLeaderPendingWorkVO1.hints.PilotName.label}"
+                                                           id="c14">
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="Pilot" id="ol9"/>
+                                                    </f:facet>
+                                                    <af:inputText value="#{row.bindings.PilotName.inputValue}"
+                                                                  label="#{bindings.DataTeamLeaderPendingWorkVO1.hints.PilotName.label}"
+                                                                  required="#{bindings.DataTeamLeaderPendingWorkVO1.hints.PilotName.mandatory}"
+                                                                  columns="#{bindings.DataTeamLeaderPendingWorkVO1.hints.PilotName.displayWidth}"
+                                                                  readOnly="true"
+                                                                  maximumLength="#{bindings.DataTeamLeaderPendingWorkVO1.hints.PilotName.precision}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderPendingWorkVO1.hints.PilotName.tooltip}"
+                                                                  id="it6">
+                                                        <f:validator binding="#{row.bindings.PilotName.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderPendingWorkVO1.hints.TotalAssignemnt.name}"
+                                                      width="85"     filterable="true" sortable="true"
+                                                           headerText="#{bindings.DataTeamLeaderPendingWorkVO1.hints.TotalAssignemnt.label}"
+                                                           id="c15">
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="Total Contracts" id="ol10"/>
+                                                    </f:facet>
+                                                    <af:inputText value="#{row.bindings.TotalAssignemnt.inputValue}"
+                                                                  label="#{bindings.DataTeamLeaderPendingWorkVO1.hints.TotalAssignemnt.label}"
+                                                                  required="#{bindings.DataTeamLeaderPendingWorkVO1.hints.TotalAssignemnt.mandatory}"
+                                                                  readOnly="true"
+                                                                  columns="#{bindings.DataTeamLeaderPendingWorkVO1.hints.TotalAssignemnt.displayWidth}"
+                                                                  maximumLength="#{bindings.DataTeamLeaderPendingWorkVO1.hints.TotalAssignemnt.precision}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderPendingWorkVO1.hints.TotalAssignemnt.tooltip}"
+                                                                  id="it7">
+                                                        <f:validator binding="#{row.bindings.TotalAssignemnt.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.DataTeamLeaderPendingWorkVO1.hints.TotalAssignemnt.format}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderPendingWorkVO1.hints.DataAgent.name}"
+                                                           width="150" filterable="true" sortable="true"
+                                                           headerText="#{bindings.DataTeamLeaderPendingWorkVO1.hints.DataAgent.label}"
+                                                           id="c10">
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="Data Agent" id="ol7"/>
+                                                    </f:facet>
+                                                    <af:selectOneChoice value="#{row.bindings.DataAgent.inputValue}"
+                                                                        label="#{row.bindings.DataAgent.label}"
+                                                               autoSubmit="true"         required="#{bindings.DataTeamLeaderPendingWorkVO1.hints.DataAgent.mandatory}"
+                                                                        shortDesc="#{bindings.DataTeamLeaderPendingWorkVO1.hints.DataAgent.tooltip}"
+                                                                        id="soc1">
+                                                        <f:selectItems value="#{row.bindings.DataAgent.items}"
+                                                                       id="si1"/>
+                                                        <f:validator binding="#{row.bindings.DataAgent.validator}"/>
+                                                    </af:selectOneChoice>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.DataTeamLeaderPendingWorkVO1.hints.RescheduleDelivery.label}"
+                                                       filterable="true" sortable="true" sortProperty="RescheduleDelivery"    id="c33">
+                                                           <f:facet name="header">
+                                                        <af:outputLabel value="Reschedule Delivery" id="ol25"/>
+                                                    </f:facet>
+                                                    <af:selectOneChoice value="#{row.bindings.RescheduleDelivery.inputValue}"
+                                                              autoSubmit="true"          label="#{row.bindings.RescheduleDelivery.label}"
+                                                                        required="#{bindings.DataTeamLeaderPendingWorkVO1.hints.RescheduleDelivery.mandatory}"
+                                                                        shortDesc="#{bindings.DataTeamLeaderPendingWorkVO1.hints.RescheduleDelivery.tooltip}"
+                                                                        id="soc7"
+                                                                        valueChangeListener="#{DataTeamLeaderBean.RescheduleDeliveryChanged}">
+                                                        <f:selectItems value="#{row.bindings.RescheduleDelivery.items}"
+                                                                       id="si7"/>
+                                                        <f:validator binding="#{row.bindings.RescheduleDelivery.validator}"/>
+                                                    </af:selectOneChoice>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.DataTeamLeaderPendingWorkVO1.hints.NewDeliveryDate.label}"
+                                                       sortable="true" filterable="true" sortProperty="NewDeliveryDate"
+                                                     width="150"      id="c34">
+                                                           <f:facet name="header"><af:outputLabel value="New Delivery Date" id="ol26"/></f:facet>
+                                                    <af:inputDate value="#{row.bindings.NewDeliveryDate.inputValue}"
+                                                                  label="#{bindings.DataTeamLeaderPendingWorkVO1.hints.NewDeliveryDate.label}"
+                                                            autoSubmit="true"      required="#{bindings.DataTeamLeaderPendingWorkVO1.hints.NewDeliveryDate.mandatory}"
+                                                                  columns="#{bindings.DataTeamLeaderPendingWorkVO1.hints.NewDeliveryDate.displayWidth}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderPendingWorkVO1.hints.NewDeliveryDate.tooltip}"
+                                                                  id="id8">
+                                                        <f:validator binding="#{row.bindings.NewDeliveryDate.validator}"/>
+                                                        <af:convertDateTime pattern="dd-MM-yyyy"/>
+                                                    </af:inputDate>
+                                                    
+                                                </af:column>
+                                            </af:table>
+                                        </af:panelGroupLayout>
+                                    </af:showDetailItem>
+                                    <af:showDetailItem id="tab2" text="Notes Review">
+                                        <af:spacer width="10" height="10" id="s7"/>
+                                        <af:panelGroupLayout id="pgl6" layout="horizontal">
+                                            <af:selectOneChoice value="#{bindings.DataAgentVO1.inputValue}"
+                                                                label="Data Agent : "
+                                                         autoSubmit="true"       required="#{bindings.DataAgentVO1.hints.mandatory}"
+                                                                shortDesc="#{bindings.DataAgentVO1.hints.tooltip}"
+                                                                id="soc4">
+                                                <f:selectItems value="#{bindings.DataAgentVO1.items}" id="si4"/>
+                                                <f:validator binding="#{bindings.DataAgentVO1.validator}"/>
+                                            </af:selectOneChoice>
+                                            <af:button text="Bulk Assign " inlineStyle="background:#008400; margin-left: 25px; font-weight:bold;color: White;" id="b3">
+                                                <af:showPopupBehavior popupId="p5"/>
+                                            </af:button>
+                                            <af:button text="Assign Data Agent" id="b4" inlineStyle="background:#008400; margin-left: 25px; font-weight:bold;color: White;">
+                                                <af:showPopupBehavior popupId="p6"/>
+                                            </af:button>
+                                            <af:popup childCreation="deferred" autoCancel="disabled" id="p9">
+                                                <af:dialog id="d9" title="Confirmation" type="yesNo"
+                                                           dialogListener="#{pageFlowScope.DataTeamLeaderBean.ConfirmAssignNotesReview}">
+                                                    <af:outputLabel value="Are You Sure You Want to Assign Agent ?" id="ol38"/>
+                                                    <f:facet name="buttonBar"/>
+                                                </af:dialog>
+                                            </af:popup>
+                                        </af:panelGroupLayout>
+                                        <af:panelGroupLayout id="pgl5" >
+                                            <af:spacer width="10" height="10" id="s3"/>
+                                            <af:table value="#{bindings.DataTeamLeaderNotesReviewVO1.collectionModel}"
+                                                      var="row"
+                                                      rows="#{bindings.DataTeamLeaderNotesReviewVO1.rangeSize}"
+                                                      emptyText="#{bindings.DataTeamLeaderNotesReviewVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                      rowBandingInterval="0"
+                                                      selectedRowKeys="#{bindings.DataTeamLeaderNotesReviewVO1.collectionModel.selectedRow}"
+                                                      selectionListener="#{bindings.DataTeamLeaderNotesReviewVO1.collectionModel.makeCurrent}"
+                                                      rowSelection="single"
+                                                      fetchSize="#{bindings.DataTeamLeaderNotesReviewVO1.rangeSize}"
+                                                      filterModel="#{bindings.DataTeamLeaderNotesReviewVO1Query.queryDescriptor}"
+                                                      filterVisible="true"
+                                                      queryListener="#{bindings.DataTeamLeaderNotesReviewVO1Query.processQuery}"
+                                                      varStatus="vs" id="t3">
+                                                <af:column headerText=""
+                                                     width="25"      id="c35">
+                                                    <af:selectBooleanCheckbox value="#{row.bindings.NotesFlag.inputValue}"
+                                                                     autoSubmit="true"  label=""
+                                                                              shortDesc="#{bindings.DataTeamLeaderNotesReviewVO1.hints.NotesFlag.tooltip}"
+                                                                              id="sbc3"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderNotesReviewVO1.hints.AreaId.name}"
+                                                           rendered="false" filterable="true" sortable="true"
+                                                           headerText="#{bindings.DataTeamLeaderNotesReviewVO1.hints.AreaId.label}"
+                                                           id="c16">
+                                                    <af:inputText value="#{row.bindings.AreaId.inputValue}"
+                                                                  label="#{bindings.DataTeamLeaderNotesReviewVO1.hints.AreaId.label}"
+                                                                  required="#{bindings.DataTeamLeaderNotesReviewVO1.hints.AreaId.mandatory}"
+                                                                  columns="#{bindings.DataTeamLeaderNotesReviewVO1.hints.AreaId.displayWidth}"
+                                                                  maximumLength="#{bindings.DataTeamLeaderNotesReviewVO1.hints.AreaId.precision}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderNotesReviewVO1.hints.AreaId.tooltip}"
+                                                                  id="it8">
+                                                        <f:validator binding="#{row.bindings.AreaId.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.DataTeamLeaderNotesReviewVO1.hints.AreaId.format}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderNotesReviewVO1.hints.AreaName.name}"
+                                                           filterable="true" sortable="true" width="150"
+                                                           headerText="#{bindings.DataTeamLeaderNotesReviewVO1.hints.AreaName.label}"
+                                                           id="c17">
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="Area Name" id="ol11"/>
+                                                    </f:facet>
+                                                    <af:inputText value="#{row.bindings.AreaName.inputValue}"
+                                                                  label="#{bindings.DataTeamLeaderNotesReviewVO1.hints.AreaName.label}"
+                                                                  readOnly="true"
+                                                                  required="#{bindings.DataTeamLeaderNotesReviewVO1.hints.AreaName.mandatory}"
+                                                                  columns="#{bindings.DataTeamLeaderNotesReviewVO1.hints.AreaName.displayWidth}"
+                                                                  maximumLength="#{bindings.DataTeamLeaderNotesReviewVO1.hints.AreaName.precision}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderNotesReviewVO1.hints.AreaName.tooltip}"
+                                                                  id="it9">
+                                                        <f:validator binding="#{row.bindings.AreaName.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderNotesReviewVO1.hints.AssignDate.name}"
+                                                           width="150" filterable="true" sortable="true"
+                                                           headerText="#{bindings.DataTeamLeaderNotesReviewVO1.hints.AssignDate.label}"
+                                                           id="c18">
+                                                           <f:facet name="header"><af:outputLabel value="Assignment Date" id="ol16"/></f:facet>
+                                                    
+                                                    <f:facet name="filter">
+                                                        <af:inputDate value="#{bindings.DataTeamLeaderNotesReviewVO1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.AssignDate.value}"
+                                                                      id="id4">
+                                                            <af:convertDateTime pattern="dd-MM-yyyy"/>
+                                                        </af:inputDate>
+                                                    </f:facet>
+                                                    <af:inputDate value="#{row.bindings.AssignDate.inputValue}"
+                                                     readOnly="true"              label="#{bindings.DataTeamLeaderNotesReviewVO1.hints.AssignDate.label}"
+                                                                  required="#{bindings.DataTeamLeaderNotesReviewVO1.hints.AssignDate.mandatory}"
+                                                                  columns="#{bindings.DataTeamLeaderNotesReviewVO1.hints.AssignDate.displayWidth}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderNotesReviewVO1.hints.AssignDate.tooltip}"
+                                                                  id="id5">
+                                                        <f:validator binding="#{row.bindings.AssignDate.validator}"/>
+                                                        <af:convertDateTime pattern="dd-MM-yyyy"/>
+                                                    </af:inputDate>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderNotesReviewVO1.hints.DrivId.name}"
+                                                           filterable="true" sortable="true" rendered="false"
+                                                           headerText="#{bindings.DataTeamLeaderNotesReviewVO1.hints.DrivId.label}"
+                                                           id="c20">
+                                                    <af:inputText value="#{row.bindings.DrivId.inputValue}"
+                                                                  label="#{bindings.DataTeamLeaderNotesReviewVO1.hints.DrivId.label}"
+                                                                  required="#{bindings.DataTeamLeaderNotesReviewVO1.hints.DrivId.mandatory}"
+                                                                  columns="#{bindings.DataTeamLeaderNotesReviewVO1.hints.DrivId.displayWidth}"
+                                                                  maximumLength="#{bindings.DataTeamLeaderNotesReviewVO1.hints.DrivId.precision}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderNotesReviewVO1.hints.DrivId.tooltip}"
+                                                                  id="it11">
+                                                        <f:validator binding="#{row.bindings.DrivId.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderNotesReviewVO1.hints.DriverName.name}"
+                                                          width="250" filterable="true" sortable="true"
+                                                           headerText="#{bindings.DataTeamLeaderNotesReviewVO1.hints.DriverName.label}"
+                                                           id="c21">
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="Driver" id="ol13"/>
+                                                    </f:facet>
+                                                    <af:inputText value="#{row.bindings.DriverName.inputValue}"
+                                                                  label="#{bindings.DataTeamLeaderNotesReviewVO1.hints.DriverName.label}"
+                                                                  required="#{bindings.DataTeamLeaderNotesReviewVO1.hints.DriverName.mandatory}"
+                                                                  readOnly="true"
+                                                                  columns="#{bindings.DataTeamLeaderNotesReviewVO1.hints.DriverName.displayWidth}"
+                                                                  maximumLength="#{bindings.DataTeamLeaderNotesReviewVO1.hints.DriverName.precision}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderNotesReviewVO1.hints.DriverName.tooltip}"
+                                                                  id="it12">
+                                                        <f:validator binding="#{row.bindings.DriverName.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderNotesReviewVO1.hints.PilotId.name}"
+                                                           filterable="true" sortable="true" rendered="false"
+                                                           headerText="#{bindings.DataTeamLeaderNotesReviewVO1.hints.PilotId.label}"
+                                                           id="c22">
+                                                    <af:inputText value="#{row.bindings.PilotId.inputValue}"
+                                                                  label="#{bindings.DataTeamLeaderNotesReviewVO1.hints.PilotId.label}"
+                                                                  required="#{bindings.DataTeamLeaderNotesReviewVO1.hints.PilotId.mandatory}"
+                                                                  columns="#{bindings.DataTeamLeaderNotesReviewVO1.hints.PilotId.displayWidth}"
+                                                                  maximumLength="#{bindings.DataTeamLeaderNotesReviewVO1.hints.PilotId.precision}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderNotesReviewVO1.hints.PilotId.tooltip}"
+                                                                  id="it13">
+                                                        <f:validator binding="#{row.bindings.PilotId.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderNotesReviewVO1.hints.PilotName.name}"
+                                                           filterable="true" sortable="true" width="250"
+                                                           headerText="#{bindings.DataTeamLeaderNotesReviewVO1.hints.PilotName.label}"
+                                                           id="c23">
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="Pilot" id="ol14"/>
+                                                    </f:facet>
+                                                    <af:inputText value="#{row.bindings.PilotName.inputValue}"
+                                                                  label="#{bindings.DataTeamLeaderNotesReviewVO1.hints.PilotName.label}"
+                                                                  required="#{bindings.DataTeamLeaderNotesReviewVO1.hints.PilotName.mandatory}"
+                                                                  readOnly="true"
+                                                                  columns="#{bindings.DataTeamLeaderNotesReviewVO1.hints.PilotName.displayWidth}"
+                                                                  maximumLength="#{bindings.DataTeamLeaderNotesReviewVO1.hints.PilotName.precision}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderNotesReviewVO1.hints.PilotName.tooltip}"
+                                                                  id="it14">
+                                                        <f:validator binding="#{row.bindings.PilotName.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderNotesReviewVO1.hints.TotalAssignemnt.name}"
+                                                           filterable="true" sortable="true" width="85"
+                                                           headerText="#{bindings.DataTeamLeaderNotesReviewVO1.hints.TotalAssignemnt.label}"
+                                                           id="c24">
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="Total Contracts" id="ol15"/>
+                                                    </f:facet>
+                                                    <af:inputText value="#{row.bindings.TotalAssignemnt.inputValue}"
+                                                                  label="#{bindings.DataTeamLeaderNotesReviewVO1.hints.TotalAssignemnt.label}"
+                                                                  readOnly="true"
+                                                                  required="#{bindings.DataTeamLeaderNotesReviewVO1.hints.TotalAssignemnt.mandatory}"
+                                                                  columns="#{bindings.DataTeamLeaderNotesReviewVO1.hints.TotalAssignemnt.displayWidth}"
+                                                                  maximumLength="#{bindings.DataTeamLeaderNotesReviewVO1.hints.TotalAssignemnt.precision}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderNotesReviewVO1.hints.TotalAssignemnt.tooltip}"
+                                                                  id="it15">
+                                                        <f:validator binding="#{row.bindings.TotalAssignemnt.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.DataTeamLeaderNotesReviewVO1.hints.TotalAssignemnt.format}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.DataTeamLeaderNotesReviewVO1.hints.DataAgent.label}"
+                                                     filterable="true" sortable="true" sortProperty="DataAgent"
+                                                     width="150" id="c19">
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="Data Agent" id="ol12"/>
+                                                    </f:facet>
+                                                    <af:selectOneChoice value="#{row.bindings.DataAgent.inputValue}"
+                                                                        label="#{row.bindings.DataAgent.label}"
+                                                                        required="#{bindings.DataTeamLeaderNotesReviewVO1.hints.DataAgent.mandatory}"
+                                                             autoSubmit="true"           shortDesc="#{bindings.DataTeamLeaderNotesReviewVO1.hints.DataAgent.tooltip}"
+                                                                        id="soc3">
+                                                        <f:selectItems value="#{row.bindings.DataAgent.items}"
+                                                                       id="si3"/>
+                                                        <f:validator binding="#{row.bindings.DataAgent.validator}"/>
+                                                    </af:selectOneChoice>
+                                                </af:column>
+                                            </af:table>
+                                        </af:panelGroupLayout>
+                                    </af:showDetailItem>
+                                    <af:showDetailItem id="tab3" text="Contracts Review">
+                                        <af:spacer width="10" height="10" id="s9"/>
+                                        <af:panelGroupLayout id="pgl10" layout="horizontal">
+                                            <af:selectOneChoice value="#{bindings.DataAgentVO1.inputValue}"
+                                                                label="#{bindings.DataAgentVO1.label}"
+                                                               autoSubmit="true" required="#{bindings.DataAgentVO1.hints.mandatory}"
+                                                                shortDesc="#{bindings.DataAgentVO1.hints.tooltip}"
+                                                                id="soc10">
+                                                <f:selectItems value="#{bindings.DataAgentVO1.items}" id="si10"/>
+                                                <f:validator binding="#{bindings.DataAgentVO1.validator}"/>
+                                            </af:selectOneChoice>
+                                            <af:button text="Bulk Assign" id="b7" inlineStyle="background:#008400; margin-left: 25px; font-weight:bold;color: White;">
+                                                <af:showPopupBehavior popupId="::p7"/>
+                                            </af:button>
+                                            <af:button text="Assign Data Agents" id="b8" inlineStyle="background:#008400; margin-left: 25px; font-weight:bold;color: White;">
+                                                <af:showPopupBehavior popupId="::p8"/>
+                                            </af:button>
+                                        </af:panelGroupLayout>
+                                        <af:panelGroupLayout id="pgl9">
+                                            <af:spacer width="10" height="10" id="s6"/>
+                                            <af:table value="#{bindings.DataTeamLeaderContractsReviewVO1.collectionModel}"
+                                                      var="row"
+                                                      rows="#{bindings.DataTeamLeaderContractsReviewVO1.rangeSize}"
+                                                      emptyText="#{bindings.DataTeamLeaderContractsReviewVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                      rowBandingInterval="0"
+                                                      selectedRowKeys="#{bindings.DataTeamLeaderContractsReviewVO1.collectionModel.selectedRow}"
+                                                      selectionListener="#{bindings.DataTeamLeaderContractsReviewVO1.collectionModel.makeCurrent}"
+                                                      rowSelection="single"
+                                                      fetchSize="#{bindings.DataTeamLeaderContractsReviewVO1.rangeSize}"
+                                                      filterModel="#{bindings.DataTeamLeaderContractsReviewVO1Query.queryDescriptor}"
+                                                      filterVisible="true"
+                                                      queryListener="#{bindings.DataTeamLeaderContractsReviewVO1Query.processQuery}"
+                                                      varStatus="vs" id="t5">
+                                                <af:column headerText=""
+                                                          width="25" id="c46">
+                                                    <af:selectBooleanCheckbox value="#{row.bindings.ContractFlag.inputValue}"
+                                                                              label="#{row.bindings.ContractFlag.label}"
+                                                                     autoSubmit="true"         shortDesc="#{bindings.DataTeamLeaderContractsReviewVO1.hints.ContractFlag.tooltip}"
+                                                                              id="sbc4"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderContractsReviewVO1.hints.AssignDate.name}"
+                                                           width="150" filterable="true" sortable="true"
+                                                           headerText="#{bindings.DataTeamLeaderContractsReviewVO1.hints.AssignDate.label}"
+                                                           id="c38">
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="Assignment Date" id="ol30"/>
+                                                    </f:facet>
+                                                    <f:facet name="filter">
+                                                        <af:inputDate value="#{bindings.DataTeamLeaderContractsReviewVO1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.AssignDate.value}"
+                                                                      id="id9">
+                                                            <af:convertDateTime pattern="dd-MM-yyyy"/>
+                                                        </af:inputDate>
+                                                    </f:facet>
+                                                    <af:inputDate value="#{row.bindings.AssignDate.inputValue}"
+                                                                  readOnly="true"
+                                                                  label="#{bindings.DataTeamLeaderContractsReviewVO1.hints.AssignDate.label}"
+                                                                  required="#{bindings.DataTeamLeaderContractsReviewVO1.hints.AssignDate.mandatory}"
+                                                                  columns="#{bindings.DataTeamLeaderContractsReviewVO1.hints.AssignDate.displayWidth}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderContractsReviewVO1.hints.AssignDate.tooltip}"
+                                                                  id="id10">
+                                                        <f:validator binding="#{row.bindings.AssignDate.validator}"/>
+                                                        <af:convertDateTime pattern="dd-MM-yyyy"/>
+                                                    </af:inputDate>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderContractsReviewVO1.hints.AreaId.name}"
+                                                        rendered="false"   filterable="true" sortable="true"
+                                                           headerText="#{bindings.DataTeamLeaderContractsReviewVO1.hints.AreaId.label}"
+                                                           id="c36">
+                                                    <af:inputText value="#{row.bindings.AreaId.inputValue}"
+                                                                  label="#{bindings.DataTeamLeaderContractsReviewVO1.hints.AreaId.label}"
+                                                                  required="#{bindings.DataTeamLeaderContractsReviewVO1.hints.AreaId.mandatory}"
+                                                                  columns="#{bindings.DataTeamLeaderContractsReviewVO1.hints.AreaId.displayWidth}"
+                                                                  maximumLength="#{bindings.DataTeamLeaderContractsReviewVO1.hints.AreaId.precision}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderContractsReviewVO1.hints.AreaId.tooltip}"
+                                                                  id="it18">
+                                                        <f:validator binding="#{row.bindings.AreaId.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.DataTeamLeaderContractsReviewVO1.hints.AreaId.format}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderContractsReviewVO1.hints.AreaName.name}"
+                                                           filterable="true" sortable="true"
+                                                      width="150"     headerText="#{bindings.DataTeamLeaderContractsReviewVO1.hints.AreaName.label}"
+                                                           id="c37">
+                                                           <f:facet name="header">
+                                                        <af:outputLabel value="Area Name" id="ol29"/>
+                                                    </f:facet>
+                                                    <af:inputText value="#{row.bindings.AreaName.inputValue}"
+                                                                readOnly="true"  label="#{bindings.DataTeamLeaderContractsReviewVO1.hints.AreaName.label}"
+                                                                  required="#{bindings.DataTeamLeaderContractsReviewVO1.hints.AreaName.mandatory}"
+                                                                  columns="#{bindings.DataTeamLeaderContractsReviewVO1.hints.AreaName.displayWidth}"
+                                                                  maximumLength="#{bindings.DataTeamLeaderContractsReviewVO1.hints.AreaName.precision}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderContractsReviewVO1.hints.AreaName.tooltip}"
+                                                                  id="it19">
+                                                        <f:validator binding="#{row.bindings.AreaName.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderContractsReviewVO1.hints.DriverName.name}"
+                                                           width="250" filterable="true" sortable="true"
+                                                           headerText="#{bindings.DataTeamLeaderContractsReviewVO1.hints.DriverName.label}"
+                                                           id="c42">
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="Driver" id="ol34"/>
+                                                    </f:facet>
+                                                    <af:inputText value="#{row.bindings.DriverName.inputValue}"
+                                                                  label="#{bindings.DataTeamLeaderContractsReviewVO1.hints.DriverName.label}"
+                                                                  readOnly="true"
+                                                                  required="#{bindings.DataTeamLeaderContractsReviewVO1.hints.DriverName.mandatory}"
+                                                                  columns="#{bindings.DataTeamLeaderContractsReviewVO1.hints.DriverName.displayWidth}"
+                                                                  maximumLength="#{bindings.DataTeamLeaderContractsReviewVO1.hints.DriverName.precision}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderContractsReviewVO1.hints.DriverName.tooltip}"
+                                                                  id="it23">
+                                                        <f:validator binding="#{row.bindings.DriverName.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderContractsReviewVO1.hints.PilotName.name}"
+                                                           width="250" filterable="true" sortable="true"
+                                                           headerText="#{bindings.DataTeamLeaderContractsReviewVO1.hints.PilotName.label}"
+                                                           id="c44">
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="Pilot" id="ol32"/>
+                                                    </f:facet>
+                                                    <af:inputText value="#{row.bindings.PilotName.inputValue}"
+                                                                  label="#{bindings.DataTeamLeaderContractsReviewVO1.hints.PilotName.label}"
+                                                                  readOnly="true"
+                                                                  required="#{bindings.DataTeamLeaderContractsReviewVO1.hints.PilotName.mandatory}"
+                                                                  columns="#{bindings.DataTeamLeaderContractsReviewVO1.hints.PilotName.displayWidth}"
+                                                                  maximumLength="#{bindings.DataTeamLeaderContractsReviewVO1.hints.PilotName.precision}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderContractsReviewVO1.hints.PilotName.tooltip}"
+                                                                  id="it25">
+                                                        <f:validator binding="#{row.bindings.PilotName.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.DataTeamLeaderContractsReviewVO1.hints.DeliveryType.label}"
+                                                 filterable="true" sortable="true" sortProperty="DeliveryType"      width="150"    id="c40">
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="New/Cancel/Sales" id="ol35"/>
+                                                    </f:facet>
+                                                    <af:selectOneChoice value="#{row.bindings.DeliveryType.inputValue}"
+                                                                        label="#{row.bindings.DeliveryType.label}"
+                                                                        readOnly="true"
+                                                                        required="#{bindings.DataTeamLeaderContractsReviewVO1.hints.DeliveryType.mandatory}"
+                                                                        shortDesc="#{bindings.DataTeamLeaderContractsReviewVO1.hints.DeliveryType.tooltip}"
+                                                                        id="soc8">
+                                                        <f:selectItems value="#{row.bindings.DeliveryType.items}"
+                                                                       id="si8"/>
+                                                        <f:validator binding="#{row.bindings.DeliveryType.validator}"/>
+                                                    </af:selectOneChoice>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderContractsReviewVO1.hints.TotalAssignemnt.name}"
+                                                           filterable="true" sortable="true" width="85"
+                                                           headerText="#{bindings.DataTeamLeaderContractsReviewVO1.hints.TotalAssignemnt.label}"
+                                                           id="c45">
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="Total Assignments" id="ol33"/>
+                                                    </f:facet>
+                                                    <af:inputText value="#{row.bindings.TotalAssignemnt.inputValue}"
+                                                                  label="#{bindings.DataTeamLeaderContractsReviewVO1.hints.TotalAssignemnt.label}"
+                                                                  readOnly="true"
+                                                                  required="#{bindings.DataTeamLeaderContractsReviewVO1.hints.TotalAssignemnt.mandatory}"
+                                                                  columns="#{bindings.DataTeamLeaderContractsReviewVO1.hints.TotalAssignemnt.displayWidth}"
+                                                                  maximumLength="#{bindings.DataTeamLeaderContractsReviewVO1.hints.TotalAssignemnt.precision}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderContractsReviewVO1.hints.TotalAssignemnt.tooltip}"
+                                                                  id="it26">
+                                                        <f:validator binding="#{row.bindings.TotalAssignemnt.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.DataTeamLeaderContractsReviewVO1.hints.TotalAssignemnt.format}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderContractsReviewVO1.hints.DataAgent.name}"
+                                                      width="150"     filterable="true" sortable="true"
+                                                           headerText="#{bindings.DataTeamLeaderContractsReviewVO1.hints.DataAgent.label}"
+                                                           id="c39">
+                                                           <f:facet name="header">
+                                                        <af:outputLabel value="Data Agent" id="ol31"/>
+                                                    </f:facet>
+                                                    <af:selectOneChoice value="#{row.bindings.DataAgent.inputValue}"
+                                                              autoSubmit="true"          label="#{row.bindings.DataAgent.label}"
+                                                                        required="#{bindings.DataTeamLeaderContractsReviewVO1.hints.DataAgent.mandatory}"
+                                                                        shortDesc="#{bindings.DataTeamLeaderContractsReviewVO1.hints.DataAgent.tooltip}"
+                                                                        id="soc9">
+                                                        <f:selectItems value="#{row.bindings.DataAgent.items}"
+                                                                       id="si9"/>
+                                                        <f:validator binding="#{row.bindings.DataAgent.validator}"/>
+                                                    </af:selectOneChoice>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderContractsReviewVO1.hints.DrivId.name}"
+                                                           filterable="true" sortable="true"
+                                                       rendered="false"    headerText="#{bindings.DataTeamLeaderContractsReviewVO1.hints.DrivId.label}"
+                                                           id="c41">
+                                                    <af:inputText value="#{row.bindings.DrivId.inputValue}"
+                                                                  label="#{bindings.DataTeamLeaderContractsReviewVO1.hints.DrivId.label}"
+                                                                  required="#{bindings.DataTeamLeaderContractsReviewVO1.hints.DrivId.mandatory}"
+                                                                  columns="#{bindings.DataTeamLeaderContractsReviewVO1.hints.DrivId.displayWidth}"
+                                                                  maximumLength="#{bindings.DataTeamLeaderContractsReviewVO1.hints.DrivId.precision}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderContractsReviewVO1.hints.DrivId.tooltip}"
+                                                                  id="it22">
+                                                        <f:validator binding="#{row.bindings.DrivId.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderContractsReviewVO1.hints.PilotId.name}"
+                                                      rendered="false"     filterable="true" sortable="true"
+                                                           headerText="#{bindings.DataTeamLeaderContractsReviewVO1.hints.PilotId.label}"
+                                                           id="c43">
+                                                    <af:inputText value="#{row.bindings.PilotId.inputValue}"
+                                                                  label="#{bindings.DataTeamLeaderContractsReviewVO1.hints.PilotId.label}"
+                                                                  required="#{bindings.DataTeamLeaderContractsReviewVO1.hints.PilotId.mandatory}"
+                                                                  columns="#{bindings.DataTeamLeaderContractsReviewVO1.hints.PilotId.displayWidth}"
+                                                                  maximumLength="#{bindings.DataTeamLeaderContractsReviewVO1.hints.PilotId.precision}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderContractsReviewVO1.hints.PilotId.tooltip}"
+                                                                  id="it24">
+                                                        <f:validator binding="#{row.bindings.PilotId.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                            </af:table>
+                                        </af:panelGroupLayout>
+                                    </af:showDetailItem>
+                                    <af:showDetailItem id="tab4" text="End Of Day Review">
+                                        <af:spacer width="10" height="10" id="s5"/>
+                                        <af:panelGroupLayout id="pgl8" layout="horizontal">
+                                            <af:selectOneChoice value="#{bindings.DataAgentVO1.inputValue}"
+                                                                label="Agent Name :"
+                                                                required="#{bindings.DataAgentVO1.hints.mandatory}"
+                                                          autoSubmit="true"      shortDesc="#{bindings.DataAgentVO1.hints.tooltip}"
+                                                                id="soc6">
+                                                <f:selectItems value="#{bindings.DataAgentVO1.items}" id="si6"/>
+                                                <f:validator binding="#{bindings.DataAgentVO1.validator}"/>
+                                            </af:selectOneChoice>
+                                            <af:button inlineStyle="background:#008400; margin-left: 25px; font-weight:bold;color: White;" text="Bulk Assign" id="b5">
+                                                <af:showPopupBehavior popupId="::p1"/>
+                                            </af:button>
+                                            <af:button text="Assign Data Agent" inlineStyle="background:#008400; float:right; font-weight:bold;color: White;" id="b6">
+                                                <af:showPopupBehavior popupId="::p2"/>
+                                            </af:button>
+                                        </af:panelGroupLayout>
+                                        <af:panelGroupLayout id="pgl7">
+                                            <af:spacer width="10" height="10" id="s4"/>
+                                            <af:table value="#{bindings.DataTeamLeaderEndOfDayVO1.collectionModel}"
+                                                      var="row" rows="#{bindings.DataTeamLeaderEndOfDayVO1.rangeSize}"
+                                                      emptyText="#{bindings.DataTeamLeaderEndOfDayVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                      rowBandingInterval="0"
+                                                      selectedRowKeys="#{bindings.DataTeamLeaderEndOfDayVO1.collectionModel.selectedRow}"
+                                                      selectionListener="#{bindings.DataTeamLeaderEndOfDayVO1.collectionModel.makeCurrent}"
+                                                      rowSelection="single"
+                                                      fetchSize="#{bindings.DataTeamLeaderEndOfDayVO1.rangeSize}"
+                                                      filterModel="#{bindings.DataTeamLeaderEndOfDayVO1Query.queryDescriptor}"
+                                                      filterVisible="true"
+                                                      queryListener="#{bindings.DataTeamLeaderEndOfDayVO1Query.processQuery}"
+                                                      varStatus="vs" id="t4">
+                                                <af:column headerText=""
+                                                        width="25"   id="c31">
+                                                    <af:selectBooleanCheckbox value="#{row.bindings.endofdayflag.inputValue}"
+                                                                 autoSubmit="true"             label="#{row.bindings.endofdayflag.label}"
+                                                                              shortDesc="#{bindings.DataTeamLeaderEndOfDayVO1.hints.endofdayflag.tooltip}"
+                                                                              id="sbc1"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderEndOfDayVO1.hints.AreaId.name}"
+                                                          rendered="false" filterable="true" sortable="true"
+                                                           headerText="#{bindings.DataTeamLeaderEndOfDayVO1.hints.AreaId.label}"
+                                                           id="c25">
+                                                    <af:inputText value="#{row.bindings.AreaId.inputValue}"
+                                                                  label="#{bindings.DataTeamLeaderEndOfDayVO1.hints.AreaId.label}"
+                                                                  required="#{bindings.DataTeamLeaderEndOfDayVO1.hints.AreaId.mandatory}"
+                                                                  columns="#{bindings.DataTeamLeaderEndOfDayVO1.hints.AreaId.displayWidth}"
+                                                                  maximumLength="#{bindings.DataTeamLeaderEndOfDayVO1.hints.AreaId.precision}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderEndOfDayVO1.hints.AreaId.tooltip}"
+                                                                  id="it10">
+                                                        <f:validator binding="#{row.bindings.AreaId.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.DataTeamLeaderEndOfDayVO1.hints.AreaId.format}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderEndOfDayVO1.hints.ReturnDate.name}"
+                                                           width="150" filterable="true" sortable="true"
+                                                           headerText="#{bindings.DataTeamLeaderEndOfDayVO1.hints.ReturnDate.label}"
+                                                           id="c29">
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="Assignment Date" id="ol20"/>
+                                                    </f:facet>
+                                                    <f:facet name="filter">
+                                                        <af:inputDate value="#{bindings.DataTeamLeaderEndOfDayVO1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.ReturnDate.value}"
+                                                                      id="id6">
+                                                            <af:convertDateTime pattern="dd-MM-yyyy"/>
+                                                        </af:inputDate>
+                                                    </f:facet>
+                                                    <af:inputDate value="#{row.bindings.ReturnDate.inputValue}"
+                                                                  label="#{bindings.DataTeamLeaderEndOfDayVO1.hints.ReturnDate.label}"
+                                                                  required="#{bindings.DataTeamLeaderEndOfDayVO1.hints.ReturnDate.mandatory}"
+                                                                  readOnly="true"
+                                                                  columns="#{bindings.DataTeamLeaderEndOfDayVO1.hints.ReturnDate.displayWidth}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderEndOfDayVO1.hints.ReturnDate.tooltip}"
+                                                                  id="id7">
+                                                        <f:validator binding="#{row.bindings.ReturnDate.validator}"/>
+                                                        <af:convertDateTime pattern="dd-MM-yyyy"/>
+                                                    </af:inputDate>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderEndOfDayVO1.hints.AreaName.name}"
+                                                           filterable="true" sortable="true"
+                                                        width="200"   headerText="#{bindings.DataTeamLeaderEndOfDayVO1.hints.AreaName.label}"
+                                                           id="c26">
+                                                           <f:facet name="header">
+                                                        <af:outputLabel value="Area Name" id="ol17"/>
+                                                    </f:facet>
+                                                    <af:inputText value="#{row.bindings.AreaName.inputValue}"
+                                                               readOnly="true"   label="#{bindings.DataTeamLeaderEndOfDayVO1.hints.AreaName.label}"
+                                                                  required="#{bindings.DataTeamLeaderEndOfDayVO1.hints.AreaName.mandatory}"
+                                                                  columns="#{bindings.DataTeamLeaderEndOfDayVO1.hints.AreaName.displayWidth}"
+                                                                  maximumLength="#{bindings.DataTeamLeaderEndOfDayVO1.hints.AreaName.precision}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderEndOfDayVO1.hints.AreaName.tooltip}"
+                                                                  id="it16">
+                                                        <f:validator binding="#{row.bindings.AreaName.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.DataTeamLeaderEndOfDayVO1.hints.DriverName.label}"
+                                                       filterable="true" sortable="true" sortProperty="DriverName"    width="250" id="c30">
+                                                    <f:facet name="header">
+                                                        <af:outputLabel value="Driver Name" id="ol19"/>
+                                                    </f:facet>
+                                                    <af:outputText value="#{row.DriverName}"
+                                                                   shortDesc="#{bindings.DataTeamLeaderEndOfDayVO1.hints.DriverName.tooltip}"
+                                                                   id="ot7"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderEndOfDayVO1.hints.DataAgent.name}"
+                                                           filterable="true" sortable="true"
+                                                   width="150"        headerText="#{bindings.DataTeamLeaderEndOfDayVO1.hints.DataAgent.label}"
+                                                           id="c27">
+                                                           <f:facet name="header">
+                                                        <af:outputLabel value="Data Agent" id="ol18"/>
+                                                    </f:facet>
+                                                    <af:selectOneChoice value="#{row.bindings.DataAgent.inputValue}"
+                                                                     autoSubmit="true"   label="#{row.bindings.DataAgent.label}"
+                                                                        required="#{bindings.DataTeamLeaderEndOfDayVO1.hints.DataAgent.mandatory}"
+                                                                        shortDesc="#{bindings.DataTeamLeaderEndOfDayVO1.hints.DataAgent.tooltip}"
+                                                                        id="soc5">
+                                                        <f:selectItems value="#{row.bindings.DataAgent.items}"
+                                                                       id="si5"/>
+                                                        <f:validator binding="#{row.bindings.DataAgent.validator}"/>
+                                                    </af:selectOneChoice>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderEndOfDayVO1.hints.DriverId.name}"
+                                                           filterable="true" sortable="true"
+                                                       rendered="false"    headerText="#{bindings.DataTeamLeaderEndOfDayVO1.hints.DriverId.label}"
+                                                           id="c28">
+                                                    <af:inputText value="#{row.bindings.DriverId.inputValue}"
+                                                                  label="#{bindings.DataTeamLeaderEndOfDayVO1.hints.DriverId.label}"
+                                                                  required="#{bindings.DataTeamLeaderEndOfDayVO1.hints.DriverId.mandatory}"
+                                                                  columns="#{bindings.DataTeamLeaderEndOfDayVO1.hints.DriverId.displayWidth}"
+                                                                  maximumLength="#{bindings.DataTeamLeaderEndOfDayVO1.hints.DriverId.precision}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderEndOfDayVO1.hints.DriverId.tooltip}"
+                                                                  id="it17">
+                                                        <f:validator binding="#{row.bindings.DriverId.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                            </af:table>
+                                        </af:panelGroupLayout>
+                                    </af:showDetailItem>
+                                    <af:showDetailItem text="Dashboard"  id="sdi1">
+                                        <af:spacer width="10" height="10" id="s10"/>
+                                        <af:panelGroupLayout id="pgl2">
+                                            <af:spacer width="10" height="10" id="s1"/>
+                                            <af:table value="#{bindings.DataTeamLeaderDashboardVO1.collectionModel}"
+                                                      var="row" rows="#{bindings.DataTeamLeaderDashboardVO1.rangeSize}"
+                                                      emptyText="#{bindings.DataTeamLeaderDashboardVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                      rowBandingInterval="0"
+                                                      selectedRowKeys="#{bindings.DataTeamLeaderDashboardVO1.collectionModel.selectedRow}"
+                                                      selectionListener="#{bindings.DataTeamLeaderDashboardVO1.collectionModel.makeCurrent}"
+                                                      rowSelection="single"
+                                                      fetchSize="#{bindings.DataTeamLeaderDashboardVO1.rangeSize}"
+                                                      filterModel="#{bindings.DataTeamLeaderDashboardVO1Query.queryDescriptor}"
+                                                      filterVisible="true"
+                                                      queryListener="#{bindings.DataTeamLeaderDashboardVO1Query.processQuery}"
+                                                      varStatus="vs" id="t1">
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderDashboardVO1.hints.DataDate.name}"
+                                                           filterable="true" sortable="true"
+                                                        width="100"   headerText="#{bindings.DataTeamLeaderDashboardVO1.hints.DataDate.label}"
+                                                           id="c1">
+                                                           <f:facet name="header">
+                                                        <af:outputLabel value="Data Date" id="ol1"/>
+                                                    </f:facet>                                                    <af:outputText value="#{row.DataDate}"
+                                                                   shortDesc="#{bindings.DataTeamLeaderDashboardVO1.hints.DataDate.tooltip}"
+                                                                   id="ot1"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderDashboardVO1.hints.DataAgentName.name}"
+                                                           filterable="true" sortable="true"
+                                                        width="150"   headerText="#{bindings.DataTeamLeaderDashboardVO1.hints.DataAgentName.label}"
+                                                           id="c2">
+                                                           <f:facet name="header">
+                                                        <af:outputLabel value="Agent Name" id="ol2"/>
+                                                    </f:facet>
+                                                    <af:outputText value="#{row.DataAgentName}"
+                                                                   shortDesc="#{bindings.DataTeamLeaderDashboardVO1.hints.DataAgentName.tooltip}"
+                                                                   id="ot2"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderDashboardVO1.hints.WorkType.name}"
+                                                           filterable="true" sortable="true" width="200"
+                                                           headerText="#{bindings.DataTeamLeaderDashboardVO1.hints.WorkType.label}"
+                                                           id="c3">
+                                                    <f:facet name="header">
+                                                                                                            <af:outputLabel value="Work Type" id="ol3"/>
+   </f:facet>
+                                                    <af:outputText value="#{row.WorkType}"
+                                                                   shortDesc="#{bindings.DataTeamLeaderDashboardVO1.hints.WorkType.tooltip}"
+                                                                   id="ot3"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderDashboardVO1.hints.AssignDate.name}"
+                                                           filterable="true" sortable="true" width="100"
+                                                           headerText="#{bindings.DataTeamLeaderDashboardVO1.hints.AssignDate.label}"
+                                                           id="c4">
+                                                           <f:facet name="header">
+                                                        <af:outputLabel value="Assignment Date" id="ol4"/>
+                                                    </f:facet>
+                                                    <f:facet name="filter">
+                                                        <af:inputDate value="#{bindings.DataTeamLeaderDashboardVO1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.AssignDate.value}"
+                                                                      id="id1">
+                                                            <af:convertDateTime pattern="#{bindings.DataTeamLeaderDashboardVO1.hints.AssignDate.format}"/>
+                                                        </af:inputDate>
+                                                    </f:facet>
+                                                    <af:outputText value="#{row.AssignDate}"
+                                                                   shortDesc="#{bindings.DataTeamLeaderDashboardVO1.hints.AssignDate.tooltip}"
+                                                                   id="ot4">
+                                                        <af:convertDateTime pattern="dd-MM-YYYY"/>
+                                                    </af:outputText>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.DataTeamLeaderDashboardVO1.hints.AreaName.label}"
+                                                     sortable="true" sortProperty="AreaName"  filterable="true"
+                                                     width="150"   id="c48">
+                                                           <f:facet name="header">
+                                                        <af:outputLabel value="Area Name" id="ol42"/>
+                                                    </f:facet>
+                                                           
+                                                    <af:inputText value="#{row.bindings.AreaName.inputValue}"
+                                                                  label="#{bindings.DataTeamLeaderDashboardVO1.hints.AreaName.label}"
+                                                                  required="#{bindings.DataTeamLeaderDashboardVO1.hints.AreaName.mandatory}"
+                                                           readOnly="true"       columns="#{bindings.DataTeamLeaderDashboardVO1.hints.AreaName.displayWidth}"
+                                                                  maximumLength="#{bindings.DataTeamLeaderDashboardVO1.hints.AreaName.precision}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderDashboardVO1.hints.AreaName.tooltip}"
+                                                                  id="it20">
+                                                        <f:validator binding="#{row.bindings.AreaName.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.DataTeamLeaderDashboardVO1.hints.DriverName.label}"
+                                                     width="200"  filterable="true" sortable="true" sortProperty="DriverName"    id="c49">
+                                                     <f:facet name="header">
+                                                        <af:outputLabel value="Driver Name" id="ol43"/>
+                                                    </f:facet>
+                                                    <af:inputText value="#{row.bindings.DriverName.inputValue}"
+                                                                  label="#{bindings.DataTeamLeaderDashboardVO1.hints.DriverName.label}"
+                                                                  required="#{bindings.DataTeamLeaderDashboardVO1.hints.DriverName.mandatory}"
+                                                             readOnly="true"     columns="#{bindings.DataTeamLeaderDashboardVO1.hints.DriverName.displayWidth}"
+                                                                  maximumLength="#{bindings.DataTeamLeaderDashboardVO1.hints.DriverName.precision}"
+                                                                  shortDesc="#{bindings.DataTeamLeaderDashboardVO1.hints.DriverName.tooltip}"
+                                                                  id="it21">
+                                                        <f:validator binding="#{row.bindings.DriverName.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderDashboardVO1.hints.TotalAssignemnt.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.DataTeamLeaderDashboardVO1.hints.TotalAssignemnt.label}"
+                                                           id="c5">
+                                                           <f:facet name="header">
+                                                        <af:outputLabel value="Total Assignments" id="ol39"/>
+                                                    </f:facet>
+                                                    <af:outputText value="#{row.TotalAssignemnt}"
+                                                                   shortDesc="#{bindings.DataTeamLeaderDashboardVO1.hints.TotalAssignemnt.tooltip}"
+                                                                   id="ot5">
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.DataTeamLeaderDashboardVO1.hints.TotalAssignemnt.format}"/>
+                                                    </af:outputText>
+                                                    
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderDashboardVO1.hints.CompletedCount.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.DataTeamLeaderDashboardVO1.hints.CompletedCount.label}"
+                                                           id="c6">
+                                                           <f:facet name="header">
+                                                           <af:outputLabel value="Total Done" id="ol40"/>
+                                                           </f:facet>
+                                                    <af:outputText value="#{row.CompletedCount}"
+                                                                   shortDesc="#{bindings.DataTeamLeaderDashboardVO1.hints.CompletedCount.tooltip}"
+                                                                   id="ot6">
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.DataTeamLeaderDashboardVO1.hints.CompletedCount.format}"/>
+                                                    </af:outputText>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.DataTeamLeaderDashboardVO1.hints.CompletedPer.name}"
+                                                           filterable="true" sortable="true"
+                                                           headerText="#{bindings.DataTeamLeaderDashboardVO1.hints.CompletedPer.label}"
+                                                           id="c47">
+                                                           <f:facet name="header">
+                                                        <af:outputLabel value="Completed %" id="ol41"/>
+                                                    </f:facet>
+                                                    <af:outputText value="#{row.CompletedPer}"
+                                                                   shortDesc="#{bindings.DataTeamLeaderDashboardVO1.hints.CompletedPer.tooltip}"
+                                                                   id="ot8">
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.DataTeamLeaderDashboardVO1.hints.CompletedPer.format}"/>
+                                                    </af:outputText>
+                                                </af:column>
+                                            </af:table>
+                                        </af:panelGroupLayout>
+                                    </af:showDetailItem>
+                                </af:panelTabbed>
+                            </af:panelGroupLayout>
+                        </af:panelFormLayout>
+                        <!-- DEBUG:BEGIN:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 6 -->
+                        <!-- DEBUG:END:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 6-->
+                    </af:panelGroupLayout>
+                    <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+                    <!-- DEBUG:END:FORM_GROUP : custom/pageComponent/MtsformGroup.vm, nesting level: 5-->
+                    <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+                </af:panelGroupLayout>
+                <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4-->
+            </af:panelGroupLayout>
+            <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+        </f:facet>
+        <f:facet name="popups">
+            <af:panelGroupLayout id="popupsPgl">
+                <af:popup childCreation="deferred" autoCancel="disabled" id="p1">
+                    <af:dialog id="d1" type="yesNo" title="Confirmation"
+                               dialogListener="#{DataTeamLeaderBean.ConfirmBulkAssignEndOfDayReview}">
+                        <af:outputLabel value="Are You Sure You Want to Bulk Assign Data Agent?" id="ol21"/>
+                        <f:facet name="buttonBar"/>
+                    </af:dialog>
+                </af:popup>
+                <af:popup childCreation="deferred" autoCancel="disabled" id="p2">
+                    <af:dialog id="d2" title="Confirmation" type="yesNo"
+                               dialogListener="#{DataTeamLeaderBean.ConfirmAssignEndOfDayReview}">
+                        <af:outputLabel value="Are You Sure You Want to Submit Updates ?" id="ol22"/>
+                        <f:facet name="buttonBar"/>
+                    </af:dialog>
+                </af:popup>
+                <af:popup childCreation="deferred" autoCancel="disabled" id="p3">
+                    <af:dialog id="d3" type="yesNo" title="Confirmation"
+                               dialogListener="#{DataTeamLeaderBean.ConfirmBulkAssignPendingWork}">
+                        <af:outputLabel value="Are You Sure You Want to Bulk Assign Data Agent ?" id="ol23"/>
+                        <f:facet name="buttonBar"/>
+                    </af:dialog>
+                </af:popup>
+                <af:popup childCreation="deferred" autoCancel="disabled" id="p4">
+                    <af:dialog id="d4" type="yesNo" title="Confirmation"
+                               dialogListener="#{DataTeamLeaderBean.ConfirmSubmitPendingWorkUpdates}">
+                        <af:outputLabel value="Are You Sure You Want to Submit Updates ?" id="ol24"/>
+                        <f:facet name="buttonBar"/>
+                    </af:dialog>
+                </af:popup>
+                <af:popup childCreation="deferred" autoCancel="disabled" id="p5">
+                    <af:dialog id="d5" type="yesNo" title="Confirmation"
+                               dialogListener="#{DataTeamLeaderBean.ConfirmBulkAssignNotesReview}">
+                        <af:outputLabel value="Are You Sure You Want to Bulk Assign Data Agent ?" id="ol27"/>
+                        <f:facet name="buttonBar"/>
+                    </af:dialog>
+                </af:popup>
+                <af:popup childCreation="deferred" autoCancel="disabled" id="p6">
+                    <af:dialog id="d6" type="yesNo" title="Confirmation"
+                               dialogListener="#{DataTeamLeaderBean.ConfirmAssignNotesReview}">
+                        <af:outputLabel value="Are You Sure You Want to Submit Updates ?" id="ol28"/>
+                        <f:facet name="buttonBar"/>
+                    </af:dialog>
+                </af:popup>
+                <af:popup childCreation="deferred" autoCancel="disabled" id="p7">
+                    <af:dialog id="d7" type="yesNo" title="Confirmation"
+                               dialogListener="#{DataTeamLeaderBean.ConfirmBulkAssignContractsReview}">
+                        <af:outputLabel value="Are You Sure You Want to Bulk Assign Data Agent ?" id="ol36"/>
+                        
+                        <f:facet name="buttonBar"/>
+                    </af:dialog>
+                </af:popup>
+                <af:popup childCreation="deferred" autoCancel="disabled" id="p8">
+                    <af:dialog id="d8" type="yesNo" title="Confirmation"
+                               dialogListener="#{DataTeamLeaderBean.ConfirmSubmitContractsReview}">
+                        <af:outputLabel value="Are You Sure You Want To Submit Updates?" id="ol37"/>
+                        <f:facet name="buttonBar"/>
+                    </af:dialog>
+                </af:popup>
+            </af:panelGroupLayout>
+        </f:facet>
+        <!-- DEBUG:END:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3-->
+        <!-- DEBUG:END:FORM_PAGE_CONTENT : default/page/formPageContent.vm, nesting level: 2-->
+    </af:pageTemplate>
+</ui:composition>
+
+
+

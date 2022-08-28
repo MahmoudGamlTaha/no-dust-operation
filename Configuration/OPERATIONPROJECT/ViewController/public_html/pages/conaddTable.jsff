@@ -1,0 +1,592 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsRegionTemplateNoStretch.jsf">
+        <f:attribute name="showBreadcrumbs" value="false"/>
+        <!-- DEBUG:BEGIN:WIZARD_PAGE_CONTENT : default/page/wizardPageContent.vm, nesting level: 2 -->
+        <f:facet name="processTrain">
+            <af:train value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}" id="tr0"/>
+        </f:facet>
+        <!-- DEBUG:BEGIN:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3 -->
+        <f:facet name="pageContent">
+            <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+            <af:panelGroupLayout id="pcpg" layout="scroll">
+                <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4 -->
+                <af:panelGroupLayout layout="vertical" id="conaddTopLc"
+                                     partialTriggers=" conaddDeleteDialog conaddCancelButton as_conadd conaddPC:conaddArm conaddPC:conaddduprmTM conaddPC:conadddelrmTM conaddPC:conaddArl conaddPC:conaddTab:conaddduprm conaddPC:conaddTab:conadddelrm conaddPC:conaddTab:conadddelrl conaddPC:conaddTab:conaddduprl">
+                    <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                    <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                    <f:facet name="separator">
+                        <af:spacer width="10" height="10" id="sp0"/>
+                    </f:facet>
+                    <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+                    <af:panelHeader id="ph0" text="#{nls['TABLE_TITLE_CONADD']}">
+                        <f:facet name="toolbar">
+                            <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5 -->
+                            <af:toolbox id="tbox0">
+                                <af:toolbar id="tbar0">
+                                    <af:group id="gr0">
+                                        <!-- DEBUG:BEGIN:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6 -->
+                                        <!-- DEBUG:END:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6-->
+                                    </af:group>
+                                    <af:group id="gr1"></af:group>
+                                    <af:group id="gr2">
+                                        <af:trainButtonBar value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"/>
+                                        <!-- DEBUG:BEGIN:WIZARD_FINISH_BUTTON : default/button/wizardFinishButton.vm, nesting level: 6 -->
+                                        <af:button action="#{Saveconadd.execute}" textAndAccessKey="#{nls['FINISH']}"
+                                                   id="conaddWizardFinishButton"></af:button>
+                                        <!-- DEBUG:END:WIZARD_FINISH_BUTTON : default/button/wizardFinishButton.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6 -->
+                                        <af:button textAndAccessKey="#{nls['CANCEL']}" immediate="true"
+                                                   partialSubmit="true" rendered="#{!pageFlowScope.hideCancelButton}"
+                                                   actionListener="#{jhsRollback.execute}" action="Cancel"
+                                                   id="conaddCancelButton"></af:button>
+                                        <!-- DEBUG:END:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6-->
+                                    </af:group>
+                                </af:toolbar>
+                            </af:toolbox>
+                            <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5-->
+                        </f:facet>
+                        <f:facet name="context">
+                            <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5 -->
+                            <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5-->
+                        </f:facet>
+                        <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+                        <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+                        <!-- DEBUG:BEGIN:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 6 -->
+                        <af:panelGroupLayout id="modelSearchAreaconadd"
+                                             rendered="#{!pageFlowScope.createModes.Createconadd and !pageFlowScope.hideSearchArea}"
+                                             partialTriggers="">
+                            <f:attribute name="JhsIgnoreChanges" value="true"/>
+                            <!-- DEBUG:BEGIN:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 7 -->
+                            <af:query id="as_conadd" headerText="#{nls['ADVANCED_SEARCH']}" disclosed="true"
+                                      value="#{bindings.conaddIteratorQuery.queryDescriptor}"
+                                      model="#{bindings.conaddIteratorQuery.queryModel}"
+                                      queryListener="#{bindings.conaddIteratorQuery.processQuery}"
+                                      queryOperationListener="#{bindings.conaddIteratorQuery.processQueryOperation}"
+                                      rows="1" labelAlignment="start" maxColumns="3"></af:query>
+                            <!-- DEBUG:END:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 7-->
+                        </af:panelGroupLayout>
+                        <!-- DEBUG:END:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 6-->
+                        <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+                    </af:panelHeader>
+                    <!-- DEBUG:BEGIN:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5 -->
+                    <af:panelGroupLayout layout="vertical" id="pgl0">
+                        <af:panelCollection id="conaddPC" featuresOff="  " styleClass="AFStretchWidth">
+                            <f:facet name="menus">
+                                <!-- DEBUG:BEGIN:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6 -->
+                                <af:menu textAndAccessKey="#{nls['ACTION_MENU_LABEL']}" id="menu0">
+                                    <af:menu textAndAccessKey="#{nls['GO_TO_MENU_LABEL']}" id="menu1">
+                                        <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7 -->
+                                        <af:group id="conaddtbb"
+                                                  rendered="#{ bindings.conaddIterator.currentRow!=null }">
+                                            <af:commandMenuItem actionListener="#{bindings.Firstconadd.execute}"
+                                                                id="conaddFirst" partialSubmit="true"
+                                                                icon="/afr/shuttleleftall_ena.png"
+                                                                textAndAccessKey="#{nls['FIRST_ROW']}"></af:commandMenuItem>
+                                            <af:commandMenuItem actionListener="#{bindings.Previousconadd.execute}"
+                                                                icon="/afr/shuttleleft_ena.png"
+                                                                textAndAccessKey="#{nls['PREVIOUS_ROW']}"
+                                                                id="conaddPrevious" partialSubmit="true"></af:commandMenuItem>
+                                            <af:commandMenuItem actionListener="#{bindings.Nextconadd.execute}"
+                                                                icon="/afr/shuttleright_ena.png"
+                                                                textAndAccessKey="#{nls['NEXT_ROW']}" id="conaddNext"
+                                                                partialSubmit="true"></af:commandMenuItem>
+                                            <af:commandMenuItem actionListener="#{bindings.Lastconadd.execute}"
+                                                                icon="/afr/shuttlerightall_ena.png"
+                                                                textAndAccessKey="#{nls['LAST_ROW']}" id="conaddLast"
+                                                                partialSubmit="true"></af:commandMenuItem>
+                                        </af:group>
+                                        <!-- DEBUG:END:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7-->
+                                    </af:menu>
+                                    <!-- DEBUG:BEGIN:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7 -->
+                                    <af:commandMenuItem id="conaddArm" textAndAccessKey="#{nls['ADD_ROW']}"
+                                                        immediate="false" icon="/jheadstart/images/addRow.png"
+                                                        partialSubmit="true"
+                                                        actionListener="#{pageFlowScope.conaddTable.addRow}"
+                                                        rendered="#{(true) and (MTSPermission['ContractManagment.create'])}"></af:commandMenuItem>
+                                    <!-- DEBUG:END:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                    <af:commandMenuItem id="conaddduprmTM" textAndAccessKey="#{nls['DUPLICATE_ROW']}"
+                                                        immediate="true" icon="/jheadstart/images/duplicateRow.png"
+                                                        partialSubmit="true"
+                                                        actionListener="#{pageFlowScope.conaddTable.duplicateRow}"
+                                                        rendered="#{MTSPermission['ContractManagment.create']}"></af:commandMenuItem>
+                                    <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                    <af:commandMenuItem id="conadddelrmTM" textAndAccessKey="#{nls['DELETE_ROW']}"
+                                                        icon="/jheadstart/images/deleteRow.png" partialSubmit="true"
+                                                        immediate="true"
+                                                        rendered="#{MTSPermission['ContractManagment.delete']}">
+                                        <af:showPopupBehavior popupId="::conaddDeletePopup"/>
+                                    </af:commandMenuItem>
+                                    <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7-->
+                                </af:menu>
+                                <!-- DEBUG:END:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6-->
+                            </f:facet>
+                            <f:facet name="toolbar">
+                                <!-- DEBUG:BEGIN:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6 -->
+                                <af:toolbar id="tbar1">
+                                    <!-- DEBUG:BEGIN:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7 -->
+                                    <!-- Also create Createconadd bean so we can start table group in create mode as well -->
+                                    <af:link id="conaddArl" immediate="false"
+                                             rendered="#{(true) and (MTSPermission['ContractManagment.create'])}"
+                                             partialSubmit="true" actionListener="#{pageFlowScope.conaddTable.addRow}"
+                                             shortDesc="#{nls['ADD_ROW']}" icon="/jheadstart/images/addRow.png"/>
+                                    <!-- DEBUG:END:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7-->
+                                </af:toolbar>
+                                <!-- DEBUG:END:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6-->
+                            </f:facet>
+                            <f:facet name="statusbar"/>
+                            <af:table id="conaddTab" contentDelivery="immediate"
+                                      value="#{bindings.conaddTable.collectionModel}" columnStretching="last"
+                                      rowBandingInterval="0" editingMode="editAll" columnSelection="multiple"
+                                      contextMenuSelect="true" rowSelection="single"
+                                      selectionListener="#{pageFlowScope.conaddTable.makeCurrent}"
+                                      selectedRowKeys="#{pageFlowScope.conaddTable.selectedRow}"
+                                      rowDisclosureListener="#{pageFlowScope.conaddTable.discloseRow}" var="row"
+                                      varStatus="status" rows="#{bindings.conaddTable.rangeSize}"
+                                      autoHeightRows="#{bindings.conaddTable.rangeSize}"
+                                      fetchSize="#{bindings.conaddTable.rangeSize}" emptyText="#{nls['NO_ROWS_FOUND']}"
+                                      binding="#{pageFlowScope.conaddTable.table}"
+                                      partialTriggers=" :::as_conadd :::conaddPC ::conaddFirst ::conaddPrevious ::conaddNext ::conaddLast"
+                                      styleClass="AFStretchWidth" summary="#{nls['TABLE_TITLE_CONADD']}">
+                                <!-- DEBUG:BEGIN:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6 -->
+                                <f:facet name="contextMenu">
+                                    <af:popup id="conaddTablePopup" childCreation="deferred">
+                                        <af:menu id="menu2">
+                                            <af:menu text="#{nls['GO_TO_MENU_LABEL']}" id="menu3">
+                                                <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                            </af:menu>
+                                            <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                            <af:commandMenuItem id="conaddduprm"
+                                                                textAndAccessKey="#{nls['DUPLICATE_ROW']}"
+                                                                immediate="true"
+                                                                icon="/jheadstart/images/duplicateRow.png"
+                                                                partialSubmit="true"
+                                                                actionListener="#{pageFlowScope.conaddTable.duplicateRow}"
+                                                                rendered="#{MTSPermission['ContractManagment.create']}"></af:commandMenuItem>
+                                            <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                            <af:commandMenuItem id="conadddelrm" textAndAccessKey="#{nls['DELETE_ROW']}"
+                                                                icon="/jheadstart/images/deleteRow.png"
+                                                                partialSubmit="true" immediate="true"
+                                                                rendered="#{MTSPermission['ContractManagment.delete']}">
+                                                <af:showPopupBehavior popupId=":::conaddDeletePopup"/>
+                                            </af:commandMenuItem>
+                                            <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                        </af:menu>
+                                    </af:popup>
+                                </f:facet><!-- DEBUG:END:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6 --><!-- DEBUG:END:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6 -->
+                                <af:column id="conaddActionColumn" frozen="true" width="40" align="center"
+                                           headerText=" ">
+                                    <af:panelGroupLayout layout="horizontal" id="pgl1">
+                                        <!-- DEBUG:BEGIN:DETAILS_LINK : default/button/detailsLink.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:DETAILS_LINK : default/button/detailsLink.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:DELETE_ROW_LINK : default/button/deleteRowLink.vm, nesting level: 7 -->
+                                        <af:link id="conadddelrl" partialSubmit="true" immediate="true"
+                                                 rendered="#{MTSPermission['ContractManagment.delete']}"
+                                                 shortDesc="#{nls['DELETE_ROW']}"
+                                                 icon="/jheadstart/images/deleteRow.png">
+                                            <af:showPopupBehavior popupId=":::conaddDeletePopup"/>
+                                        </af:link>
+                                        <!-- DEBUG:END:DELETE_ROW_LINK : default/button/deleteRowLink.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:DUPLICATE_ROW_LINK : default/button/duplicateRowLink.vm, nesting level: 7 -->
+                                        <af:link id="conaddduprl" immediate="true" partialSubmit="true"
+                                                 actionListener="#{pageFlowScope.conaddTable.duplicateRow}"
+                                                 rendered="#{MTSPermission['ContractManagment.create']}"
+                                                 shortDesc="#{nls['DUPLICATE_ROW']}"
+                                                 icon="/jheadstart/images/duplicateRow.png"/>
+                                        <!-- DEBUG:END:DUPLICATE_ROW_LINK : default/button/duplicateRowLink.vm, nesting level: 7-->
+                                    </af:panelGroupLayout>
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6-->
+                                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                <af:column id="conaddActiveCol" sortable="true" noWrap="true" width="100"
+                                           sortProperty="Active" align="right" rowHeader="false">
+                                    <f:facet name="header">
+                                        <af:outputLabel value="#{bindings.conaddTable.hints.Active.label}"
+                                                        showRequired="#{bindings.conaddTable.hints.Active.mandatory}"
+                                                        id="ol0"/>
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                    <af:inputText id="conaddActive" value="#{row.bindings.Active.inputValue}"
+                                                  label="#{bindings.conaddTable.hints.Active.label}"
+                                                  required="#{bindings.conaddTable.hints.Active.mandatory}"
+                                                  rows="#{bindings.conaddTable.hints.Active.displayHeight}"
+                                                  columns="#{bindings.conaddTable.hints.Active.displayWidth}"
+                                                  readOnly="#{((pageFlowScope.conaddTable.newRow) and (!(MTSPermission['ContractManagment.create']))) or ((!pageFlowScope.conaddTable.newRow) and (!(MTSPermission['ContractManagment.update'])))}"
+                                                  shortDesc="#{bindings.conaddTable.hints.Active.tooltip}">
+                                        <f:validator binding="#{row.bindings.Active.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.conaddTable.hints.Active.format}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                <af:column id="conaddActiveFromCol" sortable="true" noWrap="true" width="306"
+                                           sortProperty="ActiveFrom" rowHeader="false">
+                                    <f:facet name="header">
+                                        <af:outputLabel value="#{bindings.conaddTable.hints.ActiveFrom.label}"
+                                                        showRequired="#{bindings.conaddTable.hints.ActiveFrom.mandatory}"
+                                                        id="ol1"/>
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 7 -->
+                                    <af:inputDate id="conaddActiveFrom" value="#{row.bindings.ActiveFrom.inputValue}"
+                                                  label="#{bindings.conaddTable.hints.ActiveFrom.label}"
+                                                  required="#{bindings.conaddTable.hints.ActiveFrom.mandatory}"
+                                                  readOnly="#{((pageFlowScope.conaddTable.newRow) and (!(MTSPermission['ContractManagment.create']))) or ((!pageFlowScope.conaddTable.newRow) and (!(MTSPermission['ContractManagment.update'])))}"
+                                                  shortDesc="#{bindings.conaddTable.hints.ActiveFrom.tooltip}">
+                                        <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                    </af:inputDate>
+                                    <!-- DEBUG:END:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                <af:column id="conaddActiveToCol" sortable="true" noWrap="true" width="306"
+                                           sortProperty="ActiveTo" rowHeader="false">
+                                    <f:facet name="header">
+                                        <af:outputLabel value="#{bindings.conaddTable.hints.ActiveTo.label}"
+                                                        showRequired="#{bindings.conaddTable.hints.ActiveTo.mandatory}"
+                                                        id="ol2"/>
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 7 -->
+                                    <af:inputDate id="conaddActiveTo" value="#{row.bindings.ActiveTo.inputValue}"
+                                                  label="#{bindings.conaddTable.hints.ActiveTo.label}"
+                                                  required="#{bindings.conaddTable.hints.ActiveTo.mandatory}"
+                                                  readOnly="#{((pageFlowScope.conaddTable.newRow) and (!(MTSPermission['ContractManagment.create']))) or ((!pageFlowScope.conaddTable.newRow) and (!(MTSPermission['ContractManagment.update'])))}"
+                                                  shortDesc="#{bindings.conaddTable.hints.ActiveTo.tooltip}">
+                                        <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                    </af:inputDate>
+                                    <!-- DEBUG:END:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                <af:column id="conaddAddressCol" sortable="true" noWrap="true" width="300"
+                                           sortProperty="Address" rowHeader="false">
+                                    <f:facet name="header">
+                                        <af:outputLabel value="#{bindings.conaddTable.hints.Address.label}"
+                                                        showRequired="#{bindings.conaddTable.hints.Address.mandatory}"
+                                                        id="ol3"/>
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                    <af:inputText id="conaddAddress" value="#{row.bindings.Address.inputValue}"
+                                                  label="#{bindings.conaddTable.hints.Address.label}"
+                                                  required="#{bindings.conaddTable.hints.Address.mandatory}"
+                                                  rows="#{bindings.conaddTable.hints.Address.displayHeight}"
+                                                  columns="#{bindings.conaddTable.hints.Address.displayWidth}"
+                                                  maximumLength="4000"
+                                                  readOnly="#{((pageFlowScope.conaddTable.newRow) and (!(MTSPermission['ContractManagment.create']))) or ((!pageFlowScope.conaddTable.newRow) and (!(MTSPermission['ContractManagment.update'])))}"
+                                                  shortDesc="#{bindings.conaddTable.hints.Address.tooltip}">
+                                        <f:validator binding="#{row.bindings.Address.validator}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                <af:column id="conaddAddressIdCol" noWrap="true" width="228" align="right"
+                                           rowHeader="false">
+                                    <f:facet name="header">
+                                        <af:outputLabel value="#{bindings.conaddTable.hints.AddressId.label}"
+                                                        showRequired="#{bindings.conaddTable.hints.AddressId.mandatory}"
+                                                        id="ol4"/>
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                    <af:inputText id="conaddAddressId" value="#{row.bindings.AddressId.inputValue}"
+                                                  label="#{bindings.conaddTable.hints.AddressId.label}"
+                                                  required="#{bindings.conaddTable.hints.AddressId.mandatory}"
+                                                  rows="#{bindings.conaddTable.hints.AddressId.displayHeight}"
+                                                  columns="#{bindings.conaddTable.hints.AddressId.displayWidth}"
+                                                  maximumLength="38"
+                                                  readOnly="#{((pageFlowScope.conaddTable.newRow) and (!(MTSPermission['ContractManagment.create']))) or ((!pageFlowScope.conaddTable.newRow) and (!(MTSPermission['ContractManagment.update'])))}"
+                                                  shortDesc="#{bindings.conaddTable.hints.AddressId.tooltip}">
+                                        <f:validator binding="#{row.bindings.AddressId.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.conaddTable.hints.AddressId.format}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                <af:column id="conaddAreaIdCol" noWrap="true" width="228" align="right"
+                                           rowHeader="false">
+                                    <f:facet name="header">
+                                        <af:outputLabel value="#{bindings.conaddTable.hints.AreaId.label}"
+                                                        showRequired="#{bindings.conaddTable.hints.AreaId.mandatory}"
+                                                        id="ol5"/>
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                    <af:inputText id="conaddAreaId" value="#{row.bindings.AreaId.inputValue}"
+                                                  label="#{bindings.conaddTable.hints.AreaId.label}"
+                                                  required="#{bindings.conaddTable.hints.AreaId.mandatory}"
+                                                  rows="#{bindings.conaddTable.hints.AreaId.displayHeight}"
+                                                  columns="#{bindings.conaddTable.hints.AreaId.displayWidth}"
+                                                  maximumLength="38"
+                                                  readOnly="#{((pageFlowScope.conaddTable.newRow) and (!(MTSPermission['ContractManagment.create']))) or ((!pageFlowScope.conaddTable.newRow) and (!(MTSPermission['ContractManagment.update'])))}"
+                                                  shortDesc="#{bindings.conaddTable.hints.AreaId.tooltip}">
+                                        <f:validator binding="#{row.bindings.AreaId.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.conaddTable.hints.AreaId.format}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                <af:column id="conaddCardNoCol" sortable="true" noWrap="true" width="300"
+                                           sortProperty="CardNo" align="right" rowHeader="false">
+                                    <f:facet name="header">
+                                        <af:outputLabel value="#{bindings.conaddTable.hints.CardNo.label}"
+                                                        showRequired="#{bindings.conaddTable.hints.CardNo.mandatory}"
+                                                        id="ol6"/>
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                    <af:inputText id="conaddCardNo" value="#{row.bindings.CardNo.inputValue}"
+                                                  label="#{bindings.conaddTable.hints.CardNo.label}"
+                                                  required="#{bindings.conaddTable.hints.CardNo.mandatory}"
+                                                  rows="#{bindings.conaddTable.hints.CardNo.displayHeight}"
+                                                  columns="#{bindings.conaddTable.hints.CardNo.displayWidth}"
+                                                  readOnly="#{((pageFlowScope.conaddTable.newRow) and (!(MTSPermission['ContractManagment.create']))) or ((!pageFlowScope.conaddTable.newRow) and (!(MTSPermission['ContractManagment.update'])))}"
+                                                  shortDesc="#{bindings.conaddTable.hints.CardNo.tooltip}">
+                                        <f:validator binding="#{row.bindings.CardNo.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.conaddTable.hints.CardNo.format}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                <af:column id="conaddCityIdCol" noWrap="true" width="228" align="right"
+                                           rowHeader="false">
+                                    <f:facet name="header">
+                                        <af:outputLabel value="#{bindings.conaddTable.hints.CityId.label}"
+                                                        showRequired="#{bindings.conaddTable.hints.CityId.mandatory}"
+                                                        id="ol7"/>
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                    <af:inputText id="conaddCityId" value="#{row.bindings.CityId.inputValue}"
+                                                  label="#{bindings.conaddTable.hints.CityId.label}"
+                                                  required="#{bindings.conaddTable.hints.CityId.mandatory}"
+                                                  rows="#{bindings.conaddTable.hints.CityId.displayHeight}"
+                                                  columns="#{bindings.conaddTable.hints.CityId.displayWidth}"
+                                                  maximumLength="38"
+                                                  readOnly="#{((pageFlowScope.conaddTable.newRow) and (!(MTSPermission['ContractManagment.create']))) or ((!pageFlowScope.conaddTable.newRow) and (!(MTSPermission['ContractManagment.update'])))}"
+                                                  shortDesc="#{bindings.conaddTable.hints.CityId.tooltip}">
+                                        <f:validator binding="#{row.bindings.CityId.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.conaddTable.hints.CityId.format}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                <af:column id="conaddFlatNoCol" sortable="true" noWrap="true" width="300"
+                                           sortProperty="FlatNo" rowHeader="false">
+                                    <f:facet name="header">
+                                        <af:outputLabel value="#{bindings.conaddTable.hints.FlatNo.label}"
+                                                        showRequired="#{bindings.conaddTable.hints.FlatNo.mandatory}"
+                                                        id="ol8"/>
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                    <af:inputText id="conaddFlatNo" value="#{row.bindings.FlatNo.inputValue}"
+                                                  label="#{bindings.conaddTable.hints.FlatNo.label}"
+                                                  required="#{bindings.conaddTable.hints.FlatNo.mandatory}"
+                                                  rows="#{bindings.conaddTable.hints.FlatNo.displayHeight}"
+                                                  columns="#{bindings.conaddTable.hints.FlatNo.displayWidth}"
+                                                  maximumLength="4000"
+                                                  readOnly="#{((pageFlowScope.conaddTable.newRow) and (!(MTSPermission['ContractManagment.create']))) or ((!pageFlowScope.conaddTable.newRow) and (!(MTSPermission['ContractManagment.update'])))}"
+                                                  shortDesc="#{bindings.conaddTable.hints.FlatNo.tooltip}">
+                                        <f:validator binding="#{row.bindings.FlatNo.validator}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                <af:column id="conaddFloorNoCol" sortable="true" noWrap="true" width="300"
+                                           sortProperty="FloorNo" rowHeader="false">
+                                    <f:facet name="header">
+                                        <af:outputLabel value="#{bindings.conaddTable.hints.FloorNo.label}"
+                                                        showRequired="#{bindings.conaddTable.hints.FloorNo.mandatory}"
+                                                        id="ol9"/>
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                    <af:inputText id="conaddFloorNo" value="#{row.bindings.FloorNo.inputValue}"
+                                                  label="#{bindings.conaddTable.hints.FloorNo.label}"
+                                                  required="#{bindings.conaddTable.hints.FloorNo.mandatory}"
+                                                  rows="#{bindings.conaddTable.hints.FloorNo.displayHeight}"
+                                                  columns="#{bindings.conaddTable.hints.FloorNo.displayWidth}"
+                                                  maximumLength="4000"
+                                                  readOnly="#{((pageFlowScope.conaddTable.newRow) and (!(MTSPermission['ContractManagment.create']))) or ((!pageFlowScope.conaddTable.newRow) and (!(MTSPermission['ContractManagment.update'])))}"
+                                                  shortDesc="#{bindings.conaddTable.hints.FloorNo.tooltip}">
+                                        <f:validator binding="#{row.bindings.FloorNo.validator}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                <af:column id="conaddHomeNoCol" sortable="true" noWrap="true" width="300"
+                                           sortProperty="HomeNo" rowHeader="false">
+                                    <f:facet name="header">
+                                        <af:outputLabel value="#{bindings.conaddTable.hints.HomeNo.label}"
+                                                        showRequired="#{bindings.conaddTable.hints.HomeNo.mandatory}"
+                                                        id="ol10"/>
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                    <af:inputText id="conaddHomeNo" value="#{row.bindings.HomeNo.inputValue}"
+                                                  label="#{bindings.conaddTable.hints.HomeNo.label}"
+                                                  required="#{bindings.conaddTable.hints.HomeNo.mandatory}"
+                                                  rows="#{bindings.conaddTable.hints.HomeNo.displayHeight}"
+                                                  columns="#{bindings.conaddTable.hints.HomeNo.displayWidth}"
+                                                  maximumLength="4000"
+                                                  readOnly="#{((pageFlowScope.conaddTable.newRow) and (!(MTSPermission['ContractManagment.create']))) or ((!pageFlowScope.conaddTable.newRow) and (!(MTSPermission['ContractManagment.update'])))}"
+                                                  shortDesc="#{bindings.conaddTable.hints.HomeNo.tooltip}">
+                                        <f:validator binding="#{row.bindings.HomeNo.validator}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                <af:column id="conaddRegionIdCol" noWrap="true" width="228" align="right"
+                                           rowHeader="false">
+                                    <f:facet name="header">
+                                        <af:outputLabel value="#{bindings.conaddTable.hints.RegionId.label}"
+                                                        showRequired="#{bindings.conaddTable.hints.RegionId.mandatory}"
+                                                        id="ol11"/>
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                    <af:inputText id="conaddRegionId" value="#{row.bindings.RegionId.inputValue}"
+                                                  label="#{bindings.conaddTable.hints.RegionId.label}"
+                                                  required="#{bindings.conaddTable.hints.RegionId.mandatory}"
+                                                  rows="#{bindings.conaddTable.hints.RegionId.displayHeight}"
+                                                  columns="#{bindings.conaddTable.hints.RegionId.displayWidth}"
+                                                  maximumLength="38"
+                                                  readOnly="#{((pageFlowScope.conaddTable.newRow) and (!(MTSPermission['ContractManagment.create']))) or ((!pageFlowScope.conaddTable.newRow) and (!(MTSPermission['ContractManagment.update'])))}"
+                                                  shortDesc="#{bindings.conaddTable.hints.RegionId.tooltip}">
+                                        <f:validator binding="#{row.bindings.RegionId.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.conaddTable.hints.RegionId.format}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                <af:column id="conaddRemarksCol" sortable="true" noWrap="true" width="300"
+                                           sortProperty="Remarks" rowHeader="false">
+                                    <f:facet name="header">
+                                        <af:outputLabel value="#{bindings.conaddTable.hints.Remarks.label}"
+                                                        showRequired="#{bindings.conaddTable.hints.Remarks.mandatory}"
+                                                        id="ol12"/>
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                    <af:inputText id="conaddRemarks" value="#{row.bindings.Remarks.inputValue}"
+                                                  label="#{bindings.conaddTable.hints.Remarks.label}"
+                                                  required="#{bindings.conaddTable.hints.Remarks.mandatory}"
+                                                  rows="#{bindings.conaddTable.hints.Remarks.displayHeight}"
+                                                  columns="#{bindings.conaddTable.hints.Remarks.displayWidth}"
+                                                  maximumLength="4000"
+                                                  readOnly="#{((pageFlowScope.conaddTable.newRow) and (!(MTSPermission['ContractManagment.create']))) or ((!pageFlowScope.conaddTable.newRow) and (!(MTSPermission['ContractManagment.update'])))}"
+                                                  shortDesc="#{bindings.conaddTable.hints.Remarks.tooltip}">
+                                        <f:validator binding="#{row.bindings.Remarks.validator}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                <af:column id="conaddStreetIdCol" noWrap="true" width="228" align="right"
+                                           rowHeader="false">
+                                    <f:facet name="header">
+                                        <af:outputLabel value="#{bindings.conaddTable.hints.StreetId.label}"
+                                                        showRequired="#{bindings.conaddTable.hints.StreetId.mandatory}"
+                                                        id="ol13"/>
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                    <af:inputText id="conaddStreetId" value="#{row.bindings.StreetId.inputValue}"
+                                                  label="#{bindings.conaddTable.hints.StreetId.label}"
+                                                  required="#{bindings.conaddTable.hints.StreetId.mandatory}"
+                                                  rows="#{bindings.conaddTable.hints.StreetId.displayHeight}"
+                                                  columns="#{bindings.conaddTable.hints.StreetId.displayWidth}"
+                                                  maximumLength="38"
+                                                  readOnly="#{((pageFlowScope.conaddTable.newRow) and (!(MTSPermission['ContractManagment.create']))) or ((!pageFlowScope.conaddTable.newRow) and (!(MTSPermission['ContractManagment.update'])))}"
+                                                  shortDesc="#{bindings.conaddTable.hints.StreetId.tooltip}">
+                                        <f:validator binding="#{row.bindings.StreetId.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.conaddTable.hints.StreetId.format}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                            </af:table>
+                        </af:panelCollection>
+                    </af:panelGroupLayout>
+                    <!-- DEBUG:END:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5-->
+                    <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+                </af:panelGroupLayout>
+                <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4-->
+            </af:panelGroupLayout>
+            <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+        </f:facet>
+        <f:facet name="popups">
+            <af:panelGroupLayout id="popupsPgl">
+                <!-- DEBUG:BEGIN:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 8 -->
+                <af:popup id="conaddDeletePopup" contentDelivery="lazyUncached" childCreation="deferred">
+                    <af:dialog type="none" title="#{nls['WARNING']}" modal="true" id="conaddDeleteDialog">
+                        <af:outputText value="#{nls['DELETE_WARNING_CONAD:#{bindings.conaddIterator.currentRowIndexInRange+1}']} "
+                                       id="ot0"/>
+                        <f:attribute name="methodExpression" value="#{'#{Deleteconadd.execute}'}"/>
+                        <f:facet name="buttonBar">
+                            <af:group id="g0">
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_YES']}" id="cb0" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.confirm}"/>
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_NO']}" id="cb1" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.abort}"/>
+                            </af:group>
+                        </f:facet>
+                    </af:dialog>
+                </af:popup>
+                <!-- DEBUG:END:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 8-->
+            </af:panelGroupLayout>
+        </f:facet>
+        <!-- DEBUG:END:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3-->
+        <!-- DEBUG:END:WIZARD_PAGE_CONTENT : default/page/wizardPageContent.vm, nesting level: 2-->
+    </af:pageTemplate>
+</ui:composition>
+
+
+

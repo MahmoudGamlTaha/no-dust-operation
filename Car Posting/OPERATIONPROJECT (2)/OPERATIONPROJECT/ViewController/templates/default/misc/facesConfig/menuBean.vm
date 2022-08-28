@@ -1,0 +1,20 @@
+## revision_history
+## 07-sep-2010   Steven Davelaar
+## 1.2           removeHiddenMenuItems property removed, was work around for bug that is fixed in 12c
+## 07-sep-2010   Steven Davelaar
+## 1.2           removeHiddenMenuItems property should be sequenced first
+## 18-may-2010   Steven Davelaar
+## 1.1           Added id property to all elements
+## 22-aug-2008   Steven Davelaar
+## 1.0           Initial creation
+<managed-bean id="#NEW_ID("__")">
+  <managed-bean-name id="#NEW_ID("__")">${JHS.service.name}Menu</managed-bean-name>
+  <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.JhsXMLMenuModel</managed-bean-class>
+  <managed-bean-scope id="#NEW_ID("__")">request</managed-bean-scope>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">source</property-name>
+    <property-class id="#NEW_ID("__")">java.lang.String</property-class>
+    <value id="#NEW_ID("__")">${JHS.service.menuModelFile}</value>
+  </managed-property>
+</managed-bean>
+

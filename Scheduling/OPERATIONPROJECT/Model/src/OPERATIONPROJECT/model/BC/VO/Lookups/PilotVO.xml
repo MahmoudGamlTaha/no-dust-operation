@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PilotVO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  OrderBy='full_name_en'
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  FetchMode="FETCH_AS_NEEDED"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="OPERATIONPROJECT.model.BC.VO.Lookups.PilotVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <SQLQuery><![CDATA[select us.USERID , us.FULL_NAME_EN ||','|| us.USER_NAME full_name_en ,to_number(us.USER_NAME) driver_USER_NAME             
+,us.USERGROUP_ID  
+from USERS us         
+where us.USERGROUP_ID in (2,3) 
+order by us.FULL_NAME_EN]]></SQLQuery>
+  <ViewAttribute
+    Name="Userid"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="USERID"
+    Expression="USERID"
+    SQLType="NUMERIC"
+    IsQueriable="false"/>
+  <ViewAttribute
+    Name="FullNameEn"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="161"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FULL_NAME_EN"
+    Expression="FULL_NAME_EN"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="161"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="OPERATIONPROJECT.model.BC.VO.Lookups.PilotVO.FullNameEn_LABEL"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DriverUserName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="DRIVER_USER_NAME"
+    Expression="DRIVER_USER_NAME"
+    SQLType="NUMERIC">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="OPERATIONPROJECT.model.BC.VO.Lookups.PilotVO.DriverUserName_LABEL"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UsergroupId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4"
+    Scale="0"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    AliasName="USERGROUP_ID"
+    Expression="USERGROUP_ID"
+    SQLType="INTEGER"/>
+  <ViewCriteria
+    Name="PilotVOCriteria"
+    ViewObjectName="OPERATIONPROJECT.model.BC.VO.Lookups.PilotVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="PilotVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItemCompound
+        Name="UsergroupId"
+        ViewAttribute="UsergroupId">
+        <ViewCriteria
+          Name="PilotVOCriteria_PilotVOCriteria_row_0_UsergroupId_itemHolder"
+          ViewObjectName="OPERATIONPROJECT.model.BC.VO.Lookups.PilotVO"
+          Conjunction="OR">
+          <ViewCriteriaRow
+            Name="PilotVOCriteria_PilotVOCriteria_row_0_UsergroupId_itemHolder_row_0"
+            Conjunction="AND">
+            <ViewCriteriaItem
+              Name="UsergroupId"
+              ViewAttribute="UsergroupId"
+              Operator="="
+              Conjunction="AND"
+              Value="2"
+              Required="Optional"/>
+          </ViewCriteriaRow>
+          <ViewCriteriaRow
+            Name="PilotVOCriteria_PilotVOCriteria_row_0_UsergroupId_itemHolder_row_1"
+            Conjunction="OR">
+            <ViewCriteriaItem
+              Name="PilotVOCriteria_PilotVOCriteria_row_0_UsergroupId_PilotVOCriteria_PilotVOCriteria_row_0_UsergroupId_itemHolder_PilotVOCriteria_PilotVOCriteria_row_0_UsergroupId_itemHolder_row_1_UsergroupId"
+              ViewAttribute="UsergroupId"
+              Operator="="
+              Conjunction="OR"
+              Value="3"
+              Required="Optional"/>
+          </ViewCriteriaRow>
+        </ViewCriteria>
+      </ViewCriteriaItemCompound>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Userid"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="OPERATIONPROJECT.model.BC.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

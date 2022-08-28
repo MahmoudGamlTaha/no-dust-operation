@@ -1,0 +1,27 @@
+## revision_history
+## 30-nov-2011   Steven Davelaar
+## 1.0           Initial creation 
+
+#set ($pageComponent = $JHS.current.pageComponent)
+#if ($JHS.application.enableFunctionKeys)
+  #if (${pageComponent.group}==${JHS.page.group})
+    <f:attribute name="TopGroupContainer" value="true"/>
+    <f:attribute name="PageComponentNavigationList" value="#COMMA_SEPARATED(${JHS.page.pageComponentNavigationList.keysAsList()})"/>
+  #else
+    <f:attribute name="GroupContainer" value="true"/>
+  #end
+  #if (${pageComponent.subPageComponentList})
+    <f:attribute name="SubPageComponentNavigationList" value="${pageComponent.subPageComponentList}"/>
+  #end
+  #if ($pageComponent.initialFocusId)
+    <f:attribute name="InitialFocusId" value="$pageComponent.initialFocusId"/>    
+  #end
+  #foreach($action in $JHS.dependenciesMgr.getList("${pageComponent.group.name}Actions"))
+    #set ($index = ${action.indexOf(",")})
+    #set ($index2 = $index + 1)
+    #set ($actionName = ${action.substring(0,${index})})
+    #set ($commandId = ${action.substring(${index2})})
+    #set ($commandIdRel = ${JHS.engine.stripCurrentNamingContainerPath("${commandId}")})
+    <f:attribute name="${actionName}" value="${commandIdRel}"/>
+  #end
+#end

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="InvoiceScheduleEO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="INVOICES_SCHEDULING"
+  AliasName="InvoiceScheduleEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="ContractNum"
+    ColumnName="CONTRACT_NUM"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="INVOICES_SCHEDULING"/>
+  <Attribute
+    Name="AreaId"
+    ColumnName="AREA_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="INVOICES_SCHEDULING"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="WorkingDate"
+    ColumnName="WORKING_DATE"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="INVOICES_SCHEDULING"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="AreaName"
+    Precision="4000"
+    ColumnName="AREA_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INVOICES_SCHEDULING">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="AccountingAgent"
+    Precision="500"
+    ColumnName="ACCOUNTING_AGENT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INVOICES_SCHEDULING">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="InvoicescheduleeoPrimaryKey"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="INVOICESCHEDULEEO_PRIMARY_KEY"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.InvoiceScheduleEO.WorkingDate"/>
+      <Item Value="OPERATIONPROJECT.model.BC.EO.InvoiceScheduleEO.AreaId"/>
+    </AttrArray>
+  </Key>
+</Entity>

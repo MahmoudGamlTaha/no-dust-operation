@@ -1,0 +1,500 @@
+## revision_history
+## 19-jun-2013   Steven Davelaar
+## 1.35          Added check for item databound is NUMBER_CONVERTER
+## 16-apr-2012   Steven Davelaar
+## 1.34          Do not generate textAndAccesKey with empty string for buttons causes misalignment when using 
+##               icnoic toolbar button
+## 13-feb-2012   Steven Davelaar
+## 1.33          Removed LOV_ITEM_POPUP_CONTENT
+## 31-jan-2012   Steven Davelaar
+## 1.32          Do use partialTriggers property when dependent on command item (button, link, etc)
+## 25-jan-2012   Steven Davelaar
+## 1.31          Changed method call for serverPopupClosed serverListener
+## 18-jan-2012   Steven Davelaar
+## 1.30          Check whether descriptorItem is databound in DESCRIPTOR_ITEM_VALUE_BINDING 
+## 09-jan-2012   Steven Davelaar
+## 1.29          - ITEM_REQUIRED_IN_FORM now always generates required property, we no longer use partialTriggers prop
+##                 with dependent items, is now done programatically
+##               - DEPENDS_ON_ITEM_PROPS now always uses dependsOnItem managed bean in valueChangeListener
+##               - ITEM_PARTIAL_TRIGGERS is now empty macro, see above
+##               - Changed DESCRIPTOR_ITEM_VALUE_BINDING to not use form value binding in table layout, because
+##                 form value binding might not be generated anymore
+## 06-nov-2011   Steven Davelaar
+## 1.28          - Changed ITEM_HINT, ITEM_ROWS, ITEM_COLUMNS to get UI hint through table 
+##                binding in table layout, so individual value binding could be removed if desired
+##                (value bidning and table binding causes attr val exceptions to appear twice, see
+##                 TABLE_ITEMS macro for hints on how remove value bindings)
+##               - Changed NUMBER_CONVERTER
+## 23-jun-2011   Steven Davelaar
+## 1.27          - Use search prompt in LOV_ITEM_POPUP_TITLE
+## 21-jan-2011   Steven Davelaar
+## 1.26          - Added LOV_ITEM_POPUP_CONTENT
+## 13-jan-2010   Steven Davelaar
+## 1.26          - Fixed bug in ITEM_WRAP, was not set to false when wrap checked in app def editor
+## 22-dec-2010   Steven Davelaar
+## 1.25          - Renamed property noMatchMessageDetail to messageDetailNoMatch in REGULAR_EXPRESSION_VALIDATOR 
+##               - BUTTON_TEXT_IN_FORM: use value property when set on unbound item, use prompt in form otherwise
+##               - ITEM_CONTEXT_FACET: use triggerType "contextInfo"
+## 05-oct-2010   Steven Davelaar
+## 1.24          - ITEM_REQUIRED_IN_FORM: if displayType is dropDownList, use required again,
+##               also use required now when pageComponent has overflow inline.
+##               - Added ITEM_HELP, ITEM_ADDITIONAL_PROPERTIES
+## 10-sep-2010   Sandra Muller
+## 1.22          ITEM_REQUIRED_IN_FORM: if displayType is dropDownList, use showRequired,
+##               because selectOneChoice doesn't have a required property
+## 29-jul-2010   Sandra Muller
+## 1.21          Changed SEARCH_ITEM_PARTIAL_TRIGGERS to also use hasDependsOnItemsInAdvSearch
+## 08-jun-2010   Sandra Muller
+## 1.20          Changed SEARCH_ITEM_PARTIAL_TRIGGERS to use dependsOnItemsInAdvSearch
+## 18-may-2010   Steven Davelaar
+## 1.19          Use visible property instead of rendered property in ITEM_RENDERED_IN_TABLE
+## 06-nov-2009   Steven Davelaar
+## 1.18          Added macros to support new item property displayAtRightOfItem
+## 07-may-2009   Paco van der Linden
+## 1.18          Shortened some id's to improve PPR performance
+## 17-mar-2009   Steven Davelaar
+## 1.17          Changed DEPENDS_ON_ITEM_PROPS: do not need generic valueChangeListener when no dep items for LOV
+##               also removed immediate=true for now, needs further investigation though!
+## 30-sep-2008   Evert-Jan de Bruin
+## 1.16          Changed ITEM_VALUE_IN_QUICK_SEARCH to use search bean macro, added TABLE_PARTIAL_TRIGGERS
+## 15-sep-2008   Sandra Muller
+## 1.15          Put back immediate=true and valueChangeListeners for DEPENDS_ON_ITEM:
+##               needed in table layout in 11g
+## 28-aug-2008   Steven Davelaar
+## 1.14          Added ITEM_COLUMN_WIDTH
+## 27-aug-2008   Evert-Jan de Bruin
+## 1.13          Removed immediate=true from DEPENDS_ON_ITEM macros, as well as the
+##               valueChangeListeners. These are no longer necessary in R11.
+## 08-aug-2008   Steven Davelaar
+## 1.12          Removed onchange property from DEPENDS_ON_ITEM_PROPS
+## 04-jul-2008   Evert-Jan de Bruin
+## 1.11          Added support for LOV_ITEM_POPUP_TITLE
+## 24-may-2008   Steven Davelaar
+## 1.10           Changed ITEM_VALUE_IN_FORM to use variable bindings now generated for
+##               unbound items.
+## 24-may-2008   Steven Davelaar
+## 1.9           Added BUTTON_TEXT_IN_FORM, BUTTON_TEXT_IN_TABLE
+## 26-oct-2007   Steven Davelaar
+## 1.8           Upgraded to R11: right alignment now done using align property instead
+##               of format="number", id property on selectItem not supported
+##               onchange property no longer exists
+## 03-sep-2007   Steven Davelaar
+## 1.7           Check in ITEM_READ_ONLY_IN_FORM for hasOverflowArea instead of hasOverflowInline
+## 29-aug-2007   Steven Davelaar
+## 1.6           Added includePrefix to DEPENDS_ON_ITEM_PROPS_TABLE and DEPENDS_ON_ITEM_PROPS_FORM
+##               needed when page is generate into separate regions to work around page too large error
+## 06-jul-2007   Steven Davelaar
+## 1.5           Now using item.requiredInTablePlain in SHOW_REQUIRED_IN_TABLE
+## 14-feb-2007   Steven Davelaar
+## 1.4           ITEM_REQUIRED_IN_FORM now uses showRequired when in overflow inline
+##               + new ITEM_SIZE macro
+##               + replaced criteria by operators in ITEM_VALUE_IN_SEARCH_SET_BY_USER
+## 12-feb-2007   Steven Davelaar
+## 1.3           Added onchange property to DEPENDS_ON_ITEM_PROPS macro
+## 05-jan-2007   Steven Davelaar
+## 1.2           Changed ITEM_PARTIAL_TRIGGERS and SEARCH_ITEM_PARTIAL_TRIGGERS to
+##               support multiple depends on items
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+#macro (ITEM_ALIGNMENT)
+#if ($JHS.current.item.alignment=="right") align="right" #elseif ($JHS.current.item.alignment=="center") align="center" #end#end
+
+#macro (AUTO_SUBMIT)
+#if ($JHS.current.item.hasDependentItems || $JHS.current.item.useLovForValidation || $JHS.current.item.displayType=="editor") autoSubmit="true" #end#end
+
+#macro (DEPENDS_ON_ITEM_PROPS)
+#AUTO_SUBMIT()
+#if ($JHS.current.item.hasDependentItemToClear || $JHS.current.item.hasDependentItemToRefresh) valueChangeListener="#{#DEPENDS_ON_ITEM_BEAN().updateModelValue}"#end#end
+
+#macro (DEPENDS_ON_ITEM_PROPS_TABLE)
+#set ($includePrefix = ${JHS.engine.getTemplateContext("includeContext")})
+#DEPENDS_ON_ITEM_PROPS() #end
+
+#macro (DEPENDS_ON_ITEM_PROPS_FORM)
+#set ($includePrefix = ${JHS.engine.getTemplateContext("includeContext")})
+#DEPENDS_ON_ITEM_PROPS() #end
+
+#macro (DEPENDS_ON_ITEM_PROPS_SEARCH)
+#if ($JHS.current.item.hasDependentItems) autoSubmit="true" #end#end
+
+#macro (ITEM_COLUMNS)
+#if (${JHS.current.item.itemType.displayWidth} && ${JHS.current.item.itemType.displayWidth}=='#{$HINTS$.displayWidth}' && $JHS.current.pageComponent.tableLayout && ($JHS.current.item.displayInTable || $JHS.current.pageComponent.hasOverflowInline))
+  columns="#{bindings.${JHS.current.group.name}Table.hints.${JHS.current.item.attributeName}.displayWidth}"
+#else
+#JHS_PROP("columns" $JHS.current.item.displayWidth)
+#end#end
+
+#macro (DESCRIPTOR_ITEM_VALUE_BINDING $group)
+#if (!$group.descriptorItem.dataBound && $group.descriptorItem.valueSpecified)${group.descriptorItem.value}#elseif ($group.descriptorItem.dataBound && $JHS.current.pageComponent.tableLayout)#{#TABLE_BEAN().currentRowAttributeValues.${group.descriptorItem.attributeName}}#else #{bindings.${group.descriptorItem.bindingName}.inputValue}#end#end
+
+#macro (ITEM_DISABLED_IN_FORM)
+#if ($JHS.current.pageComponent.hasOverflowInline)#ITEM_DISABLED_IN_TABLE()#else#JHS_PROP("disabled" $JHS.current.item.disabledInForm)#end#end
+
+#macro (ITEM_DISABLED_IN_TABLE)
+#JHS_PROP("disabled" $JHS.current.item.disabledInTable)#end
+
+#macro (ITEM_ID_IN_FORM)
+id="${JHS.current.item.id}"#end
+
+#macro (ITEM_FOR_IN_FORM)
+for="${JHS.current.item.id}"#end
+
+#macro (ITEM_FOR_IN_SEARCH)
+for="Search${JHS.current.item.id}"#end
+
+#macro (ITEM_ID_IN_TABLE)
+id="${JHS.current.item.id}"#end
+
+#macro (ITEM_ID_IN_COLUMN)
+id="${JHS.current.item.id}Col"#end
+
+#macro (ITEM_FILTERABLE)
+#if ($JHS.current.group.filterTable && $JHS.current.item.showInQuickSearch) filterable="true" #end#end
+
+#macro (ITEM_FROZEN)
+#if($JHS.current.group.tableFreezeStyle=="descriptorItem" && $JHS.current.item.name==$JHS.current.group.descriptorItem.name)frozen="true"#end#end
+
+#macro (ITEM_ID_IN_SEARCH)
+id="Search${JHS.current.item.id}"#end
+
+#macro (ITEM_ID_IN_QUICK_SEARCH)
+id="QuickSearch${JHS.current.item.id}"#end
+
+#macro (ITEM_HINT)
+#if (${JHS.current.item.itemType.hintText} && ${JHS.current.item.itemType.hintText}=='#{$HINTS$.tooltip}' && $JHS.current.pageComponent.tableLayout && ($JHS.current.item.displayInTable || $JHS.current.pageComponent.hasOverflowInline))
+  shortDesc="#{bindings.${JHS.current.group.name}Table.hints.${JHS.current.item.attributeName}.tooltip}"
+#else
+  #JHS_PROP("shortDesc" ${JHS.nls(${JHS.current.item.hintText}, "${JHS.current.group.name}_${JHS.current.item.name}_HINT")})
+#end#end
+
+#macro (ITEM_ADDITIONAL_PROPERTIES)
+ ${JHS.current.item.additionalProperties}#end
+
+#macro (ITEM_HELP)
+#if ($JHS.application.useOnlineHelp) #NLS_HELP("RBH_${JHS.current.item.bindingName.toUpperCase()}" ${JHS.current.item}) #end #end
+
+#macro (ITEM_MAXIMUM_LENGTH)
+#JHS_PROP("maximumLength" $JHS.current.item.maximumLength)#end
+
+#macro (ITEM_COLUMN_WIDTH)
+#JHS_PROP("width" "$JHS.current.item.columnWidth")#end
+
+#macro (ITEM_PARTIAL_TRIGGERS)
+## no longer use partialTroiggers for dependent item, is now handled programatically in valueChangeListener method
+## in DependsOnItemBean, so we no longer get premature validation errors on dep items, and we can use required property 
+## again instead of showRequired. Exception: depends on item is a command item, because command items do not have valueChangeListener
+#if (${JHS.current.item.hasDependsOnCommandItem}) 
+partialTriggers = "#foreach($item in $JHS.current.item.dependsOnCommandItems) #if (($JHS.current.pageComponent.hasOverflowRight || $JHS.current.pageComponent.hasOverflowRightWithSplitter || $JHS.current.pageComponent.hasOverflowBelow || $JHS.current.pageComponent.hasOverflowBelowWithSplitter) && $JHS.current.item.displayInTableOverflow && !$item.displayInTableOverflow)${JHS.current.group.shortName}PC:${JHS.current.group.shortName}Tab:#end${item.id}#end" #end
+#end
+
+#macro (SEARCH_ITEM_PARTIAL_TRIGGERS)
+#if (${JHS.current.item.hasDependsOnItemInAdvSearch}) partialTriggers = "#foreach($item in $JHS.current.item.dependsOnItemsInAdvSearch) Search${item.id}#end" #end
+#end
+
+#macro (ITEM_PROMPT_IN_FORM)
+label="${JHS.nls(${JHS.current.item.promptInForm}, "${JHS.current.group.name}_${JHS.current.item.name}")}"#end
+
+#macro (BUTTON_TEXT_IN_FORM)
+#set ($nlsKey = "${JHS.current.group.name}_${JHS.current.item.name}")
+#if ($JHS.current.item.dataBound)
+ #set ($value = "#{bindings.${JHS.current.item.bindingName}.attributeValue}")
+#elseif (${JHS.current.item.value}!='') 
+ #set ($value = "${JHS.nls(${JHS.current.item.value}, $nlsKey)}")
+#else 
+ #set ($value = "${JHS.nls(${JHS.current.item.promptInForm}, $nlsKey)}")
+#end 
+#if ($JHS.current.pageComponent.hasOverflowInline)#BUTTON_TEXT_IN_TABLE()#else#JHS_PROP("textAndAccessKey" $value)#end#end
+
+#macro (ITEM_HEADER_TEXT_IN_TABLE)
+headerText="${JHS.nls(${JHS.current.item.promptInTable}, "${JHS.current.group.name}_TABLE_${JHS.current.item.name}")}"#end
+
+#macro (ITEM_PROMPT_IN_TABLE)
+label="${JHS.nls(${JHS.current.item.promptInTable}, "${JHS.current.group.name}_TABLE_${JHS.current.item.name}")}"#end
+
+#macro (BUTTON_TEXT_IN_TABLE)
+#set ($nlsKey = "${JHS.current.group.name}_${JHS.current.item.name}")
+#if ($JHS.current.item.dataBound)
+ #set ($value = "#{row.bindings.${JHS.current.item.attributeName}.attributeValue}")
+#else 
+ #set ($value = "${JHS.nls(${JHS.current.item.promptInTable},$nlsKey)}")
+#end 
+#JHS_PROP("textAndAccessKey" $value)#end
+
+#macro (COLUMN_HEADER_LABEL)
+value="${JHS.nls(${JHS.current.item.promptInTable}, "${JHS.current.group.name}_TABLE_${JHS.current.item.name}")}"#end
+
+#macro (ITEM_SIZE)
+#JHS_PROP("size" $JHS.current.item.displayHeight)#end
+
+#macro (RENDER_IF_OPTIONAL_IN_FORM)
+rendered="${JHS.current.item.optionalInForm}"#end
+
+#macro (RENDER_IF_OPTIONAL_IN_TABLE)
+rendered="${JHS.current.item.optionalInTable}"#end
+
+#macro (ITEM_PROMPT_IN_SEARCH)
+label="${JHS.nls(${JHS.current.item.promptInSearch}, "${JHS.current.group.name}_FIND_${JHS.current.item.name}")}"#end
+
+#macro (ITEM_PROMPT_IN_QUICK_SEARCH $item)
+label="${JHS.nls(${item.promptInSearch}, "${JHS.current.group.name}_FIND_${item.name}")}"#end
+
+#macro (ITEM_PROMPT_IN_SEARCH_FROM)
+label="${JHS.nls(${JHS.current.item.promptInSearch}, "${JHS.current.group.name}_FIND_${JHS.current.item.name}_FROM","SEARCH_FROM")}"#end
+
+#macro (ITEM_PROMPT_IN_SEARCH_TO)
+"${JHS.nls(${JHS.current.item.promptInSearch}, "${JHS.current.group.name}_FIND_${JHS.current.item.name}_TO","SEARCH_TO")}"#end
+
+#macro (ITEM_READ_ONLY_IN_FORM)
+#if ($JHS.current.pageComponent.hasOverflowArea)#ITEM_READ_ONLY_IN_TABLE()#else#JHS_PROP("readOnly" $JHS.current.item.readOnlyInForm)#end#end
+
+#macro (ITEM_READ_ONLY_IN_TABLE)
+#JHS_PROP("readOnly" $JHS.current.item.readOnlyInTable)#end
+
+#macro (ITEM_UPDATEABLE_IN_FORM)
+#if ($JHS.current.pageComponent.hasOverflowArea)#ITEM_UPDATEABLE_IN_TABLE()#else#JHS_PROP("rendered" $JHS.current.item.updateableInForm)#end#end
+
+#macro (ITEM_UPDATEABLE_IN_TABLE)
+#JHS_PROP("rendered" $JHS.current.item.updateableInTable)#end
+
+#macro (ITEM_RENDERED_IN_FORM)
+#if ($JHS.current.pageComponent.hasOverflowArea)#JHS_PROP("rendered" $JHS.current.item.renderedInOverflowArea)#elseif ($JHS.current.pageComponent.tableLayout)#ITEM_RENDERED_IN_TABLE()#else#JHS_PROP("rendered" $JHS.current.item.renderedInForm)#end#end
+
+#macro (ITEM_RENDERED_IN_TABLE)
+## We use visible property instead of rendered property, because otherwise values of one column
+## appear in another column when columns are displayed conditionally
+#JHS_PROP("visible" $JHS.current.item.renderedInTable)#end
+
+#macro (ITEM_REQUIRED_IN_FORM)
+## when the item is a depends on item we use showRequired property rather than required property. We must do this
+## to prevent premature validation of other items with immediate=true when
+## one of the immediate items cause a submit of the form.
+## #if ($JHS.current.item.hasDependentItems || $JHS.current.pageComponent.hasOverflowInline || $JHS.current.item.displayType=='dropDownList') showRequired#else required#end="${JHS.current.item.requiredInForm}"#end
+## #if ($JHS.current.item.hasDependentItems) showRequired#else required#end="${JHS.current.item.requiredInForm}"#end
+required="${JHS.current.item.requiredInForm}"#end
+
+#macro (ITEM_SHOW_REQUIRED_IN_FORM)
+showRequired="${JHS.current.item.requiredInForm}"#end
+
+#macro (LOV_ITEM_REQUIRED_IN_FORM)
+## when the lov item is a depends on item we use showRequired propertyis used for validation
+## which causes the immediate property set to true, we must use
+## showRequired property rather than required property. We must do this
+## to prevent premature validation of other items with immediate=true when
+## one of the immediate items cause a submit of the form.
+#if ($JHS.current.item.useLovForValidation) showRequired#else required#end="${JHS.current.item.requiredInForm}"#end
+
+#macro (ITEM_REQUIRED_IN_TABLE)
+required="${JHS.current.item.requiredInTable}"#end
+
+#macro (ITEM_SHOW_REQUIRED_IN_TABLE)
+#if (!${JHS.current.item.readOnlyInTable} || ${JHS.current.item.readOnlyInTable}!="true") showRequired="${JHS.current.item.requiredInTablePlain}"#end#end
+
+#macro (ITEM_ROWS)
+#if (${JHS.current.item.itemType.displayHeight} && ${JHS.current.item.itemType.displayHeight}=='#{$HINTS$.displayHeight}' && $JHS.current.pageComponent.tableLayout && ($JHS.current.item.displayInTable || $JHS.current.pageComponent.hasOverflowInline))
+  rows="#{bindings.${JHS.current.group.name}Table.hints.${JHS.current.item.attributeName}.displayHeight}"
+#else
+  #JHS_PROP("rows" $JHS.current.item.displayHeight)
+#end#end
+
+#macro (ITEM_SORTABLE)
+#if($JHS.current.item.sortable)sortable="${JHS.current.item.sortable}"#end#end
+
+#macro (ITEM_SORT_PROPERTY)
+#if($JHS.current.item.sortable)sortProperty="${JHS.current.item.attributeName}"#end#end
+
+#macro (ITEM_ROW_HEADER_PROPERTY)
+rowHeader="false"#end
+
+#macro (ITEM_VALUE_IN_FORM)
+#if ($JHS.current.pageComponent.hasOverflowInline)#ITEM_VALUE_IN_TABLE()#elseif ($JHS.current.item.value=='')value="#{bindings.${JHS.current.item.bindingName}.inputValue}" #else value="${JHS.current.item.value}"#end
+#end
+
+#macro (ITEM_VALUE_IN_TABLE)
+value="#if ($JHS.current.item.dataBound)#{row.bindings.${JHS.current.item.attributeName}.inputValue}#else${JHS.current.item.value}#end"
+#end
+
+#macro (ITEM_ITEMS_IN_TABLE)
+value="#{row.bindings.${JHS.current.item.attributeName}.items}"
+#end
+
+#macro (ITEM_VALUE_IN_TABLE_WITH_PROP $property)
+$property="#if ($JHS.current.item.dataBound)#{row.${JHS.current.item.attributeName}}#else ${JHS.current.item.value}#end"
+#end
+
+#macro (ITEM_VALUE_IN_SEARCH)
+value="#{#SEARCH_BEAN().criteria.${JHS.current.item.bindingName}}"#end
+
+#macro (ITEM_VALUE_IN_SEARCH_FROM)
+value="#{#SEARCH_BEAN().criteria.${JHS.current.item.bindingName}_From}"#end
+
+#macro (ITEM_VALUE_IN_SEARCH_TO)
+value="#{#SEARCH_BEAN().criteria.${JHS.current.item.bindingName}_To}"#end
+
+#macro (ITEM_VALUE_IN_SEARCH_SET_BY_USER)
+value="#{#SEARCH_BEAN().operators.${JHS.current.item.bindingName}_QcSetByUser}"#end
+
+#macro (ITEM_VALUE_IN_QUICK_SEARCH)
+value="#{#SEARCH_BEAN().searchText}"#end
+
+#macro (ITEM_WRAP)
+#if (!$JHS.current.item.wrap) noWrap="true" #else noWrap="false" #end#end
+
+#macro (LOV_ITEM_POPUP_TITLE)
+popupTitle="${JHS.nls("#SEARCH_AND_SELECT_LABEL() ${JHS.current.item.promptInSearch}", "SEARCH_AND_SELECT_${JHS.current.group.name}_${JHS.current.item.name}")}"
+searchDesc="${JHS.nls("#SEARCH_AND_SELECT_LABEL() ${JHS.current.item.promptInSearch}", "SEARCH_AND_SELECT_${JHS.current.group.name}_${JHS.current.item.name}")}"#end
+
+#macro (LOV_ITEM_MODEL)
+model="#{bindings.${JHS.current.item.bindingName}.listOfValuesModel}" #end
+
+#macro (LOV_ITEM_MODEL_IN_TABLE)
+model="#{row.bindings.${JHS.current.item.attributeName}.listOfValuesModel}" #end
+
+#macro (REGULAR_EXPRESSION_VALIDATOR)
+#if (!($JHS.current.item.regularExpression==""))
+<af:validateRegExp pattern="$JHS.current.item.regularExpression"  messageDetailNoMatch="$JHS.current.item.regularExpressionMessage" id="#NEW_ID("vre")"/>
+#end
+#end
+
+#macro (VALIDATOR_BINDING)
+#if ($JHS.current.pageComponent.hasOverflowInline)#VALIDATOR_BINDING_IN_TABLE()#else<f:validator binding="#{bindings.${JHS.current.item.bindingName}.validator}"/>#end
+#end
+
+#macro (VALIDATOR_BINDING_IN_TABLE)
+#if ($JHS.current.item.dataBound)
+<f:validator binding="#{row.bindings.${JHS.current.item.attributeName}.validator}"/>
+#end#end
+
+#macro (NUMBER_CONVERTER)
+#if(${JHS.current.item.numberItem} && ${JHS.current.item.dataBound})
+ #if ($JHS.current.pageComponent.tableLayout && ($JHS.current.item.displayInTable || $JHS.current.pageComponent.hasOverflowInline))
+   <af:convertNumber groupingUsed="false"
+     pattern="#{bindings.${JHS.current.group.name}Table.hints.${JHS.current.item.attributeName}.format}"/>
+ #else
+   <af:convertNumber groupingUsed="false"
+     pattern="#{bindings.${JHS.current.item.bindingName}.format}"/>
+ #end   
+#end
+#end
+
+#macro (DATE_CONVERTER)
+<af:convertDateTime pattern="#{nls.datepattern}"/>
+#end
+
+#macro (DATE_TIME_CONVERTER)
+<af:convertDateTime pattern="#{nls.datetimepattern}"/>
+#end
+
+#macro (START_ITEMS_DISPLAYED_AT_RIGHT_NESTED)
+#if ($JHS.current.item.hasItemDisplayedAtRight)
+ <af:panelLabelAndMessage #ITEM_SHOW_REQUIRED_IN_FORM() #ITEM_RENDERED_IN_FORM()
+     #ITEM_PROMPT_IN_FORM() #ITEM_FOR_IN_FORM() #ITEM_HELP() id="#NEW_ID("plm")" >
+#end
+#end
+
+#macro (END_ITEMS_DISPLAYED_AT_RIGHT_NESTED)
+#if ($JHS.current.item.hasItemDisplayedAtRight)
+ <f:facet name="end">
+      #ITEMS_DISPLAYED_AT_RIGHT()
+</f:facet>
+</af:panelLabelAndMessage>
+#end#end
+
+#macro (START_ITEMS_DISPLAYED_AT_RIGHT)
+## Strange ADF Faces bug: when displaying an item at the right of anbother item in table overflow
+## the prompt of the item is niot displayed. Work around is to use panelLabelAndMessage for such an item
+## drawback of using panelLabelAndmessage is that the itme is displayed one pixel lower then the item
+## at the left. If you chain multiple items at the right of each other, this leads to ugly layout
+## Therefore, we don't use panelLabelAndMessage in normal form layouts for items displayed at right
+## once the ADF Faces bug to not display the propmpt is fixed, we can remove the panelLabelAndMessage
+## for items displayed at the right of another item in table overflow again.
+#if (($JHS.current.item.hasItemDisplayedAtRight && !$JHS.current.item.DisplayedAtRightOfItem) || ($JHS.current.item.DisplayedAtRightOfItem && $JHS.current.pageComponent.hasOverflowInline))
+ <af:panelLabelAndMessage id="#NEW_ID("plm")" #ITEM_HELP()
+  #if (${JHS.current.pageComponent.processingAdvancedSearchArea})
+     ## in advanced search
+     #ITEM_PROMPT_IN_SEARCH() #ITEM_FOR_IN_SEARCH() 
+  #else
+     ## in table overflow or form layout
+     #ITEM_SHOW_REQUIRED_IN_FORM() #ITEM_RENDERED_IN_FORM()
+     #ITEM_PROMPT_IN_FORM() #ITEM_FOR_IN_FORM()  
+  #end
+     >
+#end
+#end
+
+#macro (END_ITEMS_DISPLAYED_AT_RIGHT)
+#if (($JHS.current.item.hasItemDisplayedAtRight && !$JHS.current.item.DisplayedAtRightOfItem) || ($JHS.current.item.DisplayedAtRightOfItem && $JHS.current.pageComponent.hasOverflowInline))
+     <f:facet name="end">
+    ## use valign=middle so readOnly number items are nicely aligned with prompt!
+       <af:panelGroupLayout id="#NEW_ID("pgl")" valign="middle" layout="horizontal">
+          #ITEMS_DISPLAYED_AT_RIGHT()
+       </af:panelGroupLayout>
+     </f:facet>
+   </af:panelLabelAndMessage>
+#elseif ($JHS.current.item.hasItemDisplayedAtRight)
+   #ITEMS_DISPLAYED_AT_RIGHT()
+#end
+#end
+
+#macro (ITEMS_DISPLAYED_AT_RIGHT)
+## <af:panelFormLayout id="#NEW_ID("pfl")" rows="1" maxColumns="1" labelAlignment="start">
+  #foreach($item in ${JHS.current.item.itemsDisplayedAtRight})
+    #if (${JHS.current.pageComponent.processingAdvancedSearchArea} && $item.showInAdvancedSearch)
+       #JHS_PARSE($item.advancedSearchTemplateIdentifier $item)
+    #elseif (${JHS.current.pageComponent.hasOverflowArea} && $item.displayInTableOverflow)
+       #JHS_PARSE($item.formTemplateIdentifier $item)
+    #else
+       #JHS_PARSE($item.formTemplateIdentifier $item)
+    #end
+  #end
+## </af:panelFormsLayout>
+#end
+
+#macro (ITEMS_DISPLAYED_AT_RIGHT_IN_TABLE)
+#if ($JHS.current.item.hasItemDisplayedAtRight)
+  #foreach($item in ${JHS.current.item.itemsDisplayedAtRight})
+    #if ($item.displayInTable)
+     ## add spacer conditionally here, instead of using seperator facet on panelGroupLayout
+     ## because first item might be conditionally hidden in some rows, causing ugly left alignment 
+     <af:spacer width="10" height="10" id="#NEW_ID("sp")" #ITEM_RENDERED_IN_TABLE()/>
+     #JHS_PARSE($item.tableTemplateIdentifier $item)
+    #end 
+  #end
+#end#end
+
+#macro (ITEMS_DISPLAYED_AT_RIGHT_PLM_PRIM)
+#if ($JHS.current.item.hasItemDisplayedAtRight && !$JHS.current.item.DisplayedAtRightOfItem)
+  #ITEMS_DISPLAYED_AT_RIGHT()
+#end#end
+
+#macro (ITEMS_DISPLAYED_AT_RIGHT_PLM_SEC)
+#if ($JHS.current.item.hasItemDisplayedAtRight && $JHS.current.item.DisplayedAtRightOfItem)
+  #ITEMS_DISPLAYED_AT_RIGHT()
+#end#end
+
+#macro (ITEM_SIMPLE)
+#if (($JHS.current.item.hasItemDisplayedAtRight && !$JHS.current.item.DisplayedAtRightOfItem) || ($JHS.current.item.DisplayedAtRightOfItem && $JHS.current.pageComponent.hasOverflowInline)) simple="true" #end
+#end
+
+#macro (TEXT_SEARCH_MAXIMUM_LENGTH)
+maximumLength="4000"
+#end
+
+
+#macro (ITEM_CONTEXT_FACET)
+#if (${JHS.current.item.contextRegion})
+<f:facet name="context">
+      <af:contextInfo id="#NEW_ID("ci")" rendered="#{bindings.${JHS.current.item.bindingName}.inputValue!=null}">
+      <af:showPopupBehavior popupId="${JHS.page.getRelativePopupId("#REGION_POPUP_ID(${JHS.current.item.contextRegion})","${JHS.engine.fullNamingContainerPath}")}" triggerType="contextInfo" align="beforeStart" />
+    </af:contextInfo>
+</f:facet>
+#end#end
+
+#macro (ITEM_CONTEXT_FACET_IN_TABLE)
+#if (${JHS.current.item.contextRegion})
+  <f:facet name="context">
+      <af:contextInfo id="#NEW_ID("ci")" #if (${JHS.current.item.dataBound}) rendered="#{row.bindings.${JHS.current.item.attributeName}.inputValue!=null}" #end>
+        <af:showPopupBehavior popupId="${JHS.page.getRelativePopupId("#REGION_POPUP_ID(${JHS.current.item.contextRegion})","${JHS.engine.fullNamingContainerPath}")}" triggerType="contextInfo" align="beforeStart" />
+      </af:contextInfo>
+  </f:facet>
+ #JHS_PARSE("POPUP_REGION_CONTAINER" ${JHS.current.item.contextRegion})
+#end#end

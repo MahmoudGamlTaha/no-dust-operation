@@ -1,0 +1,16 @@
+## revision_history
+## 21-jan-2011   Steven Davelaar
+## 1.2           Use call to JHS.page.addPopup to add delete popup at end of page
+## 09-sep-2010   Sandra Muller
+## 1.1           changed commandLink with nested image to commandImageLink, so that shortDesc works in IE
+## 01-sep-2008   Steven Davelaar
+## 1.0           Initial creation
+#if ($JHS.current.group.tableDeleteAllowed)
+   ## no need to prefix id with group name, is within unique panel collection naming container
+    <af:link  id="${JHS.current.group.shortName}delrl" partialSubmit="true" immediate="true"
+     #JHS_PROP("rendered" $JHS.current.group.deleteAllowedExpression)
+     shortDesc="#DELETE_ROW_BUTTON_LABEL_DESC()" icon="/jheadstart/images/deleteRow.png">
+     <af:showPopupBehavior popupId="${JHS.page.addPopup("${JHS.current.group.shortName}DeletePopup","${JHS.engine.fullNamingContainerPath}","#DELETE_POPUP()")}"/>
+    </af:link>
+    #ADD_CUR_GROUP_PARTIAL_TRIGGER("${JHS.current.group.shortName}delrl")
+#end

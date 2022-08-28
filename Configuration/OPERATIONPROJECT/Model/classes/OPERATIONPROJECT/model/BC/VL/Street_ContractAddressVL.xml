@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Street_ContractAddressVL"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="OPERATIONPROJECT.model.BC.VL.Street_ContractAddressVL_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="Street"
+    Cardinality="1"
+    Source="true"
+    Owner="OPERATIONPROJECT.model.BC.VO.StreetVO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="Street"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.VO.StreetVO.StreetId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.StreetVO.AreaId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.StreetVO.RegionId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.StreetVO.CityId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="ContractAddress"
+    Cardinality="-1"
+    Owner="OPERATIONPROJECT.model.BC.VO.ContractAddressVO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="ContractAddress"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.VO.ContractAddressVO.StreetId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.ContractAddressVO.AreaId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.ContractAddressVO.RegionId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.ContractAddressVO.CityId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

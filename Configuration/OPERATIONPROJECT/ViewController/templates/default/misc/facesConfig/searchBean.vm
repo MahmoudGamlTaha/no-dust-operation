@@ -1,0 +1,94 @@
+## revision_history
+## 06-nov-2013   Steven Davelaar
+## 1.9           Added iterBinding property
+## 13-feb-2012   Steven Davelaar
+## 1.8           Added itemAttributes property
+## 22-jun-2011   Steven Davelaar
+## 1.7           Prefix searchItem with group short name
+## 18-may-2010   Steven Davelaar
+## 1.6           Added id property to all elements
+## 08-jul-2009   Steven Davelaar
+## 1.5           Replaced data.[groupName]Pagedef with bindings, to fix bug that 
+##               search button need to be be clicked twice. Cause is use of
+##               dynamic regions: the region binding is another instance than the instance
+##               retrieved through data.PageDef!!
+## 30-sep-2008   Evert-Jan de Bruin
+## 1.4           Changed scope to pageFlow, add lovItemBeanRef
+## 02-mar-2007   Steven Davelaar
+## 1.3           Removed searchAttribute property, added searchItem
+## 05-jan-2007   Steven Davelaar
+## 1.2           Added operators property
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+#set ($bean = ${JHS.current.managedBean})
+#set ($group = ${JHS.current.group})
+#set ($pageBaseGroup = ${bean.page.group})
+
+<managed-bean id="#NEW_ID("__")">
+  <managed-bean-name id="#NEW_ID("__")">${bean.beanName}</managed-bean-name>
+  <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.JhsSearchBean</managed-bean-class>
+  <managed-bean-scope id="#NEW_ID("__")">pageFlow</managed-bean-scope>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">bindings</property-name>
+    <value id="#NEW_ID("__")">#{'#{bindings}'}</value>
+  </managed-property>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">iterBinding</property-name>
+    <value id="#NEW_ID("__")">#{'#{#ITERATOR()}'}</value>
+  </managed-property>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">searchBinding</property-name>
+    <value id="#NEW_ID("__")">#{'#{bindings.advancedSearch${group.name}}'}</value>
+  </managed-property>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">searchItem</property-name>
+    <value id="#NEW_ID("__")">${group.shortName}${group.singleSearchAttribute}</value>
+  </managed-property>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">dataCollection</property-name>
+    <value id="#NEW_ID("__")">${group.dataCollection}</value>
+  </managed-property>
+  #if (${group.maxNumberQueryHits} > 0) 
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">maxQueryHits</property-name>
+    <value id="#NEW_ID("__")">${group.maxNumberQueryHits}</value>
+  </managed-property>
+  #end
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">operators</property-name>
+      <map-entries id="#NEW_ID("__")">
+    #foreach($item in ${group.allItems})
+      #if ($item.showInAdvancedSearch && $item.queryOperator!='' && $item.queryOperator!='setByUser')
+        #if ($item.queryOperator=='between')
+        <map-entry id="#NEW_ID("__")">
+          <key id="#NEW_ID("__")">${item.bindingName}_From</key>
+          <value id="#NEW_ID("__")">greaterThanOrEqual</value>
+        </map-entry>
+        <map-entry id="#NEW_ID("__")">
+          <key id="#NEW_ID("__")">${item.bindingName}_To</key>
+          <value id="#NEW_ID("__")">lessThanOrEqual</value>
+        </map-entry>
+        #else
+        <map-entry id="#NEW_ID("__")">
+          <key id="#NEW_ID("__")">${item.bindingName}</key>
+          <value id="#NEW_ID("__")">${item.queryOperator}</value>
+        </map-entry>
+        #end
+      #end
+    #end    
+      </map-entries>
+    </managed-property>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">itemAttributes</property-name>
+    <map-entries id="#NEW_ID("__")">
+      #foreach($item in ${group.allItems})
+        #if ($item.dataBound && ($item.showInAdvancedSearch || $item.showInQuickSearch))
+          <map-entry id="#NEW_ID("__")">
+            <key id="#NEW_ID("__")">${item.bindingName}</key>  
+            <value id="#NEW_ID("__")">${item.attributeName}</value> 
+          </map-entry>
+        #end   
+      #end
+    </map-entries>
+  </managed-property>
+</managed-bean>

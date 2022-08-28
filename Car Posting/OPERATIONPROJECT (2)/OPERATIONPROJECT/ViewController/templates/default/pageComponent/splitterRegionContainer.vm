@@ -1,0 +1,149 @@
+## revision_history
+## 11-may-2011   Steven Davelaar
+## 2.7           Set splitterPosition based on width/height first region.
+## 04-feb-2011   Steven Davelaar
+## 2.6           Moved most init logic to reusable macro INIT_REGION_CONTAINER_VARS
+## 04-jan-2011   Steven Davelaar
+## 2.5           - Added check at start whether item region contains items in current context
+## 18-oct-2010   Steven Davelaar
+## 2.4           Added ccheck for showInPopup around REGION_PARTIAL_TRIGGERS call for subRegion
+## 08-oct-2010   Steven Davelaar
+## 2.3           Added calls to REGION_CONTAINER_HELP, SUB_REGION_HELP macros
+## 27-may-2010   Steven Davelaar
+## 2.2           Added calls to ADD_PARTIAL_TARGET
+## 24-mar-2010   Steven Davelaar
+## 2.1           - Moved init code into inline macro so it can be called again after first region
+##               is processed
+##               - Merged verticalSplitterRegionContainer.vm and horizontalSplitterRegionContainer into one template
+## 23-jun-2009   Paco van der Linden
+## 2.0           Restructured layout according to (stretching) best-practices.
+
+
+#macro (INIT_LOCAL_VARS)
+#INIT_REGION_CONTAINER_VARS()
+#if ($regions.size()==0)
+  #set ($firstRegion = false)
+  #set ($otherRegions = [])
+#elseif ($regions.size()==1)
+  #set ($firstRegion = $regions.get(0))
+  #set ($otherRegions = [])
+#else 
+  #set ($firstRegion = $regions.get(0))
+  #set ($dummyRemovedRegion = $regions.remove(0)) 
+  #set ($otherRegions = $regions)
+#end
+#end
+
+#INIT_LOCAL_VARS()
+
+## We don't want to show the top-level container if there are no subregions to show.
+#if (!${JHS.current.regionContainer.parentRegionContainer} && !$firstRegion)
+
+  ## Do nothing
+
+#else
+
+  ## Only generate title if this is top-level container, otherwise title is generated in subregions loop
+  #if (!${JHS.current.regionContainer.parentRegionContainer} && !($JHS.current.regionContainer.title == ""))
+    #if ($JHS.engine.stretchEnabled && ${JHS.current.regionContainer.enableStretching})
+    <af:panelStretchLayout #PANEL_HEADER_TOP_HEIGHT() id="#REGION_ID()Psl"
+                           #JHS_PROP("rendered" $JHS.current.regionContainer.rendered)
+                           #REGION_PARTIAL_TRIGGERS($JHS.current.regionContainer)>
+      <f:facet name="top">
+        <af:panelHeader text="#REGION_CONTAINER_TITLE()" id="#REGION_ID()PanelHeader" #REGION_CONTAINER_HELP()/>
+      </f:facet>
+      <f:facet name="center">
+      #REGION_PARTIAL_TARGET($JHS.current.regionContainer "#REGION_ID()Psl")
+    #else
+    <af:panelHeader text="#REGION_CONTAINER_TITLE()" id="#REGION_ID()PanelHeader" #REGION_CONTAINER_HELP()
+                           #JHS_PROP("rendered" $JHS.current.regionContainer.rendered)
+                           #REGION_PARTIAL_TRIGGERS($JHS.current.regionContainer)>
+      #REGION_PARTIAL_TARGET($JHS.current.regionContainer "#REGION_ID()PanelHeader")
+    #end
+  #end
+
+  #if (!$firstRegion)
+
+    ## No subregions to show, so do nothing
+
+  #else
+
+    #if ($otherRegions.size() > 0)
+      <af:panelSplitter id="#REGION_ID()Ps" 
+         #if ($JHS.current.regionContainer.layoutStyle=="verticalSplitter") orientation="vertical" 
+           #if ($firstRegion.regionContainer) #JHS_PROP("splitterPosition" $firstRegion.heightAsNumber) #end
+         #else orientation="horizontal" 
+           #if ($firstRegion.regionContainer) #JHS_PROP("splitterPosition" $firstRegion.widthAsNumber) #end
+         #end >
+        <f:facet name="first">
+    #end
+
+          <af:panelStretchLayout id="#REGION_ID()${firstRegion.name}Psl" #JHS_PROP("rendered" $firstRegion.rendered) #REGION_PARTIAL_TRIGGERS($firstRegion) 
+               #if (!($firstRegion.title=="")) #PANEL_HEADER_TOP_HEIGHT() #end >
+          #if (!($firstRegion.title==""))
+            <f:facet name="top">
+              <af:panelHeader text="#REGION_TITLE($firstRegion)" id="#REGION_ID()${firstRegion.name}PanelHeader" #SUB_REGION_HELP($firstRegion)/>
+            </f:facet>
+          #end
+            <f:facet name="center">
+              #JHS_PARSE($firstRegion.templateIdentifier $firstRegion)
+              ## Need to init otherregions var again, might have been overwritten during parsing of the first region that
+              ## might include this same template or another template that also declares a variable otherRegions!!!!!
+              #INIT_LOCAL_VARS()
+            </f:facet>
+          </af:panelStretchLayout>
+          #REGION_PARTIAL_TARGET($firstItemRegion "#REGION_ID()${firstRegion.name}Psl")
+
+    #if ($otherRegions.size() > 0)
+        </f:facet>
+        <f:facet name="second">
+          #if ($otherRegions.size() > 1)
+            ##TODO: Need a better solution...
+            <af:panelGroupLayout layout="scroll" id="#NEW_ID("pgl")">
+              #foreach($subRegion in $otherRegions)
+                #if (${subRegion.showTitle})
+                  <af:panelHeader text="#REGION_TITLE($subRegion)" #JHS_PROP("rendered" $subRegion.rendered) #if (!${subRegion.showInPopup}) #REGION_PARTIAL_TRIGGERS($subRegion) #end id="#REGION_ID()${subRegion.name}PanelHeader" #SUB_REGION_HELP($subRegion)>
+                  #REGION_PARTIAL_TARGET($subRegion "#REGION_ID()${subRegion.name}PanelHeader")
+                #else 
+                  <af:panelGroupLayout #JHS_PROP("rendered" $subRegion.rendered) #if (!${subRegion.showInPopup}) #REGION_PARTIAL_TRIGGERS($subRegion) #end id="#REGION_ID()${subRegion.name}Pgl">
+                  #REGION_PARTIAL_TARGET($subRegion "#REGION_ID()${subRegion.name}Pgl")
+                #end
+                #JHS_PARSE($subRegion.templateIdentifier $subRegion)
+                #if (${subRegion.showTitle})
+                  </af:panelHeader>
+                #else  
+                  </af:panelGroupLayout>
+                #end
+              #end
+            </af:panelGroupLayout>
+          #else
+            #foreach($subRegion in $otherRegions)
+              <af:panelStretchLayout id="#REGION_ID()${subRegion.name}Psl" #JHS_PROP("rendered" $subRegion.rendered) #if (!${subRegion.showInPopup}) #REGION_PARTIAL_TRIGGERS($subRegion) #end
+               #if (${subRegion.showTitle}) #PANEL_HEADER_TOP_HEIGHT() #end >
+              #if (${subRegion.showTitle})
+                <f:facet name="top">
+                  <af:panelHeader text="#REGION_TITLE($subRegion)" id="#REGION_ID()${subRegion.name}PanelHeader" #SUB_REGION_HELP($subRegion)/>
+                </f:facet>
+              #end
+                <f:facet name="center">
+                  #JHS_PARSE($subRegion.templateIdentifier $subRegion)
+                </f:facet>
+              </af:panelStretchLayout>
+              #REGION_PARTIAL_TARGET($subRegion "#REGION_ID()${subRegion.name}Psl")
+            #end
+          #end
+        </f:facet>
+      </af:panelSplitter>
+    #end
+  #end
+
+
+  #if (!${JHS.current.regionContainer.parentRegionContainer} && !($JHS.current.regionContainer.title == ""))
+    #if ($JHS.engine.stretchEnabled)
+      </f:facet>
+    </af:panelStretchLayout>
+    #else
+    </af:panelHeader>
+    #end
+  #end
+#end

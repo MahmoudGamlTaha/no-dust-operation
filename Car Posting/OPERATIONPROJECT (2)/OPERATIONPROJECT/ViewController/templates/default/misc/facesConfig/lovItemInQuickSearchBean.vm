@@ -1,0 +1,97 @@
+## revision_history
+## 13-feb-2012   Steven Davelaar
+## 1.7           - Added properties iterBindingExpr, lovTitleExpr, lovWidth, lovHeight, lovTaskFlowId, returnAttributeValues
+##               - Removed properties, lovFieldValueExpr, popupId, lovTaskFlowManager, lovTaskFlowName 
+##               - Renamed returnValues property to returnItemValues
+## 15-feb-2011   Steven Davelaar
+## 1.6           Use group short name in returnValues property
+## 18-may-2010   Steven Davelaar
+## 1.5           Added id property to all elements
+## 30-sep-2008   Evert-Jan de Bruin
+## 1.4           Changed scope to pageFlow, removed lovPage property
+## 10-okt-2007   Steven Davelaar
+## 1.3           Added lovSearchItem property
+## 07-may-2007   Sandra Muller
+## 1.2           added managed property itemsToClear
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+#set ($bean = ${JHS.current.managedBean})
+#set ($item = ${JHS.current.item})
+
+<managed-bean id="#NEW_ID("__")">
+  <managed-bean-name id="#NEW_ID("__")">${bean.beanName}</managed-bean-name>
+  <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.LovItemBean</managed-bean-class>
+  <managed-bean-scope id="#NEW_ID("__")">pageFlow</managed-bean-scope>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">lovSearchItem</property-name>
+    <value id="#NEW_ID("__")">${item.lovSearchItemName}</value>
+  </managed-property>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">lovTitleExpr</property-name>
+    <value id="#NEW_ID("__")">#{"${JHS.nls("#SEARCH_AND_SELECT_LABEL() ${item.promptInSearch}", "SEARCH_AND_SELECT_${JHS.current.group.name}_${item.name}")}"}</value>
+  </managed-property>
+  #if (${item.lovGroup.groupWidthAsInteger}!='')
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">lovWidth</property-name>
+    <value id="#NEW_ID("__")">${item.lovGroup.groupWidthAsInteger}</value>
+  </managed-property>
+  #end
+  #if (${item.lovGroup.groupHeightAsInteger}!='')
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">lovHeight</property-name>
+    <value id="#NEW_ID("__")">${item.lovGroup.groupHeightAsInteger}</value>
+  </managed-property>
+  #end
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">lovTaskFlowIdString</property-name>
+    <value id="#NEW_ID("__")">${item.taskFlowId}</value>
+  </managed-property>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">lovParams</property-name>
+    <map-entries id="#NEW_ID("__")">
+      #foreach($param in ${JHS.current.item.params} )
+      <map-entry id="#NEW_ID("__")">  
+        <key id="#NEW_ID("__")">${param.name}</key>
+        <value id="#NEW_ID("__")">#{'${param.value}'}</value>
+      </map-entry>
+      #end
+    </map-entries>
+  </managed-property>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">returnItemValues</property-name>
+    <map-entries id="#NEW_ID("__")">
+      #foreach ($returnValue in ${item.returnValues})
+      <map-entry id="#NEW_ID("__")">
+        <key id="#NEW_ID("__")">${returnValue.source}</key>  
+        <value id="#NEW_ID("__")">QuickSearch${JHS.current.group.shortName}${returnValue.target}</value> 
+      </map-entry>
+      #end
+    </map-entries>
+  </managed-property>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">returnAttributeValues</property-name>
+    <map-entries id="#NEW_ID("__")">
+      #foreach ($returnValue in ${item.returnValues})
+        #set ($returnItem = ${JHS.current.group.getItem(${returnValue.target})})
+        #if ($returnItem && $returnItem.dataBound)
+          <map-entry id="#NEW_ID("__")">
+            <key id="#NEW_ID("__")">${returnValue.source}</key>  
+            <value id="#NEW_ID("__")">${returnItem.attributeName}</value> 
+          </map-entry>
+        #end   
+      #end
+    </map-entries>
+  </managed-property>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">copyToModel</property-name>
+    <value id="#NEW_ID("__")">false</value>
+  </managed-property>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">itemsToClear</property-name>
+    <list-entries id="#NEW_ID("__")">
+      #foreach ($item in ${item.dependentItemsToClear})
+        <value id="#NEW_ID("__")">Search${item.bindingName}</value> 
+      #end
+    </list-entries>
+  </managed-property>
+</managed-bean>

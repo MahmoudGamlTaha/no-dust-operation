@@ -1,0 +1,134 @@
+## revision_history
+## 05-may-2012   Steven Davelaar
+## 2.11          Undid change in rev 2.9, commented out call to ADD_CUR_GROUP_PARTIAL_TRIGGER
+## 24-nov-2011   Steven Davelaar
+## 2.10          Changed id of showDetailItem for group regions to support prev.next page comp
+## 22-jul-2011   Steven Davelaar
+## 2.9           Added call ADD_CUR_GROUP_PARTIAL_TRIGGER when in overflow roght/below
+## 24-feb-2011   Steven Davelaar
+## 2.8           Added call to DIMENSIONS_FROM, TABS_LAZY_CHILD_CREATION
+## 04-feb-2011   Steven Davelaar
+## 2.7           Use AFStretchWidth style class when width set to 100%, added call to INIT_REGION_CONTAINER_VARS
+## 04-jan-2011   Steven Davelaar
+## 2.6           - Added check at start whether item region contains items in current context
+## 28-dec-2010   Steven Davelaar
+## 2.5           Set discloseMany=true when using panel accordion, makes more sense to differentiate from tabs
+## 08-oct-2010   Steven Davelaar
+## 2.4           Added call to REGION_CONTAINER_HELP macro
+## 27-may-2010   Steven Davelaar
+## 2.3           Added calls to ADD_PARTIAL_TARGET
+## 11-dec-2009   Steven Davelaar
+## 2.2           Add panelgrouplayout scroll when engine not stretchable
+## 08-oct-2009   Steven Davelaar
+## 2.1           Added support for secondary group regions
+## 23-jun-2009   Paco van der Linden
+## 2.0           Restructured layout according to (stretching) best-practices.
+## 19-mar-2009   Steven Davelaar
+## 1.7           Surround content with panelGroupLayout with layout=scroll
+##               which can happen when content is displayed within panelTabbed
+## 03-sep-2007   Steven Davelaar
+## 1.6           Do not render item region in advanced search when no search items in it
+## 06-jul-2007   Steven Davelaar
+## 1.5           Added support for stacked flex regions
+## 28-feb-2007   Steven Davelaar
+## 1.4           Added call to dependenciesMgr to get tabs added as partial trigger for hasChanges variable 
+## 31-jan-2007   Steven Davelaar
+## 1.3           Added disabled property to af:showDetailItem element, this property should have inverse value
+##               of rendered property when set 
+## 05-dec-2006   Steven Davelaar
+## 1.2           Added several calls to REGION_PARTIAL_TRIGGERS macro to support new
+##               dependsOnItem property on regions
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+
+#INIT_REGION_CONTAINER_VARS()
+
+## We don't want to show the top-level container if there are no subregions to show.
+#if (!${JHS.current.regionContainer.parentRegionContainer} && $regions.size() == 0)
+
+  ## Do nothing
+
+#else
+
+  ## Only generate title if this is top-level container, otherwise title is generated in subregions loop
+  #if (!${JHS.current.regionContainer.parentRegionContainer} && !($JHS.current.regionContainer.title == ""))
+    #if ($JHS.engine.stretchEnabled)
+    <af:panelStretchLayout #PANEL_HEADER_TOP_HEIGHT() id="#REGION_ID()Psl"
+                           #JHS_PROP("rendered" $JHS.current.regionContainer.rendered)
+                           #REGION_PARTIAL_TRIGGERS($JHS.current.regionContainer)>
+      <f:facet name="top">
+        <af:panelHeader text="#REGION_CONTAINER_TITLE()" id="#REGION_ID()PanelHeader" #REGION_CONTAINER_HELP()/>
+      </f:facet>
+      <f:facet name="center">
+      #REGION_PARTIAL_TARGET($JHS.current.regionContainer "#REGION_ID()Psl")
+    #else
+    <af:panelHeader text="#REGION_CONTAINER_TITLE()" id="#REGION_ID()PanelHeader" #REGION_CONTAINER_HELP()
+                           #JHS_PROP("rendered" $JHS.current.regionContainer.rendered)
+                           #REGION_PARTIAL_TRIGGERS($JHS.current.regionContainer)>
+      #REGION_PARTIAL_TARGET($JHS.current.regionContainer "#REGION_ID()PanelHeader")
+    #end
+  #end 
+
+  #if ($regions.size() > 0)
+
+    #if ($JHS.current.regionContainer.accordion) 
+      #set ($elemName='panelAccordion')
+    #else
+      #set ($elemName='panelTabbed')
+    #end
+
+      #if (${JHS.current.pageComponent.tableLayout} && !(${JHS.current.pageComponent.hasOverflowInline}))
+        ## when creating a new row in a table, and using overflow right/below, when switching overflow tabs
+        ## the items filled in the table itself must also be processed as part of JSF model update phase, to
+        ## prevent required item error when clicking another tab in overflow area
+        ## we can enforce this by making the whole group listen to tab events
+        ## SDA 05-05-2012 Commented out, causes pending table changes to be lost when opening accordion in overflow below. 
+        ## The required items errors do not occur in JDev 11.1.1.6         
+        ## #ADD_CUR_GROUP_PARTIAL_TRIGGER("#REGION_ID()Tabs")
+      #end
+      <af:${elemName} #if ($elemName=='panelTabbed') position="above" #TABS_LAZY_CHILD_CREATION() #else discloseMany="true" #end #DIMENSIONS_FROM()
+        inlineStyle="#INLINE_STYLE_WIDTH(${JHS.current.regionContainer.width}) #if (!$JHS.engine.stretchEnabled) #INLINE_STYLE_HEIGHT(${JHS.current.regionContainer.height}) #end"  
+         #STRETCH_STYLE_CLASS(${JHS.current.regionContainer})
+         #JHS_PROP("rendered" $JHS.current.regionContainer.rendered) #REGION_PARTIAL_TRIGGERS($JHS.current.regionContainer) id="#REGION_ID()Tabs" >
+      #foreach($subRegion in $regions)
+        ## flex region template contains its own showDetailItem
+        #if ($subRegion.flexRegion)
+           #JHS_PARSE($subRegion.templateIdentifier $subRegion)
+        #else
+          ## when a group region, id must be set to group region page component containe name, suffixed wirth sdi
+          #if ($JHS.application.enableFunctionKeys && $subRegion.groupRegion)
+             #set ($groupRegionPageComponent = ${JHS.current.pageComponent.getGroupRegionPageComponent(${subRegion.group})})
+             #set ($sdiId = "${groupRegionPageComponent.containerName}Sdi") 
+          #else   
+             ## old id derivation
+             #set ($sdiId = "#REGION_ID()${subRegion.name}Tab") 
+          #end
+        <af:showDetailItem stretchChildren="first" textAndAccessKey="#REGION_TITLE($subRegion)" #JHS_PROP("rendered" $subRegion.rendered) #JHS_PROP("disabled" $subRegion.disabled) #if (!${subRegion.showInPopup}) #REGION_PARTIAL_TRIGGERS($subRegion) #end id="${sdiId}">
+          #if ($subRegion.flexRegion)
+             #JHS_PARSE($subRegion.templateIdentifier $subRegion)
+          #else
+            #if ($JHS.engine.stretchEnabled)
+              #JHS_PARSE($subRegion.templateIdentifier $subRegion)            
+            #else
+               <af:panelGroupLayout id="#NEW_ID("pgl")" layout="scroll">
+                 #JHS_PARSE($subRegion.templateIdentifier $subRegion)
+               </af:panelGroupLayout>
+            #end
+          #end
+        </af:showDetailItem>
+        #REGION_PARTIAL_TARGET($subRegion "#REGION_ID()${subRegion.name}Tab")
+        #end
+      #end
+      </af:${elemName}>
+      #REGION_PARTIAL_TARGET($JHS.current.regionContainer "#REGION_ID()Tabs")
+  #end
+
+  #if (!${JHS.current.regionContainer.parentRegionContainer} && !($JHS.current.regionContainer.title == ""))
+    #if ($JHS.engine.stretchEnabled)
+      </f:facet>
+    </af:panelStretchLayout>
+    #else
+    </af:panelHeader>
+    #end
+  #end 
+#end

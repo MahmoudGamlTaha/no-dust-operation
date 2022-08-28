@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="TicketFamilyROV"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="OPERATIONPROJECT.model.BC.VO.Lookups.TicketFamilyROV_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="bindChannelCode"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <SQLQuery><![CDATA[select tf.CODE , tf.FAMILY_NAME , tf.CHANNEL_CODE 
+from TICKET_FAMILY tf]]></SQLQuery>
+  <ViewAttribute
+    Name="Code"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CODE"
+    Expression="CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FamilyName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FAMILY_NAME"
+    Expression="FAMILY_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ChannelCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CHANNEL_CODE"
+    Expression="CHANNEL_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="TicketFamilyROVCriteria"
+    ViewObjectName="OPERATIONPROJECT.model.BC.VO.Lookups.TicketFamilyROV"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="TicketFamilyROVCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="TicketFamilyROVCriteria_TicketFamilyROVCriteria_row_0_ChannelCode"
+        ViewAttribute="ChannelCode"
+        Operator="="
+        Conjunction="AND"
+        Value=":bindChannelCode"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Code"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="OPERATIONPROJECT.model.BC.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

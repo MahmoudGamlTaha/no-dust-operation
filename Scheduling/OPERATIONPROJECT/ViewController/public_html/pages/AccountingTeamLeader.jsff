@@ -1,0 +1,182 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsRegionTemplateNoStretch.jsf">
+        <!-- DEBUG:BEGIN:FORM_PAGE_CONTENT : default/page/formPageContent.vm, nesting level: 2 -->
+        <!-- DEBUG:BEGIN:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3 -->
+        <f:facet name="pageContent">
+            <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+            <af:panelGroupLayout id="pcpg" layout="scroll">
+                <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4 -->
+                <af:panelGroupLayout layout="vertical" id="AccountingTeamLeaderTopLc"
+                                     partialTriggers=" AccountingTeamLeaderSaveButton AccountingTeamLeaderCancelButton">
+                    <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                    <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                    <f:facet name="separator">
+                        <af:spacer width="10" height="10" id="sp0"/>
+                    </f:facet>
+                    <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+                    <af:panelHeader id="ph0" text="#{nls['FORM_TITLE_ACCOUNTINGTEAMLEADER']}">
+                        <f:facet name="toolbar">
+                            <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5 -->
+                            <af:toolbox id="tbox0">
+                                <af:toolbar id="tbar0">
+                                    <!-- DEBUG:BEGIN:FORM_BROWSE_BUTTONS : custom/pageComponent/MtsformBrowseButtons.vm, nesting level: 6 -->
+                                    <!-- DEBUG:END:FORM_BROWSE_BUTTONS : custom/pageComponent/MtsformBrowseButtons.vm, nesting level: 6-->
+                                    <af:group id="gr0">
+                                        <!-- DEBUG:BEGIN:NEW_BUTTON : custom/button/MtsnewButton.vm, nesting level: 6 -->
+                                        <!-- DEBUG:END:NEW_BUTTON : custom/button/MtsnewButton.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:DELETE_BUTTON : default/button/deleteButton.vm, nesting level: 6 -->
+                                        <!-- DEBUG:END:DELETE_BUTTON : default/button/deleteButton.vm, nesting level: 6-->
+                                    </af:group>
+                                    <af:group id="gr1"></af:group>
+                                    <af:group id="gr2" rendered="false">
+                                        <!-- DEBUG:BEGIN:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6 -->
+                                        <af:button action="#{SaveAccountingTeamLeader.execute}"
+                                                   rendered="#{(MTSPermission['AccountingTeamLeader.update']) and (!pageFlowScope.hideSaveButton)}"
+                                                   textAndAccessKey="#{nls['SAVE_BUTTON_LABEL']}"
+                                                   id="AccountingTeamLeaderSaveButton" partialSubmit="true"></af:button>
+                                        <!-- DEBUG:END:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6 -->
+                                        <af:button textAndAccessKey="#{nls['CANCEL']}" immediate="true"
+                                                   partialSubmit="true" rendered="#{!pageFlowScope.hideCancelButton}"
+                                                   actionListener="#{jhsRollback.execute}" action="Cancel"
+                                                   id="AccountingTeamLeaderCancelButton"></af:button>
+                                        <!-- DEBUG:END:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6-->
+                                    </af:group>
+                                </af:toolbar>
+                            </af:toolbox>
+                            <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5-->
+                        </f:facet>
+                        <f:facet name="context">
+                            <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5 -->
+                            <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5-->
+                        </f:facet>
+                        <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+                        <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+                    </af:panelHeader>
+                    <!-- DEBUG:BEGIN:FORM_GROUP : custom/pageComponent/MtsformGroup.vm, nesting level: 5 -->
+                    <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+                    <af:panelGroupLayout id="AccountingTeamLeaderFC" layout="vertical">
+                        <f:facet name="separator">
+                            <af:spacer width="10" height="10" id="sp1"/>
+                        </f:facet>
+                        <af:panelFormLayout rows="1" labelAlignment="start" maxColumns="1" id="AccountingTeamLeaderFI">
+                            <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                            <af:panelGroupLayout layout="horizontal" id="pgl1">
+                                        <af:selectOneChoice value="#{bindings.WeekDaysVO1.inputValue}"
+                                                            label="#{bindings.WeekDaysVO1.label}"
+                                                            required="#{bindings.WeekDaysVO1.hints.mandatory}"
+                                                     autoSubmit="true"       shortDesc="#{bindings.WeekDaysVO1.hints.tooltip}" id="soc1">
+                                            <f:selectItems value="#{bindings.WeekDaysVO1.items}" id="si1"/>
+                                            <f:validator binding="#{bindings.WeekDaysVO1.validator}"/>
+                                        </af:selectOneChoice>
+                                    <af:button text="Assign Accounting Agents" id="b1" inlineStyle="color: White; background-color: Green; font-weight: bold; margin-left: 25px;">
+                                        <af:showPopupBehavior popupId="p21"/>
+                                    </af:button>
+                                            </af:panelGroupLayout>
+                                    </af:panelFormLayout>
+                                <af:panelHeader text="Contracts With Invoices" id="ph2">
+                                    <af:table rows="#{bindings.InvoiceScheduleVO1.rangeSize}"
+                                              fetchSize="#{bindings.InvoiceScheduleVO1.rangeSize}"
+                                              emptyText="#{bindings.InvoiceScheduleVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              var="row" value="#{bindings.InvoiceScheduleVO1.collectionModel}"
+                                              rowBandingInterval="0"
+                                              selectedRowKeys="#{bindings.InvoiceScheduleVO1.collectionModel.selectedRow}"
+                                              selectionListener="#{bindings.InvoiceScheduleVO1.collectionModel.makeCurrent}"
+                                              rowSelection="single" id="t1">
+                                        <af:column headerText="#{bindings.InvoiceScheduleVO1.hints.AreaId.label}"
+                                                   sortProperty="#{bindings.InvoiceScheduleVO1.hints.AreaId.name}"
+                                                 rendered="false"  sortable="false" id="c1">
+                                                   <f:facet name="header">
+                                        <af:outputLabel value="outputLabel1" id="ol1"/>
+                                    </f:facet>
+                                            <af:outputText value="#{row.AreaId}"
+                                                           shortDesc="#{bindings.InvoiceScheduleVO1.hints.AreaId.tooltip}"
+                                                           id="ot5">
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.InvoiceScheduleVO1.hints.AreaId.format}"/>
+                                            </af:outputText>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.InvoiceScheduleVO1.hints.AreaName.label}"
+                                                width="300" sortProperty="#{bindings.InvoiceScheduleVO1.hints.AreaName.name}"
+                                                   sortable="false" id="c2">
+                                                   <f:facet name="header">
+                                        <af:outputLabel value="Area Name" id="ol2"/>
+                                    </f:facet>
+                                            <af:outputText value="#{row.AreaName}"
+                                                           shortDesc="#{bindings.InvoiceScheduleVO1.hints.AreaName.tooltip}"
+                                                           id="ot6"/>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.InvoiceScheduleVO1.hints.ContractNum.label}"
+                                                   sortProperty="#{bindings.InvoiceScheduleVO1.hints.ContractNum.name}"
+                                                   sortable="false" id="c3">
+                                                   <f:facet name="header">
+                                        <af:outputLabel value="Total Contracts" id="ol3"/>
+                                    </f:facet>
+                                            <af:outputText value="#{row.ContractNum}"
+                                                           shortDesc="#{bindings.InvoiceScheduleVO1.hints.ContractNum.tooltip}"
+                                                           id="ot7">
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.InvoiceScheduleVO1.hints.ContractNum.format}"/>
+                                            </af:outputText>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.InvoiceScheduleVO1.hints.WorkingDate.label}"
+                                                 rendered="false"  sortProperty="#{bindings.InvoiceScheduleVO1.hints.WorkingDate.name}"
+                                                   sortable="false" id="c4">
+                                            <af:outputText value="#{row.WorkingDate}"
+                                                           shortDesc="#{bindings.InvoiceScheduleVO1.hints.WorkingDate.tooltip}"
+                                                           id="ot8">
+                                                <af:convertDateTime pattern="#{bindings.InvoiceScheduleVO1.hints.WorkingDate.format}"/>
+                                            </af:outputText>
+                                        </af:column>
+                                <af:column headerText="#{bindings.InvoiceScheduleVO1.hints.AccountingAgent.label}"
+                                          width="300" id="c5">
+                                           <f:facet name="header">
+                                        <af:outputLabel value="Accounting Agent" id="ol4"/>
+                                    </f:facet>
+                                    <af:selectOneChoice value="#{row.bindings.AccountingAgent.inputValue}"
+                                                        label="#{row.bindings.AccountingAgent.label}"
+                                                     autoSubmit="true"   required="#{bindings.InvoiceScheduleVO1.hints.AccountingAgent.mandatory}"
+                                                        shortDesc="#{bindings.InvoiceScheduleVO1.hints.AccountingAgent.tooltip}"
+                                                        id="soc2"
+                                                        valueChangeListener="#{pageFlowScope.AccountingTeamLeaderBean.ChangeAccountingAgent}">
+                                        <f:selectItems value="#{row.bindings.AccountingAgent.items}" id="si2"/>
+                                        <f:validator binding="#{row.bindings.AccountingAgent.validator}"/>
+                                    </af:selectOneChoice>
+                                </af:column>
+                            </af:table>
+                                </af:panelHeader>
+                            </af:panelGroupLayout>
+                            <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                        <!-- DEBUG:BEGIN:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 6 -->
+                        <!-- DEBUG:END:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 6-->
+                    </af:panelGroupLayout>
+                    <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+                    <!-- DEBUG:END:FORM_GROUP : custom/pageComponent/MtsformGroup.vm, nesting level: 5-->
+                    <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+                </af:panelGroupLayout>
+                <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4-->
+            <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+        </f:facet>
+        <f:facet name="popups">
+            <af:panelGroupLayout id="popupsPgl">
+                <af:popup childCreation="deferred" autoCancel="disabled" id="p21">
+                    <af:dialog id="d1" title="Confirmation" type="yesNo"
+                               dialogListener="#{pageFlowScope.AccountingTeamLeaderBean.ConfirmAssignAccountant}">
+                        <af:outputLabel value="Are You Sure You Want to Assign Accounting Agents ? " id="ol5"/>
+                        <f:facet name="buttonBar"/>
+                    </af:dialog>
+                </af:popup>
+            </af:panelGroupLayout>
+        </f:facet>
+        <!-- DEBUG:END:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3-->
+        <!-- DEBUG:END:FORM_PAGE_CONTENT : default/page/formPageContent.vm, nesting level: 2-->
+    </af:pageTemplate>
+</ui:composition>
+
+
+

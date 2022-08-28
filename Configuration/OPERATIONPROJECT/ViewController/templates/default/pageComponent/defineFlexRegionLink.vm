@@ -1,0 +1,47 @@
+## revision_history
+## 03-sep-2007   Steven Davelaar
+## 1.1           Do not reset to normal mode when licking link
+## 06-jul-2007   Steven Davelaar
+## 1.0           Initial creation
+
+## This template is used both when FlexRegion defined in app def, and
+## when item with display type "flexRegion" is defined. The region name
+## must be set based on this usage
+#if (${JHS.current.flexRegion})
+  #set ($regionName = "${JHS.current.flexRegion.name}")
+#else
+  #set ($regionName = "${JHS.current.item.name}")
+#end
+
+<!-- Render link to define flex region when in customize mode -->
+
+
+<af:link immediate="true" partialSubmit="true" rendered="#{jhsPageCustomization.customizeMode}" 
+                text="${JHS.nls("Define Flex Region ${regionName}","DEFINE_FLEX_REGION_LINK_${JHS.current.group.name}${regionName}")}"
+                actionListener="#{pageFlowScope.pendingChangesBean.handle}" id="#NEW_ID("cl")">
+  <af:showPopupBehavior popupId="${regionName}Popup"/>
+</af:link>
+
+<af:popup id="${regionName}Popup" contentDelivery="lazyUncached" eventContext="launcher">
+  <af:setPropertyListener from="AppFlexRegionDefinitions" type="popupFetch"
+                          to="#{#GROUP_DYNAMIC_REGION_MANAGER_BEAN(${regionName}).currentTaskFlowName}"/>
+  <af:setPropertyListener from="#{'${regionName}'}" to="#{#GROUP_DYNAMIC_REGION_MANAGER_BEAN(${regionName}).currentParamMap['RegionName']}" 
+                          type="popupFetch"/>
+  <af:dialog modal="true" resize="on" contentWidth="800" contentHeight="600" stretchChildren="first" title="Customize Flex Region" type="cancel">
+      <af:region value="#{bindings.${JHS.registerDynamicTaskFlowBinding(${JHS.current.group}, ${regionName})}.regionModel}"/>
+  </af:dialog>
+  <af:clientListener method="popupClosedListener" type="popupClosed"/>
+  <af:serverListener type="serverPopupClosed"
+                     method="#{#GROUP_DYNAMIC_REGION_MANAGER_BEAN(${regionName}).swapEmptyTaskFlow}"/>
+</af:popup>
+
+##<!--
+##<af:link useWindow="true" action="dialog:FlexRegionDefinitions"
+##    windowHeight="400"
+##    windowWidth="950"
+##    actionListener="#{pageFlowScope.pendingChangesBean.handle}"
+##    rendered="#{jhsPageCustomization.customizeMode}" text="${JHS.nls("Define Flex Region ${regionName}","DEFINE_FLEX_REGION_LINK_${JHS.current.group.name}${regionName}")}">
+##  <af:setActionListener from="#{'${JHS.current.group.name}'}" to="#{jhsFlexRegionContext.groupName}"/>
+##  <af:setActionListener from="#{'${regionName}'}" to="#{jhsFlexRegionContext.regionName}"/>
+## </af:link>
+##-->

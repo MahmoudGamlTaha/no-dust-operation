@@ -1,0 +1,170 @@
+## revision_history
+## 11-nov-2013   Steven Davelaar
+## 1.3           Added CHECK_UNCOMMITTED_DATA_BEHAVIOR_MENU, PENDING_CHANGES_ACTION_LISTENER
+##               Undo change in rev 1.1, popup no longer auto-closes and reference to mg:Menu0
+##               causes runtime error
+## 14-feb-2013   Steven Davelaar
+## 1.2           - Added IMMEDIATE_MENU_ITEM macro to commandNavigationItems
+##               - Changed action property and setActionListsners for dynamic menus
+##                 to fix issues with pedning changes alert. partialSubmit now also true for dyn menu
+##               - Added IGNORE_CHANGES_ATTRIBUTE macro to exclude both menus from visiting tree for
+##                 poending changes. Needed otherwise the #{menuItem} expression evaluates to null after
+##                 visitTree API call!
+## 28-feb-2012   Steven Davelaar
+## 1.1           Set mg:Menu0 as partial trigger when using db table resource bundle, otherwise change text popup
+##               auto-closes when changing language or page.  
+## 11-aug-2009   Steven Davelaar
+## 1.0           Initial creation
+<af:decorativeBox theme="light" topHeight="#{attrs.navigation2Size}"
+                  id="pt_db1">
+  <f:facet name="top">
+    <af:group id="pt_g2">
+      #IGNORE_CHANGES_ATTRIBUTE()
+      #if (${JHS.application.runtimeCustomizationMenuAllowed})
+      <!-- dynamic level 1 menu -->
+      <af:navigationPane id="Menu1" hint="tabs"
+                         binding="#{jhsDynamicMenu.menuNavigationPane}"
+                         partialTriggers="Item1 ::pendingChangesDialog ::mg"
+                         rendered="#{attrs.showMenu1}">
+        <af:forEach items="#{jhsDynamicMenu.level1MenuItems}" var="menuItem">
+          <af:commandNavigationItem id="Item1" partialSubmit="true"
+                                    text="#{menuItem.labelTranslationKey!=null ? nls[menuItem.labelTranslationKey] : menuItem.label}"
+                                    action="#{jhsDynamicMenu.navigateLevel1}"
+                                    #IMMEDIATE_MENU_ITEM()
+                                    #PENDING_CHANGES_ACTION_LISTENER()
+                                    selected="#{menuItem.name==jhsDynamicMenu.currentLevel1MenuItemName}"
+                                    rendered="#{menuItem.rendered}">
+            <af:setActionListener from="#{menuItem.name}"
+                                  to="#{jhsDynamicMenu.navigateMenuItemNameLevel1}"/>
+            <af:setActionListener from="#{menuItem.iframeUrl}"
+                                  to="#{jhsDynamicMenu.currentIFrameUrl}"/>
+            <af:setActionListener from="#{false}"
+                                  to="#{pageFlowScope.pendingChangesBean.methodExpressionRequestSpecific}"/>                                                  
+            #CHECK_UNCOMMITTED_DATA_BEHAVIOR_MENU()  
+          </af:commandNavigationItem>
+        </af:forEach>
+      </af:navigationPane>                    
+      #else
+      <!-- static level 1 menu -->
+      <af:navigationPane id="Menu1"
+                         rendered="#{attrs.showMenu1}"
+                         var="menuItem"
+                         partialTriggers="Item1 ::pendingChangesDialog ::mg"
+                         value="#{attrs.menuModel}" level="#{attrs.menuStartLevel}"
+                         hint="tabs">
+        <f:facet name="nodeStamp">
+          <af:commandNavigationItem id="Item1" partialSubmit="true"
+                                    textAndAccessKey="#{menuItem.label}"
+                                    #IMMEDIATE_MENU_ITEM()
+                                    #PENDING_CHANGES_ACTION_LISTENER()
+                                    action="#{menuItem.doAction}"
+                                    rendered="#{menuItem.rendered}">
+            #CHECK_UNCOMMITTED_DATA_BEHAVIOR_MENU()  
+          </af:commandNavigationItem>
+        </f:facet>
+      </af:navigationPane>
+      #end
+    </af:group>
+  </f:facet>
+  <f:facet name="center">
+    <af:panelStretchLayout theme="light" topHeight="#{attrs.header2Size}"
+                           id="pt_psl2">
+      <f:facet name="top">
+        <af:panelGroupLayout layout="vertical"
+                             inlineStyle="margin-left: 5px; margin-bottom: 5px; margin-right: 5px;"
+                             id="pt_pgl3">
+           #IGNORE_CHANGES_ATTRIBUTE()
+      #if (${JHS.application.runtimeCustomizationMenuAllowed})
+          <!-- dynamic level 2 menu -->
+          <af:navigationPane id="Menu2"
+                             rendered="#{attrs.showMenu2}"
+                             partialTriggers="Item2 ::pendingChangesDialog ::Menu1"
+                             hint="bar">
+            <af:forEach items="#{jhsDynamicMenu.level2MenuItems}" var="menuItem">
+              <af:commandNavigationItem id="Item2" partialSubmit="true"
+                                        text="#{menuItem.labelTranslationKey!=null ? nls[menuItem.labelTranslationKey] : menuItem.label}"
+                                        action="#{jhsDynamicMenu.navigateLevel2}"
+                                        #IMMEDIATE_MENU_ITEM()
+                                        #PENDING_CHANGES_ACTION_LISTENER()
+                                        selected="#{menuItem.name==jhsDynamicMenu.currentLevel2MenuItemName}"
+                                        rendered="#{menuItem.rendered}">
+                <af:setActionListener from="#{menuItem.name}"
+                                      to="#{jhsDynamicMenu.navigateMenuItemNameLevel2}"/>
+                <af:setActionListener from="#{menuItem.iframeUrl}"
+                                      to="#{jhsDynamicMenu.currentIFrameUrl}"/>
+                <af:setActionListener from="#{false}"
+                                      to="#{pageFlowScope.pendingChangesBean.methodExpressionRequestSpecific}"/>                                                  
+                #CHECK_UNCOMMITTED_DATA_BEHAVIOR_MENU()  
+              </af:commandNavigationItem>
+            </af:forEach>
+          </af:navigationPane>
+       #else
+          <!-- static level 2 menu -->
+          <af:navigationPane id="Menu2"
+                             rendered="#{attrs.showMenu2}"
+                             partialTriggers="Item2 ::pendingChangesDialog ::Menu1"
+                             var="menuItem" value="#{attrs.menuModel}"
+                             level="#{attrs.menuStartLevel+1}" hint="bar">
+            <f:facet name="nodeStamp">
+              <af:commandNavigationItem id="Item2" partialSubmit="true"
+                                        text="#{menuItem.label}"
+                                        #IMMEDIATE_MENU_ITEM()
+                                        #PENDING_CHANGES_ACTION_LISTENER()
+                                        action="#{menuItem.doAction}"
+                                        rendered="#{menuItem.rendered}">
+                #CHECK_UNCOMMITTED_DATA_BEHAVIOR_MENU()  
+              </af:commandNavigationItem>
+            </f:facet>
+          </af:navigationPane>
+       #end   
+        </af:panelGroupLayout>
+      </f:facet>
+      <f:facet name="center">
+        <af:panelSplitter orientation="horizontal"
+                          splitterPosition="#{attrs.navigation3Size}"
+                          id="pt_ps2">
+          <f:facet name="first">
+            <af:decorativeBox rendered="#{attrs.showMenu3}"
+                              inlineStyle="margin-left: 5px; margin-bottom: 5px; margin-right: 5px;"
+                              theme="default" id="pt_db2">
+              <f:facet name="center">
+                <af:facetRef facetName="menu3"/>
+              </f:facet>
+            </af:decorativeBox>
+          </f:facet>
+          <f:facet name="second">
+            <af:decorativeBox theme="default"
+                              inlineStyle="margin-left: 5px; margin-bottom: 5px; margin-right: 5px;"
+                              id="pt_db3">
+              <f:facet name="center">
+                <af:panelStretchLayout topHeight="auto"
+                                       id="pt_psl3">
+                  <f:facet name="top">
+                    <af:group id="pt_g3">
+                      <af:breadCrumbs rendered="#{attrs.showBreadcrumbs and (pageFlowScope.jhsBreadcrumbStack.size gt 1)}"
+                                      var="bc" varStatus="vs"
+                                      value="#{pageFlowScope.jhsBreadcrumbStack}"
+                                      id="bcp">
+                        <f:facet name="nodeStamp">
+                          <af:commandNavigationItem id="ni" action="#{bc.doAction}"
+                                                    textAndAccessKey="#{bc.label}"
+                                                    visible="#{pageFlowScope.jhsBreadcrumbStack.rowIndex lt (pageFlowScope.jhsBreadcrumbStack.size-1)}"/>
+                        </f:facet>
+                      </af:breadCrumbs>
+                      <af:messages visible="#{attrs.showMessages}" id="msgp"
+                                   inline="#{attrs.showMessagesInline}"/>
+                      <af:facetRef facetName="processTrain"/>
+                    </af:group>
+                  </f:facet>
+                  <f:facet name="center">
+                    <af:facetRef facetName="pageContent"/>
+                  </f:facet>
+                </af:panelStretchLayout>
+              </f:facet>
+            </af:decorativeBox>
+          </f:facet>
+        </af:panelSplitter>
+      </f:facet>
+    </af:panelStretchLayout>
+  </f:facet>
+</af:decorativeBox>

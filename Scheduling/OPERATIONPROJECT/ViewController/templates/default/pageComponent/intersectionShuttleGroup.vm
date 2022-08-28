@@ -1,0 +1,24 @@
+## revision_history
+## 26-nov-2011   Steven Davelaar
+## 1.5           Added call to SET_INITIAL_FOCUS_ID, changed id
+## 22-nov-2010   Steven Davelaar
+## 1.4           Shortened id
+## 17-nov-2008   Evert-Jan de Bruin
+## 1.3           Removed valueChangeListener, because bean only needs value binding now.
+## 31-aug-20067  Steven Davelaar
+## 1.2           Call to DETAIL_GROUPS moved to groupContent.vm
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+
+#SET_INITIAL_FOCUS_ID("${JHS.current.group.shortName}Sms")
+<af:selectManyShuttle leadingHeader="#TAB_NAME($JHS.current.group)"
+          size="10"   trailingHeader="#TITLE_SINGULAR($JHS.current.group)"
+                      value="#{#INTERSECTION_SHUTTLE_BEAN().selectedKeys}"
+                      id="${JHS.current.group.shortName}Sms">
+  <af:forEach var="rowbinding"
+              items="#{bindings.${JHS.current.group.shuttleUnselectedDomain.name}.rangeSet}">
+    <af:selectItem label="#{rowbinding.${JHS.current.group.shuttleUnselectedDomain.meaningAttribute}}"
+                   value="#{rowbinding.row.key}" id="#NEW_ID("si")"/>
+  </af:forEach>
+</af:selectManyShuttle>
+

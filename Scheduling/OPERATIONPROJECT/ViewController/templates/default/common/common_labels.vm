@@ -1,0 +1,354 @@
+## revision_history
+## 18-jan-2012   Steven Davelaar
+## 1.15          Chech whether descriptorItem is databound in PAGE_TITLE 
+## 11-jan-2012   Steven Davelaar
+## 1.14          Changed PAGE_TITLE to make table page breadcrumb label better customizable
+## 19-nov-2011   Steven Davelaar
+## 1.13          Added FIRST_ROW_LABEL, PREVIOUS_ROW_LABEL, NEXT_ROW_LABEL, LAST_ROW_LABEL
+##               , NEXT_DATA_BLOCK_LABEL, PREVIOUS_DATA_BLOCK_LABEL, DETAILS_LABEL
+## 08-apr-2011   Sandra Muller
+## 1.12          Added UNEXPECTED_ERROR_PAGE_TITLE, ERROR_MESSAGE_LABEL, and STACK_TRACE_LABEL
+## 07-mar-2011   Steven Davelaar
+## 1.11          Added LIST_OF_VALUES_LABEL
+## 22-nov-2010   Steven Davelaar
+## 1.10          Added SHOW_KEYS and FUNCTION_KEYS labels
+## 26-aug-2010   Sandra Muller
+## 1.9           Added several macros for labels/titles etc
+## 04-nov-2009   Steven Davelaar
+## 1.8           Fixed bg in FORM_TITLE_XXX macros: reference to pageTitle instead of group displayTitleSingular
+## 14-aug-2009   Steven Davelaar
+## 1.7           removed breadcrumb labels, breadcrumbs now use page title expression
+##               form title now uses region title when page is region page (layout=separatePages)
+## 24-sep-2008   Steven Davelaar
+## 1.6           Added DELETE_WARNING
+## 11-may-2008   Steven Davelaar
+## 1.5           Use FORM_TITLE_SIMPLE when group not databound
+## 29-jun-2007   Steven Davelaar
+## 1.4           Added OK_LABEL, SAVE_LABEL
+## 09-feb-2007   Steven Davelaar
+## 1.3           Added ADD_ROW_BUTTON_LABEL, DUPLICATE_ROW_BUTTON_LABEL, TOTAL_LABEL
+## 04-dec-2006   Steven Davelaar
+## 1.2           Form view title should be displayed instead of Edit title 
+##               when group update allowed expression evaluates to true
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+
+#macro (FORM_TITLE_SIMPLE $group)
+${JHS.nls(${group.displayTitleSingular}, "FORM_TITLE_${group.name}")}#end
+
+#macro (FORM_TITLE_EDIT_NO_BRACKETS $group)
+#if (${group.updateAllowedExpression}) (${JHS.stripBrackets(${group.updateAllowedExpression})} ? ${JHS.nls(${group.displayTitleSingular}, "EDIT_TITLE_${group.name}:#DESCRIPTOR_ITEM_VALUE_BINDING($group)", "EDIT_TITLE", true )} : ${JHS.nls(${group.displayTitleSingular}, "VIEW_TITLE_${group.name}:#DESCRIPTOR_ITEM_VALUE_BINDING($group)", "VIEW_TITLE", true )}) #else ${JHS.nls(${group.displayTitleSingular}, "EDIT_TITLE_${group.name}:#DESCRIPTOR_ITEM_VALUE_BINDING($group)", "EDIT_TITLE", true )}#end#end
+
+#macro (FORM_TITLE_EDIT $group)
+#if (${group.updateAllowedExpression}) #{${JHS.stripBrackets(${group.updateAllowedExpression})} ? ${JHS.nls(${group.displayTitleSingular}, "EDIT_TITLE_${group.name}:#DESCRIPTOR_ITEM_VALUE_BINDING($group)", "EDIT_TITLE", true )} : ${JHS.nls(${group.displayTitleSingular}, "VIEW_TITLE_${group.name}:#DESCRIPTOR_ITEM_VALUE_BINDING($group)", "VIEW_TITLE", true )}} #else #{${JHS.nls(${group.displayTitleSingular}, "EDIT_TITLE_${group.name}:#DESCRIPTOR_ITEM_VALUE_BINDING($group)", "EDIT_TITLE", true )}}#end#end
+
+#macro (DELETE_WARNING $group)
+##${JHS.nls(${group.displayTitleSingular}, "DELETE_WARNING_${group.name}:#DESCRIPTOR_ITEM_VALUE_BINDING($group)", "DELETE_WARNING", false )} #end
+${JHS.nls(${group.displayTitleSingular}, "DELETE_WARNING_${group.name}:#{bindings.${JHS.current.group.shortName}Iterator.currentRowIndexInRange+1}", "DELETE_WARNING", false )} #end
+
+#macro (FORM_TITLE_CREATE_OR_EDIT $group)
+#{#SPECIFIED_GROUP_IN_CREATE_MODE($group) ? ${JHS.nls(${group.displayTitleSingular}, "INSERT_TITLE_${group.name}", "INSERT_TITLE" , true)} : #FORM_TITLE_EDIT_NO_BRACKETS($group) }#end
+
+#macro (FORM_TITLE_CREATE_OR_VIEW $group)
+#{#SPECIFIED_GROUP_IN_CREATE_MODE($group) ? ${JHS.nls(${group.displayTitleSingular}, "INSERT_TITLE_${group.name}", "INSERT_TITLE" , true)} : ${JHS.nls(${group.displayTitleSingular}, "VIEW_TITLE_${group.name}:#DESCRIPTOR_ITEM_VALUE_BINDING($group)", "VIEW_TITLE", true )}}#end
+
+#macro (FORM_TITLE_VIEW $group)
+#{${JHS.nls(${group.displayTitleSingular}, "VIEW_TITLE_${group.name}:#DESCRIPTOR_ITEM_VALUE_BINDING($group)", "VIEW_TITLE", true )}}#end
+
+#macro (FORM_TITLE $group)
+#if (!$group.addVerbToFormTitle || !$group.databound)#FORM_TITLE_SIMPLE( ${group} )#elseif ($group.formInsertAllowed && $group.formUpdateAllowed)#FORM_TITLE_CREATE_OR_EDIT( $group )#elseif ($group.formInsertAllowed)#FORM_TITLE_CREATE_OR_VIEW( $group )#elseif ($group.formUpdateAllowed)#FORM_TITLE_EDIT( $group )#else #FORM_TITLE_VIEW( $group )#end#end
+
+#macro (TABLE_TITLE $group)
+${JHS.nls(${group.displayTitlePlural}, "TABLE_TITLE_${group.name}", "TABLE_TITLE")}#end
+
+#macro (TABLE_SUMMARY $group)
+#TABLE_TITLE($group)#end
+
+#macro (SELECT_TITLE $group)
+${JHS.nls(${group.displayTitlePlural}, "SELECT_TITLE_${group.name}", "SELECT_TITLE")}#end
+
+#macro (SEARCH_TITLE $group)
+${JHS.nls(${group.displayTitlePlural}, "SEARCH_TITLE_${group.name}", "SEARCH_TITLE")}#end
+
+#macro (TAB_NAME $group)
+${JHS.nls(${group.tabName}, "TAB_NAME_${group.name}")}#end
+
+#macro (TITLE_PLURAL $group)
+${JHS.nls(${group.displayTitlePlural}, "PLURAL_TITLE_${group.name}")}#end
+
+#macro (TITLE_SINGULAR $group)
+${JHS.nls(${group.displayTitleSingular}, "SINGULAR_TITLE_${group.name}")}#end
+
+#macro (PAGE_TITLE)
+#set ($title = "#if($JHS.page.formLayout)#FORM_TITLE(${JHS.current.group})#elseif($JHS.page.selectLayout)#SELECT_TITLE(${JHS.current.group})#elseif($JHS.page.findLayout)#SEARCH_TITLE(${JHS.current.group})#else#TABLE_TITLE(${JHS.current.group})#end")
+#if ($JHS.page.group.descriptorItem.dataBound && $JHS.page.tableLayout)${JHS.page.setBreadcrumbLabelExpression("${title} (#{pageFlowScope.${JHS.page.group.name}Table.currentRowAttributeValues.${JHS.page.group.descriptorItem.attributeName}})")}#else${JHS.page.setBreadcrumbLabelExpression($title)}#end${title}#end
+
+#macro (GROUP_TITLE $group)
+#if ($group.layoutStyle == 'form')#FORM_TITLE($group)#else#TABLE_TITLE($group)#end#end
+
+#macro (PARENT_CONTEXT_LABEL $group)
+${JHS.nls(${group.displayTitleSingular},"PARENT_CONTEXT_LABEL_${group.name}")}#end
+
+#macro (REGION_CONTAINER_TITLE)
+${JHS.nls(${JHS.current.regionContainer.title}, "${JHS.current.regionContainer.name}_TITLE")}#end
+
+#macro (ITEM_REGION_TITLE)
+${JHS.nls(${JHS.current.itemRegion.title}, "${JHS.current.itemRegion.name}_TITLE")}#end
+
+#macro (GROUP_REGION_TITLE)
+${JHS.nls(${JHS.current.groupRegion.title}, "${JHS.current.groupRegion.name}_TITLE")}#end
+
+#macro (REGION_TITLE $region)
+${JHS.nls(${region.title}, "${region.name}_TITLE")}#end
+
+#macro (EDIT_BUTTON_LABEL)
+${JHS.nls($JHS.current.group.displayTitleSingular, "EDIT_BUTTON_LABEL_${JHS.current.group.name}", "EDIT_BUTTON_LABEL")}#end
+
+#macro (VIEW_BUTTON_LABEL)
+${JHS.nls($JHS.current.group.displayTitleSingular, "VIEW_BUTTON_LABEL_${JHS.current.group.name}", "VIEW_BUTTON_LABEL")}#end
+
+#macro (DETAIL_VIEW_BUTTON_LABEL)
+${JHS.nls($JHS.current.group.displayTitleSingular, "DETAIL_VIEW_BUTTON_LABEL", "DETAIL_VIEW_BUTTON_LABEL")}#end
+
+#macro (DETAILS_LABEL)
+${JHS.nls("DETAIL_VIEW_BUTTON_LABEL")}#end
+
+#macro (CASE_SENSITIVE_LABEL)
+${JHS.nls("CASE_SENSITIVE")}#end
+
+#macro (GO_LABEL)
+${JHS.nls("GO")}#end
+
+#macro (WARNING_LABEL)
+${JHS.nls("WARNING")}#end
+
+#macro (OK_LABEL)
+${JHS.nls("OK_BUTTON_LABEL")}#end
+
+#macro (ADD_ROW_BUTTON_LABEL)
+${JHS.nls("ADD_ROW")}#end
+
+#macro (ADD_ROW_BUTTON_LABEL_DESC)
+#ADD_ROW_BUTTON_LABEL()#end
+
+#macro (DELETE_ROW_BUTTON_LABEL)
+${JHS.nls("DELETE_ROW")}#end
+
+#macro (DELETE_ROW_BUTTON_LABEL_DESC)
+#DELETE_ROW_BUTTON_LABEL()#end
+
+#macro (DUPLICATE_ROW_BUTTON_LABEL)
+${JHS.nls("DUPLICATE_ROW")}#end
+
+#macro (DUPLICATE_ROW_BUTTON_LABEL_DESC)
+#DUPLICATE_ROW_BUTTON_LABEL()#end
+
+#macro (ACTION_MENU_LABEL)
+${JHS.nls("ACTION_MENU_LABEL")}#end
+
+#macro (ACTION_MENU_LABEL_DESC)
+ #end
+
+#macro (GO_TO_MENU_LABEL)
+${JHS.nls("GO_TO_MENU_LABEL")}#end
+
+#macro (EXPORT_LABEL)
+${JHS.nls("EXPORT")}#end
+
+#macro (EXPORT_LABEL_DESC)
+#EXPORT_LABEL()#end
+
+#macro (TOTAL_LABEL)
+${JHS.nls("TOTAL")}#end
+
+#macro (SELECT_LABEL)
+${JHS.nls("SELECT")}#end
+
+#macro (CANCEL_LABEL)
+${JHS.nls("CANCEL")}#end
+
+#macro (IS_LABEL)
+${JHS.nls("IS")}#end
+
+#macro (IS_NOT_LABEL)
+${JHS.nls("IS_NOT")}#end
+
+#macro (STARTS_WITH_LABEL)
+${JHS.nls("STARTS_WITH")}#end
+
+#macro (ENDS_WITH_LABEL)
+${JHS.nls("ENDS_WITH")}#end
+
+#macro (CONTAINS_LABEL)
+${JHS.nls("CONTAINS")}#end
+
+#macro (DOES_NOT_CONTAIN_LABEL)
+${JHS.nls("DOES_NOT_CONTAIN")}#end
+
+#macro (GREATER_THAN_LABEL)
+${JHS.nls("GREATER_THAN")}#end
+
+#macro (LESS_THAN_LABEL)
+${JHS.nls("LESS_THAN")}#end
+
+#macro (BEFORE_LABEL)
+${JHS.nls("BEFORE")}#end
+
+#macro (AFTER_LABEL)
+${JHS.nls("AFTER")}#end
+
+#macro (DELETE_COLUMN_HEADER)
+${JHS.nls("DELETE_COLUMN_HEADER")}#end
+
+#macro (ADVANCED_SEARCH_LABEL)
+${JHS.nls("ADVANCED_SEARCH")}#end
+
+#macro (ADVANCED_SEARCH_LABEL_DESC)
+#ADVANCED_SEARCH_LABEL()#end
+
+#macro (FILTER_BY_LABEL)
+${JHS.nls("FILTER_BY")}#end
+
+#macro (ALL_CONDITIONS_MET_LABEL)
+${JHS.nls("ALL_CONDITIONS_MET")}#end
+
+#macro (ANY_CONDITION_MET_LABEL)
+${JHS.nls("ANY_CONDITION_MET")}#end
+
+#macro (FIND_LABEL)
+${JHS.nls("FIND")}#end
+
+#macro (CLEAR_LABEL)
+${JHS.nls("CLEAR")}#end
+
+#macro (SAVE_LABEL)
+${JHS.nls("SAVE_BUTTON_LABEL")}#end
+
+#macro (QUICK_SEARCH_LABEL)
+${JHS.nls("QUICK_SEARCH")}#end
+
+#macro (NO_ROWS_FOUND_LABEL)
+${JHS.nls("NO_ROWS_FOUND")}#end
+
+#macro (SEARCH_AND_SELECT_LABEL)
+${JHS.nls("SEARCH_AND_SELECT")}#end
+
+#macro (PARENT_TO_CHILD_BUTTON_LABEL $detailGroupPage)
+${JHS.nls($detailGroup.displayTitlePlural, "${JHS.current.group.name}_TO_${detailGroup.name}_BUTTON",  "CHILD_BUTTON_LABEL")}#end
+
+#macro (FORM_REGION_BUTTON_LABEL $page)
+${JHS.nls($page.pageTitle, "${page.name}_BUTTON", "CHILD_BUTTON_LABEL")}#end
+
+#macro (UNSELECTED_LABEL)
+unselectedLabel="${JHS.nls($JHS.application.unselectedLabel, "UNSELECTED_LABEL")}"#end
+
+#macro (QUERY_MATCH_LABEL)
+${JHS.nls("QUERY_MATCH_LABEL")}#end
+
+#macro (HOME_BUTTON_LABEL)
+${JHS.nls('Home','HOME_BUTTON_LABEL')}#end
+
+#macro (HOME_BUTTON_LABEL_DESC)
+#HOME_BUTTON_LABEL()#end
+
+#macro (SERVICE_MENU_TITLE $service)
+${JHS.nls($service.menuTitle, "MENU_TITLE_${service.name}")}#end
+
+#macro (MENU_TITLE)
+${JHS.nls($JHS.service.menuTitle, "MENU_TITLE_${JHS.service.name}")}#end
+
+#macro (MENU1_TITLE)
+${JHS.nls($group.tabName, "MENU1_TITLE_${group.name}")}#end
+
+#macro (SAVE_BUTTON_LABEL)
+${JHS.nls("SAVE_BUTTON_LABEL" )}#end
+
+#macro (DOMAIN_ALLOWABLE_VALUE_MEANING $domain $allowableValue)
+${JHS.nls(${allowableValue.meaning}, "${domain.name}_${allowableValue.value}")}#end
+
+#macro (APPLICATION_TITLE)
+${JHS.nls('Operation System','APPLICATION_TITLE')}#end
+
+#macro (PRODUCT_TITLE)
+${JHS.nls('Operation System','PRODUCT_TITLE')}#end
+
+#macro (COPYRIGHT_NOTICE)
+${JHS.nls('Copyright Oracle Corporation, 2002-2015','COPYRIGHT_NOTICE')}#end
+
+#macro (PAGE_TEMPLATE_BOTTOM_LEFT)
+${JHS.nls('Powered by Oracle JHeadstart 12c','PAGE_TEMPLATE_BOTTOM_LEFT')}#end
+
+#macro (PAGE_TEMPLATE_BOTTOM_RIGHT)
+${JHS.nls(' ','PAGE_TEMPLATE_BOTTOM_RIGHT')}#end
+
+#macro (HOME_PAGE_TITLE)
+${JHS.nls("${JHS.application.name} Home",'HOME_PAGE_TITLE')}#end
+
+#macro (HOME_PAGE_HEADER)
+Welcome #{jhsUser!=null ? jhsUser.displayName : facesContext.externalContext.userPrincipal.name} to the ${JHS.application.name} Application!#end
+
+#macro (PENDING_CHANGES_TITLE)
+${JHS.nls('PENDING_CHANGES_TITLE')}#end
+
+#macro (PENDING_CHANGES_TEXT)
+${JHS.nls('PENDING_CHANGES_TEXT')}#end
+
+#macro (TAB_PENDING_CHANGES_TEXT)
+${JHS.nls('TAB_PENDING_CHANGES_TEXT')}#end
+
+#macro (TOO_MANY_OPEN_TABS_TITLE)
+${JHS.nls('TOO_MANY_OPEN_TABS_TITLE')}#end
+
+#macro (TOO_MANY_OPEN_TABS_TEXT)
+${JHS.nlsVoid('TOO_MANY_TABS_OPEN')}#end
+
+#macro (LOV_SHORT_DESC)
+${JHS.current.item.name}#end
+
+#macro (NEW_BUTTON_LABEL)
+${JHS.nls(${JHS.current.group.displayTitleSingular}, "NEW_BUTTON_LABEL_${JHS.current.group.name}", "NEW_BUTTON_LABEL" )}#end
+
+#macro (DELETE_BUTTON_LABEL)
+${JHS.nls(${JHS.current.group.displayTitleSingular}, "DELETE_BUTTON_LABEL_${JHS.current.group.name}", "DELETE_BUTTON_LABEL" )}#end
+
+#macro (TEXT_EDITOR_TITLE)
+${JHS.nls('Text Editor','TEXT_EDITOR_TITLE')}#end
+
+#macro (POPUP_TITLE $taskFlowCall)
+${JHS.nls($taskFlowCall.callGroup.tabName, "POPUP_TITLE_${taskFlowCall.callGroup.name}")}#end
+
+#macro (SHOW_KEYS_LABEL)
+${JHS.nls('SHOW_KEYS')}#end
+
+#macro (FUNCTION_KEYS_LABEL)
+${JHS.nls('FUNCTION_KEYS')}#end
+
+#macro (LIST_OF_VALUES_LABEL)
+${JHS.nls('LIST_OF_VALUES')}#end
+
+#macro (UNEXPECTED_ERROR_PAGE_TITLE)
+${JHS.nls('An unexpected error occurred, please contact your system administrator','UNEXPECTED_ERROR_PAGE_TITLE')}#end
+
+#macro (ERROR_MESSAGE_LABEL)
+${JHS.nls('Error Message','ERROR_MESSAGE_LABEL')}#end
+
+#macro (STACK_TRACE_LABEL)
+${JHS.nls('Stack Trace','STACK_TRACE_LABEL')}#end
+
+#macro (FIRST_ROW_LABEL)
+${JHS.nls('FIRST_ROW')}#end
+
+#macro (PREVIOUS_ROW_LABEL)
+${JHS.nls('PREVIOUS_ROW')}#end
+
+#macro (NEXT_ROW_LABEL)
+${JHS.nls('NEXT_ROW')}#end
+
+#macro (LAST_ROW_LABEL)
+${JHS.nls('LAST_ROW')}#end
+
+#macro (NEXT_DATA_BLOCK_LABEL)
+${JHS.nls('NEXT_DATA_BLOCK')}#end
+
+#macro (PREVIOUS_DATA_BLOCK_LABEL)
+${JHS.nls('PREVIOUS_DATA_BLOCK')}#end

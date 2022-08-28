@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <task-flow-definition id="TemplateConfigurationTaskFlow">
+        <!-- DEBUG:BEGIN:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2 -->
+        <template-reference>
+            <document id="__0">/WEB-INF/jhs-fragment-taskflow-template.xml</document>
+            <id id="__1">jhs-fragment-taskflow-template</id>
+        </template-reference>
+        <!-- DEBUG:END:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2-->
+        <default-activity id="__2">StartTemplateConfiguration</default-activity>
+        <!-- DEBUG:BEGIN:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2 -->
+        <input-parameter-definition id="__3">
+            <name id="__4">createTemplateConfiguration</name>
+            <value id="__5">#{pageFlowScope.createTemplateConfiguration}</value>
+            <class id="__6">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__7">
+            <name id="__8">rowKeyStrTemplateConfiguration</name>
+            <value id="__9">#{pageFlowScope.rowKeyStrTemplateConfiguration}</value>
+            <class id="__10">java.lang.String</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__11">
+            <name id="__12">rowKeyValueTemplateConfiguration</name>
+            <value id="__13">#{pageFlowScope.rowKeyValueTemplateConfiguration}</value>
+            <class id="__14">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__15">
+            <name id="__16">rowKeyTemplateConfiguration</name>
+            <value id="__17">#{pageFlowScope.rowKeyTemplateConfiguration}</value>
+            <class id="__18">oracle.jbo.Key</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__19">
+            <name id="__20">altKeyNameTemplateConfiguration</name>
+            <value id="__21">#{pageFlowScope.altKeyNameTemplateConfiguration}</value>
+            <class id="__22">java.lang.String</class>
+        </input-parameter-definition>
+        <!-- DEBUG:END:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2 -->
+        <managed-bean id="__23">
+            <managed-bean-name id="__24">jhsTaskFlowManager</managed-bean-name>
+            <managed-bean-class id="__25">oracle.jheadstart.controller.jsf.bean.TaskFlowManager</managed-bean-class>
+            <managed-bean-scope id="__26">pageFlow</managed-bean-scope>
+            <managed-property id="__27">
+                <property-name id="__28">initializeParentContextEntries</property-name>
+                <map-entries id="__29">
+                    <map-entry id="__30">
+                        <key id="__31">jhsCurrentGroupName</key>
+                        <value id="__32">TemplateConfiguration</value>
+                    </map-entry>
+                </map-entries>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2 -->
+        <managed-bean id="__33">
+            <managed-bean-name id="__34">SaveTemplateConfiguration</managed-bean-name>
+            <managed-bean-class id="__35">oracle.jheadstart.controller.jsf.bean.CommitBean</managed-bean-class>
+            <managed-bean-scope id="__36">request</managed-bean-scope>
+            <managed-property id="__37">
+                <property-name id="__38">commitBinding</property-name>
+                <value id="__39">#{bindings.Commit}</value>
+            </managed-property>
+            <managed-property id="__40">
+                <property-name id="__41">successOutcome</property-name>
+                <value id="__42">Commit</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2 -->
+        <managed-bean id="__43">
+            <managed-bean-name id="__44">jhsRollback</managed-bean-name>
+            <managed-bean-class id="__45">oracle.jheadstart.controller.jsf.bean.RollbackBean</managed-bean-class>
+            <managed-bean-scope id="__46">request</managed-bean-scope>
+            <managed-property id="__47">
+                <property-name id="__48">rollbackBinding</property-name>
+                <value id="__49">#{bindings.Rollback}</value>
+            </managed-property>
+            <managed-property id="__50">
+                <property-name id="__51">successOutcome</property-name>
+                <value id="__52">Cancel</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__53">
+            <managed-bean-name id="__54">TemplateConfigurationTable</managed-bean-name>
+            <managed-bean-class id="__55">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__56">pageFlow</managed-bean-scope>
+            <managed-property id="__57">
+                <property-name id="__58">name</property-name>
+                <value id="__59">TemplateConfigurationTable</value>
+            </managed-property>
+            <managed-property id="__60">
+                <property-name id="__61">rangeBindingExpr</property-name>
+                <value id="__62">#{'#{bindings.TemplateConfigurationTable}'}</value>
+            </managed-property>
+            <managed-property id="__63">
+                <property-name id="__64">focusItemId</property-name>
+                <value id="__65">TemplateConfigurationTemplateName</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2 -->
+        <router id="StartTemplateConfiguration">
+            <case id="__66">
+                <expression id="__67">#{pageFlowScope.createTemplateConfiguration!=null}</expression>
+                <outcome id="__68">createTemplateConfiguration</outcome>
+            </case>
+            <case id="__69">
+                <expression id="__70">#{pageFlowScope.rowKeyStrTemplateConfiguration!=null or
+                                      pageFlowScope.rowKeyValueTemplateConfiguration!=null or
+                                      pageFlowScope.rowKeyTemplateConfiguration!=null}</expression>
+                <outcome id="__71">SetCurrentRowTemplateConfiguration</outcome>
+            </case>
+            <case id="__72">
+                <expression id="__73">#{pageFlowScope.isDeepLink!=null and pageFlowScope.isDeepLink}</expression>
+                <outcome id="__74">deepLinkPage</outcome>
+            </case>
+            <default-outcome id="__75">firstPage</default-outcome>
+        </router>
+        <!-- DEBUG:END:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2 -->
+        <method-call id="CreateTemplateConfiguration">
+            <method id="__76">#{CreateTemplateConfiguration.execute}</method>
+            <!-- execute condition param -->
+            <parameter>
+                <class id="__77">java.lang.Object</class>
+                <value id="__78">#{pageFlowScope.createTemplateConfiguration}</value>
+            </parameter>
+            <outcome id="__79">
+                <to-string/>
+            </outcome>
+        </method-call>
+        <method-call id="SetCurrentRowTemplateConfiguration">
+            <method id="__80">#{jhsSetCurrentRow.execute}</method>
+            <!-- iterator param -->
+            <parameter>
+                <class id="__81">oracle.adf.model.binding.DCIteratorBinding</class>
+                <value id="__82">#{bindings.TemplateConfigurationIterator}</value>
+            </parameter>
+            <!-- rowKeyStr param -->
+            <parameter>
+                <class id="__83">java.lang.String</class>
+                <value id="__84">#{pageFlowScope.rowKeyStrTemplateConfiguration}</value>
+            </parameter>
+            <!-- rowKeyValue param -->
+            <parameter>
+                <class id="__85">java.lang.Object</class>
+                <value id="__86">#{pageFlowScope.rowKeyValueTemplateConfiguration}</value>
+            </parameter>
+            <!-- rowKey param -->
+            <parameter>
+                <class id="__87">oracle.jbo.Key</class>
+                <value id="__88">#{pageFlowScope.rowKeyTemplateConfiguration}</value>
+            </parameter>
+            <!-- altKeyName param -->
+            <parameter>
+                <class id="__89">java.lang.String</class>
+                <value id="__90">#{pageFlowScope.altKeyNameTemplateConfiguration}</value>
+            </parameter>
+            <outcome id="__91">
+                <fixed-outcome id="__92">deepLinkPage</fixed-outcome>
+            </outcome>
+        </method-call>
+        <!-- DEBUG:END:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2-->
+        <task-flow-return id="CancelTemplateConfigurationReturn">
+            <outcome id="__93">
+                <name id="__94">CancelTemplateConfiguration</name>
+            </outcome>
+        </task-flow-return>
+        <task-flow-return id="DoneTemplateConfigurationReturn">
+            <outcome id="__95">
+                <name id="__96">DoneTemplateConfiguration</name>
+            </outcome>
+        </task-flow-return>
+        <!-- DEBUG:BEGIN:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2 -->
+        <view id="TemplateConfigurationTable">
+            <page id="__97">/pages/TemplateConfigurationTable.jsff</page>
+            <train-stop id="__98">
+                <display-name id="__99">#{nls['TABLE_TITLE_TEMPLATECONFIGURATION']}</display-name>
+            </train-stop>
+        </view>
+        <!-- DEBUG:END:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2-->
+        <train/>
+        <!-- DEBUG:BEGIN:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2 -->
+        <control-flow-rule id="__100">
+            <from-activity-id id="__101">*</from-activity-id>
+            <control-flow-case id="__102">
+                <from-outcome id="__103">SetCurrentRowTemplateConfiguration</from-outcome>
+                <to-activity-id id="__104">SetCurrentRowTemplateConfiguration</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__105">
+                <from-outcome id="__106">firstPage</from-outcome>
+                <to-activity-id id="__107">TemplateConfigurationTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__108">
+                <from-outcome id="__109">deepLinkPage</from-outcome>
+                <to-activity-id id="__110">TemplateConfigurationTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__111">
+                <from-outcome id="__112">TemplateConfigurationTableBreadcrumb</from-outcome>
+                <to-activity-id id="__113">TemplateConfigurationTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__114">
+                <from-outcome id="__115">Cancel</from-outcome>
+                <to-activity-id id="__116">StartTemplateConfiguration</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__117">
+                <from-outcome id="__118">CancelTemplateConfigurationReturn</from-outcome>
+                <to-activity-id id="__119">CancelTemplateConfigurationReturn</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__120">
+                <from-outcome id="__121">DoneTemplateConfigurationReturn</from-outcome>
+                <to-activity-id id="__122">DoneTemplateConfigurationReturn</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__123">
+            <from-activity-id id="__124">*</from-activity-id>
+            <control-flow-case id="__125">
+                <from-outcome id="__126">createTemplateConfiguration</from-outcome>
+                <to-activity-id id="__127">CreateTemplateConfiguration</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <!-- DEBUG:END:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2-->
+        <use-page-fragments/>
+    </task-flow-definition>
+    <!-- This bean must be defined outside the task-flow-definition element
+       because it needs to be available in the pageFlowScope of the unbounded
+       task-flow not in the pageFlowScope of the bounded task flow itself. -->
+    <!-- DEBUG:BEGIN:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2 -->
+    <managed-bean id="__128">
+        <managed-bean-name id="__129">TemplateConfigurationTaskFlowConfig</managed-bean-name>
+        <managed-bean-class id="__130">oracle.jheadstart.controller.jsf.bean.TaskFlowConfigBean</managed-bean-class>
+        <managed-bean-scope id="__131">pageFlow</managed-bean-scope>
+        <managed-property id="__132">
+            <property-name id="__133">params</property-name>
+            <property-class id="__134">java.util.Map</property-class>
+            <map-entries id="__135">
+                <map-entry id="__136">
+                    <key id="__137">parentContext</key>
+                    <value id="__138">#{pageFlowScope.parentContext}</value>
+                </map-entry>
+            </map-entries>
+        </managed-property>
+        <managed-property id="__139">
+            <property-name id="__140">name</property-name>
+            <value id="__141">TemplateConfiguration</value>
+        </managed-property>
+        <managed-property id="__142">
+            <property-name id="__143">taskFlowId</property-name>
+            <value id="__144">/WEB-INF/adfc-config-TemplateConfiguration.xml#TemplateConfigurationTaskFlow</value>
+        </managed-property>
+        <managed-property id="__145">
+            <property-name id="__146">label</property-name>
+            <value id="__147">#{nls['MENU1_TITLE_TEMPLATECONFIGURATION']}</value>
+        </managed-property>
+    </managed-bean>
+    <!-- DEBUG:END:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2-->
+</adfc-config>

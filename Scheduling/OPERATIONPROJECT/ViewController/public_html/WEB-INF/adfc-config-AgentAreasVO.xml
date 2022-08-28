@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <task-flow-definition id="AgentAreasVOTaskFlow">
+        <!-- DEBUG:BEGIN:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2 -->
+        <template-reference>
+            <document id="__0">/WEB-INF/jhs-fragment-taskflow-template.xml</document>
+            <id id="__1">jhs-fragment-taskflow-template</id>
+        </template-reference>
+        <!-- DEBUG:END:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2-->
+        <default-activity id="__2">StartAgentAreasVO</default-activity>
+        <!-- DEBUG:BEGIN:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2 -->
+        <input-parameter-definition id="__3">
+            <name id="__4">createAgentAreasVO</name>
+            <value id="__5">#{pageFlowScope.createAgentAreasVO}</value>
+            <class id="__6">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__7">
+            <name id="__8">rowKeyStrAgentAreasVO</name>
+            <value id="__9">#{pageFlowScope.rowKeyStrAgentAreasVO}</value>
+            <class id="__10">java.lang.String</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__11">
+            <name id="__12">rowKeyValueAgentAreasVO</name>
+            <value id="__13">#{pageFlowScope.rowKeyValueAgentAreasVO}</value>
+            <class id="__14">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__15">
+            <name id="__16">rowKeyAgentAreasVO</name>
+            <value id="__17">#{pageFlowScope.rowKeyAgentAreasVO}</value>
+            <class id="__18">oracle.jbo.Key</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__19">
+            <name id="__20">altKeyNameAgentAreasVO</name>
+            <value id="__21">#{pageFlowScope.altKeyNameAgentAreasVO}</value>
+            <class id="__22">java.lang.String</class>
+        </input-parameter-definition>
+        <!-- DEBUG:END:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2 -->
+        <managed-bean id="__23">
+            <managed-bean-name id="__24">jhsTaskFlowManager</managed-bean-name>
+            <managed-bean-class id="__25">oracle.jheadstart.controller.jsf.bean.TaskFlowManager</managed-bean-class>
+            <managed-bean-scope id="__26">pageFlow</managed-bean-scope>
+            <managed-property id="__27">
+                <property-name id="__28">initializeParentContextEntries</property-name>
+                <map-entries id="__29">
+                    <map-entry id="__30">
+                        <key id="__31">jhsCurrentGroupName</key>
+                        <value id="__32">AgentAreasVO</value>
+                    </map-entry>
+                </map-entries>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__33">
+            <managed-bean-name id="__34">CreateAgentAreasVO</managed-bean-name>
+            <managed-bean-class id="__35">oracle.jheadstart.controller.jsf.bean.CreateRowBean</managed-bean-class>
+            <managed-bean-scope id="__36">request</managed-bean-scope>
+            <managed-property id="__37">
+                <property-name id="__38">createBinding</property-name>
+                <value id="__39">#{bindings.CreateAgentAreasVO}</value>
+            </managed-property>
+            <managed-property id="__40">
+                <property-name id="__41">successOutcome</property-name>
+                <value id="__42">deepLinkPage</value>
+            </managed-property>
+            <managed-property id="__43">
+                <property-name id="__44">failureOutcome</property-name>
+                <value id="__45">firstPage</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__46">
+            <managed-bean-name id="__47">DeleteAgentAreasVO</managed-bean-name>
+            <managed-bean-class id="__48">oracle.jheadstart.controller.jsf.bean.DeleteRowBean</managed-bean-class>
+            <managed-bean-scope id="__49">request</managed-bean-scope>
+            <managed-property id="__50">
+                <property-name id="__51">deleteBinding</property-name>
+                <value id="__52">#{bindings.DeleteAgentAreasVO}</value>
+            </managed-property>
+            <managed-property id="__53">
+                <property-name id="__54">commitBean</property-name>
+                <value id="__55">#{jhsCommit}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2 -->
+        <managed-bean id="__56">
+            <managed-bean-name id="__57">SaveAgentAreasVO</managed-bean-name>
+            <managed-bean-class id="__58">oracle.jheadstart.controller.jsf.bean.CommitBean</managed-bean-class>
+            <managed-bean-scope id="__59">request</managed-bean-scope>
+            <managed-property id="__60">
+                <property-name id="__61">commitBinding</property-name>
+                <value id="__62">#{bindings.Commit}</value>
+            </managed-property>
+            <managed-property id="__63">
+                <property-name id="__64">successOutcome</property-name>
+                <value id="__65">Commit</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2 -->
+        <managed-bean id="__66">
+            <managed-bean-name id="__67">jhsRollback</managed-bean-name>
+            <managed-bean-class id="__68">oracle.jheadstart.controller.jsf.bean.RollbackBean</managed-bean-class>
+            <managed-bean-scope id="__69">request</managed-bean-scope>
+            <managed-property id="__70">
+                <property-name id="__71">rollbackBinding</property-name>
+                <value id="__72">#{bindings.Rollback}</value>
+            </managed-property>
+            <managed-property id="__73">
+                <property-name id="__74">successOutcome</property-name>
+                <value id="__75">Cancel</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:SEARCH_BEAN : default/misc/facesConfig/searchBean.vm, nesting level: 2 -->
+        <managed-bean id="__76">
+            <managed-bean-name id="__77">searchAgentAreasVO</managed-bean-name>
+            <managed-bean-class id="__78">oracle.jheadstart.controller.jsf.bean.JhsSearchBean</managed-bean-class>
+            <managed-bean-scope id="__79">pageFlow</managed-bean-scope>
+            <managed-property id="__80">
+                <property-name id="__81">bindings</property-name>
+                <value id="__82">#{'#{bindings}'}</value>
+            </managed-property>
+            <managed-property id="__83">
+                <property-name id="__84">iterBinding</property-name>
+                <value id="__85">#{'#{bindings.AgentAreasVOIterator}'}</value>
+            </managed-property>
+            <managed-property id="__86">
+                <property-name id="__87">searchBinding</property-name>
+                <value id="__88">#{'#{bindings.advancedSearchAgentAreasVO}'}</value>
+            </managed-property>
+            <managed-property id="__89">
+                <property-name id="__90">searchItem</property-name>
+                <value id="__91">AgentAreasVOAreaName</value>
+            </managed-property>
+            <managed-property id="__92">
+                <property-name id="__93">dataCollection</property-name>
+                <value id="__94">AgentAreasDetVO</value>
+            </managed-property>
+            <managed-property id="__95">
+                <property-name id="__96">operators</property-name>
+                <map-entries id="__97"></map-entries>
+            </managed-property>
+            <managed-property id="__98">
+                <property-name id="__99">itemAttributes</property-name>
+                <map-entries id="__100">
+                    <map-entry id="__101">
+                        <key id="__102">AgentAreasVOAreaName</key>
+                        <value id="__103">AreaName</value>
+                    </map-entry>
+                    <map-entry id="__104">
+                        <key id="__105">AgentAreasVOCoverDate</key>
+                        <value id="__106">CoverDate</value>
+                    </map-entry>
+                    <map-entry id="__107">
+                        <key id="__108">AgentAreasVOConfirmedDelivery</key>
+                        <value id="__109">ConfirmedDelivery</value>
+                    </map-entry>
+                    <map-entry id="__110">
+                        <key id="__111">AgentAreasVOBoverLostDispatched</key>
+                        <value id="__112">BoverLostDispatched</value>
+                    </map-entry>
+                    <map-entry id="__113">
+                        <key id="__114">AgentAreasVODispatchableContracts</key>
+                        <value id="__115">DispatchableContracts</value>
+                    </map-entry>
+                    <map-entry id="__116">
+                        <key id="__117">AgentAreasVOPromos</key>
+                        <value id="__118">Promos</value>
+                    </map-entry>
+                    <map-entry id="__119">
+                        <key id="__120">AgentAreasVOAreaId</key>
+                        <value id="__121">AreaId</value>
+                    </map-entry>
+                    <map-entry id="__122">
+                        <key id="__123">AgentAreasVOPNumForDispatch</key>
+                        <value id="__124">PNumForDispatch</value>
+                    </map-entry>
+                </map-entries>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:SEARCH_BEAN : default/misc/facesConfig/searchBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__125">
+            <managed-bean-name id="__126">AreaContractVOTable</managed-bean-name>
+            <managed-bean-class id="__127">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__128">pageFlow</managed-bean-scope>
+            <managed-property id="__129">
+                <property-name id="__130">name</property-name>
+                <value id="__131">AreaContractVOTable</value>
+            </managed-property>
+            <managed-property id="__132">
+                <property-name id="__133">rangeBindingExpr</property-name>
+                <value id="__134">#{'#{bindings.AreaContractVOTable}'}</value>
+            </managed-property>
+            <managed-property id="__135">
+                <property-name id="__136">focusItemId</property-name>
+                <value id="__137">AreaContractVOCardNo</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__138">
+            <managed-bean-name id="__139">DeleteAreaContractVO</managed-bean-name>
+            <managed-bean-class id="__140">oracle.jheadstart.controller.jsf.bean.DeleteRowBean</managed-bean-class>
+            <managed-bean-scope id="__141">request</managed-bean-scope>
+            <managed-property id="__142">
+                <property-name id="__143">deleteBinding</property-name>
+                <value id="__144">#{bindings.DeleteAreaContractVO}</value>
+            </managed-property>
+            <managed-property id="__145">
+                <property-name id="__146">commitBean</property-name>
+                <value id="__147">#{jhsCommit}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__148">
+            <managed-bean-name id="__149">CreateAreaContractVO</managed-bean-name>
+            <managed-bean-class id="__150">oracle.jheadstart.controller.jsf.bean.CreateRowBean</managed-bean-class>
+            <managed-bean-scope id="__151">request</managed-bean-scope>
+            <managed-property id="__152">
+                <property-name id="__153">createBinding</property-name>
+                <value id="__154">#{bindings.CreateAreaContractVO}</value>
+            </managed-property>
+            <managed-property id="__155">
+                <property-name id="__156">successOutcome</property-name>
+                <value id="__157">deepLinkPage</value>
+            </managed-property>
+            <managed-property id="__158">
+                <property-name id="__159">failureOutcome</property-name>
+                <value id="__160">firstPage</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__161">
+            <managed-bean-name id="__162">ProductContractDeliveryVOTable</managed-bean-name>
+            <managed-bean-class id="__163">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__164">pageFlow</managed-bean-scope>
+            <managed-property id="__165">
+                <property-name id="__166">name</property-name>
+                <value id="__167">ProductContractDeliveryVOTable</value>
+            </managed-property>
+            <managed-property id="__168">
+                <property-name id="__169">rangeBindingExpr</property-name>
+                <value id="__170">#{'#{bindings.ProductContractDeliveryVOTable}'}</value>
+            </managed-property>
+            <managed-property id="__171">
+                <property-name id="__172">focusItemId</property-name>
+                <value id="__173">ProductContractDeliveryVOTreatmentId</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__174">
+            <managed-bean-name id="__175">DeleteProductContractDeliveryVO</managed-bean-name>
+            <managed-bean-class id="__176">oracle.jheadstart.controller.jsf.bean.DeleteRowBean</managed-bean-class>
+            <managed-bean-scope id="__177">request</managed-bean-scope>
+            <managed-property id="__178">
+                <property-name id="__179">deleteBinding</property-name>
+                <value id="__180">#{bindings.DeleteProductContractDeliveryVO}</value>
+            </managed-property>
+            <managed-property id="__181">
+                <property-name id="__182">commitBean</property-name>
+                <value id="__183">#{jhsCommit}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__184">
+            <managed-bean-name id="__185">CreateProductContractDeliveryVO</managed-bean-name>
+            <managed-bean-class id="__186">oracle.jheadstart.controller.jsf.bean.CreateRowBean</managed-bean-class>
+            <managed-bean-scope id="__187">request</managed-bean-scope>
+            <managed-property id="__188">
+                <property-name id="__189">createBinding</property-name>
+                <value id="__190">#{bindings.CreateProductContractDeliveryVO}</value>
+            </managed-property>
+            <managed-property id="__191">
+                <property-name id="__192">successOutcome</property-name>
+                <value id="__193">deepLinkPage</value>
+            </managed-property>
+            <managed-property id="__194">
+                <property-name id="__195">failureOutcome</property-name>
+                <value id="__196">firstPage</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__197">
+            <managed-bean-name id="__198">AssignmentVOTable</managed-bean-name>
+            <managed-bean-class id="__199">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__200">pageFlow</managed-bean-scope>
+            <managed-property id="__201">
+                <property-name id="__202">name</property-name>
+                <value id="__203">AssignmentVOTable</value>
+            </managed-property>
+            <managed-property id="__204">
+                <property-name id="__205">rangeBindingExpr</property-name>
+                <value id="__206">#{'#{bindings.AssignmentVOTable}'}</value>
+            </managed-property>
+            <managed-property id="__207">
+                <property-name id="__208">focusItemId</property-name>
+                <value id="__209">AssignmentVOAssignDate</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__210">
+            <managed-bean-name id="__211">DeleteAssignmentVO</managed-bean-name>
+            <managed-bean-class id="__212">oracle.jheadstart.controller.jsf.bean.DeleteRowBean</managed-bean-class>
+            <managed-bean-scope id="__213">request</managed-bean-scope>
+            <managed-property id="__214">
+                <property-name id="__215">deleteBinding</property-name>
+                <value id="__216">#{bindings.DeleteAssignmentVO}</value>
+            </managed-property>
+            <managed-property id="__217">
+                <property-name id="__218">commitBean</property-name>
+                <value id="__219">#{jhsCommit}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__220">
+            <managed-bean-name id="__221">CreateAssignmentVO</managed-bean-name>
+            <managed-bean-class id="__222">oracle.jheadstart.controller.jsf.bean.CreateRowBean</managed-bean-class>
+            <managed-bean-scope id="__223">request</managed-bean-scope>
+            <managed-property id="__224">
+                <property-name id="__225">createBinding</property-name>
+                <value id="__226">#{bindings.CreateAssignmentVO}</value>
+            </managed-property>
+            <managed-property id="__227">
+                <property-name id="__228">successOutcome</property-name>
+                <value id="__229">deepLinkPage</value>
+            </managed-property>
+            <managed-property id="__230">
+                <property-name id="__231">failureOutcome</property-name>
+                <value id="__232">firstPage</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__233">
+            <managed-bean-name id="__234">ProductContractDeliveryDetVOTable</managed-bean-name>
+            <managed-bean-class id="__235">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__236">pageFlow</managed-bean-scope>
+            <managed-property id="__237">
+                <property-name id="__238">name</property-name>
+                <value id="__239">ProductContractDeliveryDetVOTable</value>
+            </managed-property>
+            <managed-property id="__240">
+                <property-name id="__241">rangeBindingExpr</property-name>
+                <value id="__242">#{'#{bindings.ProductContractDeliveryDetVOTable}'}</value>
+            </managed-property>
+            <managed-property id="__243">
+                <property-name id="__244">focusItemId</property-name>
+                <value id="__245">ProductContractDeliveryDetVOProductId</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__246">
+            <managed-bean-name id="__247">DeleteProductContractDeliveryDetVO</managed-bean-name>
+            <managed-bean-class id="__248">oracle.jheadstart.controller.jsf.bean.DeleteRowBean</managed-bean-class>
+            <managed-bean-scope id="__249">request</managed-bean-scope>
+            <managed-property id="__250">
+                <property-name id="__251">deleteBinding</property-name>
+                <value id="__252">#{bindings.DeleteProductContractDeliveryDetVO}</value>
+            </managed-property>
+            <managed-property id="__253">
+                <property-name id="__254">commitBean</property-name>
+                <value id="__255">#{jhsCommit}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__256">
+            <managed-bean-name id="__257">CreateProductContractDeliveryDetVO</managed-bean-name>
+            <managed-bean-class id="__258">oracle.jheadstart.controller.jsf.bean.CreateRowBean</managed-bean-class>
+            <managed-bean-scope id="__259">request</managed-bean-scope>
+            <managed-property id="__260">
+                <property-name id="__261">createBinding</property-name>
+                <value id="__262">#{bindings.CreateProductContractDeliveryDetVO}</value>
+            </managed-property>
+            <managed-property id="__263">
+                <property-name id="__264">successOutcome</property-name>
+                <value id="__265">deepLinkPage</value>
+            </managed-property>
+            <managed-property id="__266">
+                <property-name id="__267">failureOutcome</property-name>
+                <value id="__268">firstPage</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__269">
+            <managed-bean-name id="__270">PromosDeliveryVOTable</managed-bean-name>
+            <managed-bean-class id="__271">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__272">pageFlow</managed-bean-scope>
+            <managed-property id="__273">
+                <property-name id="__274">name</property-name>
+                <value id="__275">PromosDeliveryVOTable</value>
+            </managed-property>
+            <managed-property id="__276">
+                <property-name id="__277">rangeBindingExpr</property-name>
+                <value id="__278">#{'#{bindings.PromosDeliveryVOTable}'}</value>
+            </managed-property>
+            <managed-property id="__279">
+                <property-name id="__280">focusItemId</property-name>
+                <value id="__281">PromosDeliveryVOId</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__282">
+            <managed-bean-name id="__283">DeletePromosDeliveryVO</managed-bean-name>
+            <managed-bean-class id="__284">oracle.jheadstart.controller.jsf.bean.DeleteRowBean</managed-bean-class>
+            <managed-bean-scope id="__285">request</managed-bean-scope>
+            <managed-property id="__286">
+                <property-name id="__287">deleteBinding</property-name>
+                <value id="__288">#{bindings.DeletePromosDeliveryVO}</value>
+            </managed-property>
+            <managed-property id="__289">
+                <property-name id="__290">commitBean</property-name>
+                <value id="__291">#{jhsCommit}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__292">
+            <managed-bean-name id="__293">CreatePromosDeliveryVO</managed-bean-name>
+            <managed-bean-class id="__294">oracle.jheadstart.controller.jsf.bean.CreateRowBean</managed-bean-class>
+            <managed-bean-scope id="__295">request</managed-bean-scope>
+            <managed-property id="__296">
+                <property-name id="__297">createBinding</property-name>
+                <value id="__298">#{bindings.CreatePromosDeliveryVO}</value>
+            </managed-property>
+            <managed-property id="__299">
+                <property-name id="__300">successOutcome</property-name>
+                <value id="__301">deepLinkPage</value>
+            </managed-property>
+            <managed-property id="__302">
+                <property-name id="__303">failureOutcome</property-name>
+                <value id="__304">firstPage</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2 -->
+        <router id="StartAgentAreasVO">
+            <case id="__305">
+                <expression id="__306">#{pageFlowScope.createAgentAreasVO!=null}</expression>
+                <outcome id="__307">createAgentAreasVO</outcome>
+            </case>
+            <case id="__308">
+                <expression id="__309">#{pageFlowScope.rowKeyStrAgentAreasVO!=null or
+                                       pageFlowScope.rowKeyValueAgentAreasVO!=null or
+                                       pageFlowScope.rowKeyAgentAreasVO!=null}</expression>
+                <outcome id="__310">SetCurrentRowAgentAreasVO</outcome>
+            </case>
+            <case id="__311">
+                <expression id="__312">#{pageFlowScope.isDeepLink!=null and pageFlowScope.isDeepLink}</expression>
+                <outcome id="__313">deepLinkPage</outcome>
+            </case>
+            <default-outcome id="__314">firstPage</default-outcome>
+        </router>
+        <!-- DEBUG:END:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2 -->
+        <method-call id="CreateAgentAreasVO">
+            <method id="__315">#{CreateAgentAreasVO.execute}</method>
+            <!-- execute condition param -->
+            <parameter>
+                <class id="__316">java.lang.Object</class>
+                <value id="__317">#{pageFlowScope.createAgentAreasVO}</value>
+            </parameter>
+            <outcome id="__318">
+                <to-string/>
+            </outcome>
+        </method-call>
+        <method-call id="SetCurrentRowAgentAreasVO">
+            <method id="__319">#{jhsSetCurrentRow.execute}</method>
+            <!-- iterator param -->
+            <parameter>
+                <class id="__320">oracle.adf.model.binding.DCIteratorBinding</class>
+                <value id="__321">#{bindings.AgentAreasVOIterator}</value>
+            </parameter>
+            <!-- rowKeyStr param -->
+            <parameter>
+                <class id="__322">java.lang.String</class>
+                <value id="__323">#{pageFlowScope.rowKeyStrAgentAreasVO}</value>
+            </parameter>
+            <!-- rowKeyValue param -->
+            <parameter>
+                <class id="__324">java.lang.Object</class>
+                <value id="__325">#{pageFlowScope.rowKeyValueAgentAreasVO}</value>
+            </parameter>
+            <!-- rowKey param -->
+            <parameter>
+                <class id="__326">oracle.jbo.Key</class>
+                <value id="__327">#{pageFlowScope.rowKeyAgentAreasVO}</value>
+            </parameter>
+            <!-- altKeyName param -->
+            <parameter>
+                <class id="__328">java.lang.String</class>
+                <value id="__329">#{pageFlowScope.altKeyNameAgentAreasVO}</value>
+            </parameter>
+            <outcome id="__330">
+                <fixed-outcome id="__331">deepLinkPage</fixed-outcome>
+            </outcome>
+        </method-call>
+        <!-- DEBUG:END:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2-->
+        <task-flow-return id="CancelAgentAreasVOReturn">
+            <outcome id="__332">
+                <name id="__333">CancelAgentAreasVO</name>
+            </outcome>
+        </task-flow-return>
+        <task-flow-return id="DoneAgentAreasVOReturn">
+            <outcome id="__334">
+                <name id="__335">DoneAgentAreasVO</name>
+            </outcome>
+        </task-flow-return>
+        <!-- DEBUG:BEGIN:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2 -->
+        <view id="AgentAreasVO">
+            <page id="__336">/pages/AgentAreasVO.jsff</page>
+        </view>
+        <!-- DEBUG:END:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2 -->
+        <control-flow-rule id="__337">
+            <from-activity-id id="__338">*</from-activity-id>
+            <control-flow-case id="__339">
+                <from-outcome id="__340">SetCurrentRowAgentAreasVO</from-outcome>
+                <to-activity-id id="__341">SetCurrentRowAgentAreasVO</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__342">
+                <from-outcome id="__343">firstPage</from-outcome>
+                <to-activity-id id="__344">AgentAreasVO</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__345">
+                <from-outcome id="__346">deepLinkPage</from-outcome>
+                <to-activity-id id="__347">AgentAreasVO</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__348">
+                <from-outcome id="__349">AgentAreasVOBreadcrumb</from-outcome>
+                <to-activity-id id="__350">AgentAreasVO</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__351">
+                <from-outcome id="__352">Cancel</from-outcome>
+                <to-activity-id id="__353">StartAgentAreasVO</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__354">
+                <from-outcome id="__355">CancelAgentAreasVOReturn</from-outcome>
+                <to-activity-id id="__356">CancelAgentAreasVOReturn</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__357">
+                <from-outcome id="__358">DoneAgentAreasVOReturn</from-outcome>
+                <to-activity-id id="__359">DoneAgentAreasVOReturn</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__360">
+            <from-activity-id id="__361">*</from-activity-id>
+            <control-flow-case id="__362">
+                <from-outcome id="__363">createAgentAreasVO</from-outcome>
+                <to-activity-id id="__364">CreateAgentAreasVO</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <!-- DEBUG:END:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2-->
+        <use-page-fragments/>
+    </task-flow-definition>
+    <!-- This bean must be defined outside the task-flow-definition element
+       because it needs to be available in the pageFlowScope of the unbounded
+       task-flow not in the pageFlowScope of the bounded task flow itself. -->
+    <!-- DEBUG:BEGIN:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2 -->
+    <managed-bean id="__365">
+        <managed-bean-name id="__366">AgentAreasVOTaskFlowConfig</managed-bean-name>
+        <managed-bean-class id="__367">oracle.jheadstart.controller.jsf.bean.TaskFlowConfigBean</managed-bean-class>
+        <managed-bean-scope id="__368">pageFlow</managed-bean-scope>
+        <managed-property id="__369">
+            <property-name id="__370">params</property-name>
+            <property-class id="__371">java.util.Map</property-class>
+            <map-entries id="__372">
+                <map-entry id="__373">
+                    <key id="__374">parentContext</key>
+                    <value id="__375">#{pageFlowScope.parentContext}</value>
+                </map-entry>
+            </map-entries>
+        </managed-property>
+        <managed-property id="__376">
+            <property-name id="__377">name</property-name>
+            <value id="__378">AgentAreasVO</value>
+        </managed-property>
+        <managed-property id="__379">
+            <property-name id="__380">taskFlowId</property-name>
+            <value id="__381">/WEB-INF/adfc-config-AgentAreasVO.xml#AgentAreasVOTaskFlow</value>
+        </managed-property>
+        <managed-property id="__382">
+            <property-name id="__383">label</property-name>
+            <value id="__384">#{nls['MENU1_TITLE_AGENTAREASVO']}</value>
+        </managed-property>
+    </managed-bean>
+    <!-- DEBUG:END:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2-->
+</adfc-config>

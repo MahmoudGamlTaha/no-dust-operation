@@ -1,0 +1,58 @@
+## revision_history
+## 31-oct-2013   Steven Davelaar
+## 2.5           Moved metaContainer facet to separate macro, use PAGE_TEMPLATE_ID macro
+## 11-oct-2011   Steven Davelaar
+## 2.4           Use page_start/end macros to switch between facelets and jspx 
+## 11-oct-2011   Steven Davelaar
+## 2.3           Get page extension from application view type instead of hardcoding .jspx
+## 04-feb-2011   Steven Davelaar
+## 2.2           replaced hardcoded JSP version number with JSP_VERSION macro
+##               Change encoding to pageEncoding
+## 01-nov-2010   Steven Davelaar
+## 2.1           Added call to keyboard server listener
+## 10-jul-2010   Steven Davelaar
+## 2.1           Do not use JhsDynamicTabsPageTemplate when set at application level
+##               Hide menu tabs when already shown in menu global area
+## 23-jun-2009   Paco van der Linden
+## 2.0           Restructured layout according to stretching best-practices.
+## 09-sep-2008   Steven Davelaar
+## 1.1           R11 upgrade
+## 17-jun-2007   Steven Davelaar
+## 1.0           Initial creation
+<?xml version='1.0' #PAGE_ENCODING_PROP()?>
+#PAGE_START()
+    <af:document title="#HOME_PAGE_TITLE()" id="#NEW_ID("doc")">
+      #META_CONTAINER_FACET()
+      <af:form id="dataForm">
+
+${JHS.engine.resetNamingContainerContext()}
+
+        ## do not use dynamic tabs template for this page
+        <af:pageTemplate id="#PAGE_TEMPLATE_ID()" #if (${JHS.application.useJhsDynamicTabsPageTemplate}) viewId="/common/pageTemplates/JhsPageTemplate${JHS.application.pageExtension}" #else viewId="${JHS.application.pageTemplate}" #end>
+##        <af:pageTemplate id="#PAGE_TEMPLATE_ID()" viewId="${JHS.application.pageTemplate}" #if (${JHS.application.useDynamicTabs}) value="#{bindings.jhsPageTemplateBinding}" #end>
+          <f:attribute name="showMessagesInline" value="${JHS.application.showMessagesInline}"/>
+          #if (${JHS.application.runtimeCustomizationMenuAllowed})
+##            <f:attribute name="headerImage1" value="#{jhsDynamicMenu.currentModule.uisHeaderImage1}"/>
+##            <f:attribute name="headerImage2" value="#{jhsDynamicMenu.currentModule.uisHeaderImage2}"/>
+          #else
+            #if (${JHS.application.startMenuLevel}!='0')
+              ## top-level menu entries already shown in menu global
+              <f:attribute name="showMenu1" value="false"/>
+            #else
+              <f:attribute name="menuModel" value="#{RootMenu}"/>
+              <f:attribute name="menuStartLevel" value="0"/>
+            #end
+          #end
+
+          <f:facet name="pageContent">
+           <af:panelHeader text="#HOME_PAGE_HEADER()" id="#NEW_ID("ph")">
+           </af:panelHeader>
+          </f:facet>
+
+        </af:pageTemplate>
+      </af:form>
+      #KEYBOARD_SERVER_LISTENER()
+    </af:document>
+#PAGE_END()
+
+

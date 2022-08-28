@@ -1,0 +1,21 @@
+## revision_history
+## 18-may-2010   Steven Davelaar
+## 1.1           Added id property to all elements
+## 11-nov-2009   Steven Davelaar
+## 1.0           Initial creation
+
+<managed-bean id="#NEW_ID("__")">
+  <managed-bean-name id="#NEW_ID("__")">jhsTaskFlowManager</managed-bean-name>
+  <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.TaskFlowManager</managed-bean-class>
+  <managed-bean-scope id="#NEW_ID("__")">pageFlow</managed-bean-scope>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">initializeParentContextEntries</property-name>
+    <map-entries id="#NEW_ID("__")">
+      <map-entry id="#NEW_ID("__")">  
+        <key id="#NEW_ID("__")">jhsCurrentGroupName</key>
+        <value id="#NEW_ID("__")">${JHS.current.group.name}</value>
+      </map-entry>
+    </map-entries>
+  </managed-property>
+</managed-bean>
+

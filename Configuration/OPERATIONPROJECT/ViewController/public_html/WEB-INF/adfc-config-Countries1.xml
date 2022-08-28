@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <task-flow-definition id="Countries1TaskFlow">
+        <!-- DEBUG:BEGIN:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2 -->
+        <template-reference>
+            <document id="__0">/WEB-INF/jhs-fragment-taskflow-template.xml</document>
+            <id id="__1">jhs-fragment-taskflow-template</id>
+        </template-reference>
+        <!-- DEBUG:END:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2-->
+        <default-activity id="__2">StartCountries1</default-activity>
+        <!-- DEBUG:BEGIN:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2 -->
+        <input-parameter-definition id="__3">
+            <name id="__4">createCountries1</name>
+            <value id="__5">#{pageFlowScope.createCountries1}</value>
+            <class id="__6">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__7">
+            <name id="__8">rowKeyStrCountries1</name>
+            <value id="__9">#{pageFlowScope.rowKeyStrCountries1}</value>
+            <class id="__10">java.lang.String</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__11">
+            <name id="__12">rowKeyValueCountries1</name>
+            <value id="__13">#{pageFlowScope.rowKeyValueCountries1}</value>
+            <class id="__14">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__15">
+            <name id="__16">rowKeyCountries1</name>
+            <value id="__17">#{pageFlowScope.rowKeyCountries1}</value>
+            <class id="__18">oracle.jbo.Key</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__19">
+            <name id="__20">altKeyNameCountries1</name>
+            <value id="__21">#{pageFlowScope.altKeyNameCountries1}</value>
+            <class id="__22">java.lang.String</class>
+        </input-parameter-definition>
+        <!-- DEBUG:END:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2 -->
+        <managed-bean id="__23">
+            <managed-bean-name id="__24">jhsTaskFlowManager</managed-bean-name>
+            <managed-bean-class id="__25">oracle.jheadstart.controller.jsf.bean.TaskFlowManager</managed-bean-class>
+            <managed-bean-scope id="__26">pageFlow</managed-bean-scope>
+            <managed-property id="__27">
+                <property-name id="__28">initializeParentContextEntries</property-name>
+                <map-entries id="__29">
+                    <map-entry id="__30">
+                        <key id="__31">jhsCurrentGroupName</key>
+                        <value id="__32">Countries1</value>
+                    </map-entry>
+                </map-entries>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__33">
+            <managed-bean-name id="__34">CreateCountries1</managed-bean-name>
+            <managed-bean-class id="__35">oracle.jheadstart.controller.jsf.bean.CreateRowBean</managed-bean-class>
+            <managed-bean-scope id="__36">request</managed-bean-scope>
+            <managed-property id="__37">
+                <property-name id="__38">createBinding</property-name>
+                <value id="__39">#{bindings.CreateCountries1}</value>
+            </managed-property>
+            <managed-property id="__40">
+                <property-name id="__41">successOutcome</property-name>
+                <value id="__42">deepLinkPage</value>
+            </managed-property>
+            <managed-property id="__43">
+                <property-name id="__44">failureOutcome</property-name>
+                <value id="__45">firstPage</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2 -->
+        <managed-bean id="__46">
+            <managed-bean-name id="__47">SaveCountries1</managed-bean-name>
+            <managed-bean-class id="__48">oracle.jheadstart.controller.jsf.bean.CommitBean</managed-bean-class>
+            <managed-bean-scope id="__49">request</managed-bean-scope>
+            <managed-property id="__50">
+                <property-name id="__51">commitBinding</property-name>
+                <value id="__52">#{bindings.Commit}</value>
+            </managed-property>
+            <managed-property id="__53">
+                <property-name id="__54">successOutcome</property-name>
+                <value id="__55">Commit</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2 -->
+        <managed-bean id="__56">
+            <managed-bean-name id="__57">jhsRollback</managed-bean-name>
+            <managed-bean-class id="__58">oracle.jheadstart.controller.jsf.bean.RollbackBean</managed-bean-class>
+            <managed-bean-scope id="__59">request</managed-bean-scope>
+            <managed-property id="__60">
+                <property-name id="__61">rollbackBinding</property-name>
+                <value id="__62">#{bindings.Rollback}</value>
+            </managed-property>
+            <managed-property id="__63">
+                <property-name id="__64">successOutcome</property-name>
+                <value id="__65">Cancel</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:SEARCH_BEAN : default/misc/facesConfig/searchBean.vm, nesting level: 2 -->
+        <managed-bean id="__66">
+            <managed-bean-name id="__67">searchCountries1</managed-bean-name>
+            <managed-bean-class id="__68">oracle.jheadstart.controller.jsf.bean.JhsSearchBean</managed-bean-class>
+            <managed-bean-scope id="__69">pageFlow</managed-bean-scope>
+            <managed-property id="__70">
+                <property-name id="__71">bindings</property-name>
+                <value id="__72">#{'#{bindings}'}</value>
+            </managed-property>
+            <managed-property id="__73">
+                <property-name id="__74">iterBinding</property-name>
+                <value id="__75">#{'#{bindings.Countries1Iterator}'}</value>
+            </managed-property>
+            <managed-property id="__76">
+                <property-name id="__77">searchBinding</property-name>
+                <value id="__78">#{'#{bindings.advancedSearchCountries1}'}</value>
+            </managed-property>
+            <managed-property id="__79">
+                <property-name id="__80">searchItem</property-name>
+                <value id="__81">Countries1CountryId</value>
+            </managed-property>
+            <managed-property id="__82">
+                <property-name id="__83">dataCollection</property-name>
+                <value id="__84">Countries1</value>
+            </managed-property>
+            <managed-property id="__85">
+                <property-name id="__86">operators</property-name>
+                <map-entries id="__87"></map-entries>
+            </managed-property>
+            <managed-property id="__88">
+                <property-name id="__89">itemAttributes</property-name>
+                <map-entries id="__90">
+                    <map-entry id="__91">
+                        <key id="__92">Countries1CountryId</key>
+                        <value id="__93">CountryId</value>
+                    </map-entry>
+                    <map-entry id="__94">
+                        <key id="__95">Countries1CountryName</key>
+                        <value id="__96">CountryName</value>
+                    </map-entry>
+                    <map-entry id="__97">
+                        <key id="__98">Countries1RegionId</key>
+                        <value id="__99">RegionId</value>
+                    </map-entry>
+                </map-entries>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:SEARCH_BEAN : default/misc/facesConfig/searchBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__100">
+            <managed-bean-name id="__101">Countries1Table</managed-bean-name>
+            <managed-bean-class id="__102">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__103">pageFlow</managed-bean-scope>
+            <managed-property id="__104">
+                <property-name id="__105">name</property-name>
+                <value id="__106">Countries1Table</value>
+            </managed-property>
+            <managed-property id="__107">
+                <property-name id="__108">rangeBindingExpr</property-name>
+                <value id="__109">#{'#{bindings.Countries1Table}'}</value>
+            </managed-property>
+            <managed-property id="__110">
+                <property-name id="__111">focusItemId</property-name>
+                <value id="__112">Countries1CountryId</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__113">
+            <managed-bean-name id="__114">DeleteCountries1</managed-bean-name>
+            <managed-bean-class id="__115">oracle.jheadstart.controller.jsf.bean.DeleteRowBean</managed-bean-class>
+            <managed-bean-scope id="__116">request</managed-bean-scope>
+            <managed-property id="__117">
+                <property-name id="__118">deleteBinding</property-name>
+                <value id="__119">#{bindings.DeleteCountries1}</value>
+            </managed-property>
+            <managed-property id="__120">
+                <property-name id="__121">commitBean</property-name>
+                <value id="__122">#{jhsCommit}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2 -->
+        <router id="StartCountries1">
+            <case id="__123">
+                <expression id="__124">#{pageFlowScope.createCountries1!=null}</expression>
+                <outcome id="__125">createCountries1</outcome>
+            </case>
+            <case id="__126">
+                <expression id="__127">#{pageFlowScope.rowKeyStrCountries1!=null or
+                                       pageFlowScope.rowKeyValueCountries1!=null or pageFlowScope.rowKeyCountries1!=null}</expression>
+                <outcome id="__128">SetCurrentRowCountries1</outcome>
+            </case>
+            <case id="__129">
+                <expression id="__130">#{pageFlowScope.isDeepLink!=null and pageFlowScope.isDeepLink}</expression>
+                <outcome id="__131">deepLinkPage</outcome>
+            </case>
+            <default-outcome id="__132">firstPage</default-outcome>
+        </router>
+        <!-- DEBUG:END:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2 -->
+        <method-call id="CreateCountries1">
+            <method id="__133">#{CreateCountries1.execute}</method>
+            <!-- execute condition param -->
+            <parameter>
+                <class id="__134">java.lang.Object</class>
+                <value id="__135">#{pageFlowScope.createCountries1}</value>
+            </parameter>
+            <outcome id="__136">
+                <to-string/>
+            </outcome>
+        </method-call>
+        <method-call id="SetCurrentRowCountries1">
+            <method id="__137">#{jhsSetCurrentRow.execute}</method>
+            <!-- iterator param -->
+            <parameter>
+                <class id="__138">oracle.adf.model.binding.DCIteratorBinding</class>
+                <value id="__139">#{bindings.Countries1Iterator}</value>
+            </parameter>
+            <!-- rowKeyStr param -->
+            <parameter>
+                <class id="__140">java.lang.String</class>
+                <value id="__141">#{pageFlowScope.rowKeyStrCountries1}</value>
+            </parameter>
+            <!-- rowKeyValue param -->
+            <parameter>
+                <class id="__142">java.lang.Object</class>
+                <value id="__143">#{pageFlowScope.rowKeyValueCountries1}</value>
+            </parameter>
+            <!-- rowKey param -->
+            <parameter>
+                <class id="__144">oracle.jbo.Key</class>
+                <value id="__145">#{pageFlowScope.rowKeyCountries1}</value>
+            </parameter>
+            <!-- altKeyName param -->
+            <parameter>
+                <class id="__146">java.lang.String</class>
+                <value id="__147">#{pageFlowScope.altKeyNameCountries1}</value>
+            </parameter>
+            <outcome id="__148">
+                <fixed-outcome id="__149">deepLinkPage</fixed-outcome>
+            </outcome>
+        </method-call>
+        <!-- DEBUG:END:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2-->
+        <task-flow-return id="CancelCountries1Return">
+            <outcome id="__150">
+                <name id="__151">CancelCountries1</name>
+            </outcome>
+        </task-flow-return>
+        <task-flow-return id="DoneCountries1Return">
+            <outcome id="__152">
+                <name id="__153">DoneCountries1</name>
+            </outcome>
+        </task-flow-return>
+        <!-- DEBUG:BEGIN:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2 -->
+        <view id="Countries1Table">
+            <page id="__154">/pages/Countries1Table.jsff</page>
+        </view>
+        <view id="Countries1">
+            <page id="__155">/pages/Countries1.jsff</page>
+        </view>
+        <!-- DEBUG:END:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2 -->
+        <control-flow-rule id="__156">
+            <from-activity-id id="__157">*</from-activity-id>
+            <control-flow-case id="__158">
+                <from-outcome id="__159">SetCurrentRowCountries1</from-outcome>
+                <to-activity-id id="__160">SetCurrentRowCountries1</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__161">
+                <from-outcome id="__162">firstPage</from-outcome>
+                <to-activity-id id="__163">Countries1Table</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__164">
+                <from-outcome id="__165">deepLinkPage</from-outcome>
+                <to-activity-id id="__166">Countries1</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__167">
+                <from-outcome id="__168">Countries1TableBreadcrumb</from-outcome>
+                <to-activity-id id="__169">Countries1Table</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__170">
+                <from-outcome id="__171">Countries1Breadcrumb</from-outcome>
+                <to-activity-id id="__172">Countries1</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__173">
+                <from-outcome id="__174">Cancel</from-outcome>
+                <to-activity-id id="__175">StartCountries1</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__176">
+                <from-outcome id="__177">CancelCountries1Return</from-outcome>
+                <to-activity-id id="__178">CancelCountries1Return</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__179">
+                <from-outcome id="__180">DoneCountries1Return</from-outcome>
+                <to-activity-id id="__181">DoneCountries1Return</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__182">
+            <from-activity-id id="__183">Countries1Table</from-activity-id>
+            <control-flow-case id="__184">
+                <from-outcome id="__185">CreateCountries1</from-outcome>
+                <to-activity-id id="__186">Countries1</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__187">
+                <from-outcome id="__188">Countries1Details</from-outcome>
+                <to-activity-id id="__189">Countries1</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__190">
+            <from-activity-id id="__191">*</from-activity-id>
+            <control-flow-case id="__192">
+                <from-outcome id="__193">createCountries1</from-outcome>
+                <to-activity-id id="__194">CreateCountries1</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <!-- DEBUG:END:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2-->
+        <use-page-fragments/>
+    </task-flow-definition>
+    <!-- This bean must be defined outside the task-flow-definition element
+       because it needs to be available in the pageFlowScope of the unbounded
+       task-flow not in the pageFlowScope of the bounded task flow itself. -->
+    <!-- DEBUG:BEGIN:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2 -->
+    <managed-bean id="__195">
+        <managed-bean-name id="__196">Countries1TaskFlowConfig</managed-bean-name>
+        <managed-bean-class id="__197">oracle.jheadstart.controller.jsf.bean.TaskFlowConfigBean</managed-bean-class>
+        <managed-bean-scope id="__198">pageFlow</managed-bean-scope>
+        <managed-property id="__199">
+            <property-name id="__200">params</property-name>
+            <property-class id="__201">java.util.Map</property-class>
+            <map-entries id="__202">
+                <map-entry id="__203">
+                    <key id="__204">parentContext</key>
+                    <value id="__205">#{pageFlowScope.parentContext}</value>
+                </map-entry>
+            </map-entries>
+        </managed-property>
+        <managed-property id="__206">
+            <property-name id="__207">name</property-name>
+            <value id="__208">Countries1</value>
+        </managed-property>
+        <managed-property id="__209">
+            <property-name id="__210">taskFlowId</property-name>
+            <value id="__211">/WEB-INF/adfc-config-Countries1.xml#Countries1TaskFlow</value>
+        </managed-property>
+        <managed-property id="__212">
+            <property-name id="__213">label</property-name>
+            <value id="__214">#{nls['MENU1_TITLE_COUNTRIES1']}</value>
+        </managed-property>
+    </managed-bean>
+    <!-- DEBUG:END:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2-->
+</adfc-config>

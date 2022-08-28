@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="PilotCoverGroupPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="validateCurrentRows">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Name="PilotCoverGroupCommentVar" Type="String"/>
+    </variableIterator>
+    <iterator id="PilotCoverReconDriverPilotIterator" Binds="PilotCoverReconDriverPilotVO1"
+              DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <searchRegion id="PilotCoverReconDriverPilotIteratorQuery" Binds="PilotCoverReconDriverPilotIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true"
+                  DefaultQuickSearchAttrName="ReturnDate"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator id="PilotCoverPilotCoverProductIterator" Binds="PilotCoverPilotCoverProductVO1"
+              DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <searchRegion id="PilotCoverPilotCoverProductIteratorQuery" Binds="PilotCoverPilotCoverProductIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true"
+                  DefaultQuickSearchAttrName="AssignDate"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="variables" id="PilotCoverGroupComment">
+      <AttrNames>
+        <Item Value="PilotCoverGroupCommentVar"/>
+      </AttrNames>
+    </attributeValues>
+    <tree id="PilotCoverReconDriverPilotTable" IterBinding="PilotCoverReconDriverPilotIterator">
+      <nodeDefinition Name="PilotCoverReconDriverPilot"
+                      DefName="OPERATIONPROJECT.model.BC.VO.PilotCoverReconDriverPilotVO">
+        <AttrNames>
+          <Item Value="ReturnDate"/>
+          <Item Value="PilotId"/>
+          <Item Value="ActualMoney"/>
+          <Item Value="NewAmount"/>
+          <Item Value="Document"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="PilotCoverReconDriverPilotIterator" id="FirstPilotCoverReconDriverPilot"
+            RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="PilotCoverReconDriverPilotIterator" id="PreviousPilotCoverReconDriverPilot"
+            RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="PilotCoverReconDriverPilotIterator" id="NextPilotCoverReconDriverPilot"
+            RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="PilotCoverReconDriverPilotIterator" id="LastPilotCoverReconDriverPilot"
+            RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="PilotCoverReconDriverPilotIterator" id="SetCurrentRowWithKeyPilotCoverReconDriverPilot"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrPilotCoverReconDriverPilot}"
+                 NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="PilotCoverReconDriverPilotIterator" id="CreatePilotCoverReconDriverPilot"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="PilotCoverReconDriverPilotIterator" id="DeletePilotCoverReconDriverPilot"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <tree id="PilotCoverPilotCoverProductTable" IterBinding="PilotCoverPilotCoverProductIterator">
+      <nodeDefinition Name="PilotCoverPilotCoverProduct"
+                      DefName="OPERATIONPROJECT.model.BC.VO.PilotCoverPilotCoverProductVO">
+        <AttrNames>
+          <Item Value="AssignDate"/>
+          <Item Value="PilotId"/>
+          <Item Value="ProductId"/>
+          <Item Value="TreatmentId"/>
+          <Item Value="Quantity"/>
+          <Item Value="NewOutQty"/>
+          <Item Value="ActualClean"/>
+          <Item Value="NewCleanQty"/>
+          <Item Value="ActualDirty"/>
+          <Item Value="NewDirtyQty"/>
+          <Item Value="ActualCancel"/>
+          <Item Value="NewCancelQty"/>
+          <Item Value="ManualNew"/>
+          <Item Value="NewNewQty"/>
+          <Item Value="Document"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="PilotCoverPilotCoverProductIterator" id="FirstPilotCoverPilotCoverProduct"
+            RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="PilotCoverPilotCoverProductIterator" id="PreviousPilotCoverPilotCoverProduct"
+            RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="PilotCoverPilotCoverProductIterator" id="NextPilotCoverPilotCoverProduct"
+            RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="PilotCoverPilotCoverProductIterator" id="LastPilotCoverPilotCoverProduct"
+            RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="PilotCoverPilotCoverProductIterator" id="SetCurrentRowWithKeyPilotCoverPilotCoverProduct"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrPilotCoverPilotCoverProduct}"
+                 NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="PilotCoverPilotCoverProductIterator" id="CreatePilotCoverPilotCoverProduct"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="PilotCoverPilotCoverProductIterator" id="DeletePilotCoverPilotCoverProduct"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

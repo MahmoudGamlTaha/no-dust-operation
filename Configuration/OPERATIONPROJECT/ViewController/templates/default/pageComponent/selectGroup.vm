@@ -1,0 +1,70 @@
+## revision_history
+## 26-nov-2011   Steven Davelaar
+## 2.2           Added call to SET_INITIAL_FOCUS_ID, changed id of select list
+## 04-jan-2011   Steven Davelaar
+## 2.1           Use navigation list binding, so we don't need rowKey var and SetCurrentRowWithKey method anymore
+## 23-jun-2009   Paco van der Linden
+## 2.0           Restructured layout according to (stretching) best-practices.
+## 15-jun-2007   Jaco Verheul. R11
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+
+#set ($bindingId = "${JHS.current.group.name}NavigationList")
+#macro (LIST_BINDING $id)
+<navigationlist IterBinding="${JHS.current.group.name}Iterator" ListOperMode="navigation" ListIter="${JHS.current.group.name}Iterator"
+                id="${id}" DTSupportsMRU="false">
+  <AttrNames>
+    <Item Value="${JHS.current.group.descriptorAttribute}"/>
+  </AttrNames>
+</navigationlist>
+#end
+${JHS.pageDefGenerator.addBinding($JHS.page,"${bindingId}","#LIST_BINDING(${bindingId})")}
+#if ($JHS.engine.stretchEnabled)
+  <af:panelStretchLayout topHeight="auto" bottomHeight="30" id="#NEW_ID("psl")">
+    <f:facet name="top">
+
+      $JHS.engine.pushStretchEnabled(false)
+      #JHS_PARSE("SEARCH_AREA" ${JHS.current.model})
+      $JHS.engine.popStretchEnabled()
+
+    </f:facet>
+    <f:facet name="center">
+
+     #SET_INITIAL_FOCUS_ID("${JHS.current.group.shortName}Sol")
+      <af:panelFormLayout rendered="#{#GROUP_NOT_IN_FIND_MODE()}" id="${JHS.current.group.shortName}SelectpanelFormLayout">
+        <af:selectOneListbox id="${JHS.current.group.shortName}Sol" value="#{bindings.${bindingId}.inputValue}" size="10">
+          <f:selectItems value="#{bindings.${bindingId}.items}" id="#NEW_ID("si")"/>
+        </af:selectOneListbox>
+      </af:panelFormLayout>
+
+    </f:facet>
+    <f:facet name="bottom">
+
+      $JHS.engine.pushStretchEnabled(false)
+
+      <af:panelGroupLayout layout="vertical" id="#NEW_ID("pgl")">
+        <af:spacer height="10" id="${JHS.current.group.shortName}SelectGroupSpacer"/>
+        #JHS_PARSE("SELECT_GROUP_BUTTONS" ${JHS.current.model})
+      </af:panelGroupLayout>
+
+      $JHS.engine.popStretchEnabled()
+
+    </f:facet>
+  </af:panelStretchLayout>
+#else
+  <af:panelGroupLayout layout="vertical" id="#NEW_ID("pgl")">
+
+      #JHS_PARSE("SEARCH_AREA" ${JHS.current.model})
+
+      <af:panelFormLayout rendered="#{#GROUP_NOT_IN_FIND_MODE()}" id="${JHS.current.group.shortName}SelectpanelFormLayout">
+        <af:selectOneListbox id="#NEW_ID("nl")" value="#{bindings.${bindingId}.inputValue}" size="10">
+          <f:selectItems value="#{bindings.${bindingId}.items}" id="#NEW_ID("si")"/>
+        </af:selectOneListbox>
+      </af:panelFormLayout>
+
+      <af:spacer height="10" id="${JHS.current.group.shortName}SelectGroupSpacer"/>
+
+      #JHS_PARSE("SELECT_GROUP_BUTTONS" ${JHS.current.model})
+
+  </af:panelGroupLayout>
+#end

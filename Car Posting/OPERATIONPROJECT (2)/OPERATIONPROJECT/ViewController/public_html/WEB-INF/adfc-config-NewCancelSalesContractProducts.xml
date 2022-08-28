@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <task-flow-definition id="NewCancelSalesContractProductsTaskFlow">
+        <!-- DEBUG:BEGIN:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2 -->
+        <template-reference>
+            <document id="__0">/WEB-INF/jhs-bounded-taskflow-template.xml</document>
+            <id id="__1">jhs-bounded-taskflow-template</id>
+        </template-reference>
+        <!-- DEBUG:END:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2-->
+        <default-activity id="__2">FilterProducts</default-activity>
+        <!-- DEBUG:BEGIN:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2 -->
+        <input-parameter-definition id="__3">
+            <name id="__4">rowKeyStrNewCancelSalesContractProducts</name>
+            <value id="__5">#{pageFlowScope.rowKeyStrNewCancelSalesContractProducts}</value>
+            <class id="__6">java.lang.String</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__7">
+            <name id="__8">rowKeyValueNewCancelSalesContractProducts</name>
+            <value id="__9">#{pageFlowScope.rowKeyValueNewCancelSalesContractProducts}</value>
+            <class id="__10">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__11">
+            <name id="__12">rowKeyNewCancelSalesContractProducts</name>
+            <value id="__13">#{pageFlowScope.rowKeyNewCancelSalesContractProducts}</value>
+            <class id="__14">oracle.jbo.Key</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__15">
+            <name id="__16">altKeyNameNewCancelSalesContractProducts</name>
+            <value id="__17">#{pageFlowScope.altKeyNameNewCancelSalesContractProducts}</value>
+            <class id="__18">java.lang.String</class>
+        </input-parameter-definition>
+        <!-- DEBUG:END:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2 -->
+        <input-parameter-definition id="__128">
+            <name>AssignmentId</name>
+            <value>#{pageFlowScope.AssignmentId}</value>
+        </input-parameter-definition>
+        <input-parameter-definition id="__132">
+            <name>CardNo</name>
+            <value>#{pageFlowScope.CardNo}</value>
+        </input-parameter-definition>
+        <managed-bean id="__19">
+            <managed-bean-name id="__20">jhsTaskFlowManager</managed-bean-name>
+            <managed-bean-class id="__21">oracle.jheadstart.controller.jsf.bean.TaskFlowManager</managed-bean-class>
+            <managed-bean-scope id="__22">pageFlow</managed-bean-scope>
+            <managed-property id="__23">
+                <property-name id="__24">initializeParentContextEntries</property-name>
+                <map-entries id="__25">
+                    <map-entry id="__26">
+                        <key id="__27">jhsCurrentGroupName</key>
+                        <value id="__28">NewCancelSalesContractProducts</value>
+                    </map-entry>
+                </map-entries>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2-->
+        <managed-bean id="__29">
+            <managed-bean-name id="__30">MenuViewIdMapping</managed-bean-name>
+            <managed-bean-class id="__31">java.util.HashMap</managed-bean-class>
+            <managed-bean-scope id="__32">pageFlow</managed-bean-scope>
+            <map-entries id="__33">
+                <map-entry id="__34">
+                    <key id="__35">/NewCancelSalesContractProductsTaskFlow/NewCancelSalesContractProductsTable</key>
+                    <value id="__36">NewCancelSalesContractProducts</value>
+                </map-entry>
+            </map-entries>
+        </managed-bean>
+        <!-- DEBUG:BEGIN:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2 -->
+        <managed-bean id="__37">
+            <managed-bean-name id="__38">jhsRollback</managed-bean-name>
+            <managed-bean-class id="__39">oracle.jheadstart.controller.jsf.bean.RollbackBean</managed-bean-class>
+            <managed-bean-scope id="__40">request</managed-bean-scope>
+            <managed-property id="__41">
+                <property-name id="__42">rollbackBinding</property-name>
+                <value id="__43">#{bindings.Rollback}</value>
+            </managed-property>
+            <managed-property id="__44">
+                <property-name id="__45">successOutcome</property-name>
+                <value id="__46">Cancel</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__47">
+            <managed-bean-name id="__48">NewCancelSalesContractProductsTable</managed-bean-name>
+            <managed-bean-class id="__49">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__50">pageFlow</managed-bean-scope>
+            <managed-property id="__51">
+                <property-name id="__52">name</property-name>
+                <value id="__53">NewCancelSalesContractProductsTable</value>
+            </managed-property>
+            <managed-property id="__54">
+                <property-name id="__55">rangeBindingExpr</property-name>
+                <value id="__56">#{'#{bindings.NewCancelSalesContractProductsTable}'}</value>
+            </managed-property>
+            <managed-property id="__57">
+                <property-name id="__58">focusItemId</property-name>
+                <value id="__59">NewCancelSalesContractProductsComponentId</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2 -->
+        <managed-bean id="__129">
+            <managed-bean-name>DataTeamAgentBean</managed-bean-name>
+            <managed-bean-class>MTS.security.MTSClasses.DataTeamAgentBean</managed-bean-class>
+            <managed-bean-scope>request</managed-bean-scope>
+        </managed-bean>
+        <router id="StartNewCancelSalesContractProducts">
+            <case id="__60">
+                <expression id="__61">#{pageFlowScope.rowKeyStrNewCancelSalesContractProducts!=null or
+                                      pageFlowScope.rowKeyValueNewCancelSalesContractProducts!=null or
+                                      pageFlowScope.rowKeyNewCancelSalesContractProducts!=null}</expression>
+                <outcome id="__62">SetCurrentRowNewCancelSalesContractProducts</outcome>
+            </case>
+            <case id="__63">
+                <expression id="__64">#{pageFlowScope.isDeepLink!=null and pageFlowScope.isDeepLink}</expression>
+                <outcome id="__65">deepLinkPage</outcome>
+            </case>
+            <default-outcome id="__66">firstPage</default-outcome>
+        </router>
+        <!-- DEBUG:END:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2 -->
+        <method-call id="SetCurrentRowNewCancelSalesContractProducts">
+            <method id="__67">#{jhsSetCurrentRow.execute}</method>
+            <!-- iterator param -->
+            <parameter>
+                <class id="__68">oracle.adf.model.binding.DCIteratorBinding</class>
+                <value id="__69">#{bindings.NewCancelSalesContractProductsIterator}</value>
+            </parameter>
+            <!-- rowKeyStr param -->
+            <parameter>
+                <class id="__70">java.lang.String</class>
+                <value id="__71">#{pageFlowScope.rowKeyStrNewCancelSalesContractProducts}</value>
+            </parameter>
+            <!-- rowKeyValue param -->
+            <parameter>
+                <class id="__72">java.lang.Object</class>
+                <value id="__73">#{pageFlowScope.rowKeyValueNewCancelSalesContractProducts}</value>
+            </parameter>
+            <!-- rowKey param -->
+            <parameter>
+                <class id="__74">oracle.jbo.Key</class>
+                <value id="__75">#{pageFlowScope.rowKeyNewCancelSalesContractProducts}</value>
+            </parameter>
+            <!-- altKeyName param -->
+            <parameter>
+                <class id="__76">java.lang.String</class>
+                <value id="__77">#{pageFlowScope.altKeyNameNewCancelSalesContractProducts}</value>
+            </parameter>
+            <outcome id="__78">
+                <fixed-outcome id="__79">deepLinkPage</fixed-outcome>
+            </outcome>
+        </method-call>
+        <!-- DEBUG:END:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2-->
+        <task-flow-return id="CancelNewCancelSalesContractProductsReturn">
+            <outcome id="__80">
+                <name id="__81">CancelNewCancelSalesContractProducts</name>
+            </outcome>
+        </task-flow-return>
+        <task-flow-return id="DoneNewCancelSalesContractProductsReturn">
+            <outcome id="__82">
+                <name id="__83">DoneNewCancelSalesContractProducts</name>
+            </outcome>
+        </task-flow-return>
+        <!-- DEBUG:BEGIN:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2 -->
+        <view id="NewCancelSalesContractProductsTable">
+            <page id="__84">/pages/NewCancelSalesContractProductsTable.jsf</page>
+        </view>
+        <!-- DEBUG:END:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2 -->
+        <method-call id="FilterProducts">
+            <method>#{DataTeamAgentBean.FilterNewCancelSalesProductContractView}</method>
+            <outcome>
+                <fixed-outcome>GoToPage</fixed-outcome>
+            </outcome>
+        </method-call>
+        <control-flow-rule id="__85">
+            <from-activity-id id="__86">*</from-activity-id>
+            <control-flow-case id="__87">
+                <from-outcome id="__88">SetCurrentRowNewCancelSalesContractProducts</from-outcome>
+                <to-activity-id id="__89">SetCurrentRowNewCancelSalesContractProducts</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__90">
+                <from-outcome id="__91">firstPage</from-outcome>
+                <to-activity-id id="__92">NewCancelSalesContractProductsTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__93">
+                <from-outcome id="__94">deepLinkPage</from-outcome>
+                <to-activity-id id="__95">NewCancelSalesContractProductsTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__96">
+                <from-outcome id="__97">NewCancelSalesContractProductsTableBreadcrumb</from-outcome>
+                <to-activity-id id="__98">NewCancelSalesContractProductsTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__99">
+                <from-outcome id="__100">Cancel</from-outcome>
+                <to-activity-id id="__101">StartNewCancelSalesContractProducts</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__102">
+                <from-outcome id="__103">CancelNewCancelSalesContractProductsReturn</from-outcome>
+                <to-activity-id id="__104">CancelNewCancelSalesContractProductsReturn</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__105">
+                <from-outcome id="__106">DoneNewCancelSalesContractProductsReturn</from-outcome>
+                <to-activity-id id="__107">DoneNewCancelSalesContractProductsReturn</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <!-- DEBUG:END:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2-->
+        <control-flow-rule id="__130">
+            <from-activity-id>FilterProducts</from-activity-id>
+            <control-flow-case id="__131">
+                <from-outcome>GoToPage</from-outcome>
+                <to-activity-id>NewCancelSalesContractProductsTable</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+    </task-flow-definition>
+    <!-- This bean must be defined outside the task-flow-definition element
+       because it needs to be available in the pageFlowScope of the unbounded
+       task-flow not in the pageFlowScope of the bounded task flow itself. -->
+    <!-- DEBUG:BEGIN:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2 -->
+    <managed-bean id="__108">
+        <managed-bean-name id="__109">NewCancelSalesContractProductsTaskFlowConfig</managed-bean-name>
+        <managed-bean-class id="__110">oracle.jheadstart.controller.jsf.bean.TaskFlowConfigBean</managed-bean-class>
+        <managed-bean-scope id="__111">pageFlow</managed-bean-scope>
+        <managed-property id="__112">
+            <property-name id="__113">params</property-name>
+            <property-class id="__114">java.util.Map</property-class>
+            <map-entries id="__115">
+                <map-entry id="__116">
+                    <key id="__117">parentContext</key>
+                    <value id="__118">#{pageFlowScope.parentContext}</value>
+                </map-entry>
+            </map-entries>
+        </managed-property>
+        <managed-property id="__119">
+            <property-name id="__120">name</property-name>
+            <value id="__121">NewCancelSalesContractProducts</value>
+        </managed-property>
+        <managed-property id="__122">
+            <property-name id="__123">taskFlowId</property-name>
+            <value id="__124">/WEB-INF/adfc-config-NewCancelSalesContractProducts.xml#NewCancelSalesContractProductsTaskFlow</value>
+        </managed-property>
+        <managed-property id="__125">
+            <property-name id="__126">label</property-name>
+            <value id="__127">#{nls['MENU1_TITLE_NEWCANCELSALESCONTRACTPRODUCTS']}</value>
+        </managed-property>
+    </managed-bean>
+    <!-- DEBUG:END:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2-->
+</adfc-config>

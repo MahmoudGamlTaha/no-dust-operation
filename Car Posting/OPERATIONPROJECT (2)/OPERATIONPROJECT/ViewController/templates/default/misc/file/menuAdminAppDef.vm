@@ -1,0 +1,1135 @@
+<?xml version = '1.0' encoding = 'windows-1252'?>
+#set ($hints = '$HINTS$')
+<Service name="MenuAdminService"
+         description="Service Definition for Menu Admin Screens"
+         menuTitle="Menu Administration"
+         xmlns="http://www.oracle.com/jheadstart/applicationStructure"
+         controllerConfigFile="/WEB-INF/adfc-config-menu.xml"
+         groupBeansConfigDir="/menu/adfcConfig/"
+         pageVirtualDir="/menu/pages/" pageIncludesVirtualDir="/menu/includes/"
+         dataControl="${JHS.service.dataControl}" overwriteRunTarget="false"
+         dataControlImpl="${JHS.service.dataControlImpl}" >
+    <Group advancedSearchColumns="2" autoQuery="true"
+           descriptorAttribute="Label" formInsertAllowed="true"
+           formUpdateAllowed="true" formDeleteAllowed="true"
+           tableInsertAllowed="true" tableUpdateAllowed="true"
+           tableDeleteAllowed="true" sortable="false" useTableRange="true"
+           tableRangeSize="10" generatePages="true" overwriteBindings="true"
+           overwriteControllerConfig="true" generateLevel2Tabs="true"
+           generateControllerGroup="true" advancedSearch="none"
+           quickSearch="none" tabName="Menu Structure"
+           displayTitleSingular="Module" displayTitlePlural="Modules"
+           treeDataCollection="JhsModelService.ModulesLevel0"
+           description="Modules" columns="1" name="JhsModulesTree"
+           layoutStyle="reusableTree" dataCollection="JhsModelService.ModulesLevel0"
+           dataCollectionImpl="Modules" treeDataCollectionImpl="Modules"
+           enableStretching="true">
+        <Item alignment="right" attributeName="Id" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="Number" maximumLength="38" name="Id" promptInForm="Id"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" displayInForm="false"
+              displayInTable="false">
+            <Templates/>
+        </Item>
+        <Item alignment="right" attributeName="DisplaySequence" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="Number" maximumLength="3" name="DisplaySequence"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" displayInForm="true"
+              displayInTable="true" promptInForm="Display Sequence">
+            <Templates/>
+        </Item>
+        <Item attributeName="Name" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true" displayType="textInput"
+              javaType="String" maximumLength="60" name="Name"
+              promptInForm="Name"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" displayWidth="40">
+            <Templates/>
+        </Item>
+        <Item attributeName="Label" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true" displayType="textInput"
+              javaType="String" maximumLength="60" name="Label"
+              promptInForm="Label"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" displayWidth="40">
+            <Templates/>
+        </Item>
+        <Item attributeName="LabelTranslationKey" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true" displayType="textInput"
+              javaType="String" maximumLength="60" name="LabelTranslationKey"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true"
+              promptInForm="Label Translation Key" displayWidth="40">
+            <Templates/>
+            <ListOfValues groupName="MenuTranslationLov"
+                          useForValidation="false">
+                <ReturnValue target="LabelTranslationKey" source="Key1"/>
+            </ListOfValues>
+        </Item>
+        <Item attributeName="OrgKey" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="30" name="OrgKey"
+              promptInForm="OrgKey"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" displayInForm="false"
+              displayInTable="false">
+            <Templates/>
+        </Item>
+        <Item alignment="right" attributeName="UisId" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="Number" maximumLength="38" name="UisId"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true"
+              domain="UserInterfaceSkinsLookup" displayType="dropDownList"
+              promptInForm="User Interface Skin">
+            <Templates/>
+        </Item>
+        <Item alignment="right" attributeName="Id1" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="Number" maximumLength="38" name="Id1" promptInForm="Id1"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="false" displayInForm="false"
+              displayInTable="false">
+            <Templates/>
+        </Item>
+        <Item attributeName="UisHeaderImage1" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="80" name="UisHeaderImage1"
+              promptInForm="UisHeaderImage1"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="false" displayInForm="false"
+              displayInTable="false">
+            <Templates/>
+        </Item>
+        <Item attributeName="UisName" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="30" name="UisName"
+              promptInForm="UisName"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="false" displayInForm="false"
+              displayInTable="false">
+            <Templates/>
+        </Item>
+        <Item attributeName="UisHeaderImage2" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="80" name="UisHeaderImage2"
+              promptInForm="UisHeaderImage2"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="false" displayInForm="false"
+              displayInTable="false">
+            <Templates/>
+        </Item>
+        <Item attributeName="UisAdfFacesSkin" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="30" name="UisAdfFacesSkin"
+              promptInForm="UisAdfFacesSkin"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="false" displayInForm="false"
+              displayInTable="false">
+            <Templates/>
+        </Item>
+        <Item attributeName="UisIndDefault" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="1" name="UisIndDefault"
+              promptInForm="UisIndDefault"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="false" displayInForm="false"
+              displayInTable="false">
+            <Templates/>
+        </Item>
+        <Item attributeName="UisOrgKey" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="30" name="UisOrgKey"
+              promptInForm="UisOrgKey"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="false" displayInForm="false"
+              displayInTable="false">
+            <Templates/>
+        </Item>
+        <Item attributeName="Roles" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true" displayType="textInput"
+              javaType="String" maximumLength="240" name="Roles"
+              promptInForm="Roles"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" displayWidth="40"
+              hintText="Comma-delimited list of user roles that provide access to this module">
+            <Templates/>
+        </Item>
+        <RegionContainer name="Regions" enableStretching="true">
+            <GroupRegion treeSetCurrentRow="true" adfcRegion="true"
+                         groupName="MenuAdminService.JhsModules"
+                         name="JhsModules">
+                <Templates/>
+            </GroupRegion>
+            <Templates/>
+        </RegionContainer>
+        <Group advancedSearch="none" advancedSearchColumns="1"
+               quickSearch="none" samePage="false" autoQuery="true"
+               descriptorAttribute="Name" formInsertAllowed="true"
+               formUpdateAllowed="true" formDeleteAllowed="true"
+               tableInsertAllowed="true" tableUpdateAllowed="true"
+               tableDeleteAllowed="true" columns="2" sortable="false"
+               useTableRange="true" tableRangeSize="10" generatePages="true"
+               overwriteBindings="true" overwriteControllerConfig="true"
+               generateLevel2Tabs="true" generateControllerGroup="true"
+               treeDataCollection="JhsModelService.MenuItemsLevel1"
+               treeDataCollectionImpl="MenuItemsLevel1"
+               description="Top level menu items" tabName="Menu Items"
+               displayTitlePlural="Menu Items" displayTitleSingular="Menu Item"
+               name="JhsRootMenuItemsTree" layoutStyle="reusableTree"
+               dataCollection="JhsModelService.MenuItemsLevel1"
+               dataCollectionImpl="MenuItemsLevel1" enableStretching="true">
+            <Item alignment="right" attributeName="Id" databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayInTable="true" displayType="textInput"
+                  displayWidth="#{${hints}.displayWidth}"
+                  javaType="Number" maximumLength="38" name="Id"
+                  promptInForm="Id"
+                  required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="true" showInQuickSearch="true"
+                  sortable="true" updateAllowed="true" displayInForm="false">
+                <Templates/>
+            </Item>
+            <Item alignment="right" attributeName="DisplaySequence"
+                  databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayType="textInput"
+                  displayWidth="#{${hints}.displayWidth}"
+                  javaType="Number" maximumLength="3" name="DisplaySequence"
+                  required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="true" showInQuickSearch="true"
+                  sortable="true" updateAllowed="true" displayInForm="true"
+                  displayInTable="true" promptInForm="Display Sequence">
+                <Templates/>
+            </Item>
+            <Item attributeName="Name" databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayInForm="true" displayInTable="true"
+                  displayType="textInput" javaType="String" maximumLength="60"
+                  name="Name" promptInForm="Name"
+                  required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="true" showInQuickSearch="true"
+                  sortable="true" updateAllowed="true" displayWidth="30">
+                <Templates/>
+            </Item>
+            <Item alignment="right" attributeName="MdeId" databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayInForm="true" displayInTable="true"
+                  displayWidth="#{${hints}.displayWidth}"
+                  javaType="Number" maximumLength="38" name="MdeId"
+                  required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="true" showInQuickSearch="true"
+                  sortable="true" updateAllowed="true"
+                  displayType="dropDownList" domain="ModulesLookup"
+                  promptInForm="Module">
+                <Templates/>
+            </Item>
+            <Item alignment="right" attributeName="MimId" databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayInForm="true" displayInTable="true"
+                  displayWidth="#{${hints}.displayWidth}"
+                  javaType="Number" maximumLength="38" name="MimId"
+                  required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="true" showInQuickSearch="true"
+                  sortable="true" updateAllowed="true"
+                  displayType="dropDownList" domain="MenuItemsLookup"
+                  promptInForm="Parent Menu Item">
+                <Templates/>
+            </Item>
+            <Item attributeName="Label" databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayInForm="true" displayInTable="true"
+                  displayType="textInput" javaType="String" maximumLength="60"
+                  name="Label" promptInForm="Label"
+                  required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="true" showInQuickSearch="true"
+                  sortable="true" updateAllowed="true" displayWidth="30">
+                <Templates/>
+            </Item>
+            <Item attributeName="LabelTranslationKey" databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayInForm="true" displayInTable="true"
+                  displayType="textInput" javaType="String" maximumLength="60"
+                  name="LabelTranslationKey"
+                  required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="true" showInQuickSearch="true"
+                  sortable="true" updateAllowed="true"
+                  promptInForm="Label Translation Key" displayWidth="30">
+                <Templates/>
+                <ListOfValues groupName="MenuTranslationLov"
+                              useForValidation="false">
+                    <ReturnValue target="LabelTranslationKey" source="Key1"/>
+                </ListOfValues>
+            </Item>
+            <Item attributeName="LaunchingGroupName" databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayInForm="true" displayInTable="true" javaType="String"
+                  maximumLength="60" name="LaunchingGroupName"
+                  required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="true" showInQuickSearch="true"
+                  sortable="true" updateAllowed="true"
+                  promptInForm="Launching Group Name" displayWidth="40"
+                  domain="GeneratorGroupsLookup" displayType="textInput">
+                <Templates/>
+            </Item>
+            <Item attributeName="JsfAction" databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayInForm="true" displayInTable="true"
+                  displayType="textInput" javaType="String" maximumLength="240"
+                  name="JsfAction"
+                  required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="true" showInQuickSearch="true"
+                  sortable="true" updateAllowed="true"
+                  promptInForm="JSF Navigation Action" displayWidth="40">
+                <Templates/>
+            </Item>
+            <Item attributeName="IframeUrl" databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayInForm="true" displayInTable="true"
+                  displayType="textInput" javaType="String" maximumLength="240"
+                  name="IframeUrl"
+                  required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="true" showInQuickSearch="true"
+                  sortable="true" updateAllowed="true" promptInForm="IFrame Url"
+                  displayWidth="40">
+                <Templates/>
+            </Item>
+            <Item attributeName="Roles" databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayInForm="true" displayInTable="true"
+                  displayType="textInput" javaType="String" maximumLength="240"
+                  name="Roles" promptInForm="Roles"
+                  required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="true" showInQuickSearch="true"
+                  sortable="true"
+                  hintText="Comma-delimited list of user roles that provide access to this menu item"
+                  updateAllowed="true" displayWidth="40">
+                <Templates/>
+            </Item>
+            <Item attributeName="DisabledExpr" databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayInForm="true" displayInTable="true"
+                  displayType="textInput" javaType="String" maximumLength="240"
+                  name="DisabledExpr"
+                  required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="true" showInQuickSearch="true"
+                  sortable="true" updateAllowed="true"
+                  promptInForm="Disabled Expression" displayWidth="40">
+                <Templates/>
+            </Item>
+            <Item attributeName="RenderedExpr" databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayInForm="true" displayInTable="true"
+                  displayType="textInput" javaType="String" maximumLength="240"
+                  name="RenderedExpr"
+                  required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="true" showInQuickSearch="true"
+                  sortable="true" updateAllowed="true"
+                  promptInForm="Rendered Expression" displayWidth="40">
+                <Templates/>
+            </Item>
+            <RegionContainer name="Regions" enableStretching="true">
+                <GroupRegion name="JhsRootMenuItems" adfcRegion="true"
+                             groupName="MenuAdminService.JhsMenuItems">
+                    <Templates/>
+                </GroupRegion>
+                <Templates/>
+            </RegionContainer>
+            <Group advancedSearch="none" advancedSearchColumns="1"
+                   quickSearch="none" samePage="false" autoQuery="true"
+                   descriptorAttribute="Name" formInsertAllowed="true"
+                   formUpdateAllowed="true" formDeleteAllowed="true"
+                   tableInsertAllowed="true" tableUpdateAllowed="true"
+                   tableDeleteAllowed="true" columns="2" sortable="false"
+                   useTableRange="true" tableRangeSize="10" generatePages="true"
+                   overwriteBindings="true" overwriteControllerConfig="true"
+                   generateLevel2Tabs="true" generateControllerGroup="true"
+                   tabName="Menu Items" displayTitlePlural="Menu Items"
+                   displayTitleSingular="Menu Item"
+                   description="Child menu items"
+                   treeDataCollection="JhsModelService.MenuItemsLevel2"
+                   treeDataCollectionImpl="MenuItems"
+                   name="JhsChildMenuItemsTree" layoutStyle="reusableTree"
+                   dataCollection="JhsModelService.MenuItemsLevel2"
+                   dataCollectionImpl="MenuItems" enableStretching="true">
+                <Item alignment="right" attributeName="Id" databound="true"
+                      displayHeight="#{${hints}.displayHeight}"
+                      displayInTable="true" displayType="textInput"
+                      displayWidth="#{${hints}.displayWidth}"
+                      javaType="Number" maximumLength="38" name="Id"
+                      promptInForm="Id"
+                      required="#{${hints}.mandatory}"
+                      showInAdvancedSearch="true" showInQuickSearch="true"
+                      sortable="true" updateAllowed="true"
+                      displayInForm="false">
+                    <Templates/>
+                </Item>
+                <Item alignment="right" attributeName="DisplaySequence"
+                      databound="true"
+                      displayHeight="#{${hints}.displayHeight}"
+                      displayType="textInput"
+                      displayWidth="#{${hints}.displayWidth}"
+                      javaType="Number" maximumLength="3" name="DisplaySequence"
+                      required="#{${hints}.mandatory}"
+                      showInAdvancedSearch="true" showInQuickSearch="true"
+                      sortable="true" updateAllowed="true" displayInForm="true"
+                      displayInTable="true" promptInForm="Display Sequence">
+                    <Templates/>
+                </Item>
+                <Item attributeName="Name" databound="true"
+                      displayHeight="#{${hints}.displayHeight}"
+                      displayInForm="true" displayInTable="true"
+                      displayType="textInput" javaType="String"
+                      maximumLength="60" name="Name" promptInForm="Name"
+                      required="#{${hints}.mandatory}"
+                      showInAdvancedSearch="true" showInQuickSearch="true"
+                      sortable="true" updateAllowed="true" displayWidth="30">
+                    <Templates/>
+                </Item>
+                <Item alignment="right" attributeName="MdeId" databound="true"
+                      displayHeight="#{${hints}.displayHeight}"
+                      displayInForm="true" displayInTable="true"
+                      displayWidth="#{${hints}.displayWidth}"
+                      javaType="Number" maximumLength="38" name="MdeId"
+                      required="#{${hints}.mandatory}"
+                      showInAdvancedSearch="true" showInQuickSearch="true"
+                      sortable="true" updateAllowed="true"
+                      displayType="dropDownList" domain="ModulesLookup"
+                      promptInForm="Module">
+                    <Templates/>
+                </Item>
+                <Item alignment="right" attributeName="MimId" databound="true"
+                      displayHeight="#{${hints}.displayHeight}"
+                      displayInForm="true" displayInTable="true"
+                      displayWidth="#{${hints}.displayWidth}"
+                      javaType="Number" maximumLength="38" name="MimId"
+                      required="#{${hints}.mandatory}"
+                      showInAdvancedSearch="true" showInQuickSearch="true"
+                      sortable="true" updateAllowed="true"
+                      displayType="dropDownList" domain="MenuItemsLookup"
+                      promptInForm="Parent Menu Item">
+                    <Templates/>
+                </Item>
+                <Item attributeName="Label" databound="true"
+                      displayHeight="#{${hints}.displayHeight}"
+                      displayInForm="true" displayInTable="true"
+                      displayType="textInput" javaType="String"
+                      maximumLength="60" name="Label" promptInForm="Label"
+                      required="#{${hints}.mandatory}"
+                      showInAdvancedSearch="true" showInQuickSearch="true"
+                      sortable="true" updateAllowed="true" displayWidth="30">
+                    <Templates/>
+                </Item>
+                <Item attributeName="LabelTranslationKey" databound="true"
+                      displayHeight="#{${hints}.displayHeight}"
+                      displayInForm="true" displayInTable="true"
+                      displayType="textInput" javaType="String"
+                      maximumLength="60" name="LabelTranslationKey"
+                      required="#{${hints}.mandatory}"
+                      showInAdvancedSearch="true" showInQuickSearch="true"
+                      sortable="true" updateAllowed="true"
+                      promptInForm="Label Translation Key" displayWidth="30">
+                    <Templates/>
+                    <ListOfValues groupName="MenuTranslationLov"
+                                  useForValidation="false">
+                        <ReturnValue target="LabelTranslationKey"
+                                     source="Key1"/>
+                    </ListOfValues>
+                </Item>
+                <Item attributeName="LaunchingGroupName" databound="true"
+                      displayHeight="#{${hints}.displayHeight}"
+                      displayInForm="true" displayInTable="true"
+                      javaType="String" maximumLength="60"
+                      name="LaunchingGroupName"
+                      required="#{${hints}.mandatory}"
+                      showInAdvancedSearch="true" showInQuickSearch="true"
+                      sortable="true" updateAllowed="true"
+                      promptInForm="Launching Group Name" displayWidth="40"
+                      domain="GeneratorGroupsLookup" displayType="textInput">
+                    <Templates/>
+                </Item>
+                <Item attributeName="JsfAction" databound="true"
+                      displayHeight="#{${hints}.displayHeight}"
+                      displayInForm="true" displayInTable="true"
+                      displayType="textInput" javaType="String"
+                      maximumLength="240" name="JsfAction"
+                      required="#{${hints}.mandatory}"
+                      showInAdvancedSearch="true" showInQuickSearch="true"
+                      sortable="true" updateAllowed="true"
+                      promptInForm="JSF Navigation Action" displayWidth="40">
+                    <Templates/>
+                </Item>
+                <Item attributeName="IframeUrl" databound="true"
+                      displayHeight="#{${hints}.displayHeight}"
+                      displayInForm="true" displayInTable="true"
+                      displayType="textInput" javaType="String"
+                      maximumLength="240" name="IframeUrl"
+                      required="#{${hints}.mandatory}"
+                      showInAdvancedSearch="true" showInQuickSearch="true"
+                      sortable="true" updateAllowed="true"
+                      promptInForm="IFrame Url" displayWidth="40">
+                    <Templates/>
+                </Item>
+                <Item attributeName="Roles" databound="true"
+                      displayHeight="#{${hints}.displayHeight}"
+                      displayInForm="true" displayInTable="true"
+                      displayType="textInput" javaType="String"
+                      maximumLength="240" name="Roles" promptInForm="Roles"
+                      required="#{${hints}.mandatory}"
+                      showInAdvancedSearch="true" showInQuickSearch="true"
+                      hintText="Comma-delimited list of user roles that provide access to this menu item"
+                      sortable="true" updateAllowed="true" displayWidth="40">
+                    <Templates/>
+                </Item>
+                <Item attributeName="DisabledExpr" databound="true"
+                      displayHeight="#{${hints}.displayHeight}"
+                      displayInForm="true" displayInTable="true"
+                      displayType="textInput" javaType="String"
+                      maximumLength="240" name="DisabledExpr"
+                      required="#{${hints}.mandatory}"
+                      showInAdvancedSearch="true" showInQuickSearch="true"
+                      sortable="true" updateAllowed="true"
+                      promptInForm="Disabled Expression" displayWidth="40">
+                    <Templates/>
+                </Item>
+                <Item attributeName="RenderedExpr" databound="true"
+                      displayHeight="#{${hints}.displayHeight}"
+                      displayInForm="true" displayInTable="true"
+                      displayType="textInput" javaType="String"
+                      maximumLength="240" name="RenderedExpr"
+                      required="#{${hints}.mandatory}"
+                      showInAdvancedSearch="true" showInQuickSearch="true"
+                      sortable="true" updateAllowed="true"
+                      promptInForm="Rendered Expression" displayWidth="40">
+                    <Templates/>
+                </Item>
+                <RegionContainer name="Regions" enableStretching="true">
+                    <GroupRegion name="JhsChildMenuItems" adfcRegion="true"
+                                 groupName="MenuAdminService.JhsMenuItems">
+                        <Templates/>
+                    </GroupRegion>
+                    <Templates/>
+                </RegionContainer>
+                <Templates/>
+            </Group>
+            <Templates/>
+        </Group>
+        <Templates/>
+    </Group>
+    <Group advancedSearchColumns="2" autoQuery="true"
+           descriptorAttribute="Label" formInsertAllowed="true"
+           formUpdateAllowed="true" formDeleteAllowed="true"
+           tableInsertAllowed="true" tableUpdateAllowed="true"
+           tableDeleteAllowed="true" sortable="false" useTableRange="true"
+           tableRangeSize="10" generatePages="true" overwriteBindings="true"
+           overwriteControllerConfig="true" generateLevel2Tabs="true"
+           generateControllerGroup="true" advancedSearch="none"
+           quickSearch="none" tabName="Menu Structure"
+           displayTitleSingular="Module" displayTitlePlural="Modules"
+           treeDataCollection="JhsModelService.ModulesLevel0"
+           treeDataCollectionImpl="Modules" description="Modules"
+           name="JhsModules" columns="1" layoutStyle="form"
+           dataCollection="JhsModelService.ModulesLevel0"
+           dataCollectionImpl="Modules" addMenuEntry="false">
+        <Item alignment="right" attributeName="Id" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="Number" maximumLength="38" name="Id" promptInForm="Id"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" displayInForm="false"
+              displayInTable="false">
+            <Templates/>
+        </Item>
+        <Item alignment="right" attributeName="DisplaySequence" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="Number" maximumLength="3" name="DisplaySequence"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" displayInForm="true"
+              displayInTable="true" promptInForm="Display Sequence">
+            <Templates/>
+        </Item>
+        <Item attributeName="Name" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true" displayType="textInput"
+              javaType="String" maximumLength="60" name="Name"
+              promptInForm="Name"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" displayWidth="40">
+            <Templates/>
+        </Item>
+        <Item attributeName="Label" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true" displayType="textInput"
+              javaType="String" maximumLength="60" name="Label"
+              promptInForm="Label"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" displayWidth="40">
+            <Templates/>
+        </Item>
+        <Item attributeName="LabelTranslationKey" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true" displayType="textInput"
+              javaType="String" maximumLength="60" name="LabelTranslationKey"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true"
+              promptInForm="Label Translation Key" displayWidth="40">
+            <Templates/>
+            <ListOfValues groupName="MenuTranslationLov"
+                          useForValidation="false">
+                <ReturnValue target="LabelTranslationKey" source="Key1"/>
+            </ListOfValues>
+        </Item>
+        <Item attributeName="OrgKey" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="30" name="OrgKey"
+              promptInForm="OrgKey"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" displayInForm="false"
+              displayInTable="false">
+            <Templates/>
+        </Item>
+        <Item alignment="right" attributeName="UisId" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="Number" maximumLength="38" name="UisId"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true"
+              domain="UserInterfaceSkinsLookup" displayType="dropDownList"
+              promptInForm="User Interface Skin">
+            <Templates/>
+        </Item>
+        <Item alignment="right" attributeName="Id1" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="Number" maximumLength="38" name="Id1" promptInForm="Id1"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="false" displayInForm="false"
+              displayInTable="false">
+            <Templates/>
+        </Item>
+        <Item attributeName="UisHeaderImage1" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="80" name="UisHeaderImage1"
+              promptInForm="UisHeaderImage1"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="false" displayInForm="false"
+              displayInTable="false">
+            <Templates/>
+        </Item>
+        <Item attributeName="UisName" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="30" name="UisName"
+              promptInForm="UisName"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="false" displayInForm="false"
+              displayInTable="false">
+            <Templates/>
+        </Item>
+        <Item attributeName="UisHeaderImage2" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="80" name="UisHeaderImage2"
+              promptInForm="UisHeaderImage2"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="false" displayInForm="false"
+              displayInTable="false">
+            <Templates/>
+        </Item>
+        <Item attributeName="UisAdfFacesSkin" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="30" name="UisAdfFacesSkin"
+              promptInForm="UisAdfFacesSkin"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="false" displayInForm="false"
+              displayInTable="false">
+            <Templates/>
+        </Item>
+        <Item attributeName="UisIndDefault" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="1" name="UisIndDefault"
+              promptInForm="UisIndDefault"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="false" displayInForm="false"
+              displayInTable="false">
+            <Templates/>
+        </Item>
+        <Item attributeName="UisOrgKey" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="30" name="UisOrgKey"
+              promptInForm="UisOrgKey"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="false" displayInForm="false"
+              displayInTable="false">
+            <Templates/>
+        </Item>
+        <Item attributeName="Roles" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true" displayType="textInput"
+              javaType="String" maximumLength="240" name="Roles"
+              promptInForm="Roles"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" displayWidth="40"
+              hintText="Comma-delimited list of user roles that provide access to this module">
+            <Templates/>
+        </Item>
+        <RegionContainer name="Regions"/>
+        <Templates/>
+    </Group>
+    <Group advancedSearch="none" advancedSearchColumns="1" quickSearch="none"
+           samePage="false" autoQuery="true" descriptorAttribute="Name"
+           formInsertAllowed="true" formUpdateAllowed="true"
+           formDeleteAllowed="true" tableInsertAllowed="true"
+           tableUpdateAllowed="true" tableDeleteAllowed="true" columns="2"
+           sortable="false" useTableRange="true" tableRangeSize="10"
+           generatePages="true" overwriteBindings="true"
+           overwriteControllerConfig="true" generateLevel2Tabs="true"
+           generateControllerGroup="true"
+           dataCollection="JhsModelService.MenuItemsTreeSelect"
+           dataCollectionImpl="MenuItems"
+           treeDataCollection="JhsModelService.MenuItemsLevel1"
+           treeDataCollectionImpl="MenuItemsLevel1" tabName="Menu Items"
+           displayTitlePlural="Menu Items" displayTitleSingular="Menu Item"
+           name="JhsMenuItems" layoutStyle="form" description="Menu items"
+           addMenuEntry="false">
+        <Item alignment="right" attributeName="Id" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInTable="true" displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="Number" maximumLength="38" name="Id" promptInForm="Id"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" displayInForm="false">
+            <Templates/>
+        </Item>
+        <Item alignment="right" attributeName="DisplaySequence" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="Number" maximumLength="3" name="DisplaySequence"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" displayInForm="true"
+              displayInTable="true" promptInForm="Display Sequence">
+            <Templates/>
+        </Item>
+        <Item attributeName="Name" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true" displayType="textInput"
+              javaType="String" maximumLength="60" name="Name"
+              promptInForm="Name"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" displayWidth="30">
+            <Templates/>
+        </Item>
+        <Item alignment="right" attributeName="MdeId" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="Number" maximumLength="38" name="MdeId"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" displayType="dropDownList"
+              domain="ModulesLookup" promptInForm="Module">
+            <Templates/>
+        </Item>
+        <Item alignment="right" attributeName="MimId" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="Number" maximumLength="38" name="MimId"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" displayType="dropDownList"
+              domain="MenuItemsLookup" promptInForm="Parent Menu Item">
+            <Templates/>
+        </Item>
+        <Item attributeName="Label" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true" displayType="textInput"
+              javaType="String" maximumLength="60" name="Label"
+              promptInForm="Label"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" displayWidth="30">
+            <Templates/>
+        </Item>
+        <Item attributeName="LabelTranslationKey" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true" displayType="textInput"
+              javaType="String" maximumLength="60" name="LabelTranslationKey"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true"
+              promptInForm="Label Translation Key" displayWidth="30">
+            <Templates/>
+            <ListOfValues groupName="MenuTranslationLov"
+                          useForValidation="false">
+                <ReturnValue target="LabelTranslationKey" source="Key1"/>
+            </ListOfValues>
+        </Item>
+        <Item attributeName="LaunchingGroupName" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true" javaType="String"
+              maximumLength="60" name="LaunchingGroupName"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true"
+              promptInForm="Launching Group Name" displayWidth="40"
+              domain="GeneratorGroupsLookup" displayType="textInput">
+            <Templates/>
+        </Item>
+        <Item attributeName="JsfAction" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true" displayType="textInput"
+              javaType="String" maximumLength="240" name="JsfAction"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true"
+              promptInForm="JSF Navigation Action" displayWidth="40">
+            <Templates/>
+        </Item>
+        <Item attributeName="IframeUrl" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true" displayType="textInput"
+              javaType="String" maximumLength="240" name="IframeUrl"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" promptInForm="IFrame Url"
+              displayWidth="40">
+            <Templates/>
+        </Item>
+        <Item attributeName="Roles" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true" displayType="textInput"
+              javaType="String" maximumLength="240" name="Roles"
+              promptInForm="Roles"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true"
+              hintText="Comma-delimited list of user roles that provide access to this menu item"
+              updateAllowed="true" displayWidth="40">
+            <Templates/>
+        </Item>
+        <Item attributeName="DisabledExpr" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true" displayType="textInput"
+              javaType="String" maximumLength="240" name="DisabledExpr"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true"
+              promptInForm="Disabled Expression" displayWidth="40">
+            <Templates/>
+        </Item>
+        <Item attributeName="RenderedExpr" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true" displayType="textInput"
+              javaType="String" maximumLength="240" name="RenderedExpr"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true"
+              promptInForm="Rendered Expression" displayWidth="40">
+            <Templates/>
+        </Item>
+        <RegionContainer name="Regions"/>
+        <Templates/>
+    </Group>
+    <Group name="UserInterfaceSkins" description="UserInterfaceSkins"
+           advancedSearchColumns="2" autoQuery="true" descriptorAttribute="Name"
+           formInsertAllowed="true" formUpdateAllowed="true"
+           formDeleteAllowed="true" sortable="false" useTableRange="true"
+           tableRangeSize="10" generatePages="true" overwriteBindings="true"
+           overwriteControllerConfig="true" generateLevel2Tabs="true"
+           generateControllerGroup="true"
+           dataCollection="JhsModelService.UserInterfaceSkins"
+           dataCollectionImpl="UserInterfaceSkins"
+           tabName="User Interface Skins"
+           displayTitlePlural="User Interface Skins"
+           displayTitleSingular="User Interface Skin" advancedSearch="none"
+           layoutStyle="table-form" tableInsertAllowed="false"
+           tableUpdateAllowed="false" tableDeleteAllowed="false"
+           quickSearch="singleSearchField" singleSearchAttribute="Name"
+           formLink="hyperlink" columns="1">
+        <Item alignment="right" attributeName="Id" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="Number" maximumLength="38" name="Id" promptInForm="Id"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" displayInForm="false"
+              displayInTable="false">
+            <Templates/>
+        </Item>
+        <Item attributeName="Name" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true" displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="30" name="Name"
+              promptInForm="Name"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true">
+            <Templates/>
+        </Item>
+        <Item attributeName="AdfFacesSkin" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true" displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="30" name="AdfFacesSkin"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true"
+              promptInForm="ADF Faces Skin">
+            <Templates/>
+        </Item>
+        <Item attributeName="HeaderImage1" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="80" name="HeaderImage1"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" promptInForm="Header Image 1"
+              displayInTable="false">
+            <Templates/>
+        </Item>
+        <Item attributeName="HeaderImage2" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="80" name="HeaderImage2"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" promptInForm="Header Image 2"
+              displayInTable="false">
+            <Templates/>
+        </Item>
+        <Item attributeName="IndDefault" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="1" name="IndDefault"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" promptInForm="Default Skin?"
+              displayType="checkBox" domain="YesNoDomain" defaultValue="N">
+            <Templates/>
+        </Item>
+        <Item attributeName="OrgKey" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="30" name="OrgKey"
+              promptInForm="OrgKey"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" displayInForm="false"
+              displayInTable="false">
+            <Templates/>
+        </Item>
+        <RegionContainer name="Regions"/>
+        <Templates/>
+    </Group>
+    <Group groupUsage="lov" layoutStyle="table"
+           dataCollection="JhsModelService.Translations"
+           dataCollectionImpl="Translations"
+           displayTitlePlural="Search, Create and Select Translations"
+           showDuplicateRowButton="true" tableOverflowStyle="inline"
+           descriptorAttribute="Key1" quickSearch="dropDownList"
+           advancedSearch="samePage" singleSearchAttribute="Key1"
+           tableDeleteAllowed="true" name="MenuTranslationLov" showTitle="true">
+        <Item alignment="right" attributeName="Id" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="Number" maximumLength="38" name="Id" promptInForm="Id"
+              required="#{${hints}.mandatory}" sortable="true"
+              updateAllowed="true" showInQuickSearch="false"
+              showInAdvancedSearch="false" displayInForm="false"
+              displayInTable="false">
+            <Templates/>
+        </Item>
+        <Item attributeName="OrgKey" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="30" name="OrgKey"
+              promptInForm="OrgKey"
+              required="#{${hints}.mandatory}" sortable="true"
+              updateAllowed="true" showInQuickSearch="false"
+              showInAdvancedSearch="false" displayInForm="false"
+              displayInTable="false">
+            <Templates/>
+        </Item>
+        <Item attributeName="PageName" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="60" name="PageName"
+              promptInForm="PageName"
+              required="#{${hints}.mandatory}" sortable="true"
+              updateAllowed="true" showInQuickSearch="false"
+              showInAdvancedSearch="false" displayInForm="false"
+              displayInTable="false">
+            <Templates/>
+        </Item>
+        <Item attributeName="TextType" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="30" name="TextType"
+              promptInForm="TextType"
+              required="#{${hints}.mandatory}" sortable="true"
+              updateAllowed="true" showInQuickSearch="false"
+              showInAdvancedSearch="false" displayInForm="false"
+              displayInTable="false">
+            <Templates/>
+        </Item>
+        <Item attributeName="Key1" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true" displayType="textInput"
+              javaType="String" maximumLength="60" name="Key1"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" promptInForm="Key" displayWidth="40"
+              updateAllowed="while_new">
+            <Templates/>
+        </Item>
+        <Item alignment="right" attributeName="LceId" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="Number" maximumLength="38" name="LceId"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" displayType="dropDownList" domain="LocalesLookup"
+              promptInForm="Language" updateAllowed="while_new"
+              columnWidth="50">
+            <Templates/>
+        </Item>
+        <Item attributeName="Text" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true" displayType="textInput"
+              javaType="String" maximumLength="4000" name="Text"
+              promptInForm="Text"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" displayWidth="60">
+            <Templates/>
+        </Item>
+        <Item attributeName="Text" databound="true" displayType="textInput"
+              javaType="String" maximumLength="4000" promptInForm="Text"
+              required="#{${hints}.mandatory}" sortable="true"
+              updateAllowed="true" name="TextInOverflow"
+              displayInTableOverflow="true" displayHeight="10"
+              displayWidth="100" displayInForm="false" displayInTable="false"
+              showInQuickSearch="false" showInAdvancedSearch="false">
+            <Templates/>
+        </Item>
+        <RegionContainer name="Regions"/>
+        <Templates/>
+    </Group>
+    <Domains>
+        <Domain name="MenuItemsLookup" type="dynamic" valueAttribute="Id"
+                meaningAttribute="Name"
+                dataCollection="JhsModelService.MenuItemsLookup"
+                dataCollectionImpl="MenuItems"/>
+        <Domain name="ModulesLookup" type="dynamic" valueAttribute="Id"
+                meaningAttribute="Label"
+                dataCollection="JhsModelService.ModulesLookup"
+                dataCollectionImpl="Modules"/>
+        <Domain type="dynamic" valueAttribute="Id" meaningAttribute="Name"
+                dataCollection="JhsModelService.UserInterfaceSkinsLookup"
+                dataCollectionImpl="" name="UserInterfaceSkinsLookup"/>
+        <Domain type="static" name="YesNoDomain">
+            <AllowableValue value="Y" meaning="Yes"/>
+            <AllowableValue value="N" meaning="No"/>
+        </Domain>
+        <Domain type="dynamic" name="LocalesLookup"
+                dataCollection="JhsModelService.LocalesLookup"
+                dataCollectionImpl="Locales" valueAttribute="Id"
+                meaningAttribute="Description"/>
+        <Domain type="dynamic" name="GeneratorGroupsLookup"
+                dataCollection="JhsModelService.GeneratorGroupNamesLookup"
+                dataCollectionImpl="GeneratorGroupNamesLookup"
+                valueAttribute="Name" meaningAttribute="Name"/>
+    </Domains>
+    <Templates/>
+</Service>

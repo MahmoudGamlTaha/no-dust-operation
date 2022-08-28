@@ -1,0 +1,177 @@
+## revision_history
+## 31-jan-2012   Steven Davelaar
+## 1.14          Undo revision 1.10: we now handle startInCreateMode inside called task flow
+## 28-oct-2011   Sandra Muller
+## 1.13          Use macro for DynamicRegionManager class, to allow easy override with custom class
+## 21-apr-2011   Steven Davelaar
+## 1.12          Fixed bug in generating parent actions.
+## 14-mar-2011   Steven Davelaar
+## 1.11          Added dataControlScope if group setting differs from app setting
+## 24-feb-2011   Steven Davelaar
+## 1.10          Added create[Groupname] param in taskflow call when called group has startInCreateMode set
+## 15-nov-2010   Steven Davelaar
+## 1.9           Exracted most content into separate templates, and added custom place holder templates
+##               to make taskflow customization easier, add pre-parsing of custom activities template
+## 26-aug-2010   Sandra Muller
+## 1.8           Use macro for popupTitle
+## 18-may-2010   Steven Davelaar
+## 1.7           Added id property to all elements
+## 15-apr-2010   Steven Davelaar
+## 1.6           Added popupTitle parameter when calling taskflow in popup
+## 23-feb-2010   Steven Davelaar
+## 1.5           Cancel now returns to Start router activity instead of first page, unless startInCreateMode is set
+## 27-okt-2009   Steven Davelaar
+## 1.4           Clear LOV search criteria when opening LOV through icon
+## 24-jun-2009   Steven Davelaar
+## 1.3           Check whether group is databound and insert allowed
+## 24-mar-2009   Steven Davelaar
+## 1.2           Added cancel/done taskflow return activity and control flow cases
+## 16-mar-2009   Evert-Jan de Bruin
+## 1.1           Added support for LOV for validation
+## 05-jul-2008   Steven Davelaar
+## 1.0           Initial creation for R11
+<?xml version="1.0" #ENCODING_PROP() ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+
+#set ($group = ${JHS.current.group})
+#set ($groupName = ${JHS.current.group.name})
+
+#if (!($group.nonReusableTree && $group.hasTreeLayout))
+
+#set ($firstPage = ${JHS.current.group.firstPage.name})
+#set ($deepLinkPage = ${JHS.current.groupFacesConfig.deepLinkPage.name})
+
+#if ($JHS.current.group.startInCreateMode!='' && $JHS.current.group.startInCreateMode!='false')
+ #set ($cancelAction = $firstPage)
+#else
+ #set ($cancelAction = "Start${groupName}")
+#end
+
+## We pre-parse the custom activities in a dummy variable. We do this so we can easily register custom main router cases
+## and custom control flow rules within the custom TASK_FLOW_CUSTOM_ACTIVITIES template. Here is an example of such
+## custom activity template content:
+##  <method-call id="SomeActivityId">
+##    <method id="#NEW_ID("__")">#{SomeMethodCall}</method>
+##    <outcome id="#NEW_ID("__")">
+##      <fixed-outcome id="#NEW_ID("__")">SomeOutcome</fixed-outcome>
+##    </outcome>
+##  </method-call>
+##  ${JHS.facesConfigGenerator.addMainRouterCase($JHS.current.group, "#{someBooleanExpression}","SomeOutCome")}
+##  ${JHS.facesConfigGenerator.addGlobalNavigationCase($JHS.current.group, "SomeOutcome","SomeActivityId",false)}
+##  ${JHS.facesConfigGenerator.addNavigationCase($JHS.current.group,"SomeActivityId", "SomeOutcome","SomeToActivityId",false)}
+#set ($preParseCustomActivities = "#JHS_PARSE_NO_DEBUG('TASK_FLOW_CUSTOM_ACTIVITIES' ${JHS.current.model})")
+
+<task-flow-definition id="${group.pageFlowName}">
+  #JHS_PARSE("TASK_FLOW_TEMPLATE_REFERENCE" ${JHS.current.model})
+  <default-activity id="#NEW_ID("__")">Start${groupName}</default-activity>
+
+  #if ($JHS.current.group.dataControlScope!='' && $JHS.current.group.dataControlScope!=$JHS.application.dataControlScope)
+    <data-control-scope id="#NEW_ID("__")"><${JHS.current.group.dataControlScope}/></data-control-scope>
+  #end
+  #JHS_PARSE("TASK_FLOW_INPUT_PARAMETERS" ${JHS.current.model})
+  #JHS_PARSE("TASK_FLOW_MANAGER_BEAN" ${JHS.current.model})
+
+  #if ($JHS.current.group.useAsStandalonePage)
+    <managed-bean id="#NEW_ID("__")">
+      <managed-bean-name id="#NEW_ID("__")">MenuViewIdMapping</managed-bean-name>
+      <managed-bean-class id="#NEW_ID("__")">java.util.HashMap</managed-bean-class>
+      <managed-bean-scope id="#NEW_ID("__")">pageFlow</managed-bean-scope>
+         <map-entries id="#NEW_ID("__")">
+         #foreach ($page in ${JHS.current.groupFacesConfig.pages})
+           <map-entry id="#NEW_ID("__")">
+             <key id="#NEW_ID("__")">/${groupName}TaskFlow/${page.name}</key>
+             <value id="#NEW_ID("__")">${groupName}</value>
+           </map-entry>  
+         #end
+         </map-entries>
+    </managed-bean>
+  #end
+  
+#foreach($managedBean in ${JHS.current.groupFacesConfig.boundedTaskFlowManagedBeans})
+  #JHS_PARSE($managedBean.templateIdentifier $managedBean)
+#end
+
+#foreach ($taskFlowCall in ${JHS.current.groupFacesConfig.taskFlowCalls})
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">${taskFlowCall.id}Parameters</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">java.util.HashMap</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">request</managed-bean-scope>
+     <map-entries id="#NEW_ID("__")">
+       <map-entry id="#NEW_ID("__")">
+        <key id="#NEW_ID("__")">parentContext</key>
+        <value id="#NEW_ID("__")">#{pageFlowScope.parentContext}</value>
+       </map-entry>  
+       #if (!$taskFlowCall.showInPopup)
+       <map-entry id="#NEW_ID("__")">
+        <key id="#NEW_ID("__")">jhsBreadcrumbStack</key>
+        <value id="#NEW_ID("__")">#{pageFlowScope.jhsBreadcrumbStack}</value>
+       </map-entry>  
+       #end
+     </map-entries>
+  </managed-bean>
+#end
+
+  #JHS_PARSE("TASK_FLOW_CUSTOM_BEANS" ${JHS.current.model})
+
+  #JHS_PARSE("TASK_FLOW_MAIN_ROUTER" ${JHS.current.model})
+
+  #JHS_PARSE("TASK_FLOW_METHOD_CALL_ACTIVITIES" ${JHS.current.model})
+
+  #foreach($parentAction in ${JHS.current.groupFacesConfig.parentActions.keySet().toArray()})
+    <parent-action id="${parentAction}">
+      <parent-outcome id="#NEW_ID("__")">${JHS.current.groupFacesConfig.parentActions.get(${parentAction})}</parent-outcome>
+    </parent-action>
+  #end
+
+
+  #JHS_PARSE("TASK_FLOW_CALL_ACTIVITIES" ${JHS.current.model})
+
+    <task-flow-return id="Cancel${JHS.current.group.name}Return">
+      <outcome id="#NEW_ID("__")">
+        <name id="#NEW_ID("__")">Cancel${JHS.current.group.name}</name>
+      </outcome>
+    </task-flow-return>
+    <task-flow-return id="Done${JHS.current.group.name}Return">
+      <outcome id="#NEW_ID("__")">
+        <name id="#NEW_ID("__")">Done${JHS.current.group.name}</name>
+      </outcome>
+    </task-flow-return>
+
+  #JHS_PARSE("TASK_FLOW_VIEW_ACTIVITIES" ${JHS.current.model})
+
+  #JHS_PARSE("TASK_FLOW_CUSTOM_ACTIVITIES" ${JHS.current.model})
+
+  #if ($JHS.current.group.wizardBaseGroup)
+    <train/>
+  #end
+
+  #JHS_PARSE("TASK_FLOW_CONTROL_FLOW_RULES" ${JHS.current.model})
+
+  #JHS_PARSE("TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES" ${JHS.current.model})
+
+   #if ($JHS.current.group.useAsFragment)
+     <use-page-fragments/>
+   #end
+   </task-flow-definition> 
+
+  <!-- This bean must be defined outside the task-flow-definition element
+       because it needs to be available in the pageFlowScope of the unbounded
+       task-flow not in the pageFlowScope of the bounded task flow itself. -->
+  #JHS_PARSE("TASK_FLOW_CONFIG_BEAN" ${JHS.current.model})
+
+#end
+
+#if ($group.baseGroupOfTree && $group.nonReusableTree)
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">${group.name}TreeRegionManager</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">#DYNAMIC_REGION_MANAGER_CLASS()</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">pageFlow</managed-bean-scope>
+  </managed-bean>
+#end
+
+## beans that should be accessible outside the scope of the bounded taskflow
+#foreach($managedBean in ${JHS.current.groupFacesConfig.managedBeans})
+  #JHS_PARSE($managedBean.templateIdentifier $managedBean)
+#end
+
+</adfc-config>

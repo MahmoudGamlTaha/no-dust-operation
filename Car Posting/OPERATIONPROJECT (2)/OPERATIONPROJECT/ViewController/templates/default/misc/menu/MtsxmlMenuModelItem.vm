@@ -1,0 +1,30 @@
+## revision_history
+## 28-may-2009   Paco van der Linden
+##               itemNode only created when groupUsage is 'page' or 'region'
+## 19-aug-2008   Steven Davelaar
+## 1.0           initial creation
+
+#set ($group = $JHS.current.group)
+#if ($JHS.application.standAlonePagesUsed)
+  #set ($menuActionPrefix = "abandon:")
+#else
+  #set ($menuActionPrefix = "")
+#end
+
+  #if ($group.addMenuEntry && $group.isBaseGroup && ($group.useAsStandalonePage || $group.groupUsage == 'region'))
+  <itemNode id="${group.name}MI"  label="#MENU1_TITLE()" 
+    #if (${group.groupUsage} == 'region')
+      #if (${group.groupRegionAccess}=='commonUIShell')
+        action="${menuActionPrefix}uishell:${group.name}"
+        focusViewId="${group.name}"
+      #else
+         action="${menuActionPrefix}${JHS.facesConfigGenerator.addGlobalNavigationCase("Start${group.name}", "${group.name}",true)}"
+         focusViewId="/${group.name}"
+      #end
+    #elseif (${group.useAsStandalonePage})
+      action="${menuActionPrefix}${JHS.facesConfigGenerator.addGlobalNavigationCase("Start${group.name}", "Start${group.name}",true)}"
+      focusViewId="${group.name}"
+    #end
+    #if ($group.roles) rendered="#{jhsUserRoles['$group.roles']}"#end >
+   </itemNode>
+  #end 

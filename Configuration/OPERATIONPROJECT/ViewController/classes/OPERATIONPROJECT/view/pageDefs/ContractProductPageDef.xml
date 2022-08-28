@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="ContractProductPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle" SkipValidation="true">
+  <parameters>
+    <parameter id="bindingContainersToPrepare" value="#{'CustomerProfilePageDef'}"/>
+  </parameters>
+  <executables>
+    <iterator id="ContractProductIterator" Binds="ProductContractVO1" DataControl="AppModuleAMDataControl"
+              RangeSize="10"/>
+    <searchRegion id="ContractProductIteratorQuery" Binds="ContractProductIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="Active"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="ContractProductIterator" id="ContractProductActive">
+      <AttrNames>
+        <Item Value="Active"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractProductIterator" id="ContractProductActiveFrom">
+      <AttrNames>
+        <Item Value="ActiveFrom"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractProductIterator" id="ContractProductActiveTo">
+      <AttrNames>
+        <Item Value="ActiveTo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractProductIterator" id="ContractProductCardNo">
+      <AttrNames>
+        <Item Value="CardNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractProductIterator" id="ContractProductId">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractProductIterator" id="ContractProductPackageNo">
+      <AttrNames>
+        <Item Value="PackageNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractProductIterator" id="ContractProductPackageVersion">
+      <AttrNames>
+        <Item Value="PackageVersion"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractProductIterator" id="ContractProductPendingConfirmation">
+      <AttrNames>
+        <Item Value="PendingConfirmation"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="ContractProductIterator" id="ContractProductProductId" Uses="LOV_ProductId" StaticList="false"/>
+    <attributeValues IterBinding="ContractProductIterator" id="ContractProductProductSku">
+      <AttrNames>
+        <Item Value="ProductSku"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractProductIterator" id="ContractProductQuantity">
+      <AttrNames>
+        <Item Value="Quantity"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="ContractProductIterator" id="ContractProductTreatmentId" Uses="LOV_TreatmentId"
+          StaticList="false"/>
+    <attributeValues IterBinding="ContractProductIterator" id="ContractProductUnitPrice">
+      <AttrNames>
+        <Item Value="UnitPrice"/>
+      </AttrNames>
+    </attributeValues>
+    <tree id="ContractProductTable" IterBinding="ContractProductIterator">
+      <nodeDefinition Name="ContractProduct" DefName="OPERATIONPROJECT.model.BC.VO.ProductContractVO">
+        <AttrNames>
+          <Item Value="Active"/>
+          <Item Value="ActiveFrom"/>
+          <Item Value="ActiveTo"/>
+          <Item Value="CardNo"/>
+          <Item Value="Id"/>
+          <Item Value="PackageNo"/>
+          <Item Value="PackageVersion"/>
+          <Item Value="PendingConfirmation"/>
+          <Item Value="ProductId"/>
+          <Item Value="ProductSku"/>
+          <Item Value="Quantity"/>
+          <Item Value="TreatmentId"/>
+          <Item Value="UnitPrice"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ContractProductIterator" id="FirstContractProduct" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="ContractProductIterator" id="PreviousContractProduct" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="ContractProductIterator" id="NextContractProduct" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="ContractProductIterator" id="LastContractProduct" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="ContractProductIterator" id="SetCurrentRowWithKeyContractProduct" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrContractProduct}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="ContractProductIterator" id="CreateContractProduct" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="ContractProductIterator" id="DeleteContractProduct" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

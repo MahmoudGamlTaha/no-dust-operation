@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <task-flow-definition id="dddTaskFlow">
+        <!-- DEBUG:BEGIN:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2 -->
+        <template-reference>
+            <document id="__0">/WEB-INF/jhs-fragment-taskflow-template.xml</document>
+            <id id="__1">jhs-fragment-taskflow-template</id>
+        </template-reference>
+        <!-- DEBUG:END:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2-->
+        <default-activity id="__2">Startddd</default-activity>
+        <!-- DEBUG:BEGIN:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2 -->
+        <input-parameter-definition id="__3">
+            <name id="__4">createddd</name>
+            <value id="__5">#{pageFlowScope.createddd}</value>
+            <class id="__6">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__7">
+            <name id="__8">rowKeyStrddd</name>
+            <value id="__9">#{pageFlowScope.rowKeyStrddd}</value>
+            <class id="__10">java.lang.String</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__11">
+            <name id="__12">rowKeyValueddd</name>
+            <value id="__13">#{pageFlowScope.rowKeyValueddd}</value>
+            <class id="__14">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__15">
+            <name id="__16">rowKeyddd</name>
+            <value id="__17">#{pageFlowScope.rowKeyddd}</value>
+            <class id="__18">oracle.jbo.Key</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__19">
+            <name id="__20">altKeyNameddd</name>
+            <value id="__21">#{pageFlowScope.altKeyNameddd}</value>
+            <class id="__22">java.lang.String</class>
+        </input-parameter-definition>
+        <!-- DEBUG:END:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2 -->
+        <managed-bean id="__23">
+            <managed-bean-name id="__24">jhsTaskFlowManager</managed-bean-name>
+            <managed-bean-class id="__25">oracle.jheadstart.controller.jsf.bean.TaskFlowManager</managed-bean-class>
+            <managed-bean-scope id="__26">pageFlow</managed-bean-scope>
+            <managed-property id="__27">
+                <property-name id="__28">initializeParentContextEntries</property-name>
+                <map-entries id="__29">
+                    <map-entry id="__30">
+                        <key id="__31">jhsCurrentGroupName</key>
+                        <value id="__32">ddd</value>
+                    </map-entry>
+                </map-entries>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__33">
+            <managed-bean-name id="__34">Createddd</managed-bean-name>
+            <managed-bean-class id="__35">oracle.jheadstart.controller.jsf.bean.CreateRowBean</managed-bean-class>
+            <managed-bean-scope id="__36">request</managed-bean-scope>
+            <managed-property id="__37">
+                <property-name id="__38">createBinding</property-name>
+                <value id="__39">#{bindings.Createddd}</value>
+            </managed-property>
+            <managed-property id="__40">
+                <property-name id="__41">successOutcome</property-name>
+                <value id="__42">deepLinkPage</value>
+            </managed-property>
+            <managed-property id="__43">
+                <property-name id="__44">failureOutcome</property-name>
+                <value id="__45">firstPage</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__46">
+            <managed-bean-name id="__47">Deleteddd</managed-bean-name>
+            <managed-bean-class id="__48">oracle.jheadstart.controller.jsf.bean.DeleteRowBean</managed-bean-class>
+            <managed-bean-scope id="__49">request</managed-bean-scope>
+            <managed-property id="__50">
+                <property-name id="__51">deleteBinding</property-name>
+                <value id="__52">#{bindings.Deleteddd}</value>
+            </managed-property>
+            <managed-property id="__53">
+                <property-name id="__54">commitBean</property-name>
+                <value id="__55">#{jhsCommit}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2 -->
+        <managed-bean id="__56">
+            <managed-bean-name id="__57">Saveddd</managed-bean-name>
+            <managed-bean-class id="__58">oracle.jheadstart.controller.jsf.bean.CommitBean</managed-bean-class>
+            <managed-bean-scope id="__59">request</managed-bean-scope>
+            <managed-property id="__60">
+                <property-name id="__61">commitBinding</property-name>
+                <value id="__62">#{bindings.Commit}</value>
+            </managed-property>
+            <managed-property id="__63">
+                <property-name id="__64">successOutcome</property-name>
+                <value id="__65">Commit</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2 -->
+        <managed-bean id="__66">
+            <managed-bean-name id="__67">jhsRollback</managed-bean-name>
+            <managed-bean-class id="__68">oracle.jheadstart.controller.jsf.bean.RollbackBean</managed-bean-class>
+            <managed-bean-scope id="__69">request</managed-bean-scope>
+            <managed-property id="__70">
+                <property-name id="__71">rollbackBinding</property-name>
+                <value id="__72">#{bindings.Rollback}</value>
+            </managed-property>
+            <managed-property id="__73">
+                <property-name id="__74">successOutcome</property-name>
+                <value id="__75">Cancel</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2 -->
+        <router id="Startddd">
+            <case id="__76">
+                <expression id="__77">#{pageFlowScope.createddd!=null}</expression>
+                <outcome id="__78">createddd</outcome>
+            </case>
+            <case id="__79">
+                <expression id="__80">#{pageFlowScope.rowKeyStrddd!=null or pageFlowScope.rowKeyValueddd!=null or
+                                      pageFlowScope.rowKeyddd!=null}</expression>
+                <outcome id="__81">SetCurrentRowddd</outcome>
+            </case>
+            <case id="__82">
+                <expression id="__83">#{pageFlowScope.isDeepLink!=null and pageFlowScope.isDeepLink}</expression>
+                <outcome id="__84">deepLinkPage</outcome>
+            </case>
+            <default-outcome id="__85">firstPage</default-outcome>
+        </router>
+        <!-- DEBUG:END:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2 -->
+        <method-call id="Createddd">
+            <method id="__86">#{Createddd.execute}</method>
+            <!-- execute condition param -->
+            <parameter>
+                <class id="__87">java.lang.Object</class>
+                <value id="__88">#{pageFlowScope.createddd}</value>
+            </parameter>
+            <outcome id="__89">
+                <to-string/>
+            </outcome>
+        </method-call>
+        <method-call id="SetCurrentRowddd">
+            <method id="__90">#{jhsSetCurrentRow.execute}</method>
+            <!-- iterator param -->
+            <parameter>
+                <class id="__91">oracle.adf.model.binding.DCIteratorBinding</class>
+                <value id="__92">#{bindings.dddIterator}</value>
+            </parameter>
+            <!-- rowKeyStr param -->
+            <parameter>
+                <class id="__93">java.lang.String</class>
+                <value id="__94">#{pageFlowScope.rowKeyStrddd}</value>
+            </parameter>
+            <!-- rowKeyValue param -->
+            <parameter>
+                <class id="__95">java.lang.Object</class>
+                <value id="__96">#{pageFlowScope.rowKeyValueddd}</value>
+            </parameter>
+            <!-- rowKey param -->
+            <parameter>
+                <class id="__97">oracle.jbo.Key</class>
+                <value id="__98">#{pageFlowScope.rowKeyddd}</value>
+            </parameter>
+            <!-- altKeyName param -->
+            <parameter>
+                <class id="__99">java.lang.String</class>
+                <value id="__100">#{pageFlowScope.altKeyNameddd}</value>
+            </parameter>
+            <outcome id="__101">
+                <fixed-outcome id="__102">deepLinkPage</fixed-outcome>
+            </outcome>
+        </method-call>
+        <!-- DEBUG:END:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2-->
+        <task-flow-return id="CanceldddReturn">
+            <outcome id="__103">
+                <name id="__104">Cancelddd</name>
+            </outcome>
+        </task-flow-return>
+        <task-flow-return id="DonedddReturn">
+            <outcome id="__105">
+                <name id="__106">Doneddd</name>
+            </outcome>
+        </task-flow-return>
+        <!-- DEBUG:BEGIN:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2 -->
+        <view id="ddd">
+            <page id="__107">/pages/ddd.jsff</page>
+        </view>
+        <!-- DEBUG:END:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2 -->
+        <control-flow-rule id="__108">
+            <from-activity-id id="__109">*</from-activity-id>
+            <control-flow-case id="__110">
+                <from-outcome id="__111">SetCurrentRowddd</from-outcome>
+                <to-activity-id id="__112">SetCurrentRowddd</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__113">
+                <from-outcome id="__114">firstPage</from-outcome>
+                <to-activity-id id="__115">ddd</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__116">
+                <from-outcome id="__117">deepLinkPage</from-outcome>
+                <to-activity-id id="__118">ddd</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__119">
+                <from-outcome id="__120">dddBreadcrumb</from-outcome>
+                <to-activity-id id="__121">ddd</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__122">
+                <from-outcome id="__123">Cancel</from-outcome>
+                <to-activity-id id="__124">Startddd</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__125">
+                <from-outcome id="__126">CanceldddReturn</from-outcome>
+                <to-activity-id id="__127">CanceldddReturn</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__128">
+                <from-outcome id="__129">DonedddReturn</from-outcome>
+                <to-activity-id id="__130">DonedddReturn</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__131">
+            <from-activity-id id="__132">*</from-activity-id>
+            <control-flow-case id="__133">
+                <from-outcome id="__134">createddd</from-outcome>
+                <to-activity-id id="__135">Createddd</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <!-- DEBUG:END:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2-->
+        <use-page-fragments/>
+    </task-flow-definition>
+    <!-- This bean must be defined outside the task-flow-definition element
+       because it needs to be available in the pageFlowScope of the unbounded
+       task-flow not in the pageFlowScope of the bounded task flow itself. -->
+    <!-- DEBUG:BEGIN:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2 -->
+    <managed-bean id="__136">
+        <managed-bean-name id="__137">dddTaskFlowConfig</managed-bean-name>
+        <managed-bean-class id="__138">oracle.jheadstart.controller.jsf.bean.TaskFlowConfigBean</managed-bean-class>
+        <managed-bean-scope id="__139">pageFlow</managed-bean-scope>
+        <managed-property id="__140">
+            <property-name id="__141">params</property-name>
+            <property-class id="__142">java.util.Map</property-class>
+            <map-entries id="__143">
+                <map-entry id="__144">
+                    <key id="__145">parentContext</key>
+                    <value id="__146">#{pageFlowScope.parentContext}</value>
+                </map-entry>
+            </map-entries>
+        </managed-property>
+        <managed-property id="__147">
+            <property-name id="__148">name</property-name>
+            <value id="__149">ddd</value>
+        </managed-property>
+        <managed-property id="__150">
+            <property-name id="__151">taskFlowId</property-name>
+            <value id="__152">/WEB-INF/adfc-config-ddd.xml#dddTaskFlow</value>
+        </managed-property>
+        <managed-property id="__153">
+            <property-name id="__154">label</property-name>
+            <value id="__155">#{nls['MENU1_TITLE_DDD']}</value>
+        </managed-property>
+    </managed-bean>
+    <!-- DEBUG:END:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2-->
+</adfc-config>

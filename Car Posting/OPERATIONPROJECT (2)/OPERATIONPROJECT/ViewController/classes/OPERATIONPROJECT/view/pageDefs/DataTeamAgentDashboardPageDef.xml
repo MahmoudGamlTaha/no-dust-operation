@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="DataTeamAgentDashboardPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="validateCurrentRows">
+  <parameters/>
+  <executables>
+    <invokeAction id="clearDeepLinkViewCriteriaInvoke" Binds="clearDeepLinkViewCriteria" Refresh="renderModel"
+                  RefreshCondition="#{'true' != pageFlowScope.jhsQueryByKeyValue}"/>
+    <iterator id="DataTeamAgentDashboardIterator" Binds="DataTeamAgentDashboardVO1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+    <searchRegion id="DataTeamAgentDashboardIteratorDataTeamAgentDashboardVOCriteriaQuery"
+                  Binds="DataTeamAgentDashboardIterator" Criteria="DataTeamAgentDashboardVOCriteria"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="AssignDate"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <searchRegion id="DataTeamAgentDashboardIteratorQuery" Binds="DataTeamAgentDashboardIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true"
+                  DefaultQuickSearchAttrName="AssignDate"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+  </executables>
+  <bindings>
+    <methodAction id="clearDeepLinkViewCriteria" RequiresUpdateModel="true" Action="invokeMethod"
+                  DataControl="AppModuleAMDataControl" InstanceName="AppModuleAMDataControl.dataProvider"
+                  MethodName="clearDeepLinkViewCriteria"
+                  ReturnName="AppModuleAMDataControl.methodResults.AppModuleAMDataControl_dataProvider_clearDeepLinkViewCriteria_result"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="viewObjectUsage" NDValue="DataTeamAgentDashboardVO1" NDType="java.lang.String"/>
+      <NamedData NDName="requeryIfFound" NDValue="#{true}" NDType="java.lang.Boolean"/>
+    </methodAction>
+    <tree id="DataTeamAgentDashboardTable" IterBinding="DataTeamAgentDashboardIterator">
+      <nodeDefinition Name="DataTeamAgentDashboard" DefName="OPERATIONPROJECT.model.BC.VO.DataTeamAgentDashboardVO">
+        <AttrNames>
+          <Item Value="AssignDate"/>
+          <Item Value="TotalAssignemnt"/>
+          <Item Value="CompletedPer"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="DataTeamAgentDashboardIterator" id="FirstDataTeamAgentDashboard" RequiresUpdateModel="true"
+            Action="first"/>
+    <action IterBinding="DataTeamAgentDashboardIterator" id="PreviousDataTeamAgentDashboard" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="DataTeamAgentDashboardIterator" id="NextDataTeamAgentDashboard" RequiresUpdateModel="true"
+            Action="next"/>
+    <action IterBinding="DataTeamAgentDashboardIterator" id="LastDataTeamAgentDashboard" RequiresUpdateModel="true"
+            Action="last"/>
+    <action IterBinding="DataTeamAgentDashboardIterator" id="SetCurrentRowWithKeyDataTeamAgentDashboard"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrDataTeamAgentDashboard}"
+                 NDType="java.lang.String"/>
+    </action>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+    <tree IterBinding="DataTeamAgentDashboardIterator" id="DataTeamAgentDashboardVO1">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.DataTeamAgentDashboardVO" Name="DataTeamAgentDashboardVO10">
+        <AttrNames>
+          <Item Value="DataDate"/>
+          <Item Value="WorkType"/>
+          <Item Value="AssignDate"/>
+          <Item Value="TotalAssignemnt"/>
+          <Item Value="CompletedCount"/>
+          <Item Value="CompletedPer"/>
+          <Item Value="AreaName"/>
+          <Item Value="DriverName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="Customer_Profile_HistoryPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="true">
+  <parameters>
+    <parameter id="bindingContainersToPrepare" value="#{'CustomerProfilePageDef'}"/>
+  </parameters>
+  <executables>
+    <iterator id="Customer_Profile_HistoryIterator" Binds="CustomerProfile_History1"
+              DataControl="AppModuleAMDataControl" RangeSize="10"/>
+    <searchRegion id="Customer_Profile_HistoryIteratorQuery" Binds="Customer_Profile_HistoryIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true"
+                  DefaultQuickSearchAttrName="HistoryDate"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+  </executables>
+  <bindings>
+    <tree id="Customer_Profile_HistoryTable" IterBinding="Customer_Profile_HistoryIterator">
+      <nodeDefinition Name="Customer_Profile_History" DefName="OPERATIONPROJECT.model.BC.VO.CustomerProfile_HistoryVO">
+        <AttrNames>
+          <Item Value="HistoryDate"/>
+          <Item Value="UpdatedBy"/>
+          <Item Value="CustomerName"/>
+          <Item Value="CustomerClassification"/>
+          <Item Value="CustomerChannel"/>
+          <Item Value="CustomerEmail"/>
+          <Item Value="CustomerMobile"/>
+          <Item Value="CustomerPhone"/>
+          <Item Value="CollectionType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="Customer_Profile_HistoryIterator" id="FirstCustomer_Profile_History" RequiresUpdateModel="true"
+            Action="first"/>
+    <action IterBinding="Customer_Profile_HistoryIterator" id="PreviousCustomer_Profile_History"
+            RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="Customer_Profile_HistoryIterator" id="NextCustomer_Profile_History" RequiresUpdateModel="true"
+            Action="next"/>
+    <action IterBinding="Customer_Profile_HistoryIterator" id="LastCustomer_Profile_History" RequiresUpdateModel="true"
+            Action="last"/>
+    <action IterBinding="Customer_Profile_HistoryIterator" id="SetCurrentRowWithKeyCustomer_Profile_History"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrCustomer_Profile_History}"
+                 NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="Customer_Profile_HistoryIterator" id="CreateCustomer_Profile_History"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="Customer_Profile_HistoryIterator" id="DeleteCustomer_Profile_History"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

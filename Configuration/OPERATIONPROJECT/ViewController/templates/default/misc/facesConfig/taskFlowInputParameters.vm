@@ -1,0 +1,70 @@
+## revision_history
+## 25-jan-2012  Steven Davelaar
+## 1.1          Added return-value-definition for LOV group
+## 15-nov-2010  Steven Davelaar
+## 1.0          Initial creation, extracted from groupAdfcConfig.vm
+
+#set ($group = ${JHS.current.group})
+#set ($groupName = ${JHS.current.group.name})
+
+  #if ($group.formInsertAllowed)
+  <input-parameter-definition id="#NEW_ID("__")">
+    <name id="#NEW_ID("__")">create${groupName}</name>
+    <value id="#NEW_ID("__")">#{pageFlowScope.create${groupName}}</value>
+    <class id="#NEW_ID("__")">java.lang.Object</class>
+  </input-parameter-definition>
+  #end
+ 
+  #if ($group.databound && !$group.reusableTree)
+  <input-parameter-definition id="#NEW_ID("__")">
+    <name id="#NEW_ID("__")">rowKeyStr${groupName}</name>
+    <value id="#NEW_ID("__")">#{pageFlowScope.rowKeyStr${groupName}}</value>
+    <class id="#NEW_ID("__")">java.lang.String</class>
+  </input-parameter-definition>
+  <input-parameter-definition id="#NEW_ID("__")">
+    <name id="#NEW_ID("__")">rowKeyValue${groupName}</name>
+    <value id="#NEW_ID("__")">#{pageFlowScope.rowKeyValue${groupName}}</value>
+    <class id="#NEW_ID("__")">java.lang.Object</class>
+  </input-parameter-definition>
+  <input-parameter-definition id="#NEW_ID("__")">
+    <name id="#NEW_ID("__")">rowKey${groupName}</name>
+    <value id="#NEW_ID("__")">#{pageFlowScope.rowKey${groupName}}</value>
+    <class id="#NEW_ID("__")">oracle.jbo.Key</class>
+  </input-parameter-definition>
+  <input-parameter-definition id="#NEW_ID("__")">
+    <name id="#NEW_ID("__")">altKeyName${groupName}</name>
+    <value id="#NEW_ID("__")">#{pageFlowScope.altKeyName${groupName}}</value>
+    <class id="#NEW_ID("__")">java.lang.String</class>
+  </input-parameter-definition>
+  #end
+  
+  #if ($group.reusableTree)
+    #foreach( $treeGroup in $group.allNestedGroups )
+      <input-parameter-definition id="#NEW_ID("__")">
+        <name id="#NEW_ID("__")">rowKey${treeGroup.name}</name>
+        <value id="#NEW_ID("__")">#{pageFlowScope.rowKey${treeGroup.name}}</value>
+        <class id="#NEW_ID("__")">oracle.jbo.Key</class>
+      </input-parameter-definition>
+      <input-parameter-definition id="#NEW_ID("__")">
+        <name id="#NEW_ID("__")">rowKeyValue${treeGroup.name}</name>
+        <value id="#NEW_ID("__")">#{pageFlowScope.rowKeyValue${treeGroup.name}}</value>
+        <class id="#NEW_ID("__")">java.lang.Object</class>
+      </input-parameter-definition>
+    #end
+  #end
+  
+## Generate custom parameters defined against the group in app def editor  
+#foreach ($param in ${group.params})
+  <input-parameter-definition id="#NEW_ID("__")">
+    <name id="#NEW_ID("__")">${param.name}</name>
+    <value id="#NEW_ID("__")">#{pageFlowScope.${param.name}}</value>
+  </input-parameter-definition>
+
+#end
+
+  #if ($JHS.current.group.useAsLov)
+    <return-value-definition id="#NEW_ID("__")">
+      <name>LovValidationRow</name>
+      <value>#{pageFlowScope.LovValidationRow}</value>
+    </return-value-definition>
+  #end

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SupervisorDetailsAssignedStreetVL"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="OPERATIONPROJECT.model.BC.VO.VL.SupervisorDetailsAssignedStreetVL_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="SupervisorAreasDetails"
+    Cardinality="1"
+    Source="true"
+    Owner="OPERATIONPROJECT.model.BC.VO.SupervisorAreasDetailsVO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="SupervisorAreasDetails"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.VO.SupervisorAreasDetailsVO.AreaId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.SupervisorAreasDetailsVO.WorkDate"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="DriversStreet"
+    Cardinality="-1"
+    Owner="OPERATIONPROJECT.model.BC.VO.DriversStreetVO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="DriversStreet"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.VO.DriversStreetVO.AreaId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.DriversStreetVO.WorkDate"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="OPERATIONPROJECT.model.BC.ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

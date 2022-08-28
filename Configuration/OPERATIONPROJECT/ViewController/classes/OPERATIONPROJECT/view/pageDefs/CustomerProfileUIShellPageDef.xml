@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="CustomerProfileUIShellPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="validateCurrentRows">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="CustomerProfileTreeTaskFlow"
+              taskFlowId="${pageFlowScope.CustomerProfileTreeRegionManager.currentTaskFlowId}"
+              parametersMap="${pageFlowScope.CustomerProfileTreeRegionManager.currentParamMap}"
+              RefreshCondition="${pageFlowScope.CustomerProfileTreeRegionManager.currentParamMapChanged}"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <iterator id="CustomerProfileTreeIterator" Binds="CustomerProfile1" DataControl="AppModuleAMDataControl"
+              RangeSize="-1"/>
+  </executables>
+  <bindings>
+    <tree id="CustomerProfileTree" IterBinding="CustomerProfileTreeIterator" ApplyValidation="false">
+      <AttrNames>
+        <Item Value="Active"/>
+        <Item Value="CollectionType"/>
+        <Item Value="CustomerChannel"/>
+        <Item Value="CustomerClassification"/>
+        <Item Value="CustomerEmail"/>
+        <Item Value="CustomerId"/>
+        <Item Value="CustomerMobile"/>
+        <Item Value="CustomerName"/>
+        <Item Value="CustomerParent"/>
+        <Item Value="CustomerPhone"/>
+        <Item Value="LoggedFlag"/>
+        <Item Value="Password"/>
+        <Item Value="Username"/>
+      </AttrNames>
+      <nodeDefinition Name="CustomerProfile" DefName="OPERATIONPROJECT.model.BC.VO.CustomerProfileVO">
+        <AttrNames>
+          <Item Value="CustomerName"/>
+          <Item Value="CustomerClassification"/>
+          <Item Value="CustomerChannel"/>
+          <Item Value="CollectionType"/>
+          <Item Value="CustomerEmail"/>
+          <Item Value="CustomerMobile"/>
+          <Item Value="CustomerPhone"/>
+          <Item Value="Active"/>
+          <Item Value="CustomerParent"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

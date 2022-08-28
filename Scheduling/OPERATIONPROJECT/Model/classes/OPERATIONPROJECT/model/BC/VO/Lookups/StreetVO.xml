@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="StreetVO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  OrderBy='"STREET_NAME"'
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  RowClass="OPERATIONPROJECT.model.BC.VO.Lookups.StreetVORowImpl"
+  ComponentClass="OPERATIONPROJECT.model.BC.VO.Lookups.StreetVOImpl"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Coll"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="OPERATIONPROJECT.model.BC.VO.Lookups.StreetVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="BAreaId"
+    Kind="viewcriteria"
+    Type="java.math.BigInteger"/>
+  <Variable
+    Name="BCityId"
+    Kind="viewcriteria"
+    Type="java.math.BigInteger"/>
+  <Variable
+    Name="BRegionId"
+    Kind="viewcriteria"
+    Type="java.math.BigInteger"/>
+  <SQLQuery><![CDATA[select st.STREET_ID ,st.STREET_NAME ,st.AREA_ID , st.CITY_ID , st.REGION_ID  
+from STREET st]]></SQLQuery>
+  <ViewAttribute
+    Name="StreetId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigInteger"
+    ColumnType="BIGINT"
+    AliasName="STREET_ID"
+    Expression="STREET_ID"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="StreetName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="STREET_NAME"
+    Expression="STREET_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AreaId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="38"
+    Scale="0"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    AliasName="AREA_ID"
+    Expression="AREA_ID"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="CityId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="38"
+    Scale="0"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    AliasName="CITY_ID"
+    Expression="CITY_ID"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="RegionId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="38"
+    Scale="0"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    AliasName="REGION_ID"
+    Expression="REGION_ID"
+    SQLType="NUMERIC"/>
+  <ViewCriteria
+    Name="StreetVOCriteria"
+    ViewObjectName="OPERATIONPROJECT.model.BC.VO.Lookups.StreetVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="StreetVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="StreetVOCriteria_StreetVOCriteria_row_0_AreaId"
+        ViewAttribute="AreaId"
+        Operator="="
+        Conjunction="AND"
+        Value=":BAreaId"
+        Required="Optional"
+        IsBindVarValue="true"/>
+      <ViewCriteriaItem
+        Name="StreetVOCriteria_StreetVOCriteria_row_0_CityId"
+        ViewAttribute="CityId"
+        Operator="="
+        Conjunction="AND"
+        Value=":BCityId"
+        Required="Optional"
+        IsBindVarValue="true"/>
+      <ViewCriteriaItem
+        Name="StreetVOCriteria_StreetVOCriteria_row_0_RegionId"
+        ViewAttribute="RegionId"
+        Operator="="
+        Conjunction="AND"
+        Value=":BRegionId"
+        Required="Optional"
+        IsBindVarValue="true"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="StreetId"/>
+    <Item Value="AreaId"/>
+    <Item Value="CityId"/>
+    <Item Value="RegionId"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="OPERATIONPROJECT.model.BC.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

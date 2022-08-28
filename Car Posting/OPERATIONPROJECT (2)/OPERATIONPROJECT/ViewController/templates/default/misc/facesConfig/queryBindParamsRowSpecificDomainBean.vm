@@ -1,0 +1,53 @@
+## revision_history
+## 18-may-2010   Steven Davelaar
+## 1.1           Added id property to all elements
+## 05-feb-2007   Steven Davelaar
+## 1.0           initial creation
+#set ($bean = ${JHS.current.managedBean})
+#set ($queryObject = ${JHS.current.domain})
+
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">${bean.beanName}</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.DynamicListItemsBean</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">request</managed-bean-scope>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">applicationModule</property-name>
+      <value id="#NEW_ID("__")">#{data.${JHS.service.dataControl}.dataProvider}</value>
+    </managed-property>    
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">dataCollection</property-name>
+      <value id="#NEW_ID("__")">${queryObject.dataCollection}</value>
+    </managed-property>    
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">valueAttribute</property-name>
+      <value id="#NEW_ID("__")">${queryObject.valueAttribute}</value>
+    </managed-property>    
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">meaningAttribute</property-name>
+      <value id="#NEW_ID("__")">${queryObject.meaningAttribute}</value>
+    </managed-property>    
+
+    #if ($queryObject.namedQueryBindParams) 
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">namedParamDefs</property-name>
+      <map-entries id="#NEW_ID("__")">
+       #foreach ($bindParam in $queryObject.namedQueryBindParams.keySet())
+        <map-entry id="#NEW_ID("__")">
+          <key id="#NEW_ID("__")">$bindParam</key>
+          <value id="#NEW_ID("__")">#{'$queryObject.namedQueryBindParams.get($bindParam)'}</value>
+        </map-entry>
+       #end 
+      </map-entries>
+    </managed-property>
+    #else
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">indexedParamDefs</property-name>
+      <list-entries id="#NEW_ID("__")">
+       #foreach ($bindParam in $queryObject.indexedQueryBindParams)
+          <value id="#NEW_ID("__")">#{'$bindParam'}</value>
+       #end 
+      </list-entries>
+    </managed-property>
+    #end
+  </managed-bean>
+

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="dddPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="validateCurrentRows">
+  <parameters/>
+  <executables>
+    <invokeAction id="clearDeepLinkViewCriteriaInvoke" Binds="clearDeepLinkViewCriteria" Refresh="renderModel"
+                  RefreshCondition="#{'true' != pageFlowScope.jhsQueryByKeyValue}"/>
+    <iterator id="dddIterator" Binds="Countries1" DataControl="AppModuleAMDataControl" RangeSize="10"/>
+    <variableIterator id="variables">
+      <variable Name="dddRowKeyVar" Type="java.lang.String" DefaultValue="#{bindings.dddIterator.currentRowKeyString}"/>
+    </variableIterator>
+  </executables>
+  <bindings>
+    <methodAction id="clearDeepLinkViewCriteria" RequiresUpdateModel="true" Action="invokeMethod"
+                  DataControl="AppModuleAMDataControl" InstanceName="AppModuleAMDataControl.dataProvider"
+                  MethodName="clearDeepLinkViewCriteria"
+                  ReturnName="AppModuleAMDataControl.methodResults.AppModuleAMDataControl_dataProvider_clearDeepLinkViewCriteria_result"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="viewObjectUsage" NDValue="Countries1" NDType="java.lang.String"/>
+      <NamedData NDName="requeryIfFound" NDValue="#{true}" NDType="java.lang.Boolean"/>
+    </methodAction>
+    <attributeValues IterBinding="dddIterator" id="dddCountryId">
+      <AttrNames>
+        <Item Value="CountryId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="dddIterator" id="dddCountryName">
+      <AttrNames>
+        <Item Value="CountryName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="dddIterator" id="dddRegionId">
+      <AttrNames>
+        <Item Value="RegionId"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="dddIterator" id="Firstddd" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="dddIterator" id="Previousddd" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="dddIterator" id="Nextddd" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="dddIterator" id="Lastddd" RequiresUpdateModel="true" Action="last"/>
+    <attributeValues IterBinding="variables" id="dddRowKey">
+      <AttrNames>
+        <Item Value="dddRowKeyVar"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="dddIterator" id="SetCurrentRowWithKeyddd" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{bindings.dddRowKey}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="dddIterator" id="Createddd" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="dddIterator" id="Deleteddd" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,23 @@
+## revision_history
+## 27-nov-2011   Steven Davelaar
+## 1.1           Added parsing of browse menu
+## 02-sep-2008   Steven Davelaar
+## 1.0           Initial creation
+
+#set ($pageComponent = ${JHS.current.pageComponent})
+#set ($group = ${JHS.current.group})
+
+${JHS.engine.putTemplateContext("TABLE_MENU","true")}
+<af:menu textAndAccessKey="#ACTION_MENU_LABEL()" id="#NEW_ID("menu")">
+     <af:menu textAndAccessKey="#GO_TO_MENU_LABEL()" id="#NEW_ID("menu")">
+      #JHS_PARSE("DETAILS_MENU_ITEM" ${JHS.current.model})
+      #foreach ($detailGroup in ${group.detailGroupsOnSeparatePage})
+        #JHS_PARSE("PARENT_TO_CHILD_MENU_ITEM" ${JHS.current.model})
+      #end
+      #JHS_PARSE("TABLE_BROWSE_MENU" ${JHS.current.model})
+     </af:menu>
+  #JHS_PARSE("ADD_ROW_MENU_ITEM" ${JHS.current.model})
+  #JHS_PARSE("DUPLICATE_ROW_MENU_ITEM" ${JHS.current.model})
+  #JHS_PARSE("DELETE_ROW_MENU_ITEM" ${JHS.current.model})
+  #JHS_PARSE("TABLE_EXPORT_MENU_ITEM" ${JHS.current.model})
+</af:menu>

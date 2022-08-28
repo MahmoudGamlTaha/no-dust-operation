@@ -1,0 +1,52 @@
+## revision_history
+## 24-feb-2011   Steven Davelaar
+## 1.3           Added position, dimensionsFrom, discloseMany, TABS_LAZY_CHILD_CREATION, added check for detailsPage when stacking all groups
+## 04-feb-2011   Steven Davelaar
+## 1.2           Stack all groups setting was ignored when groups were not stretchable
+## 20-jan-2011   Steven Davelaar
+## 1.1           Added popups facet
+## 10-jul-2009   Steven Davelaar
+## 1.0           Initial creation
+#set ($group= ${JHS.current.group})
+
+#if (${JHS.page.group.stackAllGroups} && !(${JHS.page.hasDetailsPage}))
+
+  ${JHS.engine.putTemplateContext("isStackedContainer", "true")}
+  #if (${JHS.page.group.stackAccordion}) 
+    #set ($elemName='panelAccordion')
+  #else
+    ${JHS.engine.putTemplateContext("isTabbedContainer", "true")}
+    #set ($elemName='panelTabbed')
+  #end
+
+<f:facet name="pageContent">
+    <af:${elemName} id="${JHS.current.group.shortName}AllGroupTabs" styleClass="AFStretchWidth" #DIMENSIONS_FROM() 
+       #CUR_GROUP_PARTIAL_TRIGGERS() #if ($elemName=='panelTabbed') position="above" #TABS_LAZY_CHILD_CREATION() #else discloseMany="true" #end >
+      #JHS_PARSE("GROUP_CONTENT" ${JHS.current.model})
+    </af:${elemName}>
+</f:facet>
+
+#else
+<f:facet name="pageContent">
+
+  #if (${JHS.page.group.enableStretching})
+    #JHS_PARSE("GROUP_CONTENT" ${JHS.current.model})
+  #else 
+    $JHS.engine.pushStretchEnabled(false)    
+    ## no stretching, start with panelGroupLayout scroll, recommended transition to
+    ## non-stretching layouts, causes scrollbars to appear if content does not fit
+    ## available space
+    <af:panelGroupLayout id="pcpg" layout="scroll">
+        #JHS_PARSE("GROUP_CONTENT" ${JHS.current.model})
+    </af:panelGroupLayout> 
+    $JHS.engine.popStretchEnabled()
+  #end
+
+</f:facet>
+
+#end
+<f:facet name="popups">
+ <af:panelGroupLayout id="popupsPgl">
+  ${JHS.page.popupsContent}
+  </af:panelGroupLayout>
+</f:facet>

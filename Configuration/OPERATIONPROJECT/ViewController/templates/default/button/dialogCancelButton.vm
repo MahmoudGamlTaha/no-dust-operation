@@ -1,0 +1,11 @@
+## revision_history
+## 22-nov-2010   Steven Davelaar
+## 1.2           Shortened id
+## 31-aug-2007   Sandra Muller
+## 1.1           replaced text by textAndAccessKey
+## 29-jun-2007   Steven Davelaar
+## 1.0           Initial creation
+<af:button textAndAccessKey="#CANCEL_LABEL()" id="#NEW_ID("cb")"
+                  immediate="true">
+  <af:returnActionListener/>
+</af:button>

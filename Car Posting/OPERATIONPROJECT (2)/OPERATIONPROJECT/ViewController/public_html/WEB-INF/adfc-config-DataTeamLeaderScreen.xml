@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <task-flow-definition id="DataTeamLeaderScreenTaskFlow">
+        <!-- DEBUG:BEGIN:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2 -->
+        <template-reference>
+            <document id="__0">/WEB-INF/jhs-fragment-taskflow-template.xml</document>
+            <id id="__1">jhs-fragment-taskflow-template</id>
+        </template-reference>
+        <!-- DEBUG:END:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2-->
+        <default-activity id="__2">StartDataTeamLeaderScreen</default-activity>
+        <!-- DEBUG:BEGIN:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2 -->
+        <managed-bean id="__3">
+            <managed-bean-name id="__4">jhsTaskFlowManager</managed-bean-name>
+            <managed-bean-class id="__5">oracle.jheadstart.controller.jsf.bean.TaskFlowManager</managed-bean-class>
+            <managed-bean-scope id="__6">pageFlow</managed-bean-scope>
+            <managed-property id="__7">
+                <property-name id="__8">initializeParentContextEntries</property-name>
+                <map-entries id="__9">
+                    <map-entry id="__10">
+                        <key id="__11">jhsCurrentGroupName</key>
+                        <value id="__12">DataTeamLeaderScreen</value>
+                    </map-entry>
+                </map-entries>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2 -->
+        <managed-bean id="__13">
+            <managed-bean-name id="__14">SaveDataTeamLeaderScreen</managed-bean-name>
+            <managed-bean-class id="__15">oracle.jheadstart.controller.jsf.bean.CommitBean</managed-bean-class>
+            <managed-bean-scope id="__16">request</managed-bean-scope>
+            <managed-property id="__17">
+                <property-name id="__18">commitBinding</property-name>
+                <value id="__19">#{bindings.Commit}</value>
+            </managed-property>
+            <managed-property id="__20">
+                <property-name id="__21">successOutcome</property-name>
+                <value id="__22">Commit</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2 -->
+        <managed-bean id="__23">
+            <managed-bean-name id="__24">jhsRollback</managed-bean-name>
+            <managed-bean-class id="__25">oracle.jheadstart.controller.jsf.bean.RollbackBean</managed-bean-class>
+            <managed-bean-scope id="__26">request</managed-bean-scope>
+            <managed-property id="__27">
+                <property-name id="__28">rollbackBinding</property-name>
+                <value id="__29">#{bindings.Rollback}</value>
+            </managed-property>
+            <managed-property id="__30">
+                <property-name id="__31">successOutcome</property-name>
+                <value id="__32">Cancel</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2 -->
+        <managed-bean id="__91">
+            <managed-bean-name>DataTeamLeaderBean</managed-bean-name>
+            <managed-bean-class>MTS.security.MTSClasses.DataTeamLeaderBean</managed-bean-class>
+            <managed-bean-scope>request</managed-bean-scope>
+        </managed-bean>
+        <router id="StartDataTeamLeaderScreen">
+            <case id="__33">
+                <expression id="__34">#{pageFlowScope.isDeepLink!=null and pageFlowScope.isDeepLink}</expression>
+                <outcome id="__35">deepLinkPage</outcome>
+            </case>
+            <default-outcome id="__36">firstPage</default-outcome>
+        </router>
+        <!-- DEBUG:END:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2 -->
+        <method-call id="CreateDataTeamLeaderScreen">
+            <method id="__37">#{CreateDataTeamLeaderScreen.execute}</method>
+            <!-- execute condition param -->
+            <parameter>
+                <class id="__38">java.lang.Object</class>
+                <value id="__39">#{pageFlowScope.createDataTeamLeaderScreen}</value>
+            </parameter>
+            <outcome id="__40">
+                <to-string/>
+            </outcome>
+        </method-call>
+        <!-- DEBUG:END:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2-->
+        <task-flow-return id="CancelDataTeamLeaderScreenReturn">
+            <outcome id="__41">
+                <name id="__42">CancelDataTeamLeaderScreen</name>
+            </outcome>
+        </task-flow-return>
+        <task-flow-return id="DoneDataTeamLeaderScreenReturn">
+            <outcome id="__43">
+                <name id="__44">DoneDataTeamLeaderScreen</name>
+            </outcome>
+        </task-flow-return>
+        <!-- DEBUG:BEGIN:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2 -->
+        <view id="DataTeamLeaderScreen">
+            <page id="__45">/pages/DataTeamLeaderScreen.jsff</page>
+        </view>
+        <!-- DEBUG:END:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2 -->
+        <control-flow-rule id="__46">
+            <from-activity-id id="__47">*</from-activity-id>
+            <control-flow-case id="__48">
+                <from-outcome id="__49">firstPage</from-outcome>
+                <to-activity-id id="__50">DataTeamLeaderScreen</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__51">
+                <from-outcome id="__52">deepLinkPage</from-outcome>
+                <to-activity-id id="__53">DataTeamLeaderScreen</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__54">
+                <from-outcome id="__55">DataTeamLeaderScreenBreadcrumb</from-outcome>
+                <to-activity-id id="__56">DataTeamLeaderScreen</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__57">
+                <from-outcome id="__58">Cancel</from-outcome>
+                <to-activity-id id="__59">StartDataTeamLeaderScreen</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__60">
+                <from-outcome id="__61">CancelDataTeamLeaderScreenReturn</from-outcome>
+                <to-activity-id id="__62">CancelDataTeamLeaderScreenReturn</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__63">
+                <from-outcome id="__64">DoneDataTeamLeaderScreenReturn</from-outcome>
+                <to-activity-id id="__65">DoneDataTeamLeaderScreenReturn</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__66">
+            <from-activity-id id="__67">*</from-activity-id>
+            <control-flow-case id="__68">
+                <from-outcome id="__69">createDataTeamLeaderScreen</from-outcome>
+                <to-activity-id id="__70">CreateDataTeamLeaderScreen</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <!-- DEBUG:END:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2-->
+        <use-page-fragments/>
+    </task-flow-definition>
+    <!-- This bean must be defined outside the task-flow-definition element
+       because it needs to be available in the pageFlowScope of the unbounded
+       task-flow not in the pageFlowScope of the bounded task flow itself. -->
+    <!-- DEBUG:BEGIN:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2 -->
+    <managed-bean id="__71">
+        <managed-bean-name id="__72">DataTeamLeaderScreenTaskFlowConfig</managed-bean-name>
+        <managed-bean-class id="__73">oracle.jheadstart.controller.jsf.bean.TaskFlowConfigBean</managed-bean-class>
+        <managed-bean-scope id="__74">pageFlow</managed-bean-scope>
+        <managed-property id="__75">
+            <property-name id="__76">params</property-name>
+            <property-class id="__77">java.util.Map</property-class>
+            <map-entries id="__78">
+                <map-entry id="__79">
+                    <key id="__80">parentContext</key>
+                    <value id="__81">#{pageFlowScope.parentContext}</value>
+                </map-entry>
+            </map-entries>
+        </managed-property>
+        <managed-property id="__82">
+            <property-name id="__83">name</property-name>
+            <value id="__84">DataTeamLeaderScreen</value>
+        </managed-property>
+        <managed-property id="__85">
+            <property-name id="__86">taskFlowId</property-name>
+            <value id="__87">/WEB-INF/adfc-config-DataTeamLeaderScreen.xml#DataTeamLeaderScreenTaskFlow</value>
+        </managed-property>
+        <managed-property id="__88">
+            <property-name id="__89">label</property-name>
+            <value id="__90">#{nls['MENU1_TITLE_DATATEAMLEADERSCREEN']}</value>
+        </managed-property>
+    </managed-bean>
+    <!-- DEBUG:END:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2-->
+</adfc-config>

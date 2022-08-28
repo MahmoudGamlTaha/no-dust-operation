@@ -1,0 +1,14 @@
+## revision_history
+## 22-nov-2010   Steven Davelaar
+## 1.1           Added include id param to JHS_PARSE_INCLUDE
+## 10-jul-2009   Steven Davelaar
+## 1.0           Initial creation
+
+#if ($JHS.current.pageComponent.hasSearchArea)
+  #if (${JHS.current.group.generateSearchAreaInFragment})
+    #JHS_PARSE_INCLUDE("${JHS.current.group.shortName}SAI" "${JHS.current.group.name}Search" "SEARCH_AREA" ${JHS.current.model})
+  #else
+    #JHS_PARSE("SEARCH_AREA" ${JHS.current.model})
+  #end
+#end
+

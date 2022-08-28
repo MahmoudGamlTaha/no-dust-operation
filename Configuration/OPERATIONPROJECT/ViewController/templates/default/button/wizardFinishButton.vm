@@ -1,0 +1,13 @@
+## revision_history
+## 05-nov-2010   Steven Davelaar
+## 1.3           Added call to ADD_GROUP_ACTION to support function keys
+## 12-jan-2007   Jaco Verheul
+## 1.2           Call VALIDATE_FORM macro
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+<af:button action="#{#SAVE_BEAN().execute}"
+##                rendered="#{#WIZARD_PAGE_LIST_BEAN().nextAction==null}"
+                textAndAccessKey="${JHS.nls(${JHS.current.group.displayTitleSingular}, "FINISH", "FINISH" )}"
+                id="${JHS.current.group.shortName}WizardFinishButton">
+</af:button>                
+#ADD_GROUP_ACTION(${JHS.current.group} "Commit" "${JHS.current.group.shortName}WizardFinishButton")

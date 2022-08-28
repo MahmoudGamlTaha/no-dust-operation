@@ -1,0 +1,32 @@
+## revision_history
+## 27-nov-2011   Steven Davelaar
+## 1.0           Initial creation
+
+## group layout container must have partial trigger pointing to panel group layout id
+## of form browse buttons
+
+#if ($JHS.current.group.databound && !$JHS.current.group.hasTreeFormLayout)
+     <af:group id="${JHS.current.group.shortName}tbb" 
+     rendered="#{#GROUP_HAS_ROW()}" >
+      <af:commandMenuItem actionListener="#{bindings.First${JHS.current.group.name}.execute}"
+                      id="${JHS.current.group.shortName}First" partialSubmit="true"
+                      icon="/afr/shuttleleftall_ena.png" textAndAccessKey="#FIRST_ROW_LABEL()">
+      </af:commandMenuItem>
+      #ADD_CUR_GROUP_ACTION("FirstRow" "${JHS.current.group.shortName}First")
+      <af:commandMenuItem actionListener="#{bindings.Previous${JHS.current.group.name}.execute}"
+                       icon="/afr/shuttleleft_ena.png" textAndAccessKey="#PREVIOUS_ROW_LABEL()"
+                      id="${JHS.current.group.shortName}Previous" partialSubmit="true">
+      </af:commandMenuItem>
+      #ADD_CUR_GROUP_ACTION("PreviousRow" "${JHS.current.group.shortName}Previous")
+      <af:commandMenuItem actionListener="#{bindings.Next${JHS.current.group.name}.execute}"
+                      icon="/afr/shuttleright_ena.png" textAndAccessKey="#NEXT_ROW_LABEL()"
+                      id="${JHS.current.group.shortName}Next" partialSubmit="true">
+      </af:commandMenuItem>
+      #ADD_CUR_GROUP_ACTION("NextRow" "${JHS.current.group.shortName}Next")
+      <af:commandMenuItem actionListener="#{bindings.Last${JHS.current.group.name}.execute}"
+        icon="/afr/shuttlerightall_ena.png" textAndAccessKey="#LAST_ROW_LABEL()"
+                      id="${JHS.current.group.shortName}Last" partialSubmit="true">
+      </af:commandMenuItem>
+      #ADD_CUR_GROUP_ACTION("LastRow" "${JHS.current.group.shortName}Last")
+</af:group>
+#end

@@ -1,0 +1,392 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+  <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsRegionTemplateNoStretch.jsf">
+    <f:attribute name="showBreadcrumbs" value="false"/>
+    <!-- DEBUG:BEGIN:WIZARD_PAGE_CONTENT : default/page/wizardPageContent.vm, nesting level: 2 -->
+    <f:facet name="processTrain">
+      <af:train value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}" id="tr0"/>
+    </f:facet>
+    <!-- DEBUG:BEGIN:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3 -->
+    <f:facet name="pageContent">
+      <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+      <af:panelGroupLayout id="pcpg" layout="scroll">
+        <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4 -->
+        <af:panelGroupLayout layout="vertical" id="Customer_Profile_HistoryTopLc"
+                             partialTriggers=" Customer_Profile_HistoryCancelButton as_Customer_Profile_History">
+          <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+          <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+          <f:facet name="separator">
+            <af:spacer width="10" height="10" id="sp0"/>
+          </f:facet>
+          <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+          <af:panelHeader id="ph0" text="#{nls['TABLE_TITLE_CUSTOMER_PROFILE_HISTORY']}">
+            <f:facet name="toolbar">
+              <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5 -->
+              <af:toolbox id="tbox0">
+                <af:toolbar id="tbar0">
+                  <af:group id="gr0">
+                    <!-- DEBUG:BEGIN:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6 -->
+                    <!-- DEBUG:END:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6-->
+                  </af:group>
+                  <af:group id="gr1"></af:group>
+                  <af:group id="gr2">
+                    <af:trainButtonBar value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"/>
+                    <!-- DEBUG:BEGIN:WIZARD_FINISH_BUTTON : default/button/wizardFinishButton.vm, nesting level: 6 -->
+                    <af:button action="#{SaveCustomer_Profile_History.execute}" textAndAccessKey="#{nls['FINISH']}"
+                               id="Customer_Profile_HistoryWizardFinishButton"></af:button>
+                    <!-- DEBUG:END:WIZARD_FINISH_BUTTON : default/button/wizardFinishButton.vm, nesting level: 6-->
+                    <!-- DEBUG:BEGIN:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6 -->
+                    <af:button textAndAccessKey="#{nls['CANCEL']}" immediate="true" partialSubmit="true"
+                               rendered="#{!pageFlowScope.hideCancelButton}" actionListener="#{jhsRollback.execute}"
+                               action="Cancel" id="Customer_Profile_HistoryCancelButton"></af:button>
+                    <!-- DEBUG:END:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6-->
+                  </af:group>
+                </af:toolbar>
+              </af:toolbox>
+              <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5-->
+            </f:facet>
+            <f:facet name="context">
+              <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5 -->
+              <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5-->
+            </f:facet>
+            <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+            <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+            <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+            <!-- DEBUG:BEGIN:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 6 -->
+            <af:panelGroupLayout id="modelSearchAreaCustomer_Profile_History"
+                                 rendered="#{!pageFlowScope.createModes.CreateCustomer_Profile_History and !pageFlowScope.hideSearchArea}"
+                                 partialTriggers="">
+              <f:attribute name="JhsIgnoreChanges" value="true"/>
+              <!-- DEBUG:BEGIN:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 7 -->
+              <af:query id="as_Customer_Profile_History" headerText="#{nls['ADVANCED_SEARCH']}" disclosed="true"
+                        value="#{bindings.Customer_Profile_HistoryIteratorQuery.queryDescriptor}"
+                        model="#{bindings.Customer_Profile_HistoryIteratorQuery.queryModel}"
+                        queryListener="#{bindings.Customer_Profile_HistoryIteratorQuery.processQuery}"
+                        queryOperationListener="#{bindings.Customer_Profile_HistoryIteratorQuery.processQueryOperation}"
+                        rows="1" labelAlignment="start" maxColumns="3"></af:query>
+              <!-- DEBUG:END:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 7-->
+            </af:panelGroupLayout>
+            <!-- DEBUG:END:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 6-->
+            <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+          </af:panelHeader>
+          <!-- DEBUG:BEGIN:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5 -->
+          <af:panelGroupLayout layout="vertical" id="pgl0">
+            <af:panelCollection id="Customer_Profile_HistoryPC" featuresOff="   freeze " styleClass="AFStretchWidth">
+              <f:facet name="menus">
+                <!-- DEBUG:BEGIN:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6 -->
+                <af:menu textAndAccessKey="#{nls['ACTION_MENU_LABEL']}" id="menu0">
+                  <af:menu textAndAccessKey="#{nls['GO_TO_MENU_LABEL']}" id="menu1">
+                    <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                    <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                    <!-- DEBUG:BEGIN:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7 -->
+                    <af:group id="Customer_Profile_Historytbb"
+                              rendered="#{ bindings.Customer_Profile_HistoryIterator.currentRow!=null }">
+                      <af:commandMenuItem actionListener="#{bindings.FirstCustomer_Profile_History.execute}"
+                                          id="Customer_Profile_HistoryFirst" partialSubmit="true"
+                                          icon="/afr/shuttleleftall_ena.png" textAndAccessKey="#{nls['FIRST_ROW']}"></af:commandMenuItem>
+                      <af:commandMenuItem actionListener="#{bindings.PreviousCustomer_Profile_History.execute}"
+                                          icon="/afr/shuttleleft_ena.png" textAndAccessKey="#{nls['PREVIOUS_ROW']}"
+                                          id="Customer_Profile_HistoryPrevious" partialSubmit="true"></af:commandMenuItem>
+                      <af:commandMenuItem actionListener="#{bindings.NextCustomer_Profile_History.execute}"
+                                          icon="/afr/shuttleright_ena.png" textAndAccessKey="#{nls['NEXT_ROW']}"
+                                          id="Customer_Profile_HistoryNext" partialSubmit="true"></af:commandMenuItem>
+                      <af:commandMenuItem actionListener="#{bindings.LastCustomer_Profile_History.execute}"
+                                          icon="/afr/shuttlerightall_ena.png" textAndAccessKey="#{nls['LAST_ROW']}"
+                                          id="Customer_Profile_HistoryLast" partialSubmit="true"></af:commandMenuItem>
+                    </af:group>
+                    <!-- DEBUG:END:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7-->
+                  </af:menu>
+                  <!-- DEBUG:BEGIN:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7 -->
+                  <!-- DEBUG:END:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7-->
+                  <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                  <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                  <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                  <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                  <!-- DEBUG:BEGIN:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7 -->
+                  <!-- DEBUG:END:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7-->
+                </af:menu>
+                <!-- DEBUG:END:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6-->
+              </f:facet>
+              <f:facet name="toolbar">
+                <!-- DEBUG:BEGIN:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6 -->
+                <af:toolbar id="tbar1">
+                  <!-- DEBUG:BEGIN:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7 -->
+                  <!-- DEBUG:END:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7-->
+                  <!-- DEBUG:BEGIN:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7 -->
+                  <!-- DEBUG:END:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7-->
+                </af:toolbar>
+                <!-- DEBUG:END:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6-->
+              </f:facet>
+              <f:facet name="statusbar"/>
+              <af:table id="Customer_Profile_HistoryTab" contentDelivery="immediate"
+                        value="#{bindings.Customer_Profile_HistoryTable.collectionModel}" columnStretching="last"
+                        rowBandingInterval="0" editingMode="editAll" columnSelection="multiple" contextMenuSelect="true"
+                        rowSelection="single"
+                        selectionListener="#{pageFlowScope.Customer_Profile_HistoryTable.makeCurrent}"
+                        selectedRowKeys="#{pageFlowScope.Customer_Profile_HistoryTable.selectedRow}"
+                        rowDisclosureListener="#{pageFlowScope.Customer_Profile_HistoryTable.discloseRow}" var="row"
+                        varStatus="status" rows="#{bindings.Customer_Profile_HistoryTable.rangeSize}"
+                        autoHeightRows="#{bindings.Customer_Profile_HistoryTable.rangeSize}"
+                        fetchSize="#{bindings.Customer_Profile_HistoryTable.rangeSize}"
+                        emptyText="#{nls['NO_ROWS_FOUND']}"
+                        queryListener="#{bindings.Customer_Profile_HistoryIteratorQuery.processQuery}"
+                        filterModel="#{bindings.Customer_Profile_HistoryIteratorQuery.queryDescriptor}"
+                        filterVisible="true" binding="#{pageFlowScope.Customer_Profile_HistoryTable.table}"
+                        partialTriggers=" :::as_Customer_Profile_History :::Customer_Profile_HistoryPC ::Customer_Profile_HistoryFirst ::Customer_Profile_HistoryPrevious ::Customer_Profile_HistoryNext ::Customer_Profile_HistoryLast"
+                        styleClass="AFStretchWidth" summary="#{nls['TABLE_TITLE_CUSTOMER_PROFILE_HISTORY']}">
+                <!-- DEBUG:BEGIN:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6 -->
+                <f:facet name="contextMenu">
+                  <af:popup id="Customer_Profile_HistoryTablePopup" childCreation="deferred">
+                    <af:menu id="menu2">
+                      <af:menu text="#{nls['GO_TO_MENU_LABEL']}" id="menu3">
+                        <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                        <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                      </af:menu>
+                      <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                      <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                      <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                      <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                    </af:menu>
+                  </af:popup>
+                </f:facet><!-- DEBUG:END:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6 --><!-- DEBUG:END:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6 --><!-- DEBUG:END:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                <af:column id="Customer_Profile_HistoryHistoryDateCol" sortable="true" filterable="true" noWrap="true"
+                           width="306" sortProperty="HistoryDate" rowHeader="false">
+                  <f:facet name="header">
+                    <af:outputLabel value="#{bindings.Customer_Profile_HistoryTable.hints.HistoryDate.label}" id="ol0"/>
+                  </f:facet>
+                  <!-- DEBUG:BEGIN:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 7 -->
+                  <f:facet name="filter">
+                    <af:inputDate value="#{status.filterCriteria.HistoryDate}" id="id0">
+                      <af:convertDateTime pattern="#{nls.datepattern}"/>
+                    </af:inputDate>
+                  </f:facet>
+                  <af:inputDate id="Customer_Profile_HistoryHistoryDate" value="#{row.bindings.HistoryDate.inputValue}"
+                                label="#{bindings.Customer_Profile_HistoryTable.hints.HistoryDate.label}"
+                                required="#{bindings.Customer_Profile_HistoryTable.hints.HistoryDate.mandatory}"
+                                readOnly="true"
+                                shortDesc="#{bindings.Customer_Profile_HistoryTable.hints.HistoryDate.tooltip}">
+                    <af:convertDateTime pattern="#{nls.datepattern}"/>
+                  </af:inputDate>
+                  <!-- DEBUG:END:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 7-->
+                  <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                  <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                </af:column>
+                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                <af:column id="Customer_Profile_HistoryUpdatedByCol" sortable="true" filterable="true" noWrap="true"
+                           width="300" sortProperty="UpdatedBy" rowHeader="false">
+                  <f:facet name="header">
+                    <af:outputLabel value="#{bindings.Customer_Profile_HistoryTable.hints.UpdatedBy.label}" id="ol1"/>
+                  </f:facet>
+                  <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                  <af:inputText id="Customer_Profile_HistoryUpdatedBy" value="#{row.bindings.UpdatedBy.inputValue}"
+                                label="#{bindings.Customer_Profile_HistoryTable.hints.UpdatedBy.label}"
+                                required="#{bindings.Customer_Profile_HistoryTable.hints.UpdatedBy.mandatory}"
+                                rows="#{bindings.Customer_Profile_HistoryTable.hints.UpdatedBy.displayHeight}"
+                                columns="#{bindings.Customer_Profile_HistoryTable.hints.UpdatedBy.displayWidth}"
+                                maximumLength="4000" readOnly="true"
+                                shortDesc="#{bindings.Customer_Profile_HistoryTable.hints.UpdatedBy.tooltip}">
+                    <f:validator binding="#{row.bindings.UpdatedBy.validator}"/>
+                  </af:inputText>
+                  <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                  <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                  <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                </af:column>
+                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                <af:column id="Customer_Profile_HistoryCustomerNameCol" sortable="true" filterable="true" noWrap="true"
+                           width="300" sortProperty="CustomerName" rowHeader="false">
+                  <f:facet name="header">
+                    <af:outputLabel value="#{bindings.Customer_Profile_HistoryTable.hints.CustomerName.label}"
+                                    id="ol2"/>
+                  </f:facet>
+                  <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                  <af:inputText id="Customer_Profile_HistoryCustomerName"
+                                value="#{row.bindings.CustomerName.inputValue}"
+                                label="#{bindings.Customer_Profile_HistoryTable.hints.CustomerName.label}"
+                                required="#{bindings.Customer_Profile_HistoryTable.hints.CustomerName.mandatory}"
+                                rows="#{bindings.Customer_Profile_HistoryTable.hints.CustomerName.displayHeight}"
+                                columns="#{bindings.Customer_Profile_HistoryTable.hints.CustomerName.displayWidth}"
+                                maximumLength="4000" readOnly="true"
+                                shortDesc="#{bindings.Customer_Profile_HistoryTable.hints.CustomerName.tooltip}">
+                    <f:validator binding="#{row.bindings.CustomerName.validator}"/>
+                  </af:inputText>
+                  <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                  <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                  <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                </af:column>
+                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                <af:column id="Customer_Profile_HistoryCustomerClassificationCol" sortable="true" filterable="true"
+                           noWrap="true" width="300" sortProperty="CustomerClassification" align="right"
+                           rowHeader="false">
+                  <f:facet name="header">
+                    <af:outputLabel value="#{bindings.Customer_Profile_HistoryTable.hints.CustomerClassification.label}"
+                                    id="ol3"/>
+                  </f:facet>
+                  <!-- DEBUG:BEGIN:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 7 -->
+                  <af:selectOneChoice id="Customer_Profile_HistoryCustomerClassification"
+                                      value="#{row.bindings.CustomerClassification.inputValue}"
+                                      label="#{bindings.Customer_Profile_HistoryTable.hints.CustomerClassification.label}"
+                                      required="#{bindings.Customer_Profile_HistoryTable.hints.CustomerClassification.mandatory}"
+                                      readOnly="true"
+                                      shortDesc="#{bindings.Customer_Profile_HistoryTable.hints.CustomerClassification.tooltip}">
+                    <f:selectItems value="#{row.bindings.CustomerClassification.items}"/>
+                  </af:selectOneChoice>
+                  <!-- DEBUG:END:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 7-->
+                  <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                  <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                </af:column>
+                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                <af:column id="Customer_Profile_HistoryCustomerChannelCol" sortable="true" filterable="true"
+                           noWrap="true" width="300" sortProperty="CustomerChannel" align="right" rowHeader="false">
+                  <f:facet name="header">
+                    <af:outputLabel value="#{bindings.Customer_Profile_HistoryTable.hints.CustomerChannel.label}"
+                                    id="ol4"/>
+                  </f:facet>
+                  <!-- DEBUG:BEGIN:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 7 -->
+                  <af:selectOneChoice id="Customer_Profile_HistoryCustomerChannel"
+                                      value="#{row.bindings.CustomerChannel.inputValue}"
+                                      label="#{bindings.Customer_Profile_HistoryTable.hints.CustomerChannel.label}"
+                                      required="#{bindings.Customer_Profile_HistoryTable.hints.CustomerChannel.mandatory}"
+                                      readOnly="true"
+                                      shortDesc="#{bindings.Customer_Profile_HistoryTable.hints.CustomerChannel.tooltip}">
+                    <f:selectItems value="#{row.bindings.CustomerChannel.items}"/>
+                  </af:selectOneChoice>
+                  <!-- DEBUG:END:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 7-->
+                  <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                  <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                </af:column>
+                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                <af:column id="Customer_Profile_HistoryCustomerEmailCol" sortable="true" filterable="true" noWrap="true"
+                           width="300" sortProperty="CustomerEmail" rowHeader="false">
+                  <f:facet name="header">
+                    <af:outputLabel value="#{bindings.Customer_Profile_HistoryTable.hints.CustomerEmail.label}"
+                                    id="ol5"/>
+                  </f:facet>
+                  <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                  <af:inputText id="Customer_Profile_HistoryCustomerEmail"
+                                value="#{row.bindings.CustomerEmail.inputValue}"
+                                label="#{bindings.Customer_Profile_HistoryTable.hints.CustomerEmail.label}"
+                                required="#{bindings.Customer_Profile_HistoryTable.hints.CustomerEmail.mandatory}"
+                                rows="#{bindings.Customer_Profile_HistoryTable.hints.CustomerEmail.displayHeight}"
+                                columns="#{bindings.Customer_Profile_HistoryTable.hints.CustomerEmail.displayWidth}"
+                                maximumLength="4000" readOnly="true"
+                                shortDesc="#{bindings.Customer_Profile_HistoryTable.hints.CustomerEmail.tooltip}">
+                    <f:validator binding="#{row.bindings.CustomerEmail.validator}"/>
+                  </af:inputText>
+                  <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                  <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                  <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                </af:column>
+                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                <af:column id="Customer_Profile_HistoryCustomerMobileCol" sortable="true" filterable="true"
+                           noWrap="true" width="300" sortProperty="CustomerMobile" rowHeader="false">
+                  <f:facet name="header">
+                    <af:outputLabel value="#{bindings.Customer_Profile_HistoryTable.hints.CustomerMobile.label}"
+                                    id="ol6"/>
+                  </f:facet>
+                  <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                  <af:inputText id="Customer_Profile_HistoryCustomerMobile"
+                                value="#{row.bindings.CustomerMobile.inputValue}"
+                                label="#{bindings.Customer_Profile_HistoryTable.hints.CustomerMobile.label}"
+                                required="#{bindings.Customer_Profile_HistoryTable.hints.CustomerMobile.mandatory}"
+                                rows="#{bindings.Customer_Profile_HistoryTable.hints.CustomerMobile.displayHeight}"
+                                columns="#{bindings.Customer_Profile_HistoryTable.hints.CustomerMobile.displayWidth}"
+                                maximumLength="4000" readOnly="true"
+                                shortDesc="#{bindings.Customer_Profile_HistoryTable.hints.CustomerMobile.tooltip}">
+                    <f:validator binding="#{row.bindings.CustomerMobile.validator}"/>
+                  </af:inputText>
+                  <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                  <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                  <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                </af:column>
+                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                <af:column id="Customer_Profile_HistoryCustomerPhoneCol" sortable="true" filterable="true" noWrap="true"
+                           width="300" sortProperty="CustomerPhone" rowHeader="false">
+                  <f:facet name="header">
+                    <af:outputLabel value="#{bindings.Customer_Profile_HistoryTable.hints.CustomerPhone.label}"
+                                    id="ol7"/>
+                  </f:facet>
+                  <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                  <af:inputText id="Customer_Profile_HistoryCustomerPhone"
+                                value="#{row.bindings.CustomerPhone.inputValue}"
+                                label="#{bindings.Customer_Profile_HistoryTable.hints.CustomerPhone.label}"
+                                required="#{bindings.Customer_Profile_HistoryTable.hints.CustomerPhone.mandatory}"
+                                rows="#{bindings.Customer_Profile_HistoryTable.hints.CustomerPhone.displayHeight}"
+                                columns="#{bindings.Customer_Profile_HistoryTable.hints.CustomerPhone.displayWidth}"
+                                maximumLength="4000" readOnly="true"
+                                shortDesc="#{bindings.Customer_Profile_HistoryTable.hints.CustomerPhone.tooltip}">
+                    <f:validator binding="#{row.bindings.CustomerPhone.validator}"/>
+                  </af:inputText>
+                  <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                  <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                  <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                </af:column>
+                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                <af:column id="Customer_Profile_HistoryCollectionTypeCol" sortable="true" filterable="true"
+                           noWrap="true" width="300" sortProperty="CollectionType" align="right" rowHeader="false">
+                  <f:facet name="header">
+                    <af:outputLabel value="#{bindings.Customer_Profile_HistoryTable.hints.CollectionType.label}"
+                                    id="ol8"/>
+                  </f:facet>
+                  <!-- DEBUG:BEGIN:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 7 -->
+                  <af:selectOneChoice id="Customer_Profile_HistoryCollectionType"
+                                      value="#{row.bindings.CollectionType.inputValue}"
+                                      label="#{bindings.Customer_Profile_HistoryTable.hints.CollectionType.label}"
+                                      required="#{bindings.Customer_Profile_HistoryTable.hints.CollectionType.mandatory}"
+                                      readOnly="true"
+                                      shortDesc="#{bindings.Customer_Profile_HistoryTable.hints.CollectionType.tooltip}">
+                    <f:selectItems value="#{row.bindings.CollectionType.items}"/>
+                  </af:selectOneChoice>
+                  <!-- DEBUG:END:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 7-->
+                  <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                  <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                </af:column>
+                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+                <f:facet name="detailStamp">
+                  <!-- DEBUG:BEGIN:TABLE_OVERFLOW_AREA : default/pageComponent/tableOverflowArea.vm, nesting level: 6 -->
+                  <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+                  <af:panelGroupLayout id="pgl1"
+                                       rendered="#{bindings.Customer_Profile_HistoryIterator.estimatedRowCount>0}"
+                                       layout="scroll">
+                    <f:facet name="separator">
+                      <af:spacer width="10" height="10" id="sp1"/>
+                    </f:facet>
+                    <af:panelFormLayout rows="1" maxColumns="1" labelAlignment="start" id="pfl0"></af:panelFormLayout>
+                    <!-- DEBUG:BEGIN:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 7 -->
+                    <!-- DEBUG:END:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 7-->
+                    <!-- DEBUG:BEGIN:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 7 -->
+                    <!-- DEBUG:END:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 7-->
+                  </af:panelGroupLayout>
+                  <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+                  <!-- DEBUG:END:TABLE_OVERFLOW_AREA : default/pageComponent/tableOverflowArea.vm, nesting level: 6-->
+                </f:facet><!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+              </af:table>
+            </af:panelCollection>
+          </af:panelGroupLayout>
+          <!-- DEBUG:END:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5-->
+          <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+        </af:panelGroupLayout>
+        <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4-->
+      </af:panelGroupLayout>
+      <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+    </f:facet>
+    <f:facet name="popups">
+      <af:panelGroupLayout id="popupsPgl"></af:panelGroupLayout>
+    </f:facet>
+    <!-- DEBUG:END:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3-->
+    <!-- DEBUG:END:WIZARD_PAGE_CONTENT : default/page/wizardPageContent.vm, nesting level: 2-->
+  </af:pageTemplate>
+</ui:composition>
+
+
+

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="PointCatalogPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="validateCurrentRows">
+  <parameters/>
+  <executables>
+    <invokeAction id="clearDeepLinkViewCriteriaInvoke" Binds="clearDeepLinkViewCriteria" Refresh="renderModel"
+                  RefreshCondition="#{'true' != pageFlowScope.jhsQueryByKeyValue}"/>
+    <iterator id="PointCatalogIterator" Binds="PointCatalog1" DataControl="AppModuleAMDataControl" RangeSize="10"/>
+    <searchRegion id="PointCatalogIteratorQuery" Binds="PointCatalogIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="Description"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+  </executables>
+  <bindings>
+    <methodAction id="clearDeepLinkViewCriteria" RequiresUpdateModel="true" Action="invokeMethod"
+                  DataControl="AppModuleAMDataControl" InstanceName="AppModuleAMDataControl.dataProvider"
+                  MethodName="clearDeepLinkViewCriteria"
+                  ReturnName="AppModuleAMDataControl.methodResults.AppModuleAMDataControl_dataProvider_clearDeepLinkViewCriteria_result"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="viewObjectUsage" NDValue="PointCatalog1" NDType="java.lang.String"/>
+      <NamedData NDName="requeryIfFound" NDValue="#{true}" NDType="java.lang.Boolean"/>
+    </methodAction>
+    <tree id="PointCatalogTable" IterBinding="PointCatalogIterator">
+      <nodeDefinition Name="PointCatalog" DefName="OPERATIONPROJECT.model.BC.VO.PointCatalogVO">
+        <AttrNames>
+          <Item Value="Description"/>
+          <Item Value="NumOfPoints"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="PointCatalogIterator" id="FirstPointCatalog" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="PointCatalogIterator" id="PreviousPointCatalog" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="PointCatalogIterator" id="NextPointCatalog" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="PointCatalogIterator" id="LastPointCatalog" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="PointCatalogIterator" id="SetCurrentRowWithKeyPointCatalog" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrPointCatalog}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="PointCatalogIterator" id="CreatePointCatalog" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="PointCatalogIterator" id="DeletePointCatalog" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

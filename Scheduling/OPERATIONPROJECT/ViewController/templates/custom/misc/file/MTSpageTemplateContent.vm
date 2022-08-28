@@ -1,0 +1,45 @@
+## revision_history
+## 11-nov-2013   Steven Davelaar
+## 1.3           Added CHECK_UNCOMMITTED_DATA_BEHAVIOR_MENU, PENDING_CHANGES_ACTION_LISTENER
+##               Undo change in rev 1.1, popup no longer auto-closes and reference to mg:Menu0
+##               causes runtime error
+## 14-feb-2013   Steven Davelaar
+## 1.2           - Added IMMEDIATE_MENU_ITEM macro to commandNavigationItems
+##               - Changed action property and setActionListsners for dynamic menus
+##                 to fix issues with pedning changes alert. partialSubmit now also true for dyn menu
+##               - Added IGNORE_CHANGES_ATTRIBUTE macro to exclude both menus from visiting tree for
+##                 poending changes. Needed otherwise the #{menuItem} expression evaluates to null after
+##                 visitTree API call!
+## 28-feb-2012   Steven Davelaar
+## 1.1           Set mg:Menu0 as partial trigger when using db table resource bundle, otherwise change text popup
+##               auto-closes when changing language or page.  
+## 11-aug-2009   Steven Davelaar
+## 1.0           Initial creation
+## 17-March-2017 Change Template to Display only breadCrumbs and FacetRef : PageContent by Masoud
+<af:decorativeBox theme="light" 
+ topHeight="0" 
+                styleClass="AFStretchWidth"
+                centerLandmark="none" topLandmark="none" 
+                  id="pt_db1">
+   <f:facet name="top">
+                    <af:group id="pt_g3">
+                      <af:breadCrumbs rendered="#{attrs.showBreadcrumbs and (pageFlowScope.jhsBreadcrumbStack.size gt 1)}"
+                                      var="bc" varStatus="vs"
+                                      value="#{pageFlowScope.jhsBreadcrumbStack}"
+                                      id="bcp">
+                        <f:facet name="nodeStamp">
+                          <af:commandNavigationItem id="ni" action="#{bc.doAction}"
+                                                    textAndAccessKey="#{bc.label}"
+                                                    visible="#{pageFlowScope.jhsBreadcrumbStack.rowIndex lt (pageFlowScope.jhsBreadcrumbStack.size-1)}"/>
+                        </f:facet>
+                      </af:breadCrumbs>
+                      <af:messages visible="#{attrs.showMessages}" id="msgp"
+                                   inline="#{attrs.showMessagesInline}"/>
+                      <af:facetRef facetName="processTrain"/>
+                    </af:group>
+                  </f:facet>
+              
+    <f:facet name="center">
+                      <af:facetRef facetName="pageContent"/>
+                  </f:facet>
+</af:decorativeBox>

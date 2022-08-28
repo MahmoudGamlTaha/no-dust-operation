@@ -1,0 +1,45 @@
+## revision_history
+## 18-jan-2013   Steven Davelaar
+## 1.6           - Commented out call to #ADD_GROUP_PARTIAL_TRIGGER, only tree pc needs to be partialtrigger
+##               - replace immediate=true with IMMEDIATE_MENU_ITEM macro
+## 28-may-2009   Paco van der Linden
+## 1.5           Fixed a duplicate ID error
+## 17-jun-2007   Steven Davelaar
+## 1.4           Strip nested app module name from tree data collection
+## 12-jan-2007   Jaco Verheul
+## 1.3           JavaScript now embedded in ALERT_FOR_CHANGES macro
+## 21-dec-2006   Steven Davelaar
+## 1.2           Added support for treeRecursiveDataCollection property
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+#set($treeNode=${JHS.current.group})
+#set($treeBaseGroup=${JHS.current.group.treeBaseGroup})
+#set($treeName="#TREE_BEAN(${treeBaseGroup})")
+  <f:facet name="${treeNode.treeDataCollectionFullName}">
+    #if (${treeNode.hasTreeFormLayout} || (${treeNode.reusableTree} && ${treeNode.hasAdfcRegions}) )
+      <af:link id="${treeNode.name}Link" text="#{node.${treeNode.descriptorAttribute}}"
+          partialSubmit="true"
+          #IMMEDIATE_MENU_ITEM()
+          actionListener="#{pageFlowScope.${treeName}.handleTreeNodeSelection}"/>
+##      #ADD_GROUP_PARTIAL_TRIGGER(${treeBaseGroup} "${treeBaseGroup.name}TPC:${treeBaseGroup.name}Tree:${treeNode.name}Link")
+    #else 
+      <af:outputText value="#{node.${treeNode.descriptorAttribute}}" id="#NEW_ID("ot")"/> 
+    #end
+  </f:facet>
+
+  #if ($treeNode.treeRecursiveDataCollectionStripped!='')
+  #if (${treeNode.treeRecursiveDataCollectionFullName} == ${treeNode.treeDataCollectionFullName})
+    #set ($recursionSuffix = "Rec")
+  #else
+    #set ($recursionSuffix = "")
+  #end
+  <f:facet name="${treeNode.treeRecursiveDataCollectionFullName}${recursionSuffix}">
+    #if (${treeNode.hasTreeFormLayout} || (${treeNode.reusableTree} && ${treeNode.hasAdfcRegions}) )
+    <af:link id="${treeNode.name}LinkRec" text="#{node.${treeNode.descriptorAttribute}}"
+        partialSubmit="true"
+          immediate="true"
+        actionListener="#{pageFlowScope.${treeName}.handleTreeNodeSelection}">
+    </af:link>
+    #else <af:outputText value="#{node.${treeNode.descriptorAttribute}}"/> #end
+  </f:facet>
+  #end

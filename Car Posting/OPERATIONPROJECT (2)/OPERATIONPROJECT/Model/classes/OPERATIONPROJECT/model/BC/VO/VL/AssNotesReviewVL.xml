@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AssNotesReviewVL"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="OPERATIONPROJECT.model.BC.VO.VL.AssNotesReviewVL_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="DataTeamAgentNotesReview"
+    Cardinality="1"
+    Source="true"
+    Owner="OPERATIONPROJECT.model.BC.VO.DataTeamAgentNotesReviewVO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_accessor" Value="true"/>
+      <Attr Name="_finderName" Value="DataTeamAgentNotesReview"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.VO.DataTeamAgentNotesReviewVO.AreaId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.DataTeamAgentNotesReviewVO.AssignDate"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.DataTeamAgentNotesReviewVO.DrivId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.DataTeamAgentNotesReviewVO.PilotId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.DataTeamAgentNotesReviewVO.DataAgent"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="AssNotesReviewDetails"
+    Cardinality="-1"
+    Owner="OPERATIONPROJECT.model.BC.VO.AssNotesReviewDetailsVO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="AssNotesReviewDetails"/>
+      <Attr Name="_entityAccessor" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.VO.AssNotesReviewDetailsVO.AreaId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.AssNotesReviewDetailsVO.AssignDate"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.AssNotesReviewDetailsVO.DrivId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.AssNotesReviewDetailsVO.PilotId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.AssNotesReviewDetailsVO.DataAgent"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="MTS.security.ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

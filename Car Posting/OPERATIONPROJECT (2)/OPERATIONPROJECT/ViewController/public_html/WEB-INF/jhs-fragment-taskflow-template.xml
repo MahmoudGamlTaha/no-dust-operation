@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <task-flow-template id="jhs-fragment-taskflow-template">
+        <data-control-scope id="__0">
+            <shared/>
+        </data-control-scope>
+        <input-parameter-definition id="__1">
+            <name id="__2">parentContext</name>
+            <value id="__3">#{pageFlowScope.parentContext}</value>
+            <class id="__4">java.util.Map</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__5">
+            <name id="__6">hideSaveButton</name>
+            <value id="__7">#{pageFlowScope.hideSaveButton}</value>
+            <class id="__8">java.lang.Boolean</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__9">
+            <name id="__10">hideCancelButton</name>
+            <value id="__11">#{pageFlowScope.hideCancelButton}</value>
+            <class id="__12">java.lang.Boolean</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__13">
+            <name id="__14">hideSearchArea</name>
+            <value id="__15">#{pageFlowScope.hideSearchArea}</value>
+            <class id="__16">java.lang.Boolean</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__17">
+            <name id="__18">hideFormBrowseButtons</name>
+            <value id="__19">#{pageFlowScope.hideFormBrowseButtons}</value>
+            <class id="__20">java.lang.Boolean</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__21">
+            <name id="__22">jhsBreadcrumbStack</name>
+            <value id="__23">#{pageFlowScope.jhsBreadcrumbStack}</value>
+            <class id="__24">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__25">
+            <name id="__26">isDeepLink</name>
+            <value id="__27">#{pageFlowScope.isDeepLink}</value>
+            <class id="__28">java.lang.Boolean</class>
+        </input-parameter-definition>
+        <managed-bean id="__29">
+            <managed-bean-name id="__30">pendingChangesBean</managed-bean-name>
+            <managed-bean-class id="__31">oracle.jheadstart.controller.jsf.bean.PendingChangesBean</managed-bean-class>
+            <managed-bean-scope id="__32">pageFlow</managed-bean-scope>
+        </managed-bean>
+        <managed-bean id="__33">
+            <managed-bean-name id="__34">jhsBreadcrumbStack</managed-bean-name>
+            <managed-bean-class id="__35">oracle.jheadstart.controller.jsf.util.breadcrumbs.BreadcrumbStack</managed-bean-class>
+            <managed-bean-scope id="__36">pageFlow</managed-bean-scope>
+        </managed-bean>
+        <managed-bean id="__37">
+            <managed-bean-name id="__38">jhsDynTabLauncher</managed-bean-name>
+            <managed-bean-class id="__39">oracle.jheadstart.view.dyntab.DynTabLauncher</managed-bean-class>
+            <managed-bean-scope id="__40">request</managed-bean-scope>
+        </managed-bean>
+        <managed-bean id="__41">
+            <managed-bean-name id="__42">jhsLovTaskFlowManager</managed-bean-name>
+            <managed-bean-class id="__43">oracle.jheadstart.controller.jsf.bean.SimpleDynamicRegionManager</managed-bean-class>
+            <managed-bean-scope id="__44">pageFlow</managed-bean-scope>
+        </managed-bean>
+        <managed-bean id="__45">
+            <managed-bean-name id="__46">jhsLovPopup</managed-bean-name>
+            <managed-bean-class id="__47">oracle.jheadstart.controller.jsf.bean.UIComponentBinder</managed-bean-class>
+            <managed-bean-scope id="__48">pageFlow</managed-bean-scope>
+        </managed-bean>
+        <initializer>#{pageFlowScope.jhsTaskFlowManager.initialize}</initializer>
+        <finalizer>#{pageFlowScope.jhsTaskFlowManager.cleanUp}</finalizer>
+        <exception-handler id="__49">UnexpectedError</exception-handler>
+        <view id="UnexpectedError">
+            <page id="__50">/pages/UnexpectedError.jsff</page>
+        </view>
+        <!-- CallMenuItem and CallMenuItemRouter activities are used by breadcrumbs that navigate
+        back to the task flow that called the current task flow, for example when using the JHeadstart
+        deeplinking functionality -->
+        <task-flow-return id="CallMenuItem">
+            <outcome>
+                <name id="__51">CallMenuItemRouter</name>
+            </outcome>
+        </task-flow-return>
+        <task-flow-call id="DoLovValidation">
+            <dynamic-task-flow-reference>#{pageFlowScope.LovItemBean.lovTaskFlowId}</dynamic-task-flow-reference>
+            <input-parameter-map>#{pageFlowScope.LovItemBean.lovParamsMap}</input-parameter-map>
+            <return-value id="__52">
+                <name>LovValidationRow</name>
+                <value>#{pageFlowScope.LovItemBean.lovValidationRow}</value>
+            </return-value>
+        </task-flow-call>
+        <method-call id="CallMenuItemRouter">
+            <method id="__53">#{jhsDynamicRouter.getOutcome}</method>
+            <parameter>
+                <class id="__54">java.lang.String</class>
+                <value id="__55">#{requestScope.currentMenuItem}</value>
+            </parameter>
+            <outcome id="__56">
+                <to-string/>
+            </outcome>
+        </method-call>
+        <parent-action id="LaunchTab">
+            <root-outcome id="__57">LaunchTab</root-outcome>
+        </parent-action>
+        <parent-action id="CloseCurrentTab">
+            <root-outcome id="__58">CloseCurrentTab</root-outcome>
+        </parent-action>
+        <control-flow-rule id="__59">
+            <from-activity-id id="__60">*</from-activity-id>
+            <control-flow-case id="__61">
+                <from-outcome id="__62">CallMenuItem</from-outcome>
+                <to-activity-id id="__63">CallMenuItem</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__64">
+                <from-outcome id="__65">CallMenuItemRouter</from-outcome>
+                <to-activity-id id="__66">CallMenuItemRouter</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__67">
+                <from-outcome id="__68">LaunchTab</from-outcome>
+                <to-activity-id id="__69">LaunchTab</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__70">
+                <from-outcome id="__71">CloseCurrentTab</from-outcome>
+                <to-activity-id id="__72">CloseCurrentTab</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__73">
+                <from-outcome id="__74">doLovValidation</from-outcome>
+                <to-activity-id id="__75">DoLovValidation</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <use-page-fragments/>
+    </task-flow-template>
+</adfc-config>
+

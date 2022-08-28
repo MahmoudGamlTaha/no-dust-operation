@@ -1,0 +1,39 @@
+## revision_history
+## 05-jul-2012   Steven Davelaar
+## 1.5           Also refresh surrounding panelLabelAndMessage in case of LOV item
+## 09-jan-2012   Steven Davelaar
+## 1.4           Added componentsToRefresh property
+## 18-may-2010   Steven Davelaar
+## 1.3           Added id property to all elements
+## 07-may-2009   Paco van der Linden
+## 1.2           Introduced item.id (to use as "id" on JSF pages instead of item.bindingName)
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+#set ($bean = ${JHS.current.managedBean})
+#set ($item = ${JHS.current.item})
+
+<managed-bean id="#NEW_ID("__")">
+  <managed-bean-name id="#NEW_ID("__")">${bean.beanName}</managed-bean-name>
+  <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.DependsOnItemBean</managed-bean-class>
+  <managed-bean-scope id="#NEW_ID("__")">application</managed-bean-scope>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">itemsToClear</property-name>
+    <list-entries id="#NEW_ID("__")">
+      #foreach ($item in ${item.dependentItemsToClear})
+        <value id="#NEW_ID("__")">${item.id}</value> 
+      #end
+    </list-entries>
+  </managed-property>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">componentsToRefresh</property-name>
+    <list-entries id="#NEW_ID("__")">
+      #foreach ($item in ${item.dependentItemsToRefresh})
+        <value id="#NEW_ID("__")">${item.id}</value> 
+        #if ($item.displayType=='lov')
+          ## also refresh surrounding panelLabelAndMessage so LOV icon link also gets enabled/disabled when appropriate
+          <value id="#NEW_ID("__")">${item.id}Plam</value> 
+        #end
+      #end
+    </list-entries>
+  </managed-property>
+</managed-bean>

@@ -1,0 +1,88 @@
+.label {
+    text-align: right;
+    font-weight: bold;
+    width: 100px;
+    color: #303030;
+}
+
+
+#map_canvas{
+    width: 100%;
+    height: 60%;
+}
+.btn-class{
+    margin-left: 5%;
+    width: 95%;
+    /*
+
+     border:1px solid #FCE3FF;
+     color: gray;
+     border-radius: 3px 3px 3px 3px;
+     -webkit-border-radius: 3px 3px 3px 3px;
+     -moz-border-radius: 3px 3px 3px 3px;
+     font-family: Verdana;
+     width: auto;
+     height: auto;
+     font-size: 12px;
+     padding: 3px 10px;
+     box-shadow: inset 0 1px 0 0 #FFF6CE,inset 0 -1px 0 0 #E3C852,inset 0 0 0 1px #FCE88D,0 2px 4px 0 #D4D4D4;
+     -moz-box-shadow: inset 0 1px 0 0 #FFF6CE,inset 0 -1px 0 0 #E3C852,inset 0 0 0 1px #FCE88D,0 2px 4px 0 #D4D4D4;
+     -webkit-box-shadow: inset 0 1px 0 0 #FFF6CE,inset 0 -1px 0 0 #E3C852,inset 0 0 0 1px #FCE88D,0 2px 4px 0 #D4D4D4;
+     text-shadow: 0 1px 0 #FFFFFF;
+     background-image: linear-gradient(to top, #FFFFFF, #FFFFF3);
+     background-color: #FCE374;
+     */
+}
+
+.upper{
+    width: 100%;
+}
+
+.choice-row{
+    min-height: 40px;
+    padding: 5px;
+}
+
+.choice-radio{
+    float: right;
+    min-width: 5%;
+}
+
+.choice-text{
+    float: right;
+    width: 90%;
+}
+
+.txt-address{
+    width: 100%;
+}
+.txt-lat{
+    width: 50%;
+    float: right;
+}
+
+.txt-lng{
+    width: 50%;
+    float: right;
+}
+
+#lblLatitude{
+    width: 30%;
+    float: right;
+}
+
+#txtLatitude{
+    width: 70%;
+    float: right;
+}
+
+#lblLongitude{
+	margin-right: 2%;
+    width: 28%;
+    float: right;
+}
+
+#txtLongitude{
+    width: 70%;
+    float: right;
+}

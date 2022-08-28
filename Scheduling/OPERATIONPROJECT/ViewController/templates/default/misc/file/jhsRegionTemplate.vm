@@ -1,0 +1,80 @@
+## revision_history
+## 05-nov-2013   Steven Davelaar
+## 1.3           Moved facet end element to correct if-branch
+## 26-apr-2013   Steven Davelaar
+## 1.2           Added binding property on pending changes popup again, now works fine
+##               because we use ComponentReference inside PendingChangesBean
+## 02-apr-2012   Steven Davelaar
+## 1.1           Comment out binding property on pending changes popup
+## 20-feb-2012   Steven Davelaar
+## 1.0           Initial creation
+#PAGE_TEMPLATE_START()
+    <af:xmlContent>
+      <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+        <description>This component lays out an entire region.</description>
+        <facet>
+          <description>The main page content.</description>
+          <facet-name>pageContent</facet-name>
+        </facet>
+        <facet>
+          <description>The content of all popups used in the page fragment</description>
+          <facet-name>popups</facet-name>
+        </facet>
+        <facet>
+          <description>The process train (wizards).</description>
+          <facet-name>processTrain</facet-name>
+        </facet>
+        <attribute>
+          <description>display breadcrumbs</description>
+          <attribute-name>showBreadcrumbs</attribute-name>
+          <attribute-class>boolean</attribute-class>
+          <default-value>true</default-value>
+        </attribute>
+      </component>
+    </af:xmlContent>
+    #if (${JHS.engine.getTemplateContext("regionTemplate")}=='Stretching')
+    <af:panelStretchLayout topHeight="auto" id="pt_psl1" bottomHeight="0" styleClass="AFStretchWidth">
+      <f:facet name="top">
+    #else  
+    <af:panelGroupLayout id="pt_pgl1" layout="scroll" styleClass="AFStretchWidth">
+    #end
+        <af:group id="pt_g1">
+          <af:breadCrumbs rendered="#{attrs.showBreadcrumbs and (pageFlowScope.jhsBreadcrumbStack.size gt 1)}"
+                          var="bc" varStatus="vs" value="#{pageFlowScope.jhsBreadcrumbStack}"
+                          id="bcr">
+            <f:facet name="nodeStamp">
+              <af:commandNavigationItem id="ni" action="#{bc.doAction}" textAndAccessKey="#{bc.label}"
+                                        visible="#{pageFlowScope.jhsBreadcrumbStack.rowIndex lt (pageFlowScope.jhsBreadcrumbStack.size-1)}"/>
+            </f:facet>
+          </af:breadCrumbs>
+          <af:facetRef facetName="processTrain"/>
+        </af:group>
+    #if (${JHS.engine.getTemplateContext("regionTemplate")}=='Stretching')
+      </f:facet>
+      <f:facet name="center">
+    #end
+        <af:facetRef facetName="pageContent"/>
+    #if (${JHS.engine.getTemplateContext("regionTemplate")}=='Stretching')
+      </f:facet>
+      <f:facet name="bottom">
+    #end
+        <af:group id="pt_g2">
+      <af:popup id="pendingChangesPopup" #POPUP_DEFERRED_CHILD_CREATION()
+        binding="#{pageFlowScope.pendingChangesBean.alertPopup}">
+            <af:dialog id="pendingChangesDialog" type="yesNo"
+                       title="#{nls['PENDING_CHANGES_TITLE']}"
+                       dialogListener="#{pageFlowScope.pendingChangesBean.processDialogEvent}"
+                       modal="true">
+              <af:outputText value="#{nls['PENDING_CHANGES_TEXT']}"
+                             id="pt_ot55"/>
+            </af:dialog>
+          </af:popup>
+          <af:facetRef facetName="popups"/>
+        </af:group>
+    #if (${JHS.engine.getTemplateContext("regionTemplate")}=='Stretching')
+      </f:facet>
+    </af:panelStretchLayout>
+    #else
+    </af:panelGroupLayout>
+    #end
+#PAGE_TEMPLATE_END()

@@ -1,0 +1,1625 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsRegionTemplateNoStretch.jsf">
+        <!-- DEBUG:BEGIN:FORM_PAGE_CONTENT : default/page/formPageContent.vm, nesting level: 2 -->
+        <!-- DEBUG:BEGIN:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3 -->
+        <f:facet name="pageContent">
+            <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+            <af:panelGroupLayout id="pcpg" layout="scroll">
+                <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4 -->
+                <af:panelGroupLayout layout="vertical" id="PostTeamleaderTopLc"
+                                     partialTriggers=" PostTeamleaderSaveButton PostTeamleaderCancelButton">
+                    <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                    <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                    <f:facet name="separator">
+                        <af:spacer width="10" height="10" id="sp0"/>
+                    </f:facet>
+                    <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+                    <af:panelHeader id="ph0" text="#{nls['FORM_TITLE_POSTTEAMLEADER']}">
+                        <f:facet name="toolbar">
+                            <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5 -->
+                            <af:toolbox id="tbox0">
+                                <af:toolbar id="tbar0">
+                                    <!-- DEBUG:BEGIN:FORM_BROWSE_BUTTONS : custom/pageComponent/MtsformBrowseButtons.vm, nesting level: 6 -->
+                                    <!-- DEBUG:END:FORM_BROWSE_BUTTONS : custom/pageComponent/MtsformBrowseButtons.vm, nesting level: 6-->
+                                    <af:group id="gr0">
+                                        <!-- DEBUG:BEGIN:NEW_BUTTON : custom/button/MtsnewButton.vm, nesting level: 6 -->
+                                        <!-- DEBUG:END:NEW_BUTTON : custom/button/MtsnewButton.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:DELETE_BUTTON : default/button/deleteButton.vm, nesting level: 6 -->
+                                        <!-- DEBUG:END:DELETE_BUTTON : default/button/deleteButton.vm, nesting level: 6-->
+                                    </af:group>
+                                    <af:group id="gr1"></af:group>
+                                    <af:group id="gr2">
+                                          <!-- DEBUG:BEGIN:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6 -->
+                                        <af:button action="#{SavePostTeamleader.execute}"
+                                                   rendered="#{((((MTSPermission['PostTeamleader.update']) or (MTSPermission['PostTeamleader.update'])) or (MTSPermission['PostTeamleader.update'])) or (MTSPermission['PostTeamleader.update'])) and (!pageFlowScope.hideSaveButton)}"
+                                                   textAndAccessKey="#{nls['SAVE_BUTTON_LABEL']}"
+                                                   id="PostTeamleaderSaveButton" partialSubmit="true"></af:button>
+                                        <!-- DEBUG:END:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6 -->
+                                        <af:button textAndAccessKey="#{nls['CANCEL']}" immediate="true"
+                                                   partialSubmit="true" rendered="#{!pageFlowScope.hideCancelButton}"
+                                                   actionListener="#{jhsRollback.execute}" action="Cancel"
+                                                   id="PostTeamleaderCancelButton"></af:button>
+                                        <!-- DEBUG:END:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6-->
+                                    </af:group>
+                                </af:toolbar>
+                            </af:toolbox>
+                            <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5-->
+                        </f:facet>
+                        <f:facet name="context">
+                            <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5 -->
+                            <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5-->
+                        </f:facet>
+                        <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+                        <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+                    </af:panelHeader>
+                    <!-- DEBUG:BEGIN:FORM_GROUP : custom/pageComponent/MtsformGroup.vm, nesting level: 5 -->
+                    <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+                    <af:panelGroupLayout id="PostTeamleaderFC" layout="vertical">
+                        <f:facet name="separator">
+                            <af:spacer width="10" height="10" id="sp1"/>
+                        </f:facet>
+                        <af:panelFormLayout rows="1" labelAlignment="start" maxColumns="1" id="PostTeamleaderFI"></af:panelFormLayout>
+                        <!-- DEBUG:BEGIN:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 6 -->
+                        <!-- DEBUG:END:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 6-->
+                    </af:panelGroupLayout>
+                    <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+                    <!-- DEBUG:END:FORM_GROUP : custom/pageComponent/MtsformGroup.vm, nesting level: 5-->
+                    <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+                    <!-- DEBUG:BEGIN:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 5 -->
+                    <af:panelTabbed position="above" childCreation="lazy" id="pst0" dimensionsFrom="auto"
+                                    styleClass="AFStretchWidth">
+                        <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 6 -->
+                        <af:showDetailItem stretchChildren="first" text="#{nls['TABLE_TITLE_CARPOST']}"
+                                           partialTriggers=" PostTeamleaderTopLc as_CarPost" id="CarPostTopLcSdi">
+                            <af:panelGroupLayout layout="vertical" id="CarPostTopLc"
+                                                 partialTriggers=" PostTeamleaderTopLc as_CarPost">
+                                <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 7 -->
+                                <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 7-->
+                                <f:facet name="separator">
+                                    <af:spacer width="10" height="10" id="sp2"/>
+                                </f:facet>
+                                <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+                                <af:group id="g0">
+                                    <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 7 -->
+                                    <!-- DEBUG:BEGIN:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 8 -->
+                                    <af:panelGroupLayout id="modelSearchAreaCarPost"
+                                                         rendered="#{!pageFlowScope.createModes.CreateCarPost and !pageFlowScope.hideSearchArea}"
+                                                         partialTriggers="">
+                                        <f:attribute name="JhsIgnoreChanges" value="true"/>
+                                        <!-- DEBUG:BEGIN:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 9 -->
+                                        <af:query id="as_CarPost" headerText="#{nls['SEARCH']}" disclosed="true"
+                                                  modeChangeVisible="false"
+                                                  value="#{bindings.CarPostIteratorQuery.queryDescriptor}"
+                                                  model="#{bindings.CarPostIteratorQuery.queryModel}"
+                                                  queryListener="#{bindings.CarPostIteratorQuery.processQuery}"
+                                                  queryOperationListener="#{bindings.CarPostIteratorQuery.processQueryOperation}"
+                                                  rows="1" labelAlignment="start" maxColumns="3"
+                                                  saveQueryMode="readOnly"
+                                                  resetButtonText="#{nls['ADVANCED_SEARCH_RESET']}">
+                                            <f:facet name="toolbar">
+                                                <af:toolbar id="tbar1">
+                                                    <af:outputText value="#{nls['SEARCH_RESULTS']} #{bindings.CarPostIterator.estimatedRowCount}"
+                                                                   id="ot0"
+                                                                   inlineStyle="background-color:Highlight; color:white; border:4px solid white; border-radius:20px; padding:4px 7px; display:inline-block; font-size:14px; font-weight:bold;"/>
+                                                </af:toolbar>
+                                            </f:facet>
+                                        </af:query>
+                                        <!-- DEBUG:END:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 9-->
+                                    </af:panelGroupLayout>
+                                    <!-- DEBUG:END:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 8-->
+                                    <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 7-->
+                                </af:group>
+                                <!-- DEBUG:BEGIN:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 7 -->
+                                <af:panelGroupLayout layout="vertical" id="pgl0">
+                                    <af:panelCollection id="CarPostPC" featuresOff="  " styleClass="AFStretchWidth">
+                                        <f:facet name="menus">
+                                            <!-- DEBUG:BEGIN:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 8 -->
+                                            <af:menu textAndAccessKey="#{nls['ACTION_MENU_LABEL']}" id="menu0">
+                                                <af:menu textAndAccessKey="#{nls['GO_TO_MENU_LABEL']}" id="menu1">
+                                                    <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9 -->
+                                                    <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9-->
+                                                    <!-- DEBUG:BEGIN:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 9 -->
+                                                    <af:group id="CarPosttbb"
+                                                              rendered="#{ bindings.CarPostIterator.currentRow!=null }">
+                                                        <af:commandMenuItem actionListener="#{bindings.FirstCarPost.execute}"
+                                                                            id="CarPostFirst" partialSubmit="true"
+                                                                            icon="/afr/shuttleleftall_ena.png"
+                                                                            textAndAccessKey="#{nls['FIRST_ROW']}"></af:commandMenuItem>
+                                                        <af:commandMenuItem actionListener="#{bindings.PreviousCarPost.execute}"
+                                                                            icon="/afr/shuttleleft_ena.png"
+                                                                            textAndAccessKey="#{nls['PREVIOUS_ROW']}"
+                                                                            id="CarPostPrevious" partialSubmit="true"></af:commandMenuItem>
+                                                        <af:commandMenuItem actionListener="#{bindings.NextCarPost.execute}"
+                                                                            icon="/afr/shuttleright_ena.png"
+                                                                            textAndAccessKey="#{nls['NEXT_ROW']}"
+                                                                            id="CarPostNext" partialSubmit="true"></af:commandMenuItem>
+                                                        <af:commandMenuItem actionListener="#{bindings.LastCarPost.execute}"
+                                                                            icon="/afr/shuttlerightall_ena.png"
+                                                                            textAndAccessKey="#{nls['LAST_ROW']}"
+                                                                            id="CarPostLast" partialSubmit="true"></af:commandMenuItem>
+                                                    </af:group>
+                                                    <!-- DEBUG:END:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 9-->
+                                                </af:menu>
+                                                <!-- DEBUG:BEGIN:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 9-->
+                                            </af:menu>
+                                            <!-- DEBUG:END:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 8-->
+                                        </f:facet>
+                                        <f:facet name="toolbar">
+                                            <!-- DEBUG:BEGIN:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 8 -->
+                                            <af:toolbar id="tbar2">
+                                                <!-- DEBUG:BEGIN:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 9-->
+                                            </af:toolbar>
+                                            <!-- DEBUG:END:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 8-->
+                                        </f:facet>
+                                        <f:facet name="statusbar"/>
+                                        <af:table id="CarPostTab" contentDelivery="immediate"
+                                                  value="#{bindings.CarPostTable.collectionModel}"
+                                                  columnStretching="last" rowBandingInterval="0" editingMode="editAll"
+                                                  columnSelection="multiple" contextMenuSelect="true"
+                                                  rowSelection="single"
+                                                  selectionListener="#{pageFlowScope.CarPostTable.makeCurrent}"
+                                                  selectedRowKeys="#{pageFlowScope.CarPostTable.selectedRow}"
+                                                  rowDisclosureListener="#{pageFlowScope.CarPostTable.discloseRow}"
+                                                  var="row" varStatus="status" rows="#{bindings.CarPostTable.rangeSize}"
+                                                  autoHeightRows="#{bindings.CarPostTable.rangeSize}"
+                                                  fetchSize="#{bindings.CarPostTable.rangeSize}"
+                                                  emptyText="#{nls['NO_ROWS_FOUND']}"
+                                                  queryListener="#{bindings.CarPostIteratorQuery.processQuery}"
+                                                  filterModel="#{bindings.CarPostIteratorQuery.queryDescriptor}"
+                                                  filterVisible="true" binding="#{pageFlowScope.CarPostTable.table}"
+                                                  partialTriggers=" :::as_CarPost :::CarPostPC ::CarPostFirst ::CarPostPrevious ::CarPostNext ::CarPostLast"
+                                                  styleClass="AFStretchWidth" summary="#{nls['TABLE_TITLE_CARPOST']}">
+                                            <!-- DEBUG:BEGIN:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 8 -->
+                                            <f:facet name="contextMenu">
+                                                <af:popup id="CarPostTablePopup" childCreation="deferred">
+                                                    <af:menu id="menu2">
+                                                        <af:menu text="#{nls['GO_TO_MENU_LABEL']}" id="menu3">
+                                                            <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9 -->
+                                                            <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9-->
+                                                        </af:menu>
+                                                        <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9-->
+                                                    </af:menu>
+                                                </af:popup>
+                                            </f:facet><!-- DEBUG:END:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 8--><!-- DEBUG:BEGIN:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 8 --><!-- DEBUG:END:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 8--><!-- DEBUG:BEGIN:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 8 -->
+                                            <af:column id="CarPostIndexColumn" frozen="true" width="20" align="center"
+                                                       headerText="#">
+                                                <af:outputFormatted value="#{status.index+1}" id="of0"/>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.CarPostTable.hints.ShipmentDate.label}"
+                                                       filterable="true" sortable="true" sortProperty="ShipmentDate"
+                                                       id="c40">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="Return Date" id="ol36"/>
+                                                </f:facet>
+                                                <f:facet name="filter">
+                                                    <af:inputDate label="" id="id17" pattern="#{nls.datepattern}"
+                                                                  value="#{status.filterCriteria.ShipmentDate}"/>
+                                                </f:facet>
+                                                <af:inputDate value="#{row.bindings.ShipmentDate.inputValue}"
+                                                              label="#{bindings.CarPostTable.hints.ShipmentDate.label}"
+                                                              required="#{bindings.CarPostTable.hints.ShipmentDate.mandatory}"
+                                                              columns="#{bindings.CarPostTable.hints.ShipmentDate.displayWidth}"
+                                                              shortDesc="#{bindings.CarPostTable.hints.ShipmentDate.tooltip}"
+                                                              id="id16">
+                                                    <f:validator binding="#{row.bindings.ShipmentDate.validator}"/>
+                                                    <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                                </af:inputDate>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.CarPostTable.hints.CoverDate1.label}"
+                                                       filterable="true" sortable="true" sortProperty="CoverDate1"
+                                                       id="c38">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="Cover Date" id="ol34"/>
+                                                </f:facet>
+                                                <f:facet name="filter">
+                                                    <af:inputDate label="" id="id13"
+                                                                  value="#{status.filterCriteria.CoverDate1}">
+                                                        <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                                    </af:inputDate>
+                                                </f:facet>
+                                                <af:inputDate value="#{row.bindings.CoverDate1.inputValue}"
+                                                              label="#{bindings.CarPostTable.hints.CoverDate1.label}"
+                                                              required="#{bindings.CarPostTable.hints.CoverDate1.mandatory}"
+                                                              columns="#{bindings.CarPostTable.hints.CoverDate1.displayWidth}"
+                                                              shortDesc="#{bindings.CarPostTable.hints.CoverDate1.tooltip}"
+                                                              id="id12">
+                                                    <f:validator binding="#{row.bindings.CoverDate1.validator}"/>
+                                                    <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                                </af:inputDate>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.CarPostTable.hints.ToCoverDate1.label}"
+                                                       filterable="true" sortable="true" sortProperty="ToCoverDate1"
+                                                       id="c39">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="To Cover Date" id="ol35"/>
+                                                </f:facet>
+                                                <f:facet name="filter">
+                                                    <af:inputDate label="" id="id15"
+                                                                  value="#{status.filterCriteria.ToCoverDate1}">
+                                                        <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                                    </af:inputDate>
+                                                </f:facet>
+                                                <af:inputDate value="#{row.bindings.ToCoverDate1.inputValue}"
+                                                              label="#{bindings.CarPostTable.hints.ToCoverDate1.label}"
+                                                              required="#{bindings.CarPostTable.hints.ToCoverDate1.mandatory}"
+                                                              columns="#{bindings.CarPostTable.hints.ToCoverDate1.displayWidth}"
+                                                              shortDesc="#{bindings.CarPostTable.hints.ToCoverDate1.tooltip}"
+                                                              id="id14">
+                                                    <f:validator binding="#{row.bindings.ToCoverDate1.validator}"/>
+                                                    <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                                </af:inputDate>
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 8-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                            <af:column id="CarPostReturnDateCol" sortable="true" filterable="true"
+                                                   rendered="false"    noWrap="true" width="150" sortProperty="ReturnDate"
+                                                       rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{nls['CARPOST_TABLE_RETURNDATE']}"
+                                                                    id="ol0"/>
+                                                </f:facet>
+                                                <f:facet name="filter">
+                                                    <af:inputDate value="#{status.filterCriteria.ReturnDate}"
+                                                                          id="id0">
+                                                                <af:convertDateTime pattern="dd/MM/yyyy"/>
+                                                            </af:inputDate>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                <af:inputDate value="#{row.bindings.ReturnDate.inputValue}"
+                                                              required="#{bindings.CarPostTable.hints.ReturnDate.mandatory}"
+                                                              columns="#{bindings.CarPostTable.hints.ReturnDate.displayWidth}"
+                                                              shortDesc="#{bindings.CarPostTable.hints.ReturnDate.tooltip}"
+                                                              id="id4">
+                                                    <f:validator binding="#{row.bindings.ReturnDate.validator}"/>
+                                                    <af:convertDateTime pattern="dd/MM/yyyy"/>
+                                                </af:inputDate>
+                                                <af:inputText id="CarPostReturnDate"
+                                                              value="#{row.bindings.ReturnDate.inputValue}"
+                                                       rendered="false"       label="#{nls['CARPOST_TABLE_RETURNDATE']}"
+                                                              required="#{bindings.CarPostTable.hints.ReturnDate.mandatory}"
+                                                              rows="#{bindings.CarPostTable.hints.ReturnDate.displayHeight}"
+                                                              columns="#{bindings.CarPostTable.hints.ReturnDate.displayWidth}"
+                                                              maximumLength="19" readOnly="true"
+                                                              shortDesc="#{bindings.CarPostTable.hints.ReturnDate.tooltip}">
+                                                    <f:validator binding="#{row.bindings.ReturnDate.validator}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                            <af:column id="CarPostDriverNameCol" sortable="true" filterable="true"
+                                                       noWrap="true" width="280" sortProperty="DriverName"
+                                                     rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{nls['CARPOST_TABLE_DRIVERNAME']}"
+                                                                    id="ol1"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                <af:inputText id="CarPostDriverName"
+                                                              value="#{row.bindings.DriverName.inputValue}"
+                                                              label="#{nls['CARPOST_TABLE_DRIVERNAME']}"
+                                                              required="#{bindings.CarPostTable.hints.DriverName.mandatory}"
+                                                              rows="#{bindings.CarPostTable.hints.DriverName.displayHeight}"
+                                                              columns="#{bindings.CarPostTable.hints.DriverName.displayWidth}"
+                                                              maximumLength="161" readOnly="true"
+                                                              shortDesc="#{bindings.CarPostTable.hints.DriverName.tooltip}">
+                                                    <f:validator binding="#{row.bindings.DriverName.validator}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                            <af:column id="CarPostCoverDateCol" sortable="true" filterable="true"
+                                                    rendered="false"   noWrap="true" width="150" sortProperty="CoverDate"
+                                                       rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{nls['CARPOST_TABLE_COVERDATE']}" id="ol2"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                <af:inputDate value="#{row.bindings.CoverDate.inputValue}"
+                                                              required="#{bindings.CarPostTable.hints.CoverDate.mandatory}"
+                                                              columns="#{bindings.CarPostTable.hints.CoverDate.displayWidth}"
+                                                              shortDesc="#{bindings.CarPostTable.hints.CoverDate.tooltip}"
+                                                              id="id9">
+                                                    <f:validator binding="#{row.bindings.CoverDate.validator}"/>
+                                                    <af:convertDateTime pattern="dd/MM/yyyy"/>
+                                                </af:inputDate>
+                                                <af:inputText id="CarPostCoverDate"
+                                                              value="#{row.bindings.CoverDate.inputValue}"
+                                                              label="#{nls['CARPOST_TABLE_COVERDATE']}"
+                                                       rendered="false"       required="#{bindings.CarPostTable.hints.CoverDate.mandatory}"
+                                                              rows="#{bindings.CarPostTable.hints.CoverDate.displayHeight}"
+                                                              columns="#{bindings.CarPostTable.hints.CoverDate.displayWidth}"
+                                                              maximumLength="10" readOnly="true"
+                                                              shortDesc="#{bindings.CarPostTable.hints.CoverDate.tooltip}">
+                                                    <f:validator binding="#{row.bindings.CoverDate.validator}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                           
+                                            <af:column id="CarPostToCoverDateCol" sortable="true" filterable="true"
+                                                       noWrap="true" width="150" sortProperty="ToCoverDate" filterFeatures="caseSensitive"
+                                                 rendered="false"      rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{nls['CARPOST_TABLE_TOCOVERDATE']}"
+                                                                    id="ol3"/>
+                                                </f:facet>
+                                                <af:inputDate value="#{row.bindings.ToCoverDate.inputValue}"
+                                                              required="#{bindings.CarPostTable.hints.ToCoverDate.mandatory}"
+                                                              columns="#{bindings.CarPostTable.hints.ToCoverDate.displayWidth}"
+                                                              shortDesc="#{bindings.CarPostTable.hints.ToCoverDate.tooltip}"
+                                                              id="id10">
+                                                    <f:validator binding="#{row.bindings.ToCoverDate.validator}"/>
+                                                    <af:convertDateTime pattern="dd/MM/yyyy"/>
+                                                </af:inputDate>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                               
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                            <af:column id="CarPostStatusNameCol" sortable="true" filterable="true"
+                                                       noWrap="true" width="150" sortProperty="StatusName"
+                                                       rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{nls['CARPOST_TABLE_STATUSNAME']}"
+                                                                    id="ol4"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                <af:inputText id="CarPostStatusName"
+                                                              value="#{row.bindings.StatusName.inputValue}"
+                                                              label="#{nls['CARPOST_TABLE_STATUSNAME']}"
+                                                              required="#{bindings.CarPostTable.hints.StatusName.mandatory}"
+                                                              rows="#{bindings.CarPostTable.hints.StatusName.displayHeight}"
+                                                              columns="#{bindings.CarPostTable.hints.StatusName.displayWidth}"
+                                                              maximumLength="4000" readOnly="true"
+                                                              shortDesc="#{bindings.CarPostTable.hints.StatusName.tooltip}">
+                                                    <f:validator binding="#{row.bindings.StatusName.validator}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                            <af:column id="CarPostDataStatusCol" sortable="true" filterable="true"
+                                                       noWrap="true" width="150" sortProperty="DataStatus"
+                                                       rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{nls['CARPOST_TABLE_DATASTATUS']}"
+                                                                    id="ol5"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                <af:inputText id="CarPostDataStatus"
+                                                              value="#{row.bindings.DataStatus.inputValue}"
+                                                              label="#{nls['CARPOST_TABLE_DATASTATUS']}"
+                                                              required="#{bindings.CarPostTable.hints.DataStatus.mandatory}"
+                                                              rows="#{bindings.CarPostTable.hints.DataStatus.displayHeight}"
+                                                              columns="#{bindings.CarPostTable.hints.DataStatus.displayWidth}"
+                                                              maximumLength="4000" readOnly="true"
+                                                              shortDesc="#{bindings.CarPostTable.hints.DataStatus.tooltip}">
+                                                    <f:validator binding="#{row.bindings.DataStatus.validator}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                            <af:column id="CarPostOperationAgentCol" sortable="true" filterable="true"
+                                                       noWrap="true" width="120" sortProperty="OperationAgent"
+                                                       rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{nls['CARPOST_TABLE_OPERATIONAGENT']}"
+                                                                    showRequired="#{bindings.CarPostTable.hints.OperationAgent.mandatory}"
+                                                                    id="ol6"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 9 -->
+                                                <af:selectOneChoice id="CarPostOperationAgent"
+                                                                    value="#{row.bindings.OperationAgent.inputValue}"
+                                                                    label="#{nls['CARPOST_TABLE_OPERATIONAGENT']}"
+                                                                    required="#{bindings.CarPostTable.hints.OperationAgent.mandatory}"
+                                                                    readOnly="#{!(MTSPermission['PostTeamleader.update'])}"
+                                                          autoSubmit="true"          shortDesc="#{bindings.CarPostTable.hints.OperationAgent.tooltip}"
+                                                                    valueChangeListener="#{PostTeamLeaderBean.ChangeReconciliationAgent}">
+                                                    <f:selectItems value="#{row.bindings.OperationAgent.items}"/>
+                                                </af:selectOneChoice>
+                                                <!-- DEBUG:END:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                        </af:table>
+                                    </af:panelCollection>
+                                </af:panelGroupLayout>
+                                <!-- DEBUG:END:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 7-->
+                                <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+                            </af:panelGroupLayout>
+                        </af:showDetailItem>
+                        <af:showDetailItem text="Car Payments" id="sdi1">
+                            <af:panelTabbed position="above" id="pt1">
+                                <af:showDetailItem stretchChildren="first" text="#{nls['TABLE_TITLE_DRIVERPAYMENT']}"
+                                                   partialTriggers=" PostTeamleaderTopLc as_DriverPayment"
+                                                   id="DriverPaymentTopLcSdi">
+                                    <af:panelGroupLayout layout="vertical" id="DriverPaymentTopLc"
+                                                         partialTriggers=" PostTeamleaderTopLc as_DriverPayment">
+                                        <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 7-->
+                                        <f:facet name="separator">
+                                            <af:spacer width="10" height="10" id="sp3"/>
+                                        </f:facet>
+                                        <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+                                        <af:group id="g1">
+                                            <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 7 -->
+                                            <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 7 -->
+                                            <!-- DEBUG:BEGIN:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 8 -->
+                                            <af:panelGroupLayout id="modelSearchAreaDriverPayment"
+                                                                 rendered="#{!pageFlowScope.createModes.CreateDriverPayment and !pageFlowScope.hideSearchArea}"
+                                                                 partialTriggers="">
+                                                <f:attribute name="JhsIgnoreChanges" value="true"/>
+                                                <!-- DEBUG:BEGIN:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 9 -->
+                                                <af:query id="as_DriverPayment" headerText="#{nls['SEARCH']}"
+                                                          disclosed="true" modeChangeVisible="false"
+                                                          value="#{bindings.DriverPaymentIteratorQuery.queryDescriptor}"
+                                                          model="#{bindings.DriverPaymentIteratorQuery.queryModel}"
+                                                          queryListener="#{bindings.DriverPaymentIteratorQuery.processQuery}"
+                                                          queryOperationListener="#{bindings.DriverPaymentIteratorQuery.processQueryOperation}"
+                                                          rows="1" labelAlignment="start" maxColumns="3"
+                                                          saveQueryMode="readOnly"
+                                                          resetButtonText="#{nls['ADVANCED_SEARCH_RESET']}">
+                                                    <f:facet name="toolbar">
+                                                        <af:toolbar id="tbar3">
+                                                            <af:outputText value="#{nls['SEARCH_RESULTS']} #{bindings.DriverPaymentIterator.estimatedRowCount}"
+                                                                           id="ot1"
+                                                                           inlineStyle="background-color:Highlight; color:white; border:4px solid white; border-radius:20px; padding:4px 7px; display:inline-block; font-size:14px; font-weight:bold;"/>
+                                                        </af:toolbar>
+                                                    </f:facet>
+                                                </af:query>
+                                                <!-- DEBUG:END:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 9-->
+                                            </af:panelGroupLayout>
+                                            <!-- DEBUG:END:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 8-->
+                                            <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 7-->
+                                        </af:group>
+                                        <!-- DEBUG:BEGIN:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 7 -->
+                                        <af:panelGroupLayout layout="vertical" id="pgl1">
+                                            <af:panelCollection id="DriverPaymentPC" featuresOff="  "
+                                                                styleClass="AFStretchWidth">
+                                                <f:facet name="menus">
+                                                    <!-- DEBUG:BEGIN:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 8 -->
+                                                    <af:menu textAndAccessKey="#{nls['ACTION_MENU_LABEL']}" id="menu4">
+                                                        <af:menu textAndAccessKey="#{nls['GO_TO_MENU_LABEL']}"
+                                                                 id="menu5">
+                                                            <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9 -->
+                                                            <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9-->
+                                                            <!-- DEBUG:BEGIN:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 9 -->
+                                                            <af:group id="DriverPaymenttbb"
+                                                                      rendered="#{ bindings.DriverPaymentIterator.currentRow!=null }">
+                                                                <af:commandMenuItem actionListener="#{bindings.FirstDriverPayment.execute}"
+                                                                                    id="DriverPaymentFirst"
+                                                                                    partialSubmit="true"
+                                                                                    icon="/afr/shuttleleftall_ena.png"
+                                                                                    textAndAccessKey="#{nls['FIRST_ROW']}"/>
+                                                                <af:commandMenuItem actionListener="#{bindings.PreviousDriverPayment.execute}"
+                                                                                    icon="/afr/shuttleleft_ena.png"
+                                                                                    textAndAccessKey="#{nls['PREVIOUS_ROW']}"
+                                                                                    id="DriverPaymentPrevious"
+                                                                                    partialSubmit="true"/>
+                                                                <af:commandMenuItem actionListener="#{bindings.NextDriverPayment.execute}"
+                                                                                    icon="/afr/shuttleright_ena.png"
+                                                                                    textAndAccessKey="#{nls['NEXT_ROW']}"
+                                                                                    id="DriverPaymentNext"
+                                                                                    partialSubmit="true"/>
+                                                                <af:commandMenuItem actionListener="#{bindings.LastDriverPayment.execute}"
+                                                                                    icon="/afr/shuttlerightall_ena.png"
+                                                                                    textAndAccessKey="#{nls['LAST_ROW']}"
+                                                                                    id="DriverPaymentLast"
+                                                                                    partialSubmit="true"/>
+                                                            </af:group>
+                                                            <!-- DEBUG:END:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 9-->
+                                                        </af:menu>
+                                                        <!-- DEBUG:BEGIN:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 9-->
+                                                    </af:menu>
+                                                    <!-- DEBUG:END:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 8-->
+                                                </f:facet>
+                                                <f:facet name="toolbar">
+                                                    <!-- DEBUG:BEGIN:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 8 -->
+                                                    <af:toolbar id="tbar4">
+                                                        <!-- DEBUG:BEGIN:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 9-->
+                                                    </af:toolbar>
+                                                    <!-- DEBUG:END:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 8-->
+                                                </f:facet>
+                                                <f:facet name="statusbar"/>
+                                                <af:table id="DriverPaymentTab" contentDelivery="immediate"
+                                                          value="#{bindings.DriverPaymentTable.collectionModel}"
+                                                          columnStretching="last" rowBandingInterval="0"
+                                                          editingMode="editAll" columnSelection="multiple"
+                                                          contextMenuSelect="true" rowSelection="single"
+                                                          selectionListener="#{pageFlowScope.DriverPaymentTable.makeCurrent}"
+                                                          selectedRowKeys="#{pageFlowScope.DriverPaymentTable.selectedRow}"
+                                                          rowDisclosureListener="#{pageFlowScope.DriverPaymentTable.discloseRow}"
+                                                          var="row" varStatus="status"
+                                                          rows="#{bindings.DriverPaymentTable.rangeSize}"
+                                                          autoHeightRows="#{bindings.DriverPaymentTable.rangeSize}"
+                                                          fetchSize="#{bindings.DriverPaymentTable.rangeSize}"
+                                                          emptyText="#{nls['NO_ROWS_FOUND']}"
+                                                          queryListener="#{bindings.DriverPaymentIteratorQuery.processQuery}"
+                                                          filterModel="#{bindings.DriverPaymentIteratorQuery.queryDescriptor}"
+                                                          filterVisible="true"
+                                                          binding="#{pageFlowScope.DriverPaymentTable.table}"
+                                                          partialTriggers=" :::as_DriverPayment :::DriverPaymentPC ::DriverPaymentFirst ::DriverPaymentPrevious ::DriverPaymentNext ::DriverPaymentLast"
+                                                          styleClass="AFStretchWidth"
+                                                          summary="#{nls['TABLE_TITLE_DRIVERPAYMENT']}">
+                                                    <!-- DEBUG:BEGIN:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 8 -->
+                                                    <f:facet name="contextMenu">
+                                                        <af:popup id="DriverPaymentTablePopup" childCreation="deferred">
+                                                            <af:menu id="menu6">
+                                                                <af:menu text="#{nls['GO_TO_MENU_LABEL']}" id="menu7">
+                                                                    <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9 -->
+                                                                    <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9-->
+                                                                </af:menu>
+                                                                <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9 -->
+                                                                <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9-->
+                                                                <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9 -->
+                                                                <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9-->
+                                                            </af:menu>
+                                                        </af:popup>
+                                                    </f:facet><!-- DEBUG:END:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 8--><!-- DEBUG:BEGIN:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 8 --><!-- DEBUG:END:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 8--><!-- DEBUG:BEGIN:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 8 -->
+                                                    <af:column id="DriverPaymentIndexColumn" width="20" align="center"
+                                                               headerText="#">
+                                                        <af:outputFormatted value="#{status.index+1}" id="of1"/>
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 8-->
+                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                                    <af:column id="DriverPaymentDateCol" sortable="true"
+                                                               filterable="true" noWrap="true" width="156"
+                                                               sortProperty="Date" rowHeader="false">
+                                                        <f:facet name="header">
+                                                            <af:outputLabel value="#{bindings.DriverPaymentTable.hints.Date.label}"
+                                                                            id="ol7"/>
+                                                        </f:facet>
+                                                        <!-- DEBUG:BEGIN:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 9 -->
+                                                        <f:facet name="filter">
+                                                            <af:inputDate label="" value="#{status.filterCriteria.Date}"
+                                                                          id="id11">
+                                                                <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                                            </af:inputDate>
+                                                        </f:facet>
+                                                        <af:inputDate id="DriverPaymentDate"
+                                                                      value="#{row.bindings.Date.inputValue}"
+                                                                      label="#{bindings.DriverPaymentTable.hints.Date.label}"
+                                                                      required="#{bindings.DriverPaymentTable.hints.Date.mandatory}"
+                                                                      readOnly="true"
+                                                                      shortDesc="#{bindings.DriverPaymentTable.hints.Date.tooltip}">
+                                                            <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                                        </af:inputDate>
+                                                        <!-- DEBUG:END:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                                    <af:column id="DriverPaymentDriverNameCol" sortable="true"
+                                                               filterable="true" noWrap="true" width="280"
+                                                               sortProperty="DriverName" rowHeader="false">
+                                                        <f:facet name="header">
+                                                            <af:outputLabel value="#{nls['DRIVERPAYMENT_TABLE_DRIVERNAME']}"
+                                                                            id="ol8"/>
+                                                        </f:facet>
+                                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                        <af:inputText id="DriverPaymentDriverName"
+                                                                      value="#{row.bindings.DriverName.inputValue}"
+                                                                      label="#{nls['DRIVERPAYMENT_TABLE_DRIVERNAME']}"
+                                                                      required="#{bindings.DriverPaymentTable.hints.DriverName.mandatory}"
+                                                                      rows="#{bindings.DriverPaymentTable.hints.DriverName.displayHeight}"
+                                                                      columns="#{bindings.DriverPaymentTable.hints.DriverName.displayWidth}"
+                                                                      maximumLength="1101" readOnly="true"
+                                                                      shortDesc="#{bindings.DriverPaymentTable.hints.DriverName.tooltip}">
+                                                            <f:validator binding="#{row.bindings.DriverName.validator}"/>
+                                                        </af:inputText>
+                                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                                    <af:column id="DriverPaymentDueDateCol" sortable="true"
+                                                               filterable="true" noWrap="true" width="156"
+                                                               sortProperty="DueDate" rowHeader="false">
+                                                        <f:facet name="header">
+                                                            <af:outputLabel value="#{nls['DRIVERPAYMENT_TABLE_DUEDATE']}"
+                                                                            showRequired="#{bindings.DriverPaymentTable.hints.DueDate.mandatory}"
+                                                                            id="ol9"/>
+                                                        </f:facet>
+                                                        <!-- DEBUG:BEGIN:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 9 -->
+                                                        <f:facet name="filter">
+                                                            <af:inputDate value="#{status.filterCriteria.DueDate}"
+                                                                          id="id1">
+                                                                <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                                            </af:inputDate>
+                                                        </f:facet>
+                                                        <af:inputDate id="DriverPaymentDueDate"
+                                                                      value="#{row.bindings.DueDate.inputValue}"
+                                                                      label="#{nls['DRIVERPAYMENT_TABLE_DUEDATE']}"
+                                                               autoSubmit="true"       required="#{bindings.DriverPaymentTable.hints.DueDate.mandatory}"
+                                                                      
+                                                                      shortDesc="#{bindings.DriverPaymentTable.hints.DueDate.tooltip}"
+                                                                      valueChangeListener="#{PostTeamLeaderBean.ChangeDriverPaymentAgent}">
+                                                            <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                                        </af:inputDate>
+                                                        <!-- DEBUG:END:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                                    </af:column>
+                                                    <af:column headerText="#{bindings.DriverPaymentTable.hints.PaymentLocation.label}"
+                                                              width="150" id="c37" filterable="true" sortable="true" sortProperty="PaymentLocation">
+                                                              <f:facet name="header">
+                                                            <af:outputLabel value="Payment Location" id="ol19"/>
+                                                        </f:facet>
+                                                        <af:selectOneChoice value="#{row.bindings.PaymentLocation.inputValue}"
+                                                                            label="#{row.bindings.PaymentLocation.label}"
+                                                                 autoSubmit="true"           required="#{bindings.DriverPaymentTable.hints.PaymentLocation.mandatory}"
+                                                                            shortDesc="#{bindings.DriverPaymentTable.hints.PaymentLocation.tooltip}"
+                                                                            id="soc2"
+                                                                            valueChangeListener="#{PostTeamLeaderBean.ChangeDriverPaymentAgent}">
+                                                            <f:selectItems value="#{row.bindings.PaymentLocation.items}"
+                                                                           id="si4"/>
+                                                            <f:validator binding="#{row.bindings.PaymentLocation.validator}"/>
+                                                        </af:selectOneChoice>
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                                    <af:column id="DriverPaymentPaymentStatusCol" sortable="true"
+                                                               filterable="true" noWrap="true" width="150"
+                                                               sortProperty="PaymentStatus" align="right"
+                                                               rowHeader="false">
+                                                        <f:facet name="header">
+                                                            <af:outputLabel value="#{nls['DRIVERPAYMENT_TABLE_PAYMENTSTATUS']}"
+                                                                            showRequired="#{bindings.DriverPaymentTable.hints.PaymentStatus.mandatory}"
+                                                                            id="ol10"/>
+                                                        </f:facet>
+                                                        <!-- DEBUG:BEGIN:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 9 -->
+                                                        <af:selectOneChoice id="DriverPaymentPaymentStatus"
+                                                                            value="#{row.bindings.PaymentStatus.inputValue}"
+                                                                            label="#{nls['DRIVERPAYMENT_TABLE_PAYMENTSTATUS']}"
+                                                                            required="#{bindings.DriverPaymentTable.hints.PaymentStatus.mandatory}"
+                                                                      autoSubmit="true"      readOnly="#{!(MTSPermission['PostTeamleader.update'])}"
+                                                                            shortDesc="#{bindings.DriverPaymentTable.hints.PaymentStatus.tooltip}"
+                                                                            valueChangeListener="#{PostTeamLeaderBean.ChangeDriverPaymentAgent}">
+                                                            <f:selectItems value="#{row.bindings.PaymentStatus.items}"
+                                                                           id="si1"/>
+                                                        </af:selectOneChoice>
+                                                        <!-- DEBUG:END:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                                    <af:column id="DriverPaymentPaymentRefrenceCol" sortable="true"
+                                                               filterable="true" noWrap="true" width="150"
+                                                               sortProperty="PaymentRefrence" rowHeader="false">
+                                                        <f:facet name="header">
+                                                            <af:outputLabel value="#{nls['DRIVERPAYMENT_TABLE_PAYMENTREFRENCE']}"
+                                                                            id="ol11"/>
+                                                        </f:facet>
+                                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                        <af:inputText id="DriverPaymentPaymentRefrence"
+                                                                      value="#{row.bindings.PaymentRefrence.inputValue}"
+                                                                      label="#{nls['DRIVERPAYMENT_TABLE_PAYMENTREFRENCE']}"
+                                                                      required="#{bindings.DriverPaymentTable.hints.PaymentRefrence.mandatory}"
+                                                                      rows="#{bindings.DriverPaymentTable.hints.PaymentRefrence.displayHeight}"
+                                                                      columns="#{bindings.DriverPaymentTable.hints.PaymentRefrence.displayWidth}"
+                                                                      maximumLength="1000" readOnly="true"
+                                                                      shortDesc="#{bindings.DriverPaymentTable.hints.PaymentRefrence.tooltip}">
+                                                            <f:validator binding="#{row.bindings.PaymentRefrence.validator}"/>
+                                                        </af:inputText>
+                                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                                </af:table>
+                                            </af:panelCollection>
+                                        </af:panelGroupLayout>
+                                        <!-- DEBUG:END:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 7-->
+                                        <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+                                    </af:panelGroupLayout>
+                                </af:showDetailItem>
+                                <af:showDetailItem stretchChildren="first" text="#{nls['TABLE_TITLE_PILOTPAYMENT']}"
+                                                   partialTriggers=" PostTeamleaderTopLc as_PilotPayment"
+                                                   id="PilotPaymentTopLcSdi">
+                                    <af:panelGroupLayout layout="vertical" id="PilotPaymentTopLc"
+                                                         partialTriggers=" PostTeamleaderTopLc as_PilotPayment">
+                                        <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 7-->
+                                        <f:facet name="separator">
+                                            <af:spacer width="10" height="10" id="sp4"/>
+                                        </f:facet>
+                                        <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+                                        <af:group id="g2">
+                                            <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 7 -->
+                                            <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 7 -->
+                                            <!-- DEBUG:BEGIN:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 8 -->
+                                            <af:panelGroupLayout id="modelSearchAreaPilotPayment"
+                                                                 rendered="#{!pageFlowScope.createModes.CreatePilotPayment and !pageFlowScope.hideSearchArea}"
+                                                                 partialTriggers="">
+                                                <f:attribute name="JhsIgnoreChanges" value="true"/>
+                                                <!-- DEBUG:BEGIN:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 9 -->
+                                                <af:query id="as_PilotPayment" headerText="#{nls['SEARCH']}"
+                                                          disclosed="true" modeChangeVisible="false"
+                                                          value="#{bindings.PilotPaymentIteratorQuery.queryDescriptor}"
+                                                          model="#{bindings.PilotPaymentIteratorQuery.queryModel}"
+                                                          queryListener="#{bindings.PilotPaymentIteratorQuery.processQuery}"
+                                                          queryOperationListener="#{bindings.PilotPaymentIteratorQuery.processQueryOperation}"
+                                                          rows="1" labelAlignment="start" maxColumns="3"
+                                                          saveQueryMode="readOnly"
+                                                          resetButtonText="#{nls['ADVANCED_SEARCH_RESET']}">
+                                                    <f:facet name="toolbar">
+                                                        <af:toolbar id="tbar5">
+                                                            <af:outputText value="#{nls['SEARCH_RESULTS']} #{bindings.PilotPaymentIterator.estimatedRowCount}"
+                                                                           id="ot2"
+                                                                           inlineStyle="background-color:Highlight; color:white; border:4px solid white; border-radius:20px; padding:4px 7px; display:inline-block; font-size:14px; font-weight:bold;"/>
+                                                        </af:toolbar>
+                                                    </f:facet>
+                                                </af:query>
+                                                <!-- DEBUG:END:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 9-->
+                                            </af:panelGroupLayout>
+                                            <!-- DEBUG:END:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 8-->
+                                            <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 7-->
+                                        </af:group>
+                                        <!-- DEBUG:BEGIN:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 7 -->
+                                        <af:panelGroupLayout layout="vertical" id="pgl2">
+                                            <af:panelCollection id="PilotPaymentPC" featuresOff="  "
+                                                                styleClass="AFStretchWidth">
+                                                <f:facet name="menus">
+                                                    <!-- DEBUG:BEGIN:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 8 -->
+                                                    <af:menu textAndAccessKey="#{nls['ACTION_MENU_LABEL']}" id="menu8">
+                                                        <af:menu textAndAccessKey="#{nls['GO_TO_MENU_LABEL']}"
+                                                                 id="menu9">
+                                                            <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9 -->
+                                                            <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9-->
+                                                            <!-- DEBUG:BEGIN:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 9 -->
+                                                            <af:group id="PilotPaymenttbb"
+                                                                      rendered="#{ bindings.PilotPaymentIterator.currentRow!=null }">
+                                                                <af:commandMenuItem actionListener="#{bindings.FirstPilotPayment.execute}"
+                                                                                    id="PilotPaymentFirst"
+                                                                                    partialSubmit="true"
+                                                                                    icon="/afr/shuttleleftall_ena.png"
+                                                                                    textAndAccessKey="#{nls['FIRST_ROW']}"/>
+                                                                <af:commandMenuItem actionListener="#{bindings.PreviousPilotPayment.execute}"
+                                                                                    icon="/afr/shuttleleft_ena.png"
+                                                                                    textAndAccessKey="#{nls['PREVIOUS_ROW']}"
+                                                                                    id="PilotPaymentPrevious"
+                                                                                    partialSubmit="true"/>
+                                                                <af:commandMenuItem actionListener="#{bindings.NextPilotPayment.execute}"
+                                                                                    icon="/afr/shuttleright_ena.png"
+                                                                                    textAndAccessKey="#{nls['NEXT_ROW']}"
+                                                                                    id="PilotPaymentNext"
+                                                                                    partialSubmit="true"/>
+                                                                <af:commandMenuItem actionListener="#{bindings.LastPilotPayment.execute}"
+                                                                                    icon="/afr/shuttlerightall_ena.png"
+                                                                                    textAndAccessKey="#{nls['LAST_ROW']}"
+                                                                                    id="PilotPaymentLast"
+                                                                                    partialSubmit="true"/>
+                                                            </af:group>
+                                                            <!-- DEBUG:END:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 9-->
+                                                        </af:menu>
+                                                        <!-- DEBUG:BEGIN:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 9-->
+                                                    </af:menu>
+                                                    <!-- DEBUG:END:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 8-->
+                                                </f:facet>
+                                                <f:facet name="toolbar">
+                                                    <!-- DEBUG:BEGIN:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 8 -->
+                                                    <af:toolbar id="tbar6">
+                                                        <!-- DEBUG:BEGIN:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 9-->
+                                                    </af:toolbar>
+                                                    <!-- DEBUG:END:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 8-->
+                                                </f:facet>
+                                                <f:facet name="statusbar"/>
+                                                <af:table id="PilotPaymentTab" contentDelivery="immediate"
+                                                          value="#{bindings.PilotPaymentTable.collectionModel}"
+                                                          columnStretching="last" rowBandingInterval="0"
+                                                          editingMode="editAll" columnSelection="multiple"
+                                                          contextMenuSelect="true" rowSelection="single"
+                                                          selectionListener="#{pageFlowScope.PilotPaymentTable.makeCurrent}"
+                                                          selectedRowKeys="#{pageFlowScope.PilotPaymentTable.selectedRow}"
+                                                          rowDisclosureListener="#{pageFlowScope.PilotPaymentTable.discloseRow}"
+                                                          var="row" varStatus="status"
+                                                          rows="#{bindings.PilotPaymentTable.rangeSize}"
+                                                          autoHeightRows="#{bindings.PilotPaymentTable.rangeSize}"
+                                                          fetchSize="#{bindings.PilotPaymentTable.rangeSize}"
+                                                          emptyText="#{nls['NO_ROWS_FOUND']}"
+                                                          queryListener="#{bindings.PilotPaymentIteratorQuery.processQuery}"
+                                                          filterModel="#{bindings.PilotPaymentIteratorQuery.queryDescriptor}"
+                                                          filterVisible="true"
+                                                          binding="#{pageFlowScope.PilotPaymentTable.table}"
+                                                          partialTriggers=" :::as_PilotPayment :::PilotPaymentPC ::PilotPaymentFirst ::PilotPaymentPrevious ::PilotPaymentNext ::PilotPaymentLast"
+                                                          styleClass="AFStretchWidth"
+                                                          summary="#{nls['TABLE_TITLE_PILOTPAYMENT']}">
+                                                    <!-- DEBUG:BEGIN:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 8 -->
+                                                    <f:facet name="contextMenu">
+                                                        <af:popup id="PilotPaymentTablePopup" childCreation="deferred">
+                                                            <af:menu id="menu10">
+                                                                <af:menu text="#{nls['GO_TO_MENU_LABEL']}" id="menu11">
+                                                                    <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9 -->
+                                                                    <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9-->
+                                                                </af:menu>
+                                                                <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9 -->
+                                                                <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9-->
+                                                                <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9 -->
+                                                                <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9-->
+                                                            </af:menu>
+                                                        </af:popup>
+                                                    </f:facet><!-- DEBUG:END:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 8--><!-- DEBUG:BEGIN:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 8 --><!-- DEBUG:END:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 8--><!-- DEBUG:BEGIN:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 8 -->
+                                                    <af:column id="PilotPaymentIndexColumn" width="20" align="center"
+                                                               headerText="#">
+                                                        <af:outputFormatted value="#{status.index+1}" id="of2"/>
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 8-->
+                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                                    <af:column id="PilotPaymentDateCol" sortable="true"
+                                                               filterable="true" noWrap="true" width="100"
+                                                               sortProperty="Date" rowHeader="false">
+                                                        <f:facet name="header">
+                                                            <af:outputLabel value="#{bindings.PilotPaymentTable.hints.Date.label}"
+                                                                            id="ol12"/>
+                                                        </f:facet>
+                                                        <!-- DEBUG:BEGIN:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 9 -->
+                                                        <f:facet name="filter">
+                                                            <af:inputDate value="#{status.filterCriteria.Date}"
+                                                                          id="id2">
+                                                                <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                                            </af:inputDate>
+                                                        </f:facet>
+                                                        <af:inputDate id="PilotPaymentDate"
+                                                                      value="#{row.bindings.Date.inputValue}"
+                                                                      label="#{bindings.PilotPaymentTable.hints.Date.label}"
+                                                                autoSubmit="true"      required="#{bindings.PilotPaymentTable.hints.Date.mandatory}"
+                                                                      readOnly="true"
+                                                                      shortDesc="#{bindings.PilotPaymentTable.hints.Date.tooltip}"
+                                                                      valueChangeListener="#{PostTeamLeaderBean.ChangePilotPaymentAgent}">
+                                                            <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                                        </af:inputDate>
+                                                        <!-- DEBUG:END:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                                    <af:column id="PilotPaymentDriverNameCol" sortable="true"
+                                                               filterable="true" noWrap="true" width="280"
+                                                               sortProperty="DriverName" rowHeader="false">
+                                                        <f:facet name="header">
+                                                            <af:outputLabel value="Pilot" id="ol13"/>
+                                                        </f:facet>
+                                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                        <af:inputText id="PilotPaymentDriverName"
+                                                                      value="#{row.bindings.DriverName.inputValue}"
+                                                                      label="#{nls['PILOTPAYMENT_TABLE_DRIVERNAME']}"
+                                                                      required="#{bindings.PilotPaymentTable.hints.DriverName.mandatory}"
+                                                                      rows="#{bindings.PilotPaymentTable.hints.DriverName.displayHeight}"
+                                                                      columns="#{bindings.PilotPaymentTable.hints.DriverName.displayWidth}"
+                                                                      maximumLength="1101" readOnly="true"
+                                                                      shortDesc="#{bindings.PilotPaymentTable.hints.DriverName.tooltip}">
+                                                            <f:validator binding="#{row.bindings.DriverName.validator}"/>
+                                                        </af:inputText>
+                                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                                    <af:column id="PilotPaymentDueDateCol" sortable="true"
+                                                               filterable="true" noWrap="true" width="156"
+                                                               sortProperty="DueDate" rowHeader="false">
+                                                        <f:facet name="header">
+                                                            <af:outputLabel value="#{nls['PILOTPAYMENT_TABLE_DUEDATE']}"
+                                                                            showRequired="#{bindings.PilotPaymentTable.hints.DueDate.mandatory}"
+                                                                            id="ol14"/>
+                                                        </f:facet>
+                                                        <!-- DEBUG:BEGIN:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 9 -->
+                                                        <f:facet name="filter">
+                                                            <af:inputDate value="#{status.filterCriteria.DueDate}"
+                                                                          id="id3">
+                                                                <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                                            </af:inputDate>
+                                                        </f:facet>
+                                                        <af:inputDate id="PilotPaymentDueDate"
+                                                                      value="#{row.bindings.DueDate.inputValue}"
+                                                                      label="#{nls['PILOTPAYMENT_TABLE_DUEDATE']}"
+                                                                autoSubmit="true"        required="#{bindings.PilotPaymentTable.hints.DueDate.mandatory}"
+                                                                      shortDesc="#{bindings.PilotPaymentTable.hints.DueDate.tooltip}"
+                                                                      valueChangeListener="#{PostTeamLeaderBean.ChangePilotPaymentAgent}">
+                                                            <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                                        </af:inputDate>
+                                                        <!-- DEBUG:END:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                                    </af:column>
+                                                    <af:column headerText="#{bindings.PilotPaymentTable.hints.PaymentLocation.label}"
+                                                            width="150"   id="c36"  sortable="true" filterable="true" sortProperty="PaymentLocation">
+                                                               <f:facet name="header">
+                                                            <af:outputLabel value="Payment Location" id="ol18"/>
+                                                        </f:facet>
+                                                        <af:selectOneChoice value="#{row.bindings.PaymentLocation.inputValue}"
+                                                                            label="#{row.bindings.PaymentLocation.label}"
+                                                                            required="#{bindings.PilotPaymentTable.hints.PaymentLocation.mandatory}"
+                                                                      autoSubmit="true"        shortDesc="#{bindings.PilotPaymentTable.hints.PaymentLocation.tooltip}"
+                                                                            id="soc1"
+                                                                            valueChangeListener="#{PostTeamLeaderBean.ChangePilotPaymentAgent}">
+                                                            <f:selectItems value="#{row.bindings.PaymentLocation.items}"
+                                                                           id="si3"/>
+                                                            <f:validator binding="#{row.bindings.PaymentLocation.validator}"/>
+                                                        </af:selectOneChoice>
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                                    <af:column id="PilotPaymentPaymentStatusCol" sortable="true"
+                                                               filterable="true" noWrap="true" width="150"
+                                                               sortProperty="PaymentStatus" align="right"
+                                                               rowHeader="false">
+                                                        <f:facet name="header">
+                                                            <af:outputLabel value="#{nls['PILOTPAYMENT_TABLE_PAYMENTSTATUS']}"
+                                                                            showRequired="#{bindings.PilotPaymentTable.hints.PaymentStatus.mandatory}"
+                                                                            id="ol15"/>
+                                                        </f:facet>
+                                                        <!-- DEBUG:BEGIN:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 9 -->
+                                                        <af:selectOneChoice id="PilotPaymentPaymentStatus"
+                                                                            value="#{row.bindings.PaymentStatus.inputValue}"
+                                                                   autoSubmit="true"           label="#{nls['PILOTPAYMENT_TABLE_PAYMENTSTATUS']}"
+                                                                            required="#{bindings.PilotPaymentTable.hints.PaymentStatus.mandatory}"
+                                                                            readOnly="#{!(MTSPermission['PostTeamleader.update'])}"
+                                                                            shortDesc="#{bindings.PilotPaymentTable.hints.PaymentStatus.tooltip}"
+                                                                            valueChangeListener="#{PostTeamLeaderBean.ChangePilotPaymentAgent}">
+                                                            <f:selectItems value="#{row.bindings.PaymentStatus.items}"
+                                                                           id="si2"/>
+                                                        </af:selectOneChoice>
+                                                        <!-- DEBUG:END:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                                    <af:column id="PilotPaymentPaymentRefrenceCol" sortable="true"
+                                                               filterable="true" noWrap="true" width="150"
+                                                               sortProperty="PaymentRefrence" rowHeader="false">
+                                                        <f:facet name="header">
+                                                            <af:outputLabel value="#{nls['PILOTPAYMENT_TABLE_PAYMENTREFRENCE']}"
+                                                                            id="ol16"/>
+                                                        </f:facet>
+                                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                        <af:inputText id="PilotPaymentPaymentRefrence"
+                                                                      value="#{row.bindings.PaymentRefrence.inputValue}"
+                                                                      label="#{nls['PILOTPAYMENT_TABLE_PAYMENTREFRENCE']}"
+                                                                      required="#{bindings.PilotPaymentTable.hints.PaymentRefrence.mandatory}"
+                                                                      rows="#{bindings.PilotPaymentTable.hints.PaymentRefrence.displayHeight}"
+                                                                      columns="#{bindings.PilotPaymentTable.hints.PaymentRefrence.displayWidth}"
+                                                                      maximumLength="1000" readOnly="true"
+                                                                      shortDesc="#{bindings.PilotPaymentTable.hints.PaymentRefrence.tooltip}">
+                                                            <f:validator binding="#{row.bindings.PaymentRefrence.validator}"/>
+                                                        </af:inputText>
+                                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                                </af:table>
+                                            </af:panelCollection>
+                                        </af:panelGroupLayout>
+                                        <!-- DEBUG:END:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 7-->
+                                        <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+                                    </af:panelGroupLayout>
+                                </af:showDetailItem>
+                                <af:showDetailItem text="Car Rejection Form" id="sdi2" >
+                                    <af:panelGroupLayout id="pgl3">
+                                        <af:panelHeader text="CarIssueViewVO1" id="ph1">
+                                            <af:table id="md1" rows="#{bindings.CarIssueViewVO1.rangeSize}"
+                                                      fetchSize="#{bindings.CarIssueViewVO1.rangeSize}"
+                                                      emptyText="#{bindings.CarIssueViewVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                      var="row" value="#{bindings.CarIssueViewVO1.collectionModel}"
+                                                      rowBandingInterval="0"
+                                                      selectedRowKeys="#{bindings.CarIssueViewVO1.collectionModel.selectedRow}"
+                                                      selectionListener="#{bindings.CarIssueViewVO1.collectionModel.makeCurrent}"
+                                                      rowSelection="single">
+                                                <af:column id="c35">
+                                                    <af:link text="Open" id="l1"
+                                                             actionListener="#{PostTeamLeaderBean.OpenCarRejectionPopup}">
+                                                    </af:link>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.CarIssueViewVO1.hints.AccManagerDate.label}"
+                                                     rendered="false"      sortProperty="#{bindings.CarIssueViewVO1.hints.AccManagerDate.name}"
+                                                           sortable="false" id="c1">
+                                                    <af:outputText value="#{row.AccManagerDate}"
+                                                                   shortDesc="#{bindings.CarIssueViewVO1.hints.AccManagerDate.tooltip}"
+                                                                   id="ot3">
+                                                        <af:convertDateTime pattern="#{bindings.CarIssueViewVO1.hints.AccManagerDate.format}"/>
+                                                    </af:outputText>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.CarIssueViewVO1.hints.AccManagerSignature.label}"
+                                                           sortProperty="#{bindings.CarIssueViewVO1.hints.AccManagerSignature.name}"
+                                                     rendered="false"       sortable="false" id="c2">
+                                                    <af:outputText value="#{row.AccManagerSignature}"
+                                                                   shortDesc="#{bindings.CarIssueViewVO1.hints.AccManagerSignature.tooltip}"
+                                                                   id="ot4"/>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.CarIssueViewVO1.hints.AgentdriverName.label}"
+                                                           sortProperty="#{bindings.CarIssueViewVO1.hints.AgentdriverName.name}"
+                                                           sortable="false" id="c3">
+                                                           <f:facet name="header">
+                                                        <af:outputLabel value="Agent / Driver Name" id="ol21"/>
+                                                    </f:facet>
+                                                    <af:outputText value="#{row.AgentdriverName}"
+                                                                   shortDesc="#{bindings.CarIssueViewVO1.hints.AgentdriverName.tooltip}"
+                                                                   id="ot5"/>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.CarIssueViewVO1.hints.AmountReturned.label}"
+                                                           sortProperty="#{bindings.CarIssueViewVO1.hints.AmountReturned.name}"
+                                                      rendered="false"      sortable="false" id="c4">
+                                                    <af:outputText value="#{row.AmountReturned}"
+                                                                   shortDesc="#{bindings.CarIssueViewVO1.hints.AmountReturned.tooltip}"
+                                                                   id="ot6">
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.CarIssueViewVO1.hints.AmountReturned.format}"/>
+                                                    </af:outputText>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.CarIssueViewVO1.hints.CarNo.label}"
+                                                           sortProperty="#{bindings.CarIssueViewVO1.hints.CarNo.name}"
+                                                           sortable="false" id="c5">
+                                                           <f:facet name="header">
+                                                        <af:outputLabel value="Car No." id="ol22"/>
+                                                    </f:facet>
+                                                    <af:outputText value="#{row.CarNo}"
+                                                                   shortDesc="#{bindings.CarIssueViewVO1.hints.CarNo.tooltip}"
+                                                                   id="ot7"/>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.CarIssueViewVO1.hints.CarWorkDate.label}"
+                                                           sortProperty="#{bindings.CarIssueViewVO1.hints.CarWorkDate.name}"
+                                                           sortable="false" id="c6">
+                                                           <f:facet name="header">
+                                                        <af:outputLabel value="Car Work Date" id="ol23"/>
+                                                    </f:facet>
+                                                    <af:outputText value="#{row.CarWorkDate}"
+                                                                   shortDesc="#{bindings.CarIssueViewVO1.hints.CarWorkDate.tooltip}"
+                                                                   id="ot8">
+                                                        <af:convertDateTime pattern="#{bindings.CarIssueViewVO1.hints.CarWorkDate.format}"/>
+                                                    </af:outputText>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.CarIssueViewVO1.hints.CaseNotes.label}"
+                                                           sortProperty="#{bindings.CarIssueViewVO1.hints.CaseNotes.name}"
+                                                           sortable="false" id="c7">
+                                                           <f:facet name="header">
+                                                        <af:outputLabel value="Case Notes" id="ol24"/>
+                                                    </f:facet>
+                                                    <af:outputText value="#{row.CaseNotes}"
+                                                                   shortDesc="#{bindings.CarIssueViewVO1.hints.CaseNotes.tooltip}"
+                                                                   id="ot9"/>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.CarIssueViewVO1.hints.DataSpvsignature.label}"
+                                                           sortProperty="#{bindings.CarIssueViewVO1.hints.DataSpvsignature.name}"
+                                                      rendered="false"      sortable="false" id="c8">
+                                                    <af:outputText value="#{row.DataSpvsignature}"
+                                                                   shortDesc="#{bindings.CarIssueViewVO1.hints.DataSpvsignature.tooltip}"
+                                                                   id="ot10"/>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.CarIssueViewVO1.hints.DriverId.label}"
+                                                      rendered="false"      sortProperty="#{bindings.CarIssueViewVO1.hints.DriverId.name}"
+                                                           sortable="false" id="c9">
+                                                    <af:outputText value="#{row.DriverId}"
+                                                                   shortDesc="#{bindings.CarIssueViewVO1.hints.DriverId.tooltip}"
+                                                                   id="ot11"/>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.CarIssueViewVO1.hints.DriverName.label}"
+                                                           sortProperty="#{bindings.CarIssueViewVO1.hints.DriverName.name}"
+                                                           sortable="false" id="c10">
+                                                           <f:facet name="header">
+                                                        <af:outputLabel value="Driver Name" id="ol25"/>
+                                                    </f:facet>
+                                                    <af:outputText value="#{row.DriverName}"
+                                                                   shortDesc="#{bindings.CarIssueViewVO1.hints.DriverName.tooltip}"
+                                                                   id="ot12"/>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.CarIssueViewVO1.hints.EmployeeSignature.label}"
+                                                    rendered="false"        sortProperty="#{bindings.CarIssueViewVO1.hints.EmployeeSignature.name}"
+                                                           sortable="false" id="c11">
+                                                    <af:outputText value="#{row.EmployeeSignature}"
+                                                                   shortDesc="#{bindings.CarIssueViewVO1.hints.EmployeeSignature.tooltip}"
+                                                                   id="ot13"/>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.CarIssueViewVO1.hints.HrDate.label}"
+                                                  rendered="false"          sortProperty="#{bindings.CarIssueViewVO1.hints.HrDate.name}"
+                                                           sortable="false" id="c12">
+                                                    <af:outputText value="#{row.HrDate}"
+                                                                   shortDesc="#{bindings.CarIssueViewVO1.hints.HrDate.tooltip}"
+                                                                   id="ot14">
+                                                        <af:convertDateTime pattern="#{bindings.CarIssueViewVO1.hints.HrDate.format}"/>
+                                                    </af:outputText>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.CarIssueViewVO1.hints.HrSignature.label}"
+                                                          rendered="false"  sortProperty="#{bindings.CarIssueViewVO1.hints.HrSignature.name}"
+                                                           sortable="false" id="c13">
+                                                    <af:outputText value="#{row.HrSignature}"
+                                                                   shortDesc="#{bindings.CarIssueViewVO1.hints.HrSignature.tooltip}"
+                                                                   id="ot15"/>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.CarIssueViewVO1.hints.Id.label}"
+                                                    rendered="false"        sortProperty="#{bindings.CarIssueViewVO1.hints.Id.name}"
+                                                           sortable="false" id="c14">
+                                                    <af:outputText value="#{row.Id}"
+                                                                   shortDesc="#{bindings.CarIssueViewVO1.hints.Id.tooltip}"
+                                                                   id="ot16">
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.CarIssueViewVO1.hints.Id.format}"/>
+                                                    </af:outputText>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.CarIssueViewVO1.hints.IssueCardNo.label}"
+                                                           sortProperty="#{bindings.CarIssueViewVO1.hints.IssueCardNo.name}"
+                                                           sortable="false" id="c15">
+                                                           <f:facet name="header">
+                                                        <af:outputLabel value="Issue Card No." id="ol26"/>
+                                                    </f:facet>
+                                                    <af:outputText value="#{row.IssueCardNo}"
+                                                                   shortDesc="#{bindings.CarIssueViewVO1.hints.IssueCardNo.tooltip}"
+                                                                   id="ot17"/>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.CarIssueViewVO1.hints.ItReview.label}"
+                                                           sortProperty="#{bindings.CarIssueViewVO1.hints.ItReview.name}"
+                                                           sortable="false" id="c16">
+                                                           <f:facet name="header">
+                                                        <af:outputLabel value="It Review" id="ol27"/>
+                                                    </f:facet>
+                                                    <af:outputText value="#{row.ItReview}"
+                                                                   shortDesc="#{bindings.CarIssueViewVO1.hints.ItReview.tooltip}"
+                                                                   id="ot18"/>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.CarIssueViewVO1.hints.ItSignature.label}"
+                                                       rendered="false"     sortProperty="#{bindings.CarIssueViewVO1.hints.ItSignature.name}"
+                                                           sortable="false" id="c17">
+                                                    <af:outputText value="#{row.ItSignature}"
+                                                                   shortDesc="#{bindings.CarIssueViewVO1.hints.ItSignature.tooltip}"
+                                                                   id="ot19"/>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.CarIssueViewVO1.hints.Paid.label}"
+                                                    rendered="false"        sortProperty="#{bindings.CarIssueViewVO1.hints.Paid.name}"
+                                                           sortable="false" id="c18">
+                                                    <af:outputText value="#{row.Paid}"
+                                                                   shortDesc="#{bindings.CarIssueViewVO1.hints.Paid.tooltip}"
+                                                                   id="ot20">
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.CarIssueViewVO1.hints.Paid.format}"/>
+                                                    </af:outputText>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.CarIssueViewVO1.hints.PostAgent.label}"
+                                                           sortProperty="#{bindings.CarIssueViewVO1.hints.PostAgent.name}"
+                                                           sortable="false" id="c19">
+                                                           <f:facet name="header">
+                                                        <af:outputLabel value="Post Agent" id="ol28"/>
+                                                    </f:facet>
+                                                    <af:outputText value="#{row.PostAgent}"
+                                                                   shortDesc="#{bindings.CarIssueViewVO1.hints.PostAgent.tooltip}"
+                                                                   id="ot21"/>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.CarIssueViewVO1.hints.PostDate.label}"
+                                                           sortProperty="#{bindings.CarIssueViewVO1.hints.PostDate.name}"
+                                                           sortable="false" id="c20">
+                                                           <f:facet name="header">
+                                                        <af:outputLabel value="Post Date" id="ol29"/>
+                                                    </f:facet>
+                                                    <af:outputText value="#{row.PostDate}"
+                                                                   shortDesc="#{bindings.CarIssueViewVO1.hints.PostDate.tooltip}"
+                                                                   id="ot22">
+                                                        <af:convertDateTime pattern="#{bindings.CarIssueViewVO1.hints.PostDate.format}"/>
+                                                    </af:outputText>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.CarIssueViewVO1.hints.PostagentSignature.label}"
+                                                     rendered="false"       sortProperty="#{bindings.CarIssueViewVO1.hints.PostagentSignature.name}"
+                                                           sortable="false" id="c21">
+                                                    <af:outputText value="#{row.PostagentSignature}"
+                                                                   shortDesc="#{bindings.CarIssueViewVO1.hints.PostagentSignature.tooltip}"
+                                                                   id="ot23"/>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.CarIssueViewVO1.hints.ReviewCoaching.label}"
+                                                           sortProperty="#{bindings.CarIssueViewVO1.hints.ReviewCoaching.name}"
+                                                           sortable="false" id="c22">
+                                                    
+                                                    <f:facet name="header">
+                                                           <af:outputLabel value="Review coaching" id="ol30"/>
+                                                           </f:facet>
+                                                    <af:outputText value="#{row.ReviewCoaching}"
+                                                                   shortDesc="#{bindings.CarIssueViewVO1.hints.ReviewCoaching.tooltip}"
+                                                                   id="ot24"/>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.CarIssueViewVO1.hints.ReviewTime.label}"
+                                                           sortProperty="#{bindings.CarIssueViewVO1.hints.ReviewTime.name}"
+                                                           sortable="false" id="c23">
+                                                           <f:facet name="header">
+                                                        <af:outputLabel value="Review Time" id="ol31"/>
+                                                    </f:facet>
+                                                    <af:outputText value="#{row.ReviewTime}"
+                                                                   shortDesc="#{bindings.CarIssueViewVO1.hints.ReviewTime.tooltip}"
+                                                                   id="ot25">
+                                                        <af:convertDateTime pattern="#{bindings.CarIssueViewVO1.hints.ReviewTime.format}"/>
+                                                    </af:outputText>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.CarIssueViewVO1.hints.ShipmentDate.label}"
+                                                           sortProperty="#{bindings.CarIssueViewVO1.hints.ShipmentDate.name}"
+                                                           sortable="false" id="c24">
+                                                           <f:facet name="header">
+                                                        <af:outputLabel value="Shipment Date" id="ol32"/>
+                                                    </f:facet>
+                                                    <af:outputText value="#{row.ShipmentDate}"
+                                                                   shortDesc="#{bindings.CarIssueViewVO1.hints.ShipmentDate.tooltip}"
+                                                                   id="ot26">
+                                                        <af:convertDateTime pattern="#{bindings.CarIssueViewVO1.hints.ShipmentDate.format}"/>
+                                                    </af:outputText>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.CarIssueViewVO1.hints.ShipmentId.label}"
+                                                    rendered="false"        sortProperty="#{bindings.CarIssueViewVO1.hints.ShipmentId.name}"
+                                                           sortable="false" id="c25">
+                                                    <af:outputText value="#{row.ShipmentId}"
+                                                                   shortDesc="#{bindings.CarIssueViewVO1.hints.ShipmentId.tooltip}"
+                                                                   id="ot27">
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.CarIssueViewVO1.hints.ShipmentId.format}"/>
+                                                    </af:outputText>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.CarIssueViewVO1.hints.Status.label}"
+                                                       rendered="false"     sortProperty="#{bindings.CarIssueViewVO1.hints.Status.name}"
+                                                           sortable="false" id="c26">
+                                                    <af:outputText value="#{row.Status}"
+                                                                   shortDesc="#{bindings.CarIssueViewVO1.hints.Status.tooltip}"
+                                                                   id="ot28">
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.CarIssueViewVO1.hints.Status.format}"/>
+                                                    </af:outputText>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.CarIssueViewVO1.hints.TeamSpvsignature.label}"
+                                                     rendered="false"       sortProperty="#{bindings.CarIssueViewVO1.hints.TeamSpvsignature.name}"
+                                                           sortable="false" id="c27">
+                                                    <af:outputText value="#{row.TeamSpvsignature}"
+                                                                   shortDesc="#{bindings.CarIssueViewVO1.hints.TeamSpvsignature.tooltip}"
+                                                                   id="ot29"/>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.CarIssueViewVO1.hints.TeamleaderReview.label}"
+                                                           sortProperty="#{bindings.CarIssueViewVO1.hints.TeamleaderReview.name}"
+                                                           sortable="false" id="c28">
+                                                           <f:facet name="header">
+                                                        <af:outputLabel value="Team Leader Review" id="ol33"/>
+                                                    </f:facet>
+                                                    <af:outputText value="#{row.TeamleaderReview}"
+                                                                   shortDesc="#{bindings.CarIssueViewVO1.hints.TeamleaderReview.tooltip}"
+                                                                   id="ot30"/>
+                                                </af:column>
+                                            </af:table>
+                                        </af:panelHeader>
+                                        <af:popup childCreation="deferred" autoCancel="disabled" id="p2">
+                                            <af:dialog id="d2" title="Confirmation" type="yesNo"
+                                                       dialogListener="#{PostTeamLeaderBean.RejectCar}">
+                                                <af:outputLabel value="Are You Sure You Want To Reject Car ?" id="ol17"/>
+                                                <f:facet name="buttonBar"/>
+                                            </af:dialog>
+                                        </af:popup>
+                                        <af:popup childCreation="deferred" autoCancel="disabled" id="p11">
+                                            <af:dialog id="d1" type="none" title="Car Rejection Form" contentHeight="500" contentWidth="1300">
+                                                <f:facet name="buttonBar">
+                                                    <af:button text="Reject" id="b1">
+                                                        <af:showPopupBehavior popupId="p2"/>
+                                                    </af:button>
+                                                </f:facet>
+                                                <af:panelGroupLayout id="pgl4" layout="horizontal">
+                                                    <af:panelLabelAndMessage label="#{bindings.CarNo.hints.label}"
+                                                                             id="plam1">
+                                                        <af:outputText value="#{bindings.CarNo.inputValue}"
+                                                                       shortDesc="#{bindings.CarNo.hints.tooltip}"
+                                                                       id="ot37"/>
+                                                        <af:spacer width="500" height="10" id="s1"/>
+                                                    </af:panelLabelAndMessage>
+                                                    <af:panelLabelAndMessage label="#{bindings.PostAgent.hints.label}"
+                                                                             id="plam2">
+                                                        <af:outputText value="#{bindings.PostAgent.inputValue}"
+                                                                       shortDesc="#{bindings.PostAgent.hints.tooltip}"
+                                                                       id="ot38"/>
+                                                    </af:panelLabelAndMessage>
+                                                </af:panelGroupLayout>
+                                                <af:spacer width="10" height="20" id="s2"/>
+                                                <af:panelGroupLayout id="pgl5" layout="horizontal">
+                                                    <af:inputDate value="#{bindings.PostDate.inputValue}"
+                                                                  readOnly="true"
+                                                                  label="#{bindings.PostDate.hints.label}"
+                                                                  required="#{bindings.PostDate.hints.mandatory}"
+                                                                  columns="#{bindings.PostDate.hints.displayWidth}"
+                                                                  shortDesc="#{bindings.PostDate.hints.tooltip}"
+                                                                  id="id5">
+                                                        <f:validator binding="#{bindings.PostDate.validator}"/>
+                                                        <af:convertDateTime pattern="#{bindings.PostDate.format}"/>
+                                                    </af:inputDate>
+                                                    <af:spacer width="480" height="10" id="s4"/>
+                                                    <af:panelLabelAndMessage label="#{bindings.DriverName.hints.label}"
+                                                                             id="plam3">
+                                                        <af:outputText value="#{bindings.DriverName.inputValue}"
+                                                                       shortDesc="#{bindings.DriverName.hints.tooltip}"
+                                                                       id="ot39"/>
+                                                    </af:panelLabelAndMessage>
+                                                </af:panelGroupLayout>
+                                                <af:spacer width="10" height="20" id="s3"/>
+                                                <af:panelGroupLayout id="pgl6">
+                                                    <af:inputDate value="#{bindings.ReviewTime.inputValue}"
+                                                                  readOnly="true"
+                                                                  label="#{bindings.ReviewTime.hints.label}"
+                                                                  required="#{bindings.ReviewTime.hints.mandatory}"
+                                                                  columns="#{bindings.ReviewTime.hints.displayWidth}"
+                                                                  shortDesc="#{bindings.ReviewTime.hints.tooltip}"
+                                                                  id="id6">
+                                                        <f:validator binding="#{bindings.ReviewTime.validator}"/>
+                                                        <af:convertDateTime pattern="#{bindings.ReviewTime.format}"/>
+                                                    </af:inputDate>
+                                                </af:panelGroupLayout>
+                                                <af:spacer width="10" height="20" id="s5"/>
+                                                <af:table rows="#{bindings.CarIssueDetViewVO1.rangeSize}"
+                                                              fetchSize="#{bindings.CarIssueDetViewVO1.rangeSize}"
+                                                              emptyText="#{bindings.CarIssueDetViewVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                              var="row"
+                                                              value="#{bindings.CarIssueDetViewVO1.collectionModel}"
+                                                              rowBandingInterval="0"
+                                                              selectedRowKeys="#{bindings.CarIssueDetViewVO1.collectionModel.selectedRow}"
+                                                              selectionListener="#{bindings.CarIssueDetViewVO1.collectionModel.makeCurrent}"
+                                                              rowSelection="single" id="t1">
+                                                        <af:column headerText="#{bindings.CarIssueDetViewVO1.hints.CarIssueId.label}"
+                                                             rendered="false"      sortProperty="#{bindings.CarIssueDetViewVO1.hints.CarIssueId.name}"
+                                                                   sortable="false" id="c29">
+                                                            <af:outputText value="#{row.CarIssueId}"
+                                                                           shortDesc="#{bindings.CarIssueDetViewVO1.hints.CarIssueId.tooltip}"
+                                                                           id="ot31">
+                                                                <af:convertNumber groupingUsed="false"
+                                                                                  pattern="#{bindings.CarIssueDetViewVO1.hints.CarIssueId.format}"/>
+                                                            </af:outputText>
+                                                        </af:column>
+                                                        <af:column headerText="#{bindings.CarIssueDetViewVO1.hints.Id.label}"
+                                                              rendered="false"        sortProperty="#{bindings.CarIssueDetViewVO1.hints.Id.name}"
+                                                                   sortable="false" id="c30">
+                                                            <af:outputText value="#{row.Id}"
+                                                                           shortDesc="#{bindings.CarIssueDetViewVO1.hints.Id.tooltip}"
+                                                                           id="ot32">
+                                                                <af:convertNumber groupingUsed="false"
+                                                                                  pattern="#{bindings.CarIssueDetViewVO1.hints.Id.format}"/>
+                                                            </af:outputText>
+                                                        </af:column>
+                                                        <af:column headerText="#{bindings.CarIssueDetViewVO1.hints.IssueId.label}"
+                                                          rendered="false"            sortProperty="#{bindings.CarIssueDetViewVO1.hints.IssueId.name}"
+                                                                   sortable="false" id="c31">
+                                                            <af:outputText value="#{row.IssueId}"
+                                                                           shortDesc="#{bindings.CarIssueDetViewVO1.hints.IssueId.tooltip}"
+                                                                           id="ot33">
+                                                                <af:convertNumber groupingUsed="false"
+                                                                                  pattern="#{bindings.CarIssueDetViewVO1.hints.IssueId.format}"/>
+                                                            </af:outputText>
+                                                        </af:column>
+                                                        <af:column headerText="#{bindings.CarIssueDetViewVO1.hints.IssueName.label}"
+                                                                   sortProperty="#{bindings.CarIssueDetViewVO1.hints.IssueName.name}"
+                                                             width="500"      sortable="false" id="c32">
+                                                             <f:facet name="header">
+                                                            <af:outputLabel value="Issue Name" id="ol20"/>
+                                                        </f:facet>
+                                                            <af:outputText value="#{row.IssueName}"
+                                                                           shortDesc="#{bindings.CarIssueDetViewVO1.hints.IssueName.tooltip}"
+                                                                           id="ot34"/>
+                                                        </af:column>
+                                                        <af:column headerText="#{bindings.CarIssueDetViewVO1.hints.IssueType.label}"
+                                                           rendered="false"           sortProperty="#{bindings.CarIssueDetViewVO1.hints.IssueType.name}"
+                                                                   sortable="false" id="c33">
+                                                            <af:outputText value="#{row.IssueType}"
+                                                                           shortDesc="#{bindings.CarIssueDetViewVO1.hints.IssueType.tooltip}"
+                                                                           id="ot35">
+                                                                <af:convertNumber groupingUsed="false"
+                                                                                  pattern="#{bindings.CarIssueDetViewVO1.hints.IssueType.format}"/>
+                                                            </af:outputText>
+                                                        </af:column>
+                                                        <af:column headerText="#{bindings.CarIssueDetViewVO1.hints.ShipmentId.label}"
+                                                                   sortProperty="#{bindings.CarIssueDetViewVO1.hints.ShipmentId.name}"
+                                                            rendered="false"          sortable="false" id="c34">
+                                                            <af:outputText value="#{row.ShipmentId}"
+                                                                           shortDesc="#{bindings.CarIssueDetViewVO1.hints.ShipmentId.tooltip}"
+                                                                           id="ot36">
+                                                                <af:convertNumber groupingUsed="false"
+                                                                                  pattern="#{bindings.CarIssueDetViewVO1.hints.ShipmentId.format}"/>
+                                                            </af:outputText>
+                                                        </af:column>
+                                                    </af:table>
+                                                <af:spacer width="10" height="20" id="s6"/>
+                                                <af:panelGroupLayout id="pgl7" layout="horizontal">
+                                                    <af:panelLabelAndMessage label="#{bindings.IssueCardNo.hints.label}"
+                                                                             id="plam4">
+                                                        <af:outputText value="#{bindings.IssueCardNo.inputValue}"
+                                                                       shortDesc="#{bindings.IssueCardNo.hints.tooltip}"
+                                                                       id="ot40"/>
+                                                    </af:panelLabelAndMessage>
+                                                </af:panelGroupLayout>
+                                                <af:panelGroupLayout id="pgl8" layout="horizontal">
+                                                    <af:panelLabelAndMessage label="#{bindings.CaseNotes.hints.label}"
+                                                                             id="plam5">
+                                                        <af:outputText value="#{bindings.CaseNotes.inputValue}"
+                                                                       shortDesc="#{bindings.CaseNotes.hints.tooltip}"
+                                                                       id="ot41"/>
+                                                    </af:panelLabelAndMessage>
+                                                </af:panelGroupLayout>
+                                                <af:panelGroupLayout id="pgl9" layout="horizontal">
+                                                    <af:panelLabelAndMessage label="#{bindings.ReviewCoaching.hints.label}"
+                                                                             id="plam6">
+                                                        <af:outputText value="#{bindings.ReviewCoaching.inputValue}"
+                                                                       shortDesc="#{bindings.ReviewCoaching.hints.tooltip}"
+                                                                       id="ot42"/>
+                                                    </af:panelLabelAndMessage>
+                                                </af:panelGroupLayout>
+                                                <af:panelGroupLayout id="pgl10" layout="horizontal">
+                                                    <af:inputText value="#{bindings.AmountReturned.inputValue}"
+                                                                  label="#{bindings.AmountReturned.hints.label}"
+                                                                  autoSubmit="true"
+                                                                  required="#{bindings.AmountReturned.hints.mandatory}"
+                                                                  columns="#{bindings.AmountReturned.hints.displayWidth}"
+                                                                  maximumLength="#{bindings.AmountReturned.hints.precision}"
+                                                                  shortDesc="#{bindings.AmountReturned.hints.tooltip}"
+                                                                  id="it1">
+                                                        <f:validator binding="#{bindings.AmountReturned.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.AmountReturned.format}"/>
+                                                    </af:inputText>
+                                                </af:panelGroupLayout>
+                                                <af:panelGroupLayout id="pgl11" layout="horizontal">
+                                                    <af:panelLabelAndMessage label="#{bindings.DataSpvsignature.hints.label}"
+                                                                             id="plam7">
+                                                        <af:outputText value="#{bindings.DataSpvsignature.inputValue}"
+                                                                       shortDesc="#{bindings.DataSpvsignature.hints.tooltip}"
+                                                                       id="ot43"/>
+                                                    </af:panelLabelAndMessage>
+                                                </af:panelGroupLayout>
+                                                <af:panelGroupLayout id="pgl12" layout="horizontal">
+                                                    <af:panelLabelAndMessage label="#{bindings.TeamSpvsignature.hints.label}"
+                                                                             id="plam8">
+                                                        <af:outputText value="#{bindings.TeamSpvsignature.inputValue}"
+                                                                       shortDesc="#{bindings.TeamSpvsignature.hints.tooltip}"
+                                                                       id="ot44"/>
+                                                    </af:panelLabelAndMessage>
+                                                </af:panelGroupLayout>
+                                                <af:inputText value="#{bindings.ItReview.inputValue}"
+                                                              label="#{bindings.ItReview.hints.label}" readOnly="true"
+                                                              required="#{bindings.ItReview.hints.mandatory}"
+                                                              columns="#{bindings.ItReview.hints.displayWidth}"
+                                                              maximumLength="#{bindings.ItReview.hints.precision}"
+                                                              shortDesc="#{bindings.ItReview.hints.tooltip}" id="it2">
+                                                    <f:validator binding="#{bindings.ItReview.validator}"/>
+                                                </af:inputText>
+                                                <af:panelGroupLayout id="pgl13" layout="horizontal">
+                                                    <af:inputText value="#{bindings.ItSignature.inputValue}"
+                                                                  label="#{bindings.ItSignature.hints.label}"
+                                                                  required="#{bindings.ItSignature.hints.mandatory}"
+                                                                  columns="#{bindings.ItSignature.hints.displayWidth}"
+                                                                  maximumLength="#{bindings.ItSignature.hints.precision}"
+                                                                  shortDesc="#{bindings.ItSignature.hints.tooltip}"
+                                                                  autoSubmit="true" id="it3">
+                                                        <f:validator binding="#{bindings.ItSignature.validator}"/>
+                                                    </af:inputText>
+                                                </af:panelGroupLayout>
+                                                <af:panelGroupLayout id="pgl14" layout="horizontal">
+                                                    <af:inputText value="#{bindings.AccManagerSignature.inputValue}"
+                                                                  label="#{bindings.AccManagerSignature.hints.label}"
+                                                                  required="#{bindings.AccManagerSignature.hints.mandatory}"
+                                                                  columns="#{bindings.AccManagerSignature.hints.displayWidth}"
+                                                                  autoSubmit="true"
+                                                                  maximumLength="#{bindings.AccManagerSignature.hints.precision}"
+                                                                  shortDesc="#{bindings.AccManagerSignature.hints.tooltip}"
+                                                                  id="it4">
+                                                        <f:validator binding="#{bindings.AccManagerSignature.validator}"/>
+                                                    </af:inputText>
+                                                    <af:spacer width="200" height="10" id="s7"/>
+                                                    <af:inputDate value="#{bindings.AccManagerDate.inputValue}"
+                                                                  label="#{bindings.AccManagerDate.hints.label}"
+                                                                  required="#{bindings.AccManagerDate.hints.mandatory}"
+                                                                  autoSubmit="true"
+                                                                  columns="#{bindings.AccManagerDate.hints.displayWidth}"
+                                                                  shortDesc="#{bindings.AccManagerDate.hints.tooltip}"
+                                                                  id="id7">
+                                                        <f:validator binding="#{bindings.AccManagerDate.validator}"/>
+                                                        <af:convertDateTime pattern="#{bindings.AccManagerDate.format}"/>
+                                                    </af:inputDate>
+                                                </af:panelGroupLayout>
+                                                <af:panelGroupLayout id="pgl15" layout="horizontal">
+                                                    <af:inputText value="#{bindings.HrSignature.inputValue}"
+                                                                  label="#{bindings.HrSignature.hints.label}"
+                                                                  required="#{bindings.HrSignature.hints.mandatory}"
+                                                                  columns="#{bindings.HrSignature.hints.displayWidth}"
+                                                                  maximumLength="#{bindings.HrSignature.hints.precision}"
+                                                                  autoSubmit="true"
+                                                                  shortDesc="#{bindings.HrSignature.hints.tooltip}"
+                                                                  id="it5">
+                                                        <f:validator binding="#{bindings.HrSignature.validator}"/>
+                                                    </af:inputText>
+                                                    <af:spacer width="300" height="10" id="s8"/>
+                                                    <af:inputDate value="#{bindings.HrDate.inputValue}"
+                                                                  label="#{bindings.HrDate.hints.label}"
+                                                                  autoSubmit="true"
+                                                                  required="#{bindings.HrDate.hints.mandatory}"
+                                                                  columns="#{bindings.HrDate.hints.displayWidth}"
+                                                                  shortDesc="#{bindings.HrDate.hints.tooltip}" id="id8">
+                                                        <f:validator binding="#{bindings.HrDate.validator}"/>
+                                                        <af:convertDateTime pattern="#{bindings.HrDate.format}"/>
+                                                    </af:inputDate>
+                                                </af:panelGroupLayout>
+                                            </af:dialog>
+                                        </af:popup>
+                                    </af:panelGroupLayout>
+                                </af:showDetailItem>
+                            </af:panelTabbed>
+                        </af:showDetailItem>
+                        <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 6-->
+                        <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 6 -->
+                        <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 6-->
+                        <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 6 -->
+                        <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 6-->
+                    </af:panelTabbed>
+                    <!-- DEBUG:END:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 5-->
+                </af:panelGroupLayout>
+                <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4-->
+            </af:panelGroupLayout>
+            <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+        </f:facet>
+        <f:facet name="popups">
+            <af:panelGroupLayout id="popupsPgl"></af:panelGroupLayout>
+        </f:facet>
+        <!-- DEBUG:END:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3-->
+        <!-- DEBUG:END:FORM_PAGE_CONTENT : default/page/formPageContent.vm, nesting level: 2-->
+    </af:pageTemplate>
+</ui:composition>
+
+
+

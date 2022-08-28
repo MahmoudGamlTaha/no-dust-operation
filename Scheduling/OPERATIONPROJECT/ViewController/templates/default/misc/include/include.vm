@@ -1,0 +1,7 @@
+## revision_history
+## 15-jun-2007   Jaco Verheul. R11
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+##<af:region id="${JHS.current.include.name}" regionType="${JHS.current.include.getType(${JHS.service})}">
+  ## Attributes
+##</af:region>

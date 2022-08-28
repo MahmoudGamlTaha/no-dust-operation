@@ -1,0 +1,306 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsRegionTemplateNoStretch.jsf">
+        <!-- DEBUG:BEGIN:TABLE_PAGE_CONTENT : default/page/tablePageContent.vm, nesting level: 2 -->
+        <!-- DEBUG:BEGIN:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3 -->
+        <f:facet name="pageContent">
+            <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+            <af:panelGroupLayout id="pcpg" layout="scroll">
+                <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4 -->
+                <af:panelGroupLayout layout="vertical" id="StreetTopLc"
+                                     partialTriggers=" StreetDeleteDialog StreetSaveButton StreetCancelButton as_Street StreetPC:StreetArm StreetPC:StreetduprmTM StreetPC:StreetdelrmTM StreetPC:StreetArl StreetPC:StreetTab:Streetduprm StreetPC:StreetTab:Streetdelrm StreetPC:StreetTab:Streetdelrl StreetPC:StreetTab:Streetduprl">
+                    <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                    <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                    <f:facet name="separator">
+                        <af:spacer width="10" height="10" id="sp0"/>
+                    </f:facet>
+                    <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+                    <af:panelHeader id="ph0" text="#{nls['TABLE_TITLE_STREET']}">
+                        <f:facet name="toolbar">
+                            <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5 -->
+                            <af:toolbox id="tbox0">
+                                <af:toolbar id="tbar0">
+                                    <af:group id="gr0">
+                                        <!-- DEBUG:BEGIN:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6 -->
+                                        <!-- DEBUG:END:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6-->
+                                    </af:group>
+                                    <af:group id="gr1">
+                                        <!-- DEBUG:BEGIN:PARENT_TO_CHILD_BUTTON : default/button/parentToChildButton.vm, nesting level: 6 -->
+                                        <af:button textAndAccessKey="#{nls['STREET_TO_CONTRACTADDRESS_BUTTON']}"
+                                                   action="StartContractAddress" id="cb0"
+                                                   rendered="#{!pageFlowScope.createModes.CreateStreet and  bindings.StreetIterator.currentRow!=null }"/>
+                                        <!-- DEBUG:END:PARENT_TO_CHILD_BUTTON : default/button/parentToChildButton.vm, nesting level: 6-->
+                                    </af:group>
+                                    <af:group id="gr2">
+                                        <!-- DEBUG:BEGIN:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6 -->
+                                        <af:button action="#{SaveStreet.execute}"
+                                                   rendered="#{(((MTSPermission['Address.create']) or (MTSPermission['Address.update'])) or (MTSPermission['Address.delete'])) and (!pageFlowScope.hideSaveButton)}"
+                                                   textAndAccessKey="#{nls['SAVE_BUTTON_LABEL']}" id="StreetSaveButton"
+                                                   partialSubmit="true"></af:button>
+                                        <!-- DEBUG:END:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6 -->
+                                        <af:button textAndAccessKey="#{nls['CANCEL']}" immediate="true"
+                                                   partialSubmit="true" rendered="#{!pageFlowScope.hideCancelButton}"
+                                                   actionListener="#{jhsRollback.execute}" action="Cancel"
+                                                   id="StreetCancelButton"></af:button>
+                                        <!-- DEBUG:END:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6-->
+                                    </af:group>
+                                </af:toolbar>
+                            </af:toolbox>
+                            <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5-->
+                        </f:facet>
+                        <f:facet name="context">
+                            <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5 -->
+                            <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5-->
+                        </f:facet>
+                        <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+                        <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+                        <!-- DEBUG:BEGIN:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 6 -->
+                        <af:panelGroupLayout id="modelSearchAreaStreet"
+                                             rendered="#{!pageFlowScope.createModes.CreateStreet and !pageFlowScope.hideSearchArea}"
+                                             partialTriggers="">
+                            <f:attribute name="JhsIgnoreChanges" value="true"/>
+                            <!-- DEBUG:BEGIN:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 7 -->
+                            <af:query id="as_Street" headerText="#{nls['ADVANCED_SEARCH']}" disclosed="true"
+                                      value="#{bindings.StreetIteratorQuery.queryDescriptor}"
+                                      model="#{bindings.StreetIteratorQuery.queryModel}"
+                                      queryListener="#{bindings.StreetIteratorQuery.processQuery}"
+                                      queryOperationListener="#{bindings.StreetIteratorQuery.processQueryOperation}"
+                                      rows="1" labelAlignment="start" maxColumns="1"></af:query>
+                            <!-- DEBUG:END:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 7-->
+                        </af:panelGroupLayout>
+                        <!-- DEBUG:END:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 6-->
+                        <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+                    </af:panelHeader>
+                    <!-- DEBUG:BEGIN:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5 -->
+                    <af:panelGroupLayout layout="vertical" id="pgl0">
+                        <af:panelCollection id="StreetPC" featuresOff="  " styleClass="AFStretchWidth">
+                            <f:facet name="menus">
+                                <!-- DEBUG:BEGIN:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6 -->
+                                <af:menu textAndAccessKey="#{nls['ACTION_MENU_LABEL']}" id="menu0">
+                                    <af:menu textAndAccessKey="#{nls['GO_TO_MENU_LABEL']}" id="menu1">
+                                        <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:PARENT_TO_CHILD_MENU_ITEM : default/button/parentToChildMenuItem.vm, nesting level: 7 -->
+                                        <af:commandMenuItem textAndAccessKey="#{nls['STREET_TO_CONTRACTADDRESS_BUTTON']}"
+                                                            action="StartContractAddress" id="cmi0"
+                                                            rendered="#{!pageFlowScope.createModes.CreateStreet and  bindings.StreetIterator.currentRow!=null }"/>
+                                        <!-- DEBUG:END:PARENT_TO_CHILD_MENU_ITEM : default/button/parentToChildMenuItem.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7 -->
+                                        <af:group id="Streettbb"
+                                                  rendered="#{ bindings.StreetIterator.currentRow!=null }">
+                                            <af:commandMenuItem actionListener="#{bindings.FirstStreet.execute}"
+                                                                id="StreetFirst" partialSubmit="true"
+                                                                icon="/afr/shuttleleftall_ena.png"
+                                                                textAndAccessKey="#{nls['FIRST_ROW']}"></af:commandMenuItem>
+                                            <af:commandMenuItem actionListener="#{bindings.PreviousStreet.execute}"
+                                                                icon="/afr/shuttleleft_ena.png"
+                                                                textAndAccessKey="#{nls['PREVIOUS_ROW']}"
+                                                                id="StreetPrevious" partialSubmit="true"></af:commandMenuItem>
+                                            <af:commandMenuItem actionListener="#{bindings.NextStreet.execute}"
+                                                                icon="/afr/shuttleright_ena.png"
+                                                                textAndAccessKey="#{nls['NEXT_ROW']}" id="StreetNext"
+                                                                partialSubmit="true"></af:commandMenuItem>
+                                            <af:commandMenuItem actionListener="#{bindings.LastStreet.execute}"
+                                                                icon="/afr/shuttlerightall_ena.png"
+                                                                textAndAccessKey="#{nls['LAST_ROW']}" id="StreetLast"
+                                                                partialSubmit="true"></af:commandMenuItem>
+                                        </af:group>
+                                        <!-- DEBUG:END:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7-->
+                                    </af:menu>
+                                    <!-- DEBUG:BEGIN:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7 -->
+                                    <af:commandMenuItem id="StreetArm" textAndAccessKey="#{nls['ADD_ROW']}"
+                                                        immediate="false" icon="/jheadstart/images/addRow.png"
+                                                        partialSubmit="true"
+                                                        actionListener="#{pageFlowScope.StreetTable.addRow}"
+                                                        rendered="#{(true) and (MTSPermission['Address.create'])}"></af:commandMenuItem>
+                                    <!-- DEBUG:END:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                    <af:commandMenuItem id="StreetduprmTM" textAndAccessKey="#{nls['DUPLICATE_ROW']}"
+                                                        immediate="true" icon="/jheadstart/images/duplicateRow.png"
+                                                        partialSubmit="true"
+                                                        actionListener="#{pageFlowScope.StreetTable.duplicateRow}"
+                                                        rendered="#{MTSPermission['Address.create']}"></af:commandMenuItem>
+                                    <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                    <af:commandMenuItem id="StreetdelrmTM" textAndAccessKey="#{nls['DELETE_ROW']}"
+                                                        icon="/jheadstart/images/deleteRow.png" partialSubmit="true"
+                                                        immediate="true" rendered="#{MTSPermission['Address.delete']}">
+                                        <af:showPopupBehavior popupId="::StreetDeletePopup"/>
+                                    </af:commandMenuItem>
+                                    <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7-->
+                                </af:menu>
+                                <!-- DEBUG:END:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6-->
+                            </f:facet>
+                            <f:facet name="toolbar">
+                                <!-- DEBUG:BEGIN:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6 -->
+                                <af:toolbar id="tbar1">
+                                    <!-- DEBUG:BEGIN:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7 -->
+                                    <!-- Also create CreateStreet bean so we can start table group in create mode as well -->
+                                    <af:link id="StreetArl" immediate="false"
+                                             rendered="#{(true) and (MTSPermission['Address.create'])}"
+                                             partialSubmit="true" actionListener="#{pageFlowScope.StreetTable.addRow}"
+                                             shortDesc="#{nls['ADD_ROW']}" icon="/jheadstart/images/addRow.png"/>
+                                    <!-- DEBUG:END:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7-->
+                                </af:toolbar>
+                                <!-- DEBUG:END:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6-->
+                            </f:facet>
+                            <f:facet name="statusbar"/>
+                            <af:table id="StreetTab" contentDelivery="immediate"
+                                      value="#{bindings.StreetTable.collectionModel}" columnStretching="last"
+                                      rowBandingInterval="0" editingMode="editAll" columnSelection="multiple"
+                                      contextMenuSelect="true" rowSelection="single"
+                                      selectionListener="#{pageFlowScope.StreetTable.makeCurrent}"
+                                      selectedRowKeys="#{pageFlowScope.StreetTable.selectedRow}"
+                                      rowDisclosureListener="#{pageFlowScope.StreetTable.discloseRow}" var="row"
+                                      varStatus="status" rows="#{bindings.StreetTable.rangeSize}"
+                                      autoHeightRows="#{bindings.StreetTable.rangeSize}"
+                                      fetchSize="#{bindings.StreetTable.rangeSize}" emptyText="#{nls['NO_ROWS_FOUND']}"
+                                      queryListener="#{bindings.StreetIteratorQuery.processQuery}"
+                                      filterModel="#{bindings.StreetIteratorQuery.queryDescriptor}" filterVisible="true"
+                                      binding="#{pageFlowScope.StreetTable.table}"
+                                      partialTriggers=" :::as_Street :::StreetPC ::StreetFirst ::StreetPrevious ::StreetNext ::StreetLast"
+                                      styleClass="AFStretchWidth" summary="#{nls['TABLE_TITLE_STREET']}">
+                                <!-- DEBUG:BEGIN:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6 -->
+                                <f:facet name="contextMenu">
+                                    <af:popup id="StreetTablePopup" childCreation="deferred">
+                                        <af:menu id="menu2">
+                                            <af:menu text="#{nls['GO_TO_MENU_LABEL']}" id="menu3">
+                                                <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:PARENT_TO_CHILD_MENU_ITEM : default/button/parentToChildMenuItem.vm, nesting level: 7 -->
+                                                <af:commandMenuItem textAndAccessKey="#{nls['STREET_TO_CONTRACTADDRESS_BUTTON']}"
+                                                                    action="StartContractAddress" id="cmi1"
+                                                                    rendered="#{!pageFlowScope.createModes.CreateStreet and  bindings.StreetIterator.currentRow!=null }"/>
+                                                <!-- DEBUG:END:PARENT_TO_CHILD_MENU_ITEM : default/button/parentToChildMenuItem.vm, nesting level: 7-->
+                                            </af:menu>
+                                            <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                            <af:commandMenuItem id="Streetduprm"
+                                                                textAndAccessKey="#{nls['DUPLICATE_ROW']}"
+                                                                immediate="true"
+                                                                icon="/jheadstart/images/duplicateRow.png"
+                                                                partialSubmit="true"
+                                                                actionListener="#{pageFlowScope.StreetTable.duplicateRow}"
+                                                                rendered="#{MTSPermission['Address.create']}"></af:commandMenuItem>
+                                            <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                            <af:commandMenuItem id="Streetdelrm" textAndAccessKey="#{nls['DELETE_ROW']}"
+                                                                icon="/jheadstart/images/deleteRow.png"
+                                                                partialSubmit="true" immediate="true"
+                                                                rendered="#{MTSPermission['Address.delete']}">
+                                                <af:showPopupBehavior popupId=":::StreetDeletePopup"/>
+                                            </af:commandMenuItem>
+                                            <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                        </af:menu>
+                                    </af:popup>
+                                </f:facet><!-- DEBUG:END:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6 --><!-- DEBUG:END:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6 -->
+                                <af:column id="StreetActionColumn" width="40" align="center" headerText=" ">
+                                    <af:panelGroupLayout layout="horizontal" id="pgl1">
+                                        <!-- DEBUG:BEGIN:DETAILS_LINK : default/button/detailsLink.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:DETAILS_LINK : default/button/detailsLink.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:DELETE_ROW_LINK : default/button/deleteRowLink.vm, nesting level: 7 -->
+                                        <af:link id="Streetdelrl" partialSubmit="true" immediate="true"
+                                                 rendered="#{MTSPermission['Address.delete']}"
+                                                 shortDesc="#{nls['DELETE_ROW']}"
+                                                 icon="/jheadstart/images/deleteRow.png">
+                                            <af:showPopupBehavior popupId=":::StreetDeletePopup"/>
+                                        </af:link>
+                                        <!-- DEBUG:END:DELETE_ROW_LINK : default/button/deleteRowLink.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:DUPLICATE_ROW_LINK : default/button/duplicateRowLink.vm, nesting level: 7 -->
+                                        <af:link id="Streetduprl" immediate="true" partialSubmit="true"
+                                                 actionListener="#{pageFlowScope.StreetTable.duplicateRow}"
+                                                 rendered="#{MTSPermission['Address.create']}"
+                                                 shortDesc="#{nls['DUPLICATE_ROW']}"
+                                                 icon="/jheadstart/images/duplicateRow.png"/>
+                                        <!-- DEBUG:END:DUPLICATE_ROW_LINK : default/button/duplicateRowLink.vm, nesting level: 7-->
+                                    </af:panelGroupLayout>
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6-->
+                                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                <af:column id="StreetStreetNameCol" sortable="true" filterable="true" noWrap="true"
+                                           width="300" sortProperty="StreetName" rowHeader="false">
+                                    <f:facet name="header">
+                                        <af:outputLabel value="#{bindings.StreetTable.hints.StreetName.label}"
+                                                        showRequired="#{bindings.StreetTable.hints.StreetName.mandatory}"
+                                                        id="ol0"/>
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                    <af:inputText id="StreetStreetName" value="#{row.bindings.StreetName.inputValue}"
+                                                  label="#{bindings.StreetTable.hints.StreetName.label}"
+                                                  required="#{bindings.StreetTable.hints.StreetName.mandatory}"
+                                                  rows="#{bindings.StreetTable.hints.StreetName.displayHeight}"
+                                                  columns="#{bindings.StreetTable.hints.StreetName.displayWidth}"
+                                                  maximumLength="4000"
+                                                  readOnly="#{((pageFlowScope.StreetTable.newRow) and (!(MTSPermission['Address.create']))) or ((!pageFlowScope.StreetTable.newRow) and (!(MTSPermission['Address.update'])))}"
+                                                  shortDesc="#{bindings.StreetTable.hints.StreetName.tooltip}">
+                                        <f:validator binding="#{row.bindings.StreetName.validator}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+                                <f:facet name="detailStamp">
+                                    <!-- DEBUG:BEGIN:TABLE_OVERFLOW_AREA : default/pageComponent/tableOverflowArea.vm, nesting level: 6 -->
+                                    <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+                                    <af:panelGroupLayout id="pgl2"
+                                                         rendered="#{bindings.StreetIterator.estimatedRowCount>0}"
+                                                         layout="scroll">
+                                        <f:facet name="separator">
+                                            <af:spacer width="10" height="10" id="sp1"/>
+                                        </f:facet>
+                                        <af:panelFormLayout rows="1" maxColumns="1" labelAlignment="start" id="pfl0"></af:panelFormLayout>
+                                        <!-- DEBUG:BEGIN:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 7-->
+                                    </af:panelGroupLayout>
+                                    <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+                                    <!-- DEBUG:END:TABLE_OVERFLOW_AREA : default/pageComponent/tableOverflowArea.vm, nesting level: 6-->
+                                </f:facet><!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+                            </af:table>
+                        </af:panelCollection>
+                    </af:panelGroupLayout>
+                    <!-- DEBUG:END:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5-->
+                    <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+                </af:panelGroupLayout>
+                <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4-->
+            </af:panelGroupLayout>
+            <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+        </f:facet>
+        <f:facet name="popups">
+            <af:panelGroupLayout id="popupsPgl">
+                <!-- DEBUG:BEGIN:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 8 -->
+                <af:popup id="StreetDeletePopup" contentDelivery="lazyUncached" childCreation="deferred">
+                    <af:dialog type="none" title="#{nls['WARNING']}" modal="true" id="StreetDeleteDialog">
+                        <af:outputText value="#{nls['DELETE_WARNING_STREE:#{bindings.StreetIterator.currentRowIndexInRange+1}']} "
+                                       id="ot0"/>
+                        <f:attribute name="methodExpression" value="#{'#{DeleteStreet.execute}'}"/>
+                        <f:facet name="buttonBar">
+                            <af:group id="g0">
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_YES']}" id="cb1" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.confirm}"/>
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_NO']}" id="cb2" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.abort}"/>
+                            </af:group>
+                        </f:facet>
+                    </af:dialog>
+                </af:popup>
+                <!-- DEBUG:END:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 8-->
+            </af:panelGroupLayout>
+        </f:facet>
+        <!-- DEBUG:END:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3-->
+        <!-- DEBUG:END:TABLE_PAGE_CONTENT : default/page/tablePageContent.vm, nesting level: 2-->
+    </af:pageTemplate>
+</ui:composition>
+
+
+

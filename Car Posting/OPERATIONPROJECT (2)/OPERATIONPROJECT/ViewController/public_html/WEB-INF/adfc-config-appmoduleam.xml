@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <task-flow-call id="StartProductContractDDownloadVO">
+        <task-flow-reference>
+            <document id="__0">/WEB-INF/adfc-config-ProductContractDDownloadVO.xml</document>
+            <id id="__1">ProductContractDDownloadVOTaskFlow</id>
+        </task-flow-reference>
+    </task-flow-call>
+    <task-flow-call id="StartNewCancelSalesContractProducts">
+        <task-flow-reference>
+            <document id="__2">/WEB-INF/adfc-config-NewCancelSalesContractProducts.xml</document>
+            <id id="__3">NewCancelSalesContractProductsTaskFlow</id>
+        </task-flow-reference>
+    </task-flow-call>
+    <task-flow-call id="StartPilotCoverGroup">
+        <task-flow-reference>
+            <document id="__4">/WEB-INF/adfc-config-PilotCoverGroup.xml</document>
+            <id id="__5">PilotCoverGroupTaskFlow</id>
+        </task-flow-reference>
+    </task-flow-call>
+    <task-flow-call id="StartProductDetailsGroup">
+        <task-flow-reference>
+            <document id="__6">/WEB-INF/adfc-config-ProductDetailsGroup.xml</document>
+            <id id="__7">ProductDetailsGroupTaskFlow</id>
+        </task-flow-reference>
+    </task-flow-call>
+    <task-flow-call id="StartProductLostRlost">
+        <task-flow-reference>
+            <document id="__8">/WEB-INF/adfc-config-ProductLostRlost.xml</document>
+            <id id="__9">ProductLostRlostTaskFlow</id>
+        </task-flow-reference>
+    </task-flow-call>
+    <task-flow-call id="StartHubCoverGroup">
+        <task-flow-reference>
+            <document id="__10">/WEB-INF/adfc-config-HubCoverGroup.xml</document>
+            <id id="__11">HubCoverGroupTaskFlow</id>
+        </task-flow-reference>
+    </task-flow-call>
+    <!-- DEBUG:BEGIN:MENU_BEAN : default/misc/facesConfig/menuBean.vm, nesting level: 2 -->
+    <managed-bean id="__12">
+        <managed-bean-name id="__13">AppModuleAMMenu</managed-bean-name>
+        <managed-bean-class id="__14">oracle.jheadstart.controller.jsf.bean.JhsXMLMenuModel</managed-bean-class>
+        <managed-bean-scope id="__15">request</managed-bean-scope>
+        <managed-property id="__16">
+            <property-name id="__17">source</property-name>
+            <property-class id="__18">java.lang.String</property-class>
+            <value id="__19">/WEB-INF/menu-appmoduleam.xml</value>
+        </managed-property>
+    </managed-bean>
+    <!-- DEBUG:END:MENU_BEAN : default/misc/facesConfig/menuBean.vm, nesting level: 2-->
+</adfc-config>
+

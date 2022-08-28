@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <!-- DEBUG:BEGIN:MENU_BEAN : default/misc/facesConfig/menuBean.vm, nesting level: 2 -->
+    <managed-bean id="__0">
+        <managed-bean-name id="__1">AppModuleAMMenu</managed-bean-name>
+        <managed-bean-class id="__2">oracle.jheadstart.controller.jsf.bean.JhsXMLMenuModel</managed-bean-class>
+        <managed-bean-scope id="__3">request</managed-bean-scope>
+        <managed-property id="__4">
+            <property-name id="__5">source</property-name>
+            <property-class id="__6">java.lang.String</property-class>
+            <value id="__7">/WEB-INF/menu-appmoduleam.xml</value>
+        </managed-property>
+    </managed-bean>
+    <!-- DEBUG:END:MENU_BEAN : default/misc/facesConfig/menuBean.vm, nesting level: 2-->
+</adfc-config>
+

@@ -1,0 +1,52 @@
+## revision_history
+## 15-feb-2013   Steven Davelaar
+## 1.6           Added partialtrigger in tree to listen to tree commandLink, this is needed
+##               so we don't loose pending changes not yet sent to the server when opening new tab
+##               (for this to work in DynamicTabs.vm there is also a partialTriggers property added
+##                pointing to pctree)
+## 28-feb-2011   Steven Davelaar
+## 1.5           Dynamic table-driven menu can now be displayed in tree with dyn tabs as well
+##               Changed MenuTreeBean to pageFlowScope so state is remembered accross shell pages 
+## 29-jan-2011   Steven Davelaar
+## 1.4           Use declarative component to include dynamic tabs
+## 18-nov-2010   Steven Davelaar
+## 1.3           Changed id of navigation pane to be more meaningful, needs to be passed into
+##               FunctionKeyHandler bean, shortened id's of regions
+## 20-oct-2010   Steven Davelaar
+## 1.2           Display tree node as text node when no focusViewId
+## 18-aug-2010   Steven Davelaar
+## 1.1           Added partial triggers prop on decorativeBox
+## 07-jul-2010   Steven Davelaar
+## 1.0           Initial creation
+<af:decorativeBox theme="light" topHeight="0" id="pt_db1"  partialTriggers="mg mgie">
+  <f:facet name="center">
+    <af:panelSplitter orientation="horizontal" splitterPosition="200" id="pt_ps2">
+      <f:facet name="first">
+        <af:decorativeBox theme="default" rendered="#{attrs.showMenu1}" styleClass="TabletPageContent" id="pt_db2">
+          <f:facet name="center">
+            <af:panelCollection id="pctree" partialTriggers="::mg ::mgie">
+              <af:tree id="Menu1" var="menuItem" contentDelivery="immediate" partialTriggers="Item1"
+                #if (${JHS.application.runtimeCustomizationMenuAllowed}) value="#{jhsDynamicMenu.menuModel}" #else value="#{attrs.menuModel}" #end
+                       summary="Menu Item" binding="#{pageFlowScope.MenuTreeBean.tree}">
+                <f:facet name="nodeStamp">
+                  <af:group>
+                    ## display text node when menu item does not have a focusViewId, which is the case when
+                    ## a groupNode is defined in XMLMenuModel, display commandLink node otherwise
+                    <af:link id="Item1" action="#{menuItem.doAction}"
+                  #if (${JHS.application.runtimeCustomizationMenuAllowed}) textAndAccessKey="#{menuItem.labelTranslationKey!=null ? nls[menuItem.labelTranslationKey] : menuItem.label}" #else textAndAccessKey="#{menuItem.label}" #end
+                         partialSubmit="true" immediate="true" rendered="#{menuItem.focusViewId!=null and menuItem.rendered}"/>
+                    <af:outputText id="Item2" value="#{menuItem.label}" 
+                                    rendered="#{menuItem.focusViewId==null and menuItem.rendered}"/>
+                  </af:group>
+                </f:facet>
+              </af:tree>
+            </af:panelCollection>
+          </f:facet>
+        </af:decorativeBox>
+      </f:facet>
+      <f:facet name="second">
+        <af:declarativeComponent viewId="/common/regions/DynamicTabs.jsff" id="dyntdc"/>
+      </f:facet>
+    </af:panelSplitter>
+  </f:facet>
+</af:decorativeBox>

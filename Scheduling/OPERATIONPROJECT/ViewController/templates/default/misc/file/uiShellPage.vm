@@ -1,0 +1,68 @@
+## revision_history
+## 31-oct-2013   Steven Davelaar
+## 2.8           Moved metaContainer facet to separate macro, use PAGE_TEMPLATE_ID macro
+## 28-feb-2012   Steven Davelaar
+## 2.7           Added check for currentPageTemplate in region partialTriggers
+## 19-nov-2011   Steven Davelaar
+## 2.6           Added call to JHS_PHASE_LISTENER
+## 04-feb-2011   Steven Davelaar
+## 2.5           replaced hardcoded JSP version number with JSP_VERSION macro
+##               Change encoding to pageEncoding
+##               Fix region partialTrigger generation 
+## 28-jan-2011   Steven Davelaar
+## 2.4           Use jhsPageTemplateBinding when using dyn tabs
+## 01-nov-2010   Steven Davelaar
+## 2.3           Added call to keyboard server listener
+## 07-jul-2010   Steven Davelaar
+## 2.2           Do not include pageContent facet when using dynamic tabs template
+##               Bind menuModel to currentSuibMenuModel when using tree-style menu als tree should start
+##               with base groups current service
+## 10-aug-2009   Removed usesUpload attribute, this is dynamically
+## 2.1           determined and added at runtime now
+## 23-jun-2009   Paco van der Linden
+## 2.0           Restructured layout according to (stretching) best-practices.
+## 07-may-2009   Paco van der Linden
+## 1.1           Shortened some id's to improve PPR performance
+## 22-dec-2008   Steven Davelaar
+## 1.0           Initial creation
+<?xml version='1.0' #PAGE_ENCODING_PROP()?>
+#PAGE_START()
+    <af:document title="#APPLICATION_TITLE()" id="#NEW_ID("doc")">
+      #META_CONTAINER_FACET()
+      <af:form id="dataForm">
+
+${JHS.engine.resetNamingContainerContext()}
+
+        <af:pageTemplate id="#PAGE_TEMPLATE_ID()" viewId="${JHS.application.pageTemplate}" #if (${JHS.application.useDynamicTabs}) value="#{bindings.jhsPageTemplateBinding}" #end>
+          <f:attribute name="showMessagesInline" value="${JHS.application.showMessagesInline}"/>
+          #if (${JHS.application.runtimeCustomizationMenuAllowed})
+##            <f:attribute name="headerImage1" value="#{jhsDynamicMenu.currentModule.uisHeaderImage1}"/>
+##            <f:attribute name="headerImage2" value="#{jhsDynamicMenu.currentModule.uisHeaderImage2}"/>
+          #else
+            #if ($JHS.application.contentTopLevelMenu=='serviceGroups' && ($JHS.application.useJhsTreeMenuPageTemplate || $JHS.application.useDynamicTabs))
+               <f:attribute name="menuModel" value="#{RootMenu.currentSubMenuModel}"/>
+            #else 
+               <f:attribute name="menuModel" value="#{RootMenu}"/>
+            #end    
+            <f:attribute name="menuStartLevel" value="${JHS.application.startMenuLevel}"/>
+          #end
+
+
+          #if (!${JHS.application.useDynamicTabs})
+          <f:facet name="pageContent">
+              <af:region id="mr" value="#{bindings.mainRegion.regionModel}"
+               #if (${JHS.application.pageTemplate}=='#{jhsLookAndFeelBean.currentPageTemplate}')
+                  partialTriggers="::pctree:Menu1 ::Menu1 ::Menu2 ::pendingChangesDialog" 
+               #elseif (${JHS.application.useJhsTreeMenuPageTemplate})
+                  partialTriggers="::pctree:Menu1 ::pendingChangesDialog" 
+               #else         
+                  partialTriggers="::Menu1 ::Menu2 ::pendingChangesDialog" 
+               #end
+               />
+          </f:facet>
+          #end
+        </af:pageTemplate>
+      </af:form>
+      #KEYBOARD_SERVER_LISTENER()
+    </af:document>
+#PAGE_END()

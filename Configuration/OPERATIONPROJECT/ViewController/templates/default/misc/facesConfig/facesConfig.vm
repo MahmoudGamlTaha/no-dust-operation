@@ -1,0 +1,23 @@
+## revision_history
+## 19-nov-2011   Steven Davelaar
+## 1.2           Removed <phase-listener> tag, now set in f:view tag of each page
+## 05-oct-2011   Steven Davelaar
+## 1.1           Changes header to use JSF 2.0
+##               because we then have access to UITree when a page is initially loaded
+## 05-jul-2008   Steven Davelaar
+## 1.0           Initial creation
+<?xml version="1.0" #ENCODING_PROP()?>
+<faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee">
+  <application>
+    <default-render-kit-id>oracle.adf.rich</default-render-kit-id>
+    <message-bundle>${JHS.application.nlsBundle}</message-bundle>
+    <locale-config>
+      <default-locale>${JHS.application.defaultLocale}</default-locale>
+      #foreach ($locale in ${JHS.application.locales})
+      <supported-locale>$locale</supported-locale>
+      #end
+    </locale-config>
+    <navigation-handler>oracle.jheadstart.controller.jsf.application.JhsNavigationHandlerImpl</navigation-handler>
+  </application>
+  
+</faces-config>

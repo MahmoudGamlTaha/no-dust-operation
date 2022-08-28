@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="adfc_config_HubCoverGroup_HubCoverGroupTaskFlow_FilterHubCoverGroupPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator id="Shipment1VO1Iterator" Binds="Shipment1VO1" DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <iterator id="CoverProductVO1Iterator" Binds="CoverProductVO1" DataControl="AppModuleAMDataControl" RangeSize="25"/>
+  </executables>
+  <bindings/>
+</pageDefinition>

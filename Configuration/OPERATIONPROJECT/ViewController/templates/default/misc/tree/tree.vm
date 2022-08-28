@@ -1,0 +1,39 @@
+## revision_history
+## 18-jan-2013   Steven Davelaar
+## 2.1           Added call to #ADD_GROUP_PARTIAL_TRIGGER, to add tree pc as partialTrigger target
+## 23-jun-2009   Paco van der Linden
+## 2.0           Restructured layout according to (stretching) best-practices.
+## 15-jun-2007   Jaco Verheul. R11
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+#set($treeBaseGroup=${JHS.current.group.treeBaseGroup})
+#set($treeName="#TREE_BEAN(${treeBaseGroup})")
+
+#ADD_GROUP_PARTIAL_TRIGGER(${treeBaseGroup} "${JHS.current.group.shortName}TPC")
+<af:panelCollection id="${JHS.current.group.shortName}TPC">
+  <f:facet name="menus"/>
+  <f:facet name="toolbar"/>
+  <f:facet name="statusbar"/>
+  <af:tree id="${JHS.current.group.shortName}Tree" contentDelivery="immediate"
+           value="#{bindings.${treeName}.treeModel}" var="node" initiallyExpanded="${JHS.current.group.showTreeExpanded}"
+## we can NOT use selectionListener, this always fires an Ajax request when clicking a tree node
+## the commandLink also fires an Ajax Request, and two requests make it unreliable: sometimes
+## the target region is not refreshed correctly. The selectionListener was used to highlight
+## the currently selected tree node, but doesn't rweally matter, didn't work anyway when
+## deleting/creating a row in the target region
+##           selectionListener="#{bindings.${treeName}.treeModel.makeCurrent}"
+           rowSelection="single" selectedRowKeys="#{pageFlowScope.${treeName}.selectedRowKeySet}"
+           #if($JHS.current.group.nonReusableTree)  
+           partialTriggers="#foreach($treeNode in ${JHS.current.tree.treeNodes})${treeNode.name}Link #end:::tr"
+           #end
+           binding="#{pageFlowScope.${treeName}.tree}"
+           varStatus="nodeStatus">
+    <f:facet name="nodeStamp">
+      <af:switcher facetName="#{node.hierType.viewDefName}" id="#NEW_ID("sw")">
+      #foreach($treeNode in ${JHS.current.tree.treeNodes})
+        #JHS_PARSE("TREE_NODE" $treeNode)
+      #end
+      </af:switcher>
+    </f:facet>
+  </af:tree>
+</af:panelCollection>

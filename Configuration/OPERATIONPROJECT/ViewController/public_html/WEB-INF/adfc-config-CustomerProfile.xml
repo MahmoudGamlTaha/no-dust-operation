@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <task-flow-definition id="CustomerProfileTaskFlow">
+        <!-- DEBUG:BEGIN:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2 -->
+        <template-reference>
+            <document id="__0">/WEB-INF/jhs-fragment-taskflow-template.xml</document>
+            <id id="__1">jhs-fragment-taskflow-template</id>
+        </template-reference>
+        <!-- DEBUG:END:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2-->
+        <default-activity id="__2">StartCustomerProfile</default-activity>
+        <!-- DEBUG:BEGIN:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2 -->
+        <input-parameter-definition id="__3">
+            <name id="__4">createCustomerProfile</name>
+            <value id="__5">#{pageFlowScope.createCustomerProfile}</value>
+            <class id="__6">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__7">
+            <name id="__8">rowKeyStrCustomerProfile</name>
+            <value id="__9">#{pageFlowScope.rowKeyStrCustomerProfile}</value>
+            <class id="__10">java.lang.String</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__11">
+            <name id="__12">rowKeyValueCustomerProfile</name>
+            <value id="__13">#{pageFlowScope.rowKeyValueCustomerProfile}</value>
+            <class id="__14">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__15">
+            <name id="__16">rowKeyCustomerProfile</name>
+            <value id="__17">#{pageFlowScope.rowKeyCustomerProfile}</value>
+            <class id="__18">oracle.jbo.Key</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__19">
+            <name id="__20">altKeyNameCustomerProfile</name>
+            <value id="__21">#{pageFlowScope.altKeyNameCustomerProfile}</value>
+            <class id="__22">java.lang.String</class>
+        </input-parameter-definition>
+        <!-- DEBUG:END:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2 -->
+        <managed-bean id="__23">
+            <managed-bean-name id="__24">jhsTaskFlowManager</managed-bean-name>
+            <managed-bean-class id="__25">oracle.jheadstart.controller.jsf.bean.TaskFlowManager</managed-bean-class>
+            <managed-bean-scope id="__26">pageFlow</managed-bean-scope>
+            <managed-property id="__27">
+                <property-name id="__28">initializeParentContextEntries</property-name>
+                <map-entries id="__29">
+                    <map-entry id="__30">
+                        <key id="__31">jhsCurrentGroupName</key>
+                        <value id="__32">CustomerProfile</value>
+                    </map-entry>
+                </map-entries>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:DEFAULT_VALUES_BEAN : default/misc/facesConfig/defaultValuesBean.vm, nesting level: 2 -->
+        <managed-bean id="__33">
+            <managed-bean-name id="__34">CustomerProfileDefaultValues</managed-bean-name>
+            <managed-bean-class id="__35">oracle.jheadstart.controller.jsf.bean.DefaultValuesBean</managed-bean-class>
+            <managed-bean-scope id="__36">pageFlow</managed-bean-scope>
+            <managed-property id="__37">
+                <property-name id="__38">iteratorBinding</property-name>
+                <value id="__39">#{data.CustomerProfilePageDef.CustomerProfileIterator}</value>
+            </managed-property>
+            <managed-property id="__40">
+                <property-name id="__41">defaultValues</property-name>
+                <map-entries id="__42">
+                    <map-entry id="__43">
+                        <key id="__44">Active</key>
+                        <value id="__45">0</value>
+                    </map-entry>
+                </map-entries>
+            </managed-property>
+            <managed-property id="__46">
+                <property-name id="__47">actionResult</property-name>
+                <value id="__48">CreateCustomerProfile</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:DEFAULT_VALUES_BEAN : default/misc/facesConfig/defaultValuesBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:DEFAULT_VALUES_BEAN : default/misc/facesConfig/defaultValuesBean.vm, nesting level: 2 -->
+        <managed-bean id="__49">
+            <managed-bean-name id="__50">ContractDefaultValues</managed-bean-name>
+            <managed-bean-class id="__51">oracle.jheadstart.controller.jsf.bean.DefaultValuesBean</managed-bean-class>
+            <managed-bean-scope id="__52">pageFlow</managed-bean-scope>
+            <managed-property id="__53">
+                <property-name id="__54">iteratorBinding</property-name>
+                <value id="__55">#{data.CustomerProfilePageDef.ContractIterator}</value>
+            </managed-property>
+            <managed-property id="__56">
+                <property-name id="__57">defaultValues</property-name>
+                <map-entries id="__58">
+                    <map-entry id="__59">
+                        <key id="__60">Active</key>
+                        <value id="__61">1</value>
+                    </map-entry>
+                </map-entries>
+            </managed-property>
+            <managed-property id="__62">
+                <property-name id="__63">actionResult</property-name>
+                <value id="__64">CreateContract</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:DEFAULT_VALUES_BEAN : default/misc/facesConfig/defaultValuesBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__65">
+            <managed-bean-name id="__66">CreateCustomerProfile</managed-bean-name>
+            <managed-bean-class id="__67">oracle.jheadstart.controller.jsf.bean.CreateRowBean</managed-bean-class>
+            <managed-bean-scope id="__68">request</managed-bean-scope>
+            <managed-property id="__69">
+                <property-name id="__70">createBinding</property-name>
+                <value id="__71">#{bindings.CreateCustomerProfile}</value>
+            </managed-property>
+            <managed-property id="__72">
+                <property-name id="__73">defaultValuesBean</property-name>
+                <value id="__74">#{pageFlowScope.CustomerProfileDefaultValues}</value>
+            </managed-property>
+            <managed-property id="__75">
+                <property-name id="__76">successOutcome</property-name>
+                <value id="__77">deepLinkPage</value>
+            </managed-property>
+            <managed-property id="__78">
+                <property-name id="__79">failureOutcome</property-name>
+                <value id="__80">firstPage</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2 -->
+        <managed-bean id="__81">
+            <managed-bean-name id="__82">SaveCustomerProfile</managed-bean-name>
+            <managed-bean-class id="__83">oracle.jheadstart.controller.jsf.bean.CommitBean</managed-bean-class>
+            <managed-bean-scope id="__84">request</managed-bean-scope>
+            <managed-property id="__85">
+                <property-name id="__86">commitBinding</property-name>
+                <value id="__87">#{bindings.Commit}</value>
+            </managed-property>
+            <managed-property id="__88">
+                <property-name id="__89">successOutcome</property-name>
+                <value id="__90">Commit</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2 -->
+        <managed-bean id="__91">
+            <managed-bean-name id="__92">jhsRollback</managed-bean-name>
+            <managed-bean-class id="__93">oracle.jheadstart.controller.jsf.bean.RollbackBean</managed-bean-class>
+            <managed-bean-scope id="__94">request</managed-bean-scope>
+            <managed-property id="__95">
+                <property-name id="__96">rollbackBinding</property-name>
+                <value id="__97">#{bindings.Rollback}</value>
+            </managed-property>
+            <managed-property id="__98">
+                <property-name id="__99">successOutcome</property-name>
+                <value id="__100">Cancel</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__101">
+            <managed-bean-name id="__102">CustomerProfileTable</managed-bean-name>
+            <managed-bean-class id="__103">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__104">pageFlow</managed-bean-scope>
+            <managed-property id="__105">
+                <property-name id="__106">name</property-name>
+                <value id="__107">CustomerProfileTable</value>
+            </managed-property>
+            <managed-property id="__108">
+                <property-name id="__109">rangeBindingExpr</property-name>
+                <value id="__110">#{'#{bindings.CustomerProfileTable}'}</value>
+            </managed-property>
+            <managed-property id="__111">
+                <property-name id="__112">defaultValuesBean</property-name>
+                <value id="__113">#{pageFlowScope.CustomerProfileDefaultValues}</value>
+            </managed-property>
+            <managed-property id="__114">
+                <property-name id="__115">focusItemId</property-name>
+                <value id="__116">CustomerProfileCustomerName</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__117">
+            <managed-bean-name id="__118">DeleteCustomerProfile</managed-bean-name>
+            <managed-bean-class id="__119">oracle.jheadstart.controller.jsf.bean.DeleteRowBean</managed-bean-class>
+            <managed-bean-scope id="__120">request</managed-bean-scope>
+            <managed-property id="__121">
+                <property-name id="__122">deleteBinding</property-name>
+                <value id="__123">#{bindings.DeleteCustomerProfile}</value>
+            </managed-property>
+            <managed-property id="__124">
+                <property-name id="__125">commitBean</property-name>
+                <value id="__126">#{jhsCommit}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CHECKBOX_IN_TABLE_BEAN : default/misc/facesConfig/checkboxInTableBean.vm, nesting level: 2 -->
+        <managed-bean id="__127">
+            <managed-bean-name id="__128">CustomerProfileActivecheckboxInTable</managed-bean-name>
+            <managed-bean-class id="__129">oracle.jheadstart.controller.jsf.bean.CheckboxInTableBean</managed-bean-class>
+            <managed-bean-scope id="__130">request</managed-bean-scope>
+            <managed-property id="__131">
+                <property-name id="__132">binding</property-name>
+                <value id="__133">#{bindings.CustomerProfileActive}</value>
+            </managed-property>
+            <managed-property id="__134">
+                <property-name id="__135">tableBean</property-name>
+                <value id="__136">#{pageFlowScope.CustomerProfileTable}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CHECKBOX_IN_TABLE_BEAN : default/misc/facesConfig/checkboxInTableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__137">
+            <managed-bean-name id="__138">ContractTable</managed-bean-name>
+            <managed-bean-class id="__139">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__140">pageFlow</managed-bean-scope>
+            <managed-property id="__141">
+                <property-name id="__142">name</property-name>
+                <value id="__143">ContractTable</value>
+            </managed-property>
+            <managed-property id="__144">
+                <property-name id="__145">rangeBindingExpr</property-name>
+                <value id="__146">#{'#{bindings.ContractTable}'}</value>
+            </managed-property>
+            <managed-property id="__147">
+                <property-name id="__148">defaultValuesBean</property-name>
+                <value id="__149">#{pageFlowScope.ContractDefaultValues}</value>
+            </managed-property>
+            <managed-property id="__150">
+                <property-name id="__151">focusItemId</property-name>
+                <value id="__152">ContractCardNo</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__153">
+            <managed-bean-name id="__154">DeleteContract</managed-bean-name>
+            <managed-bean-class id="__155">oracle.jheadstart.controller.jsf.bean.DeleteRowBean</managed-bean-class>
+            <managed-bean-scope id="__156">request</managed-bean-scope>
+            <managed-property id="__157">
+                <property-name id="__158">deleteBinding</property-name>
+                <value id="__159">#{bindings.DeleteContract}</value>
+            </managed-property>
+            <managed-property id="__160">
+                <property-name id="__161">commitBean</property-name>
+                <value id="__162">#{jhsCommit}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__163">
+            <managed-bean-name id="__164">CreateContract</managed-bean-name>
+            <managed-bean-class id="__165">oracle.jheadstart.controller.jsf.bean.CreateRowBean</managed-bean-class>
+            <managed-bean-scope id="__166">request</managed-bean-scope>
+            <managed-property id="__167">
+                <property-name id="__168">createBinding</property-name>
+                <value id="__169">#{bindings.CreateContract}</value>
+            </managed-property>
+            <managed-property id="__170">
+                <property-name id="__171">defaultValuesBean</property-name>
+                <value id="__172">#{pageFlowScope.ContractDefaultValues}</value>
+            </managed-property>
+            <managed-property id="__173">
+                <property-name id="__174">successOutcome</property-name>
+                <value id="__175">deepLinkPage</value>
+            </managed-property>
+            <managed-property id="__176">
+                <property-name id="__177">failureOutcome</property-name>
+                <value id="__178">firstPage</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CHECKBOX_IN_TABLE_BEAN : default/misc/facesConfig/checkboxInTableBean.vm, nesting level: 2 -->
+        <managed-bean id="__179">
+            <managed-bean-name id="__180">ContractActivecheckboxInTable</managed-bean-name>
+            <managed-bean-class id="__181">oracle.jheadstart.controller.jsf.bean.CheckboxInTableBean</managed-bean-class>
+            <managed-bean-scope id="__182">request</managed-bean-scope>
+            <managed-property id="__183">
+                <property-name id="__184">binding</property-name>
+                <value id="__185">#{bindings.ContractActive}</value>
+            </managed-property>
+            <managed-property id="__186">
+                <property-name id="__187">tableBean</property-name>
+                <value id="__188">#{pageFlowScope.ContractTable}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CHECKBOX_IN_TABLE_BEAN : default/misc/facesConfig/checkboxInTableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2 -->
+        <managed-bean id="__189">
+            <managed-bean-name id="__190">SaveContract</managed-bean-name>
+            <managed-bean-class id="__191">oracle.jheadstart.controller.jsf.bean.CommitBean</managed-bean-class>
+            <managed-bean-scope id="__192">request</managed-bean-scope>
+            <managed-property id="__193">
+                <property-name id="__194">commitBinding</property-name>
+                <value id="__195">#{bindings.Commit}</value>
+            </managed-property>
+            <managed-property id="__196">
+                <property-name id="__197">successOutcome</property-name>
+                <value id="__198">Commit</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__199">
+            <managed-bean-name id="__200">NewGroupTable</managed-bean-name>
+            <managed-bean-class id="__201">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__202">pageFlow</managed-bean-scope>
+            <managed-property id="__203">
+                <property-name id="__204">name</property-name>
+                <value id="__205">NewGroupTable</value>
+            </managed-property>
+            <managed-property id="__206">
+                <property-name id="__207">rangeBindingExpr</property-name>
+                <value id="__208">#{'#{bindings.NewGroupTable}'}</value>
+            </managed-property>
+            <managed-property id="__209">
+                <property-name id="__210">focusItemId</property-name>
+                <value id="__211">NewGroupActive</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__212">
+            <managed-bean-name id="__213">DeleteNewGroup</managed-bean-name>
+            <managed-bean-class id="__214">oracle.jheadstart.controller.jsf.bean.DeleteRowBean</managed-bean-class>
+            <managed-bean-scope id="__215">request</managed-bean-scope>
+            <managed-property id="__216">
+                <property-name id="__217">deleteBinding</property-name>
+                <value id="__218">#{bindings.DeleteNewGroup}</value>
+            </managed-property>
+            <managed-property id="__219">
+                <property-name id="__220">commitBean</property-name>
+                <value id="__221">#{jhsCommit}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__222">
+            <managed-bean-name id="__223">CreateNewGroup</managed-bean-name>
+            <managed-bean-class id="__224">oracle.jheadstart.controller.jsf.bean.CreateRowBean</managed-bean-class>
+            <managed-bean-scope id="__225">request</managed-bean-scope>
+            <managed-property id="__226">
+                <property-name id="__227">createBinding</property-name>
+                <value id="__228">#{bindings.CreateNewGroup}</value>
+            </managed-property>
+            <managed-property id="__229">
+                <property-name id="__230">successOutcome</property-name>
+                <value id="__231">deepLinkPage</value>
+            </managed-property>
+            <managed-property id="__232">
+                <property-name id="__233">failureOutcome</property-name>
+                <value id="__234">firstPage</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2 -->
+        <router id="StartCustomerProfile">
+            <case id="__235">
+                <expression id="__236">#{pageFlowScope.createCustomerProfile!=null}</expression>
+                <outcome id="__237">createCustomerProfile</outcome>
+            </case>
+            <case id="__238">
+                <expression id="__239">#{pageFlowScope.rowKeyStrCustomerProfile!=null or
+                                       pageFlowScope.rowKeyValueCustomerProfile!=null or
+                                       pageFlowScope.rowKeyCustomerProfile!=null}</expression>
+                <outcome id="__240">SetCurrentRowCustomerProfile</outcome>
+            </case>
+            <case id="__241">
+                <expression id="__242">#{pageFlowScope.isDeepLink!=null and pageFlowScope.isDeepLink}</expression>
+                <outcome id="__243">deepLinkPage</outcome>
+            </case>
+            <default-outcome id="__244">firstPage</default-outcome>
+        </router>
+        <!-- DEBUG:END:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2 -->
+        <method-call id="CreateCustomerProfile">
+            <method id="__245">#{CreateCustomerProfile.execute}</method>
+            <!-- execute condition param -->
+            <parameter>
+                <class id="__246">java.lang.Object</class>
+                <value id="__247">#{pageFlowScope.createCustomerProfile}</value>
+            </parameter>
+            <outcome id="__248">
+                <to-string/>
+            </outcome>
+        </method-call>
+        <method-call id="SetCurrentRowCustomerProfile">
+            <method id="__249">#{jhsSetCurrentRow.execute}</method>
+            <!-- iterator param -->
+            <parameter>
+                <class id="__250">oracle.adf.model.binding.DCIteratorBinding</class>
+                <value id="__251">#{bindings.CustomerProfileIterator}</value>
+            </parameter>
+            <!-- rowKeyStr param -->
+            <parameter>
+                <class id="__252">java.lang.String</class>
+                <value id="__253">#{pageFlowScope.rowKeyStrCustomerProfile}</value>
+            </parameter>
+            <!-- rowKeyValue param -->
+            <parameter>
+                <class id="__254">java.lang.Object</class>
+                <value id="__255">#{pageFlowScope.rowKeyValueCustomerProfile}</value>
+            </parameter>
+            <!-- rowKey param -->
+            <parameter>
+                <class id="__256">oracle.jbo.Key</class>
+                <value id="__257">#{pageFlowScope.rowKeyCustomerProfile}</value>
+            </parameter>
+            <!-- altKeyName param -->
+            <parameter>
+                <class id="__258">java.lang.String</class>
+                <value id="__259">#{pageFlowScope.altKeyNameCustomerProfile}</value>
+            </parameter>
+            <outcome id="__260">
+                <fixed-outcome id="__261">deepLinkPage</fixed-outcome>
+            </outcome>
+        </method-call>
+        <!-- DEBUG:END:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2-->
+        <task-flow-return id="CancelCustomerProfileReturn">
+            <outcome id="__262">
+                <name id="__263">CancelCustomerProfile</name>
+            </outcome>
+        </task-flow-return>
+        <task-flow-return id="DoneCustomerProfileReturn">
+            <outcome id="__264">
+                <name id="__265">DoneCustomerProfile</name>
+            </outcome>
+        </task-flow-return>
+        <!-- DEBUG:BEGIN:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2 -->
+        <view id="CustomerProfileTable">
+            <page id="__266">/pages/CustomerProfileTable.jsff</page>
+            <train-stop id="__267">
+                <display-name id="__268">#{nls['TABLE_TITLE_CUSTOMERPROFILE']}</display-name>
+            </train-stop>
+        </view>
+        <view id="CustomerProfile">
+            <page id="__269">/pages/CustomerProfile.jsff</page>
+            <train-stop id="__270">
+                <display-name id="__271">#{nls['TABLE_TITLE_CUSTOMERPROFILE']}</display-name>
+            </train-stop>
+        </view>
+        <view id="Contract">
+            <page id="__272">/pages/Contract.jsff</page>
+            <train-stop id="__273">
+                <display-name id="__274">#{nls['TABLE_TITLE_CONTRACT']}</display-name>
+            </train-stop>
+        </view>
+        <!-- DEBUG:END:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2-->
+        <train/>
+        <!-- DEBUG:BEGIN:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2 -->
+        <control-flow-rule id="__275">
+            <from-activity-id id="__276">*</from-activity-id>
+            <control-flow-case id="__277">
+                <from-outcome id="__278">SetCurrentRowCustomerProfile</from-outcome>
+                <to-activity-id id="__279">SetCurrentRowCustomerProfile</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__280">
+                <from-outcome id="__281">firstPage</from-outcome>
+                <to-activity-id id="__282">CustomerProfileTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__283">
+                <from-outcome id="__284">deepLinkPage</from-outcome>
+                <to-activity-id id="__285">CustomerProfile</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__286">
+                <from-outcome id="__287">CustomerProfileTableBreadcrumb</from-outcome>
+                <to-activity-id id="__288">CustomerProfileTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__289">
+                <from-outcome id="__290">CustomerProfileBreadcrumb</from-outcome>
+                <to-activity-id id="__291">CustomerProfile</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__292">
+                <from-outcome id="__293">ContractBreadcrumb</from-outcome>
+                <to-activity-id id="__294">Contract</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__295">
+                <from-outcome id="__296">Cancel</from-outcome>
+                <to-activity-id id="__297">StartCustomerProfile</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__298">
+                <from-outcome id="__299">CancelCustomerProfileReturn</from-outcome>
+                <to-activity-id id="__300">CancelCustomerProfileReturn</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__301">
+                <from-outcome id="__302">DoneCustomerProfileReturn</from-outcome>
+                <to-activity-id id="__303">DoneCustomerProfileReturn</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__304">
+            <from-activity-id id="__305">CustomerProfileTable</from-activity-id>
+            <control-flow-case id="__306">
+                <from-outcome id="__307">CreateCustomerProfile</from-outcome>
+                <to-activity-id id="__308">CustomerProfile</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__309">
+                <from-outcome id="__310">CustomerProfileDetails</from-outcome>
+                <to-activity-id id="__311">CustomerProfile</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__312">
+            <from-activity-id id="__313">CustomerProfile</from-activity-id>
+            <control-flow-case id="__314">
+                <from-outcome id="__315">ContractDetails</from-outcome>
+                <to-activity-id id="__316">Contract</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__317">
+            <from-activity-id id="__318">*</from-activity-id>
+            <control-flow-case id="__319">
+                <from-outcome id="__320">createCustomerProfile</from-outcome>
+                <to-activity-id id="__321">CreateCustomerProfile</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <!-- DEBUG:END:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2-->
+        <use-page-fragments/>
+    </task-flow-definition>
+    <!-- This bean must be defined outside the task-flow-definition element
+       because it needs to be available in the pageFlowScope of the unbounded
+       task-flow not in the pageFlowScope of the bounded task flow itself. -->
+    <!-- DEBUG:BEGIN:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2 -->
+    <managed-bean id="__322">
+        <managed-bean-name id="__323">CustomerProfileTaskFlowConfig</managed-bean-name>
+        <managed-bean-class id="__324">oracle.jheadstart.controller.jsf.bean.TaskFlowConfigBean</managed-bean-class>
+        <managed-bean-scope id="__325">pageFlow</managed-bean-scope>
+        <managed-property id="__326">
+            <property-name id="__327">params</property-name>
+            <property-class id="__328">java.util.Map</property-class>
+            <map-entries id="__329">
+                <map-entry id="__330">
+                    <key id="__331">parentContext</key>
+                    <value id="__332">#{pageFlowScope.parentContext}</value>
+                </map-entry>
+            </map-entries>
+        </managed-property>
+        <managed-property id="__333">
+            <property-name id="__334">name</property-name>
+            <value id="__335">CustomerProfile</value>
+        </managed-property>
+        <managed-property id="__336">
+            <property-name id="__337">taskFlowId</property-name>
+            <value id="__338">/WEB-INF/adfc-config-CustomerProfile.xml#CustomerProfileTaskFlow</value>
+        </managed-property>
+        <managed-property id="__339">
+            <property-name id="__340">label</property-name>
+            <value id="__341">#{nls['MENU1_TITLE_CUSTOMERPROFILE']}</value>
+        </managed-property>
+    </managed-bean>
+    <!-- DEBUG:END:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2-->
+</adfc-config>

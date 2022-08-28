@@ -1,0 +1,7 @@
+## revision_history
+## 30-nov-2011   Steven Davelaar
+## 1.0           Initial creation
+#if ($JHS.application.enableFunctionKeys)
+  <af:outputText id="${JHS.current.group.shortName}DISIF" value="#{jhsFunctionKeyHandler.pageComponentForInitialFocus['${JHS.current.group.shortName}TopLc']}"/>
+#end
+

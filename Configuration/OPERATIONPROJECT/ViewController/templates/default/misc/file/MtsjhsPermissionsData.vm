@@ -1,0 +1,54 @@
+## revision_history
+## 12-okt-2007   Steven Davelaar
+## 1.2           Added rolePrefix
+## 19-sep-2007   Steven Davelaar
+## 1.1           Renamed object priv to permission 
+## 31-may-2007   Steven Davelaar
+## 1.0           Initial creation
+
+   insert into JHS_PERMISSIONS (ID, PMN_TYPE, NAME, PMN_ID, SERVICE_NAME) 
+   select JHS_SEQ.nextval, 'GRPACS', '${JHS.service.name}',null,'${JHS.service.name}'
+   from dual
+   where not exists (select '1' from JHS_PERMISSIONS
+                     where name='${JHS.service.name}');
+
+  #foreach ($group in $JHS.service.allGroups)
+       insert into JHS_PERMISSIONS (ID, PMN_TYPE, NAME, PMN_ID, SERVICE_NAME) 
+       select JHS_SEQ.nextval, 'GRPACS', '${JHS.service.rolePrefix}${group.name}',null,'${JHS.service.name}'
+       from dual
+       where not exists (select '1' from JHS_PERMISSIONS
+                         where name='${JHS.service.rolePrefix}${group.name}');
+
+       insert into JHS_PERMISSIONS (ID, PMN_TYPE, NAME, PMN_ID, SERVICE_NAME) 
+       select JHS_SEQ.nextval, 'GRPACN', '${JHS.service.rolePrefix}${group.name}.create',PMN.ID,'${JHS.service.name}'
+       from JHS_PERMISSIONS PMN
+       where name = '${JHS.service.rolePrefix}${group.name}'
+       and not exists (select '1' from JHS_PERMISSIONS 
+                         where name='${JHS.service.rolePrefix}${group.name}.create');
+
+       insert into JHS_PERMISSIONS (ID, PMN_TYPE, NAME, PMN_ID, SERVICE_NAME) 
+       select JHS_SEQ.nextval, 'GRPACN', '${JHS.service.rolePrefix}${group.name}.update',PMN.ID,'${JHS.service.name}'
+       from JHS_PERMISSIONS PMN
+       where name = '${JHS.service.rolePrefix}${group.name}'
+       and not exists (select '1' from JHS_PERMISSIONS 
+                         where name='${JHS.service.rolePrefix}${group.name}.update');
+
+       insert into JHS_PERMISSIONS (ID, PMN_TYPE, NAME, PMN_ID, SERVICE_NAME) 
+       select JHS_SEQ.nextval, 'GRPACN', '${JHS.service.rolePrefix}${group.name}.delete',PMN.ID,'${JHS.service.name}'
+       from JHS_PERMISSIONS PMN
+       where name = '${JHS.service.rolePrefix}${group.name}'
+       and not exists (select '1' from JHS_PERMISSIONS 
+                         where name='${JHS.service.rolePrefix}${group.name}.delete');
+
+  #end
+
+-- Assign all permissions to Administrator role
+insert into jhs_role_permission_grants (id,rle_id,pmn_id) 
+select jhs_seq.nextval, rle.id, pmn.id
+from jhs_roles rle, jhs_permissions pmn
+where rle.short_name='${JHS.application.adminRole}'
+and  not exists (select '1' 
+                 from jhs_role_permission_grants rpg2
+                 where rpg2.rle_id = rle.id
+                 and   rpg2.pmn_id = pmn.id);
+commit;

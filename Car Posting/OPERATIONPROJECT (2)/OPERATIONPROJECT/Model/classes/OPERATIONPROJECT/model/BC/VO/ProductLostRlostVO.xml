@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ProductLostRlostVO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Partial"
+  RowClass="OPERATIONPROJECT.model.BC.VO.ProductLostRlostVORowImpl"
+  ComponentClass="OPERATIONPROJECT.model.BC.VO.ProductLostRlostVOImpl">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Variable
+    Name="P_SHIPMENT_ID"
+    Kind="where"
+    Type="java.math.BigDecimal"/>
+  <Variable
+    Name="P_PRODUCT_ID"
+    Kind="where"
+    Type="java.lang.String"/>
+  <Variable
+    Name="P_PILOT_ID"
+    Kind="where"
+    Type="java.lang.String"/>
+  <ViewAccessor
+    Name="LostStatusVO1"
+    ViewObjectName="OPERATIONPROJECT.model.BC.VO.Lookups.LostStatusVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_Status"
+    ListVOName="LostStatusVO1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Status"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="StatusId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="StatusName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <SQLQuery><![CDATA[SELECT ProductLostRlostEO.ID,   
+       ProductLostRlostEO.SHIPMENT_ID,   
+       ProductLostRlostEO.LOST_DATE,   
+       ProductLostRlostEO.PRODUCT_ID,   
+       ProductLostRlostEO.LOST_QUANTITY,   
+       ProductLostRlostEO.STATUS,   
+       ProductLostRlostEO.QTY_RETURNED,   
+       ProductLostRlostEO.RETURN_DATE,   
+       ProductLostRlostEO.PILOT_ID,   
+       ProductLostRlostEO.RETURN_AGENT,   
+       ProductLostRlostEO.LOST_AGENT,   
+       ProductLostRlostEO.TYPE  
+FROM  PRODUCT_LOST_RLOST ProductLostRlostEO 
+WHERE ProductLostRlostEO.SHIPMENT_ID = :P_SHIPMENT_ID 
+AND ProductLostRlostEO.PRODUCT_ID = :P_PRODUCT_ID 
+AND ProductLostRlostEO.PILOT_ID =:P_PILOT_ID]]></SQLQuery>
+  <EntityUsage
+    Name="ProductLostRlostEO"
+    Entity="OPERATIONPROJECT.model.BC.EO.ProductLostRlostEO"/>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="ProductLostRlostEO"
+    AliasName="ID"/>
+  <ViewAttribute
+    Name="ShipmentId"
+    PrecisionRule="true"
+    EntityAttrName="ShipmentId"
+    EntityUsage="ProductLostRlostEO"
+    AliasName="SHIPMENT_ID"/>
+  <ViewAttribute
+    Name="LostDate"
+    PrecisionRule="true"
+    EntityAttrName="LostDate"
+    EntityUsage="ProductLostRlostEO"
+    AliasName="LOST_DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="OPERATIONPROJECT.model.BC.VO.ProductLostRlostVO.LostDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ProductId"
+    PrecisionRule="true"
+    EntityAttrName="ProductId"
+    EntityUsage="ProductLostRlostEO"
+    AliasName="PRODUCT_ID"/>
+  <ViewAttribute
+    Name="LostQuantity"
+    PrecisionRule="true"
+    EntityAttrName="LostQuantity"
+    EntityUsage="ProductLostRlostEO"
+    AliasName="LOST_QUANTITY">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="OPERATIONPROJECT.model.BC.VO.ProductLostRlostVO.LostQuantity_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Status"
+    PrecisionRule="true"
+    EntityAttrName="Status"
+    EntityUsage="ProductLostRlostEO"
+    AliasName="STATUS"
+    LOVName="LOV_Status">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="OPERATIONPROJECT.model.BC.VO.ProductLostRlostVO.Status_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="QtyReturned"
+    PrecisionRule="true"
+    EntityAttrName="QtyReturned"
+    EntityUsage="ProductLostRlostEO"
+    AliasName="QTY_RETURNED">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="OPERATIONPROJECT.model.BC.VO.ProductLostRlostVO.QtyReturned_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ReturnDate"
+    PrecisionRule="true"
+    EntityAttrName="ReturnDate"
+    EntityUsage="ProductLostRlostEO"
+    AliasName="RETURN_DATE"/>
+  <ViewAttribute
+    Name="PilotId"
+    PrecisionRule="true"
+    EntityAttrName="PilotId"
+    EntityUsage="ProductLostRlostEO"
+    AliasName="PILOT_ID"/>
+  <ViewAttribute
+    Name="ReturnAgent"
+    PrecisionRule="true"
+    EntityAttrName="ReturnAgent"
+    EntityUsage="ProductLostRlostEO"
+    AliasName="RETURN_AGENT"/>
+  <ViewAttribute
+    Name="LostAgent"
+    PrecisionRule="true"
+    EntityAttrName="LostAgent"
+    EntityUsage="ProductLostRlostEO"
+    AliasName="LOST_AGENT"/>
+  <ViewAttribute
+    Name="Type"
+    PrecisionRule="true"
+    EntityAttrName="Type"
+    EntityUsage="ProductLostRlostEO"
+    AliasName="TYPE"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="MTS.security.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

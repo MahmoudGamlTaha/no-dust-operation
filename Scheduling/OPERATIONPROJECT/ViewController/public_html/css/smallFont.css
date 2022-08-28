@@ -1,0 +1,126 @@
+
+
+.AFBrandingBackgroundColor:alias {
+    color: #F7F7F7; 
+}
+
+af|statusIndicator::reconnecting-icon {
+    content: url("/afr/skyros-v1/reconnecting_light.gif"); 
+}
+
+af|statusIndicator::processing-icon {
+    content: url("/afr/skyros-v1/busy_light.gif"); 
+}
+
+af|statusIndicator::disconnected-icon {
+    content: url("/afr/skyros-v1/disconnected_light.gif"); 
+}
+
+af|statusIndicator::idle-icon {
+    content: url("/afr/skyros-v1/connected_light.png"); 
+}
+
+af|statusIndicator::connecting-icon {
+    content: url("/afr/skyros-v1/connecting_light.gif"); 
+}
+
+af|statusIndicator::connected-icon {
+    content: url("/afr/skyros-v1/connected_light.png"); 
+}
+
+.AFBrandingBarLogo {
+}
+
+.AFBrandingBarTitle {
+    color: #737373; 
+}
+
+.AFBrandingBarItem af|menu::bar-item-text {
+    color: #424242; 
+}
+
+.AFBrandingLinkColor:alias {
+    color: #737373; 
+}
+
+.AFBrandingBarItem {
+    color: #737373; 
+}
+
+.AFBrandingBarItem af|inputText::content {
+    color: #525252; 
+}
+
+.AFBrandingBarItem af|inputNumberSpinbox::content {
+    color: #525252; 
+}
+
+.AFBrandingBarItem af|inputDate::content {
+    color: #525252; 
+}
+
+.AFBrandingBarItem af|inputColor::content {
+    color: #525252; 
+}
+
+.AFBrandingBarItem af|inputComboboxListOfValues::container {
+    color: #525252; 
+}
+
+.AFBrandingBarItem af|inputListOfValues::content {
+    color: #525252; 
+}
+
+.AFBrandingBarItem af|selectOneChoice::content {
+    color: #525252; 
+}
+
+.AFBrandingBarItem af|selectOneChoice::label {
+-tr-rule-ref: ".AFLabel:alias"}
+.AFLabel:alias { color: #525252; 
+    font-weight: bold; 
+} 
+
+.AFBrandingBarItem af|selectManyChoice::content {
+    color: #525252; 
+}
+
+.AFBrandingBarItem af|selectBooleanCheckbox::content {
+    color: #525252; 
+}
+
+.AFBrandingBarItem af|selectManyCheckbox::content {
+    color: #525252; 
+}
+
+.AFBrandingBar af|menu::bar-item-open-icon-style {
+    background-image: url(iconBrandingBarItemOpen/menu_l23_button_dropdown_dis.png); 
+}
+
+af|inputFile::label[theme="dark"], af|inputFile:read-only::content[theme="dark"], af|panelFormLayout::label-cell[theme="dark"], af|panelLabelAndMessage::label[theme="dark"], af|selectOneChoice::label[theme="dark"], af|inputRangeSlider::label[theme="dark"], af|quickQuery::label[theme="dark"], af|selectOrderShuttle::label[theme="dark"], af|selectManyShuttle::label[theme="dark"], af|selectOrderShuttle::label[theme="dark"], af|inputNumberSpinbox::label[theme="dark"], af|selectOneRadio::label[theme="dark"], af|selectManyCheckbox::label[theme="dark"], af|selectOneListbox::label[theme="dark"], af|inputNumberSlider::label[theme="dark"], af|selectManyListbox::label[theme="dark"], af|selectManyChoice::label[theme="dark"], af|outputLabel[theme="dark"], af|inputListOfValues::label[theme="dark"], af|inputText::label[theme="dark"], af|inputDate::label[theme="dark"], af|inputComboboxListOfValues::label[theme="dark"], af|inputFile::label[theme="dark"], af|selectManyShuttle::label[theme="dark"] {
+    color: #424242; 
+}
+
+af|listItem
+{
+    background-color: White;
+}
+
+af|panelHeader::icon-style
+{
+    width: 32px; height: 32px;
+}
+
+.AFDefaultFont:alias {
+    font-size: small; 
+}
+
+af|table::data-row:selected:inactive af|column::data-cell,
+af|column::data-cell:selected,
+af|table::data-row:selected:busy,
+af|column::data-cell:focus,
+af|table::data-row:selected:focused af|column::banded-data-cell,
+af|table::data-row:selected:focused af|column::data-cell,
+af|table::data-row:selected af|column::data-cell {
+    background-color: #CCE2F6;
+}

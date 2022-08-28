@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="adfc_config_ActionCategory_ActionCategoryTaskFlow_SetCurrentRowWithKeyValuePageDef"
+                Package="OPERATIONPROJECT.view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+  </executables>
+  <bindings/>
+</pageDefinition>

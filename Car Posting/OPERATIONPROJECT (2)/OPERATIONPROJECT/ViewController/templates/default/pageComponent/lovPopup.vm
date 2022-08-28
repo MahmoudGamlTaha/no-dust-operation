@@ -1,0 +1,32 @@
+## revision_history
+## 07-feb-2012   Steven Davelaar
+## 1.0           initial creation
+
+#macro (LOV_TASKFLOW_BINDING_CONTENT)
+<taskFlow id="LovTaskFlow"
+          taskFlowId="#{pageFlowScope.jhsLovTaskFlowManager.currentTaskFlowId}" activation="deferred"
+          parametersMap="#{pageFlowScope.jhsLovTaskFlowManager.currentParamMap}"
+          xmlns="http://xmlns.oracle.com/adf/controller/binding"/> #end
+
+#macro (LOV_POPUP_CONTENT)
+## we cannot set binding property of af:popup to backingBeanScoped bean because then OK, Cancel buttons start to appear twice when
+## invoking the LOV in different pages, very weird.
+<af:popup id="jhsLovPopup" contentDelivery="lazyUncached" eventContext="launcher" binding="#{pageFlowScope.jhsLovPopup.component}">
+  <af:dialog modal="true" title="#{pageFlowScope.LovItemBean.lovTitle}" type="none" id="#NEW_ID("dialog")" resize="on"
+             stretchChildren="first" contentWidth="#{pageFlowScope.LovItemBean.lovWidth}" contentHeight="#{pageFlowScope.LovItemBean.lovHeight}">
+    <af:region value="#{bindings.LovTaskFlow.regionModel}" id="#NEW_ID("region")"/>
+    <f:facet name="buttonBar">
+      <af:group id="#NEW_ID("g")">
+        <af:button textAndAccessKey="#OK_LABEL()" id="#NEW_ID("cb")" partialSubmit="true"
+                          actionListener="#{pageFlowScope.LovItemBean.handleLovSelection}"/>
+        <af:button textAndAccessKey="#CANCEL_LABEL()" id="#NEW_ID("cb")" partialSubmit="true"
+                          actionListener="#{pageFlowScope.LovItemBean.cancelLov}"/>
+      </af:group>
+    </f:facet>
+  </af:dialog>
+  <af:clientListener method="popupClosedListener" type="popupClosed"/>
+  <af:serverListener type="serverPopupClosed" method="#{pageFlowScope.LovItemBean.cancelLov}"/>
+</af:popup> #end
+
+${JHS.pageDefGenerator.addExecutable($JHS.page,"LovTaskFlow","#LOV_TASKFLOW_BINDING_CONTENT()")}
+#set ($popupId = ${JHS.page.addPopup("jhsLovPopup","${JHS.engine.fullNamingContainerPath}","#LOV_POPUP_CONTENT()")})

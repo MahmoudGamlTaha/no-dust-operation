@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PromosPriceVO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  FetchMode="FETCH_AS_NEEDED"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="OPERATIONPROJECT.model.BC.VO.Lookups.PromosPriceVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="bindProductId"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <SQLQuery><![CDATA[SELECT  
+    PROMOS_LOOKUP.PRODUCT_ID PRODUCT_ID,  
+    PROMOS_LOOKUP.PRODUCT_NAME PRODUCT_NAME,  
+    PROMOS_LOOKUP.SELLING_PRICE SELLING_PRICE  
+FROM  
+    PROMOS_LOOKUP]]></SQLQuery>
+  <ViewAttribute
+    Name="ProductId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PRODUCT_ID"
+    Expression="PRODUCT_ID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ProductName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PRODUCT_NAME"
+    Expression="PRODUCT_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SellingPrice"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.Long"
+    ColumnType="NUMBER"
+    AliasName="SELLING_PRICE"
+    Expression="SELLING_PRICE"
+    SQLType="NUMERIC"/>
+  <ViewCriteria
+    Name="PromosPriceVOCriteria"
+    ViewObjectName="OPERATIONPROJECT.model.BC.VO.Lookups.PromosPriceVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="PromosPriceVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="PromosPriceVOCriteria_PromosPriceVOCriteria_row_0_ProductId"
+        ViewAttribute="ProductId"
+        Operator="STARTSWITH"
+        Conjunction="AND"
+        Value=":bindProductId"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="ProductId"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="OPERATIONPROJECT.model.BC.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

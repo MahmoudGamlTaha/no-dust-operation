@@ -1,0 +1,326 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+  <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsRegionTemplateNoStretch.jsf">
+    <f:attribute name="showBreadcrumbs" value="false"/>
+    <!-- DEBUG:BEGIN:WIZARD_PAGE_CONTENT : default/page/wizardPageContent.vm, nesting level: 2 -->
+    <f:facet name="processTrain">
+      <af:train value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}" id="tr0"/>
+    </f:facet>
+    <!-- DEBUG:BEGIN:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3 -->
+    <f:facet name="pageContent">
+      <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+      <af:panelGroupLayout id="pcpg" layout="scroll">
+        <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4 -->
+        <af:panelGroupLayout layout="vertical" id="ContractAddress1TopLc"
+                             partialTriggers=" ContractAddress1DeleteDialog ContractAddress1fbb ContractAddress1NewButton ContractAddress1DelB ContractAddress1CancelButton">
+          <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+          <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+          <f:facet name="separator">
+            <af:spacer width="10" height="10" id="sp0"/>
+          </f:facet>
+          <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+          <af:panelHeader id="ph0"
+                          text="#{pageFlowScope.createModes.CreateContractAddress1 ? nls['INSERT_TITLE_CONTRACTADDRESS1'] :  (MTSPermission['CustomerProfile.update'] ? nls['EDIT_TITLE_CONTRACTADDRESS: #{bindings.ContractAddress1AddressId.inputValue}'] : nls['VIEW_TITLE_CONTRACTADDRESS: #{bindings.ContractAddress1AddressId.inputValue}'])  }">
+            <f:facet name="toolbar">
+              <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5 -->
+              <af:toolbox id="tbox0">
+                <af:toolbar id="tbar0">
+                  <!-- DEBUG:BEGIN:FORM_BROWSE_BUTTONS : custom/pageComponent/MtsformBrowseButtons.vm, nesting level: 6 -->
+                  <af:panelGroupLayout id="ContractAddress1fbb" layout="horizontal"
+                                       rendered="#{ bindings.ContractAddress1Iterator.currentRow!=null  and bindings.ContractAddress1Iterator.estimatedRowCount>1 and !pageFlowScope.createModes.CreateContractAddress1 and !pageFlowScope.hideFormBrowseButtons}"
+                                       partialTriggers="ContractAddress1First ContractAddress1Previous ContractAddress1Next ContractAddress1Last">
+                    <af:button actionListener="#{bindings.FirstContractAddress1.execute}" id="ContractAddress1First"
+                               partialSubmit="true" icon="/afr/shuttleleftall_ena.png" shortDesc="#{nls['FIRST_ROW']}"
+                               rendered="#{bindings.ContractAddress1Iterator.rangeStart+bindings.ContractAddress1Iterator.currentRowIndexInRange+1>1}"></af:button>
+                    <af:image source="/afr/shuttleleftall_dis.png"
+                              rendered="#{!(bindings.ContractAddress1Iterator.rangeStart+bindings.ContractAddress1Iterator.currentRowIndexInRange+1>1)}"
+                              id="img0"/>
+                    <af:button actionListener="#{bindings.PreviousContractAddress1.execute}"
+                               icon="/afr/shuttleleft_ena.png" shortDesc="#{nls['PREVIOUS_ROW']}"
+                               id="ContractAddress1Previous" partialSubmit="true"
+                               rendered="#{bindings.ContractAddress1Iterator.rangeStart+bindings.ContractAddress1Iterator.currentRowIndexInRange+1>1}"></af:button>
+                    <af:image source="/afr/shuttleleft_dis.png"
+                              rendered="#{!(bindings.ContractAddress1Iterator.rangeStart+bindings.ContractAddress1Iterator.currentRowIndexInRange+1>1)}"
+                              id="img1"/>
+                    <af:spacer width="4" height="1" id="sp1"/>
+                    <af:outputFormatted styleUsage="instruction"
+                                        inlineStyle="white-space:nowrap; vertical-align:bottom;"
+                                        value=" [#{bindings.ContractAddress1Iterator.rangeStart+bindings.ContractAddress1Iterator.currentRowIndexInRange+1} / #{bindings.ContractAddress1Iterator.estimatedRowCount}] "
+                                        id="of0"/>
+                    <af:button actionListener="#{bindings.NextContractAddress1.execute}"
+                               icon="/afr/shuttleright_ena.png" shortDesc="#{nls['NEXT_ROW']}" id="ContractAddress1Next"
+                               partialSubmit="true"
+                               rendered="#{bindings.ContractAddress1Iterator.rangeStart+bindings.ContractAddress1Iterator.currentRowIndexInRange+1 lt bindings.ContractAddress1Iterator.estimatedRowCount}"></af:button>
+                    <af:image source="/afr/shuttleright_dis.png"
+                              rendered="#{!(bindings.ContractAddress1Iterator.rangeStart+bindings.ContractAddress1Iterator.currentRowIndexInRange+1 lt bindings.ContractAddress1Iterator.estimatedRowCount)}"
+                              id="img2"/>
+                    <af:button actionListener="#{bindings.LastContractAddress1.execute}"
+                               icon="/afr/shuttlerightall_ena.png" shortDesc="#{nls['LAST_ROW']}"
+                               id="ContractAddress1Last" partialSubmit="true"
+                               rendered="#{bindings.ContractAddress1Iterator.rangeStart+bindings.ContractAddress1Iterator.currentRowIndexInRange+1 lt bindings.ContractAddress1Iterator.estimatedRowCount}"></af:button>
+                    <af:image source="/afr/shuttlerightall_dis.png"
+                              rendered="#{!(bindings.ContractAddress1Iterator.rangeStart+bindings.ContractAddress1Iterator.currentRowIndexInRange+1 lt bindings.ContractAddress1Iterator.estimatedRowCount)}"
+                              id="img3"/>
+                  </af:panelGroupLayout>
+                  <!-- DEBUG:END:FORM_BROWSE_BUTTONS : custom/pageComponent/MtsformBrowseButtons.vm, nesting level: 6-->
+                  <af:group id="gr0">
+                    <!-- DEBUG:BEGIN:NEW_BUTTON : custom/button/MtsnewButton.vm, nesting level: 6 -->
+                    <af:button actionListener="#{CreateContractAddress1.execute}" action="CreateContractAddress1"
+                               icon="/jheadstart/images/newRowInForm.png" partialSubmit="true"
+                               shortDesc="#{nls['NEW_BUTTON_LABEL_CONTRACTADDRESS1']}"
+                               rendered="#{!pageFlowScope.createModes.CreateContractAddress1 and (true) and (MTSPermission['CustomerProfile.create'])}"
+                               id="ContractAddress1NewButton"></af:button>
+                    <!-- DEBUG:END:NEW_BUTTON : custom/button/MtsnewButton.vm, nesting level: 6-->
+                    <!-- DEBUG:BEGIN:DELETE_BUTTON : default/button/deleteButton.vm, nesting level: 6 -->
+                    <af:button action="DeleteContractAddress1" partialSubmit="true"
+                               icon="/jheadstart/images/deleteRow.png"
+                               shortDesc="#{nls['DELETE_BUTTON_LABEL_CONTRACTADDRESS1']}"
+                               rendered="#{!pageFlowScope.createModes.CreateContractAddress1 and  bindings.ContractAddress1Iterator.currentRow!=null   and (MTSPermission['CustomerProfile.delete'])}"
+                               immediate="true" id="ContractAddress1DelB">
+                      <af:showPopupBehavior popupId="ContractAddress1DeletePopup"/>
+                    </af:button>
+                    <!-- DEBUG:END:DELETE_BUTTON : default/button/deleteButton.vm, nesting level: 6-->
+                  </af:group>
+                  <af:group id="gr1"></af:group>
+                  <af:group id="gr2">
+                    <af:trainButtonBar value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"/>
+                    <!-- DEBUG:BEGIN:WIZARD_FINISH_BUTTON : default/button/wizardFinishButton.vm, nesting level: 6 -->
+                    <af:button action="#{SaveContractAddress1.execute}" textAndAccessKey="#{nls['FINISH']}"
+                               id="ContractAddress1WizardFinishButton"></af:button>
+                    <!-- DEBUG:END:WIZARD_FINISH_BUTTON : default/button/wizardFinishButton.vm, nesting level: 6-->
+                    <!-- DEBUG:BEGIN:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6 -->
+                    <af:button textAndAccessKey="#{nls['CANCEL']}" immediate="true" partialSubmit="true"
+                               rendered="#{!pageFlowScope.hideCancelButton}" actionListener="#{jhsRollback.execute}"
+                               action="Cancel" id="ContractAddress1CancelButton"></af:button>
+                    <!-- DEBUG:END:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6-->
+                  </af:group>
+                </af:toolbar>
+              </af:toolbox>
+              <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5-->
+            </f:facet>
+            <f:facet name="context">
+              <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5 -->
+              <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5-->
+            </f:facet>
+            <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+            <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+            <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+            <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+          </af:panelHeader>
+          <!-- DEBUG:BEGIN:FORM_GROUP : custom/pageComponent/MtsformGroup.vm, nesting level: 5 -->
+          <af:switcher rendered="#{bindings.ContractAddress1Iterator.findMode!='true'}" id="ContractAddress1Sw"
+                       defaultFacet="hasRows"
+                       facetName="#{( bindings.ContractAddress1Iterator.currentRow!=null ) ? 'hasRows' : 'noRows'}">
+            <f:facet name="noRows">
+              <af:outputFormatted value="#{nls['NO_ROWS_FOUND']}" styleUsage="pageStamp"
+                                  id="ContractAddress1NoRowsFound"/>
+            </f:facet>
+            <f:facet name="hasRows">
+              <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+              <af:panelGroupLayout id="ContractAddress1FC" layout="vertical">
+                <f:facet name="separator">
+                  <af:spacer width="10" height="10" id="sp2"/>
+                </f:facet>
+                <af:panelFormLayout rows="1" labelAlignment="start" maxColumns="1" id="ContractAddress1FI">
+                  <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                  <af:inputText id="ContractAddress1Active" value="#{bindings.ContractAddress1Active.inputValue}"
+                                label="#{bindings.ContractAddress1Active.hints.label}"
+                                required="#{bindings.ContractAddress1Active.hints.mandatory}"
+                                rows="#{bindings.ContractAddress1Active.hints.displayHeight}"
+                                columns="#{bindings.ContractAddress1Active.hints.displayWidth}"
+                                readOnly="#{((pageFlowScope.createModes.CreateContractAddress1) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.createModes.CreateContractAddress1) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                shortDesc="#{bindings.ContractAddress1Active.hints.tooltip}">
+                    <f:validator binding="#{bindings.ContractAddress1Active.validator}"/>
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.ContractAddress1Active.format}"/>
+                  </af:inputText>
+                  <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                  <!-- DEBUG:BEGIN:FORM_DATE_FIELD : default/item/form/formDateField.vm, nesting level: 6 -->
+                  <af:inputDate id="ContractAddress1ActiveFrom"
+                                value="#{bindings.ContractAddress1ActiveFrom.inputValue}"
+                                label="#{bindings.ContractAddress1ActiveFrom.hints.label}"
+                                required="#{bindings.ContractAddress1ActiveFrom.hints.mandatory}"
+                                readOnly="#{((pageFlowScope.createModes.CreateContractAddress1) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.createModes.CreateContractAddress1) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                shortDesc="#{bindings.ContractAddress1ActiveFrom.hints.tooltip}">
+                    <af:convertDateTime pattern="#{nls.datepattern}"/>
+                  </af:inputDate>
+                  <!-- DEBUG:END:FORM_DATE_FIELD : default/item/form/formDateField.vm, nesting level: 6-->
+                  <!-- DEBUG:BEGIN:FORM_DATE_FIELD : default/item/form/formDateField.vm, nesting level: 6 -->
+                  <af:inputDate id="ContractAddress1ActiveTo" value="#{bindings.ContractAddress1ActiveTo.inputValue}"
+                                label="#{bindings.ContractAddress1ActiveTo.hints.label}"
+                                required="#{bindings.ContractAddress1ActiveTo.hints.mandatory}"
+                                readOnly="#{((pageFlowScope.createModes.CreateContractAddress1) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.createModes.CreateContractAddress1) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                shortDesc="#{bindings.ContractAddress1ActiveTo.hints.tooltip}">
+                    <af:convertDateTime pattern="#{nls.datepattern}"/>
+                  </af:inputDate>
+                  <!-- DEBUG:END:FORM_DATE_FIELD : default/item/form/formDateField.vm, nesting level: 6-->
+                  <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                  <af:inputText id="ContractAddress1Address" value="#{bindings.ContractAddress1Address.inputValue}"
+                                label="#{bindings.ContractAddress1Address.hints.label}"
+                                required="#{bindings.ContractAddress1Address.hints.mandatory}"
+                                rows="#{bindings.ContractAddress1Address.hints.displayHeight}"
+                                columns="#{bindings.ContractAddress1Address.hints.displayWidth}" maximumLength="4000"
+                                readOnly="#{((pageFlowScope.createModes.CreateContractAddress1) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.createModes.CreateContractAddress1) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                shortDesc="#{bindings.ContractAddress1Address.hints.tooltip}">
+                    <f:validator binding="#{bindings.ContractAddress1Address.validator}"/>
+                  </af:inputText>
+                  <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                  <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                  <af:inputText id="ContractAddress1AddressId" value="#{bindings.ContractAddress1AddressId.inputValue}"
+                                label="#{bindings.ContractAddress1AddressId.hints.label}"
+                                required="#{bindings.ContractAddress1AddressId.hints.mandatory}"
+                                rows="#{bindings.ContractAddress1AddressId.hints.displayHeight}"
+                                columns="#{bindings.ContractAddress1AddressId.hints.displayWidth}" maximumLength="38"
+                                readOnly="#{((pageFlowScope.createModes.CreateContractAddress1) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.createModes.CreateContractAddress1) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                shortDesc="#{bindings.ContractAddress1AddressId.hints.tooltip}">
+                    <f:validator binding="#{bindings.ContractAddress1AddressId.validator}"/>
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.ContractAddress1AddressId.format}"/>
+                  </af:inputText>
+                  <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                  <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                  <af:inputText id="ContractAddress1AreaId" value="#{bindings.ContractAddress1AreaId.inputValue}"
+                                label="#{bindings.ContractAddress1AreaId.hints.label}"
+                                required="#{bindings.ContractAddress1AreaId.hints.mandatory}"
+                                rows="#{bindings.ContractAddress1AreaId.hints.displayHeight}"
+                                columns="#{bindings.ContractAddress1AreaId.hints.displayWidth}" maximumLength="38"
+                                readOnly="#{((pageFlowScope.createModes.CreateContractAddress1) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.createModes.CreateContractAddress1) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                shortDesc="#{bindings.ContractAddress1AreaId.hints.tooltip}">
+                    <f:validator binding="#{bindings.ContractAddress1AreaId.validator}"/>
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.ContractAddress1AreaId.format}"/>
+                  </af:inputText>
+                  <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                  <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                  <af:inputText id="ContractAddress1CardNo" value="#{bindings.ContractAddress1CardNo.inputValue}"
+                                label="#{bindings.ContractAddress1CardNo.hints.label}"
+                                required="#{bindings.ContractAddress1CardNo.hints.mandatory}"
+                                rows="#{bindings.ContractAddress1CardNo.hints.displayHeight}"
+                                columns="#{bindings.ContractAddress1CardNo.hints.displayWidth}"
+                                readOnly="#{((pageFlowScope.createModes.CreateContractAddress1) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.createModes.CreateContractAddress1) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                shortDesc="#{bindings.ContractAddress1CardNo.hints.tooltip}">
+                    <f:validator binding="#{bindings.ContractAddress1CardNo.validator}"/>
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.ContractAddress1CardNo.format}"/>
+                  </af:inputText>
+                  <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                  <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                  <af:inputText id="ContractAddress1CityId" value="#{bindings.ContractAddress1CityId.inputValue}"
+                                label="#{bindings.ContractAddress1CityId.hints.label}"
+                                required="#{bindings.ContractAddress1CityId.hints.mandatory}"
+                                rows="#{bindings.ContractAddress1CityId.hints.displayHeight}"
+                                columns="#{bindings.ContractAddress1CityId.hints.displayWidth}" maximumLength="38"
+                                readOnly="#{((pageFlowScope.createModes.CreateContractAddress1) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.createModes.CreateContractAddress1) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                shortDesc="#{bindings.ContractAddress1CityId.hints.tooltip}">
+                    <f:validator binding="#{bindings.ContractAddress1CityId.validator}"/>
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.ContractAddress1CityId.format}"/>
+                  </af:inputText>
+                  <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                  <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                  <af:inputText id="ContractAddress1FlatNo" value="#{bindings.ContractAddress1FlatNo.inputValue}"
+                                label="#{bindings.ContractAddress1FlatNo.hints.label}"
+                                required="#{bindings.ContractAddress1FlatNo.hints.mandatory}"
+                                rows="#{bindings.ContractAddress1FlatNo.hints.displayHeight}"
+                                columns="#{bindings.ContractAddress1FlatNo.hints.displayWidth}" maximumLength="4000"
+                                readOnly="#{((pageFlowScope.createModes.CreateContractAddress1) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.createModes.CreateContractAddress1) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                shortDesc="#{bindings.ContractAddress1FlatNo.hints.tooltip}">
+                    <f:validator binding="#{bindings.ContractAddress1FlatNo.validator}"/>
+                  </af:inputText>
+                  <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                  <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                  <af:inputText id="ContractAddress1FloorNo" value="#{bindings.ContractAddress1FloorNo.inputValue}"
+                                label="#{bindings.ContractAddress1FloorNo.hints.label}"
+                                required="#{bindings.ContractAddress1FloorNo.hints.mandatory}"
+                                rows="#{bindings.ContractAddress1FloorNo.hints.displayHeight}"
+                                columns="#{bindings.ContractAddress1FloorNo.hints.displayWidth}" maximumLength="4000"
+                                readOnly="#{((pageFlowScope.createModes.CreateContractAddress1) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.createModes.CreateContractAddress1) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                shortDesc="#{bindings.ContractAddress1FloorNo.hints.tooltip}">
+                    <f:validator binding="#{bindings.ContractAddress1FloorNo.validator}"/>
+                  </af:inputText>
+                  <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                  <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                  <af:inputText id="ContractAddress1HomeNo" value="#{bindings.ContractAddress1HomeNo.inputValue}"
+                                label="#{bindings.ContractAddress1HomeNo.hints.label}"
+                                required="#{bindings.ContractAddress1HomeNo.hints.mandatory}"
+                                rows="#{bindings.ContractAddress1HomeNo.hints.displayHeight}"
+                                columns="#{bindings.ContractAddress1HomeNo.hints.displayWidth}" maximumLength="4000"
+                                readOnly="#{((pageFlowScope.createModes.CreateContractAddress1) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.createModes.CreateContractAddress1) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                shortDesc="#{bindings.ContractAddress1HomeNo.hints.tooltip}">
+                    <f:validator binding="#{bindings.ContractAddress1HomeNo.validator}"/>
+                  </af:inputText>
+                  <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                  <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                  <af:inputText id="ContractAddress1RegionId" value="#{bindings.ContractAddress1RegionId.inputValue}"
+                                label="#{bindings.ContractAddress1RegionId.hints.label}"
+                                required="#{bindings.ContractAddress1RegionId.hints.mandatory}"
+                                rows="#{bindings.ContractAddress1RegionId.hints.displayHeight}"
+                                columns="#{bindings.ContractAddress1RegionId.hints.displayWidth}" maximumLength="38"
+                                readOnly="#{((pageFlowScope.createModes.CreateContractAddress1) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.createModes.CreateContractAddress1) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                shortDesc="#{bindings.ContractAddress1RegionId.hints.tooltip}">
+                    <f:validator binding="#{bindings.ContractAddress1RegionId.validator}"/>
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.ContractAddress1RegionId.format}"/>
+                  </af:inputText>
+                  <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                  <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                  <af:inputText id="ContractAddress1Remarks" value="#{bindings.ContractAddress1Remarks.inputValue}"
+                                label="#{bindings.ContractAddress1Remarks.hints.label}"
+                                required="#{bindings.ContractAddress1Remarks.hints.mandatory}"
+                                rows="#{bindings.ContractAddress1Remarks.hints.displayHeight}"
+                                columns="#{bindings.ContractAddress1Remarks.hints.displayWidth}" maximumLength="4000"
+                                readOnly="#{((pageFlowScope.createModes.CreateContractAddress1) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.createModes.CreateContractAddress1) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                shortDesc="#{bindings.ContractAddress1Remarks.hints.tooltip}">
+                    <f:validator binding="#{bindings.ContractAddress1Remarks.validator}"/>
+                  </af:inputText>
+                  <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                  <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                  <af:inputText id="ContractAddress1StreetId" value="#{bindings.ContractAddress1StreetId.inputValue}"
+                                label="#{bindings.ContractAddress1StreetId.hints.label}"
+                                required="#{bindings.ContractAddress1StreetId.hints.mandatory}"
+                                rows="#{bindings.ContractAddress1StreetId.hints.displayHeight}"
+                                columns="#{bindings.ContractAddress1StreetId.hints.displayWidth}" maximumLength="38"
+                                readOnly="#{((pageFlowScope.createModes.CreateContractAddress1) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.createModes.CreateContractAddress1) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                shortDesc="#{bindings.ContractAddress1StreetId.hints.tooltip}">
+                    <f:validator binding="#{bindings.ContractAddress1StreetId.validator}"/>
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.ContractAddress1StreetId.format}"/>
+                  </af:inputText>
+                  <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                </af:panelFormLayout>
+                <!-- DEBUG:BEGIN:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 6 -->
+                <!-- DEBUG:END:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 6-->
+              </af:panelGroupLayout>
+              <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+            </f:facet>
+          </af:switcher>
+          <!-- DEBUG:END:FORM_GROUP : custom/pageComponent/MtsformGroup.vm, nesting level: 5-->
+          <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+        </af:panelGroupLayout>
+        <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4-->
+      </af:panelGroupLayout>
+      <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+    </f:facet>
+    <f:facet name="popups">
+      <af:panelGroupLayout id="popupsPgl">
+        <!-- DEBUG:BEGIN:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 7 -->
+        <af:popup id="ContractAddress1DeletePopup" contentDelivery="lazyUncached" childCreation="deferred">
+          <af:dialog type="none" title="#{nls['WARNING']}" modal="true" id="ContractAddress1DeleteDialog">
+            <af:outputText value="#{nls['DELETE_WARNING_CONTRACTADDRESS:#{bindings.ContractAddress1Iterator.currentRowIndexInRange+1}']} "
+                           id="ot0"/>
+            <f:attribute name="methodExpression" value="#{'#{DeleteContractAddress1.execute}'}"/>
+            <f:facet name="buttonBar">
+              <af:group id="g0">
+                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_YES']}" id="cb0" immediate="true"
+                           actionListener="#{ExecuteActionAfterConfirmation.confirm}"/>
+                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_NO']}" id="cb1" immediate="true"
+                           actionListener="#{ExecuteActionAfterConfirmation.abort}"/>
+              </af:group>
+            </f:facet>
+          </af:dialog>
+        </af:popup>
+        <!-- DEBUG:END:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 7-->
+      </af:panelGroupLayout>
+    </f:facet>
+    <!-- DEBUG:END:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3-->
+    <!-- DEBUG:END:WIZARD_PAGE_CONTENT : default/page/wizardPageContent.vm, nesting level: 2-->
+  </af:pageTemplate>
+</ui:composition>
+
+
+

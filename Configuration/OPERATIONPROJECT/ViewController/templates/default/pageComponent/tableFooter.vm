@@ -1,0 +1,9 @@
+## revision_history
+## 24-feb-2007 Steven Davelaar
+## 1.0         Initial creation
+
+#if ($JHS.current.group.displayTotalRow)
+  <f:facet name="footer">
+      <af:outputText value="#TOTAL_LABEL()" id="#NEW_ID("ot")"/>
+  </f:facet>
+#end

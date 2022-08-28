@@ -1,0 +1,67 @@
+## revision_history
+## 31-oct-2013   Steven Davelaar
+## 2.6           Moved metaContainer facet to separate macro, use PAGE_TEMPLATE_ID macro
+##               Use af:insertTextBehavior to copy un/pw
+## 11-oct-2011   Steven Davelaar
+## 2.5           Use page_start/end macros to switch between facelets and jspx 
+## 11-oct-2011   Steven Davelaar
+## 2.4           Get page extension from application view type instead of hardcoding .jspx
+## 04-feb-2011   Steven Davelaar
+## 2.3           replaced hardcoded JSP version number with JSP_VERSION macro
+##               Change encoding to pageEncoding
+## 01-nov-2010   Steven Davelaar
+## 2.2           Added call to keyboard server listener
+## 10-jul-2010   Steven Davelaar
+## 2.1           Do not use JhsDynamicTabsPageTemplate when set at application level
+## 23-jun-2009   Paco van der Linden
+## 2.0           Restructured layout according to (stretching) best-practices.
+## 17-jun-2007   Steven Davelaar
+## 1.0           Initial creation
+<?xml version='1.0' #PAGE_ENCODING_PROP()?>
+#PAGE_START()
+    <af:document title="#APPLICATION_TITLE()" id="#NEW_ID("doc")">
+      #META_CONTAINER_FACET()
+      <af:form id="dataForm" defaultCommand="#PAGE_TEMPLATE_ID():login">
+
+${JHS.engine.resetNamingContainerContext()}
+
+        ## do not use dynamic tabs template for this page
+        <af:pageTemplate id="#PAGE_TEMPLATE_ID()" #if (${JHS.application.useJhsDynamicTabsPageTemplate}) viewId="/common/pageTemplates/JhsPageTemplate${JHS.application.pageExtension}" #else viewId="${JHS.application.pageTemplate}" #end>
+          <f:attribute name="showMessagesInline" value="${JHS.application.showMessagesInline}"/>
+          <f:attribute name="showMenu1" value="false"/>
+          <f:attribute name="showMenu2" value="false"/>
+          <f:facet name="pageContent">
+            <af:panelHeader id="ph" text="${JHS.nls('Please Login','LOGIN_PAGE_TITLE')}">
+              <af:outputText id="ot" value="" rendered="#{LoginBean.authenticationFailed}"/>
+              <af:panelFormLayout id="pfl" labelAlignment="start">
+                <f:facet name="footer">
+                  <af:button id="login"  action="#{LoginBean.authenticateUser}"
+                                    text="${JHS.nls('Login','LOGIN_BUTTON_LABEL')}"/>
+                </f:facet>
+                  <af:inputText label="${JHS.nls('Username','LOGIN_USERNAME_LABEL')}" id="username"
+                                value="#{LoginBean.username}" required="true"/>
+                  <af:inputText label="${JHS.nls('Password','LOGIN_PASSWORD_LABEL')}" id="password"
+                                value="#{LoginBean.password}" secret="true"
+                                required="true"/>
+              </af:panelFormLayout>
+                <af:panelFormLayout>
+                    <af:outputText value="Use the following users to test the various role privileges:"
+                                   styleClass="AFInstructionText"/>
+                     <af:panelList> 
+                        <af:link text="Steven King (Administrator)" immediate="true">
+                          <af:insertTextBehavior for="username" value="SKING"/>
+                          <af:insertTextBehavior for="password" value="welcome1"/>
+                        </af:link>
+                        <af:link text="Alexander Hunold (User)" immediate="true">
+                          <af:insertTextBehavior for="username" value="AHUNOLD"/>
+                          <af:insertTextBehavior for="password" value="welcome1"/>
+                        </af:link>
+                    </af:panelList>
+                </af:panelFormLayout>
+            </af:panelHeader>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+      #KEYBOARD_SERVER_LISTENER()
+    </af:document>
+#PAGE_END()

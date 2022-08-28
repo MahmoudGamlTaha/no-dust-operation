@@ -1,0 +1,21 @@
+## revision_history
+## 18-may-2010   Steven Davelaar
+## 1.2           Added id property to all elements
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+#set ($bean = ${JHS.current.managedBean})
+#set ($item = ${JHS.current.item})
+
+<managed-bean id="#NEW_ID("__")">
+  <managed-bean-name id="#NEW_ID("__")">${bean.beanName}</managed-bean-name>
+  <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.CheckboxInTableBean</managed-bean-class>
+  <managed-bean-scope id="#NEW_ID("__")">request</managed-bean-scope>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">binding</property-name>
+    <value id="#NEW_ID("__")">#{bindings.${item.bindingName}}</value>
+  </managed-property>
+  <managed-property id="#NEW_ID("__")">
+     <property-name id="#NEW_ID("__")">tableBean</property-name>
+    <value id="#NEW_ID("__")">#{pageFlowScope.${JHS.current.group.name}Table}</value>
+  </managed-property>
+</managed-bean>

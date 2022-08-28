@@ -1,0 +1,608 @@
+<?xml version = '1.0' encoding = 'windows-1252'?>
+#set ($hints = '$HINTS$')
+<Service name="SecurityAdminService"
+         description="Service Definition for Security Admin Screens"
+         menuTitle="Security Administration"
+         xmlns="http://www.oracle.com/jheadstart/applicationStructure"
+         controllerConfigFile="/WEB-INF/adfc-config-security.xml"
+         groupBeansConfigDir="/security/adfcConfig/"
+         pageVirtualDir="/security/pages/" pageIncludesVirtualDir="/security/includes/"
+         dataControl="${JHS.service.dataControl}" overwriteRunTarget="false"
+         dataControlImpl="${JHS.service.dataControlImpl}"
+         menuModelFile="/WEB-INF/menu-security.xml">
+    <Group name="Users" description="Users" layoutStyle="table-form"
+           advancedSearch="samePage" advancedSearchColumns="2"
+           quickSearch="dropDownList" autoQuery="true" tabName="Users"
+           displayTitlePlural="Users" descriptorAttribute="Username"
+           formInsertAllowed="true" formUpdateAllowed="true"
+           formDeleteAllowed="true" sortable="false" useTableRange="true"
+           tableRangeSize="10" generatePages="true" overwriteBindings="true"
+           overwriteControllerConfig="true" generateLevel2Tabs="true"
+           generateControllerGroup="true" displayTitleSingular="User"
+           columns="1" tableInsertAllowed="false" tableUpdateAllowed="false"
+           tableDeleteAllowed="false" formLink="hyperlink"
+           dataCollection="JhsModelService.Users" dataCollectionImpl="Users"
+           enableStretching="true" tableFreezeStyle="none">
+        <Item alignment="right" attributeName="Id" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="Number" maximumLength="38" name="Id" promptInForm="Id"
+              required="#{${hints}.mandatory}" sortable="true"
+              updateAllowed="true" showInQuickSearch="false"
+              showInAdvancedSearch="false" displayInForm="false"
+              displayInTable="false">
+            <Templates/>
+        </Item>
+        <Item attributeName="Username" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true" displayType="textInput"
+              javaType="String" maximumLength="240" name="Username"
+              promptInForm="Username"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" displayWidth="60">
+            <Templates/>
+        </Item>
+        <Item attributeName="Password" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayType="textInput" javaType="String"
+              maximumLength="240" name="Password" promptInForm="Password"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" displayWidth="60"
+              displayInTable="false">
+            <Templates/>
+        </Item>
+        <Item attributeName="DisplayName" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true" displayType="textInput"
+              javaType="String" maximumLength="240" name="DisplayName"
+              promptInForm="DisplayName"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" displayWidth="60">
+            <Templates/>
+        </Item>
+        <Item attributeName="EmailAddress" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayType="textInput" javaType="String"
+              maximumLength="240" name="EmailAddress"
+              promptInForm="EmailAddress"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" displayWidth="60"
+              displayInTable="false">
+            <Templates/>
+        </Item>
+        <Item attributeName="OrgKey" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="30" name="OrgKey"
+              promptInForm="OrgKey"
+              required="#{${hints}.mandatory}" sortable="true"
+              updateAllowed="true" showInQuickSearch="false"
+              showInAdvancedSearch="false" displayInForm="false"
+              displayInTable="false">
+            <Templates/>
+        </Item>
+        <RegionContainer name="Regions"/>
+        <Group name="UserRoleGrants" description="UserRoleGrants"
+               advancedSearch="none" advancedSearchColumns="1"
+               quickSearch="none" autoQuery="true" formInsertAllowed="true"
+               formUpdateAllowed="true" formDeleteAllowed="true"
+               tableInsertAllowed="true" tableUpdateAllowed="true"
+               tableDeleteAllowed="true" columns="2" sortable="false"
+               useTableRange="true" tableRangeSize="10" generatePages="true"
+               overwriteBindings="true" overwriteControllerConfig="true"
+               generateLevel2Tabs="true" generateControllerGroup="true"
+               layoutStyle="intersection-shuttle" samePage="true"
+               shuttleUnselectedDomain="RolesLookup"
+               displayTitlePlural="Grant Roles"
+               displayTitleSingular="Granted Roles" tabName="Available Roles"
+               descriptorAttribute="RoleName"
+               dataCollection="JhsModelService.UserRoleGrants"
+               dataCollectionImpl="UserRoleGrants" enableStretching="true">
+            <Item alignment="right" attributeName="Id" databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayInForm="true" displayInTable="true"
+                  displayType="textInput"
+                  displayWidth="#{${hints}.displayWidth}"
+                  javaType="Number" maximumLength="38" name="Id"
+                  promptInForm="Id"
+                  required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="true" showInQuickSearch="true"
+                  sortable="true" updateAllowed="true">
+                <Templates/>
+            </Item>
+            <Item alignment="right" attributeName="UsrId" databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayInForm="true" displayInTable="true"
+                  displayType="textInput"
+                  displayWidth="#{${hints}.displayWidth}"
+                  javaType="Number" maximumLength="38" name="UsrId"
+                  promptInForm="UsrId"
+                  required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="true" showInQuickSearch="true"
+                  sortable="true" updateAllowed="true">
+                <Templates/>
+            </Item>
+            <Item alignment="right" attributeName="RleId" databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayInForm="true" displayInTable="true"
+                  displayWidth="#{${hints}.displayWidth}"
+                  javaType="Number" maximumLength="38" name="RleId"
+                  promptInForm="RleId"
+                  required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="true" showInQuickSearch="true"
+                  sortable="true" updateAllowed="true" domain="RolesLookup"
+                  displayType="dropDownList">
+                <Templates/>
+            </Item>
+            <Item attributeName="RoleShortName" databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayInForm="true" displayInTable="true"
+                  displayType="textInput"
+                  displayWidth="#{${hints}.displayWidth}"
+                  javaType="String" maximumLength="10" name="RoleShortName"
+                  promptInForm="RoleShortName"
+                  required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="true" showInQuickSearch="true"
+                  sortable="true" updateAllowed="false">
+                <Templates/>
+            </Item>
+            <Item attributeName="RoleName" databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayInForm="true" displayInTable="true"
+                  displayType="textInput"
+                  displayWidth="#{${hints}.displayWidth}"
+                  javaType="String" maximumLength="40" name="RoleName"
+                  promptInForm="RoleName"
+                  required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="true" showInQuickSearch="true"
+                  sortable="true" updateAllowed="false">
+                <Templates/>
+            </Item>
+            <Item alignment="right" attributeName="Id1" databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayInForm="true" displayInTable="true"
+                  displayType="textInput"
+                  displayWidth="#{${hints}.displayWidth}"
+                  javaType="Number" maximumLength="38" name="Id1"
+                  promptInForm="Id1"
+                  required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="true" showInQuickSearch="true"
+                  sortable="true" updateAllowed="true">
+                <Templates/>
+            </Item>
+            <Item attributeName="Username" databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayInForm="true" displayInTable="true"
+                  displayType="textInput"
+                  displayWidth="#{${hints}.displayWidth}"
+                  javaType="String" maximumLength="240" name="Username"
+                  promptInForm="Username"
+                  required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="true" showInQuickSearch="true"
+                  sortable="true" updateAllowed="false">
+                <Templates/>
+            </Item>
+            <Item attributeName="UserDisplayName" databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayInForm="true" displayInTable="true"
+                  displayType="textInput"
+                  displayWidth="#{${hints}.displayWidth}"
+                  javaType="String" maximumLength="240" name="UserDisplayName"
+                  promptInForm="UserDisplayName"
+                  required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="true" showInQuickSearch="true"
+                  sortable="true" updateAllowed="false">
+                <Templates/>
+            </Item>
+            <Item alignment="right" attributeName="Id2" databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayInForm="true" displayInTable="true"
+                  displayType="textInput"
+                  displayWidth="#{${hints}.displayWidth}"
+                  javaType="Number" maximumLength="38" name="Id2"
+                  promptInForm="Id2"
+                  required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="true" showInQuickSearch="true"
+                  sortable="true" updateAllowed="true">
+                <Templates/>
+            </Item>
+            <RegionContainer name="Regions"/>
+            <Templates/>
+        </Group>
+        <Templates/>
+    </Group>
+    <Group name="Roles" description="Roles" advancedSearchColumns="2"
+           autoQuery="true" tabName="Roles" displayTitlePlural="Roles"
+           formInsertAllowed="true" formUpdateAllowed="true"
+           formDeleteAllowed="true" tableInsertAllowed="false"
+           tableUpdateAllowed="false" tableDeleteAllowed="false" columns="2"
+           sortable="false" useTableRange="true" tableRangeSize="10"
+           generatePages="true" overwriteBindings="true"
+           overwriteControllerConfig="true" generateLevel2Tabs="true"
+           generateControllerGroup="true" stackDetailGroups="true"
+           displayTitleSingular="Role" descriptorAttribute="Name"
+           dataCollection="JhsModelService.Roles" dataCollectionImpl="Roles"
+           advancedSearch="none" quickSearch="singleSearchField"
+           singleSearchAttribute="Name" formLink="hyperlink"
+           layoutStyle="table-form" enableStretching="true"
+           tableFreezeStyle="none">
+        <Item alignment="right" attributeName="Id" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="Number" maximumLength="38" name="Id" promptInForm="Id"
+              required="#{${hints}.mandatory}" sortable="true"
+              updateAllowed="true" displayInForm="false" displayInTable="false"
+              showInQuickSearch="false" showInAdvancedSearch="false">
+            <Templates/>
+        </Item>
+        <Item attributeName="OrgKey" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="30" name="OrgKey"
+              promptInForm="OrgKey"
+              required="#{${hints}.mandatory}" sortable="true"
+              updateAllowed="true" displayInForm="false" displayInTable="false"
+              showInQuickSearch="false" showInAdvancedSearch="false">
+            <Templates/>
+        </Item>
+        <Item attributeName="ShortName" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true" displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="10" name="ShortName"
+              promptInForm="ShortName"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true">
+            <Templates/>
+        </Item>
+        <Item attributeName="Name" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true" displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="40" name="Name"
+              promptInForm="Name"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true">
+            <Templates/>
+        </Item>
+        <RegionContainer name="Regions"/>
+        <Group name="RoleUserGrants" description="RoleUserGrants"
+               advancedSearch="none" advancedSearchColumns="1"
+               quickSearch="none" autoQuery="true" descriptorAttribute="Id"
+               formInsertAllowed="true" formUpdateAllowed="true"
+               formDeleteAllowed="true" tableInsertAllowed="true"
+               tableUpdateAllowed="true" tableDeleteAllowed="true" columns="2"
+               sortable="false" useTableRange="true" tableRangeSize="10"
+               generatePages="true" overwriteBindings="true"
+               overwriteControllerConfig="true" generateLevel2Tabs="true"
+               generateControllerGroup="true" samePage="true"
+               layoutStyle="intersection-shuttle" tabName="Users not in Role"
+               shuttleUnselectedDomain="UsersLookup"
+               displayTitlePlural="Assign Users to Role"
+               displayTitleSingular="Users in Role"
+               dataCollection="JhsModelService.RoleUserGrants"
+               dataCollectionImpl="UserRoleGrants" enableStretching="true">
+            <Item alignment="right" attributeName="Id" databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayInForm="true" displayInTable="true"
+                  displayType="textInput"
+                  displayWidth="#{${hints}.displayWidth}"
+                  javaType="Number" maximumLength="38" name="Id"
+                  promptInForm="Id"
+                  required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="true" showInQuickSearch="true"
+                  sortable="true" updateAllowed="true">
+                <Templates/>
+            </Item>
+            <Item alignment="right" attributeName="UsrId" databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayInForm="true" displayInTable="true"
+                  displayWidth="#{${hints}.displayWidth}"
+                  javaType="Number" maximumLength="38" name="UsrId"
+                  promptInForm="UsrId"
+                  required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="true" showInQuickSearch="true"
+                  sortable="true" updateAllowed="true" domain="UsersLookup"
+                  displayType="dropDownList">
+                <Templates/>
+            </Item>
+            <Item alignment="right" attributeName="RleId" databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayInForm="true" displayInTable="true"
+                  displayType="textInput"
+                  displayWidth="#{${hints}.displayWidth}"
+                  javaType="Number" maximumLength="38" name="RleId"
+                  promptInForm="RleId"
+                  required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="true" showInQuickSearch="true"
+                  sortable="true" updateAllowed="true">
+                <Templates/>
+            </Item>
+            <RegionContainer name="Regions"/>
+            <Templates/>
+        </Group>
+        <Group layoutStyle="table" advancedSearch="none"
+               advancedSearchColumns="1" autoQuery="true"
+               formInsertAllowed="true" formUpdateAllowed="true"
+               formDeleteAllowed="true" tableInsertAllowed="true"
+               tableUpdateAllowed="true" tableDeleteAllowed="true" columns="2"
+               sortable="false" useTableRange="true" tableRangeSize="10"
+               generatePages="true" overwriteBindings="true"
+               overwriteControllerConfig="true" generateLevel2Tabs="true"
+               generateControllerGroup="true" samePage="true"
+               singleSearchAttribute="ServiceName" quickSearch="none"
+               name="RolePermissionGrants" description="RolePermissionGrants"
+               dataCollection="JhsModelService.RolePermissionsGrants"
+               dataCollectionImpl="RolePermissionGrants"
+               tabName="Granted Permissions"
+               displayTitlePlural="Granted Permissions"
+               displayTitleSingular="Granted Permission"
+               descriptorAttribute="Name" enableStretching="true">
+            <Item alignment="right" attributeName="Id" databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayInForm="true" displayType="textInput"
+                  displayWidth="#{${hints}.displayWidth}"
+                  javaType="Number" maximumLength="38" name="Id"
+                  promptInForm="Id"
+                  required="#{${hints}.mandatory}"
+                  sortable="true" updateAllowed="true" displayInTable="false"
+                  showInQuickSearch="false" showInAdvancedSearch="false">
+                <Templates/>
+            </Item>
+            <Item alignment="right" databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayWidth="#{${hints}.displayWidth}"
+                  javaType="Number" maximumLength="38"
+                  required="#{${hints}.mandatory}"
+                  sortable="true" updateAllowed="true"
+                  displayType="dropDownList" promptInForm="Object Privilege"
+                  displayInForm="false" displayInTable="false"
+                  showInQuickSearch="false" showInAdvancedSearch="false"
+                  attributeName="PmnId" name="PmnId" domain="PermissionsLookup">
+                <Templates/>
+            </Item>
+            <Item alignment="right" attributeName="RleId" databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayInForm="true" displayType="textInput"
+                  displayWidth="#{${hints}.displayWidth}"
+                  javaType="Number" maximumLength="38" name="RleId"
+                  promptInForm="RleId"
+                  required="#{${hints}.mandatory}"
+                  sortable="true" updateAllowed="true" displayInTable="false"
+                  showInQuickSearch="false" showInAdvancedSearch="false">
+                <Templates/>
+            </Item>
+            <Item attributeName="Name" databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayInForm="true" displayInTable="true"
+                  displayType="textInput"
+                  displayWidth="#{${hints}.displayWidth}"
+                  javaType="String" maximumLength="60" name="Name"
+                  promptInForm="Name"
+                  required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="true" showInQuickSearch="true"
+                  sortable="true" updateAllowed="true">
+                <Templates/>
+                <ListOfValues useForValidation="false"
+                              groupName="PermissionsLov">
+                    <ReturnValue target="Name" source="Name"/>
+                    <ReturnValue source="PmnType" target="PmnType"/>
+                    <ReturnValue source="ServiceName" target="ServiceName"/>
+                    <ReturnValue source="Id" target="PmnId"/>
+                </ListOfValues>
+            </Item>
+            <Item attributeName="ServiceName" databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayInForm="true" displayInTable="true"
+                  displayWidth="#{${hints}.displayWidth}"
+                  javaType="String" maximumLength="60" name="ServiceName"
+                  required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="true" showInQuickSearch="true"
+                  sortable="true" displayType="dropDownList"
+                  domain="ServiceNamesLookup" updateAllowed="false"
+                  promptInForm="Service Name">
+                <Templates/>
+            </Item>
+            <Item databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayInForm="true" displayInTable="true"
+                  displayWidth="#{${hints}.displayWidth}"
+                  javaType="String" maximumLength="10"
+                  required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="true" showInQuickSearch="true"
+                  sortable="true" promptInForm="Type" displayType="dropDownList"
+                  updateAllowed="false" attributeName="PmnType" name="PmnType"
+                  domain="PermissionType">
+                <Templates/>
+            </Item>
+            <Item alignment="right" attributeName="Id1" databound="true"
+                  displayHeight="#{${hints}.displayHeight}"
+                  displayType="textInput"
+                  displayWidth="#{${hints}.displayWidth}"
+                  javaType="Number" maximumLength="38" name="Id1"
+                  promptInForm="Id1"
+                  required="#{${hints}.mandatory}"
+                  sortable="true" updateAllowed="true" displayInForm="false"
+                  displayInTable="false" showInQuickSearch="false"
+                  showInAdvancedSearch="false">
+                <Templates/>
+            </Item>
+            <RegionContainer name="Regions"/>
+            <Templates/>
+        </Group>
+        <Templates/>
+    </Group>
+    <Group layoutStyle="table" groupUsage="lov" multiSelect="true"
+           descriptorAttribute="Name" tableUpdateAllowed="false"
+           tableDeleteAllowed="false" advancedSearch="samePage"
+           quickSearch="dropDownList" name="PermissionsLov"
+           dataCollection="JhsModelService.PermissionsLookup"
+           dataCollectionImpl="Permissions"
+           displayTitlePlural="Search and Select Permissions"
+           tableWidth="Stretch" tableInsertAllowed="false"
+           showDuplicateRowButton="false" tableFreezeStyle="none">
+        <Item alignment="right" attributeName="Id" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="Number" maximumLength="38" name="Id" promptInForm="Id"
+              required="#{${hints}.mandatory}" sortable="true"
+              updateAllowed="true" showInQuickSearch="false"
+              showInAdvancedSearch="false" displayInTable="false">
+            <Templates/>
+        </Item>
+        <Item attributeName="Name" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true" displayType="textInput"
+              javaType="String" maximumLength="60" name="Name"
+              promptInForm="Name"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" displayWidth="30"
+              columnWidth="150">
+            <Templates/>
+        </Item>
+        <Item attributeName="ServiceName" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="60" name="ServiceName"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" displayType="dropDownList"
+              domain="ServiceNamesLookup" promptInForm="Service Name"
+              columnWidth="100">
+            <Templates/>
+        </Item>
+        <Item databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="10"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" promptInForm="Type"
+              displayType="dropDownList" attributeName="PmnType" name="PmnType"
+              domain="PermissionType">
+            <Templates/>
+        </Item>
+        <Item alignment="right" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="Number" maximumLength="38"
+              required="#{${hints}.mandatory}" sortable="true"
+              updateAllowed="true" showInQuickSearch="false"
+              showInAdvancedSearch="false" displayInTable="false"
+              attributeName="PmnId" name="PmnId" promptInForm="PmnId">
+            <Templates/>
+        </Item>
+        <RegionContainer name="Regions"/>
+        <Templates/>
+    </Group>
+    <Group name="Permissions" layoutStyle="table" tabName="Permissions"
+           displayTitlePlural="Permissions" displayTitleSingular="Permission"
+           dataCollection="JhsModelService.Permissions"
+           dataCollectionImpl="Permissions" descriptorAttribute="Name"
+           showDuplicateRowButton="true" enableStretching="true"
+           tableFreezeStyle="none">
+        <Item alignment="right" attributeName="Id" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInTableOverflow="false" displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="Number" maximumLength="38" name="Id" promptInForm=" Id"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" displayInTable="false"
+              displayInForm="false">
+            <Templates/>
+        </Item>
+        <Item attributeName="Name" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true"
+              displayInTableOverflow="false" displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="60" name="Name"
+              promptInForm=" Name"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true">
+            <Templates/>
+        </Item>
+        <Item attributeName="PmnType" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true"
+              displayInTableOverflow="false"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="10" name="PmnType"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" displayType="dropDownList"
+              domain="PermissionType" promptInForm="Type">
+            <Templates/>
+        </Item>
+        <Item alignment="right" attributeName="PmnId" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInTableOverflow="false" displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="Number" maximumLength="38" name="PmnId"
+              promptInForm=" Pmn Id"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true" displayInTable="false"
+              displayInForm="false">
+            <Templates/>
+        </Item>
+        <Item attributeName="ServiceName" databound="true"
+              displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true"
+              displayInTableOverflow="false" displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="60" name="ServiceName"
+              promptInForm=" Service Name"
+              required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true">
+            <Templates/>
+        </Item>
+        <RegionContainer name="Regions"/>
+        <Templates/>
+    </Group>
+    <Domains>
+        <Domain type="dynamic" valueAttribute="Id" meaningAttribute="Name"
+                name="PermissionsLookup"
+                dataCollection="JhsModelService.PermissionsLookup"
+                dataCollectionImpl="Permissions"/>
+        <Domain name="RolesLookup" type="dynamic" valueAttribute="Id"
+                meaningAttribute="Name"
+                dataCollection="JhsModelService.RolesLookup"
+                dataCollectionImpl="Roles"/>
+        <Domain name="UsersLookup" type="dynamic" valueAttribute="Id"
+                meaningAttribute="DisplayName"
+                dataCollection="JhsModelService.UsersLookup"
+                dataCollectionImpl="Users"/>
+        <Domain name="LocalesLookup" type="dynamic" valueAttribute="Id"
+                meaningAttribute="Code"
+                dataCollection="JhsModelService.LocalesLookup"
+                dataCollectionImpl="Locales"/>
+        <Domain type="static" name="PermissionType">
+            <AllowableValue value="GRPACS" meaning="Group Access"/>
+            <AllowableValue value="GRPACN" meaning="Group Action"/>
+        </Domain>
+        <Domain type="dynamic" name="ServiceNamesLookup"
+                valueAttribute="ServiceName" meaningAttribute="ServiceName"
+                dataCollection="JhsModelService.ServiceNamesLookup"
+                dataCollectionImpl="ServiceNamesLookup"/>
+    </Domains>
+    <Templates/>
+</Service>

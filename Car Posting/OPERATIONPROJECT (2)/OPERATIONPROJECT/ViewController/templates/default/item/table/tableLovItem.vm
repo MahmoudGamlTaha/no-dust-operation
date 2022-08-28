@@ -1,0 +1,77 @@
+## revision_history
+## 26-jun-2013   Steven Davelaar / Paco van der Linden
+## 1.15           Moved ITEM_ADDITIONAL_PROPERTIES to the end so it can also be used to
+##               override generated properties (last one wins)
+## 10-oct-2012   Steven Davelaar
+## 1.14          - Added immediate=true and partialSubmit=true to hidden validation button to prevent 
+##               premature validation of other fields
+## 13-feb-2012   Steven Davelaar
+## 1.13          - Now using one generic LOV popup, with one generic LOV TF binding and one generic LOV TF manager
+##               - Lov icon commandlink now uses actionListener instead of showPopupBehavior to launch LOV
+##               - Added hidden button to queue LOV validation event
+##               - Use normal value binding if attribute is updateable
+## 21-jan-2011   Steven Davelaar
+## 1.12          Moved popup definition to separate reusable macro LOV_ITEM_POPUP_CONTENT
+## 18-oct-2010   Steven Davelaar
+## 1.11          Added call to ITEM_CONTEXT_FACET_IN_TABLE
+## 05-oct-2010   Steven Davelaar
+## 1.10          Replaced dialogListener with custom buttonBar so Enter key no longer closes dialog
+##               but executes quick search in LOV dialog window
+## 05-oct-2010   Steven Davelaar
+## 1.9           Added call to ITEM_HINT, ITEM_ADDITIONAL_PROPERTIES
+## 02-sep-2010   Sandra Muller
+## 1.8           Added id for panelGroupLayout, to support MDS customization
+## 18-may-2010   Steven Davelaar
+## 1.7           Moved surrounding column element to separate tableColumn.vm template
+##               Re-added ITEM_RENDERED_IN_TABLE
+## 19-dec-2007   Steven Davelaar
+## 1.6           Added includePrefix to itemId passed to dependencyMgr call
+## 07-dec-2007   Steven Davelaar
+## 1.5           Removed #ITEM_REQUIRED_IN_TABLE() to prevent "value required
+##               message when calling LOV on a row added using Add Row button
+## 06-jul-2007   Steven Davelaar
+## 1.4           Moved #ITEM_RENDERED_IN_TABLE() to column element
+## 24-feb-2007   Steven Davelaar
+## 1.3           Added footer template
+## 09-feb-2007   Steven Davelaar
+## 1.2           Added windowWidth property
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+
+#JHS_PARSE("LOV_POPUP" $JHS.current.model) 
+
+  <af:panelGroupLayout id="${JHS.current.item.bindingName}Pgl" layout="horizontal" #ITEM_RENDERED_IN_TABLE()>
+    <af:inputText #ITEM_ID_IN_TABLE()   #ITEM_PARTIAL_TRIGGERS() #ITEM_PROMPT_IN_TABLE()
+             #ITEM_READ_ONLY_IN_TABLE() #ITEM_COLUMNS()
+             #ITEM_MAXIMUM_LENGTH()  #ITEM_HINT() 
+             #if ($JHS.current.item.attributeReadOnly)
+               value="#{#LOV_ITEM_IN_TABLE_BEAN().lovFieldValue}"
+             #else
+               ## normal value binding
+               #ITEM_VALUE_IN_TABLE()
+             #end
+             #if ($JHS.current.item.useLovForValidation)
+               autoSubmit="true" valueChangeListener="#{#LOV_ITEM_IN_TABLE_BEAN().validateWithLov}"
+             #else
+               #DEPENDS_ON_ITEM_PROPS_TABLE()
+             #end
+             binding="#{#LOV_ITEM_IN_TABLE_BEAN().lovField}" simple="true"
+             #ITEM_DISABLED_IN_FORM() #ITEM_ADDITIONAL_PROPERTIES()>
+      #REGULAR_EXPRESSION_VALIDATOR()
+  #VALIDATOR_BINDING_IN_TABLE()
+      #NUMBER_CONVERTER()
+      #ITEM_CONTEXT_FACET_IN_TABLE()
+    </af:inputText>
+    <af:link immediate="true"  partialSubmit="true" #ITEM_DISABLED_IN_TABLE() #ITEM_UPDATEABLE_IN_TABLE() id="#NEW_ID("cl")"
+      actionListener="#{#LOV_ITEM_IN_TABLE_BEAN().lovIconClicked}" >
+      <af:image source="/jheadstart/images/lov.png" id="${JHS.current.item.bindingName}Icon"
+        clientComponent="true" shortDesc="#LOV_SHORT_DESC()"/>
+    </af:link>
+    #if ($JHS.current.item.useLovForValidation)
+    <af:button text="hidden" id="#NEW_ID("cb")" rendered="false" action="#{#LOV_ITEM_IN_TABLE_BEAN().validationAction}"
+                      partialSubmit="true" immediate="true"
+                      binding="#{#LOV_ITEM_IN_TABLE_BEAN().validationButton}"/>
+    #end                  
+</af:panelGroupLayout>
+
+#ITEMS_DISPLAYED_AT_RIGHT_IN_TABLE()

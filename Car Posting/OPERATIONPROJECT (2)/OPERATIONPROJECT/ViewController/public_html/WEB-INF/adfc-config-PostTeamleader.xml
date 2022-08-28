@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <task-flow-definition id="PostTeamleaderTaskFlow">
+        <!-- DEBUG:BEGIN:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2 -->
+        <template-reference>
+            <document id="__0">/WEB-INF/jhs-fragment-taskflow-template.xml</document>
+            <id id="__1">jhs-fragment-taskflow-template</id>
+        </template-reference>
+        <!-- DEBUG:END:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2-->
+        <default-activity id="__2">StartPostTeamleader</default-activity>
+        <!-- DEBUG:BEGIN:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2 -->
+        <managed-bean id="__3">
+            <managed-bean-name id="__4">jhsTaskFlowManager</managed-bean-name>
+            <managed-bean-class id="__5">oracle.jheadstart.controller.jsf.bean.TaskFlowManager</managed-bean-class>
+            <managed-bean-scope id="__6">pageFlow</managed-bean-scope>
+            <managed-property id="__7">
+                <property-name id="__8">initializeParentContextEntries</property-name>
+                <map-entries id="__9">
+                    <map-entry id="__10">
+                        <key id="__11">jhsCurrentGroupName</key>
+                        <value id="__12">PostTeamleader</value>
+                    </map-entry>
+                </map-entries>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2 -->
+        <managed-bean id="__13">
+            <managed-bean-name id="__14">SavePostTeamleader</managed-bean-name>
+            <managed-bean-class id="__15">oracle.jheadstart.controller.jsf.bean.CommitBean</managed-bean-class>
+            <managed-bean-scope id="__16">request</managed-bean-scope>
+            <managed-property id="__17">
+                <property-name id="__18">commitBinding</property-name>
+                <value id="__19">#{bindings.Commit}</value>
+            </managed-property>
+            <managed-property id="__20">
+                <property-name id="__21">successOutcome</property-name>
+                <value id="__22">Commit</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2 -->
+        <managed-bean id="__23">
+            <managed-bean-name id="__24">jhsRollback</managed-bean-name>
+            <managed-bean-class id="__25">oracle.jheadstart.controller.jsf.bean.RollbackBean</managed-bean-class>
+            <managed-bean-scope id="__26">request</managed-bean-scope>
+            <managed-property id="__27">
+                <property-name id="__28">rollbackBinding</property-name>
+                <value id="__29">#{bindings.Rollback}</value>
+            </managed-property>
+            <managed-property id="__30">
+                <property-name id="__31">successOutcome</property-name>
+                <value id="__32">Cancel</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__33">
+            <managed-bean-name id="__34">CarPostTable</managed-bean-name>
+            <managed-bean-class id="__35">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__36">pageFlow</managed-bean-scope>
+            <managed-property id="__37">
+                <property-name id="__38">name</property-name>
+                <value id="__39">CarPostTable</value>
+            </managed-property>
+            <managed-property id="__40">
+                <property-name id="__41">rangeBindingExpr</property-name>
+                <value id="__42">#{'#{bindings.CarPostTable}'}</value>
+            </managed-property>
+            <managed-property id="__43">
+                <property-name id="__44">focusItemId</property-name>
+                <value id="__45">CarPostReturnDate</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__46">
+            <managed-bean-name id="__47">DriverPaymentTable</managed-bean-name>
+            <managed-bean-class id="__48">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__49">pageFlow</managed-bean-scope>
+            <managed-property id="__50">
+                <property-name id="__51">name</property-name>
+                <value id="__52">DriverPaymentTable</value>
+            </managed-property>
+            <managed-property id="__53">
+                <property-name id="__54">rangeBindingExpr</property-name>
+                <value id="__55">#{'#{bindings.DriverPaymentTable}'}</value>
+            </managed-property>
+            <managed-property id="__56">
+                <property-name id="__57">focusItemId</property-name>
+                <value id="__58">DriverPaymentDate</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__59">
+            <managed-bean-name id="__60">PilotPaymentTable</managed-bean-name>
+            <managed-bean-class id="__61">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__62">pageFlow</managed-bean-scope>
+            <managed-property id="__63">
+                <property-name id="__64">name</property-name>
+                <value id="__65">PilotPaymentTable</value>
+            </managed-property>
+            <managed-property id="__66">
+                <property-name id="__67">rangeBindingExpr</property-name>
+                <value id="__68">#{'#{bindings.PilotPaymentTable}'}</value>
+            </managed-property>
+            <managed-property id="__69">
+                <property-name id="__70">focusItemId</property-name>
+                <value id="__71">PilotPaymentDate</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2 -->
+        <managed-bean id="__130">
+            <managed-bean-name>PostTeamLeaderBean</managed-bean-name>
+            <managed-bean-class>MTS.security.MTSClasses.PostTeamLeaderBean</managed-bean-class>
+            <managed-bean-scope>request</managed-bean-scope>
+        </managed-bean>
+        <router id="StartPostTeamleader">
+            <case id="__72">
+                <expression id="__73">#{pageFlowScope.isDeepLink!=null and pageFlowScope.isDeepLink}</expression>
+                <outcome id="__74">deepLinkPage</outcome>
+            </case>
+            <default-outcome id="__75">firstPage</default-outcome>
+        </router>
+        <!-- DEBUG:END:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2 -->
+        <method-call id="CreatePostTeamleader">
+            <method id="__76">#{CreatePostTeamleader.execute}</method>
+            <!-- execute condition param -->
+            <parameter>
+                <class id="__77">java.lang.Object</class>
+                <value id="__78">#{pageFlowScope.createPostTeamleader}</value>
+            </parameter>
+            <outcome id="__79">
+                <to-string/>
+            </outcome>
+        </method-call>
+        <!-- DEBUG:END:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2-->
+        <task-flow-return id="CancelPostTeamleaderReturn">
+            <outcome id="__80">
+                <name id="__81">CancelPostTeamleader</name>
+            </outcome>
+        </task-flow-return>
+        <task-flow-return id="DonePostTeamleaderReturn">
+            <outcome id="__82">
+                <name id="__83">DonePostTeamleader</name>
+            </outcome>
+        </task-flow-return>
+        <!-- DEBUG:BEGIN:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2 -->
+        <view id="PostTeamleader">
+            <page id="__84">/pages/PostTeamleader.jsff</page>
+        </view>
+        <!-- DEBUG:END:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2 -->
+        <control-flow-rule id="__85">
+            <from-activity-id id="__86">*</from-activity-id>
+            <control-flow-case id="__87">
+                <from-outcome id="__88">firstPage</from-outcome>
+                <to-activity-id id="__89">PostTeamleader</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__90">
+                <from-outcome id="__91">deepLinkPage</from-outcome>
+                <to-activity-id id="__92">PostTeamleader</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__93">
+                <from-outcome id="__94">PostTeamleaderBreadcrumb</from-outcome>
+                <to-activity-id id="__95">PostTeamleader</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__96">
+                <from-outcome id="__97">Cancel</from-outcome>
+                <to-activity-id id="__98">StartPostTeamleader</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__99">
+                <from-outcome id="__100">CancelPostTeamleaderReturn</from-outcome>
+                <to-activity-id id="__101">CancelPostTeamleaderReturn</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__102">
+                <from-outcome id="__103">DonePostTeamleaderReturn</from-outcome>
+                <to-activity-id id="__104">DonePostTeamleaderReturn</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__105">
+            <from-activity-id id="__106">*</from-activity-id>
+            <control-flow-case id="__107">
+                <from-outcome id="__108">createPostTeamleader</from-outcome>
+                <to-activity-id id="__109">CreatePostTeamleader</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <!-- DEBUG:END:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2-->
+        <use-page-fragments/>
+    </task-flow-definition>
+    <!-- This bean must be defined outside the task-flow-definition element
+       because it needs to be available in the pageFlowScope of the unbounded
+       task-flow not in the pageFlowScope of the bounded task flow itself. -->
+    <!-- DEBUG:BEGIN:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2 -->
+    <managed-bean id="__110">
+        <managed-bean-name id="__111">PostTeamleaderTaskFlowConfig</managed-bean-name>
+        <managed-bean-class id="__112">oracle.jheadstart.controller.jsf.bean.TaskFlowConfigBean</managed-bean-class>
+        <managed-bean-scope id="__113">pageFlow</managed-bean-scope>
+        <managed-property id="__114">
+            <property-name id="__115">params</property-name>
+            <property-class id="__116">java.util.Map</property-class>
+            <map-entries id="__117">
+                <map-entry id="__118">
+                    <key id="__119">parentContext</key>
+                    <value id="__120">#{pageFlowScope.parentContext}</value>
+                </map-entry>
+            </map-entries>
+        </managed-property>
+        <managed-property id="__121">
+            <property-name id="__122">name</property-name>
+            <value id="__123">PostTeamleader</value>
+        </managed-property>
+        <managed-property id="__124">
+            <property-name id="__125">taskFlowId</property-name>
+            <value id="__126">/WEB-INF/adfc-config-PostTeamleader.xml#PostTeamleaderTaskFlow</value>
+        </managed-property>
+        <managed-property id="__127">
+            <property-name id="__128">label</property-name>
+            <value id="__129">#{nls['MENU1_TITLE_POSTTEAMLEADER']}</value>
+        </managed-property>
+    </managed-bean>
+    <!-- DEBUG:END:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2-->
+</adfc-config>

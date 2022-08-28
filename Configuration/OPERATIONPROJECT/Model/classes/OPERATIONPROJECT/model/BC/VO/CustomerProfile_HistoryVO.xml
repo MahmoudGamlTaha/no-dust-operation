@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CustomerProfile_HistoryVO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  SelectAllAttributes="false"
+  PageIterMode="Partial">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="OPERATIONPROJECT.model.BC.VO.CustomerProfile_HistoryVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="CollectionPlanVO1"
+    ViewObjectName="OPERATIONPROJECT.model.BC.VO.CollectionPlanVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="CustomerChannelVO1"
+    ViewObjectName="OPERATIONPROJECT.model.BC.VO.CustomerChannelVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="CustomerClassificationVO1"
+    ViewObjectName="OPERATIONPROJECT.model.BC.VO.CustomerClassificationVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_CollectionType"
+    ListVOName="CollectionPlanVO1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CollectionType"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="PlanId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="PlanName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_CustomerChannel"
+    ListVOName="CustomerChannelVO1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CustomerChannel"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ChannelId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ChannelName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_CustomerClassification"
+    ListVOName="CustomerClassificationVO1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CustomerClassification"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ClassificationId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ClassificationName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="CustomerProfileHistoryEO"
+    Entity="OPERATIONPROJECT.model.BC.EO.CustomerProfileHistoryEO"/>
+  <ViewAttribute
+    Name="CollectionType"
+    PrecisionRule="true"
+    EntityAttrName="CollectionType"
+    EntityUsage="CustomerProfileHistoryEO"
+    AliasName="COLLECTION_TYPE"
+    LOVName="LOV_CollectionType">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="50"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustomerChannel"
+    PrecisionRule="true"
+    EntityAttrName="CustomerChannel"
+    EntityUsage="CustomerProfileHistoryEO"
+    AliasName="CUSTOMER_CHANNEL"
+    LOVName="LOV_CustomerChannel">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="50"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustomerClassification"
+    PrecisionRule="true"
+    EntityAttrName="CustomerClassification"
+    EntityUsage="CustomerProfileHistoryEO"
+    AliasName="CUSTOMER_CLASSIFICATION"
+    LOVName="LOV_CustomerClassification">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="50"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustomerEmail"
+    PrecisionRule="true"
+    EntityAttrName="CustomerEmail"
+    EntityUsage="CustomerProfileHistoryEO"
+    AliasName="CUSTOMER_EMAIL">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="50"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustomerHistoryId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CustomerHistoryId"
+    EntityUsage="CustomerProfileHistoryEO"
+    AliasName="CUSTOMER_HISTORY_ID"
+    IsQueriable="false"/>
+  <ViewAttribute
+    Name="CustomerId"
+    PrecisionRule="true"
+    EntityAttrName="CustomerId"
+    EntityUsage="CustomerProfileHistoryEO"
+    AliasName="CUSTOMER_ID"
+    IsQueriable="false"/>
+  <ViewAttribute
+    Name="CustomerMobile"
+    PrecisionRule="true"
+    EntityAttrName="CustomerMobile"
+    EntityUsage="CustomerProfileHistoryEO"
+    AliasName="CUSTOMER_MOBILE">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="50"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustomerName"
+    PrecisionRule="true"
+    EntityAttrName="CustomerName"
+    EntityUsage="CustomerProfileHistoryEO"
+    AliasName="CUSTOMER_NAME">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="50"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustomerParent"
+    PrecisionRule="true"
+    EntityAttrName="CustomerParent"
+    EntityUsage="CustomerProfileHistoryEO"
+    AliasName="CUSTOMER_PARENT">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="50"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustomerPhone"
+    PrecisionRule="true"
+    EntityAttrName="CustomerPhone"
+    EntityUsage="CustomerProfileHistoryEO"
+    AliasName="CUSTOMER_PHONE">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="50"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="HistoryDate"
+    PrecisionRule="true"
+    EntityAttrName="HistoryDate"
+    EntityUsage="CustomerProfileHistoryEO"
+    AliasName="HISTORY_DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="50"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UpdatedBy"
+    PrecisionRule="true"
+    EntityAttrName="UpdatedBy"
+    EntityUsage="CustomerProfileHistoryEO"
+    AliasName="UPDATED_BY">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="50"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="m"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <SortCriteria>
+    <Sort
+      Attribute="HistoryDate"/>
+  </SortCriteria>
+</ViewObject>

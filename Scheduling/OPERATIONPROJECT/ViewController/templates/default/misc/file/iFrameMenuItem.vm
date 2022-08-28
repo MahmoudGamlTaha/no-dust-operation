@@ -1,0 +1,71 @@
+## revision_history
+## 04-feb-2011   Steven Davelaar
+## 1.1           replaced hardcoded JSP version number with JSP_VERSION macro
+##               Change encoding to pageEncoding
+## 07-jun-2007   Steven Davelaar
+## 1.0            Initial creation
+<?xml version='1.0' #PAGE_ENCODING_PROP()?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" #JSP_VERSION()
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces"
+          xmlns:trh="http://myfaces.apache.org/trinidad/html">
+<jsp:output omit-xml-declaration="true" doctype-root-element="HTML"
+              doctype-system="http://www.w3.org/TR/html4/loose.dtd"
+              doctype-public="-//W3C//DTD HTML 4.01 Transitional//EN"/>
+  <jsp:directive.page contentType="text/html;charset=${JHS.pageEncoding}"/>
+  <f:view>
+    <trh:html id="html">
+      <trh:head title="IFrameMenuItem" id="head">
+        <meta http-equiv="Content-Type"
+              content="text/html; charset=${JHS.pageEncoding}"/>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/jheadstart/css/jhsStyles.css" type="text/css" id="jhsStyles"/>
+      </trh:head>
+      <trh:body id="body">
+        <!-- Normally we enclose the panelPage within the dataForm, however, we cannot
+             embed an iFrame within a form tag, therefore we create se[perate forms around
+             all regions that require a form -->
+        <af:form id="dataForm">
+          <af:region id="pageConfig"
+                     regionType="oracle.jheadstart.region.pageConfig"
+                     value="#{bindings}"/>
+        </af:form>
+        <af:panelPage id="panelPage">
+          <f:facet name="brandingAppContextual">
+            <af:region id="brandingAppContextual" value="#{bindings}"
+                       regionType="oracle.jheadstart.region.brandingAppContextual"/>
+          </f:facet>
+          <f:facet name="branding">
+            <af:region id="branding" value="#{bindings}"
+                       regionType="oracle.jheadstart.region.branding"/>
+          </f:facet>
+          <f:facet name="menuGlobal">
+            <af:form id="formMenuGlobal">
+              <af:region id="menuGlobal" value="#{bindings}"
+                         regionType="oracle.jheadstart.region.menuGlobal"/>
+            </af:form>
+          </f:facet>
+          <f:facet name="menu1">              
+            <af:form id="formMenu1">
+              <af:region id="menu1" value="#{bindings}" regionType="oracle.jheadstart.region.dynamicMenu1Tabs"/>
+            </af:form>
+          </f:facet>
+          <f:facet name="menu2">              
+            <af:form id="formMenu2">
+              <af:region id="menu2" value="#{bindings}" regionType="oracle.jheadstart.region.dynamicMenu2Tabs"/>
+            </af:form>
+          </f:facet>
+
+            <f:verbatim>
+#set ($src = '${jhsDynamicMenu.currentIFrameUrl}')
+              <iframe frameborder="0" marginheight="0" marginwidth="0"
+                      scrolling="no"
+                      src="${src}" 
+                      width="1024px" height="800px"></iframe>
+            </f:verbatim>
+
+          </af:panelPage>
+      </trh:body>
+    </trh:html>
+  </f:view>
+</jsp:root>

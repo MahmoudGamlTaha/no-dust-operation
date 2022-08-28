@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.9.14" id="DataBindings"
+             SeparateXMLFiles="false" Package="OPERATIONPROJECT.view" ClientType="Generic"
+             ErrorHandlerClass="oracle.jheadstart.controller.jsf.util.JhsDCErrorHandlerImpl">
+  <pageMap>
+    <page path="/pages/UIShell.jsf" usageId="OPERATIONPROJECT_UIShellPageDef"/>
+    <page path="/pages/PopupShell.jsf" usageId="OPERATIONPROJECT_PopupShellPageDef"/>
+    <page path="/WEB-INF/adfc-config-Countries1.xml#Countries1TaskFlow@CreateCountries1" usageId="Countries1PageDef"/>
+    <page path="/WEB-INF/adfc-config-Countries1.xml#Countries1TaskFlow@SetCurrentRowCountries1"
+          usageId="Countries1PageDef"/>
+    <page path="/pages/Countries1Table.jsff" usageId="Countries1PageDef"/>
+    <page path="/pages/Countries1.jsff" usageId="Countries1PageDef"/>
+    <page path="/WEB-INF/adfc-config-ddd.xml#dddTaskFlow@Createddd" usageId="dddPageDef"/>
+    <page path="/WEB-INF/adfc-config-ddd.xml#dddTaskFlow@SetCurrentRowddd" usageId="dddPageDef"/>
+    <page path="/pages/ddd.jsff" usageId="dddPageDef"/>
+    <page path="/WEB-INF/adfc-config-WeekDaysVO.xml#WeekDaysVOTaskFlow@CreateWeekDaysVO" usageId="WeekDaysVOPageDef"/>
+    <page path="/WEB-INF/adfc-config-WeekDaysVO.xml#WeekDaysVOTaskFlow@SetCurrentRowWeekDaysVO"
+          usageId="WeekDaysVOPageDef"/>
+    <page path="/pages/WeekDaysVO.jsff" usageId="WeekDaysVOPageDef"/>
+    <page path="/WEB-INF/adfc-config-WeekDaysAgentVO.xml#WeekDaysAgentVOTaskFlow@CreateWeekDaysAgentVO"
+          usageId="WeekDaysAgentVOPageDef"/>
+    <page path="/WEB-INF/adfc-config-WeekDaysAgentVO.xml#WeekDaysAgentVOTaskFlow@SetCurrentRowWeekDaysAgentVO"
+          usageId="WeekDaysAgentVOPageDef"/>
+    <page path="/pages/WeekDaysAgentVO.jsff" usageId="WeekDaysAgentVOPageDef"/>
+    <page path="/WEB-INF/adfc-config-AgentAreasVO.xml#AgentAreasVOTaskFlow@CreateAgentAreasVO"
+          usageId="AgentAreasVOPageDef"/>
+    <page path="/WEB-INF/adfc-config-AgentAreasVO.xml#AgentAreasVOTaskFlow@SetCurrentRowAgentAreasVO"
+          usageId="AgentAreasVOPageDef"/>
+    <page path="/pages/AgentAreasVO.jsff" usageId="AgentAreasVOPageDef"/>
+    <page path="/WEB-INF/adfc-config-WeekDaysSupervisorVO.xml#WeekDaysSupervisorVOTaskFlow@CreateWeekDaysSupervisorVO"
+          usageId="WeekDaysSupervisorVOPageDef"/>
+    <page path="/WEB-INF/adfc-config-WeekDaysSupervisorVO.xml#WeekDaysSupervisorVOTaskFlow@SetCurrentRowWeekDaysSupervisorVO"
+          usageId="WeekDaysSupervisorVOPageDef"/>
+    <page path="/pages/WeekDaysSupervisorVO.jsff" usageId="WeekDaysSupervisorVOPageDef"/>
+    <page path="/WEB-INF/adfc-config-AccountingTeamLeader.xml#AccountingTeamLeaderTaskFlow@CreateAccountingTeamLeader"
+          usageId="AccountingTeamLeaderPageDef"/>
+    <page path="/pages/AccountingTeamLeader.jsff" usageId="AccountingTeamLeaderPageDef"/>
+    <page path="/WEB-INF/adfc-config-AccountingAgent.xml#AccountingAgentTaskFlow@CreateAccountingAgent"
+          usageId="AccountingAgentPageDef"/>
+    <page path="/pages/AccountingAgent.jsff" usageId="AccountingAgentPageDef"/>
+    <page path="/WEB-INF/adfc-config-AccountingDispatchSupervisor.xml#AccountingDispatchSupervisorTaskFlow@CreateAccountingDispatchSupervisor"
+          usageId="AccountingDispatchSupervisorPageDef"/>
+    <page path="/pages/AccountingDispatchSupervisor.jsff" usageId="AccountingDispatchSupervisorPageDef"/>
+    <page path="/WEB-INF/adfc-config-AccountingAgent.xml#AccountingAgentTaskFlow@SetCurrentRowAccountingAgent"
+          usageId="AccountingAgentPageDef"/>
+    <page path="/pages/ContractCards.jsff" usageId="ContractCardsPageDef"/>
+    <page path="/pages/ContractCardsTable.jsff" usageId="ContractCardsPageDef"/>
+    <page path="/pages/AreaInvoiceSummaryTable.jsff" usageId="AreaInvoiceSummaryPageDef"/>
+    <page path="/pages/AreaInvoiceSummary.jsff" usageId="AreaInvoiceSummaryPageDef"/>
+  </pageMap>
+  <definitionFactories>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+    <factory className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"
+             nameSpace="http://xmlns.oracle.com/adf/controller/binding"/>
+    <factory className="oracle.adfinternal.view.faces.dvt.model.binding.FacesBindingFactory"
+             nameSpace="http://xmlns.oracle.com/adfm/dvt"/>
+  </definitionFactories>
+  <pageDefinitionUsages>
+    <page id="OPERATIONPROJECT_UIShellPageDef" path="OPERATIONPROJECT.view.pageDefs.OPERATIONPROJECT_UIShellPageDef"/>
+    <page id="OPERATIONPROJECT_PopupShellPageDef"
+          path="OPERATIONPROJECT.view.pageDefs.OPERATIONPROJECT_PopupShellPageDef"/>
+    <page id="Countries1PageDef" path="OPERATIONPROJECT.view.pageDefs.Countries1PageDef"/>
+    <page id="dddPageDef" path="OPERATIONPROJECT.view.pageDefs.dddPageDef"/>
+    <page id="WeekDaysVOPageDef" path="OPERATIONPROJECT.view.pageDefs.WeekDaysVOPageDef"/>
+    <page id="WeekDaysAgentVOPageDef" path="OPERATIONPROJECT.view.pageDefs.WeekDaysAgentVOPageDef"/>
+    <page id="AgentAreasVOPageDef" path="OPERATIONPROJECT.view.pageDefs.AgentAreasVOPageDef"/>
+    <page id="WeekDaysSupervisorVOPageDef" path="OPERATIONPROJECT.view.pageDefs.WeekDaysSupervisorVOPageDef"/>
+    <page id="AccountingTeamLeaderPageDef" path="OPERATIONPROJECT.view.pageDefs.AccountingTeamLeaderPageDef"/>
+    <page id="AccountingAgentPageDef" path="OPERATIONPROJECT.view.pageDefs.AccountingAgentPageDef"/>
+    <page id="AccountingDispatchSupervisorPageDef"
+          path="OPERATIONPROJECT.view.pageDefs.AccountingDispatchSupervisorPageDef"/>
+    <page id="ContractCardsPageDef" path="OPERATIONPROJECT.view.pageDefs.ContractCardsPageDef"/>
+    <page id="AreaInvoiceSummaryPageDef" path="OPERATIONPROJECT.view.pageDefs.AreaInvoiceSummaryPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="AppModuleAMDataControl" Package="OPERATIONPROJECT.model.BC.AM"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="AppModuleAMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsRegionTemplate.jsf">
+        <!-- DEBUG:BEGIN:FIND_PAGE_CONTENT : default/page/findPageContent.vm, nesting level: 2 -->
+        <f:facet name="pageContent">
+            <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/page/findPageContent.vm) -->
+            <af:panelGroupLayout id="pcpg" layout="scroll">
+                <af:panelHeader id="pcph" text="#{nls['SEARCH_TITLE_ADDRESS']}" partialTriggers="">
+                    <f:facet name="toolbar">
+                        <af:toolbox id="tbox0">
+                            <af:toolbar id="tbar0">
+                                <!-- DEBUG:BEGIN:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 3 -->
+                                <!-- DEBUG:END:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 3-->
+                                <!-- DEBUG:BEGIN:ADVANCED_SEARCH_BUTTONS : default/search/advancedSearchButtons.vm, nesting level: 3 -->
+                                <!-- DEBUG:BEGIN:DO_ADVANCED_SEARCH_BUTTON : default/button/doAdvancedSearchButton.vm, nesting level: 4 -->
+                                <af:button textAndAccessKey="#{nls['FIND']}"
+                                           action="#{pageFlowScope.searchAddress.advancedSearch}" id="cb0"/>
+                                <!-- DEBUG:END:DO_ADVANCED_SEARCH_BUTTON : default/button/doAdvancedSearchButton.vm, nesting level: 4-->
+                                <!-- DEBUG:BEGIN:CLEAR_SEARCH_CRITERIA_BUTTON : default/button/clearSearchCriteriaButton.vm, nesting level: 4 -->
+                                <af:button textAndAccessKey="#{nls['CLEAR']}"
+                                           actionListener="#{pageFlowScope.searchAddress.clearSearchCriteria}"
+                                           id="cb1"/>
+                                <!-- DEBUG:END:CLEAR_SEARCH_CRITERIA_BUTTON : default/button/clearSearchCriteriaButton.vm, nesting level: 4-->
+                                <!-- DEBUG:END:ADVANCED_SEARCH_BUTTONS : default/search/advancedSearchButtons.vm, nesting level: 3-->
+                            </af:toolbar>
+                        </af:toolbox>
+                    </f:facet>
+                    <f:facet name="context">
+                        <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 3 -->
+                        <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 3-->
+                    </f:facet>
+                    <!-- DEBUG:BEGIN:ADVANCED_SEARCH_REGION : default/search/advancedSearchRegion.vm, nesting level: 3 -->
+                    <af:showDetailHeader size="1" id="asAreaAddress" disclosed="true" text="#{nls['ADVANCED_SEARCH']}">
+                        <af:panelGroupLayout id="as_Address">
+                            <af:selectOneRadio label="#{nls['QUERY_MATCH_LABEL']}" layout="horizontal"
+                                               value="#{pageFlowScope.searchAddress.allConditionsMet}"
+                                               id="asAreaAddressConditions">
+                                <af:selectItem value="true" label="#{nls['ALL_CONDITIONS_MET']}"/>
+                                <af:selectItem value="false" label="#{nls['ANY_CONDITION_MET']}"/>
+                            </af:selectOneRadio>
+                            <af:selectBooleanCheckbox value="#{pageFlowScope.searchAddress.caseSensitive}"
+                                                      label="#{nls['CASE_SENSITIVE']}" id="asAreaAddressCaseSensitive"/>
+                        </af:panelGroupLayout>
+                        <af:panelFormLayout rows="1" labelAlignment="start" maxColumns="1" id="asAreaAddressItems">
+                            <!-- DEBUG:BEGIN:ADVANCED_SEARCH_TEXT_INPUT : default/item/find/findTextInput.vm, nesting level: 4 -->
+                            <af:inputText id="SearchAddressCityId"
+                                          value="#{pageFlowScope.searchAddress.criteria.AddressCityId}"
+                                          label="#{bindings.AddressTable.hints.CityId.label}"
+                                          columns="#{bindings.AddressCityId.hints.displayWidth}"
+                                          shortDesc="#{bindings.AddressCityId.hints.tooltip}" maximumLength="4000">
+                                <af:convertNumber groupingUsed="false" pattern="#{bindings.AddressCityId.format}"/>
+                            </af:inputText>
+                            <!-- DEBUG:END:ADVANCED_SEARCH_TEXT_INPUT : default/item/find/findTextInput.vm, nesting level: 4-->
+                            <!-- DEBUG:BEGIN:ADVANCED_SEARCH_TEXT_INPUT : default/item/find/findTextInput.vm, nesting level: 4 -->
+                            <af:inputText id="SearchAddressCityName"
+                                          value="#{pageFlowScope.searchAddress.criteria.AddressCityName}"
+                                          label="#{nls['ADDRESS_FIND_CITYNAME']}"
+                                          columns="#{bindings.AddressCityName.hints.displayWidth}"
+                                          shortDesc="#{bindings.AddressCityName.hints.tooltip}" maximumLength="4000"></af:inputText>
+                            <!-- DEBUG:END:ADVANCED_SEARCH_TEXT_INPUT : default/item/find/findTextInput.vm, nesting level: 4-->
+                        </af:panelFormLayout>
+                        <!-- DEBUG:BEGIN:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 4 -->
+                        <!-- DEBUG:END:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 4-->
+                    </af:showDetailHeader>
+                    <!-- DEBUG:END:ADVANCED_SEARCH_REGION : default/search/advancedSearchRegion.vm, nesting level: 3-->
+                </af:panelHeader>
+            </af:panelGroupLayout>
+            <!-- Popped "disabled" from stretchContext, now: enabled (default) -->
+        </f:facet>
+        <f:facet name="popups">
+            <af:panelGroupLayout id="popupsPgl"></af:panelGroupLayout>
+        </f:facet>
+        <!-- DEBUG:END:FIND_PAGE_CONTENT : default/page/findPageContent.vm, nesting level: 2-->
+    </af:pageTemplate>
+</ui:composition>
+
+
+

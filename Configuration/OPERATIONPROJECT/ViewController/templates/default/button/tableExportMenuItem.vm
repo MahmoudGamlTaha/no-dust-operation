@@ -1,0 +1,11 @@
+## revision_history
+## 07-may-2009   Paco van der Linden
+## 1.1           Shortened some id's to improve PPR performance
+## 01-sep-2008   Steven Davelaar
+## 1.0           Initial creation
+
+#if ($JHS.current.group.tableExport=='excel')
+  <af:commandMenuItem partialSubmit="true" textAndAccessKey="#EXPORT_LABEL()" icon="/jheadstart/images/excel.png" immediate="true" id="#NEW_ID("cmi")">
+    <af:exportCollectionActionListener exportedId="${JHS.current.group.shortName}Tab" type="excelHTML"/>
+  </af:commandMenuItem>
+#end

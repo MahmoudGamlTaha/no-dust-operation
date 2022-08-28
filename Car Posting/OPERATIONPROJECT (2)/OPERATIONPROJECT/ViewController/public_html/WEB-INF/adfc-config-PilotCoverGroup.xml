@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <task-flow-definition id="PilotCoverGroupTaskFlow">
+        <!-- DEBUG:BEGIN:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2 -->
+        <template-reference>
+            <document id="__0">/WEB-INF/jhs-bounded-taskflow-template.xml</document>
+            <id id="__1">jhs-bounded-taskflow-template</id>
+        </template-reference>
+        <!-- DEBUG:END:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2-->
+        <default-activity id="__2">FilterPilotCoverGroup</default-activity>
+        <!-- DEBUG:BEGIN:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2 -->
+        <input-parameter-definition id="__165">
+            <name>ShipmentId</name>
+            <value>#{pageFlowScope.ShipmentId}</value>
+        </input-parameter-definition>
+        <!-- DEBUG:END:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2 -->
+        <input-parameter-definition id="__166">
+            <name>PilotCoverEdited</name>
+            <value>#{pageFlowScope.PilotCoverEdited}</value>
+        </input-parameter-definition>
+        <managed-bean id="__3">
+            <managed-bean-name id="__4">jhsTaskFlowManager</managed-bean-name>
+            <managed-bean-class id="__5">oracle.jheadstart.controller.jsf.bean.TaskFlowManager</managed-bean-class>
+            <managed-bean-scope id="__6">pageFlow</managed-bean-scope>
+            <managed-property id="__7">
+                <property-name id="__8">initializeParentContextEntries</property-name>
+                <map-entries id="__9">
+                    <map-entry id="__10">
+                        <key id="__11">jhsCurrentGroupName</key>
+                        <value id="__12">PilotCoverGroup</value>
+                    </map-entry>
+                </map-entries>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2-->
+        <managed-bean id="__13">
+            <managed-bean-name id="__14">MenuViewIdMapping</managed-bean-name>
+            <managed-bean-class id="__15">java.util.HashMap</managed-bean-class>
+            <managed-bean-scope id="__16">pageFlow</managed-bean-scope>
+            <map-entries id="__17">
+                <map-entry id="__18">
+                    <key id="__19">/PilotCoverGroupTaskFlow/PilotCoverGroup</key>
+                    <value id="__20">PilotCoverGroup</value>
+                </map-entry>
+            </map-entries>
+        </managed-bean>
+        <!-- DEBUG:BEGIN:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2 -->
+        <managed-bean id="__21">
+            <managed-bean-name id="__22">SavePilotCoverGroup</managed-bean-name>
+            <managed-bean-class id="__23">oracle.jheadstart.controller.jsf.bean.CommitBean</managed-bean-class>
+            <managed-bean-scope id="__24">request</managed-bean-scope>
+            <managed-property id="__25">
+                <property-name id="__26">commitBinding</property-name>
+                <value id="__27">#{bindings.Commit}</value>
+            </managed-property>
+            <managed-property id="__28">
+                <property-name id="__29">successOutcome</property-name>
+                <value id="__30">Commit</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2 -->
+        <managed-bean id="__31">
+            <managed-bean-name id="__32">jhsRollback</managed-bean-name>
+            <managed-bean-class id="__33">oracle.jheadstart.controller.jsf.bean.RollbackBean</managed-bean-class>
+            <managed-bean-scope id="__34">request</managed-bean-scope>
+            <managed-property id="__35">
+                <property-name id="__36">rollbackBinding</property-name>
+                <value id="__37">#{bindings.Rollback}</value>
+            </managed-property>
+            <managed-property id="__38">
+                <property-name id="__39">successOutcome</property-name>
+                <value id="__40">Cancel</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__41">
+            <managed-bean-name id="__42">PilotCoverReconDriverPilotTable</managed-bean-name>
+            <managed-bean-class id="__43">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__44">pageFlow</managed-bean-scope>
+            <managed-property id="__45">
+                <property-name id="__46">name</property-name>
+                <value id="__47">PilotCoverReconDriverPilotTable</value>
+            </managed-property>
+            <managed-property id="__48">
+                <property-name id="__49">rangeBindingExpr</property-name>
+                <value id="__50">#{'#{bindings.PilotCoverReconDriverPilotTable}'}</value>
+            </managed-property>
+            <managed-property id="__51">
+                <property-name id="__52">focusItemId</property-name>
+                <value id="__53">PilotCoverReconDriverPilotReturnDate</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__54">
+            <managed-bean-name id="__55">DeletePilotCoverReconDriverPilot</managed-bean-name>
+            <managed-bean-class id="__56">oracle.jheadstart.controller.jsf.bean.DeleteRowBean</managed-bean-class>
+            <managed-bean-scope id="__57">request</managed-bean-scope>
+            <managed-property id="__58">
+                <property-name id="__59">deleteBinding</property-name>
+                <value id="__60">#{bindings.DeletePilotCoverReconDriverPilot}</value>
+            </managed-property>
+            <managed-property id="__61">
+                <property-name id="__62">commitBean</property-name>
+                <value id="__63">#{jhsCommit}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__64">
+            <managed-bean-name id="__65">CreatePilotCoverReconDriverPilot</managed-bean-name>
+            <managed-bean-class id="__66">oracle.jheadstart.controller.jsf.bean.CreateRowBean</managed-bean-class>
+            <managed-bean-scope id="__67">request</managed-bean-scope>
+            <managed-property id="__68">
+                <property-name id="__69">createBinding</property-name>
+                <value id="__70">#{bindings.CreatePilotCoverReconDriverPilot}</value>
+            </managed-property>
+            <managed-property id="__71">
+                <property-name id="__72">successOutcome</property-name>
+                <value id="__73">deepLinkPage</value>
+            </managed-property>
+            <managed-property id="__74">
+                <property-name id="__75">failureOutcome</property-name>
+                <value id="__76">firstPage</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__77">
+            <managed-bean-name id="__78">PilotCoverPilotCoverProductTable</managed-bean-name>
+            <managed-bean-class id="__79">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__80">pageFlow</managed-bean-scope>
+            <managed-property id="__81">
+                <property-name id="__82">name</property-name>
+                <value id="__83">PilotCoverPilotCoverProductTable</value>
+            </managed-property>
+            <managed-property id="__84">
+                <property-name id="__85">rangeBindingExpr</property-name>
+                <value id="__86">#{'#{bindings.PilotCoverPilotCoverProductTable}'}</value>
+            </managed-property>
+            <managed-property id="__87">
+                <property-name id="__88">focusItemId</property-name>
+                <value id="__89">PilotCoverPilotCoverProductAssignDate</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__90">
+            <managed-bean-name id="__91">DeletePilotCoverPilotCoverProduct</managed-bean-name>
+            <managed-bean-class id="__92">oracle.jheadstart.controller.jsf.bean.DeleteRowBean</managed-bean-class>
+            <managed-bean-scope id="__93">request</managed-bean-scope>
+            <managed-property id="__94">
+                <property-name id="__95">deleteBinding</property-name>
+                <value id="__96">#{bindings.DeletePilotCoverPilotCoverProduct}</value>
+            </managed-property>
+            <managed-property id="__97">
+                <property-name id="__98">commitBean</property-name>
+                <value id="__99">#{jhsCommit}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__100">
+            <managed-bean-name id="__101">CreatePilotCoverPilotCoverProduct</managed-bean-name>
+            <managed-bean-class id="__102">oracle.jheadstart.controller.jsf.bean.CreateRowBean</managed-bean-class>
+            <managed-bean-scope id="__103">request</managed-bean-scope>
+            <managed-property id="__104">
+                <property-name id="__105">createBinding</property-name>
+                <value id="__106">#{bindings.CreatePilotCoverPilotCoverProduct}</value>
+            </managed-property>
+            <managed-property id="__107">
+                <property-name id="__108">successOutcome</property-name>
+                <value id="__109">deepLinkPage</value>
+            </managed-property>
+            <managed-property id="__110">
+                <property-name id="__111">failureOutcome</property-name>
+                <value id="__112">firstPage</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2 -->
+        <managed-bean id="__162">
+            <managed-bean-name>DataTeamAgentBean</managed-bean-name>
+            <managed-bean-class>MTS.security.MTSClasses.DataTeamAgentBean</managed-bean-class>
+            <managed-bean-scope>request</managed-bean-scope>
+        </managed-bean>
+        <router id="StartPilotCoverGroup">
+            <case id="__113">
+                <expression id="__114">#{pageFlowScope.isDeepLink!=null and pageFlowScope.isDeepLink}</expression>
+                <outcome id="__115">deepLinkPage</outcome>
+            </case>
+            <default-outcome id="__116">firstPage</default-outcome>
+        </router>
+        <!-- DEBUG:END:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2-->
+        <task-flow-return id="CancelPilotCoverGroupReturn">
+            <outcome id="__117">
+                <name id="__118">CancelPilotCoverGroup</name>
+            </outcome>
+        </task-flow-return>
+        <task-flow-return id="DonePilotCoverGroupReturn">
+            <outcome id="__119">
+                <name id="__120">DonePilotCoverGroup</name>
+            </outcome>
+        </task-flow-return>
+        <!-- DEBUG:BEGIN:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2 -->
+        <view id="PilotCoverGroup">
+            <page id="__121">/pages/PilotCoverGroup.jsf</page>
+        </view>
+        <!-- DEBUG:END:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2 -->
+        <method-call id="FilterPilotCoverGroup">
+            <method>#{DataTeamAgentBean.FilterPilotCoverGroup}</method>
+            <outcome>
+                <fixed-outcome>GoToPage</fixed-outcome>
+            </outcome>
+        </method-call>
+        <control-flow-rule id="__122">
+            <from-activity-id id="__123">*</from-activity-id>
+            <control-flow-case id="__124">
+                <from-outcome id="__125">firstPage</from-outcome>
+                <to-activity-id id="__126">PilotCoverGroup</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__127">
+                <from-outcome id="__128">deepLinkPage</from-outcome>
+                <to-activity-id id="__129">PilotCoverGroup</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__130">
+                <from-outcome id="__131">PilotCoverGroupBreadcrumb</from-outcome>
+                <to-activity-id id="__132">PilotCoverGroup</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__133">
+                <from-outcome id="__134">Cancel</from-outcome>
+                <to-activity-id id="__135">StartPilotCoverGroup</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__136">
+                <from-outcome id="__137">CancelPilotCoverGroupReturn</from-outcome>
+                <to-activity-id id="__138">CancelPilotCoverGroupReturn</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__139">
+                <from-outcome id="__140">DonePilotCoverGroupReturn</from-outcome>
+                <to-activity-id id="__141">DonePilotCoverGroupReturn</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <!-- DEBUG:END:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2-->
+        <control-flow-rule id="__163">
+            <from-activity-id>FilterPilotCoverGroup</from-activity-id>
+            <control-flow-case id="__164">
+                <from-outcome>GoToPage</from-outcome>
+                <to-activity-id>PilotCoverGroup</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+    </task-flow-definition>
+    <!-- This bean must be defined outside the task-flow-definition element
+       because it needs to be available in the pageFlowScope of the unbounded
+       task-flow not in the pageFlowScope of the bounded task flow itself. -->
+    <!-- DEBUG:BEGIN:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2 -->
+    <managed-bean id="__142">
+        <managed-bean-name id="__143">PilotCoverGroupTaskFlowConfig</managed-bean-name>
+        <managed-bean-class id="__144">oracle.jheadstart.controller.jsf.bean.TaskFlowConfigBean</managed-bean-class>
+        <managed-bean-scope id="__145">pageFlow</managed-bean-scope>
+        <managed-property id="__146">
+            <property-name id="__147">params</property-name>
+            <property-class id="__148">java.util.Map</property-class>
+            <map-entries id="__149">
+                <map-entry id="__150">
+                    <key id="__151">parentContext</key>
+                    <value id="__152">#{pageFlowScope.parentContext}</value>
+                </map-entry>
+            </map-entries>
+        </managed-property>
+        <managed-property id="__153">
+            <property-name id="__154">name</property-name>
+            <value id="__155">PilotCoverGroup</value>
+        </managed-property>
+        <managed-property id="__156">
+            <property-name id="__157">taskFlowId</property-name>
+            <value id="__158">/WEB-INF/adfc-config-PilotCoverGroup.xml#PilotCoverGroupTaskFlow</value>
+        </managed-property>
+        <managed-property id="__159">
+            <property-name id="__160">label</property-name>
+            <value id="__161">#{nls['MENU1_TITLE_PILOTCOVERGROUP']}</value>
+        </managed-property>
+    </managed-bean>
+    <!-- DEBUG:END:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2-->
+</adfc-config>

@@ -1,0 +1,102 @@
+## revision_history
+## 06-dec-2010   Steven Davelaar
+## 2.3           Shortened id's
+## 01-nov-2010   Steven Davelaar
+## 2.2           Aded labelAlignment property
+## 01-okt-2009   Steven Davelaar
+## 2.1           if top region container strectahble, then use panelStrechLayout
+## 23-jun-2009   Paco van der Linden
+## 2.0           Restructured layout according to (stretching) best-practices.
+## 11-may-2008  Steven Davelaar
+## 1.5          Added support for non databound group
+## 31-aug-2007  Steven Davelaar
+## 1.4           Call to DETAIL_GROUPS moved to groupContent.vm
+## 29-aug-2007   Steven Davelaar
+## 1.3           Added support for generateSearchAreaInFragment property to
+##               work around page too large error
+## 05-feb-2007   Steven Davelaar
+## 1.2           Added call to GROUP_PARTIAL_TRIGGERS macro
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+
+## if we are still in stretchable mode, and the top level region container of this group is enabled for stretching, 
+## then we should create panelStretchLayout  with the region container in the center facet so the
+## contents of the region container will be stretched if possible.
+
+#if ($JHS.engine.stretchEnabled && $JHS.current.group.regionContainer && $JHS.current.group.regionContainer.enableStretching)
+  #set ($rcStretchable = true)
+ #else
+  #set ($rcStretchable = false)
+#end    
+
+#macro (FORM_CONTENT)
+$JHS.engine.pushStretchEnabled($rcStretchable)
+#if ($rcStretchable)
+  <af:panelStretchLayout #if ($JHS.current.group.groupHeight!='') topHeight="${JHS.current.group.groupHeightAsInteger}" #else topHeight="auto" #end id="#NEW_ID("psl")">
+    <f:facet name="top">
+      ## Default items
+      <af:panelGroupLayout id="${JHS.current.group.shortName}FC" layout="vertical">      
+        <af:panelFormLayout rows="${JHS.current.group.rows}" labelAlignment="${JHS.current.group.labelAlignment}"
+                            maxColumns="${JHS.current.group.columns}"
+                            #JHS_PROP("labelWidth" ${JHS.current.group.labelWidth})
+                            #JHS_PROP("fieldWidth" ${JHS.current.group.fieldWidth})
+                            id="${JHS.current.group.shortName}FI">
+          #FORM_ITEMS()
+        </af:panelFormLayout>
+        #MARGIN_SPACER()
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="center">
+      ## Optional regionContainer and its subregions
+      #if ($JHS.current.group.regionContainer)
+       #JHS_PARSE(${JHS.current.group.regionContainer.templateIdentifier} ${JHS.current.group.regionContainer})
+      #end
+    </f:facet>
+   </af:panelStretchLayout> 
+#else
+<af:panelGroupLayout id="${JHS.current.group.shortName}FC" layout="vertical">
+  <f:facet name="separator">
+    #MARGIN_SPACER()
+  </f:facet>
+
+  ## Default items
+  <af:panelFormLayout rows="${JHS.current.group.rows}" labelAlignment="${JHS.current.group.labelAlignment}"
+                      maxColumns="${JHS.current.group.columns}"
+                      #JHS_PROP("labelWidth" ${JHS.current.group.labelWidth})
+                      #JHS_PROP("fieldWidth" ${JHS.current.group.fieldWidth})
+                      id="${JHS.current.group.shortName}FI">
+    #FORM_ITEMS()
+  </af:panelFormLayout>
+
+  ## Optional regionContainer and its subregions
+  #if ($JHS.current.group.regionContainer)
+   #JHS_PARSE(${JHS.current.group.regionContainer.templateIdentifier} ${JHS.current.group.regionContainer})
+  #end
+
+</af:panelGroupLayout>
+$JHS.engine.popStretchEnabled()    
+#end#end
+
+#if ($JHS.current.group.databound)
+
+
+      <af:switcher rendered="#{#GROUP_NOT_IN_FIND_MODE()}"
+                   id="${JHS.current.group.shortName}Sw"
+                   defaultFacet="hasRows"
+                   facetName="#{(#GROUP_HAS_ROW()) ? 'hasRows' : 'noRows'}">
+        <f:facet name="noRows">
+          <af:outputFormatted value="#NO_ROWS_FOUND_LABEL()"
+                              styleUsage="pageStamp"
+                              id="${JHS.current.group.shortName}NoRowsFound"/>
+        </f:facet>
+        <f:facet name="hasRows">
+          #FORM_CONTENT()
+        </f:facet>
+      </af:switcher>
+
+#else
+  ## non databound group
+  
+  #FORM_CONTENT()
+
+#end

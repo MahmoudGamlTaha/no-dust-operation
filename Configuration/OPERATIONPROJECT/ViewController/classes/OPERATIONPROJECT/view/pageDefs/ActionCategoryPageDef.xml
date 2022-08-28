@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="ActionCategoryPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <invokeAction id="clearDeepLinkViewCriteriaInvoke" Binds="clearDeepLinkViewCriteria" Refresh="renderModel"
+                  RefreshCondition="#{'true' != pageFlowScope.jhsQueryByKeyValue}"/>
+    <iterator id="ActionCategoryIterator" Binds="ActionCategory1" DataControl="AppModuleAMDataControl" RangeSize="10"/>
+    <searchRegion id="ActionCategoryIteratorQuery" Binds="ActionCategoryIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="CategoryId"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator id="ActionIterator" Binds="Action1" DataControl="AppModuleAMDataControl" RangeSize="10"/>
+    <searchRegion id="ActionIteratorQuery" Binds="ActionIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="ActionId"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+  </executables>
+  <bindings>
+    <methodAction id="clearDeepLinkViewCriteria" RequiresUpdateModel="true" Action="invokeMethod"
+                  DataControl="AppModuleAMDataControl" InstanceName="AppModuleAMDataControl.dataProvider"
+                  MethodName="clearDeepLinkViewCriteria"
+                  ReturnName="AppModuleAMDataControl.methodResults.AppModuleAMDataControl_dataProvider_clearDeepLinkViewCriteria_result"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="viewObjectUsage" NDValue="ActionCategory1" NDType="java.lang.String"/>
+      <NamedData NDName="requeryIfFound" NDValue="#{true}" NDType="java.lang.Boolean"/>
+    </methodAction>
+    <attributeValues IterBinding="ActionCategoryIterator" id="ActionCategoryCategoryName">
+      <AttrNames>
+        <Item Value="CategoryName"/>
+      </AttrNames>
+    </attributeValues>
+    <tree id="ActionCategoryTable" IterBinding="ActionCategoryIterator">
+      <nodeDefinition Name="ActionCategory" DefName="OPERATIONPROJECT.model.BC.VO.ActionCategoryVO">
+        <AttrNames>
+          <Item Value="CategoryName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ActionCategoryIterator" id="FirstActionCategory" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="ActionCategoryIterator" id="PreviousActionCategory" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="ActionCategoryIterator" id="NextActionCategory" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="ActionCategoryIterator" id="LastActionCategory" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="ActionCategoryIterator" id="SetCurrentRowWithKeyActionCategory" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrActionCategory}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="ActionCategoryIterator" id="CreateActionCategory" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="ActionCategoryIterator" id="DeleteActionCategory" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <tree id="ActionTable" IterBinding="ActionIterator">
+      <nodeDefinition Name="Action" DefName="OPERATIONPROJECT.model.BC.VO.ActionVO">
+        <AttrNames>
+          <Item Value="Description"/>
+          <Item Value="DurationForPoint"/>
+          <Item Value="FinancialPeriod"/>
+          <Item Value="Factor"/>
+          <Item Value="Fixed"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ActionIterator" id="FirstAction" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="ActionIterator" id="PreviousAction" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="ActionIterator" id="NextAction" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="ActionIterator" id="LastAction" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="ActionIterator" id="SetCurrentRowWithKeyAction" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrAction}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="ActionIterator" id="CreateAction" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="ActionIterator" id="DeleteAction" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

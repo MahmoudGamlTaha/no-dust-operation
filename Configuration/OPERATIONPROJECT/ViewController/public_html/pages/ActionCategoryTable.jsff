@@ -1,0 +1,342 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsRegionTemplate.jsf">
+        <f:attribute name="showBreadcrumbs" value="false"/>
+        <!-- DEBUG:BEGIN:WIZARD_PAGE_CONTENT : default/page/wizardPageContent.vm, nesting level: 2 -->
+        <f:facet name="processTrain">
+            <af:train value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}" id="tr0"/>
+        </f:facet>
+        <!-- DEBUG:BEGIN:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3 -->
+        <f:facet name="pageContent">
+            <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4 -->
+            <af:panelStretchLayout topHeight="auto" id="ActionCategoryTopLc"
+                                   partialTriggers=" ActionCategoryDeleteDialog ActionCategoryCancelButton as_ActionCategory ActionCategoryPC:ActionCategoryArm ActionCategoryPC:ActionCategoryduprmTM ActionCategoryPC:ActionCategorydelrmTM ActionCategoryPC:ActionCategoryArl ActionCategoryPC:ActionCategoryTab:ActionCategoryduprm ActionCategoryPC:ActionCategoryTab:ActionCategorydelrm ActionCategoryPC:ActionCategoryTab:ActionCategorydelrl ActionCategoryPC:ActionCategoryTab:ActionCategoryduprl">
+                <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                <f:facet name="top">
+                    <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                    <af:group id="g0">
+                        <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+                        <af:panelHeader id="ph0" text="#{nls['TABLE_TITLE_ACTIONCATEGORY']}">
+                            <f:facet name="toolbar">
+                                <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5 -->
+                                <af:toolbox id="tbox0">
+                                    <af:toolbar id="tbar0">
+                                        <af:group id="gr0">
+                                            <!-- DEBUG:BEGIN:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6 -->
+                                            <af:button actionListener="#{CreateActionCategory.execute}"
+                                                       action="CreateActionCategory"
+                                                       shortDesc="#{nls['NEW_BUTTON_LABEL_ACTIONCATEGORY']}"
+                                                       icon="/jheadstart/images/newRowInForm.png"
+                                                       rendered="#{(true) and (MTSPermission['ActionCategory.create'])}"
+                                                       id="ActionCategoryNewButton"></af:button>
+                                            <!-- DEBUG:END:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6-->
+                                        </af:group>
+                                        <af:group id="gr1"></af:group>
+                                        <af:group id="gr2">
+                                            <af:trainButtonBar value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"/>
+                                            <!-- DEBUG:BEGIN:WIZARD_FINISH_BUTTON : default/button/wizardFinishButton.vm, nesting level: 6 -->
+                                            <af:button action="#{SaveActionCategory.execute}"
+                                                       textAndAccessKey="#{nls['FINISH']}"
+                                                       id="ActionCategoryWizardFinishButton"></af:button>
+                                            <!-- DEBUG:END:WIZARD_FINISH_BUTTON : default/button/wizardFinishButton.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6 -->
+                                            <af:button textAndAccessKey="#{nls['CANCEL']}" immediate="true"
+                                                       partialSubmit="true"
+                                                       rendered="#{!pageFlowScope.hideCancelButton}"
+                                                       actionListener="#{jhsRollback.execute}" action="Cancel"
+                                                       id="ActionCategoryCancelButton"></af:button>
+                                            <!-- DEBUG:END:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6-->
+                                        </af:group>
+                                    </af:toolbar>
+                                </af:toolbox>
+                                <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5-->
+                            </f:facet>
+                            <f:facet name="context">
+                                <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5 -->
+                                <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5-->
+                            </f:facet>
+                            <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+                            <!-- DEBUG:BEGIN:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 6 -->
+                            <af:panelGroupLayout id="modelSearchAreaActionCategory"
+                                                 rendered="#{!pageFlowScope.createModes.CreateActionCategory and !pageFlowScope.hideSearchArea}"
+                                                 partialTriggers="">
+                                <f:attribute name="JhsIgnoreChanges" value="true"/>
+                                <!-- DEBUG:BEGIN:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 7 -->
+                                <af:query id="as_ActionCategory" headerText="#{nls['ADVANCED_SEARCH']}" disclosed="true"
+                                          value="#{bindings.ActionCategoryIteratorQuery.queryDescriptor}"
+                                          model="#{bindings.ActionCategoryIteratorQuery.queryModel}"
+                                          queryListener="#{bindings.ActionCategoryIteratorQuery.processQuery}"
+                                          queryOperationListener="#{bindings.ActionCategoryIteratorQuery.processQueryOperation}"
+                                          rows="1" labelAlignment="start" maxColumns="3"></af:query>
+                                <!-- DEBUG:END:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 7-->
+                            </af:panelGroupLayout>
+                            <!-- DEBUG:END:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 6-->
+                            <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+                        </af:panelHeader>
+                        <af:spacer width="10" height="10" id="sp0"/>
+                    </af:group>
+                    <!-- Popped "disabled" from stretchContext, now: enabled (default) -->
+                </f:facet>
+                <f:facet name="center">
+                    <!-- DEBUG:BEGIN:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5 -->
+                    <af:panelStretchLayout topHeight="0" id="psl0">
+                        <f:facet name="top"></f:facet>
+                        <f:facet name="center">
+                            <!-- Pushed "enabled" on stretchContext, now: enabled (default), enabled (custom/pageComponent/MtstableGroup.vm) -->
+                            <af:panelSplitter orientation="vertical" styleClass="AFStretchWidth" id="ps0"
+                                              splitterPosition="240">
+                                <f:facet name="first">
+                                    <af:panelCollection id="ActionCategoryPC" featuresOff="  "
+                                                        styleClass="AFStretchWidth">
+                                        <f:facet name="menus">
+                                            <!-- DEBUG:BEGIN:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6 -->
+                                            <af:menu textAndAccessKey="#{nls['ACTION_MENU_LABEL']}" id="menu0">
+                                                <af:menu textAndAccessKey="#{nls['GO_TO_MENU_LABEL']}" id="menu1">
+                                                    <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                                    <af:commandMenuItem id="mi0"
+                                                                        textAndAccessKey="#{nls['DETAIL_VIEW_BUTTON_LABEL']}"
+                                                                        action="ActionCategoryDetails"></af:commandMenuItem>
+                                                    <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                                    <!-- DEBUG:BEGIN:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7 -->
+                                                    <af:group id="ActionCategorytbb"
+                                                              rendered="#{ bindings.ActionCategoryIterator.currentRow!=null }">
+                                                        <af:commandMenuItem actionListener="#{bindings.FirstActionCategory.execute}"
+                                                                            id="ActionCategoryFirst"
+                                                                            partialSubmit="true"
+                                                                            icon="/afr/shuttleleftall_ena.png"
+                                                                            textAndAccessKey="#{nls['FIRST_ROW']}"></af:commandMenuItem>
+                                                        <af:commandMenuItem actionListener="#{bindings.PreviousActionCategory.execute}"
+                                                                            icon="/afr/shuttleleft_ena.png"
+                                                                            textAndAccessKey="#{nls['PREVIOUS_ROW']}"
+                                                                            id="ActionCategoryPrevious"
+                                                                            partialSubmit="true"></af:commandMenuItem>
+                                                        <af:commandMenuItem actionListener="#{bindings.NextActionCategory.execute}"
+                                                                            icon="/afr/shuttleright_ena.png"
+                                                                            textAndAccessKey="#{nls['NEXT_ROW']}"
+                                                                            id="ActionCategoryNext"
+                                                                            partialSubmit="true"></af:commandMenuItem>
+                                                        <af:commandMenuItem actionListener="#{bindings.LastActionCategory.execute}"
+                                                                            icon="/afr/shuttlerightall_ena.png"
+                                                                            textAndAccessKey="#{nls['LAST_ROW']}"
+                                                                            id="ActionCategoryLast"
+                                                                            partialSubmit="true"></af:commandMenuItem>
+                                                    </af:group>
+                                                    <!-- DEBUG:END:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7-->
+                                                </af:menu>
+                                                <!-- DEBUG:BEGIN:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7 -->
+                                                <af:commandMenuItem id="ActionCategoryArm"
+                                                                    textAndAccessKey="#{nls['ADD_ROW']}"
+                                                                    immediate="false"
+                                                                    icon="/jheadstart/images/addRow.png"
+                                                                    partialSubmit="true"
+                                                                    actionListener="#{pageFlowScope.ActionCategoryTable.addRow}"
+                                                                    rendered="#{(true) and (MTSPermission['ActionCategory.create'])}"></af:commandMenuItem>
+                                                <!-- DEBUG:END:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                                <af:commandMenuItem id="ActionCategoryduprmTM"
+                                                                    textAndAccessKey="#{nls['DUPLICATE_ROW']}"
+                                                                    immediate="true"
+                                                                    icon="/jheadstart/images/duplicateRow.png"
+                                                                    partialSubmit="true"
+                                                                    actionListener="#{pageFlowScope.ActionCategoryTable.duplicateRow}"
+                                                                    rendered="#{MTSPermission['ActionCategory.create']}"></af:commandMenuItem>
+                                                <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                                <af:commandMenuItem id="ActionCategorydelrmTM"
+                                                                    textAndAccessKey="#{nls['DELETE_ROW']}"
+                                                                    icon="/jheadstart/images/deleteRow.png"
+                                                                    partialSubmit="true" immediate="true"
+                                                                    rendered="#{MTSPermission['ActionCategory.delete']}">
+                                                    <af:showPopupBehavior popupId="::ActionCategoryDeletePopup"/>
+                                                </af:commandMenuItem>
+                                                <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7-->
+                                            </af:menu>
+                                            <!-- DEBUG:END:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6-->
+                                        </f:facet>
+                                        <f:facet name="toolbar">
+                                            <!-- DEBUG:BEGIN:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6 -->
+                                            <af:toolbar id="tbar1">
+                                                <!-- DEBUG:BEGIN:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7 -->
+                                                <!-- Also create CreateActionCategory bean so we can start table group in create mode as well -->
+                                                <af:link id="ActionCategoryArl" immediate="false"
+                                                         rendered="#{(true) and (MTSPermission['ActionCategory.create'])}"
+                                                         partialSubmit="true"
+                                                         actionListener="#{pageFlowScope.ActionCategoryTable.addRow}"
+                                                         shortDesc="#{nls['ADD_ROW']}"
+                                                         icon="/jheadstart/images/addRow.png"/>
+                                                <!-- DEBUG:END:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7-->
+                                            </af:toolbar>
+                                            <!-- DEBUG:END:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6-->
+                                        </f:facet>
+                                        <f:facet name="statusbar"/>
+                                        <af:table id="ActionCategoryTab" contentDelivery="immediate"
+                                                  value="#{bindings.ActionCategoryTable.collectionModel}"
+                                                  columnStretching="last" rowBandingInterval="0" editingMode="editAll"
+                                                  columnSelection="multiple" contextMenuSelect="true"
+                                                  rowSelection="single"
+                                                  selectionListener="#{pageFlowScope.ActionCategoryTable.makeCurrent}"
+                                                  selectedRowKeys="#{pageFlowScope.ActionCategoryTable.selectedRow}"
+                                                  rowDisclosureListener="#{pageFlowScope.ActionCategoryTable.discloseRow}"
+                                                  var="row" varStatus="status"
+                                                  fetchSize="#{bindings.ActionCategoryTable.rangeSize}"
+                                                  emptyText="#{nls['NO_ROWS_FOUND']}"
+                                                  queryListener="#{bindings.ActionCategoryIteratorQuery.processQuery}"
+                                                  filterModel="#{bindings.ActionCategoryIteratorQuery.queryDescriptor}"
+                                                  filterVisible="true"
+                                                  binding="#{pageFlowScope.ActionCategoryTable.table}"
+                                                  partialTriggers=" :::as_ActionCategory :::ActionCategoryPC ::ActionCategoryFirst ::ActionCategoryPrevious ::ActionCategoryNext ::ActionCategoryLast"
+                                                  styleClass="AFStretchWidth"
+                                                  summary="#{nls['TABLE_TITLE_ACTIONCATEGORY']}">
+                                            <!-- DEBUG:BEGIN:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6 -->
+                                            <f:facet name="contextMenu">
+                                                <af:popup id="ActionCategoryTablePopup" childCreation="deferred">
+                                                    <af:menu id="menu2">
+                                                        <af:menu text="#{nls['GO_TO_MENU_LABEL']}" id="menu3">
+                                                            <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                                            <af:commandMenuItem id="mi1"
+                                                                                textAndAccessKey="#{nls['DETAIL_VIEW_BUTTON_LABEL']}"
+                                                                                action="ActionCategoryDetails"></af:commandMenuItem>
+                                                            <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                                        </af:menu>
+                                                        <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                                        <af:commandMenuItem id="ActionCategoryduprm"
+                                                                            textAndAccessKey="#{nls['DUPLICATE_ROW']}"
+                                                                            immediate="true"
+                                                                            icon="/jheadstart/images/duplicateRow.png"
+                                                                            partialSubmit="true"
+                                                                            actionListener="#{pageFlowScope.ActionCategoryTable.duplicateRow}"
+                                                                            rendered="#{MTSPermission['ActionCategory.create']}"></af:commandMenuItem>
+                                                        <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                                        <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                                        <af:commandMenuItem id="ActionCategorydelrm"
+                                                                            textAndAccessKey="#{nls['DELETE_ROW']}"
+                                                                            icon="/jheadstart/images/deleteRow.png"
+                                                                            partialSubmit="true" immediate="true"
+                                                                            rendered="#{MTSPermission['ActionCategory.delete']}">
+                                                            <af:showPopupBehavior popupId=":::ActionCategoryDeletePopup"/>
+                                                        </af:commandMenuItem>
+                                                        <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                                    </af:menu>
+                                                </af:popup>
+                                            </f:facet><!-- DEBUG:END:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6 --><!-- DEBUG:END:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6 -->
+                                            <af:column id="ActionCategoryActionColumn" width="60" align="center"
+                                                       headerText=" ">
+                                                <af:panelGroupLayout layout="horizontal" id="pgl0">
+                                                    <!-- DEBUG:BEGIN:DETAILS_LINK : default/button/detailsLink.vm, nesting level: 7 -->
+                                                    <af:link action="ActionCategoryDetails" id="ActionCategoryGtd"
+                                                             shortDesc="#{nls['DETAIL_VIEW_BUTTON_LABEL']}"
+                                                             icon="/jheadstart/images/editRow.png"/>
+                                                    <!-- DEBUG:END:DETAILS_LINK : default/button/detailsLink.vm, nesting level: 7-->
+                                                    <!-- DEBUG:BEGIN:DELETE_ROW_LINK : default/button/deleteRowLink.vm, nesting level: 7 -->
+                                                    <af:link id="ActionCategorydelrl" partialSubmit="true"
+                                                             immediate="true"
+                                                             rendered="#{MTSPermission['ActionCategory.delete']}"
+                                                             shortDesc="#{nls['DELETE_ROW']}"
+                                                             icon="/jheadstart/images/deleteRow.png">
+                                                        <af:showPopupBehavior popupId=":::ActionCategoryDeletePopup"/>
+                                                    </af:link>
+                                                    <!-- DEBUG:END:DELETE_ROW_LINK : default/button/deleteRowLink.vm, nesting level: 7-->
+                                                    <!-- DEBUG:BEGIN:DUPLICATE_ROW_LINK : default/button/duplicateRowLink.vm, nesting level: 7 -->
+                                                    <af:link id="ActionCategoryduprl" immediate="true"
+                                                             partialSubmit="true"
+                                                             actionListener="#{pageFlowScope.ActionCategoryTable.duplicateRow}"
+                                                             rendered="#{MTSPermission['ActionCategory.create']}"
+                                                             shortDesc="#{nls['DUPLICATE_ROW']}"
+                                                             icon="/jheadstart/images/duplicateRow.png"/>
+                                                    <!-- DEBUG:END:DUPLICATE_ROW_LINK : default/button/duplicateRowLink.vm, nesting level: 7-->
+                                                </af:panelGroupLayout>
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                            <af:column id="ActionCategoryCategoryNameCol" sortable="true"
+                                                       filterable="true" noWrap="true" width="150"
+                                                       sortProperty="CategoryName" rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{nls['ACTIONCATEGORY_TABLE_CATEGORYNAME']}"
+                                                                    showRequired="#{bindings.ActionCategoryTable.hints.CategoryName.mandatory}"
+                                                                    id="ol0"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                                <af:inputText id="ActionCategoryCategoryName"
+                                                              value="#{row.bindings.CategoryName.inputValue}"
+                                                              label="#{nls['ACTIONCATEGORY_TABLE_CATEGORYNAME']}"
+                                                              required="#{bindings.ActionCategoryTable.hints.CategoryName.mandatory}"
+                                                              rows="#{bindings.ActionCategoryTable.hints.CategoryName.displayHeight}"
+                                                              columns="#{bindings.ActionCategoryTable.hints.CategoryName.displayWidth}"
+                                                              maximumLength="4000"
+                                                              readOnly="#{((pageFlowScope.ActionCategoryTable.newRow) and (!(MTSPermission['ActionCategory.create']))) or ((!pageFlowScope.ActionCategoryTable.newRow) and (!(MTSPermission['ActionCategory.update'])))}"
+                                                              shortDesc="#{bindings.ActionCategoryTable.hints.CategoryName.tooltip}">
+                                                    <f:validator binding="#{row.bindings.CategoryName.validator}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                        </af:table>
+                                    </af:panelCollection>
+                                </f:facet>
+                                <f:facet name="second">
+                                    <!-- DEBUG:BEGIN:TABLE_OVERFLOW_AREA : default/pageComponent/tableOverflowArea.vm, nesting level: 6 -->
+                                    <!-- Pushed "disabled" on stretchContext, now: enabled (default), enabled (custom/pageComponent/MtstableGroup.vm), disabled (default/pageComponent/tableOverflowArea.vm) -->
+                                    <af:panelGroupLayout id="pgl1"
+                                                         rendered="#{bindings.ActionCategoryIterator.estimatedRowCount>0}"
+                                                         partialTriggers="ActionCategoryPC:ActionCategoryTab"
+                                                         layout="scroll">
+                                        <f:facet name="separator">
+                                            <af:spacer width="10" height="10" id="sp1"/>
+                                        </f:facet>
+                                        <af:panelFormLayout rows="1" maxColumns="1" labelAlignment="start" id="pfl0"></af:panelFormLayout>
+                                        <!-- DEBUG:BEGIN:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 7-->
+                                    </af:panelGroupLayout>
+                                    <!-- Popped "disabled" from stretchContext, now: enabled (default), enabled (custom/pageComponent/MtstableGroup.vm) -->
+                                    <!-- DEBUG:END:TABLE_OVERFLOW_AREA : default/pageComponent/tableOverflowArea.vm, nesting level: 6-->
+                                </f:facet>
+                            </af:panelSplitter>
+                            <!-- Popped "enabled" from stretchContext, now: enabled (default) -->
+                        </f:facet>
+                    </af:panelStretchLayout>
+                    <!-- DEBUG:END:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5-->
+                </f:facet>
+            </af:panelStretchLayout>
+            <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4-->
+        </f:facet>
+        <f:facet name="popups">
+            <af:panelGroupLayout id="popupsPgl">
+                <!-- DEBUG:BEGIN:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 8 -->
+                <af:popup id="ActionCategoryDeletePopup" contentDelivery="lazyUncached" childCreation="deferred">
+                    <af:dialog type="none" title="#{nls['WARNING']}" modal="true" id="ActionCategoryDeleteDialog">
+                        <af:outputText value="#{nls['DELETE_WARNING_ACTIONCATEGOR:#{bindings.ActionCategoryIterator.currentRowIndexInRange+1}']} "
+                                       id="ot0"/>
+                        <f:attribute name="methodExpression" value="#{'#{DeleteActionCategory.execute}'}"/>
+                        <f:facet name="buttonBar">
+                            <af:group id="g1">
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_YES']}" id="cb0" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.confirm}"/>
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_NO']}" id="cb1" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.abort}"/>
+                            </af:group>
+                        </f:facet>
+                    </af:dialog>
+                </af:popup>
+                <!-- DEBUG:END:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 8-->
+            </af:panelGroupLayout>
+        </f:facet>
+        <!-- DEBUG:END:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3-->
+        <!-- DEBUG:END:WIZARD_PAGE_CONTENT : default/page/wizardPageContent.vm, nesting level: 2-->
+    </af:pageTemplate>
+</ui:composition>
+
+
+

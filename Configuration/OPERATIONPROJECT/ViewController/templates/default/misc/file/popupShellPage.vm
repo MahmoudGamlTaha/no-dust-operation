@@ -1,0 +1,29 @@
+## revision_history
+## 31-oct-2013   Steven Davelaar
+## 2.6           Moved metaContainer facet to separate macro
+## 11-oct-2011   Steven Davelaar
+## 1.5           Use page_start/end macros to switch between facelets and jspx 
+## 22-feb-2011   Steven Davelaar
+## 1.4           Change encoding to pageEncoding
+## 04-feb-2011   Steven Davelaar
+## 1.3           replaced hardcoded JSP version number with JSP_VERSION macro
+## 01-nov-2010   Steven Davelaar
+## 1.2           Added call to keyboard server listener
+## 13-jul-2010   Steven Davelaar
+## 1.1           Added metaContainer facet so javascript methods can be used in popup page as well
+## 02-jan-2010   Steven Davelaar
+## 1.0           Initial creation
+<?xml version='1.0' #PAGE_ENCODING_PROP()?>
+#PAGE_START()
+    <af:document id="d1" title="#{pageFlowScope.popupTitle}">
+      #META_CONTAINER_FACET()
+      <af:form id="dataForm">
+        <af:panelStretchLayout id="psl">
+          <f:facet name="center">
+            <af:region value="#{bindings.popupRegion.regionModel}" id="r1"/>
+          </f:facet>
+        </af:panelStretchLayout>
+      </af:form>
+      #KEYBOARD_SERVER_LISTENER()
+    </af:document>
+#PAGE_END()

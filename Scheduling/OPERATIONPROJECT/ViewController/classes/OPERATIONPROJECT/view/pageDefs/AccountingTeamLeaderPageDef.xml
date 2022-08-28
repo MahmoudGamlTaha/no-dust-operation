@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="AccountingTeamLeaderPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="validateCurrentRows">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Name="AccountingTeamLeaderNewItemVar" Type="String"/>
+    </variableIterator>
+    <iterator Binds="WeekDaysVO1" RangeSize="25" DataControl="AppModuleAMDataControl" id="WeekDaysVO1Iterator"
+              ChangeEventPolicy="ppr"/>
+    <iterator Binds="InvoiceScheduleVO1" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="InvoiceScheduleVO1Iterator" ChangeEventPolicy="ppr"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="variables" id="AccountingTeamLeaderNewItem">
+      <AttrNames>
+        <Item Value="AccountingTeamLeaderNewItemVar"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+    <action IterBinding="WeekDaysVO1Iterator" id="First" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="WeekDaysVO1Iterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="WeekDaysVO1Iterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="WeekDaysVO1Iterator" id="Last" RequiresUpdateModel="true" Action="last"/>
+    <attributeValues IterBinding="WeekDaysVO1Iterator" id="WorkingDate">
+      <AttrNames>
+        <Item Value="WorkingDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WeekDaysVO1Iterator" id="DayName">
+      <AttrNames>
+        <Item Value="DayName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WeekDaysVO1Iterator" id="B_Num">
+      <AttrNames>
+        <Item Value="B_Num"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WeekDaysVO1Iterator" id="SMSContent">
+      <AttrNames>
+        <Item Value="SMSContent"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="InvoiceScheduleVO1Iterator" id="InvoiceScheduleVO1">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.InvoiceScheduleVO" Name="InvoiceScheduleVO10">
+        <AttrNames>
+          <Item Value="AreaId"/>
+          <Item Value="AreaName"/>
+          <Item Value="ContractNum"/>
+          <Item Value="WorkingDate"/>
+          <Item Value="AccountingAgent"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="WeekDaysVO1Iterator" ListOperMode="navigation" ListIter="WeekDaysVO1Iterator" id="WeekDaysVO1"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="WorkingDate"/>
+        <Item Value="DayName"/>
+      </AttrNames>
+    </list>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CloseReasonROV"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="OPERATIONPROJECT.model.BC.VO.Lookups.CloseReasonROV_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="bindCloseCodeId"
+    Kind="viewcriteria"
+    Type="java.lang.Long"/>
+  <SQLQuery><![CDATA[select cr.CLOSE_REASON_ID , cr.CLOSE_CODE_GROUP , cr.CLOSE_REASON_NAME 
+from CLOSE_REASON cr]]></SQLQuery>
+  <ViewAttribute
+    Name="CloseReasonId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.Long"
+    ColumnType="NUMBER"
+    AliasName="CLOSE_REASON_ID"
+    Expression="CLOSE_REASON_ID"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="CloseCodeGroup"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.Long"
+    ColumnType="NUMBER"
+    AliasName="CLOSE_CODE_GROUP"
+    Expression="CLOSE_CODE_GROUP"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="CloseReasonName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CLOSE_REASON_NAME"
+    Expression="CLOSE_REASON_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="CloseReasonROVCriteria"
+    ViewObjectName="OPERATIONPROJECT.model.BC.VO.Lookups.CloseReasonROV"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="CloseReasonROVCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="CloseReasonROVCriteria_CloseReasonROVCriteria_row_0_CloseCodeGroup"
+        ViewAttribute="CloseCodeGroup"
+        Operator="="
+        Conjunction="AND"
+        Value=":bindCloseCodeId"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="CloseReasonId"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="OPERATIONPROJECT.model.BC.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

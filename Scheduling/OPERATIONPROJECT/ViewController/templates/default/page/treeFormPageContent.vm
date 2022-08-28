@@ -1,0 +1,18 @@
+## revision_history
+## 23-jun-2009   Paco van der Linden
+## 2.0           Restructured layout according to (stretching) best-practices.
+## 15-jun-2007   Jaco Verheul. R11
+## 03-jan-2007   Steven Davelaar
+## 1.2           Added loop over child groups on separate page to show New Child
+##               button, or "go to child" button.   
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+
+## Moved tree menu3 facet to group-specific UI Shell Page
+##        <f:facet name="menu3">
+##            #TREE_MENU3(${JHS.current.group.treeBaseGroup.name})
+##        </f:facet>
+
+#JHS_PARSE("PAGE_CONTENT" ${JHS.current.model})
+
+

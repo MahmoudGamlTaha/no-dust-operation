@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SelectedDayEO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="CURRENT_DAY"
+  AliasName="SelectedDayEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="CurrentDate"
+    ColumnName="CURRENT_DATE"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="CURRENT_DAY"
+    PrimaryKey="true"/>
+  <Key
+    Name="SelecteddayeoPrimaryKey"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SELECTEDDAYEO_PRIMARY_KEY"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.SelectedDayEO.CurrentDate"/>
+    </AttrArray>
+  </Key>
+</Entity>

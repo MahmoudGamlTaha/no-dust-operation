@@ -1,0 +1,154 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<task-flow-registry xmlns="http://xmlns.oracle.com/adf/controller/rc">
+   <task-flow-descriptor path="META-INF/adfc-config.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/AppModuleAM-Breadcrumb-beans.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/JhsCommon-beans.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-AccountingAgent.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-AccountingAgent.xml" id="AccountingAgentTaskFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="createAccountingAgent"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="rowKeyValueAccountingAgent"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="rowKeyAccountingAgent"/>
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="parentContext"/>
+      <input-parameter name="altKeyNameAccountingAgent"/>
+      <input-parameter name="rowKeyStrAccountingAgent"/>
+      <input-parameter name="isDeepLink"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/adfc-config-AccountingDispatchSupervisor.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-AccountingDispatchSupervisor.xml" id="AccountingDispatchSupervisorTaskFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="parentContext"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="isDeepLink"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/adfc-config-AccountingTeamLeader.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-AccountingTeamLeader.xml" id="AccountingTeamLeaderTaskFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="parentContext"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="isDeepLink"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/adfc-config-AgentAreasVO.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-AgentAreasVO.xml" id="AgentAreasVOTaskFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="createAgentAreasVO"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="rowKeyStrAgentAreasVO"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="parentContext"/>
+      <input-parameter name="altKeyNameAgentAreasVO"/>
+      <input-parameter name="rowKeyAgentAreasVO"/>
+      <input-parameter name="isDeepLink"/>
+      <input-parameter name="rowKeyValueAgentAreasVO"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/adfc-config-Countries1.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-Countries1.xml" id="Countries1TaskFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="rowKeyCountries1"/>
+      <input-parameter name="rowKeyStrCountries1"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="altKeyNameCountries1"/>
+      <input-parameter name="rowKeyValueCountries1"/>
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="parentContext"/>
+      <input-parameter name="createCountries1"/>
+      <input-parameter name="isDeepLink"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/adfc-config-WeekDaysAgentVO.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-WeekDaysAgentVO.xml" id="WeekDaysAgentVOTaskFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="rowKeyValueWeekDaysAgentVO"/>
+      <input-parameter name="parentContext"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="altKeyNameWeekDaysAgentVO"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="isDeepLink"/>
+      <input-parameter name="rowKeyStrWeekDaysAgentVO"/>
+      <input-parameter name="rowKeyWeekDaysAgentVO"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/adfc-config-WeekDaysSupervisorVO.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-WeekDaysSupervisorVO.xml" id="WeekDaysSupervisorVOTaskFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="rowKeyStrWeekDaysSupervisorVO"/>
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="altKeyNameWeekDaysSupervisorVO"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="parentContext"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="rowKeyWeekDaysSupervisorVO"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="isDeepLink"/>
+      <input-parameter name="rowKeyValueWeekDaysSupervisorVO"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/adfc-config-WeekDaysVO.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-WeekDaysVO.xml" id="WeekDaysVOTaskFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="rowKeyValueWeekDaysVO"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="parentContext"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="rowKeyStrWeekDaysVO"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="isDeepLink"/>
+      <input-parameter name="rowKeyWeekDaysVO"/>
+      <input-parameter name="altKeyNameWeekDaysVO"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/adfc-config-appmoduleam.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-ddd.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-ddd.xml" id="dddTaskFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="rowKeyStrddd"/>
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="createddd"/>
+      <input-parameter name="altKeyNameddd"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="parentContext"/>
+      <input-parameter name="isDeepLink"/>
+      <input-parameter name="rowKeyddd"/>
+      <input-parameter name="rowKeyValueddd"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/jhs-bounded-taskflow-template.xml" id="jhs-bounded-taskflow-template" type="task-flow-template" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified">
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="isDeepLink"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/jhs-fragment-taskflow-template.xml" id="jhs-fragment-taskflow-template" type="task-flow-template" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="parentContext"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="isDeepLink"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/jhs-lov-taskflow-template.xml" id="jhs-lov-taskflow-template" type="task-flow-template" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified">
+      <input-parameter name="lovItemBeanRef"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/popup-shell-taskflow.xml" id="popup-shell-taskflow" type="task-flow-definition" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="parametersMap"/>
+      <input-parameter name="popupTitle"/>
+      <input-parameter name="taskFlowId"/>
+   </task-flow-descriptor>
+</task-flow-registry>

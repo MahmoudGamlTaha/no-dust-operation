@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <metadata-resource id="__1">/WEB-INF/adfc-config-appmoduleam.xml</metadata-resource>
+  <metadata-resource id="__2">/WEB-INF/jhs-bounded-taskflow-template.xml</metadata-resource>
+  <metadata-resource id="__3">/WEB-INF/jhs-fragment-taskflow-template.xml</metadata-resource>
+  <metadata-resource id="__4">/WEB-INF/jhs-lov-taskflow-template.xml</metadata-resource>
+  <metadata-resource id="__5">/WEB-INF/popup-shell-taskflow.xml</metadata-resource>
+  <metadata-resource id="__6">/WEB-INF/JhsCommon-beans.xml</metadata-resource>
+  <metadata-resource id="__7">/WEB-INF/AppModuleAM-Breadcrumb-beans.xml</metadata-resource>
+  <metadata-resource id="__8">/WEB-INF/adfc-config-Countries1.xml</metadata-resource>
+  <metadata-resource id="__13">/WEB-INF/adfc-config-ddd.xml</metadata-resource>
+  <metadata-resource id="__14">/WEB-INF/adfc-config-WeekDaysVO.xml</metadata-resource>
+  <metadata-resource id="__15">/WEB-INF/adfc-config-CarReconciliation.xml</metadata-resource>
+  <metadata-resource id="__16">/WEB-INF/adfc-config-PostTeamleader.xml</metadata-resource>
+  <metadata-resource id="__17">/WEB-INF/adfc-config-DataTeamLeaderScreen.xml</metadata-resource>
+  <metadata-resource id="__18">/WEB-INF/adfc-config-PostScreen.xml</metadata-resource>
+  <metadata-resource id="__19">/WEB-INF/adfc-config-DataTeamAgent.xml</metadata-resource>
+  <metadata-resource id="__20">/WEB-INF/adfc-config-DataTeamAgentPendingWork.xml</metadata-resource>
+  <metadata-resource id="__21">/WEB-INF/adfc-config-ProductContractDDownloadVO.xml</metadata-resource>
+  <metadata-resource id="__23">/WEB-INF/adfc-config-DataTeamAgentDashboard.xml</metadata-resource>
+  <metadata-resource id="__24">/WEB-INF/adfc-config-DataTeamAgentNotesReview.xml</metadata-resource>
+  <metadata-resource id="__25">/WEB-INF/adfc-config-DataTeamAgentEndOfDayReview.xml</metadata-resource>
+  <metadata-resource id="__26">/WEB-INF/adfc-config-DataTeamAgentContractReview.xml</metadata-resource>
+  <metadata-resource id="__27">/WEB-INF/adfc-config-NewCancelSalesContractProducts.xml</metadata-resource>
+  <metadata-resource id="__28">/WEB-INF/adfc-config-DataTeamAgentCarReconciliation.xml</metadata-resource>
+  <metadata-resource id="__29">/WEB-INF/adfc-config-PilotCoverGroup.xml</metadata-resource>
+  <metadata-resource id="__30">/WEB-INF/adfc-config-ProductDetailsGroup.xml</metadata-resource>
+  <metadata-resource id="__31">/WEB-INF/adfc-config-ProductLostRlost.xml</metadata-resource>
+  <metadata-resource id="__32">/WEB-INF/adfc-config-HubCoverGroup.xml</metadata-resource>
+  <managed-bean id="__9">
+    <managed-bean-name>MTSPermission</managed-bean-name>
+    <managed-bean-class>MTS.security.MTSClasses.MTSPermission</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__10">
+    <managed-bean-name>AdministrationBean</managed-bean-name>
+    <managed-bean-class>MTS.security.MTSClasses.AdministrationBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__11">
+    <managed-bean-name>MtsMenusLists</managed-bean-name>
+    <managed-bean-class>MTS.security.MTSClasses.MtsMenusLists</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__12">
+    <managed-bean-name>UserProfile</managed-bean-name>
+    <managed-bean-class>MTS.security.MTSClasses.UserProfile</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__22">
+    <managed-bean-name>DataTeamAgentBean</managed-bean-name>
+    <managed-bean-class>MTS.security.MTSClasses.DataTeamAgentBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+</adfc-config>

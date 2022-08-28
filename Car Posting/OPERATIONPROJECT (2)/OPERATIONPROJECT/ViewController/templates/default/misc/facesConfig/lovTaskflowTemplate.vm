@@ -1,0 +1,63 @@
+## revision_history
+## 13-feb-2012   Steven Davelaar
+## 1.5           Added jhsLovTaskFlowManager and doLovValidation TF call and control flow rule (LOV page can itself use other LOV's...)
+## 01-feb-2012   Steven Davelaar
+## 1.4           Removed isolated dc scope, only needed for updateable LOV's, developer can set this scope
+##               at the group level if needed.
+## 02-sep-2011   Sandra Muller
+## 1.3           Added pendingChangesBean, needed because pendingChangesPopup was added in JhsRegionTemplate.jspx
+## 18-may-2010   Steven Davelaar
+## 1.2           Added id property to all elements
+## 16-mar-2009   Evert-Jan de Bruin
+## 1.1           Added support for LOV for validation
+## 15-aug-2008   Steven Davelaar
+## 1.0           Initial creation
+<?xml version="1.0" #ENCODING_PROP() ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-template id="jhs-lov-taskflow-template">
+
+    <input-parameter-definition id="#NEW_ID("__")">
+      <name id="#NEW_ID("__")">lovItemBeanRef</name>
+      <class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.LovItemBean</class>
+    </input-parameter-definition>
+    
+    <managed-bean id="#NEW_ID("__")">
+      <managed-bean-name id="#NEW_ID("__")">pendingChangesBean</managed-bean-name>
+      <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.PendingChangesBean</managed-bean-class>
+      <managed-bean-scope id="#NEW_ID("__")">pageFlow</managed-bean-scope>
+    </managed-bean>
+
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">jhsLovTaskFlowManager</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.SimpleDynamicRegionManager</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">pageFlow</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">jhsLovPopup</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.UIComponentBinder</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">pageFlow</managed-bean-scope>
+  </managed-bean>
+
+    <task-flow-call id="DoLovValidation">
+      <dynamic-task-flow-reference>#{pageFlowScope.LovItemBean.lovTaskFlowId}</dynamic-task-flow-reference>
+      <input-parameter-map>#{pageFlowScope.LovItemBean.lovParamsMap}</input-parameter-map>
+      <return-value id="#NEW_ID("__")">
+        <name>LovValidationRow</name>
+        <value>#{pageFlowScope.LovItemBean.lovValidationRow}</value>
+      </return-value>
+    </task-flow-call>
+
+   <control-flow-rule id="#NEW_ID("__")">
+    <from-activity-id id="#NEW_ID("__")">*</from-activity-id>
+      <control-flow-case id="#NEW_ID("__")">
+        <from-outcome id="#NEW_ID("__")">doLovValidation</from-outcome>
+        <to-activity-id id="#NEW_ID("__")">DoLovValidation</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+
+    <use-page-fragments/>
+
+  </task-flow-template>
+</adfc-config>
+

@@ -1,0 +1,430 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsRegionTemplate.jsf">
+        <f:attribute name="showBreadcrumbs" value="false"/>
+        <!-- DEBUG:BEGIN:WIZARD_PAGE_CONTENT : default/page/wizardPageContent.vm, nesting level: 2 -->
+        <f:facet name="processTrain">
+            <af:train value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}" id="tr0"/>
+        </f:facet>
+        <!-- DEBUG:BEGIN:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3 -->
+        <f:facet name="pageContent">
+            <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4 -->
+            <af:panelStretchLayout topHeight="auto" id="PackageTopLc"
+                                   partialTriggers=" PackageDeleteDialog PackageCancelButton as_Package PackagePC:PackageArm PackagePC:PackageduprmTM PackagePC:PackagedelrmTM PackagePC:PackageArl PackagePC:PackageTab:Packageduprm PackagePC:PackageTab:Packagedelrm PackagePC:PackageTab:Packagedelrl PackagePC:PackageTab:Packageduprl">
+                <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                <f:facet name="top">
+                    <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                    <af:group id="g0">
+                        <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+                        <af:panelHeader id="ph0" text="#{nls['TABLE_TITLE_PACKAGE']}">
+                            <f:facet name="toolbar">
+                                <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5 -->
+                                <af:toolbox id="tbox0">
+                                    <af:toolbar id="tbar0">
+                                        <af:group id="gr0">
+                                            <!-- DEBUG:BEGIN:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6 -->
+                                            <af:button actionListener="#{CreatePackage.execute}" action="CreatePackage"
+                                                       shortDesc="#{nls['NEW_BUTTON_LABEL_PACKAGE']}"
+                                                       icon="/jheadstart/images/newRowInForm.png"
+                                                       rendered="#{(true) and (MTSPermission['Package.create'])}"
+                                                       id="PackageNewButton"></af:button>
+                                            <!-- DEBUG:END:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6-->
+                                        </af:group>
+                                        <af:group id="gr1"></af:group>
+                                        <af:group id="gr2">
+                                            <af:trainButtonBar value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"/>
+                                            <!-- DEBUG:BEGIN:WIZARD_FINISH_BUTTON : default/button/wizardFinishButton.vm, nesting level: 6 -->
+                                            <af:button action="#{SavePackage.execute}"
+                                                       textAndAccessKey="#{nls['FINISH']}"
+                                                       id="PackageWizardFinishButton"></af:button>
+                                            <!-- DEBUG:END:WIZARD_FINISH_BUTTON : default/button/wizardFinishButton.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6 -->
+                                            <af:button textAndAccessKey="#{nls['CANCEL']}" immediate="true"
+                                                       partialSubmit="true"
+                                                       rendered="#{!pageFlowScope.hideCancelButton}"
+                                                       actionListener="#{jhsRollback.execute}" action="Cancel"
+                                                       id="PackageCancelButton"></af:button>
+                                            <!-- DEBUG:END:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6-->
+                                        </af:group>
+                                    </af:toolbar>
+                                </af:toolbox>
+                                <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5-->
+                            </f:facet>
+                            <f:facet name="context">
+                                <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5 -->
+                                <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5-->
+                            </f:facet>
+                            <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+                            <!-- DEBUG:BEGIN:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 6 -->
+                            <af:panelGroupLayout id="modelSearchAreaPackage"
+                                                 rendered="#{!pageFlowScope.createModes.CreatePackage and !pageFlowScope.hideSearchArea}"
+                                                 partialTriggers="">
+                                <f:attribute name="JhsIgnoreChanges" value="true"/>
+                                <!-- DEBUG:BEGIN:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 7 -->
+                                <af:query id="as_Package" headerText="#{nls['ADVANCED_SEARCH']}" disclosed="true"
+                                          value="#{bindings.PackageIteratorQuery.queryDescriptor}"
+                                          model="#{bindings.PackageIteratorQuery.queryModel}"
+                                          queryListener="#{bindings.PackageIteratorQuery.processQuery}"
+                                          queryOperationListener="#{bindings.PackageIteratorQuery.processQueryOperation}"
+                                          rows="1" labelAlignment="start" maxColumns="3"></af:query>
+                                <!-- DEBUG:END:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 7-->
+                            </af:panelGroupLayout>
+                            <!-- DEBUG:END:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 6-->
+                            <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+                        </af:panelHeader>
+                        <af:spacer width="10" height="10" id="sp0"/>
+                    </af:group>
+                    <!-- Popped "disabled" from stretchContext, now: enabled (default) -->
+                </f:facet>
+                <f:facet name="center">
+                    <!-- DEBUG:BEGIN:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5 -->
+                    <af:panelStretchLayout topHeight="0" id="psl0">
+                        <f:facet name="top"></f:facet>
+                        <f:facet name="center">
+                            <!-- Pushed "enabled" on stretchContext, now: enabled (default), enabled (custom/pageComponent/MtstableGroup.vm) -->
+                            <af:panelSplitter orientation="vertical" styleClass="AFStretchWidth" id="ps0"
+                                              splitterPosition="540">
+                                <f:facet name="first">
+                                    <af:panelCollection id="PackagePC" featuresOff="   freeze "
+                                                        styleClass="AFStretchWidth">
+                                        <f:facet name="menus">
+                                            <!-- DEBUG:BEGIN:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6 -->
+                                            <af:menu textAndAccessKey="#{nls['ACTION_MENU_LABEL']}" id="menu0">
+                                                <af:menu textAndAccessKey="#{nls['GO_TO_MENU_LABEL']}" id="menu1">
+                                                    <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                                    <af:commandMenuItem id="mi0"
+                                                                        textAndAccessKey="#{nls['DETAIL_VIEW_BUTTON_LABEL']}"
+                                                                        action="PackageDetails"></af:commandMenuItem>
+                                                    <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                                    <!-- DEBUG:BEGIN:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7 -->
+                                                    <af:group id="Packagetbb"
+                                                              rendered="#{ bindings.PackageIterator.currentRow!=null }">
+                                                        <af:commandMenuItem actionListener="#{bindings.FirstPackage.execute}"
+                                                                            id="PackageFirst" partialSubmit="true"
+                                                                            icon="/afr/shuttleleftall_ena.png"
+                                                                            textAndAccessKey="#{nls['FIRST_ROW']}"></af:commandMenuItem>
+                                                        <af:commandMenuItem actionListener="#{bindings.PreviousPackage.execute}"
+                                                                            icon="/afr/shuttleleft_ena.png"
+                                                                            textAndAccessKey="#{nls['PREVIOUS_ROW']}"
+                                                                            id="PackagePrevious" partialSubmit="true"></af:commandMenuItem>
+                                                        <af:commandMenuItem actionListener="#{bindings.NextPackage.execute}"
+                                                                            icon="/afr/shuttleright_ena.png"
+                                                                            textAndAccessKey="#{nls['NEXT_ROW']}"
+                                                                            id="PackageNext" partialSubmit="true"></af:commandMenuItem>
+                                                        <af:commandMenuItem actionListener="#{bindings.LastPackage.execute}"
+                                                                            icon="/afr/shuttlerightall_ena.png"
+                                                                            textAndAccessKey="#{nls['LAST_ROW']}"
+                                                                            id="PackageLast" partialSubmit="true"></af:commandMenuItem>
+                                                    </af:group>
+                                                    <!-- DEBUG:END:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7-->
+                                                </af:menu>
+                                                <!-- DEBUG:BEGIN:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7 -->
+                                                <af:commandMenuItem id="PackageArm" textAndAccessKey="#{nls['ADD_ROW']}"
+                                                                    immediate="false"
+                                                                    icon="/jheadstart/images/addRow.png"
+                                                                    partialSubmit="true"
+                                                                    actionListener="#{pageFlowScope.PackageTable.addRow}"
+                                                                    rendered="#{(true) and (MTSPermission['Package.create'])}"></af:commandMenuItem>
+                                                <!-- DEBUG:END:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                                <af:commandMenuItem id="PackageduprmTM"
+                                                                    textAndAccessKey="#{nls['DUPLICATE_ROW']}"
+                                                                    immediate="true"
+                                                                    icon="/jheadstart/images/duplicateRow.png"
+                                                                    partialSubmit="true"
+                                                                    actionListener="#{pageFlowScope.PackageTable.duplicateRow}"
+                                                                    rendered="#{MTSPermission['Package.create']}"></af:commandMenuItem>
+                                                <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                                <af:commandMenuItem id="PackagedelrmTM"
+                                                                    textAndAccessKey="#{nls['DELETE_ROW']}"
+                                                                    icon="/jheadstart/images/deleteRow.png"
+                                                                    partialSubmit="true" immediate="true"
+                                                                    rendered="#{MTSPermission['Package.delete']}">
+                                                    <af:showPopupBehavior popupId="::PackageDeletePopup"/>
+                                                </af:commandMenuItem>
+                                                <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7-->
+                                            </af:menu>
+                                            <!-- DEBUG:END:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6-->
+                                        </f:facet>
+                                        <f:facet name="toolbar">
+                                            <!-- DEBUG:BEGIN:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6 -->
+                                            <af:toolbar id="tbar1">
+                                                <!-- DEBUG:BEGIN:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7 -->
+                                                <!-- Also create CreatePackage bean so we can start table group in create mode as well -->
+                                                <af:link id="PackageArl" immediate="false"
+                                                         rendered="#{(true) and (MTSPermission['Package.create'])}"
+                                                         partialSubmit="true"
+                                                         actionListener="#{pageFlowScope.PackageTable.addRow}"
+                                                         shortDesc="#{nls['ADD_ROW']}"
+                                                         icon="/jheadstart/images/addRow.png"/>
+                                                <!-- DEBUG:END:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7-->
+                                            </af:toolbar>
+                                            <!-- DEBUG:END:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6-->
+                                        </f:facet>
+                                        <f:facet name="statusbar"/>
+                                        <af:table id="PackageTab" contentDelivery="immediate"
+                                                  value="#{bindings.PackageTable.collectionModel}"
+                                                  columnStretching="last" rowBandingInterval="0" editingMode="editAll"
+                                                  columnSelection="multiple" contextMenuSelect="true"
+                                                  rowSelection="single"
+                                                  selectionListener="#{pageFlowScope.PackageTable.makeCurrent}"
+                                                  selectedRowKeys="#{pageFlowScope.PackageTable.selectedRow}"
+                                                  rowDisclosureListener="#{pageFlowScope.PackageTable.discloseRow}"
+                                                  var="row" varStatus="status"
+                                                  fetchSize="#{bindings.PackageTable.rangeSize}"
+                                                  emptyText="#{nls['NO_ROWS_FOUND']}"
+                                                  queryListener="#{bindings.PackageIteratorQuery.processQuery}"
+                                                  filterModel="#{bindings.PackageIteratorQuery.queryDescriptor}"
+                                                  filterVisible="true" binding="#{pageFlowScope.PackageTable.table}"
+                                                  partialTriggers=" :::as_Package :::PackagePC ::PackageFirst ::PackagePrevious ::PackageNext ::PackageLast"
+                                                  styleClass="AFStretchWidth" summary="#{nls['TABLE_TITLE_PACKAGE']}">
+                                            <!-- DEBUG:BEGIN:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6 -->
+                                            <f:facet name="contextMenu">
+                                                <af:popup id="PackageTablePopup" childCreation="deferred">
+                                                    <af:menu id="menu2">
+                                                        <af:menu text="#{nls['GO_TO_MENU_LABEL']}" id="menu3">
+                                                            <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                                            <af:commandMenuItem id="mi1"
+                                                                                textAndAccessKey="#{nls['DETAIL_VIEW_BUTTON_LABEL']}"
+                                                                                action="PackageDetails"></af:commandMenuItem>
+                                                            <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                                        </af:menu>
+                                                        <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                                        <af:commandMenuItem id="Packageduprm"
+                                                                            textAndAccessKey="#{nls['DUPLICATE_ROW']}"
+                                                                            immediate="true"
+                                                                            icon="/jheadstart/images/duplicateRow.png"
+                                                                            partialSubmit="true"
+                                                                            actionListener="#{pageFlowScope.PackageTable.duplicateRow}"
+                                                                            rendered="#{MTSPermission['Package.create']}"></af:commandMenuItem>
+                                                        <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                                        <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                                        <af:commandMenuItem id="Packagedelrm"
+                                                                            textAndAccessKey="#{nls['DELETE_ROW']}"
+                                                                            icon="/jheadstart/images/deleteRow.png"
+                                                                            partialSubmit="true" immediate="true"
+                                                                            rendered="#{MTSPermission['Package.delete']}">
+                                                            <af:showPopupBehavior popupId=":::PackageDeletePopup"/>
+                                                        </af:commandMenuItem>
+                                                        <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                                    </af:menu>
+                                                </af:popup>
+                                            </f:facet><!-- DEBUG:END:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6 --><!-- DEBUG:END:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6 -->
+                                            <af:column id="PackageActionColumn" width="60" align="center"
+                                                       headerText=" ">
+                                                <af:panelGroupLayout layout="horizontal" id="pgl0">
+                                                    <!-- DEBUG:BEGIN:DETAILS_LINK : default/button/detailsLink.vm, nesting level: 7 -->
+                                                    <af:link action="PackageDetails" id="PackageGtd"
+                                                             shortDesc="#{nls['DETAIL_VIEW_BUTTON_LABEL']}"
+                                                             icon="/jheadstart/images/editRow.png"/>
+                                                    <!-- DEBUG:END:DETAILS_LINK : default/button/detailsLink.vm, nesting level: 7-->
+                                                    <!-- DEBUG:BEGIN:DELETE_ROW_LINK : default/button/deleteRowLink.vm, nesting level: 7 -->
+                                                    <af:link id="Packagedelrl" partialSubmit="true" immediate="true"
+                                                             rendered="#{MTSPermission['Package.delete']}"
+                                                             shortDesc="#{nls['DELETE_ROW']}"
+                                                             icon="/jheadstart/images/deleteRow.png">
+                                                        <af:showPopupBehavior popupId=":::PackageDeletePopup"/>
+                                                    </af:link>
+                                                    <!-- DEBUG:END:DELETE_ROW_LINK : default/button/deleteRowLink.vm, nesting level: 7-->
+                                                    <!-- DEBUG:BEGIN:DUPLICATE_ROW_LINK : default/button/duplicateRowLink.vm, nesting level: 7 -->
+                                                    <af:link id="Packageduprl" immediate="true" partialSubmit="true"
+                                                             actionListener="#{pageFlowScope.PackageTable.duplicateRow}"
+                                                             rendered="#{MTSPermission['Package.create']}"
+                                                             shortDesc="#{nls['DUPLICATE_ROW']}"
+                                                             icon="/jheadstart/images/duplicateRow.png"/>
+                                                    <!-- DEBUG:END:DUPLICATE_ROW_LINK : default/button/duplicateRowLink.vm, nesting level: 7-->
+                                                </af:panelGroupLayout>
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                            <af:column id="PackagePackageNameCol" sortable="true" filterable="true"
+                                                       noWrap="true" width="350" sortProperty="PackageName"
+                                                       rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{nls['PACKAGE_TABLE_PACKAGENAME']}"
+                                                                    showRequired="#{bindings.PackageTable.hints.PackageName.mandatory}"
+                                                                    id="ol0"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                                <af:inputText id="PackagePackageName"
+                                                              value="#{row.bindings.PackageName.inputValue}"
+                                                              label="#{nls['PACKAGE_TABLE_PACKAGENAME']}"
+                                                              required="#{bindings.PackageTable.hints.PackageName.mandatory}"
+                                                              rows="#{bindings.PackageTable.hints.PackageName.displayHeight}"
+                                                              columns="#{bindings.PackageTable.hints.PackageName.displayWidth}"
+                                                              maximumLength="4000"
+                                                              readOnly="#{((pageFlowScope.PackageTable.newRow) and (!(MTSPermission['Package.create']))) or ((!pageFlowScope.PackageTable.newRow) and (!(MTSPermission['Package.update'])))}"
+                                                              shortDesc="#{bindings.PackageTable.hints.PackageName.tooltip}">
+                                                    <f:validator binding="#{row.bindings.PackageName.validator}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                            <af:column id="PackagePackageVersionCol" sortable="true" filterable="true"
+                                                       noWrap="true" width="150" sortProperty="PackageVersion"
+                                                       rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{nls['PACKAGE_TABLE_PACKAGEVERSION']}"
+                                                                    id="ol1"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                                <af:inputText id="PackagePackageVersion"
+                                                              value="#{row.bindings.PackageVersion.inputValue}"
+                                                              label="#{nls['PACKAGE_TABLE_PACKAGEVERSION']}"
+                                                              required="#{bindings.PackageTable.hints.PackageVersion.mandatory}"
+                                                              rows="#{bindings.PackageTable.hints.PackageVersion.displayHeight}"
+                                                              columns="#{bindings.PackageTable.hints.PackageVersion.displayWidth}"
+                                                              readOnly="true"
+                                                              shortDesc="#{bindings.PackageTable.hints.PackageVersion.tooltip}">
+                                                    <f:validator binding="#{row.bindings.PackageVersion.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.PackageTable.hints.PackageVersion.format}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                            <af:column id="PackageActiveFromCol" sortable="true" filterable="true"
+                                                       noWrap="true" width="156" sortProperty="ActiveFrom"
+                                                       rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{nls['PACKAGE_TABLE_ACTIVEFROM']}"
+                                                                    id="ol2"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 7 -->
+                                                <f:facet name="filter">
+                                                    <af:inputDate value="#{status.filterCriteria.ActiveFrom}" id="id0">
+                                                        <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                                    </af:inputDate>
+                                                </f:facet>
+                                                <af:inputDate id="PackageActiveFrom"
+                                                              value="#{row.bindings.ActiveFrom.inputValue}"
+                                                              label="#{nls['PACKAGE_TABLE_ACTIVEFROM']}"
+                                                              required="#{bindings.PackageTable.hints.ActiveFrom.mandatory}"
+                                                              readOnly="true"
+                                                              shortDesc="#{bindings.PackageTable.hints.ActiveFrom.tooltip}">
+                                                    <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                                </af:inputDate>
+                                                <!-- DEBUG:END:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                            <af:column id="PackageActiveToCol" sortable="true" filterable="true"
+                                                       noWrap="true" width="156" sortProperty="ActiveTo"
+                                                       rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{nls['PACKAGE_TABLE_ACTIVETO']}" id="ol3"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 7 -->
+                                                <f:facet name="filter">
+                                                    <af:inputDate value="#{status.filterCriteria.ActiveTo}" id="id1">
+                                                        <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                                    </af:inputDate>
+                                                </f:facet>
+                                                <af:inputDate id="PackageActiveTo"
+                                                              value="#{row.bindings.ActiveTo.inputValue}"
+                                                              label="#{nls['PACKAGE_TABLE_ACTIVETO']}"
+                                                              required="#{bindings.PackageTable.hints.ActiveTo.mandatory}"
+                                                              readOnly="true"
+                                                              shortDesc="#{bindings.PackageTable.hints.ActiveTo.tooltip}">
+                                                    <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                                </af:inputDate>
+                                                <!-- DEBUG:END:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                            <af:column id="PackageActiveCol" sortable="true" filterable="true"
+                                                       noWrap="true" width="100" sortProperty="Active"
+                                                       rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{nls['PACKAGE_TABLE_ACTIVE']}"
+                                                                    showRequired="#{bindings.PackageTable.hints.Active.mandatory}"
+                                                                    id="ol4"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_CHECK_BOX : default/item/table/tableCheckbox.vm, nesting level: 7 -->
+                                                <af:selectBooleanCheckbox id="PackageActive"
+                                                                          label="#{nls['PACKAGE_TABLE_ACTIVE']}"
+                                                                          value="#{PackageActivecheckboxInTable.value}"
+                                                                          readOnly="#{((pageFlowScope.PackageTable.newRow) and (!(MTSPermission['Package.create']))) or ((!pageFlowScope.PackageTable.newRow) and (!(MTSPermission['Package.update'])))}"
+                                                                          shortDesc="#{bindings.PackageTable.hints.Active.tooltip}"></af:selectBooleanCheckbox>
+                                                <!-- DEBUG:END:TABLE_CHECK_BOX : default/item/table/tableCheckbox.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                        </af:table>
+                                    </af:panelCollection>
+                                </f:facet>
+                                <f:facet name="second">
+                                    <!-- DEBUG:BEGIN:TABLE_OVERFLOW_AREA : default/pageComponent/tableOverflowArea.vm, nesting level: 6 -->
+                                    <!-- Pushed "disabled" on stretchContext, now: enabled (default), enabled (custom/pageComponent/MtstableGroup.vm), disabled (default/pageComponent/tableOverflowArea.vm) -->
+                                    <af:panelGroupLayout id="pgl1"
+                                                         rendered="#{bindings.PackageIterator.estimatedRowCount>0}"
+                                                         partialTriggers="PackagePC:PackageTab" layout="scroll">
+                                        <f:facet name="separator">
+                                            <af:spacer width="10" height="10" id="sp1"/>
+                                        </f:facet>
+                                        <af:panelFormLayout rows="1" maxColumns="2" labelAlignment="start" id="pfl0"></af:panelFormLayout>
+                                        <!-- DEBUG:BEGIN:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 7-->
+                                    </af:panelGroupLayout>
+                                    <!-- Popped "disabled" from stretchContext, now: enabled (default), enabled (custom/pageComponent/MtstableGroup.vm) -->
+                                    <!-- DEBUG:END:TABLE_OVERFLOW_AREA : default/pageComponent/tableOverflowArea.vm, nesting level: 6-->
+                                </f:facet>
+                            </af:panelSplitter>
+                            <!-- Popped "enabled" from stretchContext, now: enabled (default) -->
+                        </f:facet>
+                    </af:panelStretchLayout>
+                    <!-- DEBUG:END:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5-->
+                </f:facet>
+            </af:panelStretchLayout>
+            <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4-->
+        </f:facet>
+        <f:facet name="popups">
+            <af:panelGroupLayout id="popupsPgl">
+                <!-- DEBUG:BEGIN:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 8 -->
+                <af:popup id="PackageDeletePopup" contentDelivery="lazyUncached" childCreation="deferred">
+                    <af:dialog type="none" title="#{nls['WARNING']}" modal="true" id="PackageDeleteDialog">
+                        <af:outputText value="#{nls['DELETE_WARNING_PACKAG:#{bindings.PackageIterator.currentRowIndexInRange+1}']} "
+                                       id="ot0"/>
+                        <f:attribute name="methodExpression" value="#{'#{DeletePackage.execute}'}"/>
+                        <f:facet name="buttonBar">
+                            <af:group id="g1">
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_YES']}" id="cb0" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.confirm}"/>
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_NO']}" id="cb1" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.abort}"/>
+                            </af:group>
+                        </f:facet>
+                    </af:dialog>
+                </af:popup>
+                <!-- DEBUG:END:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 8-->
+            </af:panelGroupLayout>
+        </f:facet>
+        <!-- DEBUG:END:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3-->
+        <!-- DEBUG:END:WIZARD_PAGE_CONTENT : default/page/wizardPageContent.vm, nesting level: 2-->
+    </af:pageTemplate>
+</ui:composition>
+
+
+

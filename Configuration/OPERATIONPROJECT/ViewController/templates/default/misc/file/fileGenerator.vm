@@ -1,0 +1,154 @@
+## revision_history
+## 02-mar-2012   Steven Davelaar
+## 1.12          No longer generate blank taskflow/page, no longer nneeded with multiTaskflow Binding
+## 11-oct-2011   Steven Davelaar
+## 1.11          Get page extension from application view type instead of hardcoding .jspx
+##               register page templates here
+## 29-jan-2011   Steven Davelaar
+## 1.10          - Added generation of dynamicTabs.jsff, and error page, and blank taskflow/page
+##               - Removed generation of log4j.properties, now using ADF Logger
+## 23-dec-2010   Steven Davelaar
+## 1.9           - Created logical names for all file templates so they can be customized
+##               using Appdef editor, added placeholder template CUSTOM_FILES.
+##               - no longer generate index.jsp
+## 20-nov-2010   Steven Davelaar
+## 1.8           Addd generation of jhs11 javascript lib
+## 10-jul-2010   Steven Davelaar
+## 1.7           Generate all page templates
+## 11-aug-2009   Steven Davelaar
+## 1.6           Addd log4j.properties, JhsPageTemplate, uiShellPage
+## 19-sep-2007   Steven Davelaar
+## 1.5           renamed jhsObjectprivilegesData to jhsPermissionsData
+## 11-sep-2007   Steven Davelaar
+## 1.4           Change condition to generate security admin app def and user/roles script
+## 08-aug-2007   Steven Davelaar
+## 1.3           Specify full path for generated files, added log4j.properties, index.jsp
+## 17-jul-2007   Steven Davelaar
+## 1.2           Added branding and brandingAppContextual
+## 05-jul-2007   Steven Davelaar
+## 1.1           Added global navigation cases for home page, changePageText and iFrameMenuItem
+## 25-apr-2007   Steven Davelaar
+## 1.0           Initial creation
+##
+## This "template" is used to generate additional files, that are not specific to a group,
+## based on the JHeadstart Application Definition. 
+## To customize a generated file, you can create a custom template for that specific file
+## To stop generation of a file, you can set the file template to the empty template: default/common/empty.vm
+## If you want to generate additional files, then create your own template for placeholder template
+## CUSTOM_FILES (by default mapped to empty.vm)
+## The following methods on the JHS velocity context are available for generating files
+## - createFile: this will generate a file when the file does not exist yet
+## - createOrReplaceFile: this will generate a file, possibly overriding an existing version
+## of the file
+## - createApplicationDefinition: this will generate an application definition file when 
+## the file does not exist yet. The application definition file is registered as a special
+## node in the JDeveloper Navigator to enable the Jheadstart context menu on the file.
+## - createSQLScript: this will generate a SQL script when the file does not exist yet. 
+##  The generated script will be executed automatically when the service-level checkbox 
+## "Run Generated SQL Scripts" is checked (the default).
+## - createOrReplaceSQLScript: this will generate a SQL script possibly overriding an 
+## existing version of the file.
+##  The generated script will be executed automatically when the service-level checkbox 
+## "Run Generated SQL Scripts" is checked (the default).
+##
+
+## Generate Home Page
+#set ($parsedContent = "#JHS_PARSE_NO_DEBUG('HOME_PAGE' ${JHS.service})")
+$JHS.createOrReplaceFile("${JHS.htmlRootDir}${JHS.application.commonPagesDir}Home${JHS.application.pageExtension}", $parsedContent)
+
+## Generate UI Shell Page
+#set ($parsedContent = "#JHS_PARSE_NO_DEBUG('UISHELL_PAGE' ${JHS.service})")
+$JHS.createOrReplaceFile("${JHS.htmlRootDir}${JHS.application.commonPagesDir}UIShell${JHS.application.pageExtension}", $parsedContent)
+
+## Generate Popup Shell Page
+#set ($parsedContent = "#JHS_PARSE_NO_DEBUG('POPUP_SHELL_PAGE' ${JHS.service})")
+$JHS.createOrReplaceFile("${JHS.htmlRootDir}${JHS.application.commonPagesDir}PopupShell${JHS.application.pageExtension}", $parsedContent)
+
+## Generate Error Page
+#set ($parsedContent = "#JHS_PARSE_NO_DEBUG('UNEXPECTED_ERROR_PAGE' ${JHS.service})")
+$JHS.createOrReplaceFile("${JHS.htmlRootDir}${JHS.application.commonPagesDir}UnexpectedError.jsff", $parsedContent)
+
+## Generate JhsPageTemplates 
+${JHS.engine.putTemplateContext("pageTemplate", "jhsPageTemplate")}
+#set ($parsedContent = "#JHS_PARSE_NO_DEBUG('JHS_PAGE_TEMPLATE' ${JHS.service})")
+$JHS.createOrReplaceFile("${JHS.htmlRootDir}/common/pageTemplates/JhsPageTemplate${JHS.application.pageExtension}", $parsedContent)
+$JHS.registerPageTemplate("/common/pageTemplates/JhsPageTemplate${JHS.application.pageExtension}")
+${JHS.engine.putTemplateContext("pageTemplate", "jhsTreeMenuPageTemplate")}
+#set ($parsedContent = "#JHS_PARSE_NO_DEBUG('JHS_PAGE_TEMPLATE' ${JHS.service})")
+$JHS.createOrReplaceFile("${JHS.htmlRootDir}/common/pageTemplates/JhsTreeMenuPageTemplate${JHS.application.pageExtension}", $parsedContent)
+$JHS.registerPageTemplate("/common/pageTemplates/JhsTreeMenuPageTemplate${JHS.application.pageExtension}")
+${JHS.engine.putTemplateContext("pageTemplate", "jhsDynamicTabsPageTemplate")}
+#set ($parsedContent = "#JHS_PARSE_NO_DEBUG('JHS_PAGE_TEMPLATE' ${JHS.service})")
+$JHS.createOrReplaceFile("${JHS.htmlRootDir}/common/pageTemplates/JhsDynamicTabsPageTemplate${JHS.application.pageExtension}", $parsedContent)
+$JHS.registerPageTemplate("/common/pageTemplates/JhsDynamicTabsPageTemplate${JHS.application.pageExtension}")
+
+${JHS.engine.putTemplateContext("regionTemplate", "Stretching")}
+#set ($parsedContent = "#JHS_PARSE_NO_DEBUG('JHS_REGION_TEMPLATE' ${JHS.service})")
+$JHS.createOrReplaceFile("${JHS.htmlRootDir}/common/pageTemplates/JhsRegionTemplate${JHS.application.pageExtension}", $parsedContent)
+$JHS.registerPageTemplate("/common/pageTemplates/JhsRegionTemplate${JHS.application.pageExtension}")
+
+${JHS.engine.putTemplateContext("regionTemplate", "NonStretching")}
+#set ($parsedContent = "#JHS_PARSE_NO_DEBUG('JHS_REGION_TEMPLATE' ${JHS.service})")
+$JHS.createOrReplaceFile("${JHS.htmlRootDir}/common/pageTemplates/JhsRegionTemplateNoStretch${JHS.application.pageExtension}", $parsedContent)
+$JHS.registerPageTemplate("/common/pageTemplates/JhsRegionTemplateNoStretch${JHS.application.pageExtension}")
+
+## Generate Branding and Menu Global region files 
+#set ($parsedContent = "#JHS_PARSE_NO_DEBUG('MENU_GLOBAL' ${JHS.service})")
+$JHS.createOrReplaceFile("${JHS.htmlRootDir}/common/regions/menuGlobal.jsff", $parsedContent)
+
+#if (${JHS.application.securityType}!='')
+  #set ($parsedContent = "#JHS_PARSE_NO_DEBUG('LOGIN_PAGE' ${JHS.service})")
+  $JHS.createFile("${JHS.htmlRootDir}/security/pages/Login${JHS.application.pageExtension}", $parsedContent)
+#end
+
+#if (${JHS.application.useAuthorization})
+
+  #if (${JHS.application.securityType}=='customjhs' || 'custom'==${JHS.application.authorizationType} || 'jaasAndCustom'==${JHS.application.authorizationType} || ${JHS.application.useGroupPermissions})  
+    #set ($parsedContent = "#JHS_PARSE_NO_DEBUG('CREATE_SAMPLE_ROLES_AND_USERS' ${JHS.service})")
+    $JHS.createOrReplaceSQLScript("${JHS.projectRootDir}/scripts/CreateSampleRolesAndUsers.sql", $parsedContent)
+    #set ($parsedContent = "#JHS_PARSE_NO_DEBUG('SECURITY_ADMIN_APP_DEF' ${JHS.service})")
+    $JHS.createApplicationDefinitionFile("${JHS.projectRootDir}/properties/SecurityAdminService.xml", $parsedContent)
+  #end
+  #if ($JHS.application.useGroupPermissions)  
+    #set ($parsedContent = "#JHS_PARSE_NO_DEBUG('JHS_PERMISSIONS_DATA' ${JHS.service})")
+    $JHS.createOrReplaceSQLScript("${JHS.projectRootDir}/scripts/PermissionsData${JHS.service.name}.sql", $parsedContent)
+  #end
+  
+#end
+
+
+## Generate SQL file to populate the JHeadstart flex region definitions table 
+#if (${JHS.service.useFlexRegions})
+  #set ($parsedContent = "#JHS_PARSE_NO_DEBUG('JHS_FLEX_REGION_DEFS_DATA' ${JHS.service})")
+  $JHS.createOrReplaceSQLScript("${JHS.projectRootDir}/scripts/FlexRegionDefsData${JHS.service.name}.sql", $parsedContent)
+#end
+
+## Generate Application Definition to generate flex region and customized standard item pages
+#if (${JHS.service.useFlexRegions} || ${JHS.service.runtimeCustomizationItemsAllowed})
+  #set ($parsedContent = "#JHS_PARSE_NO_DEBUG('FLEX_REGION_APP_DEF' ${JHS.service})")
+  $JHS.createApplicationDefinitionFile("${JHS.projectRootDir}/properties/FlexRegionService.xml", $parsedContent)
+#end
+
+
+## Generate SQL file to populate the JHeadstart modules and menuitems table
+#if (${JHS.application.runtimeCustomizationMenuAllowed})
+  #set ($parsedContent = "#JHS_PARSE_NO_DEBUG('JHS_DYNAMIC_MENU' ${JHS.service})")
+  $JHS.createOrReplaceSQLScript("${JHS.projectRootDir}/scripts/DynamicMenuData${JHS.service.name}.sql", $parsedContent)
+  #set ($parsedContent = "#JHS_PARSE_NO_DEBUG('IFRAME_MENU_ITEM' ${JHS.service})")
+  $JHS.createFile("${JHS.htmlRootDir}${JHS.application.commonPagesDir}iFrameMenuItem${JHS.application.pageExtension}", $parsedContent)
+  #set ($parsedContent = "#JHS_PARSE_NO_DEBUG('MENU_ADMIN_APP_DEF' ${JHS.service})")
+  $JHS.createApplicationDefinitionFile("${JHS.projectRootDir}/properties/MenuAdminService.xml", $parsedContent)
+#end
+
+## Generate jhs11 javascript lib
+#set ($parsedContent = "#JHS_PARSE_NO_DEBUG('JHS_JAVA_SCRIPT_LIB' ${JHS.service})")
+$JHS.createOrReplaceFile("${JHS.htmlRootDir}/jheadstart/jhs11.js", $parsedContent)
+
+## Generate dynamic tabs declarative component
+#if (${JHS.application.useDynamicTabs})
+  #set ($parsedContent = "#JHS_PARSE_NO_DEBUG('DYNAMIC_TABS' ${JHS.service})")
+  $JHS.createOrReplaceFile("${JHS.htmlRootDir}/common/regions/DynamicTabs.jsff", $parsedContent)
+#end
+
+## Generate custom files
+#JHS_PARSE('CUSTOM_FILES' ${JHS.service})")

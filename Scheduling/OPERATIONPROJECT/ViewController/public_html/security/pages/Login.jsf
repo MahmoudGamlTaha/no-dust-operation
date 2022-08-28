@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+        xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces" beforePhase="#{jhsPhaseListener.beforePhase}"
+        locale="#{jhsLocaleManager.currentLocale}">
+    <af:document title="#{nls['APPLICATION_TITLE']}" id="doc0">
+        <f:facet name="metaContainer">
+            <af:resource type="javascript" source="/jheadstart/jhs11.js"/>
+        </f:facet>
+        <af:form id="dataForm" defaultCommand="pt:login">
+            <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsPageTemplate.jsf">
+                <f:attribute name="showMessagesInline" value="false"/>
+                <f:attribute name="showMenu1" value="false"/>
+                <f:attribute name="showMenu2" value="false"/>
+                <f:attribute name="brandingTitle" value="#{nls['PRODUCT_TITLE']}"/>
+                <f:facet name="pageContent">
+                    <af:panelGroupLayout id="pgl0"
+                                         inlineStyle="background-image:url(/MotImages/login-page.jpg); background-repeat:no-repeat; background-size: 100% 100%;"
+                                         layout="vertical" halign="center">
+                        <af:panelGridLayout id="pgl1">
+                            <af:gridRow marginTop="150px" id="gr0">
+                                <af:gridCell marginStart="50px" width="100%" marginEnd="50px" id="gc0" halign="center"
+                                             valign="middle"
+                                             inlineStyle="background-color:#F7F7F7; border: Gray solid 1px;">
+                                    <af:outputText id="ot" value="" rendered="#{LoginBean.authenticationFailed}"/>
+                                    <af:panelGroupLayout id="pgl2" layout="horizontal" halign="center">
+                                        <af:spacer width="15" height="15" id="s0"/>
+                                        <af:panelGroupLayout id="pgl3" layout="vertical" halign="center">
+                                            <af:spacer width="15" height="10" id="s1"/>
+                                            <af:outputText id="ot0" value="#{nls['LOGIN_LABEL']}"
+                                                           inlineStyle="font-size: 22px;"/>
+                                            <af:spacer width="15" height="15" id="s2"/>
+                                            <af:panelFormLayout id="pfl" labelAlignment="top">
+                                                <f:facet name="footer">
+                                                    <af:spacer width="10" height="10" id="s3"/>
+                                                    <af:button id="login" action="#{LoginBean.authenticateUser}"
+                                                               text="#{nls['LOGIN_BUTTON_LABEL']}"
+                                                               inlineStyle="width: 150px; border: skyblue 1px solid;"
+                                                               styleClass="MTSLoginButton"/>
+                                                </f:facet>
+                                                <af:inputText label="#{nls['LOGIN_USERNAME_LABEL']}" id="username"
+                                                              labelStyle="font-size: 16px;"
+                                                              contentStyle="font-size: 16px;"
+                                                              value="#{LoginBean.username}" required="true"/>
+                                                <af:spacer width="10" height="10" id="s4"/>
+                                                <af:inputText label="#{nls['LOGIN_PASSWORD_LABEL']}" id="password"
+                                                              labelStyle="font-size: 16px;"
+                                                              contentStyle="font-size: 16px;"
+                                                              value="#{LoginBean.password}" secret="true"
+                                                              required="true"/>
+                                            </af:panelFormLayout>
+                                            <af:spacer width="15" height="15" id="s5"/>
+                                        </af:panelGroupLayout>
+                                        <af:spacer width="15" height="15" id="s6"/>
+                                    </af:panelGroupLayout>
+                                </af:gridCell>
+                            </af:gridRow>
+                        </af:panelGridLayout>
+                    </af:panelGroupLayout>
+                </f:facet>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+</f:view>
+  

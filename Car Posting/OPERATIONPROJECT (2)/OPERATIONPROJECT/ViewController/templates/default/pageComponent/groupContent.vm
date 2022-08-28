@@ -1,0 +1,318 @@
+## revision_history
+## 16-apr-2012   Steven Davelaar
+## 2.10           - Adding missing af:group end tag (thanks Aino Andriessen)
+## 14-nov-2011   Steven Davelaar
+## 2.9           - call to GROUP_ACTION_ATTRS: pass pageComponent as macro param instead of group
+##               - added calls to DUMMY_ITEM_TO_SET_INITIAL_FOCUS in PAGE_COMPONENT_STRETCHABLE and 
+##               PAGE_COMPONENT_NON_STRETCHABLE
+##               - changed id of showDetailItem, needed for next/prev pc function keys
+## 15-sep-2011   Steven Davelaar
+## 2.8           With some detail groups displayed at right, and some below, the below groups were 
+##               not displayed. Also, when one group in group region, the other group was always 
+##               displayed below the group in the region
+## 06-sep-2011   Steven Davelaar
+## 2.7           Fixed bug: when detail group displayed at right, the group content was displayed at 
+##               the right of the title instead of below the title             
+## 04-feb-2011   Steven Davelaar
+## 2.6           PAGE_COMPONENT_NON_STRETCHABLE: also use scroll layout when all groups are stacked
+##               Added call to setTopLayoutContainerPath
+## 02-dec-2010   Steven Davelaar
+## 2.5           Added call to GROUP_ACTION_ATTRS below panelSplitter as well
+## 22-nov-2010   Steven Davelaar
+## 2.4           Prefix TopLc with shortName instead of name
+## 08-oct-2010   Steven Davelaar
+## 2.3           Added icon property and calls to GROUP_HELP macro
+## 23-mar-2010   Steven Davelaar
+## 2.2           Add partial triggers for detail groups to listen to parent group
+##               and lo longer hide a group when parent group has no row (only create button is hidden)
+## 07-aug-2009   Steven Davelaar
+## 2.1           Regorganised, Added support for below/right with splitter
+## 23-jun-2009   Paco van der Linden
+## 2.0           Restructured layout according to (stretching) best-practices.
+## 07-may-2009   Paco van der Linden
+## 1.3           Shortened some id's to improve PPR performance
+## 06-may-2008   Steven Davelaar
+## 1.2           Disabled property generated twice on af:showDetailItem when using security
+## 19-dec-2007   Steven Davelaar
+## 1.1           Added includePrefix to partialTrigger targets
+## 30-aug-2007   Steven Davelaar
+## 1.0           Initial creation
+
+${JHS.current.pageComponent.setTopLayoutContainerPath("${JHS.engine.fullNamingContainerPath}${JHS.current.group.shortName}TopLc")}
+#set ($includePrefix = ${JHS.engine.getTemplateContext("includeContext")})
+#set ($detailsBelow = ${JHS.current.pageComponent.pageComponentsBelow} && ${JHS.current.pageComponent.pageComponentsBelow.size()} > 0)
+#set ($detailsBelowWithSplitter = ${JHS.current.pageComponent.pageComponentsBelowWithSplitter} && ${JHS.current.pageComponent.pageComponentsBelowWithSplitter.size()} > 0)
+#set ($detailsBelowStretchable = $detailsBelow && ${JHS.current.pageComponent.detailsBelowStretchable} && $JHS.engine.stretchEnabled)
+#set ($detailsRight = ${JHS.current.pageComponent.pageComponentsRight} && ${JHS.current.pageComponent.pageComponentsRight.size()} > 0)
+#set ($detailsRightWithSplitter = ${JHS.current.pageComponent.pageComponentsRightWithSplitter} && ${JHS.current.pageComponent.pageComponentsRightWithSplitter.size()} > 0)
+#set ($group = ${JHS.current.group})
+#set ($pageComponent = ${JHS.current.pageComponent})
+#set ($toolbarAdded = "false")
+
+## determine whether group title must be printed, and what group title is
+#if (${group.showTitle} && ${JHS.engine.getTemplateContext("isStackedContainer")}!='true')
+  #set ($showTitle = true)
+#else
+  #set ($showTitle = false)
+#end    
+
+#if ($JHS.page.group==$group)
+ #set ($groupTitle = "#PAGE_TITLE()")
+#else
+ #set ($groupTitle = "#GROUP_TITLE(${group})")
+#end
+
+#macro (PAGE_COMPONENT_CONTENT)
+## check whether pageComponent is stretchable, this is the case when following conditions are met:
+## 1. the current context (jhs engine) is stretchable 
+## 2. the current group has property enableStretching set to true
+## 3. the current pageComponent does NOT have components displayed at the right
+## 4. the current pageComponent does NOT have table overflow below
+## 5. the current pageComponent does NOT have table overflow right
+## 6. the current pageComponent layout is not "form", or there is one stretchable detail group
+## 7. the current pageComponent does NOT have sibling, unstacked, page components with the same position relative to parent
+##
+## The above conditions are checked in pageComponent.stretchable, except number 7 which is checked 
+## in detailGroups.vm and number 7 which is checked here.
+##
+## While the current pageComponent might NOT be stretchable, detail page components below
+## the current pageComponent might be stretchable. if this is the case, we still need a panelStretchPayout
+## and display the detail page component(s)in the center facet.
+## The detail pageComponent(s) below are stretchable when all detail page Components are displayed in tabs or accordion
+## OR when there is only one detail pageComponent that meets the aforementioned conditions
+## (checked through pageComponent.
+
+#if (!$JHS.engine.stretchEnabled)
+  ## nothing stretchable
+  #PAGE_COMPONENT_NON_STRETCHABLE()
+#elseif ($JHS.engine.stretchEnabled && $JHS.current.pageComponent.stretchable)
+  #PAGE_COMPONENT_STRETCHABLE()
+#elseif ($JHS.engine.stretchEnabled && !$JHS.current.pageComponent.stretchable)
+  ## check if detail(s) are stretchable
+  #if (${JHS.current.pageComponent.detailsBelowStretchable})
+  <af:panelStretchLayout #if ($group.groupHeight!='') topHeight="${group.groupHeightAsInteger}" #else topHeight="auto" #end id="#NEW_ID("psl")" #CUR_GROUP_PARTIAL_TRIGGERS() #CUR_GROUP_RENDERED()>
+      <f:facet name="top">
+       #PAGE_COMPONENT_NON_STRETCHABLE()
+      </f:facet>
+      <f:facet name="center">
+        ${JHS.engine.putTemplateContext("detailGroupsPosition", "Below")}
+        #JHS_PARSE("DETAIL_GROUPS" ${JHS.current.model})
+      </f:facet>
+     </af:panelStretchLayout> 
+  #else   
+    #PAGE_COMPONENT_NON_STRETCHABLE()
+  #end  
+#end
+#end
+
+#macro (PAGE_COMPONENT_STRETCHABLE)
+<af:panelStretchLayout #if ($group.searchAreaHeight!='') topHeight="${group.searchAreaHeight}" #else topHeight="auto" #end id="${group.shortName}TopLc" #CUR_GROUP_PARTIAL_TRIGGERS() #CUR_GROUP_RENDERED()>
+    #GROUP_ACTION_ATTRS($pageComponent)
+    <f:facet name="top">
+      $JHS.engine.pushStretchEnabled(false)
+      <af:group id="#NEW_ID("g")">
+        #DUMMY_ITEM_TO_SET_INITIAL_FOCUS()
+        #if ($showTitle)
+        <af:panelHeader id="#NEW_ID("ph")" text="${groupTitle}" #GROUP_HELP() #JHS_PROP("icon" ${group.icon})>
+          <f:facet name="toolbar">
+            #JHS_PARSE("GROUP_TOOLBAR" ${JHS.current.model})
+          </f:facet>
+          <f:facet name="context">
+            #JHS_PARSE("PARENT_CONTEXT" ${JHS.current.model})
+          </f:facet>
+          ## enclose search area within panelheader to get nice box around it
+          #JHS_PARSE("GROUP_SEARCH_AREA" ${JHS.current.model})
+        </af:panelHeader>
+       #else
+         #if (${toolbarAdded}=='false')
+##           #JHS_PARSE("GROUP_TOOLBAR" ${JHS.current.model})
+         #end  
+         #JHS_PARSE("GROUP_SEARCH_AREA" ${JHS.current.model})
+       #end
+      #if ($pageComponent.hasSearchArea) #MARGIN_SPACER() #end
+     </af:group>
+      $JHS.engine.popStretchEnabled()    
+  </f:facet>
+  <f:facet name="center">
+     #JHS_PARSE_GROUP_CONTENT(${JHS.current.pageComponent})
+     ## no detail groups to process, otherwise the pageComponent itself was NOT stretchable!
+  </f:facet>
+</af:panelStretchLayout>
+#end
+
+#macro (PAGE_COMPONENT_NON_STRETCHABLE) 
+## if we are still in stretchable context, we need to transition to flow layout
+## using panelgroupLayout with layout=scroll
+#if ($JHS.engine.stretchEnabled || ${JHS.page.group.stackAllGroups})
+ #set ($layout = "scroll")
+#else
+ #set ($layout = "vertical")
+#end
+
+<af:panelGroupLayout layout="${layout}" id="${group.shortName}TopLc" #CUR_GROUP_PARTIAL_TRIGGERS() #CUR_GROUP_RENDERED()>
+    #GROUP_ACTION_ATTRS($pageComponent)
+    <f:facet name="separator">
+      #MARGIN_SPACER()
+    </f:facet>
+
+$JHS.engine.pushStretchEnabled(false)
+#if ($detailsRight)
+  <af:panelGroupLayout valign="top" layout="horizontal" id="${JHS.current.group.shortName}HPGL">
+    <f:facet name="separator">
+      #MARGIN_SPACER()
+    </f:facet>
+    <af:panelGroupLayout layout="vertical" id="#NEW_ID("pgl")">
+#end
+
+#if ($showTitle)
+ <af:panelHeader id="#NEW_ID("ph")" text="${groupTitle}" #GROUP_HELP() #JHS_PROP("icon" ${group.icon})>
+  <f:facet name="toolbar">
+    #JHS_PARSE("GROUP_TOOLBAR" ${JHS.current.model})
+  </f:facet>
+  <f:facet name="context">
+    #JHS_PARSE("PARENT_CONTEXT" ${JHS.current.model})
+  </f:facet>
+  #DUMMY_ITEM_TO_SET_INITIAL_FOCUS()
+  ## enclose search area within panelheader to get nice box around it
+  #JHS_PARSE("GROUP_SEARCH_AREA" ${JHS.current.model})
+ </af:panelHeader>
+#else
+  #if (${toolbarAdded}=='false')
+## do not parse GROUP_TOOLBAR
+  #end
+  <af:group id="#NEW_ID("g")">
+  #DUMMY_ITEM_TO_SET_INITIAL_FOCUS()
+  #JHS_PARSE("GROUP_SEARCH_AREA" ${JHS.current.model})
+  </af:group>
+#end
+
+#JHS_PARSE_GROUP_CONTENT(${JHS.current.pageComponent})
+
+## after we parsed group content, detail groups included as a region might have been processed
+## using this same template, and they have might have overridden the variables set at the
+## beginning of this template, that's why we reset them here first
+#set ($detailsBelow = ${JHS.current.pageComponent.pageComponentsBelow} && ${JHS.current.pageComponent.pageComponentsBelow.size()} > 0)
+#set ($detailsBelowWithSplitter = ${JHS.current.pageComponent.pageComponentsBelowWithSplitter} && ${JHS.current.pageComponent.pageComponentsBelowWithSplitter.size()} > 0)
+#set ($detailsBelowStretchable = $detailsBelow && ${JHS.current.pageComponent.detailsBelowStretchable} && $JHS.engine.stretchEnabled)
+#set ($detailsRight = ${JHS.current.pageComponent.pageComponentsRight} && ${JHS.current.pageComponent.pageComponentsRight.size()} > 0)
+#set ($detailsRightWithSplitter = ${JHS.current.pageComponent.pageComponentsRightWithSplitter} && ${JHS.current.pageComponent.pageComponentsRightWithSplitter.size()} > 0)
+
+#if ($detailsRight)
+  </af:panelGroupLayout>
+#end
+
+## pop stretch enabled before we process details, which might be stretchable!
+$JHS.engine.popStretchEnabled()    
+
+
+#if ($detailsRight)
+    ## detail/child groups positioned right
+    ${JHS.engine.putTemplateContext("detailGroupsPosition", "Right")}
+    #JHS_PARSE("DETAIL_GROUPS" ${JHS.current.model})
+  </af:panelGroupLayout>
+#end
+
+## if we have details right and below, we need to set the temlate vars again!
+#set ($detailsBelow = ${JHS.current.pageComponent.pageComponentsBelow} && ${JHS.current.pageComponent.pageComponentsBelow.size()} > 0)
+#set ($detailsBelowWithSplitter = ${JHS.current.pageComponent.pageComponentsBelowWithSplitter} && ${JHS.current.pageComponent.pageComponentsBelowWithSplitter.size()} > 0)
+#set ($detailsBelowStretchable = $detailsBelow && ${JHS.current.pageComponent.detailsBelowStretchable} && $JHS.engine.stretchEnabled)
+#set ($detailsRight = ${JHS.current.pageComponent.pageComponentsRight} && ${JHS.current.pageComponent.pageComponentsRight.size()} > 0)
+#set ($detailsRightWithSplitter = ${JHS.current.pageComponent.pageComponentsRightWithSplitter} && ${JHS.current.pageComponent.pageComponentsRightWithSplitter.size()} > 0)
+
+#if ($detailsBelow)
+  #if ($detailsBelowStretchable)
+    ## details displayed in center facet, only add spacer here
+    #MARGIN_SPACER()
+  #else  
+    ${JHS.engine.putTemplateContext("detailGroupsPosition", "Below")}
+    #JHS_PARSE("DETAIL_GROUPS" ${JHS.current.model})
+  #end
+#end
+
+</af:panelGroupLayout>
+
+#end
+
+## if the page component has page components below or right separated by a splitter
+## we add the surrounding splitter here and then call PAGE_COMPONENT_CONTENT 
+#macro (PAGE_COMPONENT)
+#if ($detailsBelowWithSplitter)
+  <af:panelSplitter orientation="vertical" styleClass="AFStretchWidth" id="#NEW_ID("ps")"
+     #CUR_GROUP_PARTIAL_TRIGGERS() #CUR_GROUP_RENDERED()
+     #JHS_PROP("splitterPosition" ${group.groupHeightAsInteger})>
+     #GROUP_ACTION_ATTRS($pageComponent)
+     <f:facet name="first">
+      #PAGE_COMPONENT_CONTENT()
+    </f:facet>
+    <f:facet name="second">
+      ${JHS.engine.putTemplateContext("detailGroupsPosition", "BelowWithSplitter")}
+      #JHS_PARSE("DETAIL_GROUPS" ${JHS.current.model})
+    </f:facet>
+  </af:panelSplitter>  
+#elseif ($detailsRightWithSplitter)
+  <af:panelSplitter orientation="horizontal" styleClass="AFStretchWidth" id="#NEW_ID("ps")"
+    #CUR_GROUP_PARTIAL_TRIGGERS() #CUR_GROUP_RENDERED()
+    #JHS_PROP("splitterPosition" ${group.groupWidthAsInteger})>
+    #GROUP_ACTION_ATTRS($pageComponent)
+    <f:facet name="first">
+      #PAGE_COMPONENT_CONTENT()
+    </f:facet>
+    <f:facet name="second">
+      ${JHS.engine.putTemplateContext("detailGroupsPosition", "RightWithSplitter")}
+      #JHS_PARSE("DETAIL_GROUPS" ${JHS.current.model})
+    </f:facet>
+  </af:panelSplitter>    
+#else
+ #PAGE_COMPONENT_CONTENT()
+#end
+#end
+
+
+## actual processing starts here
+#set ($toolbarAdded = "false")
+
+#if ( ($JHS.current.pageComponent.formLayout && $JHS.current.group.databound && $JHS.current.group.formDeleteAllowed)
+     || ($JHS.current.pageComponent.tableLayout && $JHS.current.group.databound && $JHS.current.group.tableDeleteAllowed))
+  #ADD_CUR_GROUP_PARTIAL_TRIGGER("${JHS.current.group.shortName}DeleteDialog")   
+  #ADD_CUR_GROUP_ACTION("DeleteRow" "${JHS.current.group.shortName}DeletePopup")
+#end
+
+## add partial triggers to detail groups to listen to this group
+#foreach($detailGroup in ${JHS.current.group.allDetailGroups})
+  #if ($detailGroup.samePage && (!$JHS.current.group.tableOverflowStyleInline || $detailGroup.samePagePosition!="overflow" ))
+    #if ($JHS.current.pageComponent.tableLayout)
+      #ADD_GROUP_PARTIAL_TRIGGER($detailGroup "${JHS.current.group.shortName}PC:${JHS.current.group.shortName}Tab")
+    #end  
+    #ADD_GROUP_PARTIAL_TRIGGER($detailGroup "${JHS.current.group.shortName}TopLc")
+  #end  
+#end
+
+#if (${JHS.engine.getTemplateContext("isStackedContainer")}=='true')
+
+  #set ($tabbedContainer = ${JHS.engine.getTemplateContext("isTabbedContainer")})
+  ${JHS.engine.putTemplateContext("isStackedContainer", "false")}
+  ${JHS.engine.putTemplateContext("isTabbedContainer", "false")}
+  ## id must end with TopLcSdi for next/prev page component function keys 
+  <af:showDetailItem stretchChildren="first"  text="${groupTitle}" #CUR_GROUP_PARTIAL_TRIGGERS() id="${JHS.current.pageComponent.group.shortName}TopLcSdi"
+      #if ($JHS.current.pageComponent.group.roles) rendered="#{jhsUserRoles['${JHS.current.pageComponent.group.roles}']}" disabled="#{!jhsUserRoles['${JHS.current.pageComponent.group.roles}']}"#end >
+   #if ($tabbedContainer!='true')
+    ## toolbar facet cannot be used when showDetailItem is used within panelTabbed
+    #set ($toolbarAdded = "true")
+    <f:facet name="toolbar">
+      #JHS_PARSE("GROUP_TOOLBAR" ${JHS.current.model})
+    </f:facet>
+   #end 
+    #PAGE_COMPONENT()
+  </af:showDetailItem>  
+
+  ## handle special case of all groups stacked here, so we can keep detail groups template simpler 
+  #if (${JHS.page.group.stackAllGroups})
+    #foreach($detailPageComponent in ${JHS.current.pageComponent.pageComponents})
+      ${JHS.engine.putTemplateContext("isStackedContainer", "true")}
+      #JHS_PARSE("GROUP_CONTENT" ${detailPageComponent})
+    #end
+  #end
+  ${JHS.engine.putTemplateContext("isTabbedContainer", "false")}
+#else
+  #PAGE_COMPONENT()
+#end

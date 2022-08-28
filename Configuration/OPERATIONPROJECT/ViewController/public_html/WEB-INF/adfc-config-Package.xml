@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <task-flow-definition id="PackageTaskFlow">
+        <!-- DEBUG:BEGIN:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2 -->
+        <template-reference>
+            <document id="__0">/WEB-INF/jhs-fragment-taskflow-template.xml</document>
+            <id id="__1">jhs-fragment-taskflow-template</id>
+        </template-reference>
+        <!-- DEBUG:END:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2-->
+        <default-activity id="__2">StartPackage</default-activity>
+        <!-- DEBUG:BEGIN:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2 -->
+        <input-parameter-definition id="__3">
+            <name id="__4">createPackage</name>
+            <value id="__5">#{pageFlowScope.createPackage}</value>
+            <class id="__6">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__7">
+            <name id="__8">rowKeyStrPackage</name>
+            <value id="__9">#{pageFlowScope.rowKeyStrPackage}</value>
+            <class id="__10">java.lang.String</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__11">
+            <name id="__12">rowKeyValuePackage</name>
+            <value id="__13">#{pageFlowScope.rowKeyValuePackage}</value>
+            <class id="__14">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__15">
+            <name id="__16">rowKeyPackage</name>
+            <value id="__17">#{pageFlowScope.rowKeyPackage}</value>
+            <class id="__18">oracle.jbo.Key</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__19">
+            <name id="__20">altKeyNamePackage</name>
+            <value id="__21">#{pageFlowScope.altKeyNamePackage}</value>
+            <class id="__22">java.lang.String</class>
+        </input-parameter-definition>
+        <!-- DEBUG:END:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2 -->
+        <managed-bean id="__23">
+            <managed-bean-name id="__24">jhsTaskFlowManager</managed-bean-name>
+            <managed-bean-class id="__25">oracle.jheadstart.controller.jsf.bean.TaskFlowManager</managed-bean-class>
+            <managed-bean-scope id="__26">pageFlow</managed-bean-scope>
+            <managed-property id="__27">
+                <property-name id="__28">initializeParentContextEntries</property-name>
+                <map-entries id="__29">
+                    <map-entry id="__30">
+                        <key id="__31">jhsCurrentGroupName</key>
+                        <value id="__32">Package</value>
+                    </map-entry>
+                </map-entries>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:DEFAULT_VALUES_BEAN : default/misc/facesConfig/defaultValuesBean.vm, nesting level: 2 -->
+        <managed-bean id="__33">
+            <managed-bean-name id="__34">PackageDefaultValues</managed-bean-name>
+            <managed-bean-class id="__35">oracle.jheadstart.controller.jsf.bean.DefaultValuesBean</managed-bean-class>
+            <managed-bean-scope id="__36">pageFlow</managed-bean-scope>
+            <managed-property id="__37">
+                <property-name id="__38">iteratorBinding</property-name>
+                <value id="__39">#{data.PackagePageDef.PackageIterator}</value>
+            </managed-property>
+            <managed-property id="__40">
+                <property-name id="__41">defaultValues</property-name>
+                <map-entries id="__42">
+                    <map-entry id="__43">
+                        <key id="__44">Active</key>
+                        <value id="__45">1</value>
+                    </map-entry>
+                </map-entries>
+            </managed-property>
+            <managed-property id="__46">
+                <property-name id="__47">actionResult</property-name>
+                <value id="__48">CreatePackage</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:DEFAULT_VALUES_BEAN : default/misc/facesConfig/defaultValuesBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__49">
+            <managed-bean-name id="__50">CreatePackage</managed-bean-name>
+            <managed-bean-class id="__51">oracle.jheadstart.controller.jsf.bean.CreateRowBean</managed-bean-class>
+            <managed-bean-scope id="__52">request</managed-bean-scope>
+            <managed-property id="__53">
+                <property-name id="__54">createBinding</property-name>
+                <value id="__55">#{bindings.CreatePackage}</value>
+            </managed-property>
+            <managed-property id="__56">
+                <property-name id="__57">defaultValuesBean</property-name>
+                <value id="__58">#{pageFlowScope.PackageDefaultValues}</value>
+            </managed-property>
+            <managed-property id="__59">
+                <property-name id="__60">successOutcome</property-name>
+                <value id="__61">deepLinkPage</value>
+            </managed-property>
+            <managed-property id="__62">
+                <property-name id="__63">failureOutcome</property-name>
+                <value id="__64">firstPage</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2 -->
+        <managed-bean id="__65">
+            <managed-bean-name id="__66">SavePackage</managed-bean-name>
+            <managed-bean-class id="__67">oracle.jheadstart.controller.jsf.bean.CommitBean</managed-bean-class>
+            <managed-bean-scope id="__68">request</managed-bean-scope>
+            <managed-property id="__69">
+                <property-name id="__70">commitBinding</property-name>
+                <value id="__71">#{bindings.Commit}</value>
+            </managed-property>
+            <managed-property id="__72">
+                <property-name id="__73">successOutcome</property-name>
+                <value id="__74">Commit</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2 -->
+        <managed-bean id="__75">
+            <managed-bean-name id="__76">jhsRollback</managed-bean-name>
+            <managed-bean-class id="__77">oracle.jheadstart.controller.jsf.bean.RollbackBean</managed-bean-class>
+            <managed-bean-scope id="__78">request</managed-bean-scope>
+            <managed-property id="__79">
+                <property-name id="__80">rollbackBinding</property-name>
+                <value id="__81">#{bindings.Rollback}</value>
+            </managed-property>
+            <managed-property id="__82">
+                <property-name id="__83">successOutcome</property-name>
+                <value id="__84">Cancel</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__85">
+            <managed-bean-name id="__86">PackageTable</managed-bean-name>
+            <managed-bean-class id="__87">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__88">pageFlow</managed-bean-scope>
+            <managed-property id="__89">
+                <property-name id="__90">name</property-name>
+                <value id="__91">PackageTable</value>
+            </managed-property>
+            <managed-property id="__92">
+                <property-name id="__93">rangeBindingExpr</property-name>
+                <value id="__94">#{'#{bindings.PackageTable}'}</value>
+            </managed-property>
+            <managed-property id="__95">
+                <property-name id="__96">defaultValuesBean</property-name>
+                <value id="__97">#{pageFlowScope.PackageDefaultValues}</value>
+            </managed-property>
+            <managed-property id="__98">
+                <property-name id="__99">focusItemId</property-name>
+                <value id="__100">PackagePackageName</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__101">
+            <managed-bean-name id="__102">DeletePackage</managed-bean-name>
+            <managed-bean-class id="__103">oracle.jheadstart.controller.jsf.bean.DeleteRowBean</managed-bean-class>
+            <managed-bean-scope id="__104">request</managed-bean-scope>
+            <managed-property id="__105">
+                <property-name id="__106">deleteBinding</property-name>
+                <value id="__107">#{bindings.DeletePackage}</value>
+            </managed-property>
+            <managed-property id="__108">
+                <property-name id="__109">commitBean</property-name>
+                <value id="__110">#{jhsCommit}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CHECKBOX_IN_TABLE_BEAN : default/misc/facesConfig/checkboxInTableBean.vm, nesting level: 2 -->
+        <managed-bean id="__111">
+            <managed-bean-name id="__112">PackageActivecheckboxInTable</managed-bean-name>
+            <managed-bean-class id="__113">oracle.jheadstart.controller.jsf.bean.CheckboxInTableBean</managed-bean-class>
+            <managed-bean-scope id="__114">request</managed-bean-scope>
+            <managed-property id="__115">
+                <property-name id="__116">binding</property-name>
+                <value id="__117">#{bindings.PackageActive}</value>
+            </managed-property>
+            <managed-property id="__118">
+                <property-name id="__119">tableBean</property-name>
+                <value id="__120">#{pageFlowScope.PackageTable}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CHECKBOX_IN_TABLE_BEAN : default/misc/facesConfig/checkboxInTableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__121">
+            <managed-bean-name id="__122">PackageProductTable</managed-bean-name>
+            <managed-bean-class id="__123">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__124">pageFlow</managed-bean-scope>
+            <managed-property id="__125">
+                <property-name id="__126">name</property-name>
+                <value id="__127">PackageProductTable</value>
+            </managed-property>
+            <managed-property id="__128">
+                <property-name id="__129">rangeBindingExpr</property-name>
+                <value id="__130">#{'#{bindings.PackageProductTable}'}</value>
+            </managed-property>
+            <managed-property id="__131">
+                <property-name id="__132">focusItemId</property-name>
+                <value id="__133">PackageProductProductId</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__134">
+            <managed-bean-name id="__135">DeletePackageProduct</managed-bean-name>
+            <managed-bean-class id="__136">oracle.jheadstart.controller.jsf.bean.DeleteRowBean</managed-bean-class>
+            <managed-bean-scope id="__137">request</managed-bean-scope>
+            <managed-property id="__138">
+                <property-name id="__139">deleteBinding</property-name>
+                <value id="__140">#{bindings.DeletePackageProduct}</value>
+            </managed-property>
+            <managed-property id="__141">
+                <property-name id="__142">commitBean</property-name>
+                <value id="__143">#{jhsCommit}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__144">
+            <managed-bean-name id="__145">CreatePackageProduct</managed-bean-name>
+            <managed-bean-class id="__146">oracle.jheadstart.controller.jsf.bean.CreateRowBean</managed-bean-class>
+            <managed-bean-scope id="__147">request</managed-bean-scope>
+            <managed-property id="__148">
+                <property-name id="__149">createBinding</property-name>
+                <value id="__150">#{bindings.CreatePackageProduct}</value>
+            </managed-property>
+            <managed-property id="__151">
+                <property-name id="__152">successOutcome</property-name>
+                <value id="__153">deepLinkPage</value>
+            </managed-property>
+            <managed-property id="__154">
+                <property-name id="__155">failureOutcome</property-name>
+                <value id="__156">firstPage</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2 -->
+        <router id="StartPackage">
+            <case id="__157">
+                <expression id="__158">#{pageFlowScope.createPackage!=null}</expression>
+                <outcome id="__159">createPackage</outcome>
+            </case>
+            <case id="__160">
+                <expression id="__161">#{pageFlowScope.rowKeyStrPackage!=null or pageFlowScope.rowKeyValuePackage!=null
+                                       or pageFlowScope.rowKeyPackage!=null}</expression>
+                <outcome id="__162">SetCurrentRowPackage</outcome>
+            </case>
+            <case id="__163">
+                <expression id="__164">#{pageFlowScope.isDeepLink!=null and pageFlowScope.isDeepLink}</expression>
+                <outcome id="__165">deepLinkPage</outcome>
+            </case>
+            <default-outcome id="__166">firstPage</default-outcome>
+        </router>
+        <!-- DEBUG:END:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2 -->
+        <method-call id="CreatePackage">
+            <method id="__167">#{CreatePackage.execute}</method>
+            <!-- execute condition param -->
+            <parameter>
+                <class id="__168">java.lang.Object</class>
+                <value id="__169">#{pageFlowScope.createPackage}</value>
+            </parameter>
+            <outcome id="__170">
+                <to-string/>
+            </outcome>
+        </method-call>
+        <method-call id="SetCurrentRowPackage">
+            <method id="__171">#{jhsSetCurrentRow.execute}</method>
+            <!-- iterator param -->
+            <parameter>
+                <class id="__172">oracle.adf.model.binding.DCIteratorBinding</class>
+                <value id="__173">#{bindings.PackageIterator}</value>
+            </parameter>
+            <!-- rowKeyStr param -->
+            <parameter>
+                <class id="__174">java.lang.String</class>
+                <value id="__175">#{pageFlowScope.rowKeyStrPackage}</value>
+            </parameter>
+            <!-- rowKeyValue param -->
+            <parameter>
+                <class id="__176">java.lang.Object</class>
+                <value id="__177">#{pageFlowScope.rowKeyValuePackage}</value>
+            </parameter>
+            <!-- rowKey param -->
+            <parameter>
+                <class id="__178">oracle.jbo.Key</class>
+                <value id="__179">#{pageFlowScope.rowKeyPackage}</value>
+            </parameter>
+            <!-- altKeyName param -->
+            <parameter>
+                <class id="__180">java.lang.String</class>
+                <value id="__181">#{pageFlowScope.altKeyNamePackage}</value>
+            </parameter>
+            <outcome id="__182">
+                <fixed-outcome id="__183">deepLinkPage</fixed-outcome>
+            </outcome>
+        </method-call>
+        <!-- DEBUG:END:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2-->
+        <task-flow-return id="CancelPackageReturn">
+            <outcome id="__184">
+                <name id="__185">CancelPackage</name>
+            </outcome>
+        </task-flow-return>
+        <task-flow-return id="DonePackageReturn">
+            <outcome id="__186">
+                <name id="__187">DonePackage</name>
+            </outcome>
+        </task-flow-return>
+        <!-- DEBUG:BEGIN:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2 -->
+        <view id="PackageTable">
+            <page id="__188">/pages/PackageTable.jsff</page>
+            <train-stop id="__189">
+                <display-name id="__190">#{nls['TABLE_TITLE_PACKAGE']}</display-name>
+            </train-stop>
+        </view>
+        <view id="Package">
+            <page id="__191">/pages/Package.jsff</page>
+            <train-stop id="__192">
+                <display-name id="__193">#{nls['TABLE_TITLE_PACKAGE']}</display-name>
+            </train-stop>
+        </view>
+        <!-- DEBUG:END:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2-->
+        <train/>
+        <!-- DEBUG:BEGIN:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2 -->
+        <control-flow-rule id="__194">
+            <from-activity-id id="__195">*</from-activity-id>
+            <control-flow-case id="__196">
+                <from-outcome id="__197">SetCurrentRowPackage</from-outcome>
+                <to-activity-id id="__198">SetCurrentRowPackage</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__199">
+                <from-outcome id="__200">firstPage</from-outcome>
+                <to-activity-id id="__201">PackageTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__202">
+                <from-outcome id="__203">deepLinkPage</from-outcome>
+                <to-activity-id id="__204">Package</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__205">
+                <from-outcome id="__206">PackageTableBreadcrumb</from-outcome>
+                <to-activity-id id="__207">PackageTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__208">
+                <from-outcome id="__209">PackageBreadcrumb</from-outcome>
+                <to-activity-id id="__210">Package</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__211">
+                <from-outcome id="__212">Cancel</from-outcome>
+                <to-activity-id id="__213">StartPackage</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__214">
+                <from-outcome id="__215">CancelPackageReturn</from-outcome>
+                <to-activity-id id="__216">CancelPackageReturn</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__217">
+                <from-outcome id="__218">DonePackageReturn</from-outcome>
+                <to-activity-id id="__219">DonePackageReturn</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__220">
+            <from-activity-id id="__221">PackageTable</from-activity-id>
+            <control-flow-case id="__222">
+                <from-outcome id="__223">CreatePackage</from-outcome>
+                <to-activity-id id="__224">Package</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__225">
+                <from-outcome id="__226">PackageDetails</from-outcome>
+                <to-activity-id id="__227">Package</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__228">
+            <from-activity-id id="__229">*</from-activity-id>
+            <control-flow-case id="__230">
+                <from-outcome id="__231">createPackage</from-outcome>
+                <to-activity-id id="__232">CreatePackage</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <!-- DEBUG:END:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2-->
+        <use-page-fragments/>
+    </task-flow-definition>
+    <!-- This bean must be defined outside the task-flow-definition element
+       because it needs to be available in the pageFlowScope of the unbounded
+       task-flow not in the pageFlowScope of the bounded task flow itself. -->
+    <!-- DEBUG:BEGIN:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2 -->
+    <managed-bean id="__233">
+        <managed-bean-name id="__234">PackageTaskFlowConfig</managed-bean-name>
+        <managed-bean-class id="__235">oracle.jheadstart.controller.jsf.bean.TaskFlowConfigBean</managed-bean-class>
+        <managed-bean-scope id="__236">pageFlow</managed-bean-scope>
+        <managed-property id="__237">
+            <property-name id="__238">params</property-name>
+            <property-class id="__239">java.util.Map</property-class>
+            <map-entries id="__240">
+                <map-entry id="__241">
+                    <key id="__242">parentContext</key>
+                    <value id="__243">#{pageFlowScope.parentContext}</value>
+                </map-entry>
+            </map-entries>
+        </managed-property>
+        <managed-property id="__244">
+            <property-name id="__245">name</property-name>
+            <value id="__246">Package</value>
+        </managed-property>
+        <managed-property id="__247">
+            <property-name id="__248">taskFlowId</property-name>
+            <value id="__249">/WEB-INF/adfc-config-Package.xml#PackageTaskFlow</value>
+        </managed-property>
+        <managed-property id="__250">
+            <property-name id="__251">label</property-name>
+            <value id="__252">#{nls['MENU1_TITLE_PACKAGE']}</value>
+        </managed-property>
+    </managed-bean>
+    <!-- DEBUG:END:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2-->
+</adfc-config>

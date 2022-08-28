@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="adfc_config_ProductDetailsGroup_ProductDetailsGroupTaskFlow_FilterDetailsPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator id="ProductDetailsHubReconciliationSummaryVO1Iterator" Binds="ProductDetailsHubReconciliationSummaryVO1"
+              DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <iterator id="ProductDetailsProductDetailsSummaryVO1Iterator" Binds="ProductDetailsProductDetailsSummaryVO1"
+              DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <iterator id="ProductDetailsTotalProductDetailsSummaryVO1Iterator"
+              Binds="ProductDetailsTotalProductDetailsSummaryVO1" DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <iterator id="ProductDetailsRLostReconciliationVO1Iterator" Binds="ProductDetailsRLostReconciliationVO1"
+              DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <iterator id="ProductDetailsLostReconciliationVO1Iterator" Binds="ProductDetailsLostReconciliationVO1"
+              DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <iterator id="EligibleRLostHeaderVO1Iterator" Binds="EligibleRLostHeaderVO1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+    <iterator id="EligibleLostHeaderVO1Iterator" Binds="EligibleLostHeaderVO1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+  </executables>
+  <bindings/>
+</pageDefinition>

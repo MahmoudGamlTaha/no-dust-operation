@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="ContractPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle" SkipValidation="true">
+  <parameters>
+    <parameter id="bindingContainersToPrepare" value="#{'CustomerProfilePageDef'}"/>
+  </parameters>
+  <executables>
+    <iterator id="ContractIterator" Binds="ContractInfoVO1" DataControl="AppModuleAMDataControl" RangeSize="10"/>
+    <searchRegion id="ContractIteratorQuery" Binds="ContractIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="CardNo"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator Binds="AppModuleAMDataControl" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="AppModuleAMDataControlIterator"/>
+    <iterator id="NewGroupIterator" Binds="ContractAddressVO1" DataControl="AppModuleAMDataControl" RangeSize="10"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="ContractIterator" id="ContractCardNo">
+      <AttrNames>
+        <Item Value="CardNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractIterator" id="ContractContractClientName">
+      <AttrNames>
+        <Item Value="ContractClientName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractIterator" id="ContractContractDate">
+      <AttrNames>
+        <Item Value="ContractDate"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="ContractIterator" id="ContractReplacementDuration" Uses="LOV_ReplacementDuration"
+          StaticList="false"/>
+    <list IterBinding="ContractIterator" id="ContractAreaId" Uses="LOV_AreaId" StaticList="false"/>
+    <attributeValues IterBinding="ContractIterator" id="ContractContractEmail">
+      <AttrNames>
+        <Item Value="ContractEmail"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractIterator" id="ContractContractMobile">
+      <AttrNames>
+        <Item Value="ContractMobile"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractIterator" id="ContractContractMobile2">
+      <AttrNames>
+        <Item Value="ContractMobile2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractIterator" id="ContractContractPhone">
+      <AttrNames>
+        <Item Value="ContractPhone"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractIterator" id="ContractContractPhone2">
+      <AttrNames>
+        <Item Value="ContractPhone2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractIterator" id="ContractPNum">
+      <AttrNames>
+        <Item Value="PNum"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractIterator" id="ContractNextDeliveryDate">
+      <AttrNames>
+        <Item Value="NextDeliveryDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractIterator" id="ContractLastChangedDate">
+      <AttrNames>
+        <Item Value="LastChangedDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractIterator" id="ContractX">
+      <AttrNames>
+        <Item Value="X"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractIterator" id="ContractY">
+      <AttrNames>
+        <Item Value="Y"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractIterator" id="ContractCancelDate">
+      <AttrNames>
+        <Item Value="CancelDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractIterator" id="ContractCancelReason">
+      <AttrNames>
+        <Item Value="CancelReason"/>
+      </AttrNames>
+    </attributeValues>
+    <button IterBinding="ContractIterator" id="ContractActive" DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="Active"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <tree id="ContractTable" IterBinding="ContractIterator">
+      <nodeDefinition Name="Contract" DefName="OPERATIONPROJECT.model.BC.VO.ContractInfoVO">
+        <AttrNames>
+          <Item Value="CardNo"/>
+          <Item Value="ContractClientName"/>
+          <Item Value="ContractDate"/>
+          <Item Value="ReplacementDuration"/>
+          <Item Value="AreaId"/>
+          <Item Value="ContractEmail"/>
+          <Item Value="ContractMobile"/>
+          <Item Value="ContractMobile2"/>
+          <Item Value="ContractPhone"/>
+          <Item Value="ContractPhone2"/>
+          <Item Value="PNum"/>
+          <Item Value="NextDeliveryDate"/>
+          <Item Value="LastChangedDate"/>
+          <Item Value="X"/>
+          <Item Value="Y"/>
+          <Item Value="CancelDate"/>
+          <Item Value="CancelReason"/>
+          <Item Value="Active"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ContractIterator" id="FirstContract" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="ContractIterator" id="PreviousContract" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="ContractIterator" id="NextContract" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="ContractIterator" id="LastContract" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="ContractIterator" id="SetCurrentRowWithKeyContract" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrContract}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="ContractIterator" id="CreateContract" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="ContractIterator" id="DeleteContract" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <tree id="NewGroupTable" IterBinding="NewGroupIterator">
+      <nodeDefinition Name="NewGroup" DefName="OPERATIONPROJECT.model.BC.VO.ContractAddressVO">
+        <AttrNames>
+          <Item Value="Active"/>
+          <Item Value="ActiveFrom"/>
+          <Item Value="ActiveTo"/>
+          <Item Value="Address"/>
+          <Item Value="AddressId"/>
+          <Item Value="AreaId"/>
+          <Item Value="CardNo"/>
+          <Item Value="CityId"/>
+          <Item Value="FlatNo"/>
+          <Item Value="FloorNo"/>
+          <Item Value="HomeNo"/>
+          <Item Value="RegionId"/>
+          <Item Value="Remarks"/>
+          <Item Value="StreetId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="NewGroupIterator" id="FirstNewGroup" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="NewGroupIterator" id="PreviousNewGroup" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="NewGroupIterator" id="NextNewGroup" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="NewGroupIterator" id="LastNewGroup" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="NewGroupIterator" id="SetCurrentRowWithKeyNewGroup" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrNewGroup}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="NewGroupIterator" id="CreateNewGroup" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="NewGroupIterator" id="DeleteNewGroup" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,190 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsRegionTemplateNoStretch.jsf">
+        <f:attribute name="showBreadcrumbs" value="false"/>
+        <!-- DEBUG:BEGIN:WIZARD_PAGE_CONTENT : default/page/wizardPageContent.vm, nesting level: 2 -->
+        <f:facet name="processTrain">
+            <af:train value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}" id="tr0"/>
+        </f:facet>
+        <!-- DEBUG:BEGIN:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3 -->
+        <f:facet name="pageContent">
+            <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+            <af:panelGroupLayout id="pcpg" layout="scroll">
+                <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4 -->
+                <af:panelGroupLayout layout="vertical" id="ContractCardsTopLc"
+                                     partialTriggers=" ContractCardsDeleteDialog ContractCardsfbb ContractCardsNewButton ContractCardsDelB ContractCardsCancelButton">
+                    <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                    <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                    <f:facet name="separator">
+                        <af:spacer width="10" height="10" id="sp0"/>
+                    </f:facet>
+                    <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+                    <af:panelHeader id="ph0"
+                                    text="#{pageFlowScope.createModes.CreateContractCards ? nls['INSERT_TITLE_CONTRACTCARDS'] :  (MTSPermission['AccountingAgent.update'] ? nls['EDIT_TITLE_CONTRACTCARD: #{bindings.ContractCardsCardNo.inputValue}'] : nls['VIEW_TITLE_CONTRACTCARD: #{bindings.ContractCardsCardNo.inputValue}'])  }">
+                        <f:facet name="toolbar">
+                            <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5 -->
+                            <af:toolbox id="tbox0">
+                                <af:toolbar id="tbar0">
+                                    <!-- DEBUG:BEGIN:FORM_BROWSE_BUTTONS : custom/pageComponent/MtsformBrowseButtons.vm, nesting level: 6 -->
+                                    <af:panelGroupLayout id="ContractCardsfbb" layout="horizontal"
+                                                         rendered="#{ bindings.ContractCardsIterator.currentRow!=null  and bindings.ContractCardsIterator.estimatedRowCount>1 and !pageFlowScope.createModes.CreateContractCards and !pageFlowScope.hideFormBrowseButtons}"
+                                                         partialTriggers="ContractCardsFirst ContractCardsPrevious ContractCardsNext ContractCardsLast">
+                                        <af:button actionListener="#{bindings.FirstContractCards.execute}"
+                                                   id="ContractCardsFirst" partialSubmit="true"
+                                                   icon="/afr/shuttleleftall_ena.png" shortDesc="#{nls['FIRST_ROW']}"
+                                                   rendered="#{bindings.ContractCardsIterator.rangeStart+bindings.ContractCardsIterator.currentRowIndexInRange+1>1}"></af:button>
+                                        <af:image source="/afr/shuttleleftall_dis.png"
+                                                  rendered="#{!(bindings.ContractCardsIterator.rangeStart+bindings.ContractCardsIterator.currentRowIndexInRange+1>1)}"
+                                                  id="img0"/>
+                                        <af:button actionListener="#{bindings.PreviousContractCards.execute}"
+                                                   icon="/afr/shuttleleft_ena.png" shortDesc="#{nls['PREVIOUS_ROW']}"
+                                                   id="ContractCardsPrevious" partialSubmit="true"
+                                                   rendered="#{bindings.ContractCardsIterator.rangeStart+bindings.ContractCardsIterator.currentRowIndexInRange+1>1}"></af:button>
+                                        <af:image source="/afr/shuttleleft_dis.png"
+                                                  rendered="#{!(bindings.ContractCardsIterator.rangeStart+bindings.ContractCardsIterator.currentRowIndexInRange+1>1)}"
+                                                  id="img1"/>
+                                        <af:spacer width="4" height="1" id="sp1"/>
+                                        <af:outputFormatted styleUsage="instruction"
+                                                            inlineStyle="white-space:nowrap; vertical-align:bottom;"
+                                                            value=" [#{bindings.ContractCardsIterator.rangeStart+bindings.ContractCardsIterator.currentRowIndexInRange+1} / #{bindings.ContractCardsIterator.estimatedRowCount}] "
+                                                            id="of0"/>
+                                        <af:button actionListener="#{bindings.NextContractCards.execute}"
+                                                   icon="/afr/shuttleright_ena.png" shortDesc="#{nls['NEXT_ROW']}"
+                                                   id="ContractCardsNext" partialSubmit="true"
+                                                   rendered="#{bindings.ContractCardsIterator.rangeStart+bindings.ContractCardsIterator.currentRowIndexInRange+1 lt bindings.ContractCardsIterator.estimatedRowCount}"></af:button>
+                                        <af:image source="/afr/shuttleright_dis.png"
+                                                  rendered="#{!(bindings.ContractCardsIterator.rangeStart+bindings.ContractCardsIterator.currentRowIndexInRange+1 lt bindings.ContractCardsIterator.estimatedRowCount)}"
+                                                  id="img2"/>
+                                        <af:button actionListener="#{bindings.LastContractCards.execute}"
+                                                   icon="/afr/shuttlerightall_ena.png" shortDesc="#{nls['LAST_ROW']}"
+                                                   id="ContractCardsLast" partialSubmit="true"
+                                                   rendered="#{bindings.ContractCardsIterator.rangeStart+bindings.ContractCardsIterator.currentRowIndexInRange+1 lt bindings.ContractCardsIterator.estimatedRowCount}"></af:button>
+                                        <af:image source="/afr/shuttlerightall_dis.png"
+                                                  rendered="#{!(bindings.ContractCardsIterator.rangeStart+bindings.ContractCardsIterator.currentRowIndexInRange+1 lt bindings.ContractCardsIterator.estimatedRowCount)}"
+                                                  id="img3"/>
+                                    </af:panelGroupLayout>
+                                    <!-- DEBUG:END:FORM_BROWSE_BUTTONS : custom/pageComponent/MtsformBrowseButtons.vm, nesting level: 6-->
+                                    <af:group id="gr0">
+                                        <!-- DEBUG:BEGIN:NEW_BUTTON : custom/button/MtsnewButton.vm, nesting level: 6 -->
+                                        <af:button actionListener="#{CreateContractCards.execute}"
+                                                   action="CreateContractCards"
+                                                   icon="/jheadstart/images/newRowInForm.png" partialSubmit="true"
+                                                   shortDesc="#{nls['NEW_BUTTON_LABEL_CONTRACTCARDS']}"
+                                                   rendered="#{!pageFlowScope.createModes.CreateContractCards and (true) and (MTSPermission['AccountingAgent.create'])}"
+                                                   id="ContractCardsNewButton"></af:button>
+                                        <!-- DEBUG:END:NEW_BUTTON : custom/button/MtsnewButton.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:DELETE_BUTTON : default/button/deleteButton.vm, nesting level: 6 -->
+                                        <af:button action="DeleteContractCards" partialSubmit="true"
+                                                   icon="/jheadstart/images/deleteRow.png"
+                                                   shortDesc="#{nls['DELETE_BUTTON_LABEL_CONTRACTCARDS']}"
+                                                   rendered="#{!pageFlowScope.createModes.CreateContractCards and  bindings.ContractCardsIterator.currentRow!=null   and (MTSPermission['AccountingAgent.delete'])}"
+                                                   immediate="true" id="ContractCardsDelB">
+                                            <af:showPopupBehavior popupId="ContractCardsDeletePopup"/>
+                                        </af:button>
+                                        <!-- DEBUG:END:DELETE_BUTTON : default/button/deleteButton.vm, nesting level: 6-->
+                                    </af:group>
+                                    <af:group id="gr1"></af:group>
+                                    <af:group id="gr2">
+                                        <af:trainButtonBar value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"/>
+                                        <!-- DEBUG:BEGIN:WIZARD_FINISH_BUTTON : default/button/wizardFinishButton.vm, nesting level: 6 -->
+                                        <af:button action="#{SaveContractCards.execute}"
+                                                   textAndAccessKey="#{nls['FINISH']}"
+                                                   id="ContractCardsWizardFinishButton"></af:button>
+                                        <!-- DEBUG:END:WIZARD_FINISH_BUTTON : default/button/wizardFinishButton.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6 -->
+                                        <af:button textAndAccessKey="#{nls['CANCEL']}" immediate="true"
+                                                   partialSubmit="true" rendered="#{!pageFlowScope.hideCancelButton}"
+                                                   actionListener="#{jhsRollback.execute}" action="Cancel"
+                                                   id="ContractCardsCancelButton"></af:button>
+                                        <!-- DEBUG:END:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6-->
+                                    </af:group>
+                                </af:toolbar>
+                            </af:toolbox>
+                            <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5-->
+                        </f:facet>
+                        <f:facet name="context">
+                            <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5 -->
+                            <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5-->
+                        </f:facet>
+                        <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+                        <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+                    </af:panelHeader>
+                    <!-- DEBUG:BEGIN:FORM_GROUP : custom/pageComponent/MtsformGroup.vm, nesting level: 5 -->
+                    <af:switcher rendered="#{bindings.ContractCardsIterator.findMode!='true'}" id="ContractCardsSw"
+                                 defaultFacet="hasRows"
+                                 facetName="#{( bindings.ContractCardsIterator.currentRow!=null ) ? 'hasRows' : 'noRows'}">
+                        <f:facet name="noRows">
+                            <af:outputFormatted value="#{nls['NO_ROWS_FOUND']}" styleUsage="pageStamp"
+                                                id="ContractCardsNoRowsFound"/>
+                        </f:facet>
+                        <f:facet name="hasRows">
+                            <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+                            <af:panelGroupLayout id="ContractCardsFC" layout="vertical">
+                                <f:facet name="separator">
+                                    <af:spacer width="10" height="10" id="sp2"/>
+                                </f:facet>
+                                <af:panelFormLayout rows="1" labelAlignment="start" maxColumns="1" id="ContractCardsFI">
+                                    <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                    <af:inputText id="ContractCardsCardNo"
+                                                  value="#{bindings.ContractCardsCardNo.inputValue}"
+                                                  label="#{nls['CONTRACTCARDS_CARDNO']}" required="false"
+                                                  readOnly="#{((pageFlowScope.createModes.CreateContractCards) and (!(MTSPermission['AccountingAgent.create']))) or ((!pageFlowScope.createModes.CreateContractCards) and (!(MTSPermission['AccountingAgent.update'])))}"
+                                                  shortDesc="#{nls['CONTRACTCARDS_CARDNO_HINT']}">
+                                        <f:validator binding="#{bindings.ContractCardsCardNo.validator}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                    <af:inputText id="ContractCardsInvoiceCount"
+                                                  value="#{bindings.ContractCardsInvoiceCount.inputValue}"
+                                                  label="#{nls['CONTRACTCARDS_INVOICECOUNT']}" required="false"
+                                                  readOnly="#{((pageFlowScope.createModes.CreateContractCards) and (!(MTSPermission['AccountingAgent.create']))) or ((!pageFlowScope.createModes.CreateContractCards) and (!(MTSPermission['AccountingAgent.update'])))}"
+                                                  shortDesc="#{nls['CONTRACTCARDS_INVOICECOUNT_HINT']}">
+                                        <f:validator binding="#{bindings.ContractCardsInvoiceCount.validator}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                </af:panelFormLayout>
+                                <!-- DEBUG:BEGIN:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 6 -->
+                                <!-- DEBUG:END:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 6-->
+                            </af:panelGroupLayout>
+                            <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+                        </f:facet>
+                    </af:switcher>
+                    <!-- DEBUG:END:FORM_GROUP : custom/pageComponent/MtsformGroup.vm, nesting level: 5-->
+                    <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+                </af:panelGroupLayout>
+                <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4-->
+            </af:panelGroupLayout>
+            <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+        </f:facet>
+        <f:facet name="popups">
+            <af:panelGroupLayout id="popupsPgl">
+                <!-- DEBUG:BEGIN:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 7 -->
+                <af:popup id="ContractCardsDeletePopup" contentDelivery="lazyUncached" childCreation="deferred">
+                    <af:dialog type="none" title="#{nls['WARNING']}" modal="true" id="ContractCardsDeleteDialog">
+                        <af:outputText value="#{nls['DELETE_WARNING_CONTRACTCARD:#{bindings.ContractCardsIterator.currentRowIndexInRange+1}']} "
+                                       id="ot0"/>
+                        <f:attribute name="methodExpression" value="#{'#{DeleteContractCards.execute}'}"/>
+                        <f:facet name="buttonBar">
+                            <af:group id="g0">
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_YES']}" id="cb0" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.confirm}"/>
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_NO']}" id="cb1" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.abort}"/>
+                            </af:group>
+                        </f:facet>
+                    </af:dialog>
+                </af:popup>
+                <!-- DEBUG:END:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 7-->
+            </af:panelGroupLayout>
+        </f:facet>
+        <!-- DEBUG:END:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3-->
+        <!-- DEBUG:END:WIZARD_PAGE_CONTENT : default/page/wizardPageContent.vm, nesting level: 2-->
+    </af:pageTemplate>
+</ui:composition>
+
+
+

@@ -1,0 +1,186 @@
+<af:pageTemplateDef xmlns:af="http://xmlns.oracle.com/adf/faces/rich" var="attrs" definition="private"
+                    xmlns:f="http://java.sun.com/jsf/core" xmlns:afc="http://xmlns.oracle.com/adf/faces/rich/component">
+    <af:xmlContent>
+        <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+            <description>This component lays out an entire page.</description>
+            <facet>
+                <description>An optional vertically oriented region of contexual components for the main content. Often
+                             this contains a list or tree of links for deeper navigation structure than the global,
+                             primary, and secondary regions can provide.</description>
+                <facet-name>menu3</facet-name>
+            </facet>
+            <facet>
+                <description>The user information region. This region provides a location for presenting user sign-in
+                             and connection information.</description>
+                <facet-name>infoUser</facet-name>
+            </facet>
+            <facet>
+                <description>The content of all popups used on the page.</description>
+                <facet-name>popups</facet-name>
+            </facet>
+            <facet>
+                <description>The main page content.</description>
+                <facet-name>welcome</facet-name>
+            </facet>
+            <attribute>
+                <description>Specifies the number of pixels tall that the global content should consume.</description>
+                <attribute-name>headerGlobalSize</attribute-name>
+                <attribute-class>int</attribute-class>
+                <default-value>40</default-value>
+            </attribute>
+            <attribute>
+                <description>Specifies the number of pixels tall that the global footer content should consume.</description>
+                <attribute-name>footerGlobalSize</attribute-name>
+                <attribute-class>int</attribute-class>
+                <default-value>30</default-value>
+            </attribute>
+            <attribute>
+                <description>Specifies the number of pixels tall that the secondary header content should consume.</description>
+                <attribute-name>header2Size</attribute-name>
+                <attribute-class>int</attribute-class>
+                <default-value>20</default-value>
+            </attribute>
+            <attribute>
+                <description>menu model bean reference</description>
+                <attribute-name>menuModel</attribute-name>
+                <attribute-class>org.apache.myfaces.trinidad.model.XMLMenuModel</attribute-class>
+            </attribute>
+            <attribute>
+                <description>whether the menu level 1 is displayed</description>
+                <attribute-name>showMenu1</attribute-name>
+                <attribute-class>boolean</attribute-class>
+                <default-value>true</default-value>
+            </attribute>
+            <attribute>
+                <description>whether the menu level 2 is displayed</description>
+                <attribute-name>showMenu2</attribute-name>
+                <attribute-class>boolean</attribute-class>
+                <default-value>true</default-value>
+            </attribute>
+            <attribute>
+                <description>whether the menu level 3 is displayed</description>
+                <attribute-name>showMenu3</attribute-name>
+                <attribute-class>boolean</attribute-class>
+                <default-value>false</default-value>
+            </attribute>
+            <attribute>
+                <description>Initial menu level.</description>
+                <attribute-name>menuStartLevel</attribute-name>
+                <attribute-class>int</attribute-class>
+                <default-value>1</default-value>
+            </attribute>
+            <attribute>
+                <description>display breadcrumbs</description>
+                <attribute-name>showBreadcrumbs</attribute-name>
+                <attribute-class>boolean</attribute-class>
+                <default-value>false</default-value>
+            </attribute>
+            <attribute>
+                <description>display messages</description>
+                <attribute-name>showMessages</attribute-name>
+                <attribute-class>boolean</attribute-class>
+                <default-value>true</default-value>
+            </attribute>
+            <attribute>
+                <description>display messages</description>
+                <attribute-name>showMessagesInline</attribute-name>
+                <attribute-class>boolean</attribute-class>
+                <default-value>false</default-value>
+            </attribute>
+            <attribute>
+                <description>branding title</description>
+                <attribute-name>brandingTitle</attribute-name>
+                <attribute-class>string</attribute-class>
+                <default-value>
+                    #{nls['PRODUCT_TITLE']}
+                </default-value>
+            </attribute>
+        </component>
+    </af:xmlContent>
+    <af:panelSplitter orientation="vertical" styleClass="AFBrandingSplitter"
+                      splitterPosition="#{attrs.headerGlobalSize}" id="pt_ps1">
+        <f:facet name="first">
+            <af:panelStretchLayout id="pt_psl1">
+                <f:facet name="start">
+                    <af:menuBar id="pt_mb2" visible="#{jhsUser!=null or securityContext.authenticated}"
+                                inlineStyle="width: 100px; height: 50px;">
+                        <af:menu id="pt_m2" icon="/jheadstart/images/menu-icon-blue.png" detachable="true"
+                                 inlineStyle="width: 50px; height: 40px;">
+                            <af:iterator id="i2" value="#{backingBeanScope.MtsMenusLists.modulesList}" varStatus="stat"
+                                         var="row">
+                                <af:commandMenuItem text="#{row}" id="cmi2"
+                                                    actionListener="#{backingBeanScope.MtsMenusLists.goModule}"
+                                                    icon="/jheadstart/images/group-icon.png"/>
+                            </af:iterator>
+                        </af:menu>
+                    </af:menuBar>
+                </f:facet>
+                <f:facet name="center">
+                    <af:panelGridLayout id="pt_gPbl" styleClass="AFBrandingBar">
+                        <f:attribute name="JhsIgnoreChanges" value="true"/>
+                        <af:gridRow id="pt_rh1" height="auto" marginTop="4px" marginBottom="4px">
+                            <af:gridCell id="logoCell" width="auto" valign="middle" marginStart="4px">
+                                <af:panelGroupLayout id="pt_pgl2">
+                                    <af:image source="/jheadstart/images/MTS Logo.png" id="pt_i1"/>
+                                </af:panelGroupLayout>
+                            </af:gridCell>
+                            <af:gridCell id="pt_bt" width="auto" valign="middle" marginStart="4px">
+                                <af:outputText value="#{attrs.brandingTitle}" styleClass="AFBrandingBarTitle"
+                                               id="pt_ot1"/>
+                            </af:gridCell>
+                            <af:gridCell id="pt_flexSpaceHead" width="100%"/>
+                            <af:gridCell id="mgie" width="auto" valign="middle" marginStart="4px">
+                                <af:declarativeComponent id="mg" partialTriggers="::pendingChangesDialog "
+                                                         viewId="/common/regions/menuGlobal.jsff"/>
+                            </af:gridCell>
+                            <af:gridCell id="pt_sic" width="auto" valign="middle" marginStart="4px">
+                                <af:panelGroupLayout id="pt_pgl1" layout="horizontal">
+                                    <af:statusIndicator id="pt_statInd"/>
+                                </af:panelGroupLayout>
+                            </af:gridCell>
+                        </af:gridRow>
+                    </af:panelGridLayout>
+                </f:facet>
+            </af:panelStretchLayout>
+        </f:facet>
+        <f:facet name="second">
+            <!-- DEBUG:BEGIN:PAGE_TEMPLATE_DYNAMIC_TABS_CONTENT : default/misc/file/pageTemplateDynamicTabsContent.vm, nesting level: 2 -->
+            <af:decorativeBox theme="light" topHeight="0" id="pt_db1" partialTriggers="mg mgie">
+                <f:facet name="center">
+                    <af:panelSplitter orientation="horizontal" splitterPosition="200" id="pt_ps2">
+                        <f:facet name="first">
+                            <af:decorativeBox theme="default" rendered="#{attrs.showMenu1}"
+                                              styleClass="TabletPageContent" id="pt_db2">
+                                <f:facet name="center">
+                                    <af:panelCollection id="pctree" partialTriggers="::mg ::mgie">
+                                        <af:tree id="Menu1" var="menuItem" contentDelivery="immediate"
+                                                 partialTriggers="Item1" value="#{attrs.menuModel}" summary="Menu Item"
+                                                 binding="#{pageFlowScope.MenuTreeBean.tree}">
+                                            <f:facet name="nodeStamp">
+                                                <af:group>
+                                                    <af:link id="Item1" action="#{menuItem.doAction}"
+                                                             textAndAccessKey="#{menuItem.label}" partialSubmit="true"
+                                                             immediate="true"
+                                                             rendered="#{menuItem.focusViewId!=null and menuItem.rendered}"/>
+                                                    <af:outputText id="Item2" value="#{menuItem.label}"
+                                                                   rendered="#{menuItem.focusViewId==null and menuItem.rendered}"/>
+                                                </af:group>
+                                            </f:facet>
+                                        </af:tree>
+                                    </af:panelCollection>
+                                </f:facet>
+                            </af:decorativeBox>
+                        </f:facet>
+                        <f:facet name="second">
+                            <af:declarativeComponent viewId="/common/regions/DynamicTabs.jsff" id="dyntdc"/>
+                        </f:facet>
+                    </af:panelSplitter>
+                </f:facet>
+            </af:decorativeBox>
+            <!-- DEBUG:END:PAGE_TEMPLATE_DYNAMIC_TABS_CONTENT : default/misc/file/pageTemplateDynamicTabsContent.vm, nesting level: 2-->
+            <!-- end of global top splitter -->
+        </f:facet>
+    </af:panelSplitter>
+    <!-- end of global auxiliary splitter -->
+</af:pageTemplateDef>
+   

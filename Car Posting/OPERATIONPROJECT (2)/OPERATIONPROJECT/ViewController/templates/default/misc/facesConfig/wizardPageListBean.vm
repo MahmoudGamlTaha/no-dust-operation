@@ -1,0 +1,34 @@
+## revision_history
+## 18-may-2010   Steven Davelaar
+## 1.3           Added id property to all elements
+## 24-sep-2007   Steven Davelaar
+## 1.2           Changed scope to session to align with nls scope
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+#set ($bean = ${JHS.current.managedBean})
+#set ($wizardBaseGroup = ${JHS.current.group.wizardBaseGroup})
+
+<managed-bean id="#NEW_ID("__")">
+  <managed-bean-name id="#NEW_ID("__")">${bean.beanName}</managed-bean-name>
+  <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.WizardProcessModel</managed-bean-class>
+  <managed-bean-scope id="#NEW_ID("__")">session</managed-bean-scope>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">viewIdProperty</property-name>
+    <value id="#NEW_ID("__")">viewId</value>
+  </managed-property>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">childProperty</property-name>
+    <value id="#NEW_ID("__")">children</value>
+  </managed-property>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">instance</property-name>
+    <list-entries id="#NEW_ID("__")">
+      <value-class>oracle.jheadstart.controller.jsf.bean.TrainStopModel</value-class>
+     #foreach ($wizardPageBean in $JHS.facesConfigGenerator.getWizardPageManagedBeans($wizardBaseGroup))
+      <value id="#NEW_ID("__")">#{${wizardPageBean.name}}</value>
+     #end 
+    </list-entries>
+  </managed-property>
+</managed-bean>
+
+

@@ -1,0 +1,33 @@
+## revision_history
+## 26-jun-2013   Steven Davelaar / Paco van der Linden
+## 1.8           Moved ITEM_ADDITIONAL_PROPERTIES to the end so it can also be used to
+##               override generated properties (last one wins)
+## 21-jan-2011   Steven Davelaar
+## 1.7          Use end facet instead of panelGroupLayout to fix undesirable layout indentation with jdev 11.1.1.4 
+## 04-oct-2010   Steven Davelaar
+## 1.6           Added ITEM_HELP, ITEM_ADDITIONAL_PROPERTIES
+## 29-sep-2009   Steven Davelaar
+## 1.5           Added number converter
+## 26-okt-2007   Steven Davelaar
+## 1.4           Upgrade to R11: renamed panelGroup to panelGroupLayout
+## 10-okt-2007   Steven Davelaar
+## 1.3           Moved ITEM_HINT() to panelLabelAndMessage element
+## 12-jan-2007   Jaco Verheul
+## 1.2           Only generate script when generateJavaScript is true 
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+<af:panelLabelAndMessage #ITEM_PROMPT_IN_SEARCH_FROM() id="Search${JHS.current.item.bindingName}FromLabel"  #ITEM_HELP()>
+    <af:inputText #ITEM_VALUE_IN_SEARCH_FROM() simple="true" #ITEM_COLUMNS() id="Search${JHS.current.item.bindingName}From" #ITEM_PROMPT_IN_SEARCH_FROM() #TEXT_SEARCH_MAXIMUM_LENGTH() #ITEM_HINT() #ITEM_ADDITIONAL_PROPERTIES()> 
+      #NUMBER_CONVERTER()
+    </af:inputText>   
+  <f:facet name="end">
+    <af:panelGroupLayout id="#NEW_ID("pgl")" valign="middle" layout="horizontal">
+      <af:outputLabel value=#ITEM_PROMPT_IN_SEARCH_TO() id="Search${JHS.current.item.bindingName}ToLabel"/>
+    <af:inputText #ITEM_VALUE_IN_SEARCH_TO() simple="true" #ITEM_COLUMNS() id="Search${JHS.current.item.bindingName}To" label=#ITEM_PROMPT_IN_SEARCH_TO() #TEXT_SEARCH_MAXIMUM_LENGTH() #ITEM_HINT() #ITEM_ADDITIONAL_PROPERTIES()>
+      #NUMBER_CONVERTER()
+    </af:inputText>   
+      #ITEMS_DISPLAYED_AT_RIGHT_PLM_PRIM()
+    </af:panelGroupLayout>
+  </f:facet>
+</af:panelLabelAndMessage>
+#ITEMS_DISPLAYED_AT_RIGHT_PLM_SEC()

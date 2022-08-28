@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="WeekDaysAgentVOPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="validateCurrentRows">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Name="WeekDaysAgentVORowKeyVar" Type="java.lang.String"
+                DefaultValue="#{bindings.WeekDaysAgentVOIterator.currentRowKeyString}"/>
+    </variableIterator>
+    <invokeAction id="clearDeepLinkViewCriteriaInvoke" Binds="clearDeepLinkViewCriteria" 
+                  RefreshCondition="#{'true' != pageFlowScope.jhsQueryByKeyValue}"/>
+    <iterator id="WeekDaysAgentVOIterator" Binds="WeekDaysAgentVO" DataControl="AppModuleAMDataControl" RangeSize="10"   />
+    <searchRegion id="WeekDaysAgentVOIteratorQuery" Binds="WeekDaysAgentVOIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="WorkingDate"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator id="AgentAreasDetVOIterator" Binds="AgentAreasDetVO" DataControl="AppModuleAMDataControl" RangeSize="10" />
+    <searchRegion id="AgentAreasDetVOIteratorQuery" Binds="AgentAreasDetVOIterator" Criteria="__ImplicitViewCriteria__"
+                 InitialQueryOverridden="true" DefaultQuickSearchAttrName="AreaName"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+  </executables>
+  <bindings>
+    <methodAction id="clearDeepLinkViewCriteria" RequiresUpdateModel="true" Action="invokeMethod"
+                  DataControl="AppModuleAMDataControl" InstanceName="AppModuleAMDataControl.dataProvider"
+                  MethodName="clearDeepLinkViewCriteria"
+                  ReturnName="AppModuleAMDataControl.methodResults.AppModuleAMDataControl_dataProvider_clearDeepLinkViewCriteria_result"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="viewObjectUsage" NDValue="WeekDaysAgentVO" NDType="java.lang.String"/>
+      <NamedData NDName="requeryIfFound" NDValue="#{true}" NDType="java.lang.Boolean"/>
+    </methodAction>
+    <action IterBinding="WeekDaysAgentVOIterator" id="FirstWeekDaysAgentVO" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="WeekDaysAgentVOIterator" id="PreviousWeekDaysAgentVO" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="WeekDaysAgentVOIterator" id="NextWeekDaysAgentVO" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="WeekDaysAgentVOIterator" id="LastWeekDaysAgentVO" RequiresUpdateModel="true" Action="last"/>
+    <attributeValues IterBinding="variables" id="WeekDaysAgentVORowKey">
+      <AttrNames>
+        <Item Value="WeekDaysAgentVORowKeyVar"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="WeekDaysAgentVOIterator" id="SetCurrentRowWithKeyWeekDaysAgentVO" RequiresUpdateModel="true"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{bindings.WeekDaysAgentVORowKey}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="WeekDaysAgentVOIterator" id="CreateWeekDaysAgentVO" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="WeekDaysAgentVOIterator" id="DeleteWeekDaysAgentVO" RequiresUpdateModel="true"
+            Action="removeCurrentRow"/>
+    <tree id="AgentAreasDetVOTable" IterBinding="AgentAreasDetVOIterator">
+      <nodeDefinition Name="AgentAreasDetVO" DefName="OPERATIONPROJECT.model.BC.VO.AgentAreasVO">
+        <AttrNames>
+          <Item Value="AreaName"/>
+          <Item Value="CoverDate"/>
+          <Item Value="StatusName"/>
+          <Item Value="TotalContracts"/>
+          <Item Value="DispatchableContracts"/>
+          <Item Value="ConfirmedDelivery"/>
+          <Item Value="BoverLostDispatched"/>
+          <Item Value="Promos"/>
+          <Item Value="NeedCall"/>
+          <Item Value="AnsweredResult"/>
+          <Item Value="NoResult"/>
+          <Item Value="ConfirmedPostponed"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="AgentAreasDetVOIterator" id="FirstAgentAreasDetVO" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="AgentAreasDetVOIterator" id="PreviousAgentAreasDetVO" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="AgentAreasDetVOIterator" id="NextAgentAreasDetVO" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="AgentAreasDetVOIterator" id="LastAgentAreasDetVO" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="AgentAreasDetVOIterator" id="SetCurrentRowWithKeyAgentAreasDetVO" RequiresUpdateModel="true"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrAgentAreasDetVO}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="AgentAreasDetVOIterator" id="CreateAgentAreasDetVO" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="AgentAreasDetVOIterator" id="DeleteAgentAreasDetVO" RequiresUpdateModel="true"
+            Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="true" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+    <list IterBinding="WeekDaysAgentVOIterator" ListOperMode="navigation" ListIter="WeekDaysAgentVOIterator"
+          id="WeekDaysAgentVO" DTSupportsMRU="true" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="WorkingDate"/>
+        <Item Value="DayName"/>
+      </AttrNames>
+    </list>
+    <action IterBinding="AgentAreasDetVOIterator" id="Execute" InstanceName="AppModuleAMDataControl.AgentAreasDetVO"
+            DataControl="AppModuleAMDataControl" RequiresUpdateModel="true" Action="iteratorExecute"/>
+  </bindings>
+</pageDefinition>

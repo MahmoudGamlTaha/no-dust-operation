@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PromosDeliveryVO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Partial"
+  RowClass="OPERATIONPROJECT.model.BC.VO.PromosDeliveryVORowImpl"
+  ComponentClass="OPERATIONPROJECT.model.BC.VO.PromosDeliveryVOImpl"
+  RowInterface="OPERATIONPROJECT.model.BC.VO.common.PromosDeliveryVORow"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  SelectAllAttributes="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|Prog|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="PromosDeliveryVO_AreaContractVOLookup"
+    ViewObjectName="OPERATIONPROJECT.model.BC.VO.AreaContractVO"
+    RowLevelBinds="false"/>
+  <ViewAccessor
+    Name="PromosLookupROV1"
+    ViewObjectName="OPERATIONPROJECT.model.BC.VO.Lookups.PromosLookupROV"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_CardNo"
+    ListVOName="PromosDeliveryVO_AreaContractVOLookup"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="LOV_CardNo_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CardNo"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CardNo"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ContractClientName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ProductSku"
+    ListVOName="PromosLookupROV1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ProductSku"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ProductId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ProductName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="PromosDeliveryEO"
+    Entity="OPERATIONPROJECT.model.BC.EO.PromosDeliveryEO"/>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="PromosDeliveryEO"
+    AliasName="ID"
+    IsUpdateable="while_insert"/>
+  <ViewAttribute
+    Name="ProductName"
+    PrecisionRule="true"
+    EntityAttrName="ProductName"
+    EntityUsage="PromosDeliveryEO"
+    AliasName="PRODUCT_NAME"/>
+  <ViewAttribute
+    Name="ProductSku"
+    PrecisionRule="true"
+    EntityAttrName="ProductSku"
+    EntityUsage="PromosDeliveryEO"
+    AliasName="PRODUCT_SKU"
+    LOVName="LOV_ProductSku">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="OPERATIONPROJECT.model.BC.VO.PromosDeliveryVO.ProductSku_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AssignDate"
+    PrecisionRule="true"
+    EntityAttrName="AssignDate"
+    EntityUsage="PromosDeliveryEO"
+    AliasName="ASSIGN_DATE"/>
+  <ViewAttribute
+    Name="CardNo"
+    PrecisionRule="true"
+    EntityAttrName="CardNo"
+    EntityUsage="PromosDeliveryEO"
+    AliasName="CARD_NO"
+    LOVName="LOV_CardNo">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <DISPLAYWIDTH
+          Value="4000"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AreaId"
+    PrecisionRule="true"
+    EntityAttrName="AreaId"
+    EntityUsage="PromosDeliveryEO"
+    AliasName="AREA_ID"/>
+  <ViewAttribute
+    Name="Quantity"
+    PrecisionRule="true"
+    EntityAttrName="Quantity"
+    EntityUsage="PromosDeliveryEO"
+    AliasName="QUANTITY"
+    DefaultValue="1"/>
+  <ViewAttribute
+    Name="assignPromos"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.Boolean"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="BIT"/>
+  <ViewAttribute
+    Name="DeliveryFlag"
+    PrecisionRule="true"
+    EntityAttrName="DeliveryFlag"
+    EntityUsage="PromosDeliveryEO"
+    AliasName="DELIVERY_FLAG"
+    DefaultValue="1"/>
+  <ViewAttribute
+    Name="NextDeliveryDate"
+    PrecisionRule="true"
+    EntityAttrName="NextDeliveryDate"
+    EntityUsage="PromosDeliveryEO"
+    AliasName="NEXT_DELIVERY_DATE"/>
+  <ViewAttribute
+    Name="PromoPrice"
+    PrecisionRule="true"
+    EntityAttrName="PromoPrice"
+    EntityUsage="PromosDeliveryEO"
+    AliasName="PROMO_PRICE"/>
+  <ViewLinkAccessor
+    Name="PromosPrice"
+    ViewLink="OPERATIONPROJECT.model.BC.VO.VL.PromoPriceVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="OPERATIONPROJECT.model.BC.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

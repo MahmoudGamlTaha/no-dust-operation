@@ -1,0 +1,64 @@
+## revision_history
+## 31-oct-2013   Steven Davelaar
+## 1.2           Use PAGE_TEMPLATE_ID macro
+## 18-nov-2011   Steven Davelaar
+## 1.1           Changed to request scope
+## 04-nov-2010   Steven Davelaar
+## 1.0           Initial creation
+
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">jhsFunctionKeyHandler</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.FunctionKeyHandlerImpl</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">request</managed-bean-scope>
+      <managed-property id="#NEW_ID("__")">
+        <property-name id="#NEW_ID("__")">registeredFunctionKeys</property-name>
+        <property-class id="#NEW_ID("__")">java.util.Map</property-class>
+        <map-entries id="#NEW_ID("__")">
+
+#foreach ($functionKey in ${JHS.registeredFunctionKeys})
+          <map-entry id="#NEW_ID("__")">
+            <key id="#NEW_ID("__")">${functionKey.keyCode}</key>
+            <value id="#NEW_ID("__")">#{${functionKey.beanName}}</value>
+          </map-entry>
+#end
+        </map-entries>
+      </managed-property>
+      <managed-property id="#NEW_ID("__")">
+        <property-name id="#NEW_ID("__")">menuId</property-name>
+#if ($JHS.application.useDynamicTabs)
+        <value id="#NEW_ID("__")">#PAGE_TEMPLATE_ID():dyntdc:dynTabsPane</value>
+#else
+        <value id="#NEW_ID("__")">#PAGE_TEMPLATE_ID():Menu1</value>
+#end
+      </managed-property>
+  </managed-bean>
+  
+#foreach ($functionKey in ${JHS.registeredFunctionKeys})
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">${functionKey.beanName}</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.FunctionKeyBean</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">request</managed-bean-scope>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">keyCode</property-name>
+      <value id="#NEW_ID("__")">${functionKey.keyCode}</value>
+    </managed-property>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">displayCode</property-name>
+      <value id="#NEW_ID("__")">${functionKey.displayCode}</value>
+    </managed-property>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">label</property-name>
+      <value id="#NEW_ID("__")">${functionKey.label}</value>
+    </managed-property>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">action</property-name>
+      <value id="#NEW_ID("__")">${functionKey.action}</value>
+    </managed-property>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">pageLevel</property-name>
+      <value id="#NEW_ID("__")">${functionKey.pageLevel}</value>
+    </managed-property>
+  </managed-bean>
+#end
+  
+

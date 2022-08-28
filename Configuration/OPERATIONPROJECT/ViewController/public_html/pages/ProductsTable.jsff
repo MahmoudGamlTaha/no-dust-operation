@@ -1,0 +1,615 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsRegionTemplate.jsf">
+        <f:attribute name="showBreadcrumbs" value="false"/>
+        <!-- DEBUG:BEGIN:WIZARD_PAGE_CONTENT : default/page/wizardPageContent.vm, nesting level: 2 -->
+        <f:facet name="processTrain">
+            <af:train value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}" id="tr0"/>
+        </f:facet>
+        <!-- DEBUG:BEGIN:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3 -->
+        <f:facet name="pageContent">
+            <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4 -->
+            <af:panelStretchLayout topHeight="auto" id="ProductsTopLc"
+                                   partialTriggers=" ProductsDeleteDialog ProductsCancelButton as_Products ProductsPC:ProductsArm ProductsPC:ProductsduprmTM ProductsPC:ProductsdelrmTM ProductsPC:ProductsArl ProductsPC:ProductsTab:Productsduprm ProductsPC:ProductsTab:Productsdelrm ProductsPC:ProductsTab:Productsdelrl ProductsPC:ProductsTab:Productsduprl">
+                <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                <f:facet name="top">
+                    <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                    <af:group id="g0">
+                        <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+                        <af:panelHeader id="ph0" text="#{nls['TABLE_TITLE_PRODUCTS']}">
+                            <f:facet name="toolbar">
+                                <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5 -->
+                                <af:toolbox id="tbox0">
+                                    <af:toolbar id="tbar0">
+                                        <af:group id="gr0">
+                                            <!-- DEBUG:BEGIN:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6 -->
+                                            <!-- DEBUG:END:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6-->
+                                        </af:group>
+                                        <af:group id="gr1"></af:group>
+                                        <af:group id="gr2">
+                                            <af:trainButtonBar value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"/>
+                                            <!-- DEBUG:BEGIN:WIZARD_FINISH_BUTTON : default/button/wizardFinishButton.vm, nesting level: 6 -->
+                                            <af:button action="#{SaveProducts.execute}"
+                                                       textAndAccessKey="#{nls['FINISH']}"
+                                                       id="ProductsWizardFinishButton"></af:button>
+                                            <!-- DEBUG:END:WIZARD_FINISH_BUTTON : default/button/wizardFinishButton.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6 -->
+                                            <af:button textAndAccessKey="#{nls['CANCEL']}" immediate="true"
+                                                       partialSubmit="true"
+                                                       rendered="#{!pageFlowScope.hideCancelButton}"
+                                                       actionListener="#{jhsRollback.execute}" action="Cancel"
+                                                       id="ProductsCancelButton"></af:button>
+                                            <!-- DEBUG:END:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6-->
+                                        </af:group>
+                                    </af:toolbar>
+                                </af:toolbox>
+                                <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5-->
+                            </f:facet>
+                            <f:facet name="context">
+                                <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5 -->
+                                <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5-->
+                            </f:facet>
+                            <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+                            <!-- DEBUG:BEGIN:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 6 -->
+                            <af:panelGroupLayout id="modelSearchAreaProducts"
+                                                 rendered="#{!pageFlowScope.createModes.CreateProducts and !pageFlowScope.hideSearchArea}"
+                                                 partialTriggers="">
+                                <f:attribute name="JhsIgnoreChanges" value="true"/>
+                                <!-- DEBUG:BEGIN:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 7 -->
+                                <af:query id="as_Products" headerText="#{nls['ADVANCED_SEARCH']}" disclosed="true"
+                                          value="#{bindings.ProductsIteratorQuery.queryDescriptor}"
+                                          model="#{bindings.ProductsIteratorQuery.queryModel}"
+                                          queryListener="#{bindings.ProductsIteratorQuery.processQuery}"
+                                          queryOperationListener="#{bindings.ProductsIteratorQuery.processQueryOperation}"
+                                          rows="1" labelAlignment="start" maxColumns="3"></af:query>
+                                <!-- DEBUG:END:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 7-->
+                            </af:panelGroupLayout>
+                            <!-- DEBUG:END:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 6-->
+                            <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+                        </af:panelHeader>
+                        <af:spacer width="10" height="10" id="sp0"/>
+                    </af:group>
+                    <!-- Popped "disabled" from stretchContext, now: enabled (default) -->
+                </f:facet>
+                <f:facet name="center">
+                    <!-- DEBUG:BEGIN:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5 -->
+                    <af:panelStretchLayout topHeight="0" id="psl0">
+                        <f:facet name="top"></f:facet>
+                        <f:facet name="center">
+                            <af:panelCollection id="ProductsPC" featuresOff="  " styleClass="AFStretchWidth">
+                                <f:facet name="menus">
+                                    <!-- DEBUG:BEGIN:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6 -->
+                                    <af:menu textAndAccessKey="#{nls['ACTION_MENU_LABEL']}" id="menu0">
+                                        <af:menu textAndAccessKey="#{nls['GO_TO_MENU_LABEL']}" id="menu1">
+                                            <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                            <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7 -->
+                                            <af:group id="Productstbb"
+                                                      rendered="#{ bindings.ProductsIterator.currentRow!=null }">
+                                                <af:commandMenuItem actionListener="#{bindings.FirstProducts.execute}"
+                                                                    id="ProductsFirst" partialSubmit="true"
+                                                                    icon="/afr/shuttleleftall_ena.png"
+                                                                    textAndAccessKey="#{nls['FIRST_ROW']}"></af:commandMenuItem>
+                                                <af:commandMenuItem actionListener="#{bindings.PreviousProducts.execute}"
+                                                                    icon="/afr/shuttleleft_ena.png"
+                                                                    textAndAccessKey="#{nls['PREVIOUS_ROW']}"
+                                                                    id="ProductsPrevious" partialSubmit="true"></af:commandMenuItem>
+                                                <af:commandMenuItem actionListener="#{bindings.NextProducts.execute}"
+                                                                    icon="/afr/shuttleright_ena.png"
+                                                                    textAndAccessKey="#{nls['NEXT_ROW']}"
+                                                                    id="ProductsNext" partialSubmit="true"></af:commandMenuItem>
+                                                <af:commandMenuItem actionListener="#{bindings.LastProducts.execute}"
+                                                                    icon="/afr/shuttlerightall_ena.png"
+                                                                    textAndAccessKey="#{nls['LAST_ROW']}"
+                                                                    id="ProductsLast" partialSubmit="true"></af:commandMenuItem>
+                                            </af:group>
+                                            <!-- DEBUG:END:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7-->
+                                        </af:menu>
+                                        <!-- DEBUG:BEGIN:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7 -->
+                                        <af:commandMenuItem id="ProductsArm" textAndAccessKey="#{nls['ADD_ROW']}"
+                                                            immediate="false" icon="/jheadstart/images/addRow.png"
+                                                            partialSubmit="true"
+                                                            actionListener="#{pageFlowScope.ProductsTable.addRow}"
+                                                            rendered="#{(true) and (MTSPermission['Products.create'])}"></af:commandMenuItem>
+                                        <!-- DEBUG:END:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                        <af:commandMenuItem id="ProductsduprmTM"
+                                                            textAndAccessKey="#{nls['DUPLICATE_ROW']}" immediate="true"
+                                                            icon="/jheadstart/images/duplicateRow.png"
+                                                            partialSubmit="true"
+                                                            actionListener="#{pageFlowScope.ProductsTable.duplicateRow}"
+                                                            rendered="#{MTSPermission['Products.create']}"></af:commandMenuItem>
+                                        <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                        <af:commandMenuItem id="ProductsdelrmTM" textAndAccessKey="#{nls['DELETE_ROW']}"
+                                                            icon="/jheadstart/images/deleteRow.png" partialSubmit="true"
+                                                            immediate="true"
+                                                            rendered="#{MTSPermission['Products.delete']}">
+                                            <af:showPopupBehavior popupId="::ProductsDeletePopup"/>
+                                        </af:commandMenuItem>
+                                        <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7-->
+                                    </af:menu>
+                                    <!-- DEBUG:END:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6-->
+                                </f:facet>
+                                <f:facet name="toolbar">
+                                    <!-- DEBUG:BEGIN:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6 -->
+                                    <af:toolbar id="tbar1">
+                                        <!-- DEBUG:BEGIN:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7 -->
+                                        <!-- Also create CreateProducts bean so we can start table group in create mode as well -->
+                                        <af:link id="ProductsArl" immediate="false"
+                                                 rendered="#{(true) and (MTSPermission['Products.create'])}"
+                                                 partialSubmit="true"
+                                                 actionListener="#{pageFlowScope.ProductsTable.addRow}"
+                                                 shortDesc="#{nls['ADD_ROW']}" icon="/jheadstart/images/addRow.png"/>
+                                        <!-- DEBUG:END:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7-->
+                                    </af:toolbar>
+                                    <!-- DEBUG:END:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6-->
+                                </f:facet>
+                                <f:facet name="statusbar"/>
+                                <af:table id="ProductsTab" contentDelivery="immediate"
+                                          value="#{bindings.ProductsTable.collectionModel}" columnStretching="last"
+                                          rowBandingInterval="0" editingMode="editAll" columnSelection="multiple"
+                                          contextMenuSelect="true" rowSelection="single"
+                                          selectionListener="#{pageFlowScope.ProductsTable.makeCurrent}"
+                                          selectedRowKeys="#{pageFlowScope.ProductsTable.selectedRow}"
+                                          rowDisclosureListener="#{pageFlowScope.ProductsTable.discloseRow}" var="row"
+                                          varStatus="status" fetchSize="#{bindings.ProductsTable.rangeSize}"
+                                          emptyText="#{nls['NO_ROWS_FOUND']}"
+                                          queryListener="#{bindings.ProductsIteratorQuery.processQuery}"
+                                          filterModel="#{bindings.ProductsIteratorQuery.queryDescriptor}"
+                                          filterVisible="true" binding="#{pageFlowScope.ProductsTable.table}"
+                                          partialTriggers=" :::as_Products :::ProductsPC ::ProductsFirst ::ProductsPrevious ::ProductsNext ::ProductsLast"
+                                          styleClass="AFStretchWidth" summary="#{nls['TABLE_TITLE_PRODUCTS']}">
+                                    <!-- DEBUG:BEGIN:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6 -->
+                                    <f:facet name="contextMenu">
+                                        <af:popup id="ProductsTablePopup" childCreation="deferred">
+                                            <af:menu id="menu2">
+                                                <af:menu text="#{nls['GO_TO_MENU_LABEL']}" id="menu3">
+                                                    <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                                    <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                                </af:menu>
+                                                <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                                <af:commandMenuItem id="Productsduprm"
+                                                                    textAndAccessKey="#{nls['DUPLICATE_ROW']}"
+                                                                    immediate="true"
+                                                                    icon="/jheadstart/images/duplicateRow.png"
+                                                                    partialSubmit="true"
+                                                                    actionListener="#{pageFlowScope.ProductsTable.duplicateRow}"
+                                                                    rendered="#{MTSPermission['Products.create']}"></af:commandMenuItem>
+                                                <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                                <af:commandMenuItem id="Productsdelrm"
+                                                                    textAndAccessKey="#{nls['DELETE_ROW']}"
+                                                                    icon="/jheadstart/images/deleteRow.png"
+                                                                    partialSubmit="true" immediate="true"
+                                                                    rendered="#{MTSPermission['Products.delete']}">
+                                                    <af:showPopupBehavior popupId=":::ProductsDeletePopup"/>
+                                                </af:commandMenuItem>
+                                                <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                            </af:menu>
+                                        </af:popup>
+                                    </f:facet><!-- DEBUG:END:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6 --><!-- DEBUG:END:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6 -->
+                                    <af:column id="ProductsActionColumn" frozen="true" width="40" align="center"
+                                               headerText=" ">
+                                        <af:panelGroupLayout layout="horizontal" id="pgl0">
+                                            <!-- DEBUG:BEGIN:DETAILS_LINK : default/button/detailsLink.vm, nesting level: 7 -->
+                                            <!-- DEBUG:END:DETAILS_LINK : default/button/detailsLink.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:DELETE_ROW_LINK : default/button/deleteRowLink.vm, nesting level: 7 -->
+                                            <af:link id="Productsdelrl" partialSubmit="true" immediate="true"
+                                                     rendered="#{MTSPermission['Products.delete']}"
+                                                     shortDesc="#{nls['DELETE_ROW']}"
+                                                     icon="/jheadstart/images/deleteRow.png">
+                                                <af:showPopupBehavior popupId=":::ProductsDeletePopup"/>
+                                            </af:link>
+                                            <!-- DEBUG:END:DELETE_ROW_LINK : default/button/deleteRowLink.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:DUPLICATE_ROW_LINK : default/button/duplicateRowLink.vm, nesting level: 7 -->
+                                            <af:link id="Productsduprl" immediate="true" partialSubmit="true"
+                                                     actionListener="#{pageFlowScope.ProductsTable.duplicateRow}"
+                                                     rendered="#{MTSPermission['Products.create']}"
+                                                     shortDesc="#{nls['DUPLICATE_ROW']}"
+                                                     icon="/jheadstart/images/duplicateRow.png"/>
+                                            <!-- DEBUG:END:DUPLICATE_ROW_LINK : default/button/duplicateRowLink.vm, nesting level: 7-->
+                                        </af:panelGroupLayout>
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="ProductsDmsProductIdCol" sortable="true" filterable="true"
+                                               noWrap="true" width="500" sortProperty="DmsProductId" rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.ProductsTable.hints.DmsProductId.label}"
+                                                            showRequired="#{bindings.ProductsTable.hints.DmsProductId.mandatory}"
+                                                            id="ol0"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                        <af:inputText id="ProductsDmsProductId"
+                                                      value="#{row.bindings.DmsProductId.inputValue}"
+                                                      label="#{bindings.ProductsTable.hints.DmsProductId.label}"
+                                                      required="#{bindings.ProductsTable.hints.DmsProductId.mandatory}"
+                                                      rows="#{bindings.ProductsTable.hints.DmsProductId.displayHeight}"
+                                                      columns="#{bindings.ProductsTable.hints.DmsProductId.displayWidth}"
+                                                      maximumLength="4000"
+                                                      readOnly="#{(((pageFlowScope.ProductsTable.newRow) and (!(MTSPermission['Products.create']))) or ((!pageFlowScope.ProductsTable.newRow) and (!(MTSPermission['Products.update'])))) or (!(pageFlowScope.ProductsTable.newRow))}"
+                                                      shortDesc="#{bindings.ProductsTable.hints.DmsProductId.tooltip}">
+                                            <f:validator binding="#{row.bindings.DmsProductId.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="ProductsHandleSkuCodeCol" sortable="true" filterable="true"
+                                               noWrap="true" width="500" sortProperty="HandleSkuCode" rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.ProductsTable.hints.HandleSkuCode.label}"
+                                                            showRequired="#{bindings.ProductsTable.hints.HandleSkuCode.mandatory}"
+                                                            id="ol1"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                        <af:inputText id="ProductsHandleSkuCode"
+                                                      value="#{row.bindings.HandleSkuCode.inputValue}"
+                                                      label="#{bindings.ProductsTable.hints.HandleSkuCode.label}"
+                                                      required="#{bindings.ProductsTable.hints.HandleSkuCode.mandatory}"
+                                                      rows="#{bindings.ProductsTable.hints.HandleSkuCode.displayHeight}"
+                                                      columns="#{bindings.ProductsTable.hints.HandleSkuCode.displayWidth}"
+                                                      maximumLength="4000"
+                                                      readOnly="#{(((pageFlowScope.ProductsTable.newRow) and (!(MTSPermission['Products.create']))) or ((!pageFlowScope.ProductsTable.newRow) and (!(MTSPermission['Products.update'])))) or (!(pageFlowScope.ProductsTable.newRow))}"
+                                                      shortDesc="#{bindings.ProductsTable.hints.HandleSkuCode.tooltip}">
+                                            <f:validator binding="#{row.bindings.HandleSkuCode.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="ProductsIsHandleCol" sortable="true" filterable="true" noWrap="true"
+                                               width="100" sortProperty="IsHandle" align="right" rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.ProductsTable.hints.IsHandle.label}"
+                                                            showRequired="#{bindings.ProductsTable.hints.IsHandle.mandatory}"
+                                                            id="ol2"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                        <af:inputText id="ProductsIsHandle" value="#{row.bindings.IsHandle.inputValue}"
+                                                      label="#{bindings.ProductsTable.hints.IsHandle.label}"
+                                                      required="#{bindings.ProductsTable.hints.IsHandle.mandatory}"
+                                                      rows="#{bindings.ProductsTable.hints.IsHandle.displayHeight}"
+                                                      columns="#{bindings.ProductsTable.hints.IsHandle.displayWidth}"
+                                                      readOnly="#{(((pageFlowScope.ProductsTable.newRow) and (!(MTSPermission['Products.create']))) or ((!pageFlowScope.ProductsTable.newRow) and (!(MTSPermission['Products.update'])))) or (!(pageFlowScope.ProductsTable.newRow))}"
+                                                      shortDesc="#{bindings.ProductsTable.hints.IsHandle.tooltip}">
+                                            <f:validator binding="#{row.bindings.IsHandle.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.ProductsTable.hints.IsHandle.format}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="ProductsKindCol" sortable="true" filterable="true" noWrap="true"
+                                               width="100" sortProperty="Kind" align="right" rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.ProductsTable.hints.Kind.label}"
+                                                            showRequired="#{bindings.ProductsTable.hints.Kind.mandatory}"
+                                                            id="ol3"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                        <af:inputText id="ProductsKind" value="#{row.bindings.Kind.inputValue}"
+                                                      label="#{bindings.ProductsTable.hints.Kind.label}"
+                                                      required="#{bindings.ProductsTable.hints.Kind.mandatory}"
+                                                      rows="#{bindings.ProductsTable.hints.Kind.displayHeight}"
+                                                      columns="#{bindings.ProductsTable.hints.Kind.displayWidth}"
+                                                      readOnly="#{((pageFlowScope.ProductsTable.newRow) and (!(MTSPermission['Products.create']))) or ((!pageFlowScope.ProductsTable.newRow) and (!(MTSPermission['Products.update'])))}"
+                                                      shortDesc="#{bindings.ProductsTable.hints.Kind.tooltip}">
+                                            <f:validator binding="#{row.bindings.Kind.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.ProductsTable.hints.Kind.format}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="ProductsPrice1wCol" sortable="true" filterable="true" noWrap="true"
+                                               width="100" sortProperty="Price1w" align="right" rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.ProductsTable.hints.Price1w.label}"
+                                                            showRequired="#{bindings.ProductsTable.hints.Price1w.mandatory}"
+                                                            id="ol4"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                        <af:inputText id="ProductsPrice1w" value="#{row.bindings.Price1w.inputValue}"
+                                                      label="#{bindings.ProductsTable.hints.Price1w.label}"
+                                                      required="#{bindings.ProductsTable.hints.Price1w.mandatory}"
+                                                      rows="#{bindings.ProductsTable.hints.Price1w.displayHeight}"
+                                                      columns="#{bindings.ProductsTable.hints.Price1w.displayWidth}"
+                                                      readOnly="#{((pageFlowScope.ProductsTable.newRow) and (!(MTSPermission['Products.create']))) or ((!pageFlowScope.ProductsTable.newRow) and (!(MTSPermission['Products.update'])))}"
+                                                      shortDesc="#{bindings.ProductsTable.hints.Price1w.tooltip}">
+                                            <f:validator binding="#{row.bindings.Price1w.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.ProductsTable.hints.Price1w.format}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="ProductsPrice2wCol" sortable="true" filterable="true" noWrap="true"
+                                               width="100" sortProperty="Price2w" align="right" rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.ProductsTable.hints.Price2w.label}"
+                                                            showRequired="#{bindings.ProductsTable.hints.Price2w.mandatory}"
+                                                            id="ol5"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                        <af:inputText id="ProductsPrice2w" value="#{row.bindings.Price2w.inputValue}"
+                                                      label="#{bindings.ProductsTable.hints.Price2w.label}"
+                                                      required="#{bindings.ProductsTable.hints.Price2w.mandatory}"
+                                                      rows="#{bindings.ProductsTable.hints.Price2w.displayHeight}"
+                                                      columns="#{bindings.ProductsTable.hints.Price2w.displayWidth}"
+                                                      readOnly="#{((pageFlowScope.ProductsTable.newRow) and (!(MTSPermission['Products.create']))) or ((!pageFlowScope.ProductsTable.newRow) and (!(MTSPermission['Products.update'])))}"
+                                                      shortDesc="#{bindings.ProductsTable.hints.Price2w.tooltip}">
+                                            <f:validator binding="#{row.bindings.Price2w.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.ProductsTable.hints.Price2w.format}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="ProductsPrice3wCol" sortable="true" filterable="true" noWrap="true"
+                                               width="100" sortProperty="Price3w" align="right" rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.ProductsTable.hints.Price3w.label}"
+                                                            showRequired="#{bindings.ProductsTable.hints.Price3w.mandatory}"
+                                                            id="ol6"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                        <af:inputText id="ProductsPrice3w" value="#{row.bindings.Price3w.inputValue}"
+                                                      label="#{bindings.ProductsTable.hints.Price3w.label}"
+                                                      required="#{bindings.ProductsTable.hints.Price3w.mandatory}"
+                                                      rows="#{bindings.ProductsTable.hints.Price3w.displayHeight}"
+                                                      columns="#{bindings.ProductsTable.hints.Price3w.displayWidth}"
+                                                      readOnly="#{((pageFlowScope.ProductsTable.newRow) and (!(MTSPermission['Products.create']))) or ((!pageFlowScope.ProductsTable.newRow) and (!(MTSPermission['Products.update'])))}"
+                                                      shortDesc="#{bindings.ProductsTable.hints.Price3w.tooltip}">
+                                            <f:validator binding="#{row.bindings.Price3w.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.ProductsTable.hints.Price3w.format}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="ProductsPrice4wCol" sortable="true" filterable="true" noWrap="true"
+                                               width="100" sortProperty="Price4w" align="right" rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.ProductsTable.hints.Price4w.label}"
+                                                            showRequired="#{bindings.ProductsTable.hints.Price4w.mandatory}"
+                                                            id="ol7"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                        <af:inputText id="ProductsPrice4w" value="#{row.bindings.Price4w.inputValue}"
+                                                      label="#{bindings.ProductsTable.hints.Price4w.label}"
+                                                      required="#{bindings.ProductsTable.hints.Price4w.mandatory}"
+                                                      rows="#{bindings.ProductsTable.hints.Price4w.displayHeight}"
+                                                      columns="#{bindings.ProductsTable.hints.Price4w.displayWidth}"
+                                                      readOnly="#{((pageFlowScope.ProductsTable.newRow) and (!(MTSPermission['Products.create']))) or ((!pageFlowScope.ProductsTable.newRow) and (!(MTSPermission['Products.update'])))}"
+                                                      shortDesc="#{bindings.ProductsTable.hints.Price4w.tooltip}">
+                                            <f:validator binding="#{row.bindings.Price4w.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.ProductsTable.hints.Price4w.format}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="ProductsProductCategoryCol" sortable="true" filterable="true"
+                                               noWrap="true" width="100" sortProperty="ProductCategory" align="right"
+                                               rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.ProductsTable.hints.ProductCategory.label}"
+                                                            showRequired="#{bindings.ProductsTable.hints.ProductCategory.mandatory}"
+                                                            id="ol8"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                        <af:inputText id="ProductsProductCategory"
+                                                      value="#{row.bindings.ProductCategory.inputValue}"
+                                                      label="#{bindings.ProductsTable.hints.ProductCategory.label}"
+                                                      required="#{bindings.ProductsTable.hints.ProductCategory.mandatory}"
+                                                      rows="#{bindings.ProductsTable.hints.ProductCategory.displayHeight}"
+                                                      columns="#{bindings.ProductsTable.hints.ProductCategory.displayWidth}"
+                                                      readOnly="#{((pageFlowScope.ProductsTable.newRow) and (!(MTSPermission['Products.create']))) or ((!pageFlowScope.ProductsTable.newRow) and (!(MTSPermission['Products.update'])))}"
+                                                      shortDesc="#{bindings.ProductsTable.hints.ProductCategory.tooltip}">
+                                            <f:validator binding="#{row.bindings.ProductCategory.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.ProductsTable.hints.ProductCategory.format}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="ProductsProductNameCol" sortable="true" filterable="true"
+                                               noWrap="true" width="500" sortProperty="ProductName" rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.ProductsTable.hints.ProductName.label}"
+                                                            showRequired="#{bindings.ProductsTable.hints.ProductName.mandatory}"
+                                                            id="ol9"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                        <af:inputText id="ProductsProductName"
+                                                      value="#{row.bindings.ProductName.inputValue}"
+                                                      label="#{bindings.ProductsTable.hints.ProductName.label}"
+                                                      required="#{bindings.ProductsTable.hints.ProductName.mandatory}"
+                                                      rows="#{bindings.ProductsTable.hints.ProductName.displayHeight}"
+                                                      columns="#{bindings.ProductsTable.hints.ProductName.displayWidth}"
+                                                      maximumLength="4000"
+                                                      readOnly="#{((pageFlowScope.ProductsTable.newRow) and (!(MTSPermission['Products.create']))) or ((!pageFlowScope.ProductsTable.newRow) and (!(MTSPermission['Products.update'])))}"
+                                                      shortDesc="#{bindings.ProductsTable.hints.ProductName.tooltip}">
+                                            <f:validator binding="#{row.bindings.ProductName.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="ProductsProductSkuCol" sortable="true" filterable="true"
+                                               noWrap="true" width="500" sortProperty="ProductSku" rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.ProductsTable.hints.ProductSku.label}"
+                                                            showRequired="#{bindings.ProductsTable.hints.ProductSku.mandatory}"
+                                                            id="ol10"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                        <af:inputText id="ProductsProductSku"
+                                                      value="#{row.bindings.ProductSku.inputValue}"
+                                                      label="#{bindings.ProductsTable.hints.ProductSku.label}"
+                                                      required="#{bindings.ProductsTable.hints.ProductSku.mandatory}"
+                                                      rows="#{bindings.ProductsTable.hints.ProductSku.displayHeight}"
+                                                      columns="#{bindings.ProductsTable.hints.ProductSku.displayWidth}"
+                                                      maximumLength="4000"
+                                                      readOnly="#{(((pageFlowScope.ProductsTable.newRow) and (!(MTSPermission['Products.create']))) or ((!pageFlowScope.ProductsTable.newRow) and (!(MTSPermission['Products.update'])))) or (!(pageFlowScope.ProductsTable.newRow))}"
+                                                      shortDesc="#{bindings.ProductsTable.hints.ProductSku.tooltip}">
+                                            <f:validator binding="#{row.bindings.ProductSku.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="ProductsSellingPriceCol" sortable="true" filterable="true"
+                                               noWrap="true" width="100" sortProperty="SellingPrice" align="right"
+                                               rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.ProductsTable.hints.SellingPrice.label}"
+                                                            showRequired="#{bindings.ProductsTable.hints.SellingPrice.mandatory}"
+                                                            id="ol11"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                        <af:inputText id="ProductsSellingPrice"
+                                                      value="#{row.bindings.SellingPrice.inputValue}"
+                                                      label="#{bindings.ProductsTable.hints.SellingPrice.label}"
+                                                      required="#{bindings.ProductsTable.hints.SellingPrice.mandatory}"
+                                                      rows="#{bindings.ProductsTable.hints.SellingPrice.displayHeight}"
+                                                      columns="#{bindings.ProductsTable.hints.SellingPrice.displayWidth}"
+                                                      readOnly="#{((pageFlowScope.ProductsTable.newRow) and (!(MTSPermission['Products.create']))) or ((!pageFlowScope.ProductsTable.newRow) and (!(MTSPermission['Products.update'])))}"
+                                                      shortDesc="#{bindings.ProductsTable.hints.SellingPrice.tooltip}">
+                                            <f:validator binding="#{row.bindings.SellingPrice.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.ProductsTable.hints.SellingPrice.format}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="ProductsTreatmentIdCol" sortable="true" filterable="true"
+                                               noWrap="true" width="100" sortProperty="TreatmentId" align="right"
+                                               rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.ProductsTable.hints.TreatmentId.label}"
+                                                            showRequired="#{bindings.ProductsTable.hints.TreatmentId.mandatory}"
+                                                            id="ol12"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                        <af:inputText id="ProductsTreatmentId"
+                                                      value="#{row.bindings.TreatmentId.inputValue}"
+                                                      label="#{bindings.ProductsTable.hints.TreatmentId.label}"
+                                                      required="#{bindings.ProductsTable.hints.TreatmentId.mandatory}"
+                                                      rows="#{bindings.ProductsTable.hints.TreatmentId.displayHeight}"
+                                                      columns="#{bindings.ProductsTable.hints.TreatmentId.displayWidth}"
+                                                      readOnly="#{((pageFlowScope.ProductsTable.newRow) and (!(MTSPermission['Products.create']))) or ((!pageFlowScope.ProductsTable.newRow) and (!(MTSPermission['Products.update'])))}"
+                                                      shortDesc="#{bindings.ProductsTable.hints.TreatmentId.tooltip}">
+                                            <f:validator binding="#{row.bindings.TreatmentId.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.ProductsTable.hints.TreatmentId.format}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="ProductsTypeCol" sortable="true" filterable="true" noWrap="true"
+                                               width="100" sortProperty="Type" align="right" rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.ProductsTable.hints.Type.label}"
+                                                            showRequired="#{bindings.ProductsTable.hints.Type.mandatory}"
+                                                            id="ol13"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                        <af:inputText id="ProductsType" value="#{row.bindings.Type.inputValue}"
+                                                      label="#{bindings.ProductsTable.hints.Type.label}"
+                                                      required="#{bindings.ProductsTable.hints.Type.mandatory}"
+                                                      rows="#{bindings.ProductsTable.hints.Type.displayHeight}"
+                                                      columns="#{bindings.ProductsTable.hints.Type.displayWidth}"
+                                                      readOnly="#{((pageFlowScope.ProductsTable.newRow) and (!(MTSPermission['Products.create']))) or ((!pageFlowScope.ProductsTable.newRow) and (!(MTSPermission['Products.update'])))}"
+                                                      shortDesc="#{bindings.ProductsTable.hints.Type.tooltip}">
+                                            <f:validator binding="#{row.bindings.Type.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.ProductsTable.hints.Type.format}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                </af:table>
+                            </af:panelCollection>
+                        </f:facet>
+                    </af:panelStretchLayout>
+                    <!-- DEBUG:END:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5-->
+                </f:facet>
+            </af:panelStretchLayout>
+            <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4-->
+        </f:facet>
+        <f:facet name="popups">
+            <af:panelGroupLayout id="popupsPgl">
+                <!-- DEBUG:BEGIN:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 8 -->
+                <af:popup id="ProductsDeletePopup" contentDelivery="lazyUncached" childCreation="deferred">
+                    <af:dialog type="none" title="#{nls['WARNING']}" modal="true" id="ProductsDeleteDialog">
+                        <af:outputText value="#{nls['DELETE_WARNING_PRODUCT:#{bindings.ProductsIterator.currentRowIndexInRange+1}']} "
+                                       id="ot0"/>
+                        <f:attribute name="methodExpression" value="#{'#{DeleteProducts.execute}'}"/>
+                        <f:facet name="buttonBar">
+                            <af:group id="g1">
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_YES']}" id="cb0" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.confirm}"/>
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_NO']}" id="cb1" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.abort}"/>
+                            </af:group>
+                        </f:facet>
+                    </af:dialog>
+                </af:popup>
+                <!-- DEBUG:END:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 8-->
+            </af:panelGroupLayout>
+        </f:facet>
+        <!-- DEBUG:END:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3-->
+        <!-- DEBUG:END:WIZARD_PAGE_CONTENT : default/page/wizardPageContent.vm, nesting level: 2-->
+    </af:pageTemplate>
+</ui:composition>
+
+
+

@@ -1,0 +1,261 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsRegionTemplate.jsf">
+        <f:attribute name="showBreadcrumbs" value="false"/>
+        <!-- DEBUG:BEGIN:WIZARD_PAGE_CONTENT : default/page/wizardPageContent.vm, nesting level: 2 -->
+        <f:facet name="processTrain">
+            <af:train value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}" id="tr0"/>
+        </f:facet>
+        <!-- DEBUG:BEGIN:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3 -->
+        <f:facet name="pageContent">
+            <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4 -->
+            <af:panelStretchLayout topHeight="auto" id="TemplateConfigurationTopLc"
+                                   partialTriggers=" TemplateConfigurationCancelButton as_TemplateConfiguration">
+                <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                <f:facet name="top">
+                    <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                    <af:group id="g0">
+                        <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+                        <af:panelHeader id="ph0" text="#{nls['TABLE_TITLE_TEMPLATECONFIGURATION']}">
+                            <f:facet name="toolbar">
+                                <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5 -->
+                                <af:toolbox id="tbox0">
+                                    <af:toolbar id="tbar0">
+                                        <af:group id="gr0">
+                                            <!-- DEBUG:BEGIN:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6 -->
+                                            <!-- DEBUG:END:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6-->
+                                        </af:group>
+                                        <af:group id="gr1"></af:group>
+                                        <af:group id="gr2">
+                                            <af:trainButtonBar value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"/>
+                                            <!-- DEBUG:BEGIN:WIZARD_FINISH_BUTTON : default/button/wizardFinishButton.vm, nesting level: 6 -->
+                                            <af:button action="#{SaveTemplateConfiguration.execute}"
+                                                       textAndAccessKey="#{nls['FINISH']}"
+                                                       id="TemplateConfigurationWizardFinishButton"></af:button>
+                                            <!-- DEBUG:END:WIZARD_FINISH_BUTTON : default/button/wizardFinishButton.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6 -->
+                                            <af:button textAndAccessKey="#{nls['CANCEL']}" immediate="true"
+                                                       partialSubmit="true"
+                                                       rendered="#{!pageFlowScope.hideCancelButton}"
+                                                       actionListener="#{jhsRollback.execute}" action="Cancel"
+                                                       id="TemplateConfigurationCancelButton"></af:button>
+                                            <!-- DEBUG:END:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6-->
+                                        </af:group>
+                                    </af:toolbar>
+                                </af:toolbox>
+                                <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5-->
+                            </f:facet>
+                            <f:facet name="context">
+                                <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5 -->
+                                <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5-->
+                            </f:facet>
+                            <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+                            <!-- DEBUG:BEGIN:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 6 -->
+                            <af:panelGroupLayout id="modelSearchAreaTemplateConfiguration"
+                                                 rendered="#{!pageFlowScope.createModes.CreateTemplateConfiguration and !pageFlowScope.hideSearchArea}"
+                                                 partialTriggers="">
+                                <f:attribute name="JhsIgnoreChanges" value="true"/>
+                                <!-- DEBUG:BEGIN:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 7 -->
+                                <af:query id="as_TemplateConfiguration" headerText="#{nls['ADVANCED_SEARCH']}"
+                                          disclosed="true"
+                                          value="#{bindings.TemplateConfigurationIteratorQuery.queryDescriptor}"
+                                          model="#{bindings.TemplateConfigurationIteratorQuery.queryModel}"
+                                          queryListener="#{bindings.TemplateConfigurationIteratorQuery.processQuery}"
+                                          queryOperationListener="#{bindings.TemplateConfigurationIteratorQuery.processQueryOperation}"
+                                          rows="1" labelAlignment="start" maxColumns="3"></af:query>
+                                <!-- DEBUG:END:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 7-->
+                            </af:panelGroupLayout>
+                            <!-- DEBUG:END:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 6-->
+                            <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+                        </af:panelHeader>
+                        <af:spacer width="10" height="10" id="sp0"/>
+                    </af:group>
+                    <!-- Popped "disabled" from stretchContext, now: enabled (default) -->
+                </f:facet>
+                <f:facet name="center">
+                    <!-- DEBUG:BEGIN:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5 -->
+                    <af:panelStretchLayout topHeight="0" id="psl0">
+                        <f:facet name="top"></f:facet>
+                        <f:facet name="center">
+                            <af:panelCollection id="TemplateConfigurationPC" featuresOff="  "
+                                                styleClass="AFStretchWidth">
+                                <f:facet name="menus">
+                                    <!-- DEBUG:BEGIN:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6 -->
+                                    <af:menu textAndAccessKey="#{nls['ACTION_MENU_LABEL']}" id="menu0">
+                                        <af:menu textAndAccessKey="#{nls['GO_TO_MENU_LABEL']}" id="menu1">
+                                            <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                            <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7 -->
+                                            <af:group id="TemplateConfigurationtbb"
+                                                      rendered="#{ bindings.TemplateConfigurationIterator.currentRow!=null }">
+                                                <af:commandMenuItem actionListener="#{bindings.FirstTemplateConfiguration.execute}"
+                                                                    id="TemplateConfigurationFirst" partialSubmit="true"
+                                                                    icon="/afr/shuttleleftall_ena.png"
+                                                                    textAndAccessKey="#{nls['FIRST_ROW']}"></af:commandMenuItem>
+                                                <af:commandMenuItem actionListener="#{bindings.PreviousTemplateConfiguration.execute}"
+                                                                    icon="/afr/shuttleleft_ena.png"
+                                                                    textAndAccessKey="#{nls['PREVIOUS_ROW']}"
+                                                                    id="TemplateConfigurationPrevious"
+                                                                    partialSubmit="true"></af:commandMenuItem>
+                                                <af:commandMenuItem actionListener="#{bindings.NextTemplateConfiguration.execute}"
+                                                                    icon="/afr/shuttleright_ena.png"
+                                                                    textAndAccessKey="#{nls['NEXT_ROW']}"
+                                                                    id="TemplateConfigurationNext" partialSubmit="true"></af:commandMenuItem>
+                                                <af:commandMenuItem actionListener="#{bindings.LastTemplateConfiguration.execute}"
+                                                                    icon="/afr/shuttlerightall_ena.png"
+                                                                    textAndAccessKey="#{nls['LAST_ROW']}"
+                                                                    id="TemplateConfigurationLast" partialSubmit="true"></af:commandMenuItem>
+                                            </af:group>
+                                            <!-- DEBUG:END:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7-->
+                                        </af:menu>
+                                        <!-- DEBUG:BEGIN:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7-->
+                                    </af:menu>
+                                    <!-- DEBUG:END:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6-->
+                                </f:facet>
+                                <f:facet name="toolbar">
+                                    <!-- DEBUG:BEGIN:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6 -->
+                                    <af:toolbar id="tbar1">
+                                        <!-- DEBUG:BEGIN:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7-->
+                                    </af:toolbar>
+                                    <!-- DEBUG:END:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6-->
+                                </f:facet>
+                                <f:facet name="statusbar"/>
+                                <af:table id="TemplateConfigurationTab" contentDelivery="immediate"
+                                          value="#{bindings.TemplateConfigurationTable.collectionModel}"
+                                          columnStretching="last" rowBandingInterval="0" editingMode="editAll"
+                                          columnSelection="multiple" contextMenuSelect="true" rowSelection="single"
+                                          selectionListener="#{pageFlowScope.TemplateConfigurationTable.makeCurrent}"
+                                          selectedRowKeys="#{pageFlowScope.TemplateConfigurationTable.selectedRow}"
+                                          rowDisclosureListener="#{pageFlowScope.TemplateConfigurationTable.discloseRow}"
+                                          var="row" varStatus="status"
+                                          fetchSize="#{bindings.TemplateConfigurationTable.rangeSize}"
+                                          emptyText="#{nls['NO_ROWS_FOUND']}"
+                                          queryListener="#{bindings.TemplateConfigurationIteratorQuery.processQuery}"
+                                          filterModel="#{bindings.TemplateConfigurationIteratorQuery.queryDescriptor}"
+                                          filterVisible="true"
+                                          binding="#{pageFlowScope.TemplateConfigurationTable.table}"
+                                          partialTriggers=" :::as_TemplateConfiguration :::TemplateConfigurationPC ::TemplateConfigurationFirst ::TemplateConfigurationPrevious ::TemplateConfigurationNext ::TemplateConfigurationLast"
+                                          styleClass="AFStretchWidth"
+                                          summary="#{nls['TABLE_TITLE_TEMPLATECONFIGURATION']}">
+                                    <!-- DEBUG:BEGIN:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6 -->
+                                    <f:facet name="contextMenu">
+                                        <af:popup id="TemplateConfigurationTablePopup" childCreation="deferred">
+                                            <af:menu id="menu2">
+                                                <af:menu text="#{nls['GO_TO_MENU_LABEL']}" id="menu3">
+                                                    <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                                    <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                                </af:menu>
+                                                <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                            </af:menu>
+                                        </af:popup>
+                                    </f:facet><!-- DEBUG:END:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6 --><!-- DEBUG:END:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6 --><!-- DEBUG:END:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="TemplateConfigurationTemplateNameCol" sortable="true"
+                                               filterable="true" noWrap="true" width="300" sortProperty="TemplateName"
+                                               rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{nls['TEMPLATECONFIGURATION_TABLE_TEMPLATENAME']}"
+                                                            showRequired="#{bindings.TemplateConfigurationTable.hints.TemplateName.mandatory}"
+                                                            id="ol0"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                        <af:inputText id="TemplateConfigurationTemplateName"
+                                                      value="#{row.bindings.TemplateName.inputValue}"
+                                                      label="#{nls['TEMPLATECONFIGURATION_TABLE_TEMPLATENAME']}"
+                                                      required="#{bindings.TemplateConfigurationTable.hints.TemplateName.mandatory}"
+                                                      rows="#{bindings.TemplateConfigurationTable.hints.TemplateName.displayHeight}"
+                                                      columns="250" maximumLength="500"
+                                                      readOnly="#{!(MTSPermission['TemplateConfiguration.update'])}"
+                                                      shortDesc="#{bindings.TemplateConfigurationTable.hints.TemplateName.tooltip}">
+                                            <f:validator binding="#{row.bindings.TemplateName.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="TemplateConfigurationTemplateContentCol" sortable="true"
+                                               filterable="true" noWrap="true" width="300"
+                                               sortProperty="TemplateContent" rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{nls['TEMPLATECONFIGURATION_TABLE_TEMPLATECONTENT']}"
+                                                            showRequired="#{bindings.TemplateConfigurationTable.hints.TemplateContent.mandatory}"
+                                                            id="ol1"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                        <af:inputText id="TemplateConfigurationTemplateContent"
+                                                      value="#{row.bindings.TemplateContent.inputValue}"
+                                                      label="#{nls['TEMPLATECONFIGURATION_TABLE_TEMPLATECONTENT']}"
+                                                      required="#{bindings.TemplateConfigurationTable.hints.TemplateContent.mandatory}"
+                                                      rows="#{bindings.TemplateConfigurationTable.hints.TemplateContent.displayHeight}"
+                                                      columns="250" maximumLength="500"
+                                                      readOnly="#{!(MTSPermission['TemplateConfiguration.update'])}"
+                                                      shortDesc="#{bindings.TemplateConfigurationTable.hints.TemplateContent.tooltip}">
+                                            <f:validator binding="#{row.bindings.TemplateContent.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="TemplateConfigurationTemplateContentArCol" sortable="true"
+                                               filterable="true" noWrap="true" width="300"
+                                               sortProperty="TemplateContentAr" rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{nls['TEMPLATECONFIGURATION_TABLE_TEMPLATECONTENTAR']}"
+                                                            showRequired="#{bindings.TemplateConfigurationTable.hints.TemplateContentAr.mandatory}"
+                                                            id="ol2"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                        <af:inputText id="TemplateConfigurationTemplateContentAr"
+                                                      value="#{row.bindings.TemplateContentAr.inputValue}"
+                                                      label="#{nls['TEMPLATECONFIGURATION_TABLE_TEMPLATECONTENTAR']}"
+                                                      required="#{bindings.TemplateConfigurationTable.hints.TemplateContentAr.mandatory}"
+                                                      rows="#{bindings.TemplateConfigurationTable.hints.TemplateContentAr.displayHeight}"
+                                                      columns="250" maximumLength="500"
+                                                      readOnly="#{!(MTSPermission['TemplateConfiguration.update'])}"
+                                                      shortDesc="#{bindings.TemplateConfigurationTable.hints.TemplateContentAr.tooltip}">
+                                            <f:validator binding="#{row.bindings.TemplateContentAr.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                </af:table>
+                            </af:panelCollection>
+                        </f:facet>
+                    </af:panelStretchLayout>
+                    <!-- DEBUG:END:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5-->
+                </f:facet>
+            </af:panelStretchLayout>
+            <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4-->
+        </f:facet>
+        <f:facet name="popups">
+            <af:panelGroupLayout id="popupsPgl"></af:panelGroupLayout>
+        </f:facet>
+        <!-- DEBUG:END:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3-->
+        <!-- DEBUG:END:WIZARD_PAGE_CONTENT : default/page/wizardPageContent.vm, nesting level: 2-->
+    </af:pageTemplate>
+</ui:composition>
+
+
+

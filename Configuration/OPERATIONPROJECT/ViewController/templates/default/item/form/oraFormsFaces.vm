@@ -1,0 +1,14 @@
+## revision_history
+## 27-mar-2009   Steven Davelaar
+## 1.1           Updated for r11
+## 11-may-2008   Steven Davelaar
+## 1.0           Initial creation
+<off:form id="oraForm"  formModuleName="${JHS.current.item.value}"
+  clipApplet="true"  autoClipTop="menu" autoSize="true">
+#foreach($param in ${JHS.current.item.params} )
+  <off:formParameter formParameterName="${param.name}" value="${param.value}"
+                     globalName="${param.name}"/>
+#end
+</off:form>
+${JHS.dependenciesMgr.setValue("formUsesOraFormsFaces", "true")} 
+   

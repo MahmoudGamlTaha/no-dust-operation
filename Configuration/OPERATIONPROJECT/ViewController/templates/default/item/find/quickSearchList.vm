@@ -1,0 +1,16 @@
+## revision_history
+## 26-jun-2013   Steven Davelaar / Paco van der Linden
+## 1.2           Moved ITEM_ADDITIONAL_PROPERTIES to the end so it can also be used to
+##               override generated properties (last one wins)
+## 04-oct-2010   Steven Davelaar
+## 1.1           Added ITEM_HELP, ITEM_ADDITIONAL_PROPERTIES
+## 08-feb-2007   Steven Davelaar
+## 1.0           Initial creation
+<af:selectOneListbox #ITEM_ID_IN_QUICK_SEARCH() #ITEM_VALUE_IN_QUICK_SEARCH()
+  #ITEM_PROMPT_IN_SEARCH() #ITEM_SIZE() #ITEM_HINT() #ITEM_HELP() 
+  #if ($JHS.current.group.quickSearchDropDownList) simple="true" #end 
+  #ITEM_ADDITIONAL_PROPERTIES()>
+  <af:selectItem value="" label="" id="#NEW_ID("si")"/>
+  #JHS_PARSE($JHS.current.item.domain.optionsTemplateIdentifier ${JHS.current.model})
+</af:selectOneListbox>   
+  

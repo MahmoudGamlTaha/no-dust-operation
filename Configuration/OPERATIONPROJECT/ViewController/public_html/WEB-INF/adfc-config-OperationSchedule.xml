@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <task-flow-definition id="OperationScheduleTaskFlow">
+        <!-- DEBUG:BEGIN:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2 -->
+        <template-reference>
+            <document id="__0">/WEB-INF/jhs-fragment-taskflow-template.xml</document>
+            <id id="__1">jhs-fragment-taskflow-template</id>
+        </template-reference>
+        <!-- DEBUG:END:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2-->
+        <default-activity id="__2">StartOperationSchedule</default-activity>
+        <!-- DEBUG:BEGIN:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2 -->
+        <input-parameter-definition id="__3">
+            <name id="__4">createOperationSchedule</name>
+            <value id="__5">#{pageFlowScope.createOperationSchedule}</value>
+            <class id="__6">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__7">
+            <name id="__8">rowKeyStrOperationSchedule</name>
+            <value id="__9">#{pageFlowScope.rowKeyStrOperationSchedule}</value>
+            <class id="__10">java.lang.String</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__11">
+            <name id="__12">rowKeyValueOperationSchedule</name>
+            <value id="__13">#{pageFlowScope.rowKeyValueOperationSchedule}</value>
+            <class id="__14">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__15">
+            <name id="__16">rowKeyOperationSchedule</name>
+            <value id="__17">#{pageFlowScope.rowKeyOperationSchedule}</value>
+            <class id="__18">oracle.jbo.Key</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__19">
+            <name id="__20">altKeyNameOperationSchedule</name>
+            <value id="__21">#{pageFlowScope.altKeyNameOperationSchedule}</value>
+            <class id="__22">java.lang.String</class>
+        </input-parameter-definition>
+        <!-- DEBUG:END:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2 -->
+        <managed-bean id="__23">
+            <managed-bean-name id="__24">jhsTaskFlowManager</managed-bean-name>
+            <managed-bean-class id="__25">oracle.jheadstart.controller.jsf.bean.TaskFlowManager</managed-bean-class>
+            <managed-bean-scope id="__26">pageFlow</managed-bean-scope>
+            <managed-property id="__27">
+                <property-name id="__28">initializeParentContextEntries</property-name>
+                <map-entries id="__29">
+                    <map-entry id="__30">
+                        <key id="__31">jhsCurrentGroupName</key>
+                        <value id="__32">OperationSchedule</value>
+                    </map-entry>
+                </map-entries>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:DEFAULT_VALUES_BEAN : default/misc/facesConfig/defaultValuesBean.vm, nesting level: 2 -->
+        <managed-bean id="__33">
+            <managed-bean-name id="__34">OperationScheduleDefaultValues</managed-bean-name>
+            <managed-bean-class id="__35">oracle.jheadstart.controller.jsf.bean.DefaultValuesBean</managed-bean-class>
+            <managed-bean-scope id="__36">pageFlow</managed-bean-scope>
+            <managed-property id="__37">
+                <property-name id="__38">iteratorBinding</property-name>
+                <value id="__39">#{data.OperationSchedulePageDef.OperationScheduleIterator}</value>
+            </managed-property>
+            <managed-property id="__40">
+                <property-name id="__41">defaultValues</property-name>
+                <map-entries id="__42">
+                    <map-entry id="__43">
+                        <key id="__44">Active</key>
+                        <value id="__45">1</value>
+                    </map-entry>
+                </map-entries>
+            </managed-property>
+            <managed-property id="__46">
+                <property-name id="__47">actionResult</property-name>
+                <value id="__48">CreateOperationSchedule</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:DEFAULT_VALUES_BEAN : default/misc/facesConfig/defaultValuesBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2 -->
+        <managed-bean id="__49">
+            <managed-bean-name id="__50">SaveOperationSchedule</managed-bean-name>
+            <managed-bean-class id="__51">oracle.jheadstart.controller.jsf.bean.CommitBean</managed-bean-class>
+            <managed-bean-scope id="__52">request</managed-bean-scope>
+            <managed-property id="__53">
+                <property-name id="__54">commitBinding</property-name>
+                <value id="__55">#{bindings.Commit}</value>
+            </managed-property>
+            <managed-property id="__56">
+                <property-name id="__57">successOutcome</property-name>
+                <value id="__58">Commit</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2 -->
+        <managed-bean id="__59">
+            <managed-bean-name id="__60">jhsRollback</managed-bean-name>
+            <managed-bean-class id="__61">oracle.jheadstart.controller.jsf.bean.RollbackBean</managed-bean-class>
+            <managed-bean-scope id="__62">request</managed-bean-scope>
+            <managed-property id="__63">
+                <property-name id="__64">rollbackBinding</property-name>
+                <value id="__65">#{bindings.Rollback}</value>
+            </managed-property>
+            <managed-property id="__66">
+                <property-name id="__67">successOutcome</property-name>
+                <value id="__68">Cancel</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__69">
+            <managed-bean-name id="__70">OperationScheduleTable</managed-bean-name>
+            <managed-bean-class id="__71">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__72">pageFlow</managed-bean-scope>
+            <managed-property id="__73">
+                <property-name id="__74">name</property-name>
+                <value id="__75">OperationScheduleTable</value>
+            </managed-property>
+            <managed-property id="__76">
+                <property-name id="__77">rangeBindingExpr</property-name>
+                <value id="__78">#{'#{bindings.OperationScheduleTable}'}</value>
+            </managed-property>
+            <managed-property id="__79">
+                <property-name id="__80">defaultValuesBean</property-name>
+                <value id="__81">#{pageFlowScope.OperationScheduleDefaultValues}</value>
+            </managed-property>
+            <managed-property id="__82">
+                <property-name id="__83">focusItemId</property-name>
+                <value id="__84">OperationScheduleDay</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__85">
+            <managed-bean-name id="__86">DeleteOperationSchedule</managed-bean-name>
+            <managed-bean-class id="__87">oracle.jheadstart.controller.jsf.bean.DeleteRowBean</managed-bean-class>
+            <managed-bean-scope id="__88">request</managed-bean-scope>
+            <managed-property id="__89">
+                <property-name id="__90">deleteBinding</property-name>
+                <value id="__91">#{bindings.DeleteOperationSchedule}</value>
+            </managed-property>
+            <managed-property id="__92">
+                <property-name id="__93">commitBean</property-name>
+                <value id="__94">#{jhsCommit}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__95">
+            <managed-bean-name id="__96">CreateOperationSchedule</managed-bean-name>
+            <managed-bean-class id="__97">oracle.jheadstart.controller.jsf.bean.CreateRowBean</managed-bean-class>
+            <managed-bean-scope id="__98">request</managed-bean-scope>
+            <managed-property id="__99">
+                <property-name id="__100">createBinding</property-name>
+                <value id="__101">#{bindings.CreateOperationSchedule}</value>
+            </managed-property>
+            <managed-property id="__102">
+                <property-name id="__103">defaultValuesBean</property-name>
+                <value id="__104">#{pageFlowScope.OperationScheduleDefaultValues}</value>
+            </managed-property>
+            <managed-property id="__105">
+                <property-name id="__106">successOutcome</property-name>
+                <value id="__107">deepLinkPage</value>
+            </managed-property>
+            <managed-property id="__108">
+                <property-name id="__109">failureOutcome</property-name>
+                <value id="__110">firstPage</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CHECKBOX_IN_TABLE_BEAN : default/misc/facesConfig/checkboxInTableBean.vm, nesting level: 2 -->
+        <managed-bean id="__111">
+            <managed-bean-name id="__112">OperationScheduleActivecheckboxInTable</managed-bean-name>
+            <managed-bean-class id="__113">oracle.jheadstart.controller.jsf.bean.CheckboxInTableBean</managed-bean-class>
+            <managed-bean-scope id="__114">request</managed-bean-scope>
+            <managed-property id="__115">
+                <property-name id="__116">binding</property-name>
+                <value id="__117">#{bindings.OperationScheduleActive}</value>
+            </managed-property>
+            <managed-property id="__118">
+                <property-name id="__119">tableBean</property-name>
+                <value id="__120">#{pageFlowScope.OperationScheduleTable}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CHECKBOX_IN_TABLE_BEAN : default/misc/facesConfig/checkboxInTableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2 -->
+        <router id="StartOperationSchedule">
+            <case id="__121">
+                <expression id="__122">#{pageFlowScope.createOperationSchedule!=null}</expression>
+                <outcome id="__123">createOperationSchedule</outcome>
+            </case>
+            <case id="__124">
+                <expression id="__125">#{pageFlowScope.rowKeyStrOperationSchedule!=null or
+                                       pageFlowScope.rowKeyValueOperationSchedule!=null or
+                                       pageFlowScope.rowKeyOperationSchedule!=null}</expression>
+                <outcome id="__126">SetCurrentRowOperationSchedule</outcome>
+            </case>
+            <case id="__127">
+                <expression id="__128">#{pageFlowScope.isDeepLink!=null and pageFlowScope.isDeepLink}</expression>
+                <outcome id="__129">deepLinkPage</outcome>
+            </case>
+            <default-outcome id="__130">firstPage</default-outcome>
+        </router>
+        <!-- DEBUG:END:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2 -->
+        <method-call id="CreateOperationSchedule">
+            <method id="__131">#{CreateOperationSchedule.execute}</method>
+            <!-- execute condition param -->
+            <parameter>
+                <class id="__132">java.lang.Object</class>
+                <value id="__133">#{pageFlowScope.createOperationSchedule}</value>
+            </parameter>
+            <outcome id="__134">
+                <to-string/>
+            </outcome>
+        </method-call>
+        <method-call id="SetCurrentRowOperationSchedule">
+            <method id="__135">#{jhsSetCurrentRow.execute}</method>
+            <!-- iterator param -->
+            <parameter>
+                <class id="__136">oracle.adf.model.binding.DCIteratorBinding</class>
+                <value id="__137">#{bindings.OperationScheduleIterator}</value>
+            </parameter>
+            <!-- rowKeyStr param -->
+            <parameter>
+                <class id="__138">java.lang.String</class>
+                <value id="__139">#{pageFlowScope.rowKeyStrOperationSchedule}</value>
+            </parameter>
+            <!-- rowKeyValue param -->
+            <parameter>
+                <class id="__140">java.lang.Object</class>
+                <value id="__141">#{pageFlowScope.rowKeyValueOperationSchedule}</value>
+            </parameter>
+            <!-- rowKey param -->
+            <parameter>
+                <class id="__142">oracle.jbo.Key</class>
+                <value id="__143">#{pageFlowScope.rowKeyOperationSchedule}</value>
+            </parameter>
+            <!-- altKeyName param -->
+            <parameter>
+                <class id="__144">java.lang.String</class>
+                <value id="__145">#{pageFlowScope.altKeyNameOperationSchedule}</value>
+            </parameter>
+            <outcome id="__146">
+                <fixed-outcome id="__147">deepLinkPage</fixed-outcome>
+            </outcome>
+        </method-call>
+        <!-- DEBUG:END:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2-->
+        <task-flow-return id="CancelOperationScheduleReturn">
+            <outcome id="__148">
+                <name id="__149">CancelOperationSchedule</name>
+            </outcome>
+        </task-flow-return>
+        <task-flow-return id="DoneOperationScheduleReturn">
+            <outcome id="__150">
+                <name id="__151">DoneOperationSchedule</name>
+            </outcome>
+        </task-flow-return>
+        <!-- DEBUG:BEGIN:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2 -->
+        <view id="OperationScheduleTable">
+            <page id="__152">/pages/OperationScheduleTable.jsff</page>
+            <train-stop id="__153">
+                <display-name id="__154">#{nls['TABLE_TITLE_OPERATIONSCHEDULE']}</display-name>
+            </train-stop>
+        </view>
+        <!-- DEBUG:END:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2-->
+        <train/>
+        <!-- DEBUG:BEGIN:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2 -->
+        <control-flow-rule id="__155">
+            <from-activity-id id="__156">*</from-activity-id>
+            <control-flow-case id="__157">
+                <from-outcome id="__158">SetCurrentRowOperationSchedule</from-outcome>
+                <to-activity-id id="__159">SetCurrentRowOperationSchedule</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__160">
+                <from-outcome id="__161">firstPage</from-outcome>
+                <to-activity-id id="__162">OperationScheduleTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__163">
+                <from-outcome id="__164">deepLinkPage</from-outcome>
+                <to-activity-id id="__165">OperationScheduleTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__166">
+                <from-outcome id="__167">OperationScheduleTableBreadcrumb</from-outcome>
+                <to-activity-id id="__168">OperationScheduleTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__169">
+                <from-outcome id="__170">Cancel</from-outcome>
+                <to-activity-id id="__171">StartOperationSchedule</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__172">
+                <from-outcome id="__173">CancelOperationScheduleReturn</from-outcome>
+                <to-activity-id id="__174">CancelOperationScheduleReturn</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__175">
+                <from-outcome id="__176">DoneOperationScheduleReturn</from-outcome>
+                <to-activity-id id="__177">DoneOperationScheduleReturn</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__178">
+            <from-activity-id id="__179">*</from-activity-id>
+            <control-flow-case id="__180">
+                <from-outcome id="__181">createOperationSchedule</from-outcome>
+                <to-activity-id id="__182">CreateOperationSchedule</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <!-- DEBUG:END:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2-->
+        <use-page-fragments/>
+    </task-flow-definition>
+    <!-- This bean must be defined outside the task-flow-definition element
+       because it needs to be available in the pageFlowScope of the unbounded
+       task-flow not in the pageFlowScope of the bounded task flow itself. -->
+    <!-- DEBUG:BEGIN:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2 -->
+    <managed-bean id="__183">
+        <managed-bean-name id="__184">OperationScheduleTaskFlowConfig</managed-bean-name>
+        <managed-bean-class id="__185">oracle.jheadstart.controller.jsf.bean.TaskFlowConfigBean</managed-bean-class>
+        <managed-bean-scope id="__186">pageFlow</managed-bean-scope>
+        <managed-property id="__187">
+            <property-name id="__188">params</property-name>
+            <property-class id="__189">java.util.Map</property-class>
+            <map-entries id="__190">
+                <map-entry id="__191">
+                    <key id="__192">parentContext</key>
+                    <value id="__193">#{pageFlowScope.parentContext}</value>
+                </map-entry>
+            </map-entries>
+        </managed-property>
+        <managed-property id="__194">
+            <property-name id="__195">name</property-name>
+            <value id="__196">OperationSchedule</value>
+        </managed-property>
+        <managed-property id="__197">
+            <property-name id="__198">taskFlowId</property-name>
+            <value id="__199">/WEB-INF/adfc-config-OperationSchedule.xml#OperationScheduleTaskFlow</value>
+        </managed-property>
+        <managed-property id="__200">
+            <property-name id="__201">label</property-name>
+            <value id="__202">#{nls['MENU1_TITLE_OPERATIONSCHEDULE']}</value>
+        </managed-property>
+    </managed-bean>
+    <!-- DEBUG:END:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2-->
+</adfc-config>

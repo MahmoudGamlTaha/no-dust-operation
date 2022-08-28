@@ -1,0 +1,34 @@
+## revision_history
+## 17-aug-2010   Jaco Verheul
+## 1.2           Added generation of permissionList
+## 18-may-2010   Steven Davelaar
+## 1.1           Added id property to all elements
+## 19-feb-2008   Steven Davelaar
+## 1.0           Initial creation
+#set ($bean = ${JHS.current.managedBean})
+#set ($item = ${JHS.current.item})
+
+<managed-bean id="#NEW_ID("__")">
+  <managed-bean-name id="#NEW_ID("__")">${bean.name}</managed-bean-name>
+  <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.TaskFlowConfigBean</managed-bean-class>
+  <managed-bean-scope id="#NEW_ID("__")">pageFlow</managed-bean-scope>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">params</property-name>
+    <property-class id="#NEW_ID("__")">java.util.Map</property-class>
+    <map-entries id="#NEW_ID("__")">
+      <map-entry id="#NEW_ID("__")">
+        <key id="#NEW_ID("__")">parentContext</key>
+        <value id="#NEW_ID("__")">#{pageFlowScope.parentContext}</value>
+      </map-entry>
+    </map-entries>
+  </managed-property>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">taskFlowId</property-name>
+    <value id="#NEW_ID("__")">${item.linkGroup.taskFlowId}</value>
+  </managed-property>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">name</property-name>
+    <value id="#NEW_ID("__")">${item.linkGroupName}</value>
+  </managed-property>
+#GROUP_PERMISSION_LIST($item.linkGroup)
+</managed-bean>

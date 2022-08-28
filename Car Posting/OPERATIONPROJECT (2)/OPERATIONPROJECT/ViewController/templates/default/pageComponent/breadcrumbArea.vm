@@ -1,0 +1,7 @@
+## revision_history
+## 15-jun-2007   Jaco Verheul. R11
+## 12-jan-2007   Jaco Verheul
+## 1.2           JavaScript now embedded in ALERT_FOR_CHANGES macro
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+#BREADCRUMB_BEAN()

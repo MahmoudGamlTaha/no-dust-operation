@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.9.14" id="DataBindings"
+             SeparateXMLFiles="false" Package="OPERATIONPROJECT.view" ClientType="Generic"
+             ErrorHandlerClass="oracle.jheadstart.controller.jsf.util.JhsDCErrorHandlerImpl">
+  <pageMap>
+    <page path="/pages/UIShell.jsf" usageId="OPERATIONPROJECT_UIShellPageDef"/>
+    <page path="/pages/PopupShell.jsf" usageId="OPERATIONPROJECT_PopupShellPageDef"/>
+    <page path="/WEB-INF/adfc-config-Countries1.xml#Countries1TaskFlow@CreateCountries1" usageId="Countries1PageDef"/>
+    <page path="/WEB-INF/adfc-config-Countries1.xml#Countries1TaskFlow@SetCurrentRowCountries1"
+          usageId="Countries1PageDef"/>
+    <page path="/pages/Countries1Table.jsff" usageId="Countries1PageDef"/>
+    <page path="/pages/Countries1.jsff" usageId="Countries1PageDef"/>
+    <page path="/WEB-INF/adfc-config-ddd.xml#dddTaskFlow@Createddd" usageId="dddPageDef"/>
+    <page path="/WEB-INF/adfc-config-ddd.xml#dddTaskFlow@SetCurrentRowddd" usageId="dddPageDef"/>
+    <page path="/pages/ddd.jsff" usageId="dddPageDef"/>
+    <page path="/WEB-INF/adfc-config-OperationSchedule.xml#OperationScheduleTaskFlow@CreateOperationSchedule"
+          usageId="OperationSchedulePageDef"/>
+    <page path="/WEB-INF/adfc-config-OperationSchedule.xml#OperationScheduleTaskFlow@SetCurrentRowOperationSchedule"
+          usageId="OperationSchedulePageDef"/>
+    <page path="/pages/OperationScheduleTable.jsff" usageId="OperationSchedulePageDef"/>
+    <page path="/pages/OperationSchedule.jsff" usageId="OperationSchedulePageDef"/>
+    <page path="/WEB-INF/adfc-config-CustomerProfile.xml#CustomerProfileTaskFlow@CreateCustomerProfile"
+          usageId="CustomerProfilePageDef"/>
+    <page path="/WEB-INF/adfc-config-CustomerProfile.xml#CustomerProfileTaskFlow@SetCurrentRowCustomerProfile"
+          usageId="CustomerProfilePageDef"/>
+    <page path="/pages/CustomerProfileTable.jsff" usageId="CustomerProfilePageDef"/>
+    <page path="/pages/CustomerProfile.jsff" usageId="CustomerProfilePageDef"/>
+    <page path="/pages/Contracts.jsff" usageId="ContractsPageDef"/>
+    <page path="/pages/CustomerProfile.jsf" usageId="CustomerProfileUIShellPageDef"/>
+    <page path="/WEB-INF/adfc-config-CollectionPlanType.xml#CollectionPlanTypeTaskFlow@CreateCollectionPlanType"
+          usageId="CollectionPlanTypePageDef"/>
+    <page path="/WEB-INF/adfc-config-CollectionPlanType.xml#CollectionPlanTypeTaskFlow@SetCurrentRowCollectionPlanType"
+          usageId="CollectionPlanTypePageDef"/>
+    <page path="/pages/CollectionPlanTypeTable.jsff" usageId="CollectionPlanTypePageDef"/>
+    <page path="/WEB-INF/adfc-config-Address.xml#AddressTaskFlow@CreateAddress" usageId="AddressPageDef"/>
+    <page path="/WEB-INF/adfc-config-Address.xml#AddressTaskFlow@SetCurrentRowAddress" usageId="AddressPageDef"/>
+    <page path="/pages/AddressTable.jsff" usageId="AddressPageDef"/>
+    <page path="/WEB-INF/adfc-config-Package.xml#PackageTaskFlow@CreatePackage" usageId="PackagePageDef"/>
+    <page path="/WEB-INF/adfc-config-Package.xml#PackageTaskFlow@SetCurrentRowPackage" usageId="PackagePageDef"/>
+    <page path="/pages/PackageTable.jsff" usageId="PackagePageDef"/>
+    <page path="/pages/OperationSchedule.jsf" usageId="OperationScheduleUIShellPageDef"/>
+    <page path="/WEB-INF/adfc-config-FinancialPeriod.xml#FinancialPeriodTaskFlow@CreateFinancialPeriod"
+          usageId="FinancialPeriodPageDef"/>
+    <page path="/WEB-INF/adfc-config-FinancialPeriod.xml#FinancialPeriodTaskFlow@SetCurrentRowFinancialPeriod"
+          usageId="FinancialPeriodPageDef"/>
+    <page path="/pages/FinancialPeriodTable.jsff" usageId="FinancialPeriodPageDef"/>
+    <page path="/WEB-INF/adfc-config-PointCatalog.xml#PointCatalogTaskFlow@CreatePointCatalog"
+          usageId="PointCatalogPageDef"/>
+    <page path="/WEB-INF/adfc-config-PointCatalog.xml#PointCatalogTaskFlow@SetCurrentRowPointCatalog"
+          usageId="PointCatalogPageDef"/>
+    <page path="/pages/PointCatalogTable.jsff" usageId="PointCatalogPageDef"/>
+    <page path="/WEB-INF/adfc-config-ActionCategory.xml#ActionCategoryTaskFlow@CreateActionCategory"
+          usageId="ActionCategoryPageDef"/>
+    <page path="/WEB-INF/adfc-config-ActionCategory.xml#ActionCategoryTaskFlow@SetCurrentRowActionCategory"
+          usageId="ActionCategoryPageDef"/>
+    <page path="/pages/ActionCategoryTable.jsff" usageId="ActionCategoryPageDef"/>
+    <page path="/WEB-INF/adfc-config-Contracts.xml#ContractsTaskFlow@CreateContracts" usageId="ContractsPageDef"/>
+    <page path="/WEB-INF/adfc-config-Contracts.xml#ContractsTaskFlow@SetCurrentRowContracts"
+          usageId="ContractsPageDef"/>
+    <page path="/pages/ContractsTable.jsff" usageId="ContractsPageDef"/>
+    <page path="/pages/ContractInfoTable.jsff" usageId="ContractInfoPageDef"/>
+    <page path="/pages/CustomerPaymentPlanTable.jsff" usageId="CustomerPaymentPlanPageDef"/>
+    <page path="/pages/Customer_Profile_HistoryTable.jsff" usageId="Customer_Profile_HistoryPageDef"/>
+    <page path="/WEB-INF/adfc-config-Customer_Profile_History.xml#Customer_Profile_HistoryTaskFlow@CreateCustomer_Profile_History"
+          usageId="Customer_Profile_HistoryPageDef"/>
+    <page path="/WEB-INF/adfc-config-Customer_Profile_History.xml#Customer_Profile_HistoryTaskFlow@SetCurrentRowCustomer_Profile_History"
+          usageId="Customer_Profile_HistoryPageDef"/>
+    <page path="/WEB-INF/adfc-config-ContractInfo.xml#ContractInfoTaskFlow@CreateContractInfo"
+          usageId="ContractInfoPageDef"/>
+    <page path="/WEB-INF/adfc-config-ContractInfo.xml#ContractInfoTaskFlow@SetCurrentRowContractInfo"
+          usageId="ContractInfoPageDef"/>
+    <page path="/WEB-INF/adfc-config-SchedulingExcludeReason.xml#SchedulingExcludeReasonTaskFlow@CreateSchedulingExcludeReason"
+          usageId="SchedulingExcludeReasonPageDef"/>
+    <page path="/WEB-INF/adfc-config-SchedulingExcludeReason.xml#SchedulingExcludeReasonTaskFlow@SetCurrentRowSchedulingExcludeReason"
+          usageId="SchedulingExcludeReasonPageDef"/>
+    <page path="/pages/SchedulingExcludeReasonTable.jsff" usageId="SchedulingExcludeReasonPageDef"/>
+    <page path="/WEB-INF/adfc-config-TemplateConfiguration.xml#TemplateConfigurationTaskFlow@CreateTemplateConfiguration"
+          usageId="TemplateConfigurationPageDef"/>
+    <page path="/WEB-INF/adfc-config-TemplateConfiguration.xml#TemplateConfigurationTaskFlow@SetCurrentRowTemplateConfiguration"
+          usageId="TemplateConfigurationPageDef"/>
+    <page path="/pages/TemplateConfigurationTable.jsff" usageId="TemplateConfigurationPageDef"/>
+    <page path="/WEB-INF/adfc-config-ContractManagment.xml#ContractManagmentTaskFlow@CreateContractManagment"
+          usageId="ContractManagmentPageDef"/>
+    <page path="/WEB-INF/adfc-config-ContractManagment.xml#ContractManagmentTaskFlow@SetCurrentRowContractManagment"
+          usageId="ContractManagmentPageDef"/>
+    <page path="/pages/ContractManagmentTable.jsff" usageId="ContractManagmentPageDef"/>
+    <page path="/pages/CustomerContracts.jsff" usageId="CustomerContractsPageDef"/>
+    <page path="/pages/CustomerContractsTable.jsff" usageId="CustomerContractsPageDef"/>
+    <page path="/pages/ContractProductTable.jsff" usageId="ContractProductPageDef"/>
+    <page path="/pages/AddressContract.jsff" usageId="AddressContractPageDef"/>
+    <page path="/pages/ProductContTable.jsff" usageId="ProductContPageDef"/>
+    <page path="/pages/conaddTable.jsff" usageId="conaddPageDef"/>
+    <page path="/pages/RegionTable.jsff" usageId="RegionPageDef"/>
+    <page path="/pages/AreaTable.jsff" usageId="AreaPageDef"/>
+    <page path="/pages/StreetTable.jsff" usageId="StreetPageDef"/>
+    <page path="/pages/ContractAddressTable.jsff" usageId="ContractAddressPageDef"/>
+    <page path="/pages/FindAddress.jsff" usageId="AddressPageDef"/>
+    <page path="/pages/ContractInfo.jsff" usageId="ContractInfoPageDef"/>
+    <page path="/WEB-INF/adfc-config-Users.xml#UsersTaskFlow@CreateUsers" usageId="UsersPageDef"/>
+    <page path="/WEB-INF/adfc-config-Users.xml#UsersTaskFlow@SetCurrentRowUsers" usageId="UsersPageDef"/>
+    <page path="/pages/UsersTable.jsff" usageId="UsersPageDef"/>
+    <page path="/pages/Package.jsff" usageId="PackagePageDef"/>
+    <page path="/pages/Address.jsff" usageId="AddressPageDef"/>
+    <page path="/pages/Region.jsff" usageId="RegionPageDef"/>
+    <page path="/pages/Area.jsff" usageId="AreaPageDef"/>
+    <page path="/pages/Street.jsff" usageId="StreetPageDef"/>
+    <page path="/pages/ActionCategory.jsff" usageId="ActionCategoryPageDef"/>
+    <page path="/pages/CollectionPlanType.jsff" usageId="CollectionPlanTypePageDef"/>
+    <page path="/WEB-INF/adfc-config-Products.xml#ProductsTaskFlow@CreateProducts" usageId="ProductsPageDef"/>
+    <page path="/WEB-INF/adfc-config-Products.xml#ProductsTaskFlow@SetCurrentRowProducts" usageId="ProductsPageDef"/>
+    <page path="/pages/ProductsTable.jsff" usageId="ProductsPageDef"/>
+    <page path="/pages/ContractManagment.jsff" usageId="ContractManagmentPageDef"/>
+    <page path="/pages/ContractProduct.jsff" usageId="ContractProductPageDef"/>
+    <page path="/pages/ContractAddress1.jsff" usageId="ContractAddress1PageDef"/>
+    <page path="/pages/Contract.jsff" usageId="ContractPageDef"/>
+    <page path="/pages/pContract.jsff" usageId="pContractPageDef"/>
+  </pageMap>
+  <definitionFactories>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+    <factory className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"
+             nameSpace="http://xmlns.oracle.com/adf/controller/binding"/>
+    <factory className="oracle.adfinternal.view.faces.dvt.model.binding.FacesBindingFactory"
+             nameSpace="http://xmlns.oracle.com/adfm/dvt"/>
+  </definitionFactories>
+  <pageDefinitionUsages>
+    <page id="OPERATIONPROJECT_UIShellPageDef" path="OPERATIONPROJECT.view.pageDefs.OPERATIONPROJECT_UIShellPageDef"/>
+    <page id="OPERATIONPROJECT_PopupShellPageDef"
+          path="OPERATIONPROJECT.view.pageDefs.OPERATIONPROJECT_PopupShellPageDef"/>
+    <page id="Countries1PageDef" path="OPERATIONPROJECT.view.pageDefs.Countries1PageDef"/>
+    <page id="dddPageDef" path="OPERATIONPROJECT.view.pageDefs.dddPageDef"/>
+    <page id="OperationSchedulePageDef" path="OPERATIONPROJECT.view.pageDefs.OperationSchedulePageDef"/>
+    <page id="CustomerProfilePageDef" path="OPERATIONPROJECT.view.pageDefs.CustomerProfilePageDef"/>
+    <page id="ContractsPageDef" path="OPERATIONPROJECT.view.pageDefs.ContractsPageDef"/>
+    <page id="CustomerProfileUIShellPageDef" path="OPERATIONPROJECT.view.pageDefs.CustomerProfileUIShellPageDef"/>
+    <page id="CollectionPlanTypePageDef" path="OPERATIONPROJECT.view.pageDefs.CollectionPlanTypePageDef"/>
+    <page id="AddressPageDef" path="OPERATIONPROJECT.view.pageDefs.AddressPageDef"/>
+    <page id="PackagePageDef" path="OPERATIONPROJECT.view.pageDefs.PackagePageDef"/>
+    <page id="OperationScheduleUIShellPageDef" path="OPERATIONPROJECT.view.pageDefs.OperationScheduleUIShellPageDef"/>
+    <page id="FinancialPeriodPageDef" path="OPERATIONPROJECT.view.pageDefs.FinancialPeriodPageDef"/>
+    <page id="PointCatalogPageDef" path="OPERATIONPROJECT.view.pageDefs.PointCatalogPageDef"/>
+    <page id="ActionCategoryPageDef" path="OPERATIONPROJECT.view.pageDefs.ActionCategoryPageDef"/>
+    <page id="ContractInfoPageDef" path="OPERATIONPROJECT.view.pageDefs.ContractInfoPageDef"/>
+    <page id="CustomerPaymentPlanPageDef" path="OPERATIONPROJECT.view.pageDefs.CustomerPaymentPlanPageDef"/>
+    <page id="Customer_Profile_HistoryPageDef" path="OPERATIONPROJECT.view.pageDefs.Customer_Profile_HistoryPageDef"/>
+    <page id="SchedulingExcludeReasonPageDef" path="OPERATIONPROJECT.view.pageDefs.SchedulingExcludeReasonPageDef"/>
+    <page id="TemplateConfigurationPageDef" path="OPERATIONPROJECT.view.pageDefs.TemplateConfigurationPageDef"/>
+    <page id="ContractManagmentPageDef" path="OPERATIONPROJECT.view.pageDefs.ContractManagmentPageDef"/>
+    <page id="CustomerContractsPageDef" path="OPERATIONPROJECT.view.pageDefs.CustomerContractsPageDef"/>
+    <page id="ContractProductPageDef" path="OPERATIONPROJECT.view.pageDefs.ContractProductPageDef"/>
+    <page id="AddressContractPageDef" path="OPERATIONPROJECT.view.pageDefs.AddressContractPageDef"/>
+    <page id="ProductContPageDef" path="OPERATIONPROJECT.view.pageDefs.ProductContPageDef"/>
+    <page id="conaddPageDef" path="OPERATIONPROJECT.view.pageDefs.conaddPageDef"/>
+    <page id="RegionPageDef" path="OPERATIONPROJECT.view.pageDefs.RegionPageDef"/>
+    <page id="AreaPageDef" path="OPERATIONPROJECT.view.pageDefs.AreaPageDef"/>
+    <page id="StreetPageDef" path="OPERATIONPROJECT.view.pageDefs.StreetPageDef"/>
+    <page id="ContractAddressPageDef" path="OPERATIONPROJECT.view.pageDefs.ContractAddressPageDef"/>
+    <page id="UsersPageDef" path="OPERATIONPROJECT.view.pageDefs.UsersPageDef"/>
+    <page id="ProductsPageDef" path="OPERATIONPROJECT.view.pageDefs.ProductsPageDef"/>
+    <page id="ContractAddress1PageDef" path="OPERATIONPROJECT.view.pageDefs.ContractAddress1PageDef"/>
+    <page id="ContractPageDef" path="OPERATIONPROJECT.view.pageDefs.ContractPageDef"/>
+    <page id="pContractPageDef" path="OPERATIONPROJECT.view.pageDefs.pContractPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="AppModuleAMDataControl" Package="OPERATIONPROJECT.model.BC.AM"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="AppModuleAMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

@@ -1,0 +1,65 @@
+## revision_history
+## 05-apr-2012   Steven Davelaar
+## 1.7           shortened search area id
+## 05-jul-2011   Steven Davelaar
+## 1.6           Added REGION_SIZE macro call instead of hardcoded size property
+## 01-feb-2011    Steven Davelaar
+## 1.5           Fixed issue: no adv search items generated when top container has layout style separate pages
+## 01-nov-2010    Steven Davelaar
+## 1.4           Use labelAlignment property
+## 18-feb-2009   Steven Davelaar
+## 1.3           Changed "match any/all" radio group to align with model-based search
+## 19-dec-2008   Steven Davelaar
+## 1.2           Use showDetailHeader to align UI with model-based advanced search
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+${JHS.current.pageComponent.setProcessingAdvancedSearchArea(true)}
+  <af:showDetailHeader #SEARCH_SIZE() id="asArea${JHS.current.group.shortName}" disclosed="true" text="#ADVANCED_SEARCH_LABEL_DESC()"
+    #if ($JHS.current.pageComponent.hasQuickSearchArea) rendered="#{!#SEARCH_BEAN().quickSearchMode}" #end   >
+    #if ($JHS.current.pageComponent.hasSwitchButtons)
+      <f:facet name="toolbar">
+       #JHS_PARSE("SWITCH_TO_QUICK_SEARCH_BUTTON" ${JHS.current.model})
+     </f:facet>
+    #end                  
+    <af:panelGroupLayout id="as_${JHS.current.group.shortName}">
+      <af:selectOneRadio label="#QUERY_MATCH_LABEL()" layout="horizontal" value="#{#SEARCH_BEAN().allConditionsMet}"  id="asArea${JHS.current.group.shortName}Conditions">
+        <af:selectItem value="true"
+                       label="#ALL_CONDITIONS_MET_LABEL()"/>
+        <af:selectItem value="false"
+                       label="#ANY_CONDITION_MET_LABEL()"/>
+      </af:selectOneRadio>
+      <af:selectBooleanCheckbox value="#{#SEARCH_BEAN().caseSensitive}"
+                                label="#CASE_SENSITIVE_LABEL()"
+                                id="asArea${JHS.current.group.shortName}CaseSensitive"/>
+    </af:panelGroupLayout>
+    
+## start advanced search items
+    <af:panelFormLayout rows="1" labelAlignment="${JHS.current.group.labelAlignment}" maxColumns="${JHS.current.group.advancedSearchColumns}"  id="asArea${JHS.current.group.shortName}Items">
+        #ADVANCED_SEARCH_ITEMS()
+## Use the following code instead of the above call to ADVANCED_SEARCH_ITEMS 
+## if you do not want to have item regions in search region. Also c
+##      #foreach($item in ${JHS.current.group.advancedSearchItems})
+##        #JHS_PARSE(${item.advancedSearchTemplateIdentifier} $item)
+##      #end                    
+    </af:panelFormLayout>
+
+        ## Optional regionContainer and its subregions
+        #if ($JHS.current.group.regionContainer)
+          #JHS_PARSE(${JHS.current.group.regionContainer.templateIdentifier} ${JHS.current.group.regionContainer})
+        #elseif ($JHS.current.group.regionContainerSeparatePages)
+          ## we need to loop over all child (item) regions to get any advanced search items, so we use
+          ## vertical region container as a substitute 
+          #JHS_PARSE("VERTICAL_REGION_CONTAINER" ${JHS.current.group.regionContainerSeparatePages})
+        #end
+          
+      #if (${JHS.current.group.advancedSearchSamePage})
+      <af:panelGroupLayout id="asArea${JHS.current.group.shortName}Buttons" layout="horizontal" halign="right">
+        <f:facet name="separator">
+          <af:spacer id="#NEW_ID("sp")" width="4"/>
+        </f:facet>
+        #JHS_PARSE("ADVANCED_SEARCH_BUTTONS" ${JHS.current.model})
+      </af:panelGroupLayout>
+      #end
+  </af:showDetailHeader>
+${JHS.current.pageComponent.setProcessingAdvancedSearchArea(false)}
+  

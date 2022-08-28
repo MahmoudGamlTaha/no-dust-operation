@@ -1,0 +1,379 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsRegionTemplateNoStretch.jsf">
+        <!-- DEBUG:BEGIN:TABLE_PAGE_CONTENT : default/page/tablePageContent.vm, nesting level: 2 -->
+        <!-- DEBUG:BEGIN:PAGE_CONTENT : custom/page/MtspageContent.vm, nesting level: 3 -->
+        <f:facet name="pageContent">
+            <af:switcher id="s0" defaultFacet="NotAuthorized"
+                         facetName="#{MTSPermission['Countries1.view'] ? 'Authorized' : 'NotAuthorized'}">
+                <f:facet name="Authorized">
+                    <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+                    <af:panelGroupLayout id="pcpg" layout="scroll">
+                        <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4 -->
+                        <af:panelGroupLayout layout="vertical" id="Countries1TopLc"
+                                             partialTriggers=" Countries1DeleteDialog Countries1SaveButton Countries1CancelButton as_Countries1 qs_Countries1 Countries1PC:Countries1Arm Countries1PC:Countries1duprmTM Countries1PC:Countries1delrmTM Countries1PC:Countries1Arl Countries1PC:Countries1Tab:Countries1duprm Countries1PC:Countries1Tab:Countries1delrm Countries1PC:Countries1Tab:Countries1delrl Countries1PC:Countries1Tab:Countries1duprl">
+                            <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                            <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                            <f:facet name="separator">
+                                <af:spacer width="10" height="10" id="sp0"/>
+                            </f:facet>
+                            <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+                            <af:panelHeader id="ph0" text="#{nls['TABLE_TITLE_COUNTRIES1']}">
+                                <f:facet name="toolbar">
+                                    <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5 -->
+                                    <af:toolbox id="tbox0">
+                                        <af:toolbar id="tbar0">
+                                            <af:group id="gr0">
+                                                <!-- DEBUG:BEGIN:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6 -->
+                                                <af:button actionListener="#{CreateCountries1.execute}"
+                                                           action="CreateCountries1"
+                                                           shortDesc="#{nls['NEW_BUTTON_LABEL_COUNTRIES1']}"
+                                                           icon="/jheadstart/images/newRowInForm.png"
+                                                           rendered="#{(true) and (MTSPermission['Countries1.create'])}"
+                                                           id="Countries1NewButton"></af:button>
+                                                <!-- DEBUG:END:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6-->
+                                            </af:group>
+                                            <af:group id="gr1"></af:group>
+                                            <af:group id="gr2">
+                                                <!-- DEBUG:BEGIN:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6 -->
+                                                <af:button action="#{SaveCountries1.execute}"
+                                                           rendered="#{(((MTSPermission['Countries1.create']) or (MTSPermission['Countries1.update'])) or (MTSPermission['Countries1.delete'])) and (!pageFlowScope.hideSaveButton)}"
+                                                           textAndAccessKey="#{nls['SAVE_BUTTON_LABEL']}"
+                                                           id="Countries1SaveButton" partialSubmit="true"></af:button>
+                                                <!-- DEBUG:END:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6-->
+                                                <!-- DEBUG:BEGIN:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6 -->
+                                                <af:button textAndAccessKey="#{nls['CANCEL']}" immediate="true"
+                                                           partialSubmit="true"
+                                                           rendered="#{!pageFlowScope.hideCancelButton}"
+                                                           actionListener="#{jhsRollback.execute}" action="Cancel"
+                                                           id="Countries1CancelButton"></af:button>
+                                                <!-- DEBUG:END:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6-->
+                                            </af:group>
+                                        </af:toolbar>
+                                    </af:toolbox>
+                                    <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5-->
+                                </f:facet>
+                                <f:facet name="context">
+                                    <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5 -->
+                                    <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5-->
+                                </f:facet>
+                                <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+                                <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+                                <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+                                <!-- DEBUG:BEGIN:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 6 -->
+                                <af:panelGroupLayout id="modelSearchAreaCountries1"
+                                                     rendered="#{!pageFlowScope.createModes.CreateCountries1 and !pageFlowScope.hideSearchArea}"
+                                                     partialTriggers=" as_Countries1:qsButtonCountries1 qs_Countries1:asButtonCountries1 ">
+                                    <f:attribute name="JhsIgnoreChanges" value="true"/>
+                                    <!-- DEBUG:BEGIN:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 7 -->
+                                    <af:query id="as_Countries1" headerText="#{nls['ADVANCED_SEARCH']}" disclosed="true"
+                                              value="#{bindings.Countries1IteratorQuery.queryDescriptor}"
+                                              model="#{bindings.Countries1IteratorQuery.queryModel}"
+                                              queryListener="#{bindings.Countries1IteratorQuery.processQuery}"
+                                              queryOperationListener="#{bindings.Countries1IteratorQuery.processQueryOperation}"
+                                              rendered="#{!pageFlowScope.searchCountries1.quickSearchMode}" rows="1"
+                                              labelAlignment="start" maxColumns="2">
+                                        <f:facet name="toolbar">
+                                            <!-- DEBUG:BEGIN:SWITCH_TO_QUICK_SEARCH_BUTTON : default/button/switchToQuickSearchButton.vm, nesting level: 8 -->
+                                            <af:button partialSubmit="true" id="qsButtonCountries1" immediate="true"
+                                                       textAndAccessKey="#{nls['QUICK_SEARCH']}"
+                                                       action="#{pageFlowScope.searchCountries1.switchToQuickSearchMode}"/>
+                                            <!-- DEBUG:END:SWITCH_TO_QUICK_SEARCH_BUTTON : default/button/switchToQuickSearchButton.vm, nesting level: 8-->
+                                        </f:facet>
+                                    </af:query>
+                                    <!-- DEBUG:END:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:MODEL_QUICK_SEARCH_REGION : default/search/modelQuickSearchRegion.vm, nesting level: 7 -->
+                                    <af:quickQuery id="qs_Countries1" label="#{nls['FILTER_BY']}"
+                                                   value="#{bindings.Countries1IteratorQuery.quickQueryDescriptor}"
+                                                   model="#{bindings.Countries1IteratorQuery.queryModel}"
+                                                   queryListener="#{bindings.Countries1IteratorQuery.processQuery}"
+                                                   rendered="#{pageFlowScope.searchCountries1.quickSearchMode}">
+                                        <f:facet name="end">
+                                            <!-- DEBUG:BEGIN:SWITCH_TO_ADVANCED_SEARCH_BUTTON : default/button/switchToAdvancedSearchButton.vm, nesting level: 8 -->
+                                            <af:link id="asButtonCountries1"
+                                                     textAndAccessKey="#{nls['ADVANCED_SEARCH']}" partialSubmit="true"
+                                                     immediate="true"
+                                                     action="#{pageFlowScope.searchCountries1.switchToAdvancedSearchMode}"/>
+                                            <!-- DEBUG:END:SWITCH_TO_ADVANCED_SEARCH_BUTTON : default/button/switchToAdvancedSearchButton.vm, nesting level: 8-->
+                                        </f:facet>
+                                    </af:quickQuery>
+                                    <!-- DEBUG:END:MODEL_QUICK_SEARCH_REGION : default/search/modelQuickSearchRegion.vm, nesting level: 7-->
+                                </af:panelGroupLayout>
+                                <!-- DEBUG:END:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 6-->
+                                <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+                            </af:panelHeader>
+                            <!-- DEBUG:BEGIN:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5 -->
+                            <af:panelGroupLayout layout="vertical" id="pgl0">
+                                <af:panelCollection id="Countries1PC" featuresOff="  " inlineStyle=" width:546px; ">
+                                    <f:facet name="menus">
+                                        <!-- DEBUG:BEGIN:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6 -->
+                                        <af:menu textAndAccessKey="#{nls['ACTION_MENU_LABEL']}" id="menu0">
+                                            <af:menu textAndAccessKey="#{nls['GO_TO_MENU_LABEL']}" id="menu1">
+                                                <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                                <af:commandMenuItem id="mi0"
+                                                                    textAndAccessKey="#{nls['DETAIL_VIEW_BUTTON_LABEL']}"
+                                                                    action="Countries1Details"></af:commandMenuItem>
+                                                <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7 -->
+                                                <af:group id="Countries1tbb"
+                                                          rendered="#{ bindings.Countries1Iterator.currentRow!=null }">
+                                                    <af:commandMenuItem actionListener="#{bindings.FirstCountries1.execute}"
+                                                                        id="Countries1First" partialSubmit="true"
+                                                                        icon="/afr/shuttleleftall_ena.png"
+                                                                        textAndAccessKey="#{nls['FIRST_ROW']}"></af:commandMenuItem>
+                                                    <af:commandMenuItem actionListener="#{bindings.PreviousCountries1.execute}"
+                                                                        icon="/afr/shuttleleft_ena.png"
+                                                                        textAndAccessKey="#{nls['PREVIOUS_ROW']}"
+                                                                        id="Countries1Previous" partialSubmit="true"></af:commandMenuItem>
+                                                    <af:commandMenuItem actionListener="#{bindings.NextCountries1.execute}"
+                                                                        icon="/afr/shuttleright_ena.png"
+                                                                        textAndAccessKey="#{nls['NEXT_ROW']}"
+                                                                        id="Countries1Next" partialSubmit="true"></af:commandMenuItem>
+                                                    <af:commandMenuItem actionListener="#{bindings.LastCountries1.execute}"
+                                                                        icon="/afr/shuttlerightall_ena.png"
+                                                                        textAndAccessKey="#{nls['LAST_ROW']}"
+                                                                        id="Countries1Last" partialSubmit="true"></af:commandMenuItem>
+                                                </af:group>
+                                                <!-- DEBUG:END:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7-->
+                                            </af:menu>
+                                            <!-- DEBUG:BEGIN:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7 -->
+                                            <af:commandMenuItem id="Countries1Arm" textAndAccessKey="#{nls['ADD_ROW']}"
+                                                                immediate="false" icon="/jheadstart/images/addRow.png"
+                                                                partialSubmit="true"
+                                                                actionListener="#{pageFlowScope.Countries1Table.addRow}"
+                                                                rendered="#{(true) and (MTSPermission['Countries1.create'])}"></af:commandMenuItem>
+                                            <!-- DEBUG:END:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                            <af:commandMenuItem id="Countries1duprmTM"
+                                                                textAndAccessKey="#{nls['DUPLICATE_ROW']}"
+                                                                immediate="true"
+                                                                icon="/jheadstart/images/duplicateRow.png"
+                                                                partialSubmit="true"
+                                                                actionListener="#{pageFlowScope.Countries1Table.duplicateRow}"
+                                                                rendered="#{MTSPermission['Countries1.create']}"></af:commandMenuItem>
+                                            <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                            <af:commandMenuItem id="Countries1delrmTM"
+                                                                textAndAccessKey="#{nls['DELETE_ROW']}"
+                                                                icon="/jheadstart/images/deleteRow.png"
+                                                                partialSubmit="true" immediate="true"
+                                                                rendered="#{MTSPermission['Countries1.delete']}">
+                                                <af:showPopupBehavior popupId="::Countries1DeletePopup"/>
+                                            </af:commandMenuItem>
+                                            <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7 -->
+                                            <!-- DEBUG:END:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7-->
+                                        </af:menu>
+                                        <!-- DEBUG:END:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6-->
+                                    </f:facet>
+                                    <f:facet name="toolbar">
+                                        <!-- DEBUG:BEGIN:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6 -->
+                                        <af:toolbar id="tbar1">
+                                            <!-- DEBUG:BEGIN:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7 -->
+                                            <!-- Also create CreateCountries1 bean so we can start table group in create mode as well -->
+                                            <af:link id="Countries1Arl" immediate="false"
+                                                     rendered="#{(true) and (MTSPermission['Countries1.create'])}"
+                                                     partialSubmit="true"
+                                                     actionListener="#{pageFlowScope.Countries1Table.addRow}"
+                                                     shortDesc="#{nls['ADD_ROW']}"
+                                                     icon="/jheadstart/images/addRow.png"/>
+                                            <!-- DEBUG:END:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7 -->
+                                            <!-- DEBUG:END:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7-->
+                                        </af:toolbar>
+                                        <!-- DEBUG:END:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6-->
+                                    </f:facet>
+                                    <f:facet name="statusbar"/>
+                                    <af:table id="Countries1Tab" contentDelivery="immediate"
+                                              value="#{bindings.Countries1Table.collectionModel}"
+                                              columnStretching="last" rowBandingInterval="0" editingMode="editAll"
+                                              columnSelection="multiple" contextMenuSelect="true" rowSelection="single"
+                                              selectionListener="#{pageFlowScope.Countries1Table.makeCurrent}"
+                                              selectedRowKeys="#{pageFlowScope.Countries1Table.selectedRow}"
+                                              rowDisclosureListener="#{pageFlowScope.Countries1Table.discloseRow}"
+                                              var="row" varStatus="status" rows="#{bindings.Countries1Table.rangeSize}"
+                                              autoHeightRows="#{bindings.Countries1Table.rangeSize}"
+                                              fetchSize="#{bindings.Countries1Table.rangeSize}"
+                                              emptyText="#{nls['NO_ROWS_FOUND']}"
+                                              queryListener="#{bindings.Countries1IteratorQuery.processQuery}"
+                                              binding="#{pageFlowScope.Countries1Table.table}"
+                                              partialTriggers=":::qs_Countries1 :::as_Countries1 :::Countries1PC ::Countries1First ::Countries1Previous ::Countries1Next ::Countries1Last"
+                                              width="546px" summary="#{nls['TABLE_TITLE_COUNTRIES1']}">
+                                        <!-- DEBUG:BEGIN:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6 -->
+                                        <f:facet name="contextMenu">
+                                            <af:popup id="Countries1TablePopup" childCreation="deferred">
+                                                <af:menu id="menu2">
+                                                    <af:menu text="#{nls['GO_TO_MENU_LABEL']}" id="menu3">
+                                                        <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                                        <af:commandMenuItem id="mi1"
+                                                                            textAndAccessKey="#{nls['DETAIL_VIEW_BUTTON_LABEL']}"
+                                                                            action="Countries1Details"></af:commandMenuItem>
+                                                        <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                                    </af:menu>
+                                                    <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                                    <af:commandMenuItem id="Countries1duprm"
+                                                                        textAndAccessKey="#{nls['DUPLICATE_ROW']}"
+                                                                        immediate="true"
+                                                                        icon="/jheadstart/images/duplicateRow.png"
+                                                                        partialSubmit="true"
+                                                                        actionListener="#{pageFlowScope.Countries1Table.duplicateRow}"
+                                                                        rendered="#{MTSPermission['Countries1.create']}"></af:commandMenuItem>
+                                                    <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                                    <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                                    <af:commandMenuItem id="Countries1delrm"
+                                                                        textAndAccessKey="#{nls['DELETE_ROW']}"
+                                                                        icon="/jheadstart/images/deleteRow.png"
+                                                                        partialSubmit="true" immediate="true"
+                                                                        rendered="#{MTSPermission['Countries1.delete']}">
+                                                        <af:showPopupBehavior popupId=":::Countries1DeletePopup"/>
+                                                    </af:commandMenuItem>
+                                                    <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                                </af:menu>
+                                            </af:popup>
+                                        </f:facet><!-- DEBUG:END:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6 --><!-- DEBUG:END:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6 -->
+                                        <af:column id="Countries1ActionColumn" width="60" align="center" headerText=" ">
+                                            <af:panelGroupLayout layout="horizontal" id="pgl1">
+                                                <!-- DEBUG:BEGIN:DETAILS_LINK : default/button/detailsLink.vm, nesting level: 7 -->
+                                                <af:link action="Countries1Details" id="Countries1Gtd"
+                                                         shortDesc="#{nls['DETAIL_VIEW_BUTTON_LABEL']}"
+                                                         icon="/jheadstart/images/editRow.png"/>
+                                                <!-- DEBUG:END:DETAILS_LINK : default/button/detailsLink.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:DELETE_ROW_LINK : default/button/deleteRowLink.vm, nesting level: 7 -->
+                                                <af:link id="Countries1delrl" partialSubmit="true" immediate="true"
+                                                         rendered="#{MTSPermission['Countries1.delete']}"
+                                                         shortDesc="#{nls['DELETE_ROW']}"
+                                                         icon="/jheadstart/images/deleteRow.png">
+                                                    <af:showPopupBehavior popupId=":::Countries1DeletePopup"/>
+                                                </af:link>
+                                                <!-- DEBUG:END:DELETE_ROW_LINK : default/button/deleteRowLink.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:DUPLICATE_ROW_LINK : default/button/duplicateRowLink.vm, nesting level: 7 -->
+                                                <af:link id="Countries1duprl" immediate="true" partialSubmit="true"
+                                                         actionListener="#{pageFlowScope.Countries1Table.duplicateRow}"
+                                                         rendered="#{MTSPermission['Countries1.create']}"
+                                                         shortDesc="#{nls['DUPLICATE_ROW']}"
+                                                         icon="/jheadstart/images/duplicateRow.png"/>
+                                                <!-- DEBUG:END:DUPLICATE_ROW_LINK : default/button/duplicateRowLink.vm, nesting level: 7-->
+                                            </af:panelGroupLayout>
+                                        </af:column>
+                                        <!-- DEBUG:END:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                        <af:column id="Countries1CountryIdCol" sortable="true" noWrap="true" width="100"
+                                                   sortProperty="CountryId" rowHeader="false">
+                                            <f:facet name="header">
+                                                <af:outputLabel value="#{bindings.Countries1Table.hints.CountryId.label}"
+                                                                showRequired="#{bindings.Countries1Table.hints.CountryId.mandatory}"
+                                                                id="ol0"/>
+                                            </f:facet>
+                                            <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                            <af:inputText id="Countries1CountryId"
+                                                          value="#{row.bindings.CountryId.inputValue}"
+                                                          label="#{bindings.Countries1Table.hints.CountryId.label}"
+                                                          required="#{bindings.Countries1Table.hints.CountryId.mandatory}"
+                                                          rows="#{bindings.Countries1Table.hints.CountryId.displayHeight}"
+                                                          columns="#{bindings.Countries1Table.hints.CountryId.displayWidth}"
+                                                          maximumLength="2"
+                                                          readOnly="#{((pageFlowScope.Countries1Table.newRow) and (!(MTSPermission['Countries1.create']))) or ((!pageFlowScope.Countries1Table.newRow) and (!(MTSPermission['Countries1.update'])))}"
+                                                          shortDesc="#{bindings.Countries1Table.hints.CountryId.tooltip}">
+                                                <f:validator binding="#{row.bindings.CountryId.validator}"/>
+                                            </af:inputText>
+                                            <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                            <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                        </af:column>
+                                        <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                        <af:column id="Countries1CountryNameCol" sortable="true" noWrap="true"
+                                                   width="240" sortProperty="CountryName" rowHeader="false">
+                                            <f:facet name="header">
+                                                <af:outputLabel value="#{bindings.Countries1Table.hints.CountryName.label}"
+                                                                showRequired="#{bindings.Countries1Table.hints.CountryName.mandatory}"
+                                                                id="ol1"/>
+                                            </f:facet>
+                                            <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                            <af:inputText id="Countries1CountryName"
+                                                          value="#{row.bindings.CountryName.inputValue}"
+                                                          label="#{bindings.Countries1Table.hints.CountryName.label}"
+                                                          required="#{bindings.Countries1Table.hints.CountryName.mandatory}"
+                                                          rows="#{bindings.Countries1Table.hints.CountryName.displayHeight}"
+                                                          columns="#{bindings.Countries1Table.hints.CountryName.displayWidth}"
+                                                          maximumLength="40"
+                                                          readOnly="#{((pageFlowScope.Countries1Table.newRow) and (!(MTSPermission['Countries1.create']))) or ((!pageFlowScope.Countries1Table.newRow) and (!(MTSPermission['Countries1.update'])))}"
+                                                          shortDesc="#{bindings.Countries1Table.hints.CountryName.tooltip}">
+                                                <f:validator binding="#{row.bindings.CountryName.validator}"/>
+                                            </af:inputText>
+                                            <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                            <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                        </af:column>
+                                        <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                        <af:column id="Countries1RegionIdCol" sortable="true" noWrap="true" width="100"
+                                                   sortProperty="RegionId" align="right" rowHeader="false">
+                                            <f:facet name="header">
+                                                <af:outputLabel value="#{bindings.Countries1Table.hints.RegionId.label}"
+                                                                showRequired="#{bindings.Countries1Table.hints.RegionId.mandatory}"
+                                                                id="ol2"/>
+                                            </f:facet>
+                                            <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                            <af:inputText id="Countries1RegionId"
+                                                          value="#{row.bindings.RegionId.inputValue}"
+                                                          label="#{bindings.Countries1Table.hints.RegionId.label}"
+                                                          required="#{bindings.Countries1Table.hints.RegionId.mandatory}"
+                                                          rows="#{bindings.Countries1Table.hints.RegionId.displayHeight}"
+                                                          columns="#{bindings.Countries1Table.hints.RegionId.displayWidth}"
+                                                          readOnly="#{((pageFlowScope.Countries1Table.newRow) and (!(MTSPermission['Countries1.create']))) or ((!pageFlowScope.Countries1Table.newRow) and (!(MTSPermission['Countries1.update'])))}"
+                                                          shortDesc="#{bindings.Countries1Table.hints.RegionId.tooltip}">
+                                                <f:validator binding="#{row.bindings.RegionId.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.Countries1Table.hints.RegionId.format}"/>
+                                            </af:inputText>
+                                            <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                            <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                        </af:column>
+                                        <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    </af:table>
+                                </af:panelCollection>
+                            </af:panelGroupLayout>
+                            <!-- DEBUG:END:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5-->
+                            <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+                        </af:panelGroupLayout>
+                        <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4-->
+                    </af:panelGroupLayout>
+                    <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+                </f:facet>
+                <f:facet name="NotAuthorized">
+                    <af:panelHeader text="#{nls['NOT_AUTHORIZED_ERROR']}" id="ph1"/>
+                </f:facet>
+            </af:switcher>
+        </f:facet>
+        <f:facet name="popups">
+            <af:panelGroupLayout id="popupsPgl">
+                <!-- DEBUG:BEGIN:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 8 -->
+                <af:popup id="Countries1DeletePopup" contentDelivery="lazyUncached" childCreation="deferred">
+                    <af:dialog type="none" title="#{nls['WARNING']}" modal="true" id="Countries1DeleteDialog">
+                        <af:outputText value="#{nls['DELETE_WARNING_COUNTRIES:#{bindings.Countries1Iterator.currentRowIndexInRange+1}']} "
+                                       id="ot0"/>
+                        <f:attribute name="methodExpression" value="#{'#{DeleteCountries1.execute}'}"/>
+                        <f:facet name="buttonBar">
+                            <af:group id="g0">
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_YES']}" id="cb0" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.confirm}"/>
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_NO']}" id="cb1" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.abort}"/>
+                            </af:group>
+                        </f:facet>
+                    </af:dialog>
+                </af:popup>
+                <!-- DEBUG:END:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 8-->
+            </af:panelGroupLayout>
+        </f:facet>
+        <!-- DEBUG:END:PAGE_CONTENT : custom/page/MtspageContent.vm, nesting level: 3-->
+        <!-- DEBUG:END:TABLE_PAGE_CONTENT : default/page/tablePageContent.vm, nesting level: 2-->
+    </af:pageTemplate>
+</ui:composition>
+
+
+

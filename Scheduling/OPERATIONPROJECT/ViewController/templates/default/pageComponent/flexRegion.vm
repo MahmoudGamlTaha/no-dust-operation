@@ -1,0 +1,72 @@
+## revision_history
+## 06-jul-2007   Steven Davelaar
+## 1.2           Moved link to seperate template, added support for stacked flex region
+## 03-jul-2007   Steven Davelaar
+## 1.1           Moved items to seperate template
+## 31-may-2007   Steven Davelaar
+## 1.0           Initial creation 
+#set ($regionName = "${JHS.current.group.name}${JHS.current.flexRegion.name}")
+#set ($flexMethod = "getFlexItems${regionName}")
+
+## do not display flex items in search region
+## when in table layout, we check displayInTableOverflow property,
+## in form layout we check displayInForm property
+
+#if (${JHS.service.useFlexRegions} && !${JHS.current.pageComponent.processingAdvancedSearchArea})
+
+#if ($JHS.current.pageComponent.formLayout && $JHS.current.flexRegion.displayInForm) 
+#set ($displayInForm = "true")
+#else
+#set ($displayInForm = "false")
+#end
+
+#if ($JHS.current.pageComponent.hasOverflowArea && $JHS.current.flexRegion.displayInTableOverflow)
+#set ($displayInTableOverflow = "true")
+#else
+#set ($displayInTableOverflow = "false")
+#end
+
+#if (${displayInForm}=="true" || ${displayInTableOverflow}=="true") 
+
+  ## check whether the region is inside a stacked container, if it is, we must
+  ## render a showDetailItem element when there are flex items defined OR when
+  ## we are in customize mode, so we can display a define link under the tab
+  ## 
+
+  #if (${JHS.current.flexRegion.parentRegionContainer.tabbed} || ${JHS.current.flexRegion.parentRegionContainer.accordion}) 
+    ## check if the region has items, and a title label or title translation key
+    ## defined, if not use the region name
+    ## as title because we need to display something on the tab
+    <af:showDetailItem text="#{bindings.${flexMethod}.result[0].flexRegionDefLabelTranslationKey!=null ? nls[bindings.${flexMethod}.result[0].flexRegionDefLabelTranslationKey] : (bindings.${flexMethod}.result[0].flexRegionDefLabel!=null ? bindings.${flexMethod}.result[0].flexRegionDefLabel : '${regionName}')}" 
+       rendered="#{(bindings.${flexMethod}.result!=null and bindings.${flexMethod}.result[0].regionRendered) or jhsPageCustomization.customizeMode}"
+       disabled="#{(bindings.${flexMethod}.result==null or !bindings.${flexMethod}.result[0].regionRendered) and !jhsPageCustomization.customizeMode}"
+          id="${regionName}SDI">
+      <af:panelGroupLayout id="#NEW_ID("pgl")" layout="scroll">
+        #JHS_PARSE("DEFINE_FLEX_REGION_LINK" ${JHS.current.model})
+        <af:panelFormLayout id="${regionName}PanelForm" inlineStyle="width:#{bindings.${flexMethod}.result[0].flexRegionDefWidth};" rows="1"
+                      maxColumns="#{bindings.${flexMethod}.result[0].layoutColumns!=null ? bindings.${flexMethod}.result[0].layoutColumns : 1}"
+                      >
+              #JHS_PARSE("FLEX_REGION_ITEM" ${JHS.current.model})
+        </af:panelFormLayout>
+      </af:panelGroupLayout>
+     </af:showDetailItem>
+  #else 
+
+  #JHS_PARSE("DEFINE_FLEX_REGION_LINK" ${JHS.current.model})
+
+  <!-- only render the flex region when at least one item defined -->
+  <af:panelGroupLayout id="FlexPanelGroup${regionName}" rendered="#{bindings.${flexMethod}.result!=null and bindings.${flexMethod}.result[0].regionRendered}"
+  >
+
+  <!-- when region title defined, we render a panelHeader with title -->    
+  <af:panelHeader rendered="#{bindings.${flexMethod}.result[0].flexRegionDefLabel!=null or bindings.${flexMethod}.result[0].flexRegionDefLabelTranslationKey!=null}"  text="#{bindings.${flexMethod}.result[0].flexRegionDefLabelTranslationKey!=null ? nls[bindings.${flexMethod}.result[0].flexRegionDefLabelTranslationKey] : bindings.${flexMethod}.result[0].flexRegionDefLabel}"/>
+
+  <af:panelFormLayout id="${regionName}PanelForm" inlineStyle="width:#{bindings.${flexMethod}.result[0].flexRegionDefWidth};" rows="1"
+          maxColumns="#{bindings.${flexMethod}.result[0].layoutColumns!=null ? bindings.${flexMethod}.result[0].layoutColumns : 1}"
+                >
+        #JHS_PARSE("FLEX_REGION_ITEM" ${JHS.current.model})
+  </af:panelFormLayout>
+
+  </af:panelGroupLayout>
+
+#end#end#end

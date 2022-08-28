@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <task-flow-template id="jhs-bounded-taskflow-template">
+        <data-control-scope id="__0">
+            <shared/>
+        </data-control-scope>
+        <input-parameter-definition id="__1">
+            <name id="__2">hideSaveButton</name>
+            <value id="__3">#{pageFlowScope.hideSaveButton}</value>
+            <class id="__4">java.lang.Boolean</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__5">
+            <name id="__6">hideCancelButton</name>
+            <value id="__7">#{pageFlowScope.hideCancelButton}</value>
+            <class id="__8">java.lang.Boolean</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__9">
+            <name id="__10">hideSearchArea</name>
+            <value id="__11">#{pageFlowScope.hideSearchArea}</value>
+            <class id="__12">java.lang.Boolean</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__13">
+            <name id="__14">hideFormBrowseButtons</name>
+            <value id="__15">#{pageFlowScope.hideFormBrowseButtons}</value>
+            <class id="__16">java.lang.Boolean</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__17">
+            <name id="__18">jhsBreadcrumbStack</name>
+            <value id="__19">#{pageFlowScope.jhsBreadcrumbStack}</value>
+            <class id="__20">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__21">
+            <name id="__22">isDeepLink</name>
+            <value id="__23">#{pageFlowScope.isDeepLink}</value>
+            <class id="__24">java.lang.Boolean</class>
+        </input-parameter-definition>
+        <managed-bean id="__25">
+            <managed-bean-name id="__26">jhsMainRegionManager</managed-bean-name>
+            <managed-bean-class id="__27">oracle.jheadstart.controller.jsf.bean.DynamicRegionManager</managed-bean-class>
+            <managed-bean-scope id="__28">pageFlow</managed-bean-scope>
+        </managed-bean>
+        <managed-bean id="__29">
+            <managed-bean-name id="__30">pendingChangesBean</managed-bean-name>
+            <managed-bean-class id="__31">oracle.jheadstart.controller.jsf.bean.PendingChangesBean</managed-bean-class>
+            <managed-bean-scope id="__32">pageFlow</managed-bean-scope>
+        </managed-bean>
+        <managed-bean id="__33">
+            <managed-bean-name id="__34">jhsBreadcrumbStack</managed-bean-name>
+            <managed-bean-class id="__35">oracle.jheadstart.controller.jsf.util.breadcrumbs.BreadcrumbStack</managed-bean-class>
+            <managed-bean-scope id="__36">pageFlow</managed-bean-scope>
+        </managed-bean>
+        <managed-bean id="__37">
+            <managed-bean-name id="__38">jhsLovTaskFlowManager</managed-bean-name>
+            <managed-bean-class id="__39">oracle.jheadstart.controller.jsf.bean.SimpleDynamicRegionManager</managed-bean-class>
+            <managed-bean-scope id="__40">pageFlow</managed-bean-scope>
+        </managed-bean>
+        <managed-bean id="__41">
+            <managed-bean-name id="__42">jhsLovPopup</managed-bean-name>
+            <managed-bean-class id="__43">oracle.jheadstart.controller.jsf.bean.UIComponentBinder</managed-bean-class>
+            <managed-bean-scope id="__44">pageFlow</managed-bean-scope>
+        </managed-bean>
+        <task-flow-return id="CallMenuItem">
+            <outcome>
+                <name id="__45">CallMenuItem</name>
+            </outcome>
+        </task-flow-return>
+        <task-flow-call id="DoLovValidation">
+            <dynamic-task-flow-reference>#{pageFlowScope.LovItemBean.lovTaskFlowId}</dynamic-task-flow-reference>
+            <input-parameter-map>#{pageFlowScope.LovItemBean.lovParamsMap}</input-parameter-map>
+            <return-value id="__46">
+                <name>LovValidationRow</name>
+                <value>#{pageFlowScope.LovItemBean.lovValidationRow}</value>
+            </return-value>
+        </task-flow-call>
+        <control-flow-rule id="__47">
+            <from-activity-id id="__48">*</from-activity-id>
+            <control-flow-case id="__49">
+                <from-outcome id="__50">CallMenuItem</from-outcome>
+                <to-activity-id id="__51">CallMenuItem</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__52">
+                <from-outcome id="__53">doLovValidation</from-outcome>
+                <to-activity-id id="__54">DoLovValidation</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+    </task-flow-template>
+</adfc-config>
+

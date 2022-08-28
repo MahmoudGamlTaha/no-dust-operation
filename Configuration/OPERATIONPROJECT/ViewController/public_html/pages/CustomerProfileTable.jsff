@@ -1,0 +1,540 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsRegionTemplate.jsf">
+        <f:attribute name="showBreadcrumbs" value="false"/>
+        <!-- DEBUG:BEGIN:WIZARD_PAGE_CONTENT : default/page/wizardPageContent.vm, nesting level: 2 -->
+        <f:facet name="processTrain">
+            <af:train value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}" id="tr0"/>
+        </f:facet>
+        <!-- DEBUG:BEGIN:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3 -->
+        <f:facet name="pageContent">
+            <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4 -->
+            <af:panelStretchLayout topHeight="auto" id="CustomerProfileTopLc"
+                                   partialTriggers=" CustomerProfileDeleteDialog CustomerProfileCancelButton as_CustomerProfile CustomerProfilePC:CustomerProfileArm CustomerProfilePC:CustomerProfileduprmTM CustomerProfilePC:CustomerProfiledelrmTM CustomerProfilePC:CustomerProfileArl CustomerProfilePC:CustomerProfileTab:CustomerProfileduprm CustomerProfilePC:CustomerProfileTab:CustomerProfiledelrm CustomerProfilePC:CustomerProfileTab:CustomerProfiledelrl CustomerProfilePC:CustomerProfileTab:CustomerProfileduprl">
+                <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                <f:facet name="top">
+                    <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                    <af:group id="g0">
+                        <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+                        <af:panelHeader id="ph0" text="#{nls['TABLE_TITLE_CUSTOMERPROFILE']}">
+                            <f:facet name="toolbar">
+                                <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5 -->
+                                <af:toolbox id="tbox0">
+                                    <af:toolbar id="tbar0">
+                                        <af:group id="gr0">
+                                            <!-- DEBUG:BEGIN:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6 -->
+                                            <af:button actionListener="#{CreateCustomerProfile.execute}"
+                                                       action="CreateCustomerProfile"
+                                                       shortDesc="#{nls['NEW_BUTTON_LABEL_CUSTOMERPROFILE']}"
+                                                       icon="/jheadstart/images/newRowInForm.png"
+                                                       rendered="#{(true) and (MTSPermission['CustomerProfile.create'])}"
+                                                       id="CustomerProfileNewButton"></af:button>
+                                            <!-- DEBUG:END:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6-->
+                                        </af:group>
+                                        <af:group id="gr1"></af:group>
+                                        <af:group id="gr2">
+                                            <af:trainButtonBar value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"/>
+                                            <!-- DEBUG:BEGIN:WIZARD_FINISH_BUTTON : default/button/wizardFinishButton.vm, nesting level: 6 -->
+                                            <af:button action="#{SaveCustomerProfile.execute}"
+                                                       textAndAccessKey="#{nls['FINISH']}"
+                                                       id="CustomerProfileWizardFinishButton"></af:button>
+                                            <!-- DEBUG:END:WIZARD_FINISH_BUTTON : default/button/wizardFinishButton.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6 -->
+                                            <af:button textAndAccessKey="#{nls['CANCEL']}" immediate="true"
+                                                       partialSubmit="true"
+                                                       rendered="#{!pageFlowScope.hideCancelButton}"
+                                                       actionListener="#{jhsRollback.execute}" action="Cancel"
+                                                       id="CustomerProfileCancelButton"></af:button>
+                                            <!-- DEBUG:END:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6-->
+                                        </af:group>
+                                    </af:toolbar>
+                                </af:toolbox>
+                                <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5-->
+                            </f:facet>
+                            <f:facet name="context">
+                                <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5 -->
+                                <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5-->
+                            </f:facet>
+                            <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+                            <!-- DEBUG:BEGIN:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 6 -->
+                            <af:panelGroupLayout id="modelSearchAreaCustomerProfile"
+                                                 rendered="#{!pageFlowScope.createModes.CreateCustomerProfile and !pageFlowScope.hideSearchArea}"
+                                                 partialTriggers="">
+                                <f:attribute name="JhsIgnoreChanges" value="true"/>
+                                <!-- DEBUG:BEGIN:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 7 -->
+                                <af:query id="as_CustomerProfile" headerText="#{nls['ADVANCED_SEARCH']}"
+                                          disclosed="true"
+                                          value="#{bindings.CustomerProfileIteratorQuery.queryDescriptor}"
+                                          model="#{bindings.CustomerProfileIteratorQuery.queryModel}"
+                                          queryListener="#{bindings.CustomerProfileIteratorQuery.processQuery}"
+                                          queryOperationListener="#{bindings.CustomerProfileIteratorQuery.processQueryOperation}"
+                                          rows="1" labelAlignment="start" maxColumns="3"></af:query>
+                                <!-- DEBUG:END:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 7-->
+                            </af:panelGroupLayout>
+                            <!-- DEBUG:END:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 6-->
+                            <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+                        </af:panelHeader>
+                        <af:spacer width="10" height="10" id="sp0"/>
+                    </af:group>
+                    <!-- Popped "disabled" from stretchContext, now: enabled (default) -->
+                </f:facet>
+                <f:facet name="center">
+                    <!-- DEBUG:BEGIN:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5 -->
+                    <af:panelStretchLayout topHeight="0" id="psl0">
+                        <f:facet name="top"></f:facet>
+                        <f:facet name="center">
+                            <!-- Pushed "enabled" on stretchContext, now: enabled (default), enabled (custom/pageComponent/MtstableGroup.vm) -->
+                            <af:panelSplitter orientation="vertical" styleClass="AFStretchWidth" id="ps0"
+                                              splitterPosition="540">
+                                <f:facet name="first">
+                                    <af:panelCollection id="CustomerProfilePC" featuresOff="   freeze "
+                                                        styleClass="AFStretchWidth">
+                                        <f:facet name="menus">
+                                            <!-- DEBUG:BEGIN:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6 -->
+                                            <af:menu textAndAccessKey="#{nls['ACTION_MENU_LABEL']}" id="menu0">
+                                                <af:menu textAndAccessKey="#{nls['GO_TO_MENU_LABEL']}" id="menu1">
+                                                    <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                                    <af:commandMenuItem id="mi0"
+                                                                        textAndAccessKey="#{nls['DETAIL_VIEW_BUTTON_LABEL']}"
+                                                                        action="CustomerProfileDetails"></af:commandMenuItem>
+                                                    <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                                    <!-- DEBUG:BEGIN:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7 -->
+                                                    <af:group id="CustomerProfiletbb"
+                                                              rendered="#{ bindings.CustomerProfileIterator.currentRow!=null }">
+                                                        <af:commandMenuItem actionListener="#{bindings.FirstCustomerProfile.execute}"
+                                                                            id="CustomerProfileFirst"
+                                                                            partialSubmit="true"
+                                                                            icon="/afr/shuttleleftall_ena.png"
+                                                                            textAndAccessKey="#{nls['FIRST_ROW']}"></af:commandMenuItem>
+                                                        <af:commandMenuItem actionListener="#{bindings.PreviousCustomerProfile.execute}"
+                                                                            icon="/afr/shuttleleft_ena.png"
+                                                                            textAndAccessKey="#{nls['PREVIOUS_ROW']}"
+                                                                            id="CustomerProfilePrevious"
+                                                                            partialSubmit="true"></af:commandMenuItem>
+                                                        <af:commandMenuItem actionListener="#{bindings.NextCustomerProfile.execute}"
+                                                                            icon="/afr/shuttleright_ena.png"
+                                                                            textAndAccessKey="#{nls['NEXT_ROW']}"
+                                                                            id="CustomerProfileNext"
+                                                                            partialSubmit="true"></af:commandMenuItem>
+                                                        <af:commandMenuItem actionListener="#{bindings.LastCustomerProfile.execute}"
+                                                                            icon="/afr/shuttlerightall_ena.png"
+                                                                            textAndAccessKey="#{nls['LAST_ROW']}"
+                                                                            id="CustomerProfileLast"
+                                                                            partialSubmit="true"></af:commandMenuItem>
+                                                    </af:group>
+                                                    <!-- DEBUG:END:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7-->
+                                                </af:menu>
+                                                <!-- DEBUG:BEGIN:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7 -->
+                                                <af:commandMenuItem id="CustomerProfileArm"
+                                                                    textAndAccessKey="#{nls['ADD_ROW']}"
+                                                                    immediate="false"
+                                                                    icon="/jheadstart/images/addRow.png"
+                                                                    partialSubmit="true"
+                                                                    actionListener="#{pageFlowScope.CustomerProfileTable.addRow}"
+                                                                    rendered="#{(true) and (MTSPermission['CustomerProfile.create'])}"></af:commandMenuItem>
+                                                <!-- DEBUG:END:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                                <af:commandMenuItem id="CustomerProfileduprmTM"
+                                                                    textAndAccessKey="#{nls['DUPLICATE_ROW']}"
+                                                                    immediate="true"
+                                                                    icon="/jheadstart/images/duplicateRow.png"
+                                                                    partialSubmit="true"
+                                                                    actionListener="#{pageFlowScope.CustomerProfileTable.duplicateRow}"
+                                                                    rendered="#{MTSPermission['CustomerProfile.create']}"></af:commandMenuItem>
+                                                <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                                <af:commandMenuItem id="CustomerProfiledelrmTM"
+                                                                    textAndAccessKey="#{nls['DELETE_ROW']}"
+                                                                    icon="/jheadstart/images/deleteRow.png"
+                                                                    partialSubmit="true" immediate="true"
+                                                                    rendered="#{MTSPermission['CustomerProfile.delete']}">
+                                                    <af:showPopupBehavior popupId="::CustomerProfileDeletePopup"/>
+                                                </af:commandMenuItem>
+                                                <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7-->
+                                            </af:menu>
+                                            <!-- DEBUG:END:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6-->
+                                        </f:facet>
+                                        <f:facet name="toolbar">
+                                            <!-- DEBUG:BEGIN:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6 -->
+                                            <af:toolbar id="tbar1">
+                                                <!-- DEBUG:BEGIN:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7 -->
+                                                <!-- Also create CreateCustomerProfile bean so we can start table group in create mode as well -->
+                                                <af:link id="CustomerProfileArl" immediate="false"
+                                                         rendered="#{(true) and (MTSPermission['CustomerProfile.create'])}"
+                                                         partialSubmit="true"
+                                                         actionListener="#{pageFlowScope.CustomerProfileTable.addRow}"
+                                                         shortDesc="#{nls['ADD_ROW']}"
+                                                         icon="/jheadstart/images/addRow.png"/>
+                                                <!-- DEBUG:END:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7-->
+                                            </af:toolbar>
+                                            <!-- DEBUG:END:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6-->
+                                        </f:facet>
+                                        <f:facet name="statusbar"/>
+                                        <af:table id="CustomerProfileTab" contentDelivery="immediate"
+                                                  value="#{bindings.CustomerProfileTable.collectionModel}"
+                                                  columnStretching="last" rowBandingInterval="0" editingMode="editAll"
+                                                  columnSelection="multiple" contextMenuSelect="true"
+                                                  rowSelection="single"
+                                                  selectionListener="#{pageFlowScope.CustomerProfileTable.makeCurrent}"
+                                                  selectedRowKeys="#{pageFlowScope.CustomerProfileTable.selectedRow}"
+                                                  rowDisclosureListener="#{pageFlowScope.CustomerProfileTable.discloseRow}"
+                                                  var="row" varStatus="status"
+                                                  fetchSize="#{bindings.CustomerProfileTable.rangeSize}"
+                                                  emptyText="#{nls['NO_ROWS_FOUND']}"
+                                                  queryListener="#{bindings.CustomerProfileIteratorQuery.processQuery}"
+                                                  filterModel="#{bindings.CustomerProfileIteratorQuery.queryDescriptor}"
+                                                  filterVisible="true"
+                                                  binding="#{pageFlowScope.CustomerProfileTable.table}"
+                                                  partialTriggers=" :::as_CustomerProfile :::CustomerProfilePC ::CustomerProfileFirst ::CustomerProfilePrevious ::CustomerProfileNext ::CustomerProfileLast"
+                                                  styleClass="AFStretchWidth"
+                                                  summary="#{nls['TABLE_TITLE_CUSTOMERPROFILE']}">
+                                            <!-- DEBUG:BEGIN:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6 -->
+                                            <f:facet name="contextMenu">
+                                                <af:popup id="CustomerProfileTablePopup" childCreation="deferred">
+                                                    <af:menu id="menu2">
+                                                        <af:menu text="#{nls['GO_TO_MENU_LABEL']}" id="menu3">
+                                                            <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                                            <af:commandMenuItem id="mi1"
+                                                                                textAndAccessKey="#{nls['DETAIL_VIEW_BUTTON_LABEL']}"
+                                                                                action="CustomerProfileDetails"></af:commandMenuItem>
+                                                            <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                                        </af:menu>
+                                                        <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                                        <af:commandMenuItem id="CustomerProfileduprm"
+                                                                            textAndAccessKey="#{nls['DUPLICATE_ROW']}"
+                                                                            immediate="true"
+                                                                            icon="/jheadstart/images/duplicateRow.png"
+                                                                            partialSubmit="true"
+                                                                            actionListener="#{pageFlowScope.CustomerProfileTable.duplicateRow}"
+                                                                            rendered="#{MTSPermission['CustomerProfile.create']}"></af:commandMenuItem>
+                                                        <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                                        <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                                        <af:commandMenuItem id="CustomerProfiledelrm"
+                                                                            textAndAccessKey="#{nls['DELETE_ROW']}"
+                                                                            icon="/jheadstart/images/deleteRow.png"
+                                                                            partialSubmit="true" immediate="true"
+                                                                            rendered="#{MTSPermission['CustomerProfile.delete']}">
+                                                            <af:showPopupBehavior popupId=":::CustomerProfileDeletePopup"/>
+                                                        </af:commandMenuItem>
+                                                        <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                                    </af:menu>
+                                                </af:popup>
+                                            </f:facet><!-- DEBUG:END:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6 --><!-- DEBUG:END:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6 -->
+                                            <af:column id="CustomerProfileActionColumn" width="60" align="center"
+                                                       headerText=" ">
+                                                <af:panelGroupLayout layout="horizontal" id="pgl0">
+                                                    <!-- DEBUG:BEGIN:DETAILS_LINK : default/button/detailsLink.vm, nesting level: 7 -->
+                                                    <af:link action="CustomerProfileDetails" id="CustomerProfileGtd"
+                                                             shortDesc="#{nls['DETAIL_VIEW_BUTTON_LABEL']}"
+                                                             icon="/jheadstart/images/editRow.png"/>
+                                                    <!-- DEBUG:END:DETAILS_LINK : default/button/detailsLink.vm, nesting level: 7-->
+                                                    <!-- DEBUG:BEGIN:DELETE_ROW_LINK : default/button/deleteRowLink.vm, nesting level: 7 -->
+                                                    <af:link id="CustomerProfiledelrl" partialSubmit="true"
+                                                             immediate="true"
+                                                             rendered="#{MTSPermission['CustomerProfile.delete']}"
+                                                             shortDesc="#{nls['DELETE_ROW']}"
+                                                             icon="/jheadstart/images/deleteRow.png">
+                                                        <af:showPopupBehavior popupId=":::CustomerProfileDeletePopup"/>
+                                                    </af:link>
+                                                    <!-- DEBUG:END:DELETE_ROW_LINK : default/button/deleteRowLink.vm, nesting level: 7-->
+                                                    <!-- DEBUG:BEGIN:DUPLICATE_ROW_LINK : default/button/duplicateRowLink.vm, nesting level: 7 -->
+                                                    <af:link id="CustomerProfileduprl" immediate="true"
+                                                             partialSubmit="true"
+                                                             actionListener="#{pageFlowScope.CustomerProfileTable.duplicateRow}"
+                                                             rendered="#{MTSPermission['CustomerProfile.create']}"
+                                                             shortDesc="#{nls['DUPLICATE_ROW']}"
+                                                             icon="/jheadstart/images/duplicateRow.png"/>
+                                                    <!-- DEBUG:END:DUPLICATE_ROW_LINK : default/button/duplicateRowLink.vm, nesting level: 7-->
+                                                </af:panelGroupLayout>
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                            <af:column id="CustomerProfileCustomerNameCol" sortable="true"
+                                                       filterable="true" noWrap="false" width="300"
+                                                       sortProperty="CustomerName" rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{nls['CUSTOMERPROFILE_TABLE_CUSTOMERNAME']}"
+                                                                    showRequired="#{bindings.CustomerProfileTable.hints.CustomerName.mandatory}"
+                                                                    id="ol0"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                                <af:inputText id="CustomerProfileCustomerName"
+                                                              value="#{row.bindings.CustomerName.inputValue}"
+                                                              label="#{nls['CUSTOMERPROFILE_TABLE_CUSTOMERNAME']}"
+                                                              required="#{bindings.CustomerProfileTable.hints.CustomerName.mandatory}"
+                                                              rows="#{bindings.CustomerProfileTable.hints.CustomerName.displayHeight}"
+                                                              columns="#{bindings.CustomerProfileTable.hints.CustomerName.displayWidth}"
+                                                              maximumLength="4000"
+                                                              readOnly="#{(((pageFlowScope.CustomerProfileTable.newRow) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.CustomerProfileTable.newRow) and (!(MTSPermission['CustomerProfile.update'])))) or (!(pageFlowScope.CustomerProfileTable.newRow))}"
+                                                              shortDesc="#{bindings.CustomerProfileTable.hints.CustomerName.tooltip}">
+                                                    <f:validator binding="#{row.bindings.CustomerName.validator}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                            <af:column id="CustomerProfileCustomerClassificationCol" sortable="true"
+                                                       filterable="true" noWrap="true" width="100"
+                                                       sortProperty="CustomerClassification" rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{nls['CUSTOMERPROFILE_TABLE_CUSTOMERCLASSIFICATION']}"
+                                                                    showRequired="#{bindings.CustomerProfileTable.hints.CustomerClassification.mandatory}"
+                                                                    id="ol1"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 7 -->
+                                                <af:selectOneChoice id="CustomerProfileCustomerClassification"
+                                                                    value="#{row.bindings.CustomerClassification.inputValue}"
+                                                                    label="#{nls['CUSTOMERPROFILE_TABLE_CUSTOMERCLASSIFICATION']}"
+                                                                    required="#{bindings.CustomerProfileTable.hints.CustomerClassification.mandatory}"
+                                                                    readOnly="#{(((pageFlowScope.CustomerProfileTable.newRow) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.CustomerProfileTable.newRow) and (!(MTSPermission['CustomerProfile.update'])))) or (!(pageFlowScope.CustomerProfileTable.newRow))}"
+                                                                    shortDesc="#{bindings.CustomerProfileTable.hints.CustomerClassification.tooltip}">
+                                                    <f:selectItems value="#{row.bindings.CustomerClassification.items}"/>
+                                                </af:selectOneChoice>
+                                                <!-- DEBUG:END:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                            <af:column id="CustomerProfileCustomerChannelCol" sortable="true"
+                                                       filterable="true" noWrap="true" width="100"
+                                                       sortProperty="CustomerChannel" rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{nls['CUSTOMERPROFILE_TABLE_CUSTOMERCHANNEL']}"
+                                                                    showRequired="#{bindings.CustomerProfileTable.hints.CustomerChannel.mandatory}"
+                                                                    id="ol2"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 7 -->
+                                                <af:selectOneChoice id="CustomerProfileCustomerChannel"
+                                                                    value="#{row.bindings.CustomerChannel.inputValue}"
+                                                                    label="#{nls['CUSTOMERPROFILE_TABLE_CUSTOMERCHANNEL']}"
+                                                                    required="#{bindings.CustomerProfileTable.hints.CustomerChannel.mandatory}"
+                                                                    readOnly="#{(((pageFlowScope.CustomerProfileTable.newRow) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.CustomerProfileTable.newRow) and (!(MTSPermission['CustomerProfile.update'])))) or (!(pageFlowScope.CustomerProfileTable.newRow))}"
+                                                                    shortDesc="#{bindings.CustomerProfileTable.hints.CustomerChannel.tooltip}">
+                                                    <f:selectItems value="#{row.bindings.CustomerChannel.items}"/>
+                                                </af:selectOneChoice>
+                                                <!-- DEBUG:END:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                            <af:column id="CustomerProfileCollectionTypeCol" sortable="true"
+                                                       filterable="true" noWrap="true" width="150"
+                                                       sortProperty="CollectionType" rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{nls['CUSTOMERPROFILE_TABLE_COLLECTIONTYPE']}"
+                                                                    showRequired="#{bindings.CustomerProfileTable.hints.CollectionType.mandatory}"
+                                                                    id="ol3"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 7 -->
+                                                <af:selectOneChoice id="CustomerProfileCollectionType"
+                                                                    value="#{row.bindings.CollectionType.inputValue}"
+                                                                    label="#{nls['CUSTOMERPROFILE_TABLE_COLLECTIONTYPE']}"
+                                                                    required="#{bindings.CustomerProfileTable.hints.CollectionType.mandatory}"
+                                                                    readOnly="#{((pageFlowScope.CustomerProfileTable.newRow) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.CustomerProfileTable.newRow) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                                                    shortDesc="#{bindings.CustomerProfileTable.hints.CollectionType.tooltip}">
+                                                    <f:selectItems value="#{row.bindings.CollectionType.items}"/>
+                                                </af:selectOneChoice>
+                                                <!-- DEBUG:END:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                            <af:column id="CustomerProfileCustomerEmailCol" sortable="true"
+                                                       filterable="true" noWrap="true" width="100"
+                                                       sortProperty="CustomerEmail" rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{nls['CUSTOMERPROFILE_TABLE_CUSTOMEREMAIL']}"
+                                                                    showRequired="#{bindings.CustomerProfileTable.hints.CustomerEmail.mandatory}"
+                                                                    id="ol4"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                                <af:inputText id="CustomerProfileCustomerEmail"
+                                                              value="#{row.bindings.CustomerEmail.inputValue}"
+                                                              label="#{nls['CUSTOMERPROFILE_TABLE_CUSTOMEREMAIL']}"
+                                                              required="#{bindings.CustomerProfileTable.hints.CustomerEmail.mandatory}"
+                                                              rows="#{bindings.CustomerProfileTable.hints.CustomerEmail.displayHeight}"
+                                                              columns="#{bindings.CustomerProfileTable.hints.CustomerEmail.displayWidth}"
+                                                              maximumLength="4000"
+                                                              readOnly="#{((pageFlowScope.CustomerProfileTable.newRow) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.CustomerProfileTable.newRow) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                                              shortDesc="#{bindings.CustomerProfileTable.hints.CustomerEmail.tooltip}">
+                                                    <f:validator binding="#{row.bindings.CustomerEmail.validator}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                            <af:column id="CustomerProfileCustomerMobileCol" sortable="true"
+                                                       filterable="true" noWrap="true" width="100"
+                                                       sortProperty="CustomerMobile" rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{nls['CUSTOMERPROFILE_TABLE_CUSTOMERMOBILE']}"
+                                                                    showRequired="#{bindings.CustomerProfileTable.hints.CustomerMobile.mandatory}"
+                                                                    id="ol5"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                                <af:inputText id="CustomerProfileCustomerMobile"
+                                                              value="#{row.bindings.CustomerMobile.inputValue}"
+                                                              label="#{nls['CUSTOMERPROFILE_TABLE_CUSTOMERMOBILE']}"
+                                                              required="#{bindings.CustomerProfileTable.hints.CustomerMobile.mandatory}"
+                                                              rows="#{bindings.CustomerProfileTable.hints.CustomerMobile.displayHeight}"
+                                                              columns="#{bindings.CustomerProfileTable.hints.CustomerMobile.displayWidth}"
+                                                              maximumLength="4000"
+                                                              readOnly="#{((pageFlowScope.CustomerProfileTable.newRow) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.CustomerProfileTable.newRow) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                                              shortDesc="#{bindings.CustomerProfileTable.hints.CustomerMobile.tooltip}">
+                                                    <f:validator binding="#{row.bindings.CustomerMobile.validator}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                            <af:column id="CustomerProfileCustomerPhoneCol" sortable="true"
+                                                       filterable="true" noWrap="true" width="100"
+                                                       sortProperty="CustomerPhone" rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{nls['CUSTOMERPROFILE_TABLE_CUSTOMERPHONE']}"
+                                                                    showRequired="#{bindings.CustomerProfileTable.hints.CustomerPhone.mandatory}"
+                                                                    id="ol6"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                                <af:inputText id="CustomerProfileCustomerPhone"
+                                                              value="#{row.bindings.CustomerPhone.inputValue}"
+                                                              label="#{nls['CUSTOMERPROFILE_TABLE_CUSTOMERPHONE']}"
+                                                              required="#{bindings.CustomerProfileTable.hints.CustomerPhone.mandatory}"
+                                                              rows="#{bindings.CustomerProfileTable.hints.CustomerPhone.displayHeight}"
+                                                              columns="#{bindings.CustomerProfileTable.hints.CustomerPhone.displayWidth}"
+                                                              maximumLength="4000"
+                                                              readOnly="#{((pageFlowScope.CustomerProfileTable.newRow) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.CustomerProfileTable.newRow) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                                              shortDesc="#{bindings.CustomerProfileTable.hints.CustomerPhone.tooltip}">
+                                                    <f:validator binding="#{row.bindings.CustomerPhone.validator}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                            <af:column id="CustomerProfileCustomerParentCol" sortable="true"
+                                                       filterable="true" noWrap="true" width="150"
+                                                       sortProperty="CustomerParent" rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{nls['CUSTOMERPROFILE_TABLE_CUSTOMERPARENT']}"
+                                                                    showRequired="#{bindings.CustomerProfileTable.hints.CustomerParent.mandatory}"
+                                                                    id="ol7"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_MODEL_INPUTTEXT_LOV : default/item/table/tableModelInputTextLov.vm, nesting level: 7 -->
+                                                <af:inputListOfValues id="CustomerProfileCustomerParent"
+                                                                      value="#{row.bindings.CustomerParent.inputValue}"
+                                                                      label="#{nls['CUSTOMERPROFILE_TABLE_CUSTOMERPARENT']}"
+                                                                      popupTitle="#{nls['SEARCH_AND_SELECT']} Customer Parent"
+                                                                      searchDesc="#{nls['SEARCH_AND_SELECT']} Customer Parent"
+                                                                      required="#{bindings.CustomerProfileTable.hints.CustomerParent.mandatory}"
+                                                                      columns="#{bindings.CustomerProfileTable.hints.CustomerParent.displayWidth}"
+                                                                      maximumLength="38"
+                                                                      readOnly="#{(((pageFlowScope.CustomerProfileTable.newRow) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.CustomerProfileTable.newRow) and (!(MTSPermission['CustomerProfile.update'])))) or (!(pageFlowScope.CustomerProfileTable.newRow))}"
+                                                                      shortDesc="#{bindings.CustomerProfileTable.hints.CustomerParent.tooltip}"
+                                                                      autoSubmit="true"
+                                                                      model="#{row.bindings.CustomerParent.listOfValuesModel}">
+                                                    <f:validator binding="#{row.bindings.CustomerParent.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.CustomerProfileTable.hints.CustomerParent.format}"/>
+                                                </af:inputListOfValues>
+                                                <!-- DEBUG:END:TABLE_MODEL_INPUTTEXT_LOV : default/item/table/tableModelInputTextLov.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                            <af:column id="CustomerProfileActiveCol" sortable="true" filterable="true"
+                                                       noWrap="true" width="25" sortProperty="Active" rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{nls['CUSTOMERPROFILE_TABLE_ACTIVE']}"
+                                                                    showRequired="#{bindings.CustomerProfileTable.hints.Active.mandatory}"
+                                                                    id="ol8"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_CHECK_BOX : default/item/table/tableCheckbox.vm, nesting level: 7 -->
+                                                <af:selectBooleanCheckbox id="CustomerProfileActive"
+                                                                          label="#{nls['CUSTOMERPROFILE_TABLE_ACTIVE']}"
+                                                                          value="#{CustomerProfileActivecheckboxInTable.value}"
+                                                                          readOnly="#{((pageFlowScope.CustomerProfileTable.newRow) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.CustomerProfileTable.newRow) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                                                          shortDesc="#{bindings.CustomerProfileTable.hints.Active.tooltip}"></af:selectBooleanCheckbox>
+                                                <!-- DEBUG:END:TABLE_CHECK_BOX : default/item/table/tableCheckbox.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                        </af:table>
+                                    </af:panelCollection>
+                                </f:facet>
+                                <f:facet name="second">
+                                    <!-- DEBUG:BEGIN:TABLE_OVERFLOW_AREA : default/pageComponent/tableOverflowArea.vm, nesting level: 6 -->
+                                    <!-- Pushed "disabled" on stretchContext, now: enabled (default), enabled (custom/pageComponent/MtstableGroup.vm), disabled (default/pageComponent/tableOverflowArea.vm) -->
+                                    <af:panelGroupLayout id="pgl1"
+                                                         rendered="#{bindings.CustomerProfileIterator.estimatedRowCount>0}"
+                                                         partialTriggers="CustomerProfilePC:CustomerProfileTab"
+                                                         layout="scroll">
+                                        <f:facet name="separator">
+                                            <af:spacer width="10" height="10" id="sp1"/>
+                                        </f:facet>
+                                        <af:panelFormLayout rows="1" maxColumns="3" labelAlignment="start" id="pfl0"></af:panelFormLayout>
+                                        <!-- DEBUG:BEGIN:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 7-->
+                                    </af:panelGroupLayout>
+                                    <!-- Popped "disabled" from stretchContext, now: enabled (default), enabled (custom/pageComponent/MtstableGroup.vm) -->
+                                    <!-- DEBUG:END:TABLE_OVERFLOW_AREA : default/pageComponent/tableOverflowArea.vm, nesting level: 6-->
+                                </f:facet>
+                            </af:panelSplitter>
+                            <!-- Popped "enabled" from stretchContext, now: enabled (default) -->
+                        </f:facet>
+                    </af:panelStretchLayout>
+                    <!-- DEBUG:END:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5-->
+                </f:facet>
+            </af:panelStretchLayout>
+            <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4-->
+        </f:facet>
+        <f:facet name="popups">
+            <af:panelGroupLayout id="popupsPgl">
+                <!-- DEBUG:BEGIN:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 8 -->
+                <af:popup id="CustomerProfileDeletePopup" contentDelivery="lazyUncached" childCreation="deferred">
+                    <af:dialog type="none" title="#{nls['WARNING']}" modal="true" id="CustomerProfileDeleteDialog">
+                        <af:outputText value="#{nls['DELETE_WARNING_CUSTOMERPROFIL:#{bindings.CustomerProfileIterator.currentRowIndexInRange+1}']} "
+                                       id="ot0"/>
+                        <f:attribute name="methodExpression" value="#{'#{DeleteCustomerProfile.execute}'}"/>
+                        <f:facet name="buttonBar">
+                            <af:group id="g1">
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_YES']}" id="cb0" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.confirm}"/>
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_NO']}" id="cb1" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.abort}"/>
+                            </af:group>
+                        </f:facet>
+                    </af:dialog>
+                </af:popup>
+                <!-- DEBUG:END:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 8-->
+            </af:panelGroupLayout>
+        </f:facet>
+        <!-- DEBUG:END:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3-->
+        <!-- DEBUG:END:WIZARD_PAGE_CONTENT : default/page/wizardPageContent.vm, nesting level: 2-->
+    </af:pageTemplate>
+</ui:composition>
+
+
+

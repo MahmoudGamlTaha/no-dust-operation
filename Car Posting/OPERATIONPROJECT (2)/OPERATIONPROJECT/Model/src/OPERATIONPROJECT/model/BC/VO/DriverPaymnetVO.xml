@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="DriverPaymnetVO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Partial"
+  SelectList="DriverPaymnetEO.DATE_, 
+       DriverPaymnetEO.DRIVER_NAME, 
+       DriverPaymnetEO.PAYMENT_REFRENCE, 
+       DriverPaymnetEO.TRANSACTION_ID, 
+       PaymentEO.PAYMENT_STATUS, 
+       PaymentEO.TRANSACTION_ID AS TRANSACTION_ID1, 
+       PaymentEO.DUE_DATE, 
+       PaymentEO.PAYMENT_LOCATION, 
+       PaymentEO.UPDATED_BY"
+  FromList="DRIVER_PAYMENT DriverPaymnetEO, PAYROLL_PAYMENT PaymentEO"
+  Where="DriverPaymnetEO.TRANSACTION_ID = PaymentEO.TRANSACTION_ID"
+  OrderBy="DriverPaymnetEO.DATE_">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="OPERATIONPROJECT.model.BC.VO.DriverPaymnetVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="PaymentStatusVO1"
+    ViewObjectName="OPERATIONPROJECT.model.BC.VO.Lookups.PaymentStatusVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="FacilityVO1"
+    ViewObjectName="OPERATIONPROJECT.model.BC.VO.Lookups.FacilityVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_PaymentStatus"
+    ListVOName="PaymentStatusVO1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="PaymentStatus"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="StatusId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="StatusName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_PaymentLocation"
+    ListVOName="FacilityVO1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="PaymentLocation"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="FacilityId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="FacilityName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="DriverPaymnetEO"
+    Entity="OPERATIONPROJECT.model.BC.EO.DriverPaymnetEO"
+    ReadOnly="true"
+    DeleteParticipant="false"/>
+  <EntityUsage
+    Name="PaymentEO"
+    Entity="OPERATIONPROJECT.model.BC.EO.PaymentEO"
+    Association="OPERATIONPROJECT.model.BC.EO.Assoc.DriverPaymentASSOC"
+    AssociationEnd="OPERATIONPROJECT.model.BC.EO.Assoc.DriverPaymentASSOC.Payment"
+    SourceUsage="OPERATIONPROJECT.model.BC.VO.DriverPaymnetVO.DriverPaymnetEO"
+    Reference="true"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="OPERATIONPROJECT.model.BC.EO.PaymentEO.TransactionId"/>
+      </AttrArray>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="OPERATIONPROJECT.model.BC.EO.DriverPaymnetEO.TransactionId"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <ViewAttribute
+    Name="Date"
+    PrecisionRule="true"
+    EntityAttrName="Date"
+    EntityUsage="DriverPaymnetEO"
+    AliasName="DATE_">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="OPERATIONPROJECT.model.BC.VO.DriverPaymnetVO.Date_LABEL"/>
+        <LABEL_PLURAL
+          ResId="OPERATIONPROJECT.model.BC.VO.DriverPaymnetVO.Date_LABEL_PLURAL"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DriverName"
+    PrecisionRule="true"
+    EntityAttrName="DriverName"
+    EntityUsage="DriverPaymnetEO"
+    AliasName="DRIVER_NAME">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="OPERATIONPROJECT.model.BC.VO.DriverPaymnetVO.DriverName_LABEL"/>
+        <LABEL_PLURAL
+          ResId="OPERATIONPROJECT.model.BC.VO.DriverPaymnetVO.DriverName_LABEL_PLURAL"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PaymentRefrence"
+    PrecisionRule="true"
+    EntityAttrName="PaymentRefrence"
+    EntityUsage="DriverPaymnetEO"
+    AliasName="PAYMENT_REFRENCE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="OPERATIONPROJECT.model.BC.VO.DriverPaymnetVO.PaymentRefrence_LABEL"/>
+        <LABEL_PLURAL
+          ResId="OPERATIONPROJECT.model.BC.VO.DriverPaymnetVO.PaymentRefrence_LABEL_PLURAL"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TransactionId"
+    PrecisionRule="true"
+    EntityAttrName="TransactionId"
+    EntityUsage="DriverPaymnetEO"
+    AliasName="TRANSACTION_ID"
+    IsQueriable="false"/>
+  <ViewAttribute
+    Name="PaymentStatus"
+    PrecisionRule="true"
+    EntityAttrName="PaymentStatus"
+    EntityUsage="PaymentEO"
+    AliasName="PAYMENT_STATUS"
+    LOVName="LOV_PaymentStatus">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TransactionId1"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="TransactionId"
+    EntityUsage="PaymentEO"
+    AliasName="TRANSACTION_ID1"
+    IsQueriable="false"/>
+  <ViewAttribute
+    Name="DueDate"
+    PrecisionRule="true"
+    EntityAttrName="DueDate"
+    EntityUsage="PaymentEO"
+    AliasName="DUE_DATE"/>
+  <ViewAttribute
+    Name="PaymentLocation"
+    PrecisionRule="true"
+    EntityAttrName="PaymentLocation"
+    EntityUsage="PaymentEO"
+    AliasName="PAYMENT_LOCATION"
+    LOVName="LOV_PaymentLocation">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UpdatedBy"
+    PrecisionRule="true"
+    EntityAttrName="UpdatedBy"
+    EntityUsage="PaymentEO"
+    AliasName="UPDATED_BY"
+    IsQueriable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="MTS.security.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

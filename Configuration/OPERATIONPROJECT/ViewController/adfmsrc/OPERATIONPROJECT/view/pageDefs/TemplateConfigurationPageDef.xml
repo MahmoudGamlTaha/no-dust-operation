@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="TemplateConfigurationPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <invokeAction id="clearDeepLinkViewCriteriaInvoke" Binds="clearDeepLinkViewCriteria" Refresh="renderModel"
+                  RefreshCondition="#{'true' != pageFlowScope.jhsQueryByKeyValue}"/>
+    <iterator id="TemplateConfigurationIterator" Binds="TemplateConfigurationVO1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+    <searchRegion id="TemplateConfigurationIteratorQuery" Binds="TemplateConfigurationIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true" DefaultQuickSearchAttrName="Id"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+  </executables>
+  <bindings>
+    <methodAction id="clearDeepLinkViewCriteria" RequiresUpdateModel="true" Action="invokeMethod"
+                  DataControl="AppModuleAMDataControl" InstanceName="AppModuleAMDataControl.dataProvider"
+                  MethodName="clearDeepLinkViewCriteria"
+                  ReturnName="AppModuleAMDataControl.methodResults.AppModuleAMDataControl_dataProvider_clearDeepLinkViewCriteria_result"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="viewObjectUsage" NDValue="TemplateConfigurationVO1" NDType="java.lang.String"/>
+      <NamedData NDName="requeryIfFound" NDValue="#{true}" NDType="java.lang.Boolean"/>
+    </methodAction>
+    <tree id="TemplateConfigurationTable" IterBinding="TemplateConfigurationIterator">
+      <nodeDefinition Name="TemplateConfiguration" DefName="OPERATIONPROJECT.model.BC.VO.TemplateConfigurationVO">
+        <AttrNames>
+          <Item Value="TemplateName"/>
+          <Item Value="TemplateContent"/>
+          <Item Value="TemplateContentAr"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="TemplateConfigurationIterator" id="FirstTemplateConfiguration" RequiresUpdateModel="true"
+            Action="first"/>
+    <action IterBinding="TemplateConfigurationIterator" id="PreviousTemplateConfiguration" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="TemplateConfigurationIterator" id="NextTemplateConfiguration" RequiresUpdateModel="true"
+            Action="next"/>
+    <action IterBinding="TemplateConfigurationIterator" id="LastTemplateConfiguration" RequiresUpdateModel="true"
+            Action="last"/>
+    <action IterBinding="TemplateConfigurationIterator" id="SetCurrentRowWithKeyTemplateConfiguration"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrTemplateConfiguration}"
+                 NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="TemplateConfigurationIterator" id="CreateTemplateConfiguration" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="TemplateConfigurationIterator" id="DeleteTemplateConfiguration" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

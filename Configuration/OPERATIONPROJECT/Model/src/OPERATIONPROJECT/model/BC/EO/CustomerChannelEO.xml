@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CustomerChannelEO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="CUSTOMER_CHANNEL"
+  AliasName="CustomerChannelEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="ChannelId"
+    IsNotNull="true"
+    Precision="38"
+    Scale="0"
+    ColumnName="CHANNEL_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    TableName="CUSTOMER_CHANNEL"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="ChannelName"
+    Precision="4000"
+    ColumnName="CHANNEL_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CUSTOMER_CHANNEL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="CustomerProfile"
+    Association="OPERATIONPROJECT.model.BC.EO.CustomerchannelFk1Assoc"
+    AssociationEnd="OPERATIONPROJECT.model.BC.EO.CustomerchannelFk1Assoc.CustomerProfile"
+    AssociationOtherEnd="OPERATIONPROJECT.model.BC.EO.CustomerchannelFk1Assoc.CustomerChannel1"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="CustomerChannelPkey"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="customer_channel_pkey"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.CustomerChannelEO.ChannelId"/>
+    </AttrArray>
+  </Key>
+</Entity>

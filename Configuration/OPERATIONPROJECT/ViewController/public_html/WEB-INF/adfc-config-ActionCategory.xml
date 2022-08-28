@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <task-flow-definition id="ActionCategoryTaskFlow">
+        <!-- DEBUG:BEGIN:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2 -->
+        <template-reference>
+            <document id="__0">/WEB-INF/jhs-fragment-taskflow-template.xml</document>
+            <id id="__1">jhs-fragment-taskflow-template</id>
+        </template-reference>
+        <!-- DEBUG:END:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2-->
+        <default-activity id="__2">StartActionCategory</default-activity>
+        <!-- DEBUG:BEGIN:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2 -->
+        <input-parameter-definition id="__3">
+            <name id="__4">createActionCategory</name>
+            <value id="__5">#{pageFlowScope.createActionCategory}</value>
+            <class id="__6">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__7">
+            <name id="__8">rowKeyStrActionCategory</name>
+            <value id="__9">#{pageFlowScope.rowKeyStrActionCategory}</value>
+            <class id="__10">java.lang.String</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__11">
+            <name id="__12">rowKeyValueActionCategory</name>
+            <value id="__13">#{pageFlowScope.rowKeyValueActionCategory}</value>
+            <class id="__14">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__15">
+            <name id="__16">rowKeyActionCategory</name>
+            <value id="__17">#{pageFlowScope.rowKeyActionCategory}</value>
+            <class id="__18">oracle.jbo.Key</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__19">
+            <name id="__20">altKeyNameActionCategory</name>
+            <value id="__21">#{pageFlowScope.altKeyNameActionCategory}</value>
+            <class id="__22">java.lang.String</class>
+        </input-parameter-definition>
+        <!-- DEBUG:END:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2 -->
+        <managed-bean id="__23">
+            <managed-bean-name id="__24">jhsTaskFlowManager</managed-bean-name>
+            <managed-bean-class id="__25">oracle.jheadstart.controller.jsf.bean.TaskFlowManager</managed-bean-class>
+            <managed-bean-scope id="__26">pageFlow</managed-bean-scope>
+            <managed-property id="__27">
+                <property-name id="__28">initializeParentContextEntries</property-name>
+                <map-entries id="__29">
+                    <map-entry id="__30">
+                        <key id="__31">jhsCurrentGroupName</key>
+                        <value id="__32">ActionCategory</value>
+                    </map-entry>
+                </map-entries>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__33">
+            <managed-bean-name id="__34">CreateActionCategory</managed-bean-name>
+            <managed-bean-class id="__35">oracle.jheadstart.controller.jsf.bean.CreateRowBean</managed-bean-class>
+            <managed-bean-scope id="__36">request</managed-bean-scope>
+            <managed-property id="__37">
+                <property-name id="__38">createBinding</property-name>
+                <value id="__39">#{bindings.CreateActionCategory}</value>
+            </managed-property>
+            <managed-property id="__40">
+                <property-name id="__41">successOutcome</property-name>
+                <value id="__42">deepLinkPage</value>
+            </managed-property>
+            <managed-property id="__43">
+                <property-name id="__44">failureOutcome</property-name>
+                <value id="__45">firstPage</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2 -->
+        <managed-bean id="__46">
+            <managed-bean-name id="__47">SaveActionCategory</managed-bean-name>
+            <managed-bean-class id="__48">oracle.jheadstart.controller.jsf.bean.CommitBean</managed-bean-class>
+            <managed-bean-scope id="__49">request</managed-bean-scope>
+            <managed-property id="__50">
+                <property-name id="__51">commitBinding</property-name>
+                <value id="__52">#{bindings.Commit}</value>
+            </managed-property>
+            <managed-property id="__53">
+                <property-name id="__54">successOutcome</property-name>
+                <value id="__55">Commit</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2 -->
+        <managed-bean id="__56">
+            <managed-bean-name id="__57">jhsRollback</managed-bean-name>
+            <managed-bean-class id="__58">oracle.jheadstart.controller.jsf.bean.RollbackBean</managed-bean-class>
+            <managed-bean-scope id="__59">request</managed-bean-scope>
+            <managed-property id="__60">
+                <property-name id="__61">rollbackBinding</property-name>
+                <value id="__62">#{bindings.Rollback}</value>
+            </managed-property>
+            <managed-property id="__63">
+                <property-name id="__64">successOutcome</property-name>
+                <value id="__65">Cancel</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__66">
+            <managed-bean-name id="__67">ActionCategoryTable</managed-bean-name>
+            <managed-bean-class id="__68">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__69">pageFlow</managed-bean-scope>
+            <managed-property id="__70">
+                <property-name id="__71">name</property-name>
+                <value id="__72">ActionCategoryTable</value>
+            </managed-property>
+            <managed-property id="__73">
+                <property-name id="__74">rangeBindingExpr</property-name>
+                <value id="__75">#{'#{bindings.ActionCategoryTable}'}</value>
+            </managed-property>
+            <managed-property id="__76">
+                <property-name id="__77">focusItemId</property-name>
+                <value id="__78">ActionCategoryCategoryName</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__79">
+            <managed-bean-name id="__80">DeleteActionCategory</managed-bean-name>
+            <managed-bean-class id="__81">oracle.jheadstart.controller.jsf.bean.DeleteRowBean</managed-bean-class>
+            <managed-bean-scope id="__82">request</managed-bean-scope>
+            <managed-property id="__83">
+                <property-name id="__84">deleteBinding</property-name>
+                <value id="__85">#{bindings.DeleteActionCategory}</value>
+            </managed-property>
+            <managed-property id="__86">
+                <property-name id="__87">commitBean</property-name>
+                <value id="__88">#{jhsCommit}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__89">
+            <managed-bean-name id="__90">ActionTable</managed-bean-name>
+            <managed-bean-class id="__91">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__92">pageFlow</managed-bean-scope>
+            <managed-property id="__93">
+                <property-name id="__94">name</property-name>
+                <value id="__95">ActionTable</value>
+            </managed-property>
+            <managed-property id="__96">
+                <property-name id="__97">rangeBindingExpr</property-name>
+                <value id="__98">#{'#{bindings.ActionTable}'}</value>
+            </managed-property>
+            <managed-property id="__99">
+                <property-name id="__100">focusItemId</property-name>
+                <value id="__101">ActionDescription</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__102">
+            <managed-bean-name id="__103">DeleteAction</managed-bean-name>
+            <managed-bean-class id="__104">oracle.jheadstart.controller.jsf.bean.DeleteRowBean</managed-bean-class>
+            <managed-bean-scope id="__105">request</managed-bean-scope>
+            <managed-property id="__106">
+                <property-name id="__107">deleteBinding</property-name>
+                <value id="__108">#{bindings.DeleteAction}</value>
+            </managed-property>
+            <managed-property id="__109">
+                <property-name id="__110">commitBean</property-name>
+                <value id="__111">#{jhsCommit}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__112">
+            <managed-bean-name id="__113">CreateAction</managed-bean-name>
+            <managed-bean-class id="__114">oracle.jheadstart.controller.jsf.bean.CreateRowBean</managed-bean-class>
+            <managed-bean-scope id="__115">request</managed-bean-scope>
+            <managed-property id="__116">
+                <property-name id="__117">createBinding</property-name>
+                <value id="__118">#{bindings.CreateAction}</value>
+            </managed-property>
+            <managed-property id="__119">
+                <property-name id="__120">successOutcome</property-name>
+                <value id="__121">deepLinkPage</value>
+            </managed-property>
+            <managed-property id="__122">
+                <property-name id="__123">failureOutcome</property-name>
+                <value id="__124">firstPage</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2 -->
+        <router id="StartActionCategory">
+            <case id="__125">
+                <expression id="__126">#{pageFlowScope.createActionCategory!=null}</expression>
+                <outcome id="__127">createActionCategory</outcome>
+            </case>
+            <case id="__128">
+                <expression id="__129">#{pageFlowScope.rowKeyStrActionCategory!=null or
+                                       pageFlowScope.rowKeyValueActionCategory!=null or
+                                       pageFlowScope.rowKeyActionCategory!=null}</expression>
+                <outcome id="__130">SetCurrentRowActionCategory</outcome>
+            </case>
+            <case id="__131">
+                <expression id="__132">#{pageFlowScope.isDeepLink!=null and pageFlowScope.isDeepLink}</expression>
+                <outcome id="__133">deepLinkPage</outcome>
+            </case>
+            <default-outcome id="__134">firstPage</default-outcome>
+        </router>
+        <!-- DEBUG:END:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2 -->
+        <method-call id="CreateActionCategory">
+            <method id="__135">#{CreateActionCategory.execute}</method>
+            <!-- execute condition param -->
+            <parameter>
+                <class id="__136">java.lang.Object</class>
+                <value id="__137">#{pageFlowScope.createActionCategory}</value>
+            </parameter>
+            <outcome id="__138">
+                <to-string/>
+            </outcome>
+        </method-call>
+        <method-call id="SetCurrentRowActionCategory">
+            <method id="__139">#{jhsSetCurrentRow.execute}</method>
+            <!-- iterator param -->
+            <parameter>
+                <class id="__140">oracle.adf.model.binding.DCIteratorBinding</class>
+                <value id="__141">#{bindings.ActionCategoryIterator}</value>
+            </parameter>
+            <!-- rowKeyStr param -->
+            <parameter>
+                <class id="__142">java.lang.String</class>
+                <value id="__143">#{pageFlowScope.rowKeyStrActionCategory}</value>
+            </parameter>
+            <!-- rowKeyValue param -->
+            <parameter>
+                <class id="__144">java.lang.Object</class>
+                <value id="__145">#{pageFlowScope.rowKeyValueActionCategory}</value>
+            </parameter>
+            <!-- rowKey param -->
+            <parameter>
+                <class id="__146">oracle.jbo.Key</class>
+                <value id="__147">#{pageFlowScope.rowKeyActionCategory}</value>
+            </parameter>
+            <!-- altKeyName param -->
+            <parameter>
+                <class id="__148">java.lang.String</class>
+                <value id="__149">#{pageFlowScope.altKeyNameActionCategory}</value>
+            </parameter>
+            <outcome id="__150">
+                <fixed-outcome id="__151">deepLinkPage</fixed-outcome>
+            </outcome>
+        </method-call>
+        <!-- DEBUG:END:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2-->
+        <task-flow-return id="CancelActionCategoryReturn">
+            <outcome id="__152">
+                <name id="__153">CancelActionCategory</name>
+            </outcome>
+        </task-flow-return>
+        <task-flow-return id="DoneActionCategoryReturn">
+            <outcome id="__154">
+                <name id="__155">DoneActionCategory</name>
+            </outcome>
+        </task-flow-return>
+        <!-- DEBUG:BEGIN:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2 -->
+        <view id="ActionCategoryTable">
+            <page id="__156">/pages/ActionCategoryTable.jsff</page>
+            <train-stop id="__157">
+                <display-name id="__158">#{nls['TABLE_TITLE_ACTIONCATEGORY']}</display-name>
+            </train-stop>
+        </view>
+        <view id="ActionCategory">
+            <page id="__159">/pages/ActionCategory.jsff</page>
+            <train-stop id="__160">
+                <display-name id="__161">#{nls['TABLE_TITLE_ACTIONCATEGORY']}</display-name>
+            </train-stop>
+        </view>
+        <!-- DEBUG:END:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2-->
+        <train/>
+        <!-- DEBUG:BEGIN:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2 -->
+        <control-flow-rule id="__162">
+            <from-activity-id id="__163">*</from-activity-id>
+            <control-flow-case id="__164">
+                <from-outcome id="__165">SetCurrentRowActionCategory</from-outcome>
+                <to-activity-id id="__166">SetCurrentRowActionCategory</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__167">
+                <from-outcome id="__168">firstPage</from-outcome>
+                <to-activity-id id="__169">ActionCategoryTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__170">
+                <from-outcome id="__171">deepLinkPage</from-outcome>
+                <to-activity-id id="__172">ActionCategory</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__173">
+                <from-outcome id="__174">ActionCategoryTableBreadcrumb</from-outcome>
+                <to-activity-id id="__175">ActionCategoryTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__176">
+                <from-outcome id="__177">ActionCategoryBreadcrumb</from-outcome>
+                <to-activity-id id="__178">ActionCategory</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__179">
+                <from-outcome id="__180">Cancel</from-outcome>
+                <to-activity-id id="__181">StartActionCategory</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__182">
+                <from-outcome id="__183">CancelActionCategoryReturn</from-outcome>
+                <to-activity-id id="__184">CancelActionCategoryReturn</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__185">
+                <from-outcome id="__186">DoneActionCategoryReturn</from-outcome>
+                <to-activity-id id="__187">DoneActionCategoryReturn</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__188">
+            <from-activity-id id="__189">ActionCategoryTable</from-activity-id>
+            <control-flow-case id="__190">
+                <from-outcome id="__191">CreateActionCategory</from-outcome>
+                <to-activity-id id="__192">ActionCategory</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__193">
+                <from-outcome id="__194">ActionCategoryDetails</from-outcome>
+                <to-activity-id id="__195">ActionCategory</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__196">
+            <from-activity-id id="__197">*</from-activity-id>
+            <control-flow-case id="__198">
+                <from-outcome id="__199">createActionCategory</from-outcome>
+                <to-activity-id id="__200">CreateActionCategory</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <!-- DEBUG:END:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2-->
+        <use-page-fragments/>
+    </task-flow-definition>
+    <!-- This bean must be defined outside the task-flow-definition element
+       because it needs to be available in the pageFlowScope of the unbounded
+       task-flow not in the pageFlowScope of the bounded task flow itself. -->
+    <!-- DEBUG:BEGIN:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2 -->
+    <managed-bean id="__201">
+        <managed-bean-name id="__202">ActionCategoryTaskFlowConfig</managed-bean-name>
+        <managed-bean-class id="__203">oracle.jheadstart.controller.jsf.bean.TaskFlowConfigBean</managed-bean-class>
+        <managed-bean-scope id="__204">pageFlow</managed-bean-scope>
+        <managed-property id="__205">
+            <property-name id="__206">params</property-name>
+            <property-class id="__207">java.util.Map</property-class>
+            <map-entries id="__208">
+                <map-entry id="__209">
+                    <key id="__210">parentContext</key>
+                    <value id="__211">#{pageFlowScope.parentContext}</value>
+                </map-entry>
+            </map-entries>
+        </managed-property>
+        <managed-property id="__212">
+            <property-name id="__213">name</property-name>
+            <value id="__214">ActionCategory</value>
+        </managed-property>
+        <managed-property id="__215">
+            <property-name id="__216">taskFlowId</property-name>
+            <value id="__217">/WEB-INF/adfc-config-ActionCategory.xml#ActionCategoryTaskFlow</value>
+        </managed-property>
+        <managed-property id="__218">
+            <property-name id="__219">label</property-name>
+            <value id="__220">#{nls['MENU1_TITLE_ACTIONCATEGORY']}</value>
+        </managed-property>
+    </managed-bean>
+    <!-- DEBUG:END:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2-->
+</adfc-config>

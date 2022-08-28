@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SchedulingExcludeReasonEO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="SCHEDULE_EXCLUDE_REASONS"
+  AliasName="SchedulingExcludeReasonEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="ReasonId"
+    ColumnName="REASON_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SCHEDULE_EXCLUDE_REASONS"
+    PrimaryKey="true"
+    IsQueriable="false"/>
+  <Attribute
+    Name="ReasonName"
+    Precision="500"
+    ColumnName="REASON_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SCHEDULE_EXCLUDE_REASONS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="OPERATIONPROJECT.model.BC.EO.SchedulingExcludeReasonEO.ReasonName_LABEL"/>
+        <DISPLAYWIDTH
+          Value="50"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Key
+    Name="ScheduleExcludeReasonsPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SCHEDULE_EXCLUDE_REASONS_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.SchedulingExcludeReasonEO.ReasonId"/>
+    </AttrArray>
+  </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="ModelBundle"/>
+  </ResourceBundle>
+</Entity>

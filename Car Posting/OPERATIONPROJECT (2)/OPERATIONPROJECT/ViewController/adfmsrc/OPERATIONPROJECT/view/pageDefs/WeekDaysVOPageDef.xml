@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="WeekDaysVOPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="validateCurrentRows">
+  <parameters/>
+  <executables>
+    <invokeAction id="clearDeepLinkViewCriteriaInvoke" Binds="clearDeepLinkViewCriteria" Refresh="renderModel"
+                  RefreshCondition="#{'true' != pageFlowScope.jhsQueryByKeyValue}"/>
+    <iterator id="WeekDaysVOIterator" Binds="WeekDaysVO" DataControl="AppModuleAMDataControl" RangeSize="10"/>
+    <variableIterator id="variables">
+      <variable Name="WeekDaysVORowKeyVar" Type="java.lang.String"
+                DefaultValue="#{bindings.WeekDaysVOIterator.currentRowKeyString}"/>
+    </variableIterator>
+    <iterator id="TeamleaderDashboardVOIterator" Binds="TeamleaderDashboardVO" DataControl="AppModuleAMDataControl"
+              RangeSize="10"/>
+    <searchRegion id="TeamleaderDashboardVOIteratorQuery" Binds="TeamleaderDashboardVOIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true"
+                  DefaultQuickSearchAttrName="AreaName"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator id="AreaSmsVOIterator" Binds="AreaSmsVO" DataControl="AppModuleAMDataControl" RangeSize="10"/>
+    <searchRegion id="AreaSmsVOIteratorQuery" Binds="AreaSmsVOIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="AreaName"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator id="OperationWorkVOIterator" Binds="OperationWorkVO" DataControl="AppModuleAMDataControl" RangeSize="10"/>
+    <searchRegion id="OperationWorkVOIteratorQuery" Binds="OperationWorkVOIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="Agent"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator id="SchedulingTableIncludeVOIterator" Binds="SchedulingTableIncludeVO"
+              DataControl="AppModuleAMDataControl" RangeSize="10"/>
+    <searchRegion id="SchedulingTableIncludeVOIteratorQuery" Binds="SchedulingTableIncludeVOIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true" DefaultQuickSearchAttrName="Agent"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator id="SchedulingTableExcludeVOIterator" Binds="SchedulingTableExcludeVO"
+              DataControl="AppModuleAMDataControl" RangeSize="10"/>
+    <searchRegion id="SchedulingTableExcludeVOIteratorQuery" Binds="SchedulingTableExcludeVOIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true" DefaultQuickSearchAttrName="Agent"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+  </executables>
+  <bindings>
+    <methodAction id="clearDeepLinkViewCriteria" RequiresUpdateModel="true" Action="invokeMethod"
+                  DataControl="AppModuleAMDataControl" InstanceName="AppModuleAMDataControl.dataProvider"
+                  MethodName="clearDeepLinkViewCriteria"
+                  ReturnName="AppModuleAMDataControl.methodResults.AppModuleAMDataControl_dataProvider_clearDeepLinkViewCriteria_result"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="viewObjectUsage" NDValue="WeekDaysVO" NDType="java.lang.String"/>
+      <NamedData NDName="requeryIfFound" NDValue="#{true}" NDType="java.lang.Boolean"/>
+    </methodAction>
+    <attributeValues IterBinding="WeekDaysVOIterator" id="WeekDaysVOWorkingDate">
+      <AttrNames>
+        <Item Value="WorkingDate"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="WeekDaysVOIterator" id="FirstWeekDaysVO" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="WeekDaysVOIterator" id="PreviousWeekDaysVO" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="WeekDaysVOIterator" id="NextWeekDaysVO" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="WeekDaysVOIterator" id="LastWeekDaysVO" RequiresUpdateModel="true" Action="last"/>
+    <attributeValues IterBinding="variables" id="WeekDaysVORowKey">
+      <AttrNames>
+        <Item Value="WeekDaysVORowKeyVar"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="WeekDaysVOIterator" id="SetCurrentRowWithKeyWeekDaysVO" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{bindings.WeekDaysVORowKey}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="WeekDaysVOIterator" id="CreateWeekDaysVO" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="WeekDaysVOIterator" id="DeleteWeekDaysVO" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <tree id="TeamleaderDashboardVOTable" IterBinding="TeamleaderDashboardVOIterator">
+      <nodeDefinition Name="TeamleaderDashboardVO" DefName="OPERATIONPROJECT.model.BC.VO.TeamleaderDashboardVO">
+        <AttrNames>
+          <Item Value="AreaId"/>
+          <Item Value="AreaName"/>
+          <Item Value="TotalDispatched"/>
+          <Item Value="CoverDate"/>
+          <Item Value="StatusName"/>
+          <Item Value="Total10"/>
+          <Item Value="TotalPromo"/>
+          <Item Value="BoverLostDispatched"/>
+          <Item Value="BoverLostConfirmed"/>
+          <Item Value="Id"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="TeamleaderDashboardVOIterator" id="FirstTeamleaderDashboardVO" RequiresUpdateModel="true"
+            Action="first"/>
+    <action IterBinding="TeamleaderDashboardVOIterator" id="PreviousTeamleaderDashboardVO" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="TeamleaderDashboardVOIterator" id="NextTeamleaderDashboardVO" RequiresUpdateModel="true"
+            Action="next"/>
+    <action IterBinding="TeamleaderDashboardVOIterator" id="LastTeamleaderDashboardVO" RequiresUpdateModel="true"
+            Action="last"/>
+    <action IterBinding="TeamleaderDashboardVOIterator" id="SetCurrentRowWithKeyTeamleaderDashboardVO"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrTeamleaderDashboardVO}"
+                 NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="TeamleaderDashboardVOIterator" id="CreateTeamleaderDashboardVO" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="TeamleaderDashboardVOIterator" id="DeleteTeamleaderDashboardVO" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <tree id="AreaSmsVOTable" IterBinding="AreaSmsVOIterator">
+      <nodeDefinition Name="AreaSmsVO" DefName="OPERATIONPROJECT.model.BC.VO.AreaSmsVO">
+        <AttrNames>
+          <Item Value="AreaId"/>
+          <Item Value="AreaName"/>
+          <Item Value="AreaStatus"/>
+          <Item Value="CoverDate"/>
+          <Item Value="Id"/>
+          <Item Value="Splitted"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="AreaSmsVOIterator" id="FirstAreaSmsVO" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="AreaSmsVOIterator" id="PreviousAreaSmsVO" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="AreaSmsVOIterator" id="NextAreaSmsVO" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="AreaSmsVOIterator" id="LastAreaSmsVO" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="AreaSmsVOIterator" id="SetCurrentRowWithKeyAreaSmsVO" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrAreaSmsVO}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="AreaSmsVOIterator" id="CreateAreaSmsVO" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="AreaSmsVOIterator" id="DeleteAreaSmsVO" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <tree id="OperationWorkVOTable" IterBinding="OperationWorkVOIterator">
+      <nodeDefinition Name="OperationWorkVO" DefName="OPERATIONPROJECT.model.BC.VO.OperationWorkVO">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="Agent"/>
+          <Item Value="AddedBy"/>
+          <Item Value="InsertTime"/>
+          <Item Value="Deleted"/>
+          <Item Value="DeletedBy"/>
+          <Item Value="DeletedAt"/>
+          <Item Value="AreaId"/>
+          <Item Value="PNumForDispatch"/>
+          <Item Value="TotalContracts"/>
+          <Item Value="DispatchableContracts"/>
+          <Item Value="BatchSplitted"/>
+          <Item Value="Splitted2Drivers"/>
+          <Item Value="CoverDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="OperationWorkVOIterator" id="FirstOperationWorkVO" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="OperationWorkVOIterator" id="PreviousOperationWorkVO" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="OperationWorkVOIterator" id="NextOperationWorkVO" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="OperationWorkVOIterator" id="LastOperationWorkVO" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="OperationWorkVOIterator" id="SetCurrentRowWithKeyOperationWorkVO" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrOperationWorkVO}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="OperationWorkVOIterator" id="CreateOperationWorkVO" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="OperationWorkVOIterator" id="DeleteOperationWorkVO" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <tree id="SchedulingTableIncludeVOTable" IterBinding="SchedulingTableIncludeVOIterator">
+      <nodeDefinition Name="SchedulingTableIncludeVO" DefName="OPERATIONPROJECT.model.BC.VO.SchedulingTableVO">
+        <AttrNames>
+          <Item Value="Agent"/>
+          <Item Value="AreaId"/>
+          <Item Value="AreaName"/>
+          <Item Value="BCount"/>
+          <Item Value="Bover"/>
+          <Item Value="DayName"/>
+          <Item Value="DispatchableContracts"/>
+          <Item Value="ExcludeReason"/>
+          <Item Value="Id"/>
+          <Item Value="IncludeExclude"/>
+          <Item Value="Lost"/>
+          <Item Value="NeedCallContracts"/>
+          <Item Value="OutOfSchedule"/>
+          <Item Value="PerfectIssueBoverContracts"/>
+          <Item Value="PerfectIssueContracts"/>
+          <Item Value="Priority10Contracts"/>
+          <Item Value="Priority8Contracts"/>
+          <Item Value="Priority9Contracts"/>
+          <Item Value="PullNextWeek"/>
+          <Item Value="ScheduleDate"/>
+          <Item Value="Scheduled"/>
+          <Item Value="SelectedContracts"/>
+          <Item Value="TotalContracts"/>
+          <Item Value="TotalContractsLost"/>
+          <Item Value="Week1Contracts"/>
+          <Item Value="Week2Contracts"/>
+          <Item Value="Week3Contracts"/>
+          <Item Value="ZerobContracts"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SchedulingTableIncludeVOIterator" id="FirstSchedulingTableIncludeVO" RequiresUpdateModel="true"
+            Action="first"/>
+    <action IterBinding="SchedulingTableIncludeVOIterator" id="PreviousSchedulingTableIncludeVO"
+            RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="SchedulingTableIncludeVOIterator" id="NextSchedulingTableIncludeVO" RequiresUpdateModel="true"
+            Action="next"/>
+    <action IterBinding="SchedulingTableIncludeVOIterator" id="LastSchedulingTableIncludeVO" RequiresUpdateModel="true"
+            Action="last"/>
+    <action IterBinding="SchedulingTableIncludeVOIterator" id="SetCurrentRowWithKeySchedulingTableIncludeVO"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrSchedulingTableIncludeVO}"
+                 NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="SchedulingTableIncludeVOIterator" id="CreateSchedulingTableIncludeVO"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="SchedulingTableIncludeVOIterator" id="DeleteSchedulingTableIncludeVO"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <tree id="SchedulingTableExcludeVOTable" IterBinding="SchedulingTableExcludeVOIterator">
+      <nodeDefinition Name="SchedulingTableExcludeVO" DefName="OPERATIONPROJECT.model.BC.VO.SchedulingTableVO">
+        <AttrNames>
+          <Item Value="Agent"/>
+          <Item Value="AreaId"/>
+          <Item Value="AreaName"/>
+          <Item Value="BCount"/>
+          <Item Value="Bover"/>
+          <Item Value="DayName"/>
+          <Item Value="DispatchableContracts"/>
+          <Item Value="ExcludeReason"/>
+          <Item Value="Id"/>
+          <Item Value="IncludeExclude"/>
+          <Item Value="Lost"/>
+          <Item Value="NeedCallContracts"/>
+          <Item Value="OutOfSchedule"/>
+          <Item Value="PerfectIssueBoverContracts"/>
+          <Item Value="PerfectIssueContracts"/>
+          <Item Value="Priority10Contracts"/>
+          <Item Value="Priority8Contracts"/>
+          <Item Value="Priority9Contracts"/>
+          <Item Value="PullNextWeek"/>
+          <Item Value="ScheduleDate"/>
+          <Item Value="Scheduled"/>
+          <Item Value="SelectedContracts"/>
+          <Item Value="TotalContracts"/>
+          <Item Value="TotalContractsLost"/>
+          <Item Value="Week1Contracts"/>
+          <Item Value="Week2Contracts"/>
+          <Item Value="Week3Contracts"/>
+          <Item Value="ZerobContracts"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SchedulingTableExcludeVOIterator" id="FirstSchedulingTableExcludeVO" RequiresUpdateModel="true"
+            Action="first"/>
+    <action IterBinding="SchedulingTableExcludeVOIterator" id="PreviousSchedulingTableExcludeVO"
+            RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="SchedulingTableExcludeVOIterator" id="NextSchedulingTableExcludeVO" RequiresUpdateModel="true"
+            Action="next"/>
+    <action IterBinding="SchedulingTableExcludeVOIterator" id="LastSchedulingTableExcludeVO" RequiresUpdateModel="true"
+            Action="last"/>
+    <action IterBinding="SchedulingTableExcludeVOIterator" id="SetCurrentRowWithKeySchedulingTableExcludeVO"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrSchedulingTableExcludeVO}"
+                 NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="SchedulingTableExcludeVOIterator" id="CreateSchedulingTableExcludeVO"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="SchedulingTableExcludeVOIterator" id="DeleteSchedulingTableExcludeVO"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,132 @@
+## revision_history
+## 20-jun-2013  Paco van der Linden
+## 1.3          Added support for autoQuery property in JHS LOVs with JHS search.
+## 13-feb-2012  Steven Davelaar
+## 1.2          - Added PreQueryUsingSearchValue activity and add its flow rule, and add flow rules
+##              for clearSearchCriteria and doValidation
+##              - Changed outcome of doValidation
+##              - Removed OneRowFound activity
+## 31-jan-2012  Steven Davelaar
+## 1.1          Added createIfNeeded, added control flow rules for create actions
+## 15-nov-2010  Steven Davelaar
+## 1.0          Initial creation, extracted from groupAdfcConfig.vm
+
+#set ($group = ${JHS.current.group})
+#set ($groupName = ${JHS.current.group.name})
+
+  #if( $JHS.current.group.reusableTree)
+  <method-call id="deepLinkTree">
+    <method id="#NEW_ID("__")">#{pageFlowScope.#TREE_BEAN(${JHS.current.group.treeBaseGroup}).deepLink}</method>
+    <outcome id="#NEW_ID("__")">
+      <fixed-outcome id="#NEW_ID("__")">deepLinkPage</fixed-outcome>
+    </outcome>
+  </method-call>
+  #end
+
+  #if ($JHS.current.group.useAsLov && $JHS.current.group.jhsSearchUsed)
+  <method-call id="${JHS.registerActivityInPageDef(${JHS.current.group},"ClearSearchCriteria")}">
+    #if ($JHS.current.group.autoQuery)
+      <method id="#NEW_ID("__")">#{#SEARCH_BEAN().clearSearchCriteriaAndRequery}</method>
+    #else
+      <method id="#NEW_ID("__")">#{#SEARCH_BEAN().clearSearchCriteria}</method>
+    #end
+    <outcome id="#NEW_ID("__")">
+      <fixed-outcome id="#NEW_ID("__")">firstPage</fixed-outcome>
+    </outcome>
+  </method-call>
+  ${JHS.facesConfigGenerator.addGlobalNavigationCase($JHS.current.group, "clearSearchCriteria","ClearSearchCriteria",false)}
+   <method-call id="${JHS.registerActivityInPageDef(${JHS.current.group},"PreQueryUsingSearchValue")}">
+    <method id="#NEW_ID("__")">#{#SEARCH_BEAN().quickSearch}</method>
+      <parameter>
+        <value id="#NEW_ID("__")">#{pageFlowScope.lovItemBeanRef.lovSearchItem}</value>
+      </parameter>
+      <parameter>
+        <value id="#NEW_ID("__")">#{pageFlowScope.lovItemBeanRef.lovSearchValue}</value>
+      </parameter>
+      <outcome id="#NEW_ID("__")">
+        <fixed-outcome>firstPage</fixed-outcome>
+      </outcome>
+    </method-call>
+  ${JHS.facesConfigGenerator.addGlobalNavigationCase($JHS.current.group, "PreQueryUsingSearchValue","PreQueryUsingSearchValue",false)}
+  <method-call id="${JHS.registerActivityInPageDef(${JHS.current.group},"DoValidation")}">
+    <method id="#NEW_ID("__")">#{#SEARCH_BEAN().quickSearch}</method>
+    <parameter>
+      <value id="#NEW_ID("__")">#{pageFlowScope.lovItemBeanRef.lovSearchItem}</value>
+    </parameter> 
+    <parameter>
+      <value id="#NEW_ID("__")">#{pageFlowScope.lovItemBeanRef.lovSearchValue}</value>
+    </parameter> 
+    <outcome id="#NEW_ID("__")">
+        <fixed-outcome>Done${JHS.current.group.name}Return</fixed-outcome>
+    </outcome>
+  </method-call>
+  ${JHS.facesConfigGenerator.addGlobalNavigationCase($JHS.current.group, "DoValidation","DoValidation",false)}
+  #end
+
+  #if ($JHS.current.group.formInsertAllowed || $JHS.current.group.tableInsertAllowed)
+  <method-call id="${JHS.registerActivityInPageDef(${JHS.current.group},"Create${groupName}")}">
+    <method id="#NEW_ID("__")">#{Create${groupName}.execute}</method>
+    <!-- execute condition param -->
+    <parameter>
+      <class id="#NEW_ID("__")">java.lang.Object</class>
+      <value id="#NEW_ID("__")">#{pageFlowScope.create${groupName}}</value>
+    </parameter>
+    <outcome id="#NEW_ID("__")">
+      <to-string/>
+    </outcome>
+  </method-call>
+  ${JHS.facesConfigGenerator.addGlobalNavigationCase($JHS.current.group, "create${groupName}","Create${groupName}",false)}
+    #if (""!=${JHS.current.group.startInCreateMode})
+      #set ($activityName = "Create${groupName}IfNeeded")
+      <method-call id="${JHS.registerActivityInPageDef(${JHS.current.group},"${activityName}")}">
+        <method id="#NEW_ID("__")">#{Create${groupName}.execute}</method>
+        <!-- execute condition param -->
+        <parameter>
+          <class id="#NEW_ID("__")">java.lang.Object</class>
+          #if ($JHS.current.group.startInCreateModeWhenNoRowsFound)
+            <value id="#NEW_ID("__")">#{#ITERATOR().estimatedRowCount==0}</value>
+          #else
+            <value id="#NEW_ID("__")">${JHS.current.group.startInCreateMode}</value>
+          #end
+        </parameter>
+        <outcome id="#NEW_ID("__")">
+          <to-string/>
+        </outcome>
+      </method-call>    
+      ${JHS.facesConfigGenerator.addGlobalNavigationCase($JHS.current.group, "${activityName}","${activityName}",false)}
+    #end
+  #end 
+
+  #if ($JHS.current.group.databound && !$JHS.current.group.reusableTree)
+  <method-call id="${JHS.registerActivityInPageDef(${JHS.current.group},"SetCurrentRow${groupName}")}">
+    <method id="#NEW_ID("__")">#{jhsSetCurrentRow.execute}</method>
+    <!-- iterator param -->
+    <parameter>
+      <class id="#NEW_ID("__")">oracle.adf.model.binding.DCIteratorBinding</class>
+      <value id="#NEW_ID("__")">#{bindings.${groupName}Iterator}</value>
+    </parameter>
+    <!-- rowKeyStr param -->
+    <parameter>
+      <class id="#NEW_ID("__")">java.lang.String</class>
+      <value id="#NEW_ID("__")">#{pageFlowScope.rowKeyStr${groupName}}</value>
+    </parameter>
+    <!-- rowKeyValue param -->
+    <parameter>
+      <class id="#NEW_ID("__")">java.lang.Object</class>
+      <value id="#NEW_ID("__")">#{pageFlowScope.rowKeyValue${groupName}}</value>
+    </parameter>
+    <!-- rowKey param -->
+    <parameter>
+      <class id="#NEW_ID("__")">oracle.jbo.Key</class>
+      <value id="#NEW_ID("__")">#{pageFlowScope.rowKey${groupName}}</value>
+    </parameter>
+    <!-- altKeyName param -->
+    <parameter>
+      <class id="#NEW_ID("__")">java.lang.String</class>
+      <value id="#NEW_ID("__")">#{pageFlowScope.altKeyName${groupName}}</value>
+    </parameter>
+    <outcome id="#NEW_ID("__")">
+      <fixed-outcome id="#NEW_ID("__")">deepLinkPage</fixed-outcome>
+    </outcome>
+  </method-call>
+  #end

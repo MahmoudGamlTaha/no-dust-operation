@@ -1,0 +1,28 @@
+## revision_history
+## 30-sep-2011  Steven Davelaar
+## 1.1          Added check for page.groupRegion
+## 15-nov-2010  Steven Davelaar
+## 1.0          Initial creation, extracted from groupAdfcConfig.vm
+
+#set ($group = ${JHS.current.group})
+#set ($groupName = ${JHS.current.group.name})
+
+#foreach ($page in ${JHS.current.groupFacesConfig.pages})
+  $JHS.setPage($page)
+  <view id="$page.name">
+    <page id="#NEW_ID("__")">${JHS.service.pageVirtualDir}${page.name}${page.extension}</page>
+    #if ($JHS.current.group.wizardBaseGroup)
+      <train-stop id="#NEW_ID("__")">
+        #if ($page.itemRegion)
+        <display-name id="#NEW_ID("__")">#REGION_TITLE($page.itemRegion)</display-name>
+        #elseif ($page.regionContainer)
+        <display-name id="#NEW_ID("__")">#REGION_TITLE($page.regionContainer)</display-name>
+        #elseif ($page.groupRegion)
+        <display-name id="#NEW_ID("__")">#REGION_TITLE($page.groupRegion)</display-name>
+        #else
+        <display-name id="#NEW_ID("__")">#GROUP_TITLE($page.group)</display-name>
+        #end
+      </train-stop>
+    #end
+  </view> 
+#end

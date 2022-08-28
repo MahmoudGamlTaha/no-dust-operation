@@ -1,0 +1,22 @@
+## revision_history
+## 18-may-2010   Steven Davelaar
+## 1.1           Added id property to all elements
+## 21-aug-2009   Evert-Jan de Bruin
+## 1.0           Initial creation - copied from taskFlowConfigBean.vm
+
+#set ($groupRegion = ${JHS.current.model})
+#set ($groupRegionName = ${groupRegion.name})
+
+    <managed-bean id="#NEW_ID("__")">
+      <managed-bean-name id="#NEW_ID("__")">${groupRegionName}TaskFlowConfig</managed-bean-name>
+      <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.TaskFlowConfigBean</managed-bean-class>
+      <managed-bean-scope id="#NEW_ID("__")">pageFlow</managed-bean-scope>
+      <managed-property id="#NEW_ID("__")">
+        <property-name id="#NEW_ID("__")">name</property-name>
+        <value id="#NEW_ID("__")">${groupRegionName}</value>
+      </managed-property>
+      <managed-property id="#NEW_ID("__")">
+        <property-name id="#NEW_ID("__")">taskFlowId</property-name>
+        <value id="#NEW_ID("__")">${JHS.current.group.taskFlowId}</value>
+      </managed-property>
+    </managed-bean>

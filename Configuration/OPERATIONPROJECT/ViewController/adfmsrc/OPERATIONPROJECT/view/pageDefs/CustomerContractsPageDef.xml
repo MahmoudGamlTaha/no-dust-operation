@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="CustomerContractsPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle" SkipValidation="true">
+  <parameters>
+    <parameter id="bindingContainersToPrepare" value="#{'ContractManagmentPageDef'}"/>
+  </parameters>
+  <executables>
+    <iterator id="CustomerContractsIterator" Binds="ContractData2" DataControl="AppModuleAMDataControl" RangeSize="10"/>
+    <searchRegion id="CustomerContractsIteratorQuery" Binds="CustomerContractsIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true" DefaultQuickSearchAttrName="CardNo"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator Binds="AppModuleAMDataControl" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="AppModuleAMDataControlIterator"/>
+  </executables>
+  <bindings>
+    <button IterBinding="CustomerContractsIterator" id="CustomerContractsMustCall" DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="MustCall"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <button IterBinding="CustomerContractsIterator" id="CustomerContractsActive" DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="Active"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <tree id="CustomerContractsTable" IterBinding="CustomerContractsIterator">
+      <nodeDefinition Name="CustomerContracts" DefName="OPERATIONPROJECT.model.BC.VO.ContractDataVO">
+        <AttrNames>
+          <Item Value="CardNo"/>
+          <Item Value="AreaId"/>
+          <Item Value="ContractClientName"/>
+          <Item Value="ContractDate"/>
+          <Item Value="ReplacementDuration"/>
+          <Item Value="ContractEmail"/>
+          <Item Value="ContractPhone"/>
+          <Item Value="ContractPhone2"/>
+          <Item Value="ContractMobile"/>
+          <Item Value="ContractMobile2"/>
+          <Item Value="PNum"/>
+          <Item Value="MustCall"/>
+          <Item Value="CancelDate"/>
+          <Item Value="CancelReason"/>
+          <Item Value="DefaultPriority"/>
+          <Item Value="NextDeliveryDate"/>
+          <Item Value="LastChangedDate"/>
+          <Item Value="LastUpdateTime"/>
+          <Item Value="X"/>
+          <Item Value="Y"/>
+          <Item Value="UpdatedBy"/>
+          <Item Value="Active"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="CustomerContractsIterator" id="FirstCustomerContracts" RequiresUpdateModel="true"
+            Action="first"/>
+    <action IterBinding="CustomerContractsIterator" id="PreviousCustomerContracts" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="CustomerContractsIterator" id="NextCustomerContracts" RequiresUpdateModel="true"
+            Action="next"/>
+    <action IterBinding="CustomerContractsIterator" id="LastCustomerContracts" RequiresUpdateModel="true"
+            Action="last"/>
+    <action IterBinding="CustomerContractsIterator" id="SetCurrentRowWithKeyCustomerContracts"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrCustomerContracts}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="CustomerContractsIterator" id="CreateCustomerContracts" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="CustomerContractsIterator" id="DeleteCustomerContracts" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

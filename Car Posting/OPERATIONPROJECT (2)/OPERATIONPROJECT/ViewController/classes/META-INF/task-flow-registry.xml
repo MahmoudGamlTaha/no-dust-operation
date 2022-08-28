@@ -1,0 +1,300 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<task-flow-registry xmlns="http://xmlns.oracle.com/adf/controller/rc">
+   <task-flow-descriptor path="META-INF/adfc-config.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/AppModuleAM-Breadcrumb-beans.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/JhsCommon-beans.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-CarReconciliation.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-CarReconciliation.xml" id="CarReconciliationTaskFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="rowKeyStrCarReconciliation"/>
+      <input-parameter name="rowKeyValueCarReconciliation"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="rowKeyCarReconciliation"/>
+      <input-parameter name="createCarReconciliation"/>
+      <input-parameter name="parentContext"/>
+      <input-parameter name="altKeyNameCarReconciliation"/>
+      <input-parameter name="isDeepLink"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/adfc-config-Countries1.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-Countries1.xml" id="Countries1TaskFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="rowKeyCountries1"/>
+      <input-parameter name="rowKeyStrCountries1"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="altKeyNameCountries1"/>
+      <input-parameter name="rowKeyValueCountries1"/>
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="parentContext"/>
+      <input-parameter name="createCountries1"/>
+      <input-parameter name="isDeepLink"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/adfc-config-DataTeamAgent.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-DataTeamAgent.xml" id="DataTeamAgentTaskFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="parentContext"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="isDeepLink"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/adfc-config-DataTeamAgentCarReconciliation.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-DataTeamAgentCarReconciliation.xml" id="DataTeamAgentCarReconciliationTaskFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="rowKeyDataTeamAgentCarReconciliation"/>
+      <input-parameter name="altKeyNameDataTeamAgentCarReconciliation"/>
+      <input-parameter name="rowKeyValueDataTeamAgentCarReconciliation"/>
+      <input-parameter name="parentContext"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="isDeepLink"/>
+      <input-parameter name="rowKeyStrDataTeamAgentCarReconciliation"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/adfc-config-DataTeamAgentContractReview.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-DataTeamAgentContractReview.xml" id="DataTeamAgentContractReviewTaskFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="parentContext"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="altKeyNameDataTeamAgentContractReview"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="isDeepLink"/>
+      <input-parameter name="rowKeyStrDataTeamAgentContractReview"/>
+      <input-parameter name="rowKeyValueDataTeamAgentContractReview"/>
+      <input-parameter name="rowKeyDataTeamAgentContractReview"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/adfc-config-DataTeamAgentDashboard.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-DataTeamAgentDashboard.xml" id="DataTeamAgentDashboardTaskFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="rowKeyValueDataTeamAgentDashboard"/>
+      <input-parameter name="altKeyNameDataTeamAgentDashboard"/>
+      <input-parameter name="parentContext"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="isDeepLink"/>
+      <input-parameter name="rowKeyStrDataTeamAgentDashboard"/>
+      <input-parameter name="rowKeyDataTeamAgentDashboard"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/adfc-config-DataTeamAgentEndOfDayReview.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-DataTeamAgentEndOfDayReview.xml" id="DataTeamAgentEndOfDayReviewTaskFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="rowKeyStrDataTeamAgentEndOfDayReview"/>
+      <input-parameter name="rowKeyValueDataTeamAgentEndOfDayReview"/>
+      <input-parameter name="parentContext"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="rowKeyDataTeamAgentEndOfDayReview"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="isDeepLink"/>
+      <input-parameter name="altKeyNameDataTeamAgentEndOfDayReview"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/adfc-config-DataTeamAgentNotesReview.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-DataTeamAgentNotesReview.xml" id="DataTeamAgentNotesReviewTaskFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="rowKeyValueDataTeamAgentNotesReview"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="rowKeyDataTeamAgentNotesReview"/>
+      <input-parameter name="altKeyNameDataTeamAgentNotesReview"/>
+      <input-parameter name="parentContext"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="isDeepLink"/>
+      <input-parameter name="rowKeyStrDataTeamAgentNotesReview"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/adfc-config-DataTeamAgentPendingWork.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-DataTeamAgentPendingWork.xml" id="DataTeamAgentPendingWorkTaskFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="rowKeyStrDataTeamAgentPendingWork"/>
+      <input-parameter name="parentContext"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="rowKeyDataTeamAgentPendingWork"/>
+      <input-parameter name="altKeyNameDataTeamAgentPendingWork"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="isDeepLink"/>
+      <input-parameter name="rowKeyValueDataTeamAgentPendingWork"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/adfc-config-DataTeamLeaderScreen.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-DataTeamLeaderScreen.xml" id="DataTeamLeaderScreenTaskFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="parentContext"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="isDeepLink"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/adfc-config-HubCoverGroup.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-HubCoverGroup.xml" id="HubCoverGroupTaskFlow" type="task-flow-definition" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="rowKeyValueHubCoverGroup"/>
+      <input-parameter name="ShipmentId"/>
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="rowKeyHubCoverGroup"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="rowKeyStrHubCoverGroup"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="isDeepLink"/>
+      <input-parameter name="altKeyNameHubCoverGroup"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/adfc-config-NewCancelSalesContractProducts.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-NewCancelSalesContractProducts.xml" id="NewCancelSalesContractProductsTaskFlow" type="task-flow-definition" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="rowKeyStrNewCancelSalesContractProducts"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="rowKeyValueNewCancelSalesContractProducts"/>
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="CardNo"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="AssignmentId"/>
+      <input-parameter name="isDeepLink"/>
+      <input-parameter name="rowKeyNewCancelSalesContractProducts"/>
+      <input-parameter name="altKeyNameNewCancelSalesContractProducts"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/adfc-config-PilotCoverGroup.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-PilotCoverGroup.xml" id="PilotCoverGroupTaskFlow" type="task-flow-definition" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="ShipmentId"/>
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="PilotCoverEdited"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="isDeepLink"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/adfc-config-PostScreen.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-PostScreen.xml" id="PostScreenTaskFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="parentContext"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="isDeepLink"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/adfc-config-PostTeamleader.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-PostTeamleader.xml" id="PostTeamleaderTaskFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="parentContext"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="isDeepLink"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/adfc-config-ProductContractDDownloadVO.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-ProductContractDDownloadVO.xml" id="ProductContractDDownloadVOTaskFlow" type="task-flow-definition" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="rowKeyValueProductContractDDownloadVO"/>
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="altKeyNameProductContractDDownloadVO"/>
+      <input-parameter name="AssignmentId"/>
+      <input-parameter name="rowKeyStrProductContractDDownloadVO"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="isDeepLink"/>
+      <input-parameter name="rowKeyProductContractDDownloadVO"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/adfc-config-ProductDetailsGroup.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-ProductDetailsGroup.xml" id="ProductDetailsGroupTaskFlow" type="task-flow-definition" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="ShipmentId"/>
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="altKeyNameProductDetailsGroup"/>
+      <input-parameter name="ProductId"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="rowKeyStrProductDetailsGroup"/>
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="isDeepLink"/>
+      <input-parameter name="rowKeyProductDetailsGroup"/>
+      <input-parameter name="rowKeyValueProductDetailsGroup"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/adfc-config-ProductLostRlost.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-ProductLostRlost.xml" id="ProductLostRlostTaskFlow" type="task-flow-definition" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="ShipmentId"/>
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="ProductId"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="rowKeyValueProductLostRlost"/>
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="PilotId"/>
+      <input-parameter name="rowKeyProductLostRlost"/>
+      <input-parameter name="isDeepLink"/>
+      <input-parameter name="rowKeyStrProductLostRlost"/>
+      <input-parameter name="altKeyNameProductLostRlost"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/adfc-config-WeekDaysVO.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-WeekDaysVO.xml" id="WeekDaysVOTaskFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="rowKeyValueWeekDaysVO"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="parentContext"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="rowKeyStrWeekDaysVO"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="isDeepLink"/>
+      <input-parameter name="rowKeyWeekDaysVO"/>
+      <input-parameter name="altKeyNameWeekDaysVO"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/adfc-config-appmoduleam.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-ddd.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/adfc-config-ddd.xml" id="dddTaskFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="rowKeyStrddd"/>
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="createddd"/>
+      <input-parameter name="altKeyNameddd"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="parentContext"/>
+      <input-parameter name="isDeepLink"/>
+      <input-parameter name="rowKeyddd"/>
+      <input-parameter name="rowKeyValueddd"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/jhs-bounded-taskflow-template.xml" id="jhs-bounded-taskflow-template" type="task-flow-template" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified">
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="isDeepLink"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/jhs-fragment-taskflow-template.xml" id="jhs-fragment-taskflow-template" type="task-flow-template" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="hideSearchArea"/>
+      <input-parameter name="jhsBreadcrumbStack"/>
+      <input-parameter name="hideCancelButton"/>
+      <input-parameter name="parentContext"/>
+      <input-parameter name="hideFormBrowseButtons"/>
+      <input-parameter name="hideSaveButton"/>
+      <input-parameter name="isDeepLink"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/jhs-lov-taskflow-template.xml" id="jhs-lov-taskflow-template" type="task-flow-template" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified">
+      <input-parameter name="lovItemBeanRef"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/popup-shell-taskflow.xml" id="popup-shell-taskflow" type="task-flow-definition" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="parametersMap"/>
+      <input-parameter name="popupTitle"/>
+      <input-parameter name="taskFlowId"/>
+   </task-flow-descriptor>
+</task-flow-registry>

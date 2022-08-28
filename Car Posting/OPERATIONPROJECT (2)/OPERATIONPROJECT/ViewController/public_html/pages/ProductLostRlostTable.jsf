@@ -1,0 +1,260 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+        xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces" beforePhase="#{jhsPhaseListener.beforePhase}"
+        locale="#{jhsLocaleManager.currentLocale}">
+    <af:document title="#{nls['TABLE_TITLE_PRODUCTLOSTRLOST']}" id="doc0" uncommittedDataWarning="on">
+        <f:facet name="metaContainer">
+            <af:resource type="javascript" source="/jheadstart/jhs11.js"/>
+        </f:facet>
+        <af:form id="dataForm">
+            <af:panelStretchLayout topHeight="auto" id="ProductLostRlostTopLc"
+                                   partialTriggers=" ProductLostRlostSaveButton ProductLostRlostCancelButton">
+                <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                <f:facet name="top">
+                    <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                    <af:group id="g0">
+                        <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+                        <af:panelHeader id="ph0" text="#{nls['TABLE_TITLE_PRODUCTLOSTRLOST']}">
+                            <f:facet name="toolbar">
+                                <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5 -->
+                                <af:toolbox id="tbox0">
+                                    <af:toolbar id="tbar0">
+                                        <af:group id="gr0">
+                                            <!-- DEBUG:BEGIN:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6 -->
+                                            <!-- DEBUG:END:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6-->
+                                        </af:group>
+                                        <af:group id="gr1"/>
+                                        <af:group id="gr2">
+                                            <!-- DEBUG:BEGIN:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6 -->
+                                            <af:button action="#{SaveProductLostRlost.execute}"
+                                                       rendered="#{(MTSPermission['DataTeamAgentCarReconciliation.update']) and (!pageFlowScope.hideSaveButton)}"
+                                                       textAndAccessKey="#{nls['SAVE_BUTTON_LABEL']}"
+                                                       id="ProductLostRlostSaveButton" partialSubmit="true"/>
+                                            <!-- DEBUG:END:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6 -->
+                                            <af:button textAndAccessKey="#{nls['CANCEL']}" immediate="true"
+                                                       partialSubmit="true"
+                                                       rendered="#{!pageFlowScope.hideCancelButton}"
+                                                       action="DoneProductLostRlostReturn"
+                                                       id="ProductLostRlostCancelButton"/>
+                                            <!-- DEBUG:END:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6-->
+                                        </af:group>
+                                    </af:toolbar>
+                                </af:toolbox>
+                                <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5-->
+                            </f:facet>
+                            <f:facet name="context">
+                                <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5 -->
+                                <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5-->
+                            </f:facet>
+                            <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+                            <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+                        </af:panelHeader>
+                    </af:group>
+                    <!-- Popped "disabled" from stretchContext, now: enabled (default) -->
+                </f:facet>
+                <f:facet name="center">
+                    <!-- DEBUG:BEGIN:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5 -->
+                    <af:panelStretchLayout topHeight="0" id="psl0">
+                        <f:facet name="top"/>
+                        <f:facet name="center">
+                            <af:panelCollection id="ProductLostRlostPC" featuresOff=" wrap    freeze "
+                                                styleClass="AFStretchWidth">
+                                <f:facet name="menus">
+                                    <!-- DEBUG:BEGIN:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6 -->
+                                    <af:menu textAndAccessKey="#{nls['ACTION_MENU_LABEL']}" id="menu0">
+                                        <af:menu textAndAccessKey="#{nls['GO_TO_MENU_LABEL']}" id="menu1">
+                                            <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                            <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7 -->
+                                            <af:group id="ProductLostRlosttbb"
+                                                      rendered="#{ bindings.ProductLostRlostIterator.currentRow!=null }">
+                                                <af:commandMenuItem actionListener="#{bindings.FirstProductLostRlost.execute}"
+                                                                    id="ProductLostRlostFirst" partialSubmit="true"
+                                                                    icon="/afr/shuttleleftall_ena.png"
+                                                                    textAndAccessKey="#{nls['FIRST_ROW']}"/>
+                                                <af:commandMenuItem actionListener="#{bindings.PreviousProductLostRlost.execute}"
+                                                                    icon="/afr/shuttleleft_ena.png"
+                                                                    textAndAccessKey="#{nls['PREVIOUS_ROW']}"
+                                                                    id="ProductLostRlostPrevious" partialSubmit="true"/>
+                                                <af:commandMenuItem actionListener="#{bindings.NextProductLostRlost.execute}"
+                                                                    icon="/afr/shuttleright_ena.png"
+                                                                    textAndAccessKey="#{nls['NEXT_ROW']}"
+                                                                    id="ProductLostRlostNext" partialSubmit="true"/>
+                                                <af:commandMenuItem actionListener="#{bindings.LastProductLostRlost.execute}"
+                                                                    icon="/afr/shuttlerightall_ena.png"
+                                                                    textAndAccessKey="#{nls['LAST_ROW']}"
+                                                                    id="ProductLostRlostLast" partialSubmit="true"/>
+                                            </af:group>
+                                            <!-- DEBUG:END:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7-->
+                                        </af:menu>
+                                        <!-- DEBUG:BEGIN:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7-->
+                                    </af:menu>
+                                    <!-- DEBUG:END:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6-->
+                                </f:facet>
+                                <f:facet name="toolbar">
+                                    <!-- DEBUG:BEGIN:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6 -->
+                                    <af:toolbar id="tbar1">
+                                        <!-- DEBUG:BEGIN:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7-->
+                                    </af:toolbar>
+                                    <!-- DEBUG:END:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6-->
+                                </f:facet>
+                                <f:facet name="statusbar"/>
+                                <af:table id="ProductLostRlostTab" contentDelivery="immediate"
+                                          value="#{bindings.ProductLostRlostTable.collectionModel}"
+                                          columnStretching="last" rowBandingInterval="0" editingMode="editAll"
+                                          columnSelection="multiple" contextMenuSelect="true" rowSelection="single"
+                                          selectionListener="#{pageFlowScope.ProductLostRlostTable.makeCurrent}"
+                                          selectedRowKeys="#{pageFlowScope.ProductLostRlostTable.selectedRow}"
+                                          rowDisclosureListener="#{pageFlowScope.ProductLostRlostTable.discloseRow}"
+                                          var="row" varStatus="status"
+                                          fetchSize="#{bindings.ProductLostRlostTable.rangeSize}"
+                                          emptyText="#{nls['NO_ROWS_FOUND']}"
+                                          queryListener="#{bindings.ProductLostRlostIteratorQuery.processQuery}"
+                                          filterModel="#{bindings.ProductLostRlostIteratorQuery.queryDescriptor}"
+                                          filterVisible="true" binding="#{pageFlowScope.ProductLostRlostTable.table}"
+                                          partialTriggers=" :::ProductLostRlostPC ::ProductLostRlostFirst ::ProductLostRlostPrevious ::ProductLostRlostNext ::ProductLostRlostLast"
+                                          styleClass="AFStretchWidth" summary="#{nls['TABLE_TITLE_PRODUCTLOSTRLOST']}">
+                                    <!-- DEBUG:BEGIN:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6 -->
+                                    <f:facet name="contextMenu">
+                                        <af:popup id="ProductLostRlostTablePopup" childCreation="deferred">
+                                            <af:menu id="menu2">
+                                                <af:menu text="#{nls['GO_TO_MENU_LABEL']}" id="menu3">
+                                                    <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                                    <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                                </af:menu>
+                                                <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                            </af:menu>
+                                        </af:popup>
+                                    </f:facet><!-- DEBUG:END:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6 --><!-- DEBUG:END:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6 -->
+                                    <af:column id="ProductLostRlostIndexColumn" width="20" align="center"
+                                               headerText="#">
+                                        <af:outputFormatted value="#{status.index+1}" id="of0"/>
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="ProductLostRlostLostQuantityCol" sortable="true" filterable="true"
+                                               noWrap="true" width="100" sortProperty="LostQuantity" rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.ProductLostRlostTable.hints.LostQuantity.label}"
+                                                            id="ol0"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                        <af:inputText id="ProductLostRlostLostQuantity"
+                                                      value="#{row.bindings.LostQuantity.inputValue}"
+                                                      label="#{bindings.ProductLostRlostTable.hints.LostQuantity.label}"
+                                                      required="#{bindings.ProductLostRlostTable.hints.LostQuantity.mandatory}"
+                                                      rows="#{bindings.ProductLostRlostTable.hints.LostQuantity.displayHeight}"
+                                                      columns="#{bindings.ProductLostRlostTable.hints.LostQuantity.displayWidth}"
+                                                      readOnly="true"
+                                                      shortDesc="#{bindings.ProductLostRlostTable.hints.LostQuantity.tooltip}">
+                                            <f:validator binding="#{row.bindings.LostQuantity.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.ProductLostRlostTable.hints.LostQuantity.format}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="ProductLostRlostLostDateCol" sortable="true" filterable="true"
+                                               noWrap="true" width="100" sortProperty="LostDate" rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.ProductLostRlostTable.hints.LostDate.label}"
+                                                            id="ol1"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 7 -->
+                                        <f:facet name="filter">
+                                            <af:inputDate value="#{status.filterCriteria.LostDate}" id="id0">
+                                                <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                            </af:inputDate>
+                                        </f:facet>
+                                        <af:inputDate id="ProductLostRlostLostDate"
+                                                      value="#{row.bindings.LostDate.inputValue}"
+                                                      label="#{bindings.ProductLostRlostTable.hints.LostDate.label}"
+                                                      required="#{bindings.ProductLostRlostTable.hints.LostDate.mandatory}"
+                                                      readOnly="true"
+                                                      shortDesc="#{bindings.ProductLostRlostTable.hints.LostDate.tooltip}">
+                                            <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                        </af:inputDate>
+                                        <!-- DEBUG:END:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="ProductLostRlostStatusCol" sortable="true" filterable="true"
+                                               noWrap="true" width="100" sortProperty="Status" rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.ProductLostRlostTable.hints.Status.label}"
+                                                            id="ol2"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 7 -->
+                                        <af:selectOneChoice id="ProductLostRlostStatus"
+                                                            value="#{row.bindings.Status.inputValue}"
+                                                            label="#{bindings.ProductLostRlostTable.hints.Status.label}"
+                                                            required="#{bindings.ProductLostRlostTable.hints.Status.mandatory}"
+                                                            readOnly="true"
+                                                            shortDesc="#{bindings.ProductLostRlostTable.hints.Status.tooltip}">
+                                            <f:selectItems value="#{row.bindings.Status.items}" id="si1"/>
+                                        </af:selectOneChoice>
+                                        <!-- DEBUG:END:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="ProductLostRlostQtyReturnedCol" sortable="true" filterable="true"
+                                               noWrap="true" width="100" sortProperty="QtyReturned" rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.ProductLostRlostTable.hints.QtyReturned.label}"
+                                                            showRequired="#{bindings.ProductLostRlostTable.hints.QtyReturned.mandatory}"
+                                                            id="ol3"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                        <af:inputText id="ProductLostRlostQtyReturned"
+                                                      value="#{row.bindings.QtyReturned.inputValue}"
+                                                      label="#{bindings.ProductLostRlostTable.hints.QtyReturned.label}"
+                                                      required="#{bindings.ProductLostRlostTable.hints.QtyReturned.mandatory}"
+                                                      rows="#{bindings.ProductLostRlostTable.hints.QtyReturned.displayHeight}"
+                                                      columns="#{bindings.ProductLostRlostTable.hints.QtyReturned.displayWidth}"
+                                             autoSubmit="true"         readOnly="#{!(MTSPermission['DataTeamAgentCarReconciliation.update'])}"
+                                                      disabled="#{row.bindings.Status.attributeValue ne 1}"
+                                                      shortDesc="#{bindings.ProductLostRlostTable.hints.QtyReturned.tooltip}">
+                                            <f:validator binding="#{row.bindings.QtyReturned.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.ProductLostRlostTable.hints.QtyReturned.format}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                </af:table>
+                            </af:panelCollection>
+                        </f:facet>
+                    </af:panelStretchLayout>
+                    <!-- DEBUG:END:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5-->
+                </f:facet>
+            </af:panelStretchLayout>
+        </af:form>
+    </af:document>
+</f:view>

@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="NewCancelSalesContractProductsPageDef" Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="validateCurrentRows">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <invokeAction id="clearDeepLinkViewCriteriaInvoke" Binds="clearDeepLinkViewCriteria" Refresh="renderModel"
+                  RefreshCondition="#{'true' != pageFlowScope.jhsQueryByKeyValue}"/>
+    <iterator id="NewCancelSalesContractProductsIterator" Binds="NewCancelSalesContractsProducts1"
+              DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <searchRegion id="NewCancelSalesContractProductsIteratorQuery" Binds="NewCancelSalesContractProductsIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true"
+                  DefaultQuickSearchAttrName="ComponentId"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator Binds="DataStatusActionVO1" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="DataStatusActionVO1Iterator"/>
+    <iterator Binds="NewCancelSalesContractsVO1" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="NewCancelSalesContractsVO1Iterator"/>
+    <iterator Binds="ProductContractVO2" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="ProductContractVO2Iterator"/>
+    <searchRegion Binds="ProductContractVO2Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="ProductContractVO2Query"/>
+    <iterator id="CloseCodesGroupsVO1Iterator" Binds="CloseCodesGroupsVO1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+    <iterator id="CloseCodeReasonsVO1Iterator" Binds="CloseCodeReasonsVO1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+    <iterator id="DataAgentContractsReviewVO1Iterator" Binds="DataAgentContractsReviewVO1"
+              DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <iterator id="ProductPackageVO1Iterator" Binds="ProductPackageVO1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+  </executables>
+  <bindings>
+    <methodAction id="clearDeepLinkViewCriteria" RequiresUpdateModel="true" Action="invokeMethod"
+                  DataControl="AppModuleAMDataControl" InstanceName="AppModuleAMDataControl.dataProvider"
+                  MethodName="clearDeepLinkViewCriteria"
+                  ReturnName="AppModuleAMDataControl.methodResults.AppModuleAMDataControl_dataProvider_clearDeepLinkViewCriteria_result"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="viewObjectUsage" NDValue="NewCancelSalesContractsProducts1" NDType="java.lang.String"/>
+      <NamedData NDName="requeryIfFound" NDValue="#{true}" NDType="java.lang.Boolean"/>
+    </methodAction>
+    <tree id="NewCancelSalesContractProductsTable" IterBinding="NewCancelSalesContractProductsIterator">
+      <nodeDefinition Name="NewCancelSalesContractProducts"
+                      DefName="OPERATIONPROJECT.model.BC.VO.NewCancelSalesContractsProducts">
+        <AttrNames>
+          <Item Value="ComponentId"/>
+          <Item Value="TreatmentCode"/>
+          <Item Value="PackageNo"/>
+          <Item Value="Quntity"/>
+          <Item Value="QuntityReplaced"/>
+          <Item Value="QuantityDirty"/>
+          <Item Value="QuantityCancel"/>
+          <Item Value="DeliveryType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="NewCancelSalesContractProductsIterator" id="FirstNewCancelSalesContractProducts"
+            RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="NewCancelSalesContractProductsIterator" id="PreviousNewCancelSalesContractProducts"
+            RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="NewCancelSalesContractProductsIterator" id="NextNewCancelSalesContractProducts"
+            RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="NewCancelSalesContractProductsIterator" id="LastNewCancelSalesContractProducts"
+            RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="NewCancelSalesContractProductsIterator" id="SetCurrentRowWithKeyNewCancelSalesContractProducts"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrNewCancelSalesContractProducts}"
+                 NDType="java.lang.String"/>
+    </action>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+    <list IterBinding="DataStatusActionVO1Iterator" ListOperMode="navigation" ListIter="DataStatusActionVO1Iterator"
+          id="DataStatusActionVO1" DTSupportsMRU="true" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="DataStatus"/>
+      </AttrNames>
+    </list>
+    <attributeValues IterBinding="DataStatusActionVO1Iterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="NewCancelSalesContractsVO1Iterator" StaticList="false" Uses="LOV_CloseCode" id="CloseCode"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="NewCancelSalesContractsVO1Iterator" StaticList="false" Uses="LOV_ContractStatus"
+          id="ContractStatus" DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="NewCancelSalesContractsVO1Iterator" id="CustomerNotes">
+      <AttrNames>
+        <Item Value="CustomerNotes"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="ProductContractVO2Iterator" id="ProductContractVO2">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.ProductContractVO" Name="ProductContractVO20">
+        <AttrNames>
+          <Item Value="Active"/>
+          <Item Value="ActiveFrom"/>
+          <Item Value="ActiveTo"/>
+          <Item Value="Cancelled"/>
+          <Item Value="CardNo"/>
+          <Item Value="Id"/>
+          <Item Value="New11"/>
+          <Item Value="PNew"/>
+          <Item Value="PackageNo"/>
+          <Item Value="PackageVersion"/>
+          <Item Value="Paid"/>
+          <Item Value="PartialSubmit"/>
+          <Item Value="PendingConfirmation"/>
+          <Item Value="ProductId"/>
+          <Item Value="ProductSerial"/>
+          <Item Value="ProductSku"/>
+          <Item Value="Quantity"/>
+          <Item Value="TreatmentId"/>
+          <Item Value="UnitPrice"/>
+          <Item Value="UpdateTime"/>
+          <Item Value="UpdatedBy"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="NewCancelSalesContractsVO1Iterator" id="CardNo">
+      <AttrNames>
+        <Item Value="CardNo"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="ProductContractVO2Iterator" id="ProductContractVO21">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.ProductContractVO" Name="ProductContractVO210">
+        <AttrNames>
+          <Item Value="Active" Binds="Active"/>
+          <Item Value="ActiveFrom"/>
+          <Item Value="ActiveTo"/>
+          <Item Value="Cancelled" Binds="Cancelled"/>
+          <Item Value="CardNo"/>
+          <Item Value="Id"/>
+          <Item Value="New11"/>
+          <Item Value="PNew"/>
+          <Item Value="PackageNo"/>
+          <Item Value="PackageVersion"/>
+          <Item Value="Paid" Binds="Paid"/>
+          <Item Value="PartialSubmit"/>
+          <Item Value="PendingConfirmation"/>
+          <Item Value="ProductId"/>
+          <Item Value="ProductSerial"/>
+          <Item Value="ProductSku"/>
+          <Item Value="Quantity"/>
+          <Item Value="TreatmentId"/>
+          <Item Value="UnitPrice"/>
+          <Item Value="UpdateTime"/>
+          <Item Value="UpdatedBy"/>
+          <Item Value="ActiveSel" Binds="ActiveSel"/>
+          <Item Value="CancelledSel" Binds="CancelledSel"/>
+          <Item Value="PaidSel" Binds="PaidSel"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ProductContractVO2Iterator" id="CreateInsert"
+            InstanceName="AppModuleAMDataControl.ProductContractVO2" DataControl="AppModuleAMDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <button IterBinding="ProductContractVO2Iterator" id="ActiveSel" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="ActiveSel"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <button IterBinding="ProductContractVO2Iterator" id="CancelledSel" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="CancelledSel"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <button IterBinding="ProductContractVO2Iterator" id="PaidSel" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="PaidSel"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <button IterBinding="ProductContractVO2Iterator" id="Active" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="Active"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <button IterBinding="ProductContractVO2Iterator" id="Cancelled" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="Cancelled"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <button IterBinding="ProductContractVO2Iterator" id="Paid" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="Paid"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <list IterBinding="CloseCodesGroupsVO1Iterator" ListOperMode="navigation" ListIter="CloseCodesGroupsVO1Iterator"
+          id="CloseCodesGroupsVO1" DTSupportsMRU="true" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="GroupName"/>
+      </AttrNames>
+    </list>
+    <list IterBinding="CloseCodeReasonsVO1Iterator" ListOperMode="navigation" ListIter="CloseCodeReasonsVO1Iterator"
+          id="CloseCodeReasonsVO1" DTSupportsMRU="true" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="CloseCodeReasonEn"/>
+      </AttrNames>
+    </list>
+    <attributeValues IterBinding="CloseCodesGroupsVO1Iterator" id="GroupId">
+      <AttrNames>
+        <Item Value="GroupId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CloseCodeReasonsVO1Iterator" id="CloseCodeId">
+      <AttrNames>
+        <Item Value="CloseCodeId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="NewCancelSalesContractsVO1Iterator" id="Duration">
+      <AttrNames>
+        <Item Value="Duration"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="ProductContractVO2Iterator" id="CreateInsert1"
+            InstanceName="AppModuleAMDataControl.ProductContractVO2" DataControl="AppModuleAMDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <attributeValues IterBinding="NewCancelSalesContractsVO1Iterator" id="SelectedId">
+      <AttrNames>
+        <Item Value="SelectedId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="NewCancelSalesContractsVO1Iterator" id="PackSelected">
+      <AttrNames>
+        <Item Value="PackSelected"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="NewCancelSalesContractsVO1Iterator" id="VALID">
+      <AttrNames>
+        <Item Value="VALID"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="NewCancelSalesContractsVO1Iterator" id="CheckPackageName">
+      <AttrNames>
+        <Item Value="CheckPackageName"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="ProductContractVO2Iterator" id="Execute"
+            InstanceName="AppModuleAMDataControl.ProductContractVO2" DataControl="AppModuleAMDataControl"
+            RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <attributeValues IterBinding="NewCancelSalesContractsVO1Iterator" id="ActualPaid">
+      <AttrNames>
+        <Item Value="ActualPaid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="NewCancelSalesContractsVO1Iterator" id="ClientName">
+      <AttrNames>
+        <Item Value="ClientName"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="NewCancelSalesContractsVO1Iterator" StaticList="false" Uses="LOV_DeliveryType"
+          id="DeliveryType" DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="NewCancelSalesContractsVO1Iterator" StaticList="false" Uses="LOV_DataStatus" id="DataStatus"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+  </bindings>
+</pageDefinition>

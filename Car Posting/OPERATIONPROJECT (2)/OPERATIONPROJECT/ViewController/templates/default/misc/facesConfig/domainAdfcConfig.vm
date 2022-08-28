@@ -1,0 +1,14 @@
+## revision_history
+## 18-may-2010   Steven Davelaar
+## 1.1           Added id property to all elements
+## 05-jul-2008   Steven Davelaar
+## 1.0           Initial creation for R11
+<?xml version="1.0" #ENCODING_PROP() ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+
+#foreach($managedBean in ${JHS.facesConfigGenerator.domainManagedBeans})
+  #JHS_PARSE($managedBean.templateIdentifier $managedBean)
+#end
+  
+</adfc-config>
+

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:panelHeader text="#{nls['UNEXPECTED_ERROR_PAGE_TITLE']}" id="ph1">
+        <af:panelFormLayout id="pfl1">
+            <af:inputText label="#{nls['ERROR_MESSAGE_LABEL']}" value="#{exceptionHandlerBean.errorMessage}"
+                          readOnly="true" id="it1"/>
+            <af:inputText label="#{nls['STACK_TRACE_LABEL']}" value="#{exceptionHandlerBean.stackTrace}" rows="30"
+                          columns="160" readOnly="true" id="it2"/>
+        </af:panelFormLayout>
+    </af:panelHeader>
+</ui:composition>
+  

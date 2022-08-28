@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CustomerProfileHistoryEO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="CUSTOMER_PROFILE_HISTORY"
+  AliasName="CustomerProfileHistoryEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="CustomerHistoryId"
+    IsNotNull="true"
+    Precision="38"
+    Scale="0"
+    ColumnName="CUSTOMER_HISTORY_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    TableName="CUSTOMER_PROFILE_HISTORY"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="CustomerId"
+    Precision="38"
+    Scale="0"
+    ColumnName="CUSTOMER_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    TableName="CUSTOMER_PROFILE_HISTORY"/>
+  <Attribute
+    Name="CustomerName"
+    Precision="4000"
+    ColumnName="CUSTOMER_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CUSTOMER_PROFILE_HISTORY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CustomerChannel"
+    Precision="38"
+    Scale="0"
+    ColumnName="CUSTOMER_CHANNEL"
+    SQLType="NUMERIC"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    TableName="CUSTOMER_PROFILE_HISTORY"/>
+  <Attribute
+    Name="CustomerClassification"
+    Precision="38"
+    Scale="0"
+    ColumnName="CUSTOMER_CLASSIFICATION"
+    SQLType="NUMERIC"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    TableName="CUSTOMER_PROFILE_HISTORY"/>
+  <Attribute
+    Name="CustomerEmail"
+    Precision="4000"
+    ColumnName="CUSTOMER_EMAIL"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CUSTOMER_PROFILE_HISTORY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CustomerPhone"
+    Precision="4000"
+    ColumnName="CUSTOMER_PHONE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CUSTOMER_PROFILE_HISTORY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CustomerMobile"
+    Precision="4000"
+    ColumnName="CUSTOMER_MOBILE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CUSTOMER_PROFILE_HISTORY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CustomerParent"
+    Precision="38"
+    Scale="0"
+    ColumnName="CUSTOMER_PARENT"
+    SQLType="NUMERIC"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    TableName="CUSTOMER_PROFILE_HISTORY"/>
+  <Attribute
+    Name="CollectionType"
+    Precision="38"
+    Scale="0"
+    ColumnName="COLLECTION_TYPE"
+    SQLType="NUMERIC"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    TableName="CUSTOMER_PROFILE_HISTORY"/>
+  <Attribute
+    Name="HistoryDate"
+    ColumnName="HISTORY_DATE"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="CUSTOMER_PROFILE_HISTORY"/>
+  <Attribute
+    Name="UpdatedBy"
+    Precision="4000"
+    ColumnName="UPDATED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CUSTOMER_PROFILE_HISTORY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="CustomerProfileHistoryPkey"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="customer_profile_history_pkey"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.CustomerProfileHistoryEO.CustomerHistoryId"/>
+    </AttrArray>
+  </Key>
+</Entity>

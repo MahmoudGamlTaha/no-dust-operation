@@ -1,0 +1,23 @@
+## revision_history
+## 18-may-2010   Steven Davelaar
+## 1.1           Added id property to all elements
+## 17-jan-2009   Steven Davelaar
+## 1.0           Initial creation
+#set ($bean = ${JHS.current.managedBean})
+#set ($group = ${JHS.current.group})
+
+<managed-bean id="#NEW_ID("__")">
+  <managed-bean-name id="#NEW_ID("__")">${bean.beanName}</managed-bean-name>
+  <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.DeleteRowBean</managed-bean-class>
+  <managed-bean-scope id="#NEW_ID("__")">request</managed-bean-scope>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">deleteBinding</property-name>
+    <value id="#NEW_ID("__")">#{bindings.Delete${group.name}}</value>
+  </managed-property>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">commitBean</property-name>
+    <value id="#NEW_ID("__")">#{jhsCommit}</value>
+  </managed-property>
+</managed-bean>
+
+

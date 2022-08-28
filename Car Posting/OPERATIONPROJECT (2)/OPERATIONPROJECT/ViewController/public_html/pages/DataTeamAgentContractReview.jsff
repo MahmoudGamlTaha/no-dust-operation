@@ -1,0 +1,1709 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsRegionTemplate.jsf">
+        <!-- DEBUG:BEGIN:FORM_PAGE_CONTENT : default/page/formPageContent.vm, nesting level: 2 -->
+        <!-- DEBUG:BEGIN:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3 -->
+        <f:facet name="pageContent">
+            <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4 -->
+            <af:panelStretchLayout topHeight="auto" id="psl0"
+                                   partialTriggers=" DataTeamAgentContractReviewfbb DataTeamAgentContractReviewCancelButton">
+                <f:facet name="top">
+                    <af:panelGroupLayout layout="scroll" id="DataTeamAgentContractReviewTopLc"
+                                         partialTriggers=" DataTeamAgentContractReviewfbb DataTeamAgentContractReviewCancelButton">
+                        <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                        <f:facet name="separator">
+                            <af:spacer width="10" height="10" id="sp0"/>
+                        </f:facet>
+                        <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                        <af:panelHeader id="ph0" text="#{nls['FORM_TITLE_DATATEAMAGENTCONTRACTREVIEW']}">
+                            <f:facet name="toolbar">
+                                <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5 -->
+                                <af:toolbox id="tbox0">
+                                    <af:toolbar id="tbar0">
+                                        <!-- DEBUG:BEGIN:FORM_BROWSE_BUTTONS : custom/pageComponent/MtsformBrowseButtons.vm, nesting level: 6 -->
+                                        <af:panelGroupLayout id="DataTeamAgentContractReviewfbb" layout="horizontal"
+                                                             rendered="#{ bindings.DataTeamAgentContractReviewIterator.currentRow!=null  and bindings.DataTeamAgentContractReviewIterator.estimatedRowCount>1 and !pageFlowScope.createModes.CreateDataTeamAgentContractReview and !pageFlowScope.hideFormBrowseButtons}"
+                                                             partialTriggers="DataTeamAgentContractReviewFirst DataTeamAgentContractReviewPrevious DataTeamAgentContractReviewNext DataTeamAgentContractReviewLast">
+                                            <af:button actionListener="#{bindings.FirstDataTeamAgentContractReview.execute}"
+                                                       id="DataTeamAgentContractReviewFirst" partialSubmit="true"
+                                                       icon="/afr/shuttleleftall_ena.png"
+                                                       shortDesc="#{nls['FIRST_ROW']}"
+                                                       rendered="#{bindings.DataTeamAgentContractReviewIterator.rangeStart+bindings.DataTeamAgentContractReviewIterator.currentRowIndexInRange+1>1}"></af:button>
+                                            <af:image source="/afr/shuttleleftall_dis.png"
+                                                      rendered="#{!(bindings.DataTeamAgentContractReviewIterator.rangeStart+bindings.DataTeamAgentContractReviewIterator.currentRowIndexInRange+1>1)}"
+                                                      id="img0"/>
+                                            <af:button actionListener="#{bindings.PreviousDataTeamAgentContractReview.execute}"
+                                                       icon="/afr/shuttleleft_ena.png"
+                                                       shortDesc="#{nls['PREVIOUS_ROW']}"
+                                                       id="DataTeamAgentContractReviewPrevious" partialSubmit="true"
+                                                       rendered="#{bindings.DataTeamAgentContractReviewIterator.rangeStart+bindings.DataTeamAgentContractReviewIterator.currentRowIndexInRange+1>1}"></af:button>
+                                            <af:image source="/afr/shuttleleft_dis.png"
+                                                      rendered="#{!(bindings.DataTeamAgentContractReviewIterator.rangeStart+bindings.DataTeamAgentContractReviewIterator.currentRowIndexInRange+1>1)}"
+                                                      id="img1"/>
+                                            <af:spacer width="4" height="1" id="sp1"/>
+                                            <af:outputFormatted styleUsage="instruction"
+                                                                inlineStyle="white-space:nowrap; vertical-align:bottom;"
+                                                                value=" [#{bindings.DataTeamAgentContractReviewIterator.rangeStart+bindings.DataTeamAgentContractReviewIterator.currentRowIndexInRange+1} / #{bindings.DataTeamAgentContractReviewIterator.estimatedRowCount}] "
+                                                                id="of0"/>
+                                            <af:button actionListener="#{bindings.NextDataTeamAgentContractReview.execute}"
+                                                       icon="/afr/shuttleright_ena.png" shortDesc="#{nls['NEXT_ROW']}"
+                                                       id="DataTeamAgentContractReviewNext" partialSubmit="true"
+                                                       rendered="#{bindings.DataTeamAgentContractReviewIterator.rangeStart+bindings.DataTeamAgentContractReviewIterator.currentRowIndexInRange+1 lt bindings.DataTeamAgentContractReviewIterator.estimatedRowCount}"></af:button>
+                                            <af:image source="/afr/shuttleright_dis.png"
+                                                      rendered="#{!(bindings.DataTeamAgentContractReviewIterator.rangeStart+bindings.DataTeamAgentContractReviewIterator.currentRowIndexInRange+1 lt bindings.DataTeamAgentContractReviewIterator.estimatedRowCount)}"
+                                                      id="img2"/>
+                                            <af:button actionListener="#{bindings.LastDataTeamAgentContractReview.execute}"
+                                                       icon="/afr/shuttlerightall_ena.png"
+                                                       shortDesc="#{nls['LAST_ROW']}"
+                                                       id="DataTeamAgentContractReviewLast" partialSubmit="true"
+                                                       rendered="#{bindings.DataTeamAgentContractReviewIterator.rangeStart+bindings.DataTeamAgentContractReviewIterator.currentRowIndexInRange+1 lt bindings.DataTeamAgentContractReviewIterator.estimatedRowCount}"></af:button>
+                                            <af:image source="/afr/shuttlerightall_dis.png"
+                                                      rendered="#{!(bindings.DataTeamAgentContractReviewIterator.rangeStart+bindings.DataTeamAgentContractReviewIterator.currentRowIndexInRange+1 lt bindings.DataTeamAgentContractReviewIterator.estimatedRowCount)}"
+                                                      id="img3"/>
+                                        </af:panelGroupLayout>
+                                        <!-- DEBUG:END:FORM_BROWSE_BUTTONS : custom/pageComponent/MtsformBrowseButtons.vm, nesting level: 6-->
+                                        <af:group id="gr0">
+                                            <!-- DEBUG:BEGIN:NEW_BUTTON : custom/button/MtsnewButton.vm, nesting level: 6 -->
+                                            <!-- DEBUG:END:NEW_BUTTON : custom/button/MtsnewButton.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:DELETE_BUTTON : default/button/deleteButton.vm, nesting level: 6 -->
+                                            <!-- DEBUG:END:DELETE_BUTTON : default/button/deleteButton.vm, nesting level: 6-->
+                                        </af:group>
+                                        <af:group id="gr1"></af:group>
+                                        <af:group id="gr2">
+                                            <!-- DEBUG:BEGIN:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6 -->
+                                            <!-- DEBUG:END:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6 -->
+                                            <af:button textAndAccessKey="#{nls['CANCEL']}" immediate="true"
+                                                       partialSubmit="true"
+                                                       rendered="#{!pageFlowScope.hideCancelButton}"
+                                                       actionListener="#{jhsRollback.execute}" action="Cancel"
+                                                       id="DataTeamAgentContractReviewCancelButton"></af:button>
+                                            <!-- DEBUG:END:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6-->
+                                        </af:group>
+                                    </af:toolbar>
+                                </af:toolbox>
+                                <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5-->
+                            </f:facet>
+                            <f:facet name="context">
+                                <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5 -->
+                                <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5-->
+                            </f:facet>
+                            <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+                            <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+                            <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+                            <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+                        </af:panelHeader>
+                        <!-- DEBUG:BEGIN:FORM_GROUP : custom/pageComponent/MtsformGroup.vm, nesting level: 5 -->
+                        <af:switcher rendered="#{bindings.DataTeamAgentContractReviewIterator.findMode!='true'}"
+                                     id="DataTeamAgentContractReviewSw" defaultFacet="hasRows"
+                                     facetName="#{( bindings.DataTeamAgentContractReviewIterator.currentRow!=null ) ? 'hasRows' : 'noRows'}">
+                            <f:facet name="noRows">
+                                <af:outputFormatted value="#{nls['NO_ROWS_FOUND']}" styleUsage="pageStamp"
+                                                    id="DataTeamAgentContractReviewNoRowsFound"/>
+                            </f:facet>
+                            <f:facet name="hasRows">
+                                <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm), disabled (custom/pageComponent/MtsformGroup.vm) -->
+                                <af:panelGroupLayout id="DataTeamAgentContractReviewFC" layout="vertical">
+                                    <f:facet name="separator">
+                                        <af:spacer width="10" height="10" id="sp2"/>
+                                    </f:facet>
+                                    <af:panelFormLayout rows="2" labelAlignment="start" maxColumns="3"
+                                                        id="DataTeamAgentContractReviewFI">
+                                        <!-- DEBUG:BEGIN:FORM_DATE_FIELD : default/item/form/formDateField.vm, nesting level: 6 -->
+                                        <af:inputDate id="DataTeamAgentContractReviewAssignDate"
+                                                      value="#{bindings.DataTeamAgentContractReviewAssignDate.inputValue}"
+                                                      label="#{bindings.DataTeamAgentContractReviewAssignDate.hints.label}"
+                                                      required="#{bindings.DataTeamAgentContractReviewAssignDate.hints.mandatory}"
+                                                      readOnly="true"
+                                                      shortDesc="#{bindings.DataTeamAgentContractReviewAssignDate.hints.tooltip}">
+                                            <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                        </af:inputDate>
+                                        <!-- DEBUG:END:FORM_DATE_FIELD : default/item/form/formDateField.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                        <af:inputText id="DataTeamAgentContractReviewAreaName"
+                                                      value="#{bindings.DataTeamAgentContractReviewAreaName.inputValue}"
+                                                      label="#{bindings.DataTeamAgentContractReviewAreaName.hints.label}"
+                                                      required="#{bindings.DataTeamAgentContractReviewAreaName.hints.mandatory}"
+                                                      rows="#{bindings.DataTeamAgentContractReviewAreaName.hints.displayHeight}"
+                                                      columns="#{bindings.DataTeamAgentContractReviewAreaName.hints.displayWidth}"
+                                                      maximumLength="4000" readOnly="true"
+                                                      shortDesc="#{bindings.DataTeamAgentContractReviewAreaName.hints.tooltip}">
+                                            <f:validator binding="#{bindings.DataTeamAgentContractReviewAreaName.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                        <af:inputText id="DataTeamAgentContractReviewDriverName"
+                                                      value="#{bindings.DataTeamAgentContractReviewDriverName.inputValue}"
+                                                      label="#{bindings.DataTeamAgentContractReviewDriverName.hints.label}"
+                                                      required="#{bindings.DataTeamAgentContractReviewDriverName.hints.mandatory}"
+                                                      rows="#{bindings.DataTeamAgentContractReviewDriverName.hints.displayHeight}"
+                                                      columns="#{bindings.DataTeamAgentContractReviewDriverName.hints.displayWidth}"
+                                                      maximumLength="161" readOnly="true"
+                                                      shortDesc="#{bindings.DataTeamAgentContractReviewDriverName.hints.tooltip}">
+                                            <f:validator binding="#{bindings.DataTeamAgentContractReviewDriverName.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                        <af:inputText id="DataTeamAgentContractReviewPilotName"
+                                                      value="#{bindings.DataTeamAgentContractReviewPilotName.inputValue}"
+                                                      label="#{bindings.DataTeamAgentContractReviewPilotName.hints.label}"
+                                                      required="#{bindings.DataTeamAgentContractReviewPilotName.hints.mandatory}"
+                                                      rows="#{bindings.DataTeamAgentContractReviewPilotName.hints.displayHeight}"
+                                                      columns="#{bindings.DataTeamAgentContractReviewPilotName.hints.displayWidth}"
+                                                      maximumLength="161" readOnly="true"
+                                                      shortDesc="#{bindings.DataTeamAgentContractReviewPilotName.hints.tooltip}">
+                                            <f:validator binding="#{bindings.DataTeamAgentContractReviewPilotName.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:FORM_MODEL_CHOICELIST : default/item/form/formModelChoiceList.vm, nesting level: 6 -->
+                                        <af:selectOneChoice id="DataTeamAgentContractReviewDeliveryType"
+                                                            value="#{bindings.DataTeamAgentContractReviewDeliveryType.inputValue}"
+                                                            label="#{bindings.DataTeamAgentContractReviewDeliveryType.hints.label}"
+                                                            required="#{bindings.DataTeamAgentContractReviewDeliveryType.hints.mandatory}"
+                                                            readOnly="true"
+                                                            shortDesc="#{bindings.DataTeamAgentContractReviewDeliveryType.hints.tooltip}">
+                                            <f:selectItems value="#{bindings.DataTeamAgentContractReviewDeliveryType.items}"/>
+                                        </af:selectOneChoice>
+                                        <!-- DEBUG:END:FORM_MODEL_CHOICELIST : default/item/form/formModelChoiceList.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                        <af:inputText id="DataTeamAgentContractReviewTotalAssignemnt"
+                                                      value="#{bindings.DataTeamAgentContractReviewTotalAssignemnt.inputValue}"
+                                                      label="#{bindings.DataTeamAgentContractReviewTotalAssignemnt.hints.label}"
+                                                      required="#{bindings.DataTeamAgentContractReviewTotalAssignemnt.hints.mandatory}"
+                                                      rows="#{bindings.DataTeamAgentContractReviewTotalAssignemnt.hints.displayHeight}"
+                                                      columns="#{bindings.DataTeamAgentContractReviewTotalAssignemnt.hints.displayWidth}"
+                                                      readOnly="true"
+                                                      shortDesc="#{bindings.DataTeamAgentContractReviewTotalAssignemnt.hints.tooltip}">
+                                            <f:validator binding="#{bindings.DataTeamAgentContractReviewTotalAssignemnt.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.DataTeamAgentContractReviewTotalAssignemnt.format}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                    </af:panelFormLayout>
+                                    <!-- DEBUG:BEGIN:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 6 -->
+                                    <!-- DEBUG:END:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 6-->
+                                </af:panelGroupLayout>
+                                <!-- Popped "disabled" from stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                            </f:facet>
+                        </af:switcher>
+                        <!-- DEBUG:END:FORM_GROUP : custom/pageComponent/MtsformGroup.vm, nesting level: 5-->
+                        <!-- Popped "disabled" from stretchContext, now: enabled (default) -->
+                        <af:spacer width="10" height="10" id="sp3"/>
+                    </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="center">
+                    <!-- DEBUG:BEGIN:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 5 -->
+                    <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 6 -->
+                    <af:panelStretchLayout topHeight="auto" id="NewCancelSalesContractsTopLc"
+                                           partialTriggers=" DataTeamAgentContractReviewTopLc">
+                        <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 7 -->
+                        <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 7-->
+                        <f:facet name="top">
+                            <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                            <af:group id="g0">
+                                <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 7 -->
+                                <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 7-->
+                                <af:panelHeader id="ph1" text="#{nls['TABLE_TITLE_NEWCANCELSALESCONTRACTS']}">
+                                    <f:facet name="toolbar">
+                                        <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 7 -->
+                                        <af:toolbox id="tbox1">
+                                            <af:toolbar id="tbar1">
+                                                <af:group id="gr3">
+                                                    <!-- DEBUG:BEGIN:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 8 -->
+                                                    <!-- DEBUG:END:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 8-->
+                                                </af:group>
+                                                <af:group id="gr4"></af:group>
+                                            </af:toolbar>
+                                        </af:toolbox>
+                                        <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 7-->
+                                    </f:facet>
+                                    <f:facet name="context">
+                                        <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 7-->
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 7-->
+                                </af:panelHeader>
+                            </af:group>
+                            <!-- Popped "disabled" from stretchContext, now: enabled (default) -->
+                        </f:facet>
+                        <f:facet name="center">
+                            <!-- DEBUG:BEGIN:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 7 -->
+                            <af:panelStretchLayout topHeight="0" id="psl1">
+                                <f:facet name="top"></f:facet>
+                                <f:facet name="center">
+                                    <af:panelCollection id="NewCancelSalesContractsPC" featuresOff=" wrap    freeze "
+                                                        styleClass="AFStretchWidth">
+                                        <f:facet name="menus">
+                                            <!-- DEBUG:BEGIN:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 8 -->
+                                            <af:menu textAndAccessKey="#{nls['ACTION_MENU_LABEL']}" id="menu0">
+                                                <af:menu textAndAccessKey="#{nls['GO_TO_MENU_LABEL']}" id="menu1">
+                                                    <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9 -->
+                                                    <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9-->
+                                                    <!-- DEBUG:BEGIN:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 9 -->
+                                                    <af:group id="NewCancelSalesContractstbb"
+                                                              rendered="#{ bindings.NewCancelSalesContractsIterator.currentRow!=null }">
+                                                        <af:commandMenuItem actionListener="#{bindings.FirstNewCancelSalesContracts.execute}"
+                                                                            id="NewCancelSalesContractsFirst"
+                                                                            partialSubmit="true"
+                                                                            icon="/afr/shuttleleftall_ena.png"
+                                                                            textAndAccessKey="#{nls['FIRST_ROW']}"></af:commandMenuItem>
+                                                        <af:commandMenuItem actionListener="#{bindings.PreviousNewCancelSalesContracts.execute}"
+                                                                            icon="/afr/shuttleleft_ena.png"
+                                                                            textAndAccessKey="#{nls['PREVIOUS_ROW']}"
+                                                                            id="NewCancelSalesContractsPrevious"
+                                                                            partialSubmit="true"></af:commandMenuItem>
+                                                        <af:commandMenuItem actionListener="#{bindings.NextNewCancelSalesContracts.execute}"
+                                                                            icon="/afr/shuttleright_ena.png"
+                                                                            textAndAccessKey="#{nls['NEXT_ROW']}"
+                                                                            id="NewCancelSalesContractsNext"
+                                                                            partialSubmit="true"></af:commandMenuItem>
+                                                        <af:commandMenuItem actionListener="#{bindings.LastNewCancelSalesContracts.execute}"
+                                                                            icon="/afr/shuttlerightall_ena.png"
+                                                                            textAndAccessKey="#{nls['LAST_ROW']}"
+                                                                            id="NewCancelSalesContractsLast"
+                                                                            partialSubmit="true"></af:commandMenuItem>
+                                                    </af:group>
+                                                    <!-- DEBUG:END:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 9-->
+                                                </af:menu>
+                                                <!-- DEBUG:BEGIN:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 9-->
+                                            </af:menu>
+                                            <!-- DEBUG:END:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 8-->
+                                        </f:facet>
+                                        <f:facet name="toolbar">
+                                            <!-- DEBUG:BEGIN:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 8 -->
+                                            <af:toolbar id="tbar2">
+                                                <!-- DEBUG:BEGIN:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 9-->
+                                            </af:toolbar>
+                                            <!-- DEBUG:END:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 8-->
+                                        </f:facet>
+                                        <f:facet name="statusbar"/>
+                                        
+                                        <af:table id="NewCancelSalesContractsTab" contentDelivery="immediate"
+                                                  value="#{bindings.NewCancelSalesContractsTable.collectionModel}"
+                                                  columnStretching="last" rowBandingInterval="0" editingMode="editAll"
+                                                  columnSelection="multiple" contextMenuSelect="true"
+                                                  rowSelection="single"
+                                                  selectionListener="#{pageFlowScope.NewCancelSalesContractsTable.makeCurrent}"
+                                                  selectedRowKeys="#{pageFlowScope.NewCancelSalesContractsTable.selectedRow}"
+                                                  rowDisclosureListener="#{pageFlowScope.NewCancelSalesContractsTable.discloseRow}"
+                                                  var="row" varStatus="status"
+                                                  fetchSize="#{bindings.NewCancelSalesContractsTable.rangeSize}"
+                                                     emptyText="#{nls['NO_ROWS_FOUND']}"
+                                                  queryListener="#{bindings.NewCancelSalesContractsIteratorQuery.processQuery}"
+                                                  filterModel="#{bindings.NewCancelSalesContractsIteratorQuery.queryDescriptor}"
+                                                  filterVisible="true"
+                                                  binding="#{pageFlowScope.NewCancelSalesContractsTable.table}"
+                                                  partialTriggers=" :::NewCancelSalesContractsPC ::NewCancelSalesContractsFirst ::NewCancelSalesContractsPrevious ::NewCancelSalesContractsNext ::NewCancelSalesContractsLast"
+                                                  styleClass="AFStretchWidth"
+                                                  summary="#{nls['TABLE_TITLE_NEWCANCELSALESCONTRACTS']}">
+                                            <!-- DEBUG:BEGIN:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 8 -->
+                                            <f:facet name="contextMenu">
+                                                <af:popup id="NewCancelSalesContractsTablePopup"
+                                                          childCreation="deferred">
+                                                    <af:menu id="menu2">
+                                                        <af:menu text="#{nls['GO_TO_MENU_LABEL']}" id="menu3">
+                                                            <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9 -->
+                                                            <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9-->
+                                                        </af:menu>
+                                                        <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9-->
+                                                    </af:menu>
+                                                </af:popup>
+                                            </f:facet><!-- DEBUG:END:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 8--><!-- DEBUG:BEGIN:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 8 --><!-- DEBUG:END:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 8--><!-- DEBUG:BEGIN:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 8 -->
+                                            <af:column id="NewCancelSalesContractsIndexColumn" width="20" align="center"
+                                                       headerText="#">
+                                                <af:outputFormatted value="#{status.index+1}" id="of1"/>
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 8-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                            <af:column id="NewCancelSalesContractsCardNoCol" sortable="true"
+                                                       filterable="true" noWrap="true" width="100" sortProperty="CardNo"
+                                                       rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{bindings.NewCancelSalesContractsTable.hints.CardNo.label}"
+                                                                    id="ol0"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                <af:inputText id="NewCancelSalesContractsCardNo"
+                                                              value="#{row.bindings.CardNo.inputValue}"
+                                                              label="#{bindings.NewCancelSalesContractsTable.hints.CardNo.label}"
+                                                              required="#{bindings.NewCancelSalesContractsTable.hints.CardNo.mandatory}"
+                                                              rows="#{bindings.NewCancelSalesContractsTable.hints.CardNo.displayHeight}"
+                                                              columns="#{bindings.NewCancelSalesContractsTable.hints.CardNo.displayWidth}"
+                                                              readOnly="true"
+                                                              shortDesc="#{bindings.NewCancelSalesContractsTable.hints.CardNo.tooltip}">
+                                                    <f:validator binding="#{row.bindings.CardNo.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.NewCancelSalesContractsTable.hints.CardNo.format}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                            <af:column id="NewCancelSalesContractsStatusCol" sortable="true"
+                                                       filterable="true" noWrap="true" width="100" sortProperty="Status"
+                                                       rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{bindings.NewCancelSalesContractsTable.hints.Status.label}"
+                                                                    id="ol1"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                <af:inputText id="NewCancelSalesContractsStatus"
+                                                              value="#{row.bindings.Status.inputValue}"
+                                                              label="#{bindings.NewCancelSalesContractsTable.hints.Status.label}"
+                                                              required="#{bindings.NewCancelSalesContractsTable.hints.Status.mandatory}"
+                                                              rows="#{bindings.NewCancelSalesContractsTable.hints.Status.displayHeight}"
+                                                              columns="#{bindings.NewCancelSalesContractsTable.hints.Status.displayWidth}"
+                                                              maximumLength="4000" readOnly="true"
+                                                              shortDesc="#{bindings.NewCancelSalesContractsTable.hints.Status.tooltip}">
+                                                    <f:validator binding="#{row.bindings.Status.validator}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                            <af:column id="NewCancelSalesContractsCloseCodeReasonCol" sortable="true"
+                                                       filterable="true" noWrap="true" width="200"
+                                                       sortProperty="CloseCodeReason" rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{bindings.NewCancelSalesContractsTable.hints.CloseCodeReason.label}"
+                                                                    id="ol2"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                <af:inputText id="NewCancelSalesContractsCloseCodeReason"
+                                                              value="#{row.bindings.CloseCodeReason.inputValue}"
+                                                              label="#{bindings.NewCancelSalesContractsTable.hints.CloseCodeReason.label}"
+                                                              required="#{bindings.NewCancelSalesContractsTable.hints.CloseCodeReason.mandatory}"
+                                                              rows="#{bindings.NewCancelSalesContractsTable.hints.CloseCodeReason.displayHeight}"
+                                                              columns="#{bindings.NewCancelSalesContractsTable.hints.CloseCodeReason.displayWidth}"
+                                                              maximumLength="4000" readOnly="true"
+                                                              shortDesc="#{bindings.NewCancelSalesContractsTable.hints.CloseCodeReason.tooltip}">
+                                                    <f:validator binding="#{row.bindings.CloseCodeReason.validator}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                            <af:column id="NewCancelSalesContractsDataCommentCol" sortable="true"
+                                                       filterable="true" noWrap="true" width="200"
+                                                       sortProperty="DataComment" rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{bindings.NewCancelSalesContractsTable.hints.DataComment.label}"
+                                                                    id="ol3"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                <af:inputText id="NewCancelSalesContractsDataComment"
+                                                              value="#{row.bindings.DataComment.inputValue}"
+                                                              label="#{bindings.NewCancelSalesContractsTable.hints.DataComment.label}"
+                                                              required="#{bindings.NewCancelSalesContractsTable.hints.DataComment.mandatory}"
+                                                              rows="#{bindings.NewCancelSalesContractsTable.hints.DataComment.displayHeight}"
+                                                              columns="#{bindings.NewCancelSalesContractsTable.hints.DataComment.displayWidth}"
+                                                              maximumLength="4000" readOnly="true"
+                                                              shortDesc="#{bindings.NewCancelSalesContractsTable.hints.DataComment.tooltip}">
+                                                    <f:validator binding="#{row.bindings.DataComment.validator}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                            </af:column>
+                                            <af:column headerText="#{bindings.NewCancelSalesContractsTable.hints.DataStatus.label}"
+                                                    filterable="true" sortable="true" sortProperty="DataStatus"   id="c1">
+                                                       <f:facet name="header">
+                                                    <af:outputLabel value="Data Status" id="ol5"/>
+                                                </f:facet>
+                                                <af:selectOneChoice value="#{row.bindings.DataStatus.inputValue}"
+                                                                    label="#{row.bindings.DataStatus.label}"
+                                                              readOnly="true"      required="#{bindings.NewCancelSalesContractsTable.hints.DataStatus.mandatory}"
+                                                                    shortDesc="#{bindings.NewCancelSalesContractsTable.hints.DataStatus.tooltip}"
+                                                                    id="soc1">
+                                                    <f:selectItems value="#{row.bindings.DataStatus.items}" id="si1"/>
+                                                    <f:validator binding="#{row.bindings.DataStatus.validator}"/>
+                                                </af:selectOneChoice>
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                            <af:column id="NewCancelSalesContractsProductsCol" noWrap="true" width="100"
+                                                       rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{nls['NEWCANCELSALESCONTRACTS_TABLE_PRODUCTS']}"
+                                                                    id="ol4"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : custom/item/table/tableTextInputProducts.vm, nesting level: 9 -->
+                                                <af:link text="Products" id="l1" action="GoToProducts" useWindow="true"
+                                                    rendered="false"     windowHeight="500" windowWidth="1100">
+                                                 <!--   <af:setActionListener from="#{row.bindings.AssignmentId.inputValue}"
+                                                                          to="#{pageFlowScope.AssignmentId}"/>
+                                               -->
+                                                </af:link>
+                                                <af:link text="Products" id="l2"
+                                                         actionListener="#{DataTeamAgentBean.FilterNewCancelContractsLink}"/>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : custom/item/table/tableTextInputProducts.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                        </af:table>
+                                    </af:panelCollection>
+                                </f:facet>
+                            </af:panelStretchLayout>
+                            <!-- DEBUG:END:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 7-->
+                        </f:facet>
+                    </af:panelStretchLayout>
+                    <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 6-->
+                    <!-- DEBUG:END:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 5-->
+                </f:facet>
+            </af:panelStretchLayout>
+            <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4-->
+        </f:facet>
+        <f:facet name="popups">
+          <af:popup childCreation="deferred" autoCancel="disabled" id="p11" >
+        <af:dialog id="d1" title="Contract Review" type="none" >
+         <af:panelGroupLayout id="pgl1">
+                            <af:selectOneChoice value="#{bindings.CloseCodesGroupsVO1.inputValue}"
+                                                label="#{bindings.CloseCodesGroupsVO1.label}"
+                                       rendered="false"         required="#{bindings.CloseCodesGroupsVO1.hints.mandatory}"
+                                            autoSubmit="true"    shortDesc="#{bindings.CloseCodesGroupsVO1.hints.tooltip}" id="soc6"
+                                                valueChangeListener="#{DataTeamAgentBean.FilterCloseCodeReasons1}"
+                                                partialTriggers="soc7">
+                                <f:selectItems value="#{bindings.CloseCodesGroupsVO1.items}" id="si8"/>
+                                <f:validator binding="#{bindings.CloseCodesGroupsVO1.validator}"/>
+                            </af:selectOneChoice>
+                            <af:selectOneChoice value="#{bindings.CloseCodeReasonsVO1.inputValue}"
+                                       rendered="false"         label="#{bindings.CloseCodeReasonsVO1.label}"
+                                                required="#{bindings.CloseCodeReasonsVO1.hints.mandatory}"
+                                                shortDesc="#{bindings.CloseCodeReasonsVO1.hints.tooltip}" id="soc7">
+                                <f:selectItems value="#{bindings.CloseCodeReasonsVO1.items}" id="si9"/>
+                                <f:validator binding="#{bindings.CloseCodeReasonsVO1.validator}"/>
+                            </af:selectOneChoice>
+                            <af:panelGroupLayout id="pgl2" layout="horizontal">
+                                <af:inputText value="#{bindings.CardNo.inputValue}"
+                                              label="#{bindings.CardNo.hints.label}"
+                                              required="#{bindings.CardNo.hints.mandatory}" readOnly="true"
+                                              columns="#{bindings.CardNo.hints.displayWidth}"
+                                              maximumLength="#{bindings.CardNo.hints.precision}"
+                                              shortDesc="#{bindings.CardNo.hints.tooltip}" id="it4">
+                                    <f:validator binding="#{bindings.CardNo.validator}"/>
+                                    <af:convertNumber groupingUsed="false" pattern="#{bindings.CardNo.format}"/>
+                                </af:inputText>
+                                <af:spacer width="500" height="10" id="s1"/>
+                                <af:inputText value="#{bindings.ClientName.inputValue}"
+                                              label="#{bindings.ClientName.hints.label}"
+                                              required="#{bindings.ClientName.hints.mandatory}" readOnly="true"
+                                              columns="#{bindings.ClientName.hints.displayWidth}"
+                                              maximumLength="#{bindings.ClientName.hints.precision}"
+                                              shortDesc="#{bindings.ClientName.hints.tooltip}" id="it11">
+                                    <f:validator binding="#{bindings.ClientName.validator}"/>
+                                </af:inputText>
+                            </af:panelGroupLayout>
+                            <af:spacer width="10" height="10" id="s4"/>
+                            <af:panelGroupLayout id="pgl6" layout="horizontal">
+                                <af:selectOneChoice value="#{bindings.DeliveryType.inputValue}"
+                                                rendered="false"    label="#{bindings.DeliveryType.label}" readOnly="true"
+                                                    required="#{bindings.DeliveryType.hints.mandatory}"
+                                                    shortDesc="#{bindings.DeliveryType.hints.tooltip}" id="soc8">
+                                    <f:selectItems value="#{bindings.DeliveryType.items}" id="si10"/>
+                                    <f:validator binding="#{bindings.DeliveryType.validator}"/>
+                                </af:selectOneChoice>
+                            <af:selectOneChoice value="#{bindings.DeliveryType1.inputValue}"
+                                                label="#{bindings.DeliveryType1.label}"
+                                        readOnly="true"        required="#{bindings.DeliveryType1.hints.mandatory}"
+                                                shortDesc="#{bindings.DeliveryType1.hints.tooltip}" id="soc11">
+                                <f:selectItems value="#{bindings.DeliveryType1.items}" id="si7"/>
+                                <f:validator binding="#{bindings.DeliveryType1.validator}"/>
+                            </af:selectOneChoice>
+                            <af:spacer width="500" height="10" id="s7"/>
+                                <af:inputText value="#{bindings.ActualPaid.inputValue}"
+                                              label="#{bindings.ActualPaid.hints.label}"
+                                              required="#{bindings.ActualPaid.hints.mandatory}" readOnly="true"
+                                              columns="#{bindings.ActualPaid.hints.displayWidth}"
+                                              maximumLength="#{bindings.ActualPaid.hints.precision}"
+                                              shortDesc="#{bindings.ActualPaid.hints.tooltip}" id="it3">
+                                    <f:validator binding="#{bindings.ActualPaid.validator}"/>
+                                    <af:convertNumber groupingUsed="false" pattern="#{bindings.ActualPaid.format}"/>
+                                </af:inputText>
+                            </af:panelGroupLayout>
+                            <af:spacer width="10" height="10" id="s9"/>
+                            <af:panelGroupLayout id="pgl3" layout="horizontal">
+                                <af:selectOneChoice value="#{bindings.ContractStatus.inputValue}"
+                                                    label="#{bindings.ContractStatus.label}" autoSubmit="true"
+                                           rendered="false"         valueChangeListener="#{DataTeamAgentBean.FilterCloseCodeReasons1}"
+                                                    required="#{bindings.ContractStatus.hints.mandatory}"
+                                                    partialTriggers="soc2"
+                                                    shortDesc="#{bindings.ContractStatus.hints.tooltip}" id="soc3">
+                                    <f:selectItems value="#{bindings.ContractStatus.items}" id="si5"/>
+                                    <f:validator binding="#{bindings.ContractStatus.validator}"/>
+                                </af:selectOneChoice>
+                            <af:selectOneChoice value="#{bindings.ContractStatus1.inputValue}"  valueChangeListener="#{DataTeamAgentBean.FilterCloseCodeReasons1}"
+                                                label="#{bindings.ContractStatus1.label}"
+                                        autoSubmit="true"        required="#{bindings.ContractStatus1.hints.mandatory}"
+                                                shortDesc="#{bindings.ContractStatus1.hints.tooltip}" id="soc5"
+                                                partialTriggers="soc9">
+                                <f:selectItems value="#{bindings.ContractStatus1.items}" id="si3"/>
+                                <f:validator binding="#{bindings.ContractStatus1.validator}"/>
+                            </af:selectOneChoice>
+                            <af:spacer width="350" height="10" id="s5"/>
+                            <af:selectOneChoice value="#{bindings.CloseCode1.inputValue}"
+                                                label="#{bindings.CloseCode1.label}"
+                                           autoSubmit="true"     required="#{bindings.CloseCode1.hints.mandatory}"
+                                                shortDesc="#{bindings.CloseCode1.hints.tooltip}" id="soc9">
+                                <f:selectItems value="#{bindings.CloseCode1.items}" id="si6"/>
+                                <f:validator binding="#{bindings.CloseCode1.validator}"/>
+                            </af:selectOneChoice>
+                                <af:selectOneChoice value="#{bindings.CloseCode.inputValue}"
+                                                    label="#{bindings.CloseCode.label}" partialTriggers="soc3"
+                                                    required="#{bindings.CloseCode.hints.mandatory}"
+                                                rendered="false"    shortDesc="#{bindings.CloseCode.hints.tooltip}" id="soc2">
+                                    <f:selectItems value="#{bindings.CloseCode.items}" id="si4"/>
+                                    <f:validator binding="#{bindings.CloseCode.validator}"/>
+                                </af:selectOneChoice>
+                            </af:panelGroupLayout>
+                            <af:spacer width="10" height="10" id="s6"/>
+                            <af:panelGroupLayout id="pgl4" layout="horizontal">
+                            <af:selectOneChoice value="#{bindings.DataStatus1.inputValue}"
+                                   autoSubmit="true"             label="#{bindings.DataStatus1.label}"
+                                                required="#{bindings.DataStatus1.hints.mandatory}"
+                                                shortDesc="#{bindings.DataStatus1.hints.tooltip}" id="soc4">
+                                <f:selectItems value="#{bindings.DataStatus1.items}" id="si2"/>
+                                <f:validator binding="#{bindings.DataStatus1.validator}"/>
+                            </af:selectOneChoice>
+                            <af:selectOneChoice value="#{bindings.DataStatus.inputValue}"
+                                                    label="#{bindings.DataStatus.label}"
+                                         rendered="false"      autoSubmit="true"     required="#{bindings.DataStatus.hints.mandatory}"
+                                                    shortDesc="#{bindings.DataStatus.hints.tooltip}" id="soc10">
+                                    <f:selectItems value="#{bindings.DataStatus.items}" id="si12"/>
+                                    <f:validator binding="#{bindings.DataStatus.validator}"/>
+                                </af:selectOneChoice>
+                            <af:spacer width="450" height="10" id="s10"/>
+                            <af:panelLabelAndMessage label="Credit Allowed" id="plam1">
+                                <af:outputText value="#{bindings.PaidCredit.inputValue}"
+                                               shortDesc="#{bindings.PaidCredit.hints.tooltip}" id="ot2"/>
+                            </af:panelLabelAndMessage>
+                        </af:panelGroupLayout>
+                            <af:spacer width="10" height="10" id="s8"/>
+                            <af:panelGroupLayout id="pgl5">
+                            <af:inputText value="#{bindings.CustomerNotes.inputValue}"
+                                          label="#{bindings.CustomerNotes.hints.label}" autoSubmit="true"
+                                          required="#{bindings.CustomerNotes.hints.mandatory}" rows="5" columns="50"
+                                          maximumLength="#{bindings.CustomerNotes.hints.precision}"
+                                          shortDesc="#{bindings.CustomerNotes.hints.tooltip}" id="it5">
+                                <f:validator binding="#{bindings.CustomerNotes.validator}"/>
+                            </af:inputText>
+                        </af:panelGroupLayout>
+                            <af:panelFormLayout id="pfl1" maxColumns="2">
+                                <f:facet name="footer"/>
+                            </af:panelFormLayout>
+                            <af:spacer width="10" height="20" id="s2"/>
+                            <af:inputText value="#{bindings.CardNo.inputValue}" label="#{bindings.CardNo.hints.label}"
+                                          required="#{bindings.CardNo.hints.mandatory}"
+                                   rendered="false"       columns="#{bindings.CardNo.hints.displayWidth}"
+                                          maximumLength="#{bindings.CardNo.hints.precision}"
+                                          shortDesc="#{bindings.CardNo.hints.tooltip}" id="it6">
+                                <f:validator binding="#{bindings.CardNo.validator}"/>
+                                <af:convertNumber groupingUsed="false" pattern="#{bindings.CardNo.format}"/>
+                            </af:inputText>
+                            
+                             <af:panelTabbed position="above" id="pt1">
+                                <af:showDetailItem id="tab1" text="Delivery Details" disclosed="true">
+                                    <af:panelCollection id="NewCancelSalesContractProductsPC"
+                                                        featuresOff=" wrap    freeze " styleClass="AFStretchWidth">
+                                        <f:facet name="menus">
+                                            <!-- DEBUG:BEGIN:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6 -->
+                                            <af:menu textAndAccessKey="#{nls['ACTION_MENU_LABEL']}" id="m1">
+                                                <af:menu textAndAccessKey="#{nls['GO_TO_MENU_LABEL']}" id="m2">
+                                                    <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                                    <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                                    <!-- DEBUG:BEGIN:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7 -->
+                                                    <af:group id="NewCancelSalesContractProductstbb"
+                                                              rendered="#{ bindings.NewCancelSalesContractProductsIterator.currentRow!=null }">
+                                                        <af:commandMenuItem actionListener="#{bindings.FirstNewCancelSalesContractProducts.execute}"
+                                                                            id="NewCancelSalesContractProductsFirst"
+                                                                            partialSubmit="true"
+                                                                            icon="/afr/shuttleleftall_ena.png"
+                                                                            textAndAccessKey="#{nls['FIRST_ROW']}"/>
+                                                        <af:commandMenuItem actionListener="#{bindings.PreviousNewCancelSalesContractProducts.execute}"
+                                                                            icon="/afr/shuttleleft_ena.png"
+                                                                            textAndAccessKey="#{nls['PREVIOUS_ROW']}"
+                                                                            id="NewCancelSalesContractProductsPrevious"
+                                                                            partialSubmit="true"/>
+                                                        <af:commandMenuItem actionListener="#{bindings.NextNewCancelSalesContractProducts.execute}"
+                                                                            icon="/afr/shuttleright_ena.png"
+                                                                            textAndAccessKey="#{nls['NEXT_ROW']}"
+                                                                            id="NewCancelSalesContractProductsNext"
+                                                                            partialSubmit="true"/>
+                                                        <af:commandMenuItem actionListener="#{bindings.LastNewCancelSalesContractProducts.execute}"
+                                                                            icon="/afr/shuttlerightall_ena.png"
+                                                                            textAndAccessKey="#{nls['LAST_ROW']}"
+                                                                            id="NewCancelSalesContractProductsLast"
+                                                                            partialSubmit="true"/>
+                                                    </af:group>
+                                                    <!-- DEBUG:END:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7-->
+                                                </af:menu>
+                                                <!-- DEBUG:BEGIN:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7-->
+                                            </af:menu>
+                                            <!-- DEBUG:END:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6-->
+                                        </f:facet>
+                                        <f:facet name="toolbar">
+                                            <!-- DEBUG:BEGIN:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6 -->
+                                            <af:toolbar id="t3">
+                                                <!-- DEBUG:BEGIN:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7-->
+                                            </af:toolbar>
+                                            <!-- DEBUG:END:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6-->
+                                        </f:facet>
+                                        <f:facet name="statusbar">
+                                            <af:toolbar id="t1">
+                                             
+                                                <af:popup childCreation="deferred" autoCancel="disabled"
+                                                          contentDelivery="lazyUncached" id="p1">
+                                                    <af:dialog id="d5" type="cancel">
+                                                        <af:outputText value="Are You sure you want to Submit ?"
+                                                                       id="ot1"/>
+                                                        <f:facet name="buttonBar">
+                                                            <af:button text="Yes" id="b1"
+                                                                       action="#{DataTeamAgentBean.SubmitDataStatus}"
+                                                                       partialSubmit="true"/>
+                                                        </f:facet>
+                                                    </af:dialog>
+                                                </af:popup>
+                                            </af:toolbar>
+                                        </f:facet>
+                                    <af:table value="#{bindings.NewCancelSalesContractsProducts1.collectionModel}"
+                                          rendered="false"    var="row" rows="#{bindings.NewCancelSalesContractsProducts1.rangeSize}"
+                                              emptyText="#{bindings.NewCancelSalesContractsProducts1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              rowBandingInterval="0"
+                                              selectedRowKeys="#{bindings.NewCancelSalesContractsProducts1.collectionModel.selectedRow}"
+                                              selectionListener="#{bindings.NewCancelSalesContractsProducts1.collectionModel.makeCurrent}"
+                                              rowSelection="single"
+                                              fetchSize="#{bindings.NewCancelSalesContractsProducts1.rangeSize}"
+                                              filterModel="#{bindings.NewCancelSalesContractsProducts1Query.queryDescriptor}"
+                                              filterVisible="true"
+                                              queryListener="#{bindings.NewCancelSalesContractsProducts1Query.processQuery}"
+                                              varStatus="vs" id="t4">
+                                        <af:column sortProperty="#{bindings.NewCancelSalesContractsProducts1.hints.ActionDate.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.NewCancelSalesContractsProducts1.hints.ActionDate.label}"
+                                                   id="c26">
+                                            <af:inputText value="#{row.bindings.ActionDate.inputValue}"
+                                                          label="#{bindings.NewCancelSalesContractsProducts1.hints.ActionDate.label}"
+                                                          required="#{bindings.NewCancelSalesContractsProducts1.hints.ActionDate.mandatory}"
+                                                          columns="#{bindings.NewCancelSalesContractsProducts1.hints.ActionDate.displayWidth}"
+                                                          maximumLength="#{bindings.NewCancelSalesContractsProducts1.hints.ActionDate.precision}"
+                                                          shortDesc="#{bindings.NewCancelSalesContractsProducts1.hints.ActionDate.tooltip}"
+                                                          id="it2">
+                                                <f:validator binding="#{row.bindings.ActionDate.validator}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.NewCancelSalesContractsProducts1.hints.Aid.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.NewCancelSalesContractsProducts1.hints.Aid.label}"
+                                                   id="c28">
+                                            <af:inputText value="#{row.bindings.Aid.inputValue}"
+                                                          label="#{bindings.NewCancelSalesContractsProducts1.hints.Aid.label}"
+                                                          required="#{bindings.NewCancelSalesContractsProducts1.hints.Aid.mandatory}"
+                                                          columns="#{bindings.NewCancelSalesContractsProducts1.hints.Aid.displayWidth}"
+                                                          maximumLength="#{bindings.NewCancelSalesContractsProducts1.hints.Aid.precision}"
+                                                          shortDesc="#{bindings.NewCancelSalesContractsProducts1.hints.Aid.tooltip}"
+                                                          id="it20">
+                                                <f:validator binding="#{row.bindings.Aid.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.NewCancelSalesContractsProducts1.hints.Aid.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.NewCancelSalesContractsProducts1.hints.AssignId.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.NewCancelSalesContractsProducts1.hints.AssignId.label}"
+                                                   id="c29">
+                                            <af:inputText value="#{row.bindings.AssignId.inputValue}"
+                                                          label="#{bindings.NewCancelSalesContractsProducts1.hints.AssignId.label}"
+                                                          required="#{bindings.NewCancelSalesContractsProducts1.hints.AssignId.mandatory}"
+                                                          columns="#{bindings.NewCancelSalesContractsProducts1.hints.AssignId.displayWidth}"
+                                                          maximumLength="#{bindings.NewCancelSalesContractsProducts1.hints.AssignId.precision}"
+                                                          shortDesc="#{bindings.NewCancelSalesContractsProducts1.hints.AssignId.tooltip}"
+                                                          id="it21">
+                                                <f:validator binding="#{row.bindings.AssignId.validator}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.NewCancelSalesContractsProducts1.hints.AssignmentId.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.NewCancelSalesContractsProducts1.hints.AssignmentId.label}"
+                                                   id="c30">
+                                            <af:inputText value="#{row.bindings.AssignmentId.inputValue}"
+                                                          label="#{bindings.NewCancelSalesContractsProducts1.hints.AssignmentId.label}"
+                                                          required="#{bindings.NewCancelSalesContractsProducts1.hints.AssignmentId.mandatory}"
+                                                          columns="#{bindings.NewCancelSalesContractsProducts1.hints.AssignmentId.displayWidth}"
+                                                          maximumLength="#{bindings.NewCancelSalesContractsProducts1.hints.AssignmentId.precision}"
+                                                          shortDesc="#{bindings.NewCancelSalesContractsProducts1.hints.AssignmentId.tooltip}"
+                                                          id="it22">
+                                                <f:validator binding="#{row.bindings.AssignmentId.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.NewCancelSalesContractsProducts1.hints.AssignmentId.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.NewCancelSalesContractsProducts1.hints.CardNo.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.NewCancelSalesContractsProducts1.hints.CardNo.label}"
+                                                   id="c31">
+                                            <af:inputText value="#{row.bindings.CardNo.inputValue}"
+                                                          label="#{bindings.NewCancelSalesContractsProducts1.hints.CardNo.label}"
+                                                          required="#{bindings.NewCancelSalesContractsProducts1.hints.CardNo.mandatory}"
+                                                          columns="#{bindings.NewCancelSalesContractsProducts1.hints.CardNo.displayWidth}"
+                                                          maximumLength="#{bindings.NewCancelSalesContractsProducts1.hints.CardNo.precision}"
+                                                          shortDesc="#{bindings.NewCancelSalesContractsProducts1.hints.CardNo.tooltip}"
+                                                          id="it23">
+                                                <f:validator binding="#{row.bindings.CardNo.validator}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.NewCancelSalesContractsProducts1.hints.ComponentId.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.NewCancelSalesContractsProducts1.hints.ComponentId.label}"
+                                                   id="c32">
+                                            <af:selectOneChoice value="#{row.bindings.ComponentId.inputValue}"
+                                                                label="#{row.bindings.ComponentId.label}"
+                                                                required="#{bindings.NewCancelSalesContractsProducts1.hints.ComponentId.mandatory}"
+                                                                shortDesc="#{bindings.NewCancelSalesContractsProducts1.hints.ComponentId.tooltip}"
+                                                                id="soc15">
+                                                <f:selectItems value="#{row.bindings.ComponentId.items}" id="si17"/>
+                                                <f:validator binding="#{row.bindings.ComponentId.validator}"/>
+                                            </af:selectOneChoice>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.NewCancelSalesContractsProducts1.hints.DeliveryType.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.NewCancelSalesContractsProducts1.hints.DeliveryType.label}"
+                                                   id="c33">
+                                            <af:selectOneChoice value="#{row.bindings.DeliveryType.inputValue}"
+                                                                label="#{row.bindings.DeliveryType.label}"
+                                                                required="#{bindings.NewCancelSalesContractsProducts1.hints.DeliveryType.mandatory}"
+                                                                shortDesc="#{bindings.NewCancelSalesContractsProducts1.hints.DeliveryType.tooltip}"
+                                                                id="soc16">
+                                                <f:selectItems value="#{row.bindings.DeliveryType.items}" id="si18"/>
+                                                <f:validator binding="#{row.bindings.DeliveryType.validator}"/>
+                                            </af:selectOneChoice>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.NewCancelSalesContractsProducts1.hints.DriverId.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.NewCancelSalesContractsProducts1.hints.DriverId.label}"
+                                                   id="c34">
+                                            <af:inputText value="#{row.bindings.DriverId.inputValue}"
+                                                          label="#{bindings.NewCancelSalesContractsProducts1.hints.DriverId.label}"
+                                                          required="#{bindings.NewCancelSalesContractsProducts1.hints.DriverId.mandatory}"
+                                                          columns="#{bindings.NewCancelSalesContractsProducts1.hints.DriverId.displayWidth}"
+                                                          maximumLength="#{bindings.NewCancelSalesContractsProducts1.hints.DriverId.precision}"
+                                                          shortDesc="#{bindings.NewCancelSalesContractsProducts1.hints.DriverId.tooltip}"
+                                                          id="it24">
+                                                <f:validator binding="#{row.bindings.DriverId.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.NewCancelSalesContractsProducts1.hints.DriverId.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.NewCancelSalesContractsProducts1.hints.Handle.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.NewCancelSalesContractsProducts1.hints.Handle.label}"
+                                                   id="c35">
+                                            <af:inputText value="#{row.bindings.Handle.inputValue}"
+                                                          label="#{bindings.NewCancelSalesContractsProducts1.hints.Handle.label}"
+                                                          required="#{bindings.NewCancelSalesContractsProducts1.hints.Handle.mandatory}"
+                                                          columns="#{bindings.NewCancelSalesContractsProducts1.hints.Handle.displayWidth}"
+                                                          maximumLength="#{bindings.NewCancelSalesContractsProducts1.hints.Handle.precision}"
+                                                          shortDesc="#{bindings.NewCancelSalesContractsProducts1.hints.Handle.tooltip}"
+                                                          id="it25">
+                                                <f:validator binding="#{row.bindings.Handle.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.NewCancelSalesContractsProducts1.hints.Handle.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.NewCancelSalesContractsProducts1.hints.HandleCode.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.NewCancelSalesContractsProducts1.hints.HandleCode.label}"
+                                                   id="c36">
+                                            <af:inputText value="#{row.bindings.HandleCode.inputValue}"
+                                                          label="#{bindings.NewCancelSalesContractsProducts1.hints.HandleCode.label}"
+                                                          required="#{bindings.NewCancelSalesContractsProducts1.hints.HandleCode.mandatory}"
+                                                          columns="#{bindings.NewCancelSalesContractsProducts1.hints.HandleCode.displayWidth}"
+                                                          maximumLength="#{bindings.NewCancelSalesContractsProducts1.hints.HandleCode.precision}"
+                                                          shortDesc="#{bindings.NewCancelSalesContractsProducts1.hints.HandleCode.tooltip}"
+                                                          id="it26">
+                                                <f:validator binding="#{row.bindings.HandleCode.validator}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.NewCancelSalesContractsProducts1.hints.Id.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.NewCancelSalesContractsProducts1.hints.Id.label}"
+                                                   id="c37">
+                                            <af:inputText value="#{row.bindings.Id.inputValue}"
+                                                          label="#{bindings.NewCancelSalesContractsProducts1.hints.Id.label}"
+                                                          required="#{bindings.NewCancelSalesContractsProducts1.hints.Id.mandatory}"
+                                                          columns="#{bindings.NewCancelSalesContractsProducts1.hints.Id.displayWidth}"
+                                                          maximumLength="#{bindings.NewCancelSalesContractsProducts1.hints.Id.precision}"
+                                                          shortDesc="#{bindings.NewCancelSalesContractsProducts1.hints.Id.tooltip}"
+                                                          id="it27">
+                                                <f:validator binding="#{row.bindings.Id.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.NewCancelSalesContractsProducts1.hints.Id.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.NewCancelSalesContractsProducts1.hints.ItemId.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.NewCancelSalesContractsProducts1.hints.ItemId.label}"
+                                                   id="c38">
+                                            <af:inputText value="#{row.bindings.ItemId.inputValue}"
+                                                          label="#{bindings.NewCancelSalesContractsProducts1.hints.ItemId.label}"
+                                                          required="#{bindings.NewCancelSalesContractsProducts1.hints.ItemId.mandatory}"
+                                                          columns="#{bindings.NewCancelSalesContractsProducts1.hints.ItemId.displayWidth}"
+                                                          maximumLength="#{bindings.NewCancelSalesContractsProducts1.hints.ItemId.precision}"
+                                                          shortDesc="#{bindings.NewCancelSalesContractsProducts1.hints.ItemId.tooltip}"
+                                                          id="it28">
+                                                <f:validator binding="#{row.bindings.ItemId.validator}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.NewCancelSalesContractsProducts1.hints.PackageNo.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.NewCancelSalesContractsProducts1.hints.PackageNo.label}"
+                                                   id="c39">
+                                            <af:inputText value="#{row.bindings.PackageNo.inputValue}"
+                                                          label="#{bindings.NewCancelSalesContractsProducts1.hints.PackageNo.label}"
+                                                          required="#{bindings.NewCancelSalesContractsProducts1.hints.PackageNo.mandatory}"
+                                                          columns="#{bindings.NewCancelSalesContractsProducts1.hints.PackageNo.displayWidth}"
+                                                          maximumLength="#{bindings.NewCancelSalesContractsProducts1.hints.PackageNo.precision}"
+                                                          shortDesc="#{bindings.NewCancelSalesContractsProducts1.hints.PackageNo.tooltip}"
+                                                          id="it29">
+                                                <f:validator binding="#{row.bindings.PackageNo.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.NewCancelSalesContractsProducts1.hints.PackageNo.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.NewCancelSalesContractsProducts1.hints.QuantityCancel.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.NewCancelSalesContractsProducts1.hints.QuantityCancel.label}"
+                                                   id="c40">
+                                            <af:inputText value="#{row.bindings.QuantityCancel.inputValue}"
+                                                          label="#{bindings.NewCancelSalesContractsProducts1.hints.QuantityCancel.label}"
+                                                          required="#{bindings.NewCancelSalesContractsProducts1.hints.QuantityCancel.mandatory}"
+                                                          columns="#{bindings.NewCancelSalesContractsProducts1.hints.QuantityCancel.displayWidth}"
+                                                          maximumLength="#{bindings.NewCancelSalesContractsProducts1.hints.QuantityCancel.precision}"
+                                                          shortDesc="#{bindings.NewCancelSalesContractsProducts1.hints.QuantityCancel.tooltip}"
+                                                          id="it30">
+                                                <f:validator binding="#{row.bindings.QuantityCancel.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.NewCancelSalesContractsProducts1.hints.QuantityCancel.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.NewCancelSalesContractsProducts1.hints.QuantityDirty.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.NewCancelSalesContractsProducts1.hints.QuantityDirty.label}"
+                                                   id="c41">
+                                            <af:inputText value="#{row.bindings.QuantityDirty.inputValue}"
+                                                          label="#{bindings.NewCancelSalesContractsProducts1.hints.QuantityDirty.label}"
+                                                          required="#{bindings.NewCancelSalesContractsProducts1.hints.QuantityDirty.mandatory}"
+                                                          columns="#{bindings.NewCancelSalesContractsProducts1.hints.QuantityDirty.displayWidth}"
+                                                          maximumLength="#{bindings.NewCancelSalesContractsProducts1.hints.QuantityDirty.precision}"
+                                                          shortDesc="#{bindings.NewCancelSalesContractsProducts1.hints.QuantityDirty.tooltip}"
+                                                          id="it31">
+                                                <f:validator binding="#{row.bindings.QuantityDirty.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.NewCancelSalesContractsProducts1.hints.QuantityDirty.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.NewCancelSalesContractsProducts1.hints.Quntity.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.NewCancelSalesContractsProducts1.hints.Quntity.label}"
+                                                   id="c42">
+                                            <af:inputText value="#{row.bindings.Quntity.inputValue}"
+                                                          label="#{bindings.NewCancelSalesContractsProducts1.hints.Quntity.label}"
+                                                          required="#{bindings.NewCancelSalesContractsProducts1.hints.Quntity.mandatory}"
+                                                          columns="#{bindings.NewCancelSalesContractsProducts1.hints.Quntity.displayWidth}"
+                                                          maximumLength="#{bindings.NewCancelSalesContractsProducts1.hints.Quntity.precision}"
+                                                          shortDesc="#{bindings.NewCancelSalesContractsProducts1.hints.Quntity.tooltip}"
+                                                          id="it32">
+                                                <f:validator binding="#{row.bindings.Quntity.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.NewCancelSalesContractsProducts1.hints.Quntity.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.NewCancelSalesContractsProducts1.hints.QuntityReplaced.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.NewCancelSalesContractsProducts1.hints.QuntityReplaced.label}"
+                                                   id="c43">
+                                            <af:inputText value="#{row.bindings.QuntityReplaced.inputValue}"
+                                                          label="#{bindings.NewCancelSalesContractsProducts1.hints.QuntityReplaced.label}"
+                                                          required="#{bindings.NewCancelSalesContractsProducts1.hints.QuntityReplaced.mandatory}"
+                                                          columns="#{bindings.NewCancelSalesContractsProducts1.hints.QuntityReplaced.displayWidth}"
+                                                          maximumLength="#{bindings.NewCancelSalesContractsProducts1.hints.QuntityReplaced.precision}"
+                                                          shortDesc="#{bindings.NewCancelSalesContractsProducts1.hints.QuntityReplaced.tooltip}"
+                                                          id="it33">
+                                                <f:validator binding="#{row.bindings.QuntityReplaced.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.NewCancelSalesContractsProducts1.hints.QuntityReplaced.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.NewCancelSalesContractsProducts1.hints.TreatmentCode.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.NewCancelSalesContractsProducts1.hints.TreatmentCode.label}"
+                                                   id="c44">
+                                            <af:selectOneChoice value="#{row.bindings.TreatmentCode.inputValue}"
+                                                                label="#{row.bindings.TreatmentCode.label}"
+                                                                required="#{bindings.NewCancelSalesContractsProducts1.hints.TreatmentCode.mandatory}"
+                                                                shortDesc="#{bindings.NewCancelSalesContractsProducts1.hints.TreatmentCode.tooltip}"
+                                                                id="soc17">
+                                                <f:selectItems value="#{row.bindings.TreatmentCode.items}" id="si19"/>
+                                                <f:validator binding="#{row.bindings.TreatmentCode.validator}"/>
+                                            </af:selectOneChoice>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.NewCancelSalesContractsProducts1.hints.UnitPrice.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.NewCancelSalesContractsProducts1.hints.UnitPrice.label}"
+                                                   id="c45">
+                                            <af:inputText value="#{row.bindings.UnitPrice.inputValue}"
+                                                          label="#{bindings.NewCancelSalesContractsProducts1.hints.UnitPrice.label}"
+                                                          required="#{bindings.NewCancelSalesContractsProducts1.hints.UnitPrice.mandatory}"
+                                                          columns="#{bindings.NewCancelSalesContractsProducts1.hints.UnitPrice.displayWidth}"
+                                                          maximumLength="#{bindings.NewCancelSalesContractsProducts1.hints.UnitPrice.precision}"
+                                                          shortDesc="#{bindings.NewCancelSalesContractsProducts1.hints.UnitPrice.tooltip}"
+                                                          id="it34">
+                                                <f:validator binding="#{row.bindings.UnitPrice.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.NewCancelSalesContractsProducts1.hints.UnitPrice.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                    </af:table>
+                                    <af:table id="NewCancelSalesContractProductsTab" contentDelivery="immediate"
+                                                  value="#{bindings.NewCancelSalesContractProductsTable.collectionModel}"
+                                                  columnStretching="last" rowBandingInterval="0" editingMode="editAll"
+                                                  columnSelection="multiple" contextMenuSelect="true"
+                                                  rowSelection="single"
+                                                  selectionListener="#{bindings.NewCancelSalesContractProductsTable.collectionModel.makeCurrent}"
+                                                  selectedRowKeys="#{bindings.NewCancelSalesContractProductsTable.collectionModel.selectedRow}"
+                                                  rowDisclosureListener="#{pageFlowScope.NewCancelSalesContractProductsTable.discloseRow}"
+                                                  var="row" varStatus="status"
+                                                  fetchSize="#{bindings.NewCancelSalesContractProductsTable.rangeSize}"
+                                                  emptyText="#{nls['NO_ROWS_FOUND']}"
+                                                  queryListener="#{bindings.NewCancelSalesContractProductsIteratorQuery.processQuery}"
+                                                  filterModel="#{bindings.NewCancelSalesContractProductsIteratorQuery.queryDescriptor}"
+                                                  filterVisible="true"
+                                                  partialTriggers=" :::NewCancelSalesContractProductsPC ::NewCancelSalesContractProductsFirst ::NewCancelSalesContractProductsPrevious ::NewCancelSalesContractProductsNext ::NewCancelSalesContractProductsLast"
+                                                  styleClass="AFStretchWidth"
+                                                  summary="#{nls['TABLE_TITLE_NEWCANCELSALESCONTRACTPRODUCTS']}">
+                                            <!-- DEBUG:BEGIN:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6 -->
+                                            <f:facet name="contextMenu">
+                                                <af:popup id="NewCancelSalesContractProductsTablePopup"
+                                                          childCreation="deferred">
+                                                    <af:menu id="m3">
+                                                        <af:menu text="#{nls['GO_TO_MENU_LABEL']}" id="m4">
+                                                            <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                                            <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                                        </af:menu>
+                                                        <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                                        <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                                        <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                                        <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                                    </af:menu>
+                                                </af:popup>
+                                            </f:facet><!-- DEBUG:END:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6 --><!-- DEBUG:END:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6 -->
+                                            <af:column id="NewCancelSalesContractProductsIndexColumn" width="20"
+                                                       align="center" headerText="#">
+                                                <af:outputFormatted value="#{status.index+1}" id="of2"/>
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                            <af:column id="NewCancelSalesContractProductsComponentIdCol" sortable="true"
+                                                       filterable="true" noWrap="true" width="300"
+                                                       sortProperty="ComponentId" rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="Product"
+                                                                    id="ol25"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 7 -->
+                                                <af:selectOneChoice id="NewCancelSalesContractProductsComponentId"
+                                                                    value="#{row.bindings.ComponentId.inputValue}"
+                                                                    label="Product"
+                                                                    required="#{bindings.NewCancelSalesContractProductsTable.hints.ComponentId.mandatory}"
+                                                                    readOnly="true"
+                                                                    shortDesc="#{bindings.NewCancelSalesContractProductsTable.hints.ComponentId.tooltip}">
+                                                    <f:selectItems value="#{row.bindings.ComponentId.items}" id="si13"/>
+                                                </af:selectOneChoice>
+                                                <!-- DEBUG:END:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                            <af:column id="NewCancelSalesContractProductsTreatmentCodeCol"
+                                                       sortable="true" filterable="true" noWrap="true" width="100"
+                                                       sortProperty="TreatmentCode" align="right" rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{bindings.NewCancelSalesContractProductsTable.hints.TreatmentCode.label}"
+                                                                    id="ol26"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 7 -->
+                                                <af:selectOneChoice id="NewCancelSalesContractProductsTreatmentCode"
+                                                                    value="#{row.bindings.TreatmentCode.inputValue}"
+                                                                    label="#{bindings.NewCancelSalesContractProductsTable.hints.TreatmentCode.label}"
+                                                                    required="#{bindings.NewCancelSalesContractProductsTable.hints.TreatmentCode.mandatory}"
+                                                                    readOnly="true"
+                                                                    shortDesc="#{bindings.NewCancelSalesContractProductsTable.hints.TreatmentCode.tooltip}">
+                                                    <f:selectItems value="#{row.bindings.TreatmentCode.items}"
+                                                                   id="si14"/>
+                                                </af:selectOneChoice>
+                                                <!-- DEBUG:END:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                            <af:column id="NewCancelSalesContractProductsPackageNoCol" sortable="true"
+                                                       filterable="true" noWrap="true" width="100"
+                                                       sortProperty="PackageNo" align="right" rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{bindings.NewCancelSalesContractProductsTable.hints.PackageNo.label}"
+                                                                    id="ol24"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                                <af:inputText id="NewCancelSalesContractProductsPackageNo"
+                                                              value="#{row.bindings.PackageNo.inputValue}"
+                                                              label="#{bindings.NewCancelSalesContractProductsTable.hints.PackageNo.label}"
+                                                              required="#{bindings.NewCancelSalesContractProductsTable.hints.PackageNo.mandatory}"
+                                                              rows="#{bindings.NewCancelSalesContractProductsTable.hints.PackageNo.displayHeight}"
+                                                              columns="#{bindings.NewCancelSalesContractProductsTable.hints.PackageNo.displayWidth}"
+                                                              readOnly="true"
+                                                              shortDesc="#{bindings.NewCancelSalesContractProductsTable.hints.PackageNo.tooltip}">
+                                                    <f:validator binding="#{row.bindings.PackageNo.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.NewCancelSalesContractProductsTable.hints.PackageNo.format}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                            <af:column id="NewCancelSalesContractProductsQuntityCol" sortable="true"
+                                                       filterable="true" noWrap="true" width="100"
+                                                       sortProperty="Quntity" align="right" rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{bindings.NewCancelSalesContractProductsTable.hints.Quntity.label}"
+                                                                    id="ol27"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                                <af:inputText id="NewCancelSalesContractProductsQuntity"
+                                                              value="#{row.bindings.Quntity.inputValue}"
+                                                              label="#{bindings.NewCancelSalesContractProductsTable.hints.Quntity.label}"
+                                                              required="#{bindings.NewCancelSalesContractProductsTable.hints.Quntity.mandatory}"
+                                                              rows="#{bindings.NewCancelSalesContractProductsTable.hints.Quntity.displayHeight}"
+                                                              columns="#{bindings.NewCancelSalesContractProductsTable.hints.Quntity.displayWidth}"
+                                                              shortDesc="#{bindings.NewCancelSalesContractProductsTable.hints.Quntity.tooltip}">
+                                                    <f:validator binding="#{row.bindings.Quntity.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.NewCancelSalesContractProductsTable.hints.Quntity.format}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                            <af:column id="NewCancelSalesContractProductsQuntityReplacedCol"
+                                                       sortable="true" filterable="true" noWrap="true" width="100"
+                                                       sortProperty="QuntityReplaced" align="right" rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{bindings.NewCancelSalesContractProductsTable.hints.QuntityReplaced.label}"
+                                                                    id="ol29"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                                <af:inputText id="NewCancelSalesContractProductsQuntityReplaced"
+                                                              value="#{row.bindings.QuntityReplaced.inputValue}"
+                                                              label="#{bindings.NewCancelSalesContractProductsTable.hints.QuntityReplaced.label}"
+                                                              required="#{bindings.NewCancelSalesContractProductsTable.hints.QuntityReplaced.mandatory}"
+                                                              rows="#{bindings.NewCancelSalesContractProductsTable.hints.QuntityReplaced.displayHeight}"
+                                                              columns="#{bindings.NewCancelSalesContractProductsTable.hints.QuntityReplaced.displayWidth}"
+                                                              shortDesc="#{bindings.NewCancelSalesContractProductsTable.hints.QuntityReplaced.tooltip}">
+                                                    <f:validator binding="#{row.bindings.QuntityReplaced.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.NewCancelSalesContractProductsTable.hints.QuntityReplaced.format}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                            <af:column id="NewCancelSalesContractProductsQuantityDirtyCol"
+                                                       sortable="true" filterable="true" noWrap="true" width="100"
+                                                       sortProperty="QuantityDirty" align="right" rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{bindings.NewCancelSalesContractProductsTable.hints.QuantityDirty.label}"
+                                                                    id="ol28"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                                <af:inputText id="NewCancelSalesContractProductsQuantityDirty"
+                                                              value="#{row.bindings.QuantityDirty.inputValue}"
+                                                              label="#{bindings.NewCancelSalesContractProductsTable.hints.QuantityDirty.label}"
+                                                              required="#{bindings.NewCancelSalesContractProductsTable.hints.QuantityDirty.mandatory}"
+                                                              rows="#{bindings.NewCancelSalesContractProductsTable.hints.QuantityDirty.displayHeight}"
+                                                              columns="#{bindings.NewCancelSalesContractProductsTable.hints.QuantityDirty.displayWidth}"
+                                                              shortDesc="#{bindings.NewCancelSalesContractProductsTable.hints.QuantityDirty.tooltip}">
+                                                    <f:validator binding="#{row.bindings.QuantityDirty.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.NewCancelSalesContractProductsTable.hints.QuantityDirty.format}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                            <af:column id="NewCancelSalesContractProductsQuantityCancelCol"
+                                                       sortable="true" filterable="true" noWrap="true" width="100"
+                                                       sortProperty="QuantityCancel" align="right" rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="#{bindings.NewCancelSalesContractProductsTable.hints.QuantityCancel.label}"
+                                                                    id="ol6"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                                <af:inputText id="NewCancelSalesContractProductsQuantityCancel"
+                                                              value="#{row.bindings.QuantityCancel.inputValue}"
+                                                              label="#{bindings.NewCancelSalesContractProductsTable.hints.QuantityCancel.label}"
+                                                              required="#{bindings.NewCancelSalesContractProductsTable.hints.QuantityCancel.mandatory}"
+                                                              rows="#{bindings.NewCancelSalesContractProductsTable.hints.QuantityCancel.displayHeight}"
+                                                              columns="#{bindings.NewCancelSalesContractProductsTable.hints.QuantityCancel.displayWidth}"
+                                                              shortDesc="#{bindings.NewCancelSalesContractProductsTable.hints.QuantityCancel.tooltip}">
+                                                    <f:validator binding="#{row.bindings.QuantityCancel.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.NewCancelSalesContractProductsTable.hints.QuantityCancel.format}"/>
+                                                </af:inputText>
+                                                
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                            </af:column>
+                                            <af:column headerText="#{bindings.NewCancelSalesContractProductsTable.hints.DeliveryType.label}"
+                                                  rendered="false"     id="c25">
+                                                       <f:facet name="header">
+                                                    <af:outputLabel value="Delivery Type" id="ol23"/>
+                                                </f:facet>
+                                                <af:selectOneChoice value="#{row.bindings.DeliveryType.inputValue}"
+                                                                    label="#{row.bindings.DeliveryType.label}"
+                                                    readOnly="true"                required="#{bindings.NewCancelSalesContractProductsTable.hints.DeliveryType.mandatory}"
+                                                                    shortDesc="#{bindings.NewCancelSalesContractProductsTable.hints.DeliveryType.tooltip}"
+                                                                    id="soc13">
+                                                    <f:selectItems value="#{row.bindings.DeliveryType.items}"
+                                                                   id="si11"/>
+                                                    <f:validator binding="#{row.bindings.DeliveryType.validator}"/>
+                                                </af:selectOneChoice>
+                                            </af:column>
+                                        <af:column headerText="#{bindings.NewCancelSalesContractProductsTable.hints.ProductDelivery.label}"
+                                                   id="c46">
+                                                   <f:facet name="header">
+                                                <af:outputLabel value="Delivery Type" id="ol31"/>
+                                            </f:facet>
+                                            <af:selectOneChoice value="#{row.bindings.ProductDelivery.inputValue}"
+                                                                label="#{row.bindings.ProductDelivery.label}"
+                                                                required="#{bindings.NewCancelSalesContractProductsTable.hints.ProductDelivery.mandatory}"
+                                                                shortDesc="#{bindings.NewCancelSalesContractProductsTable.hints.ProductDelivery.tooltip}"
+                                                                id="soc18">
+                                                <f:selectItems value="#{row.bindings.ProductDelivery.items}" id="si20"/>
+                                                <f:validator binding="#{row.bindings.ProductDelivery.validator}"/>
+                                            </af:selectOneChoice>
+                                        </af:column>
+                                        <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                        </af:table>
+                                    </af:panelCollection>
+                                <af:popup childCreation="deferred" autoCancel="disabled" id="p4">
+                                    <af:dialog id="d6" title="Confirmation" type="yesNo"
+                                               dialogListener="#{DataTeamAgentBean.SubmitContractReviewDataStatus}">
+                                        <af:outputLabel value="Are You Sure You Want To Submit?" id="ol30"/>
+                                        <f:facet name="buttonBar"/>
+                                    </af:dialog>
+                                </af:popup>
+                                <af:button text="Submit" id="b2" inlineStyle="float:right;margin-right:15px;">
+                                        <af:showPopupBehavior popupId="p4"/>
+                                    </af:button>
+                                </af:showDetailItem>
+                                <af:showDetailItem id="tab2" text="Product Contract">
+                                    <af:button text="Submit Package" id="b6"
+                                               inlineStyle="float:right;margin-right:20px;">
+                                        <af:showPopupBehavior popupId="p3"/>
+                                    </af:button>
+                                    <af:button text="Add Product" id="b3"
+                                            inlineStyle="float:right; margin-right:15px; margin-bottom:15px;"   actionListener="#{DataTeamAgentBean.AddContractProductContract}"/>
+                                    <af:popup childCreation="deferred" autoCancel="disabled" id="p3">
+                                        <af:dialog id="d3" title="Confirmation" type="yesNo"
+                                                   dialogListener="#{DataTeamAgentBean.ChangeToContractPackageSelected}">
+                                            <af:outputLabel value="Are You Sure You Want To Submit Selected Package?" id="ol20"/>
+                                            <f:facet name="buttonBar"/>
+                                        </af:dialog>
+                                    </af:popup>
+                                    <af:spacer width="10" height="10" id="s3"/>
+                                    <af:table value="#{bindings.ProductContractVO2.collectionModel}" var="row"
+                                              rows="#{bindings.ProductContractVO2.rangeSize}"
+                                              emptyText="#{bindings.ProductContractVO2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              rowBandingInterval="0"
+                                              selectedRowKeys="#{bindings.ProductContractVO2.collectionModel.selectedRow}"
+                                              selectionListener="#{bindings.ProductContractVO2.collectionModel.makeCurrent}"
+                                              rowSelection="single"
+                                              fetchSize="#{bindings.ProductContractVO2.rangeSize}"
+                                              filterModel="#{bindings.ProductContractVO2.queryDescriptor}"
+                                              filterVisible="true"
+                                              queryListener="#{bindings.ProductContractVO2.processQuery}"
+                                              varStatus="vs" id="t2">
+                                        <af:column 
+                                                   filterable="true" sortable="true"
+                                               width="200"
+                                                   headerText="#{bindings.ProductContractVO2.hints.ProductId.label}"
+                                                   id="c14">
+                                                   <f:facet name="header">
+                                                <af:outputLabel value="Product" id="ol7"/>
+                                            </f:facet>
+                                            <af:selectOneChoice value="#{row.bindings.ProductId.inputValue}"
+                                                                label="#{row.bindings.ProductId.label}"
+                                                                required="#{bindings.ProductContractVO211.hints.ProductId.mandatory}"
+                                                                shortDesc="#{bindings.ProductContractVO211.hints.ProductId.tooltip}"
+                                                            autoSubmit="true"    id="soc12"
+                                                                valueChangeListener="#{DataTeamAgentBean.ChangeContractProductId}">
+                                                <f:selectItems value="#{row.bindings.ProductId.items}" id="si15"/>
+                                                <f:validator binding="#{row.bindings.ProductId.validator}"/>
+                                            </af:selectOneChoice>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.ProductContractVO211.hints.TreatmentId.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.ProductContractVO2.hints.TreatmentId.label}"
+                                                   id="c18">
+                                                   <f:facet name="header">
+                                                <af:outputLabel value="Treatment" id="ol8"/>
+                                            </f:facet>
+                                            <af:selectOneChoice value="#{row.bindings.TreatmentId.inputValue}"
+                                                                label="#{row.bindings.TreatmentId.label}"
+                                                                required="#{bindings.ProductContractVO2.hints.TreatmentId.mandatory}"
+                                                             autoSubmit="true"
+                                                                shortDesc="#{bindings.ProductContractVO2.hints.TreatmentId.tooltip}"
+                                                                id="soc14"
+                                                                valueChangeListener="#{DataTeamAgentBean.ContractProductContractAgent}">
+                                                <f:selectItems value="#{row.bindings.TreatmentId.items}" id="si16"/>
+                                                <f:validator binding="#{row.bindings.TreatmentId.validator}"/>
+                                            </af:selectOneChoice>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.ProductContractVO2.hints.PackageNo.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.ProductContractVO2.hints.PackageNo.label}"
+                                                   id="c9">
+                                                   <f:facet name="header">
+                                                <af:outputLabel value="Package No" id="ol9"/>
+                                            </f:facet>
+                                            <af:inputText value="#{row.bindings.PackageNo.inputValue}"
+                                                          label="#{bindings.ProductContractVO2.hints.PackageNo.label}"
+                                                          required="#{bindings.ProductContractVO2.hints.PackageNo.mandatory}"
+                                                          columns="#{bindings.ProductContractVO2.hints.PackageNo.displayWidth}"
+                                                          maximumLength="#{bindings.ProductContractVO2.hints.PackageNo.precision}"
+                                                          shortDesc="#{bindings.ProductContractVO2.hints.PackageNo.tooltip}"
+                                                          id="it9">
+                                                <f:validator binding="#{row.bindings.PackageNo.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.ProductContractVO2.hints.PackageNo.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.ProductContractVO2.hints.UnitPrice.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.ProductContractVO2.hints.UnitPrice.label}"
+                                                   id="c19">
+                                                   <f:facet name="header">
+                                                <af:outputLabel value="Unit Price" id="ol10"/>
+                                            </f:facet>
+                                            <af:inputText value="#{row.bindings.UnitPrice.inputValue}"
+                                                          label="#{bindings.ProductContractVO2.hints.UnitPrice.label}"
+                                                     readOnly="true"
+                                                          required="#{bindings.ProductContractVO2.hints.UnitPrice.mandatory}"
+                                                          columns="#{bindings.ProductContractVO2.hints.UnitPrice.displayWidth}"
+                                                          maximumLength="#{bindings.ProductContractVO2.hints.UnitPrice.precision}"
+                                                          shortDesc="#{bindings.ProductContractVO2.hints.UnitPrice.tooltip}"
+                                                          id="it17">
+                                                <f:validator binding="#{row.bindings.UnitPrice.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.ProductContractVO2.hints.UnitPrice.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.ProductContractVO2.hints.Quantity.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.ProductContractVO2.hints.Quantity.label}"
+                                                   id="c17">
+                                                   <f:facet name="header">
+                                                <af:outputLabel value="Quantity" id="ol11"/>
+                                            </f:facet>
+                                            <af:inputText value="#{row.bindings.Quantity.inputValue}"
+                                                          label="#{bindings.ProductContractVO2.hints.Quantity.label}"
+                                                          required="#{bindings.ProductContractVO2.hints.Quantity.mandatory}"
+                                                          columns="#{bindings.ProductContractVO2.hints.Quantity.displayWidth}"
+                                                          maximumLength="#{bindings.ProductContractVO2.hints.Quantity.precision}"
+                                                          shortDesc="#{bindings.ProductContractVO2.hints.Quantity.tooltip}"
+                                                          id="it16">
+                                                <f:validator binding="#{row.bindings.Quantity.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.ProductContractVO2.hints.Quantity.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.ProductContractVO2.hints.ActiveFrom.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.ProductContractVO2.hints.ActiveFrom.label}"
+                                                   id="c2">
+                                                   <f:facet name="header">
+                                                <af:outputLabel value="Active From " id="ol12"/>
+                                            </f:facet>
+                                            <f:facet name="filter">
+                                                <af:inputDate value="#{bindings.ProductContractVO2Query.queryDescriptor.filterConjunctionCriterion.criterionMap.ActiveFrom.value}"
+                                                              id="id1">
+                                                    <af:convertDateTime pattern="dd/MM/yyyy"/>
+                                                </af:inputDate>
+                                            </f:facet>
+                                            <af:inputDate value="#{row.bindings.ActiveFrom.inputValue}"
+                                                          label="#{bindings.ProductContractVO211.hints.ActiveFrom.label}"
+                                                readOnly="true"
+                                                          required="#{bindings.ProductContractVO211.hints.ActiveFrom.mandatory}"
+                                                          columns="#{bindings.ProductContractVO211.hints.ActiveFrom.displayWidth}"
+                                                          shortDesc="#{bindings.ProductContractVO211.hints.ActiveFrom.tooltip}"
+                                                          id="id2">
+                                                <f:validator binding="#{row.bindings.ActiveFrom.validator}"/>
+                                                <af:convertDateTime pattern="dd/MM/yyyy"/>
+                                            </af:inputDate>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.ProductContractVO211.hints.ActiveTo.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.ProductContractVO211.hints.ActiveTo.label}"
+                                                   id="c3">
+                                            <f:facet name="header">
+                                                                                               <af:outputLabel value="Active To" id="ol13"/>
+
+                                                   </f:facet>
+                                            <f:facet name="filter">
+                                                <af:inputDate value="#{bindings.ProductContractVO2Query.queryDescriptor.filterConjunctionCriterion.criterionMap.ActiveTo.value}"
+                                                             id="id3">
+                                                    <af:convertDateTime pattern="dd/MM/yyyy"/>
+                                                </af:inputDate>
+                                            </f:facet>
+                                            <af:inputDate value="#{row.bindings.ActiveTo.inputValue}"
+                                               readOnly="true"
+                                                          label="#{bindings.ProductContractVO211.hints.ActiveTo.label}"
+                                                          required="#{bindings.ProductContractVO211.hints.ActiveTo.mandatory}"
+                                                          columns="#{bindings.ProductContractVO211.hints.ActiveTo.displayWidth}"
+                                                          shortDesc="#{bindings.ProductContractVO211.hints.ActiveTo.tooltip}"
+                                                          id="id4">
+                                                <f:validator binding="#{row.bindings.ActiveTo.validator}"/>
+                                                <af:convertDateTime pattern="dd/MM/yyyy"/>
+                                            </af:inputDate>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.ProductContractVO211.hints.Active.label}"
+                                                   id="c27">
+                                                   <f:facet name="header">
+                                                <af:outputLabel value="Active" id="ol17"/>
+                                            </f:facet>
+                                            <af:selectBooleanCheckbox value="#{row.bindings.Active.inputValue}"
+                                                                      label="#{row.bindings.Active.label}"
+                                                                 autoSubmit="true"
+                                                                      shortDesc="#{bindings.ProductContractVO211.hints.Active.tooltip}"
+                                                                      id="sbc4"
+                                                                      valueChangeListener="#{DataTeamAgentBean.ContractProductContractAgent}"/>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.ProductContractVO211.hints.Cancelled.label}"
+                                                   id="c4">
+                                                   <f:facet name="header">
+                                                   <af:outputLabel value="Cancelled" id="ol18"/>
+                                                   </f:facet>
+                                            <af:selectBooleanCheckbox value="#{row.bindings.Cancelled.inputValue}"
+                                                                      label="#{row.bindings.Cancelled.label}"
+                                                              autoSubmit="true"
+                                                                      shortDesc="#{bindings.ProductContractVO211.hints.Cancelled.tooltip}"
+                                                                      id="sbc5"
+                                                                      valueChangeListener="#{DataTeamAgentBean.ContractProductContractAgent}"/>
+                                            
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.ProductContractVO211.hints.CardNo.name}"
+                                                   filterable="true" sortable="true"
+                                            rendered="false"
+                                                   headerText="#{bindings.ProductContractVO211.hints.CardNo.label}"
+                                                   id="c5">
+                                            <af:inputText value="#{row.bindings.CardNo.inputValue}"
+                                                          label="#{bindings.ProductContractVO211.hints.CardNo.label}"
+                                                          required="#{bindings.ProductContractVO211.hints.CardNo.mandatory}"
+                                                          columns="#{bindings.ProductContractVO211.hints.CardNo.displayWidth}"
+                                                          maximumLength="#{bindings.ProductContractVO211.hints.CardNo.precision}"
+                                                          shortDesc="#{bindings.ProductContractVO211.hints.CardNo.tooltip}"
+                                                          id="it1">
+                                                <f:validator binding="#{row.bindings.CardNo.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.ProductContractVO211.hints.CardNo.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.ProductContractVO211.hints.Id.name}"
+                                                 rendered="false"  filterable="true" sortable="true"
+                                                   headerText="#{bindings.ProductContractVO211.hints.Id.label}" id="c6">
+                                            <af:inputText value="#{row.bindings.Id.inputValue}"
+                                                          label="#{bindings.ProductContractVO211.hints.Id.label}"
+                                                          required="#{bindings.ProductContractVO211.hints.Id.mandatory}"
+                                                          columns="#{bindings.ProductContractVO211.hints.Id.displayWidth}"
+                                                          maximumLength="#{bindings.ProductContractVO211.hints.Id.precision}"
+                                                          shortDesc="#{bindings.ProductContractVO211.hints.Id.tooltip}"
+                                                          id="it19">
+                                                <f:validator binding="#{row.bindings.Id.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.ProductContractVO211.hints.Id.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.ProductContractVO211.hints.New11.name}"
+                                                rendered="false"   filterable="true" sortable="true"
+                                                   headerText="#{bindings.ProductContractVO211.hints.New11.label}"
+                                                   id="c7">
+                                            <af:inputText value="#{row.bindings.New11.inputValue}"
+                                                          label="#{bindings.ProductContractVO211.hints.New11.label}"
+                                                          required="#{bindings.ProductContractVO211.hints.New11.mandatory}"
+                                                          columns="#{bindings.ProductContractVO211.hints.New11.displayWidth}"
+                                                          maximumLength="#{bindings.ProductContractVO211.hints.New11.precision}"
+                                                          shortDesc="#{bindings.ProductContractVO211.hints.New11.tooltip}"
+                                                          id="it7">
+                                                <f:validator binding="#{row.bindings.New11.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.ProductContractVO211.hints.New11.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.ProductContractVO211.hints.PNew.name}"
+                                                   filterable="true" sortable="true"
+                                                 rendered="false"
+                                                   headerText="#{bindings.ProductContractVO211.hints.PNew.label}"
+                                                   id="c8">
+                                            <af:inputText value="#{row.bindings.PNew.inputValue}"
+                                                          label="#{bindings.ProductContractVO211.hints.PNew.label}"
+                                                          required="#{bindings.ProductContractVO211.hints.PNew.mandatory}"
+                                                          columns="#{bindings.ProductContractVO211.hints.PNew.displayWidth}"
+                                                          maximumLength="#{bindings.ProductContractVO211.hints.PNew.precision}"
+                                                          shortDesc="#{bindings.ProductContractVO211.hints.PNew.tooltip}"
+                                                          id="it8">
+                                                <f:validator binding="#{row.bindings.PNew.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.ProductContractVO211.hints.PNew.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.ProductContractVO211.hints.PackageVersion.name}"
+                                           rendered="false"        filterable="true" sortable="true"
+                                                   headerText="#{bindings.ProductContractVO211.hints.PackageVersion.label}"
+                                                   id="c10">
+                                            <af:inputText value="#{row.bindings.PackageVersion.inputValue}"
+                                                          label="#{bindings.ProductContractVO211.hints.PackageVersion.label}"
+                                                          required="#{bindings.ProductContractVO211.hints.PackageVersion.mandatory}"
+                                                          columns="#{bindings.ProductContractVO211.hints.PackageVersion.displayWidth}"
+                                                          maximumLength="#{bindings.ProductContractVO211.hints.PackageVersion.precision}"
+                                                          shortDesc="#{bindings.ProductContractVO211.hints.PackageVersion.tooltip}"
+                                                          id="it10">
+                                                <f:validator binding="#{row.bindings.PackageVersion.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.ProductContractVO211.hints.PackageVersion.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.ProductContractVO211.hints.Paid.label}"
+                                                   id="c11">
+                                                   <f:facet name="header">
+                                                <af:outputLabel value="Paid" id="ol19"/>
+                                            </f:facet>
+                                            <af:selectBooleanCheckbox value="#{row.bindings.Paid.inputValue}"
+                                                                      label="#{row.bindings.Paid.label}"
+                                                                autoSubmit="true"
+                                                                      shortDesc="#{bindings.ProductContractVO211.hints.Paid.tooltip}"
+                                                                      id="sbc6"
+                                                                      valueChangeListener="#{DataTeamAgentBean.ContractProductContractAgent}"/>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.ProductContractVO211.hints.PartialSubmit.name}"
+                                            rendered="false"       filterable="true" sortable="true"
+                                                   headerText="#{bindings.ProductContractVO211.hints.PartialSubmit.label}"
+                                                   id="c12">
+                                            <af:inputText value="#{row.bindings.PartialSubmit.inputValue}"
+                                                          label="#{bindings.ProductContractVO211.hints.PartialSubmit.label}"
+                                                          required="#{bindings.ProductContractVO211.hints.PartialSubmit.mandatory}"
+                                                          columns="#{bindings.ProductContractVO211.hints.PartialSubmit.displayWidth}"
+                                                          maximumLength="#{bindings.ProductContractVO211.hints.PartialSubmit.precision}"
+                                                          shortDesc="#{bindings.ProductContractVO211.hints.PartialSubmit.tooltip}"
+                                                          id="it12">
+                                                <f:validator binding="#{row.bindings.PartialSubmit.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.ProductContractVO211.hints.PartialSubmit.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.ProductContractVO211.hints.PendingConfirmation.name}"
+                                                   filterable="true" sortable="true"
+                                               rendered="false"
+                                                   headerText="#{bindings.ProductContractVO211.hints.PendingConfirmation.label}"
+                                                   id="c13">
+                                            <af:inputText value="#{row.bindings.PendingConfirmation.inputValue}"
+                                                          label="#{bindings.ProductContractVO211.hints.PendingConfirmation.label}"
+                                                          required="#{bindings.ProductContractVO211.hints.PendingConfirmation.mandatory}"
+                                                          columns="#{bindings.ProductContractVO211.hints.PendingConfirmation.displayWidth}"
+                                                          maximumLength="#{bindings.ProductContractVO211.hints.PendingConfirmation.precision}"
+                                                          shortDesc="#{bindings.ProductContractVO211.hints.PendingConfirmation.tooltip}"
+                                                          id="it13">
+                                                <f:validator binding="#{row.bindings.PendingConfirmation.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.ProductContractVO211.hints.PendingConfirmation.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.ProductContractVO211.hints.ProductSerial.name}"
+                                                   filterable="true" sortable="true"
+                                            rendered="false"
+                                                   headerText="#{bindings.ProductContractVO211.hints.ProductSerial.label}"
+                                                   id="c15">
+                                            <af:inputText value="#{row.bindings.ProductSerial.inputValue}"
+                                                          label="#{bindings.ProductContractVO211.hints.ProductSerial.label}"
+                                                          required="#{bindings.ProductContractVO211.hints.ProductSerial.mandatory}"
+                                                          columns="#{bindings.ProductContractVO211.hints.ProductSerial.displayWidth}"
+                                                          maximumLength="#{bindings.ProductContractVO211.hints.ProductSerial.precision}"
+                                                          shortDesc="#{bindings.ProductContractVO211.hints.ProductSerial.tooltip}"
+                                                          id="it14">
+                                                <f:validator binding="#{row.bindings.ProductSerial.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.ProductContractVO211.hints.ProductSerial.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.ProductContractVO211.hints.ProductSku.name}"
+                                                   filterable="true" sortable="true"
+                                              rendered="false"
+                                                   headerText="#{bindings.ProductContractVO211.hints.ProductSku.label}"
+                                                   id="c16">
+                                            <af:inputText value="#{row.bindings.ProductSku.inputValue}"
+                                                          label="#{bindings.ProductContractVO211.hints.ProductSku.label}"
+                                                          required="#{bindings.ProductContractVO211.hints.ProductSku.mandatory}"
+                                                          columns="#{bindings.ProductContractVO211.hints.ProductSku.displayWidth}"
+                                                          maximumLength="#{bindings.ProductContractVO211.hints.ProductSku.precision}"
+                                                          shortDesc="#{bindings.ProductContractVO211.hints.ProductSku.tooltip}"
+                                                          id="it15">
+                                                <f:validator binding="#{row.bindings.ProductSku.validator}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.ProductContractVO211.hints.UpdateTime.name}"
+                                                   filterable="true" sortable="true"
+                                               rendered="false"
+                                                   headerText="#{bindings.ProductContractVO211.hints.UpdateTime.label}"
+                                                   id="c20">
+                                            <f:facet name="filter">
+                                                <af:inputDate value="#{bindings.ProductContractVO2Query.queryDescriptor.filterConjunctionCriterion.criterionMap.UpdateTime.value}"
+                                                              id="id5">
+                                                    <af:convertDateTime pattern="#{bindings.ProductContractVO211.hints.UpdateTime.format}"/>
+                                                </af:inputDate>
+                                            </f:facet>
+                                            <af:inputDate value="#{row.bindings.UpdateTime.inputValue}"
+                                                          label="#{bindings.ProductContractVO211.hints.UpdateTime.label}"
+                                                          required="#{bindings.ProductContractVO211.hints.UpdateTime.mandatory}"
+                                                          columns="#{bindings.ProductContractVO211.hints.UpdateTime.displayWidth}"
+                                                          shortDesc="#{bindings.ProductContractVO211.hints.UpdateTime.tooltip}"
+                                                          id="id6">
+                                                <f:validator binding="#{row.bindings.UpdateTime.validator}"/>
+                                                <af:convertDateTime pattern="#{bindings.ProductContractVO211.hints.UpdateTime.format}"/>
+                                            </af:inputDate>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.ProductContractVO211.hints.UpdatedBy.name}"
+                                             rendered="false"      filterable="true" sortable="true"
+                                                   headerText="#{bindings.ProductContractVO211.hints.UpdatedBy.label}"
+                                                   id="c21">
+                                            <af:inputText value="#{row.bindings.UpdatedBy.inputValue}"
+                                                          label="#{bindings.ProductContractVO211.hints.UpdatedBy.label}"
+                                                          required="#{bindings.ProductContractVO211.hints.UpdatedBy.mandatory}"
+                                                          columns="#{bindings.ProductContractVO211.hints.UpdatedBy.displayWidth}"
+                                                          maximumLength="#{bindings.ProductContractVO211.hints.UpdatedBy.precision}"
+                                                          shortDesc="#{bindings.ProductContractVO211.hnts.UpdatedBy.tooltip}"
+                                                          id="it18">
+                                                <f:validator binding="#{row.bindings.UpdatedBy.validator}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.ProductContractVO211.hints.ActiveSel.label}"
+                                                rendered="false"   id="c22">
+                                                   <f:facet name="header">
+                                                <af:outputLabel value="Active" id="ol14"/>
+                                            </f:facet>
+                                            <af:selectBooleanCheckbox value="#{row.bindings.ActiveSel.inputValue}"
+                                                                      label="#{row.bindings.ActiveSel.label}"
+                                                             autoSubmit="true"
+                                                                      shortDesc="#{bindings.ProductContractVO211.hints.ActiveSel.tooltip}"
+                                                                      id="sbc1"/>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.ProductContractVO211.hints.CancelledSel.label}"
+                                               rendered="false"    id="c23">
+                                                   <f:facet name="header">
+                                                   <af:outputLabel value="Cancelled" id="ol15"/>
+                                                   </f:facet>
+                                            <af:selectBooleanCheckbox value="#{row.bindings.CancelledSel.inputValue}"
+                                                                      label="#{row.bindings.CancelledSel.label}"
+                                                                 autoSubmit="true"
+                                                                      shortDesc="#{bindings.ProductContractVO211.hints.CancelledSel.tooltip}"
+                                                                      id="sbc2"/>
+                                            
+                                        </af:column>
+                                        <af:column headerText="#{bindings.ProductContractVO211.hints.PaidSel.label}"
+                                             rendered="false"      id="c24">
+                                                   <f:facet name="header">
+                                                   <af:outputLabel value="Paid" id="ol16"/>
+                                                   </f:facet>
+                                            <af:selectBooleanCheckbox value="#{row.bindings.PaidSel.inputValue}"
+                                                                      label="#{row.bindings.PaidSel.label}"
+                                                                      shortDesc="#{bindings.ProductContractVO211.hints.PaidSel.tooltip}"
+                                                                      id="sbc3"/>
+                                            
+                                        </af:column>
+                                    </af:table>
+                                    <af:button text="Submit" id="b4" inlineStyle="float:right; margin-right:15px; margin-top:15px;">
+                                        <af:showPopupBehavior popupId="p2"/>
+                                    </af:button>
+                                    <af:button text="Validate" id="b5"  inlineStyle="float:right; margin-right:15px; margin-top:15px;"
+                                               actionListener="#{DataTeamAgentBean.ValidateContractProductsMatchPackage}"/>
+                                    
+                                    <af:popup childCreation="deferred" autoCancel="disabled" id="p2">
+                                        <af:dialog id="d2" title="Confirmation" type="yesNo"
+                                                   dialogListener="#{DataTeamAgentBean.CommitContractProductChanges}">
+                                            <af:outputLabel value="Are You Sure You Want To Submit Updates ?" id="ol22"/>
+                                            <f:facet name="buttonBar"/>
+                                        </af:dialog> 
+                                    </af:popup>
+                                    <af:popup childCreation="deferred" autoCancel="disabled" id="replacepopup">
+                                        <af:dialog id="d4" title="Confirmation" type="yesNo"
+                                                   dialogListener="#{DataTeamAgentBean.ChangeContractToPackage}">
+                                            <af:outputLabel value="#{bindings.CheckPackageName.inputValue}" id="ol21"/>
+                                            <f:facet name="buttonBar"/>
+                                        </af:dialog>
+                                    </af:popup>
+                                </af:showDetailItem>
+                            </af:panelTabbed>
+                            
+                        </af:panelGroupLayout>
+            <f:facet name="buttonBar"/>
+        </af:dialog>
+    </af:popup>
+            <af:panelGroupLayout id="popupsPgl"></af:panelGroupLayout>
+        </f:facet>
+        <!-- DEBUG:END:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3-->
+        <!-- DEBUG:END:FORM_PAGE_CONTENT : default/page/formPageContent.vm, nesting level: 2-->
+    </af:pageTemplate>
+</ui:composition>
+
+
+

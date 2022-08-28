@@ -1,0 +1,142 @@
+## revision_history
+## 16-dec-2011   Steven Davelaar
+## 2.9           Added layout=vertical to panelGroupLayout when region has no title
+## 05-jul-2011   Steven Davelaar
+## 2.8           Added REGION_SIZE macro call instead of hardcoded size property
+## 04-feb-2011   Steven Davelaar
+## 2.7           Use AFStretchWidth style class when width set to 100%, added call to INIT_REGION_CONTAINER_VARS
+##               - Width/height also generated when container has no title
+## 30-dec-2010   Steven Davelaar
+## 2.6           - Added check for showInPopup at start when determining whether sub region must be skipped
+##               - Added check at start whether item region conatins items in current context
+## 18-oct-2010   Steven Davelaar
+## 2.5           Added check for showInPopup around REGION_PARTIAL_TRIGGERS call for subRegion
+## 08-oct-2010   Steven Davelaar
+## 2.4           Added calls to REGION_CONTAINER_HELP, SUB_REGION_HELP macros
+## 27-may-2010   Steven Davelaar
+## 2.3           Added calls to ADD_PARTIAL_TARGET
+## 07-dec-2009   Steven Davelaar
+## 2.2           Always check strecthEnabled of container itself
+##               Set layout to scroll if before in stretch mode and
+##               container not stretchable
+## 25-aug-2009   Steven Davelaar
+## 2.1           Added item region width and region container width/height
+## 30-jun-2009   Paco van der Linden
+## 2.0           Restructured layout according to (stretching) best-practices.
+## 20-mar-2009   Steven Davelaar
+## 1.5           Add support for separatorSpacer property
+## 04-aug-2008   Steven Davelaar
+## 1.4           subregion partial triggers property moved to additional enclosing panelGroup
+##               so rendered expression on the subregion will work more intuitively (no need
+##               to enclose the subregion in a separate subcontainer which has dependsOnItem set)
+## 03-sep-2007   Steven Davelaar
+## 1.3           Do not render item region in advanced search when no search items in it
+## 05-dec-2006   Steven Davelaar
+## 1.2           Added several calls to REGION_PARTIAL_TRIGGERS macro to support new
+##               dependsOnItem property on regions
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+
+#INIT_REGION_CONTAINER_VARS()
+
+## We don't want to show the top-level container if there are no subregions to show.
+#if (!${JHS.current.regionContainer.parentRegionContainer} && $regions.size() == 0)
+
+  ## Do nothing
+
+#else
+
+  ## Only generate title if this is top-level container, otherwise title is generated in subregions loop
+  #if (!${JHS.current.regionContainer.parentRegionContainer} && !($JHS.current.regionContainer.title == "") && !${JHS.current.regionContainer.showInPopup} )
+    #if ($regions.size() == 1 && $JHS.engine.stretchEnabled && ${JHS.current.regionContainer.enableStretching})
+    <af:panelStretchLayout #PANEL_HEADER_TOP_HEIGHT() id="#REGION_ID()Psl"
+                           #JHS_PROP("rendered" $JHS.current.regionContainer.rendered)
+                           #REGION_PARTIAL_TRIGGERS($JHS.current.regionContainer)>
+      <f:facet name="top">
+        <af:panelHeader text="#REGION_CONTAINER_TITLE()" id="#REGION_ID()PanelHeader" #REGION_CONTAINER_HELP()/>
+      </f:facet>
+      <f:facet name="center">
+      #REGION_PARTIAL_TARGET($JHS.current.regionContainer "#REGION_ID()Psl")
+    #else
+    <af:panelHeader text="#REGION_CONTAINER_TITLE()" id="#REGION_ID()PanelHeader" #REGION_CONTAINER_HELP()
+                           #JHS_PROP("rendered" $JHS.current.regionContainer.rendered)
+                           inlineStyle="#INLINE_STYLE_WIDTH(${JHS.current.regionContainer.width}) #INLINE_STYLE_HEIGHT(${JHS.current.regionContainer.height})"
+                           #STRETCH_STYLE_CLASS(${JHS.current.regionContainer})
+                           #REGION_PARTIAL_TRIGGERS($JHS.current.regionContainer)>
+      #REGION_PARTIAL_TARGET($JHS.current.regionContainer "#REGION_ID()PanelHeader")
+    #end
+  #end 
+
+  #if ($regions.size() == 0)
+    ## Do nothing
+  #else
+    ## Maybe we can continue the support for stretching now, because *maybe* we don't need the
+    ## panelGroupLayout.
+    #if ($regions.size() == 1 && $JHS.engine.stretchEnabled && ${JHS.current.regionContainer.enableStretching})
+      ## Only one region:
+      #foreach($subRegion in $regions)
+        <af:panelStretchLayout id="#REGION_ID()${subRegion.name}Psl" #if (!${subRegion.showInPopup}) #REGION_PARTIAL_TRIGGERS($subRegion) #end
+                       #if (${subRegion.showTitle}) #PANEL_HEADER_TOP_HEIGHT() #end #JHS_PROP("rendered" $subRegion.rendered)>
+        #if (${subRegion.showTitle})
+          <f:facet name="top">
+            <af:panelHeader text="#REGION_TITLE($subRegion)" id="#REGION_ID()${subRegion.name}PanelHeader" #SUB_REGION_HELP($subRegion)/>
+          </f:facet>
+        #end
+          <f:facet name="center">
+            #JHS_PARSE($subRegion.templateIdentifier $subRegion)
+          </f:facet>
+        </af:panelStretchLayout> 
+        #REGION_PARTIAL_TARGET($subRegion "#REGION_ID()${subRegion.name}Psl")
+      #end
+
+    #else
+      ## if we were stretchable before, then set layout to scroll
+      #if ($JHS.engine.stretchEnabled)
+        #set ($layout = "scroll")
+      #else  
+        #set ($layout = "vertical")
+      #end 
+      $JHS.engine.pushStretchEnabled(false)
+
+      <af:panelGroupLayout layout="${layout}" id="#REGION_ID()PGL" #REGION_PARTIAL_TRIGGERS($JHS.current.regionContainer)
+            inlineStyle="#INLINE_STYLE_WIDTH(${JHS.current.regionContainer.width}) #INLINE_STYLE_HEIGHT(${JHS.current.regionContainer.height})"
+            #STRETCH_STYLE_CLASS(${JHS.current.regionContainer})>
+                                  <f:facet name="separator">
+          #MARGIN_SPACER()
+        </f:facet>
+        #foreach($subRegion in $regions)
+           #if (${subRegion.showTitle})
+             <af:panelHeader text="#REGION_TITLE($subRegion)" #if (!${subRegion.showInPopup}) #REGION_PARTIAL_TRIGGERS($subRegion) #end
+                             #JHS_PROP("rendered" $subRegion.rendered) #REGION_SIZE() #SUB_REGION_HELP($subRegion)
+                             inlineStyle="#INLINE_STYLE_WIDTH(${subRegion.width})"
+                             #STRETCH_STYLE_CLASS(${subRegion})
+                             id="#REGION_ID()${subRegion.name}PanelHeader">
+               #JHS_PARSE($subRegion.templateIdentifier $subRegion)
+             </af:panelHeader>
+             #REGION_PARTIAL_TARGET($subRegion "#REGION_ID()${subRegion.name}PanelHeader")
+           #else
+             <af:panelGroupLayout #JHS_PROP("rendered" $subRegion.rendered)
+                                  #if (!${subRegion.showInPopup}) #REGION_PARTIAL_TRIGGERS($subRegion) #end
+                                  inlineStyle="#INLINE_STYLE_WIDTH(${subRegion.width})"
+                                  #STRETCH_STYLE_CLASS(${subRegion}) layout="vertical"
+                                  id="#REGION_ID()${subRegion.name}PanelGroup">
+               #JHS_PARSE($subRegion.templateIdentifier $subRegion)
+             </af:panelGroupLayout> 
+             #REGION_PARTIAL_TARGET($subRegion "#REGION_ID()${subRegion.name}PanelGroup")
+           #end
+        #end
+      </af:panelGroupLayout>
+
+      $JHS.engine.popStretchEnabled()
+    #end
+  #end
+
+  #if (!${JHS.current.regionContainer.parentRegionContainer} && !($JHS.current.regionContainer.title == ""))
+    #if ($regions.size() == 1 && $JHS.engine.stretchEnabled && ${JHS.current.regionContainer.enableStretching})
+      </f:facet>
+    </af:panelStretchLayout>
+    #else
+    </af:panelHeader>
+    #end
+  #end 
+#end

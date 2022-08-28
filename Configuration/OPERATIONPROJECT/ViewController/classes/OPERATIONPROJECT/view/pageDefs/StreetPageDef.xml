@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="StreetPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="true">
+  <parameters>
+    <parameter id="bindingContainersToPrepare" value="#{'AddressPageDef'}"/>
+  </parameters>
+  <executables>
+    <iterator id="StreetIterator" Binds="Street1" DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <searchRegion id="StreetIteratorQuery" Binds="StreetIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="AreaId"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator id="ContractAddressIterator" Binds="ContractAddress1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+    <searchRegion id="ContractAddressIteratorQuery" Binds="ContractAddressIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="CardNo"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator Binds="AppModuleAMDataControl" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="AppModuleAMDataControlIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="StreetIterator" id="StreetStreetName">
+      <AttrNames>
+        <Item Value="StreetName"/>
+      </AttrNames>
+    </attributeValues>
+    <tree id="StreetTable" IterBinding="StreetIterator">
+      <nodeDefinition Name="Street" DefName="OPERATIONPROJECT.model.BC.VO.StreetVO">
+        <AttrNames>
+          <Item Value="StreetName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="StreetIterator" id="FirstStreet" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="StreetIterator" id="PreviousStreet" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="StreetIterator" id="NextStreet" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="StreetIterator" id="LastStreet" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="StreetIterator" id="SetCurrentRowWithKeyStreet" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrStreet}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="StreetIterator" id="CreateStreet" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="StreetIterator" id="DeleteStreet" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <button IterBinding="ContractAddressIterator" id="ContractAddressActive" DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="Active"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <tree id="ContractAddressTable" IterBinding="ContractAddressIterator">
+      <nodeDefinition Name="ContractAddress" DefName="OPERATIONPROJECT.model.BC.VO.ContractAddressVO">
+        <AttrNames>
+          <Item Value="CardNo"/>
+          <Item Value="Remarks"/>
+          <Item Value="HomeNo"/>
+          <Item Value="FloorNo"/>
+          <Item Value="FlatNo"/>
+          <Item Value="ActiveFrom"/>
+          <Item Value="ActiveTo"/>
+          <Item Value="Active"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ContractAddressIterator" id="FirstContractAddress" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="ContractAddressIterator" id="PreviousContractAddress" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="ContractAddressIterator" id="NextContractAddress" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="ContractAddressIterator" id="LastContractAddress" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="ContractAddressIterator" id="SetCurrentRowWithKeyContractAddress" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrContractAddress}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="ContractAddressIterator" id="CreateContractAddress" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="ContractAddressIterator" id="DeleteContractAddress" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

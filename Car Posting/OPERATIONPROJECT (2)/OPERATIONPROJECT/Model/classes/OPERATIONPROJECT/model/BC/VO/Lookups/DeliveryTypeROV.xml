@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="DeliveryTypeROV"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  OrderBy='"DELIVERY_TYPE"'
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  RowClass="OPERATIONPROJECT.model.BC.VO.Lookups.DeliveryTypeROVRowImpl"
+  ComponentClass="OPERATIONPROJECT.model.BC.VO.Lookups.DeliveryTypeROVImpl"
+  FetchMode="FETCH_AS_NEEDED"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Coll"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="OPERATIONPROJECT.model.BC.VO.Lookups.DeliveryTypeROV_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <SQLQuery><![CDATA[SELECT  
+    DELIVERY_TYPE.ID ID,  
+    DELIVERY_TYPE.DELIVERY_TYPE DELIVERY_TYPE  
+FROM  
+    DELIVERY_TYPE]]></SQLQuery>
+  <ViewAttribute
+    Name="Id"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="ID"
+    Expression="ID"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DeliveryType"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="20"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DELIVERY_TYPE"
+    Expression="DELIVERY_TYPE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Id"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,21 @@
+## revision_history
+## 18-oct-2010   Steven Davelaar
+## 1.1           Added support for custom toolbar items (in form layout
+##               they will be added to group toolbar)
+## 02-sep-2008   Steven Davelaar
+## 1.0           Initial creation
+
+#set ($pageComponent = ${JHS.current.pageComponent})
+#set ($group = ${JHS.current.group})
+
+<af:toolbar id="#NEW_ID("tbar")">
+  #JHS_PARSE("ADD_ROW_LINK" ${JHS.current.model})
+  #JHS_PARSE("TABLE_EXPORT_LINK" ${JHS.current.model})
+  ## generate buttons for custom toolbar items
+  #foreach ($toolbarItem in ${JHS.current.group.toolbarItems})
+     #JHS_PARSE($toolbarItem.tableTemplateIdentifier $toolbarItem)
+     ## add parsed popup content from any popups launched through this item here
+     $toolbarItem.parsedContent
+  #end
+</af:toolbar>
+

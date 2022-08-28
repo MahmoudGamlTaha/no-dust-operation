@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="DataTeamLeaderPendingASSOC"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="DataTeamLeaderPendingWork"
+    Cardinality="1"
+    Source="true"
+    Owner="OPERATIONPROJECT.model.BC.EO.DataTeamLeaderPendingWorkEO"
+    LockLevel="NONE">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="DataTeamLeaderPendingWork"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.DataTeamLeaderPendingWorkEO.AreaId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.EO.DataTeamLeaderPendingWorkEO.AssignDate"/>
+      <Item Value="OPERATIONPROJECT.model.BC.EO.DataTeamLeaderPendingWorkEO.DrivId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.EO.DataTeamLeaderPendingWorkEO.PilotId"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="AssEO"
+    Cardinality="-1"
+    Owner="OPERATIONPROJECT.model.BC.EO.AssEO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="Ass"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.AssEO.AreaId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.EO.AssEO.AssignDate"/>
+      <Item Value="OPERATIONPROJECT.model.BC.EO.AssEO.DrivId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.EO.AssEO.PilotId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

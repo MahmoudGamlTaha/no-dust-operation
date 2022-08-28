@@ -1,0 +1,9 @@
+## revision_history
+## 04-nov-2010   Steven Davelaar
+## 1.2           Added empty select item, otherwise empty option for optional lists is gone after a value has been set.
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+##  <af:selectItem id="#NEW_ID("si")" label="" value=""/>
+#foreach ($allowableValue in $JHS.current.item.domain.allowableValues)
+  <af:selectItem id="#NEW_ID("si")" value="${allowableValue.value}" label="#DOMAIN_ALLOWABLE_VALUE_MEANING(${JHS.current.item.domain} ${allowableValue})"/>
+#end

@@ -1,0 +1,28 @@
+<?xml version="1.0" #PAGE_ENCODING_PROP() ?>
+## revision_history
+## 05-nov-2013   Steven Davelaar
+## 1.2           Fixed check for adding groupNode end tag, should be same as check for start element
+## 12-apr-2010   Steven Davelaar
+## 1.1           Fixed NPE in groupNode.doAction: we can include space-separated list in idref  item
+##               so it will navigate to the next item when the first item is unauthorized.
+## 19-aug-2008   Steven Davelaar
+## 1.0           initial creation
+
+<menu xmlns="http://myfaces.apache.org/trinidad/menu">
+#if (${JHS.application.contentTopLevelMenu}!='allGroups' && (!${JHS.application.useDynamicTabs} || ${JHS.application.contentTopLevelMenu}=='services'))
+<groupNode id="${JHS.service.name}" 
+   #if ($JHS.service.roles) rendered="#{jhsUserRoles['${JHS.service.roles}']}"#end
+  label="#MENU_TITLE()"
+  idref="#foreach ($group in $JHS.service.baseGroups)#if($group.addMenuEntry && $group.isBaseGroup && ($group.useAsStandalonePage || $group.groupUsage == 'region'))${group.name}MI #end#end"  
+  >
+#end
+
+#foreach ($group in $JHS.service.baseGroups)
+ #JHS_PARSE("XML_MENU_MODEL_ITEM" ${group})
+#end  
+
+#if (${JHS.application.contentTopLevelMenu}!='allGroups' && (!${JHS.application.useDynamicTabs} || ${JHS.application.contentTopLevelMenu}=='services'))
+</groupNode>
+#end
+
+</menu>

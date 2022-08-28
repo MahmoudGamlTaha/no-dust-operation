@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="HubCoverGroupPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="validateCurrentRows">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Name="HubCoverGroupRowKeyVar" Type="java.lang.String"
+                DefaultValue="#{bindings.HubCoverGroupIterator.currentRowKeyString}"/>
+    </variableIterator>
+    <invokeAction id="clearDeepLinkViewCriteriaInvoke" Binds="clearDeepLinkViewCriteria" Refresh="renderModel"
+                  RefreshCondition="#{'true' != pageFlowScope.jhsQueryByKeyValue}"/>
+    <iterator id="HubCoverGroupIterator" Binds="Shipment1VO1" DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <iterator id="CoverProductIterator" Binds="CoverProductVO1" DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <searchRegion id="CoverProductIteratorQuery" Binds="CoverProductIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="AssignmentDate"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+  </executables>
+  <bindings>
+    <methodAction id="clearDeepLinkViewCriteria" RequiresUpdateModel="true" Action="invokeMethod"
+                  DataControl="AppModuleAMDataControl" InstanceName="AppModuleAMDataControl.dataProvider"
+                  MethodName="clearDeepLinkViewCriteria"
+                  ReturnName="AppModuleAMDataControl.methodResults.AppModuleAMDataControl_dataProvider_clearDeepLinkViewCriteria_result"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="viewObjectUsage" NDValue="Shipment1VO1" NDType="java.lang.String"/>
+      <NamedData NDName="requeryIfFound" NDValue="#{true}" NDType="java.lang.Boolean"/>
+    </methodAction>
+    <attributeValues IterBinding="HubCoverGroupIterator" id="HubCoverGroupCreatedBy">
+      <AttrNames>
+        <Item Value="CreatedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HubCoverGroupIterator" id="HubCoverGroupDispatchedBy">
+      <AttrNames>
+        <Item Value="DispatchedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HubCoverGroupIterator" id="HubCoverGroupEditIn">
+      <AttrNames>
+        <Item Value="EditIn"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HubCoverGroupIterator" id="HubCoverGroupEditOut">
+      <AttrNames>
+        <Item Value="EditOut"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HubCoverGroupIterator" id="HubCoverGroupComment">
+      <AttrNames>
+        <Item Value="Comment"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="HubCoverGroupIterator" id="FirstHubCoverGroup" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="HubCoverGroupIterator" id="PreviousHubCoverGroup" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="HubCoverGroupIterator" id="NextHubCoverGroup" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="HubCoverGroupIterator" id="LastHubCoverGroup" RequiresUpdateModel="true" Action="last"/>
+    <attributeValues IterBinding="variables" id="HubCoverGroupRowKey">
+      <AttrNames>
+        <Item Value="HubCoverGroupRowKeyVar"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="HubCoverGroupIterator" id="SetCurrentRowWithKeyHubCoverGroup" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{bindings.HubCoverGroupRowKey}" NDType="java.lang.String"/>
+    </action>
+    <tree id="CoverProductTable" IterBinding="CoverProductIterator">
+      <nodeDefinition Name="CoverProduct" DefName="OPERATIONPROJECT.model.BC.VO.CoverProductVO">
+        <AttrNames>
+          <Item Value="AssignmentDate"/>
+          <Item Value="ProductId"/>
+          <Item Value="TreatmentId"/>
+          <Item Value="Quantity"/>
+          <Item Value="NewOutQty"/>
+          <Item Value="CleanQuantity"/>
+          <Item Value="NewCleanQty"/>
+          <Item Value="DirtyQuantity"/>
+          <Item Value="NewDirtyQty"/>
+          <Item Value="ManualCancel"/>
+          <Item Value="NewCancelQty"/>
+          <Item Value="ManualNew"/>
+          <Item Value="NewNewQty"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="CoverProductIterator" id="FirstCoverProduct" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="CoverProductIterator" id="PreviousCoverProduct" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="CoverProductIterator" id="NextCoverProduct" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="CoverProductIterator" id="LastCoverProduct" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="CoverProductIterator" id="SetCurrentRowWithKeyCoverProduct" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrCoverProduct}" NDType="java.lang.String"/>
+    </action>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+    <button IterBinding="HubCoverGroupIterator" id="EditIn" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="EditIn"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <button IterBinding="HubCoverGroupIterator" id="EditOut" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="EditOut"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <attributeValues IterBinding="HubCoverGroupIterator" id="Edited">
+      <AttrNames>
+        <Item Value="Edited"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

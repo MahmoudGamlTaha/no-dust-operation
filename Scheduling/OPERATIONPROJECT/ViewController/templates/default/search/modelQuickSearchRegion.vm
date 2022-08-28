@@ -1,0 +1,26 @@
+## revision_history
+## 05-apr-2012   Steven Davelaar
+## 2.2           shortened search area id
+## 09-nov-2011   Steven Davelaar
+## 2.1           Added call to SET_INITIAL_FOCUS_ID
+## 23-jun-2009   Paco van der Linden
+## 2.0           Restructured layout according to (stretching) best-practices.
+## 6-okt-2008    Evert-Jan de Bruin
+## 1.0           Initial version
+#SET_INITIAL_FOCUS_ID("qs_${JHS.current.group.shortName}:criterionValue")
+<af:quickQuery id="qs_${JHS.current.group.shortName}" 
+          label="#FILTER_BY_LABEL()"
+          value="#{bindings.${JHS.current.group.quickSearchRegionBinding}.quickQueryDescriptor}"
+          model="#{bindings.${JHS.current.group.quickSearchRegionBinding}.queryModel}"
+          queryListener="#{bindings.${JHS.current.group.quickSearchRegionBinding}.processQuery}"
+        #if ($JHS.current.pageComponent.hasAdvancedSearchArea)
+          rendered="#{#SEARCH_BEAN().quickSearchMode}"
+        #end
+          >
+#if ($JHS.current.pageComponent.hasAdvancedSearchArea)
+  <f:facet name="end">
+  #JHS_PARSE("SWITCH_TO_ADVANCED_SEARCH_BUTTON" ${JHS.current.model})
+  </f:facet>
+#end                 
+#ADD_CUR_GROUP_PARTIAL_TRIGGER("qs_${JHS.current.group.shortName}")
+</af:quickQuery>          

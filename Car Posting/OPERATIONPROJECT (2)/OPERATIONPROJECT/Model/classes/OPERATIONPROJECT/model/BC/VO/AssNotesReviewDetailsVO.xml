@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AssNotesReviewDetailsVO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  RowClass="OPERATIONPROJECT.model.BC.VO.AssNotesReviewDetailsVORowImpl"
+  ComponentClass="OPERATIONPROJECT.model.BC.VO.AssNotesReviewDetailsVOImpl"
+  PageIterMode="Partial"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  SelectAllAttributes="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Coll"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="OPERATIONPROJECT.model.BC.VO.AssNotesReviewDetailsVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="DataStatusActionVO1"
+    ViewObjectName="OPERATIONPROJECT.model.BC.VO.Lookups.DataStatusActionVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="CloseCodesGroupsVO1"
+    ViewObjectName="OPERATIONPROJECT.model.BC.VO.CloseCodesGroupsVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="CloseCodeReasonsVO1"
+    ViewObjectName="OPERATIONPROJECT.model.BC.VO.CloseCodeReasonsVO"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="P_CloseCodeGroup">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[Status]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_DataStatus"
+    ListVOName="DataStatusActionVO1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="DataStatus"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Id"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="DataStatus"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Status"
+    ListVOName="CloseCodesGroupsVO1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Status"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="GroupId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="GroupName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_CloseCodeReason"
+    ListVOName="CloseCodeReasonsVO1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CloseCodeReason"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CloseCodeId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CloseCodeReasonEn"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="AssNotesReviewDetailsEO"
+    Entity="OPERATIONPROJECT.model.BC.EO.AssNotesReviewDetailsEO"/>
+  <ViewAttribute
+    Name="AssignDate"
+    PrecisionRule="true"
+    EntityAttrName="AssignDate"
+    EntityUsage="AssNotesReviewDetailsEO"
+    AliasName="ASSIGN_DATE"/>
+  <ViewAttribute
+    Name="AreaId"
+    PrecisionRule="true"
+    EntityAttrName="AreaId"
+    EntityUsage="AssNotesReviewDetailsEO"
+    AliasName="AREA_ID"/>
+  <ViewAttribute
+    Name="AreaName"
+    PrecisionRule="true"
+    EntityAttrName="AreaName"
+    EntityUsage="AssNotesReviewDetailsEO"
+    AliasName="AREA_NAME"/>
+  <ViewAttribute
+    Name="DataAgent"
+    PrecisionRule="true"
+    EntityAttrName="DataAgent"
+    EntityUsage="AssNotesReviewDetailsEO"
+    AliasName="DATA_AGENT"/>
+  <ViewAttribute
+    Name="DriverName"
+    PrecisionRule="true"
+    EntityAttrName="DriverName"
+    EntityUsage="AssNotesReviewDetailsEO"
+    AliasName="DRIVER_NAME"/>
+  <ViewAttribute
+    Name="DrivId"
+    PrecisionRule="true"
+    EntityAttrName="DrivId"
+    EntityUsage="AssNotesReviewDetailsEO"
+    AliasName="DRIV_ID"/>
+  <ViewAttribute
+    Name="PilotName"
+    PrecisionRule="true"
+    EntityAttrName="PilotName"
+    EntityUsage="AssNotesReviewDetailsEO"
+    AliasName="PILOT_NAME"/>
+  <ViewAttribute
+    Name="PilotId"
+    PrecisionRule="true"
+    EntityAttrName="PilotId"
+    EntityUsage="AssNotesReviewDetailsEO"
+    AliasName="PILOT_ID"/>
+  <ViewAttribute
+    Name="AssignmentId"
+    PrecisionRule="true"
+    EntityAttrName="AssignmentId"
+    EntityUsage="AssNotesReviewDetailsEO"
+    AliasName="ASSIGNMENT_ID"/>
+  <ViewAttribute
+    Name="Status"
+    PrecisionRule="true"
+    EntityAttrName="Status"
+    EntityUsage="AssNotesReviewDetailsEO"
+    AliasName="STATUS"
+    LOVName="LOV_Status">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CloseCodeReason"
+    PrecisionRule="true"
+    EntityAttrName="CloseCodeReason"
+    EntityUsage="AssNotesReviewDetailsEO"
+    AliasName="CLOSE_CODE_REASON"
+    LOVName="LOV_CloseCodeReason">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CardNo"
+    PrecisionRule="true"
+    EntityAttrName="CardNo"
+    EntityUsage="AssNotesReviewDetailsEO"
+    AliasName="CARD_NO"/>
+  <ViewAttribute
+    Name="CustomerNotes"
+    PrecisionRule="true"
+    EntityAttrName="CustomerNotes"
+    EntityUsage="AssNotesReviewDetailsEO"
+    AliasName="CUSTOMER_NOTES">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="50"/>
+        <LABEL
+          ResId="OPERATIONPROJECT.model.BC.VO.AssNotesReviewDetailsVO.CustomerNotes_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ClientName"
+    PrecisionRule="true"
+    EntityAttrName="ClientName"
+    EntityUsage="AssNotesReviewDetailsEO"
+    AliasName="CLIENT_NAME"/>
+  <ViewAttribute
+    Name="Duration"
+    PrecisionRule="true"
+    EntityAttrName="Duration"
+    EntityUsage="AssNotesReviewDetailsEO"
+    AliasName="DURATION"/>
+  <ViewAttribute
+    Name="ActualPaid"
+    PrecisionRule="true"
+    EntityAttrName="ActualPaid"
+    EntityUsage="AssNotesReviewDetailsEO"
+    AliasName="ACTUAL_PAID"/>
+  <ViewAttribute
+    Name="DataStatus"
+    PrecisionRule="true"
+    EntityAttrName="DataStatus"
+    EntityUsage="AssNotesReviewDetailsEO"
+    AliasName="DATA_STATUS"
+    LOVName="LOV_DataStatus">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SelectedId"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="PackSelected"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.Long"
+    ColumnType="LONGINT"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="VALID"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.Long"
+    ColumnType="LONGINT"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="CheckPackageName"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewLinkAccessor
+    Name="DataTeamAgentNotesReview"
+    ViewLink="OPERATIONPROJECT.model.BC.VO.VL.AssNotesReviewVL"
+    Type="oracle.jbo.server.ViewRowImpl"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="ProductContract"
+    ViewLink="OPERATIONPROJECT.model.BC.VO.VL.ProductContractNotesVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="ProductContractDDownload"
+    ViewLink="OPERATIONPROJECT.model.BC.VO.VL.NotesProductContractDVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="ProductContractView"
+    ViewLink="OPERATIONPROJECT.model.BC.VO.VL.AssNotesPcontractVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="MTS.security.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

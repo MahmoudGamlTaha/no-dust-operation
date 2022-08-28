@@ -1,0 +1,22 @@
+## revision_history
+## 11-oct-2011   Steven Davelaar
+## 1.6           Use page_fragment_start/end macros to switch between facelets and jspx 
+## 04-feb-2011   Steven Davelaar
+## 1.5           replaced hardcoded JSP version number with JSP_VERSION macro
+## 05-nov-2010   Soham Dasgupta
+## 1.4           Removed empty af:xmlContent tag
+## 21-oct-2010   Steven Davelaar
+## 1.4           Modified to use declarative component
+## 26-jan-2009   Steven Davelaar
+## 1.3           Modified for JDev 11g, now creating fragment
+## 26-jun-2007   Evert-Jan de Bruin
+## 1.2           Modified for JDev 11g, now creating pageTemplateDef instead of region
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+<?xml version='1.0' #PAGE_ENCODING_PROP()?>
+#PAGE_FRAGMENT_START()
+    <af:componentDef>
+  ${JHS.current.include.content.generate(${JHS.generatorContext})}
+    </af:componentDef>
+#PAGE_FRAGMENT_END()
+

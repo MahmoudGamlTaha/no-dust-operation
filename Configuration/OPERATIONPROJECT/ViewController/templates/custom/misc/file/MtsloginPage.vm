@@ -1,0 +1,78 @@
+## revision_history
+## 12-oct-2017   Ahmed Magdy
+##               Remove default user login forms
+## 31-oct-2013   Steven Davelaar
+## 2.6           Moved metaContainer facet to separate macro, use PAGE_TEMPLATE_ID macro
+##               Use af:insertTextBehavior to copy un/pw
+## 11-oct-2011   Steven Davelaar
+## 2.5           Use page_start/end macros to switch between facelets and jspx 
+## 11-oct-2011   Steven Davelaar
+## 2.4           Get page extension from application view type instead of hardcoding .jspx
+## 04-feb-2011   Steven Davelaar
+## 2.3           replaced hardcoded JSP version number with JSP_VERSION macro
+##               Change encoding to pageEncoding
+## 01-nov-2010   Steven Davelaar
+## 2.2           Added call to keyboard server listener
+## 10-jul-2010   Steven Davelaar
+## 2.1           Do not use JhsDynamicTabsPageTemplate when set at application level
+## 23-jun-2009   Paco van der Linden
+## 2.0           Restructured layout according to (stretching) best-practices.
+## 17-jun-2007   Steven Davelaar
+## 1.0           Initial creation
+<?xml version='1.0' #PAGE_ENCODING_PROP()?>
+#PAGE_START()
+    <af:document title="#APPLICATION_TITLE()" id="#NEW_ID("doc")">
+      #META_CONTAINER_FACET()
+      <af:form id="dataForm" defaultCommand="#PAGE_TEMPLATE_ID():login">
+
+${JHS.engine.resetNamingContainerContext()}
+
+        ## do not use dynamic tabs template for this page
+        <af:pageTemplate id="#PAGE_TEMPLATE_ID()" viewId="/common/pageTemplates/JhsPageTemplate${JHS.application.pageExtension}">
+          <f:attribute name="showMessagesInline" value="${JHS.application.showMessagesInline}"/>
+          <f:attribute name="showMenu1" value="false"/>
+          <f:attribute name="showMenu2" value="false"/>
+          <f:attribute name="brandingTitle" value="#{nls['PRODUCT_TITLE']}"/>
+          <f:facet name="pageContent">
+            <af:panelGroupLayout id="#NEW_ID("pgl")" inlineStyle="background-image:url(/MotImages/login-page.jpg); background-repeat:no-repeat; background-size: 100% 100%;" layout="vertical" halign="center">
+              <af:panelGridLayout id="#NEW_ID("pgl")">
+                <af:gridRow marginTop="150px" id="#NEW_ID("gr")">
+                  <af:gridCell marginStart="50px" width="100%" marginEnd="50px" id="#NEW_ID("gc")" halign="center"
+                               valign="middle" inlineStyle="background-color:#F7F7F7; border: Gray solid 1px;">               
+                    <af:outputText id="ot" value="" rendered="#{LoginBean.authenticationFailed}"/>
+                    <af:panelGroupLayout id="#NEW_ID("pgl")" layout="horizontal" halign="center">
+                      <af:spacer width="15" height="15" id="#NEW_ID("s")"/>
+                      <af:panelGroupLayout id="pgl3" layout="vertical" halign="center">
+                        <af:spacer width="15" height="10" id="#NEW_ID("s")"/>
+                        <af:outputText id="#NEW_ID("ot")" value="${JHS.nls('Login','LOGIN_LABEL')}" inlineStyle="font-size: 22px;"/>
+                        <af:spacer width="15" height="15" id="#NEW_ID("s")"/>
+                        <af:panelFormLayout id="pfl" labelAlignment="top">
+                          <f:facet name="footer">
+                            <af:spacer width="10" height="10" id="#NEW_ID("s")"/>
+                            <af:button id="login" action="#{LoginBean.authenticateUser}"
+                                                  text="${JHS.nls('Login','LOGIN_BUTTON_LABEL')}"
+                                                  inlineStyle="width: 150px; border: skyblue 1px solid;"
+                                                  styleClass="MTSLoginButton"/>
+                          </f:facet>
+                          <af:inputText label="${JHS.nls('Username','LOGIN_USERNAME_LABEL')}" id="username"
+                                        labelStyle="font-size: 16px;" contentStyle="font-size: 16px;"
+                                        value="#{LoginBean.username}" required="true"/>
+                          <af:spacer width="10" height="10" id="#NEW_ID("s")"/>
+                          <af:inputText label="${JHS.nls('Password','LOGIN_PASSWORD_LABEL')}" id="password"
+                                        labelStyle="font-size: 16px;" contentStyle="font-size: 16px;"
+                                        value="#{LoginBean.password}" secret="true" required="true"/>
+                        </af:panelFormLayout>
+                        <af:spacer width="15" height="15" id="#NEW_ID("s")"/>
+                      </af:panelGroupLayout>
+                      <af:spacer width="15" height="15" id="#NEW_ID("s")"/>
+                    </af:panelGroupLayout>
+                  </af:gridCell>
+                </af:gridRow>
+              </af:panelGridLayout>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+      #KEYBOARD_SERVER_LISTENER()
+    </af:document>
+#PAGE_END()

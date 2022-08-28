@@ -1,0 +1,29 @@
+## revision_history
+## 17-sep-2007   Steven Davelaar
+## 1.2           Flex regions should be reusable accross groups, no longer insert group_name
+## 03-jul-2007   Steven Davelaar
+## 1.1           Added support flex region item display type
+## 31-may-2007   Steven Davelaar
+## 1.0           Initial creation
+  #foreach ($group in $JHS.service.allGroups)
+    #foreach ($region in $group.flexRegions)
+       insert into JHS_FLEX_REGION_DEFINITIONS (ID, NAME, ORG_KEY) 
+       select JHS_SEQ.nextval, '${region.name}', 'DEFAULT'
+       from dual
+       where not exists (select '1' from JHS_FLEX_REGION_DEFINITIONS
+                         where name='${region.name}'
+                         and org_key='DEFAULT');    
+    #end
+    #foreach ($item in $group.allItems)
+      #if (${item.displayType}=='flexRegion')
+       insert into JHS_FLEX_REGION_DEFINITIONS (ID, NAME, ORG_KEY) 
+       select JHS_SEQ.nextval, '${item.name}', 'DEFAULT'
+       from dual
+       where not exists (select '1' from JHS_FLEX_REGION_DEFINITIONS
+                         where name='${item.name}'
+                         and org_key='DEFAULT');    
+      #end                   
+    #end
+    
+  #end
+commit;

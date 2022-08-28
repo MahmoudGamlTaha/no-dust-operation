@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <task-flow-definition id="FinancialPeriodTaskFlow">
+        <!-- DEBUG:BEGIN:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2 -->
+        <template-reference>
+            <document id="__0">/WEB-INF/jhs-fragment-taskflow-template.xml</document>
+            <id id="__1">jhs-fragment-taskflow-template</id>
+        </template-reference>
+        <!-- DEBUG:END:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2-->
+        <default-activity id="__2">StartFinancialPeriod</default-activity>
+        <!-- DEBUG:BEGIN:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2 -->
+        <input-parameter-definition id="__3">
+            <name id="__4">createFinancialPeriod</name>
+            <value id="__5">#{pageFlowScope.createFinancialPeriod}</value>
+            <class id="__6">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__7">
+            <name id="__8">rowKeyStrFinancialPeriod</name>
+            <value id="__9">#{pageFlowScope.rowKeyStrFinancialPeriod}</value>
+            <class id="__10">java.lang.String</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__11">
+            <name id="__12">rowKeyValueFinancialPeriod</name>
+            <value id="__13">#{pageFlowScope.rowKeyValueFinancialPeriod}</value>
+            <class id="__14">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__15">
+            <name id="__16">rowKeyFinancialPeriod</name>
+            <value id="__17">#{pageFlowScope.rowKeyFinancialPeriod}</value>
+            <class id="__18">oracle.jbo.Key</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__19">
+            <name id="__20">altKeyNameFinancialPeriod</name>
+            <value id="__21">#{pageFlowScope.altKeyNameFinancialPeriod}</value>
+            <class id="__22">java.lang.String</class>
+        </input-parameter-definition>
+        <!-- DEBUG:END:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2 -->
+        <managed-bean id="__23">
+            <managed-bean-name id="__24">jhsTaskFlowManager</managed-bean-name>
+            <managed-bean-class id="__25">oracle.jheadstart.controller.jsf.bean.TaskFlowManager</managed-bean-class>
+            <managed-bean-scope id="__26">pageFlow</managed-bean-scope>
+            <managed-property id="__27">
+                <property-name id="__28">initializeParentContextEntries</property-name>
+                <map-entries id="__29">
+                    <map-entry id="__30">
+                        <key id="__31">jhsCurrentGroupName</key>
+                        <value id="__32">FinancialPeriod</value>
+                    </map-entry>
+                </map-entries>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:DEFAULT_VALUES_BEAN : default/misc/facesConfig/defaultValuesBean.vm, nesting level: 2 -->
+        <managed-bean id="__33">
+            <managed-bean-name id="__34">FinancialPeriodDefaultValues</managed-bean-name>
+            <managed-bean-class id="__35">oracle.jheadstart.controller.jsf.bean.DefaultValuesBean</managed-bean-class>
+            <managed-bean-scope id="__36">pageFlow</managed-bean-scope>
+            <managed-property id="__37">
+                <property-name id="__38">iteratorBinding</property-name>
+                <value id="__39">#{data.FinancialPeriodPageDef.FinancialPeriodIterator}</value>
+            </managed-property>
+            <managed-property id="__40">
+                <property-name id="__41">defaultValues</property-name>
+                <map-entries id="__42">
+                    <map-entry id="__43">
+                        <key id="__44">Default1</key>
+                        <value id="__45">0</value>
+                    </map-entry>
+                    <map-entry id="__46">
+                        <key id="__47">Active</key>
+                        <value id="__48">1</value>
+                    </map-entry>
+                </map-entries>
+            </managed-property>
+            <managed-property id="__49">
+                <property-name id="__50">actionResult</property-name>
+                <value id="__51">CreateFinancialPeriod</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:DEFAULT_VALUES_BEAN : default/misc/facesConfig/defaultValuesBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2 -->
+        <managed-bean id="__52">
+            <managed-bean-name id="__53">SaveFinancialPeriod</managed-bean-name>
+            <managed-bean-class id="__54">oracle.jheadstart.controller.jsf.bean.CommitBean</managed-bean-class>
+            <managed-bean-scope id="__55">request</managed-bean-scope>
+            <managed-property id="__56">
+                <property-name id="__57">commitBinding</property-name>
+                <value id="__58">#{bindings.Commit}</value>
+            </managed-property>
+            <managed-property id="__59">
+                <property-name id="__60">successOutcome</property-name>
+                <value id="__61">Commit</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2 -->
+        <managed-bean id="__62">
+            <managed-bean-name id="__63">jhsRollback</managed-bean-name>
+            <managed-bean-class id="__64">oracle.jheadstart.controller.jsf.bean.RollbackBean</managed-bean-class>
+            <managed-bean-scope id="__65">request</managed-bean-scope>
+            <managed-property id="__66">
+                <property-name id="__67">rollbackBinding</property-name>
+                <value id="__68">#{bindings.Rollback}</value>
+            </managed-property>
+            <managed-property id="__69">
+                <property-name id="__70">successOutcome</property-name>
+                <value id="__71">Cancel</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__72">
+            <managed-bean-name id="__73">FinancialPeriodTable</managed-bean-name>
+            <managed-bean-class id="__74">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__75">pageFlow</managed-bean-scope>
+            <managed-property id="__76">
+                <property-name id="__77">name</property-name>
+                <value id="__78">FinancialPeriodTable</value>
+            </managed-property>
+            <managed-property id="__79">
+                <property-name id="__80">rangeBindingExpr</property-name>
+                <value id="__81">#{'#{bindings.FinancialPeriodTable}'}</value>
+            </managed-property>
+            <managed-property id="__82">
+                <property-name id="__83">defaultValuesBean</property-name>
+                <value id="__84">#{pageFlowScope.FinancialPeriodDefaultValues}</value>
+            </managed-property>
+            <managed-property id="__85">
+                <property-name id="__86">focusItemId</property-name>
+                <value id="__87">FinancialPeriodDescription</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__88">
+            <managed-bean-name id="__89">DeleteFinancialPeriod</managed-bean-name>
+            <managed-bean-class id="__90">oracle.jheadstart.controller.jsf.bean.DeleteRowBean</managed-bean-class>
+            <managed-bean-scope id="__91">request</managed-bean-scope>
+            <managed-property id="__92">
+                <property-name id="__93">deleteBinding</property-name>
+                <value id="__94">#{bindings.DeleteFinancialPeriod}</value>
+            </managed-property>
+            <managed-property id="__95">
+                <property-name id="__96">commitBean</property-name>
+                <value id="__97">#{jhsCommit}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__98">
+            <managed-bean-name id="__99">CreateFinancialPeriod</managed-bean-name>
+            <managed-bean-class id="__100">oracle.jheadstart.controller.jsf.bean.CreateRowBean</managed-bean-class>
+            <managed-bean-scope id="__101">request</managed-bean-scope>
+            <managed-property id="__102">
+                <property-name id="__103">createBinding</property-name>
+                <value id="__104">#{bindings.CreateFinancialPeriod}</value>
+            </managed-property>
+            <managed-property id="__105">
+                <property-name id="__106">defaultValuesBean</property-name>
+                <value id="__107">#{pageFlowScope.FinancialPeriodDefaultValues}</value>
+            </managed-property>
+            <managed-property id="__108">
+                <property-name id="__109">successOutcome</property-name>
+                <value id="__110">deepLinkPage</value>
+            </managed-property>
+            <managed-property id="__111">
+                <property-name id="__112">failureOutcome</property-name>
+                <value id="__113">firstPage</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CHECKBOX_IN_TABLE_BEAN : default/misc/facesConfig/checkboxInTableBean.vm, nesting level: 2 -->
+        <managed-bean id="__114">
+            <managed-bean-name id="__115">FinancialPeriodDefault1checkboxInTable</managed-bean-name>
+            <managed-bean-class id="__116">oracle.jheadstart.controller.jsf.bean.CheckboxInTableBean</managed-bean-class>
+            <managed-bean-scope id="__117">request</managed-bean-scope>
+            <managed-property id="__118">
+                <property-name id="__119">binding</property-name>
+                <value id="__120">#{bindings.FinancialPeriodDefault1}</value>
+            </managed-property>
+            <managed-property id="__121">
+                <property-name id="__122">tableBean</property-name>
+                <value id="__123">#{pageFlowScope.FinancialPeriodTable}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CHECKBOX_IN_TABLE_BEAN : default/misc/facesConfig/checkboxInTableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CHECKBOX_IN_TABLE_BEAN : default/misc/facesConfig/checkboxInTableBean.vm, nesting level: 2 -->
+        <managed-bean id="__124">
+            <managed-bean-name id="__125">FinancialPeriodActivecheckboxInTable</managed-bean-name>
+            <managed-bean-class id="__126">oracle.jheadstart.controller.jsf.bean.CheckboxInTableBean</managed-bean-class>
+            <managed-bean-scope id="__127">request</managed-bean-scope>
+            <managed-property id="__128">
+                <property-name id="__129">binding</property-name>
+                <value id="__130">#{bindings.FinancialPeriodActive}</value>
+            </managed-property>
+            <managed-property id="__131">
+                <property-name id="__132">tableBean</property-name>
+                <value id="__133">#{pageFlowScope.FinancialPeriodTable}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CHECKBOX_IN_TABLE_BEAN : default/misc/facesConfig/checkboxInTableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2 -->
+        <router id="StartFinancialPeriod">
+            <case id="__134">
+                <expression id="__135">#{pageFlowScope.createFinancialPeriod!=null}</expression>
+                <outcome id="__136">createFinancialPeriod</outcome>
+            </case>
+            <case id="__137">
+                <expression id="__138">#{pageFlowScope.rowKeyStrFinancialPeriod!=null or
+                                       pageFlowScope.rowKeyValueFinancialPeriod!=null or
+                                       pageFlowScope.rowKeyFinancialPeriod!=null}</expression>
+                <outcome id="__139">SetCurrentRowFinancialPeriod</outcome>
+            </case>
+            <case id="__140">
+                <expression id="__141">#{pageFlowScope.isDeepLink!=null and pageFlowScope.isDeepLink}</expression>
+                <outcome id="__142">deepLinkPage</outcome>
+            </case>
+            <default-outcome id="__143">firstPage</default-outcome>
+        </router>
+        <!-- DEBUG:END:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2 -->
+        <method-call id="CreateFinancialPeriod">
+            <method id="__144">#{CreateFinancialPeriod.execute}</method>
+            <!-- execute condition param -->
+            <parameter>
+                <class id="__145">java.lang.Object</class>
+                <value id="__146">#{pageFlowScope.createFinancialPeriod}</value>
+            </parameter>
+            <outcome id="__147">
+                <to-string/>
+            </outcome>
+        </method-call>
+        <method-call id="SetCurrentRowFinancialPeriod">
+            <method id="__148">#{jhsSetCurrentRow.execute}</method>
+            <!-- iterator param -->
+            <parameter>
+                <class id="__149">oracle.adf.model.binding.DCIteratorBinding</class>
+                <value id="__150">#{bindings.FinancialPeriodIterator}</value>
+            </parameter>
+            <!-- rowKeyStr param -->
+            <parameter>
+                <class id="__151">java.lang.String</class>
+                <value id="__152">#{pageFlowScope.rowKeyStrFinancialPeriod}</value>
+            </parameter>
+            <!-- rowKeyValue param -->
+            <parameter>
+                <class id="__153">java.lang.Object</class>
+                <value id="__154">#{pageFlowScope.rowKeyValueFinancialPeriod}</value>
+            </parameter>
+            <!-- rowKey param -->
+            <parameter>
+                <class id="__155">oracle.jbo.Key</class>
+                <value id="__156">#{pageFlowScope.rowKeyFinancialPeriod}</value>
+            </parameter>
+            <!-- altKeyName param -->
+            <parameter>
+                <class id="__157">java.lang.String</class>
+                <value id="__158">#{pageFlowScope.altKeyNameFinancialPeriod}</value>
+            </parameter>
+            <outcome id="__159">
+                <fixed-outcome id="__160">deepLinkPage</fixed-outcome>
+            </outcome>
+        </method-call>
+        <!-- DEBUG:END:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2-->
+        <task-flow-return id="CancelFinancialPeriodReturn">
+            <outcome id="__161">
+                <name id="__162">CancelFinancialPeriod</name>
+            </outcome>
+        </task-flow-return>
+        <task-flow-return id="DoneFinancialPeriodReturn">
+            <outcome id="__163">
+                <name id="__164">DoneFinancialPeriod</name>
+            </outcome>
+        </task-flow-return>
+        <!-- DEBUG:BEGIN:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2 -->
+        <view id="FinancialPeriodTable">
+            <page id="__165">/pages/FinancialPeriodTable.jsff</page>
+        </view>
+        <!-- DEBUG:END:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2 -->
+        <control-flow-rule id="__166">
+            <from-activity-id id="__167">*</from-activity-id>
+            <control-flow-case id="__168">
+                <from-outcome id="__169">SetCurrentRowFinancialPeriod</from-outcome>
+                <to-activity-id id="__170">SetCurrentRowFinancialPeriod</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__171">
+                <from-outcome id="__172">firstPage</from-outcome>
+                <to-activity-id id="__173">FinancialPeriodTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__174">
+                <from-outcome id="__175">deepLinkPage</from-outcome>
+                <to-activity-id id="__176">FinancialPeriodTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__177">
+                <from-outcome id="__178">FinancialPeriodTableBreadcrumb</from-outcome>
+                <to-activity-id id="__179">FinancialPeriodTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__180">
+                <from-outcome id="__181">Cancel</from-outcome>
+                <to-activity-id id="__182">StartFinancialPeriod</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__183">
+                <from-outcome id="__184">CancelFinancialPeriodReturn</from-outcome>
+                <to-activity-id id="__185">CancelFinancialPeriodReturn</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__186">
+                <from-outcome id="__187">DoneFinancialPeriodReturn</from-outcome>
+                <to-activity-id id="__188">DoneFinancialPeriodReturn</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__189">
+            <from-activity-id id="__190">*</from-activity-id>
+            <control-flow-case id="__191">
+                <from-outcome id="__192">createFinancialPeriod</from-outcome>
+                <to-activity-id id="__193">CreateFinancialPeriod</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <!-- DEBUG:END:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2-->
+        <use-page-fragments/>
+    </task-flow-definition>
+    <!-- This bean must be defined outside the task-flow-definition element
+       because it needs to be available in the pageFlowScope of the unbounded
+       task-flow not in the pageFlowScope of the bounded task flow itself. -->
+    <!-- DEBUG:BEGIN:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2 -->
+    <managed-bean id="__194">
+        <managed-bean-name id="__195">FinancialPeriodTaskFlowConfig</managed-bean-name>
+        <managed-bean-class id="__196">oracle.jheadstart.controller.jsf.bean.TaskFlowConfigBean</managed-bean-class>
+        <managed-bean-scope id="__197">pageFlow</managed-bean-scope>
+        <managed-property id="__198">
+            <property-name id="__199">params</property-name>
+            <property-class id="__200">java.util.Map</property-class>
+            <map-entries id="__201">
+                <map-entry id="__202">
+                    <key id="__203">parentContext</key>
+                    <value id="__204">#{pageFlowScope.parentContext}</value>
+                </map-entry>
+            </map-entries>
+        </managed-property>
+        <managed-property id="__205">
+            <property-name id="__206">name</property-name>
+            <value id="__207">FinancialPeriod</value>
+        </managed-property>
+        <managed-property id="__208">
+            <property-name id="__209">taskFlowId</property-name>
+            <value id="__210">/WEB-INF/adfc-config-FinancialPeriod.xml#FinancialPeriodTaskFlow</value>
+        </managed-property>
+        <managed-property id="__211">
+            <property-name id="__212">label</property-name>
+            <value id="__213">#{nls['MENU1_TITLE_FINANCIALPERIOD']}</value>
+        </managed-property>
+    </managed-bean>
+    <!-- DEBUG:END:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2-->
+</adfc-config>

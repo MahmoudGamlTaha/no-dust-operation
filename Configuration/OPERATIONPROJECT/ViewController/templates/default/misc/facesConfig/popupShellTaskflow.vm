@@ -1,0 +1,50 @@
+## revision_history
+## 11-oct-2011   Steven Davelaar
+## 1.4           Get page extension from application view type instead of hardcoding .jspx
+## 27-aug-2010   Sandra Muller
+## 1.3           Added control rule for "Done", that allows you to add a button on the PopupShell page that closes the popup
+## 12-jul-2010   Steven Davelaar
+## 1.2           Use commonPagesDir setting instead of hardcoded /pages/ path for location popup shell page
+## 18-may-2010   Steven Davelaar
+## 1.1           Added id property to all elements
+## 02-jan-2010   Steven Davelaar
+## 1.0           Initial creation
+<?xml version="1.0" #ENCODING_PROP() ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="popup-shell-taskflow">
+    <default-activity id="#NEW_ID("__")">PopupShell</default-activity>
+    <data-control-scope id="#NEW_ID("__")">
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="#NEW_ID("__")">
+      <name id="#NEW_ID("__")">taskFlowId</name>
+      <value id="#NEW_ID("__")">#{pageFlowScope.taskFlowId}</value>
+      <class id="#NEW_ID("__")">java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="#NEW_ID("__")">
+      <name id="#NEW_ID("__")">parametersMap</name>
+      <value id="#NEW_ID("__")">#{pageFlowScope.parametersMap}</value>
+      <class id="#NEW_ID("__")">java.util.Map</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="#NEW_ID("__")">
+      <name id="#NEW_ID("__")">popupTitle</name>
+      <value id="#NEW_ID("__")">#{pageFlowScope.popupTitle}</value>
+      <class id="#NEW_ID("__")">java.lang.String</class>
+    </input-parameter-definition>
+    <view id="PopupShell">
+      <page id="#NEW_ID("__")">${JHS.application.commonPagesDir}PopupShell${JHS.application.pageExtension}</page>
+    </view>
+    <task-flow-return id="Done">
+      <outcome id="#NEW_ID("__")">
+        <name id="#NEW_ID("__")">Done</name>
+      </outcome>
+    </task-flow-return>
+    <control-flow-rule id="#NEW_ID("__")">
+      <from-activity-id id="#NEW_ID("__")">*</from-activity-id>
+      <control-flow-case id="#NEW_ID("__")">
+        <from-outcome id="#NEW_ID("__")">Done</from-outcome>
+        <to-activity-id id="#NEW_ID("__")">Done</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+  </task-flow-definition>
+</adfc-config>

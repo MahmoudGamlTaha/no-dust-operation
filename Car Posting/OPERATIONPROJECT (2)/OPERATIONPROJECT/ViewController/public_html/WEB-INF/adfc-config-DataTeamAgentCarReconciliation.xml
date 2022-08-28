@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <task-flow-definition id="DataTeamAgentCarReconciliationTaskFlow">
+        <!-- DEBUG:BEGIN:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2 -->
+        <template-reference>
+            <document id="__0">/WEB-INF/jhs-fragment-taskflow-template.xml</document>
+            <id id="__1">jhs-fragment-taskflow-template</id>
+        </template-reference>
+        <!-- DEBUG:END:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2-->
+        <default-activity id="__2">StartDataTeamAgentCarReconciliation</default-activity>
+        <!-- DEBUG:BEGIN:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2 -->
+        <input-parameter-definition id="__3">
+            <name id="__4">rowKeyStrDataTeamAgentCarReconciliation</name>
+            <value id="__5">#{pageFlowScope.rowKeyStrDataTeamAgentCarReconciliation}</value>
+            <class id="__6">java.lang.String</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__7">
+            <name id="__8">rowKeyValueDataTeamAgentCarReconciliation</name>
+            <value id="__9">#{pageFlowScope.rowKeyValueDataTeamAgentCarReconciliation}</value>
+            <class id="__10">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__11">
+            <name id="__12">rowKeyDataTeamAgentCarReconciliation</name>
+            <value id="__13">#{pageFlowScope.rowKeyDataTeamAgentCarReconciliation}</value>
+            <class id="__14">oracle.jbo.Key</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__15">
+            <name id="__16">altKeyNameDataTeamAgentCarReconciliation</name>
+            <value id="__17">#{pageFlowScope.altKeyNameDataTeamAgentCarReconciliation}</value>
+            <class id="__18">java.lang.String</class>
+        </input-parameter-definition>
+        <!-- DEBUG:END:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2 -->
+        <managed-bean id="__19">
+            <managed-bean-name id="__20">jhsTaskFlowManager</managed-bean-name>
+            <managed-bean-class id="__21">oracle.jheadstart.controller.jsf.bean.TaskFlowManager</managed-bean-class>
+            <managed-bean-scope id="__22">pageFlow</managed-bean-scope>
+            <managed-property id="__23">
+                <property-name id="__24">initializeParentContextEntries</property-name>
+                <map-entries id="__25">
+                    <map-entry id="__26">
+                        <key id="__27">jhsCurrentGroupName</key>
+                        <value id="__28">DataTeamAgentCarReconciliation</value>
+                    </map-entry>
+                </map-entries>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2 -->
+        <managed-bean id="__29">
+            <managed-bean-name id="__30">jhsRollback</managed-bean-name>
+            <managed-bean-class id="__31">oracle.jheadstart.controller.jsf.bean.RollbackBean</managed-bean-class>
+            <managed-bean-scope id="__32">request</managed-bean-scope>
+            <managed-property id="__33">
+                <property-name id="__34">rollbackBinding</property-name>
+                <value id="__35">#{bindings.Rollback}</value>
+            </managed-property>
+            <managed-property id="__36">
+                <property-name id="__37">successOutcome</property-name>
+                <value id="__38">Cancel</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__39">
+            <managed-bean-name id="__40">DataTeamAgentCarReconciliationTable</managed-bean-name>
+            <managed-bean-class id="__41">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__42">pageFlow</managed-bean-scope>
+            <managed-property id="__43">
+                <property-name id="__44">name</property-name>
+                <value id="__45">DataTeamAgentCarReconciliationTable</value>
+            </managed-property>
+            <managed-property id="__46">
+                <property-name id="__47">rangeBindingExpr</property-name>
+                <value id="__48">#{'#{bindings.DataTeamAgentCarReconciliationTable}'}</value>
+            </managed-property>
+            <managed-property id="__49">
+                <property-name id="__50">focusItemId</property-name>
+                <value id="__51">DataTeamAgentCarReconciliationDriverName</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2 -->
+        <managed-bean id="__52">
+            <managed-bean-name id="__53">SaveDataTeamAgentCarReconciliation</managed-bean-name>
+            <managed-bean-class id="__54">oracle.jheadstart.controller.jsf.bean.CommitBean</managed-bean-class>
+            <managed-bean-scope id="__55">request</managed-bean-scope>
+            <managed-property id="__56">
+                <property-name id="__57">commitBinding</property-name>
+                <value id="__58">#{bindings.Commit}</value>
+            </managed-property>
+            <managed-property id="__59">
+                <property-name id="__60">successOutcome</property-name>
+                <value id="__61">Commit</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__62">
+            <managed-bean-name id="__63">RelatedShipmentsTable</managed-bean-name>
+            <managed-bean-class id="__64">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__65">pageFlow</managed-bean-scope>
+            <managed-property id="__66">
+                <property-name id="__67">name</property-name>
+                <value id="__68">RelatedShipmentsTable</value>
+            </managed-property>
+            <managed-property id="__69">
+                <property-name id="__70">rangeBindingExpr</property-name>
+                <value id="__71">#{'#{bindings.RelatedShipmentsTable}'}</value>
+            </managed-property>
+            <managed-property id="__72">
+                <property-name id="__73">focusItemId</property-name>
+                <value id="__74">RelatedShipmentsShipmentId</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__75">
+            <managed-bean-name id="__76">ContractsReviewTable</managed-bean-name>
+            <managed-bean-class id="__77">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__78">pageFlow</managed-bean-scope>
+            <managed-property id="__79">
+                <property-name id="__80">name</property-name>
+                <value id="__81">ContractsReviewTable</value>
+            </managed-property>
+            <managed-property id="__82">
+                <property-name id="__83">rangeBindingExpr</property-name>
+                <value id="__84">#{'#{bindings.ContractsReviewTable}'}</value>
+            </managed-property>
+            <managed-property id="__85">
+                <property-name id="__86">focusItemId</property-name>
+                <value id="__87">ContractsReviewVerification</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__88">
+            <managed-bean-name id="__89">ReconciliationNotesTable</managed-bean-name>
+            <managed-bean-class id="__90">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__91">pageFlow</managed-bean-scope>
+            <managed-property id="__92">
+                <property-name id="__93">name</property-name>
+                <value id="__94">ReconciliationNotesTable</value>
+            </managed-property>
+            <managed-property id="__95">
+                <property-name id="__96">rangeBindingExpr</property-name>
+                <value id="__97">#{'#{bindings.ReconciliationNotesTable}'}</value>
+            </managed-property>
+            <managed-property id="__98">
+                <property-name id="__99">focusItemId</property-name>
+                <value id="__100">ReconciliationNotesVerification</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__101">
+            <managed-bean-name id="__102">HubReconciliationTable</managed-bean-name>
+            <managed-bean-class id="__103">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__104">pageFlow</managed-bean-scope>
+            <managed-property id="__105">
+                <property-name id="__106">name</property-name>
+                <value id="__107">HubReconciliationTable</value>
+            </managed-property>
+            <managed-property id="__108">
+                <property-name id="__109">rangeBindingExpr</property-name>
+                <value id="__110">#{'#{bindings.HubReconciliationTable}'}</value>
+            </managed-property>
+            <managed-property id="__111">
+                <property-name id="__112">focusItemId</property-name>
+                <value id="__113">HubReconciliationProductName</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__114">
+            <managed-bean-name id="__115">PilotsLostNewTable</managed-bean-name>
+            <managed-bean-class id="__116">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__117">pageFlow</managed-bean-scope>
+            <managed-property id="__118">
+                <property-name id="__119">name</property-name>
+                <value id="__120">PilotsLostNewTable</value>
+            </managed-property>
+            <managed-property id="__121">
+                <property-name id="__122">rangeBindingExpr</property-name>
+                <value id="__123">#{'#{bindings.PilotsLostNewTable}'}</value>
+            </managed-property>
+            <managed-property id="__124">
+                <property-name id="__125">focusItemId</property-name>
+                <value id="__126">PilotsLostNewPilotName</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__127">
+            <managed-bean-name id="__128">CarLostNewTable</managed-bean-name>
+            <managed-bean-class id="__129">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__130">pageFlow</managed-bean-scope>
+            <managed-property id="__131">
+                <property-name id="__132">name</property-name>
+                <value id="__133">CarLostNewTable</value>
+            </managed-property>
+            <managed-property id="__134">
+                <property-name id="__135">rangeBindingExpr</property-name>
+                <value id="__136">#{'#{bindings.CarLostNewTable}'}</value>
+            </managed-property>
+            <managed-property id="__137">
+                <property-name id="__138">focusItemId</property-name>
+                <value id="__139">CarLostNewProductName</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__140">
+            <managed-bean-name id="__141">HubFinancialReconciliationTable</managed-bean-name>
+            <managed-bean-class id="__142">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__143">pageFlow</managed-bean-scope>
+            <managed-property id="__144">
+                <property-name id="__145">name</property-name>
+                <value id="__146">HubFinancialReconciliationTable</value>
+            </managed-property>
+            <managed-property id="__147">
+                <property-name id="__148">rangeBindingExpr</property-name>
+                <value id="__149">#{'#{bindings.HubFinancialReconciliationTable}'}</value>
+            </managed-property>
+            <managed-property id="__150">
+                <property-name id="__151">focusItemId</property-name>
+                <value id="__152">HubFinancialReconciliationPilotName</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__153">
+            <managed-bean-name id="__154">ReconciledAmountTable</managed-bean-name>
+            <managed-bean-class id="__155">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__156">pageFlow</managed-bean-scope>
+            <managed-property id="__157">
+                <property-name id="__158">name</property-name>
+                <value id="__159">ReconciledAmountTable</value>
+            </managed-property>
+            <managed-property id="__160">
+                <property-name id="__161">rangeBindingExpr</property-name>
+                <value id="__162">#{'#{bindings.ReconciledAmountTable}'}</value>
+            </managed-property>
+            <managed-property id="__163">
+                <property-name id="__164">focusItemId</property-name>
+                <value id="__165">ReconciledAmountActualAmount</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__166">
+            <managed-bean-name id="__167">CarBalanceTable</managed-bean-name>
+            <managed-bean-class id="__168">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__169">pageFlow</managed-bean-scope>
+            <managed-property id="__170">
+                <property-name id="__171">name</property-name>
+                <value id="__172">CarBalanceTable</value>
+            </managed-property>
+            <managed-property id="__173">
+                <property-name id="__174">rangeBindingExpr</property-name>
+                <value id="__175">#{'#{bindings.CarBalanceTable}'}</value>
+            </managed-property>
+            <managed-property id="__176">
+                <property-name id="__177">focusItemId</property-name>
+                <value id="__178">CarBalanceActualAmount</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2 -->
+        <router id="StartDataTeamAgentCarReconciliation">
+            <case id="__179">
+                <expression id="__180">#{pageFlowScope.rowKeyStrDataTeamAgentCarReconciliation!=null or
+                                       pageFlowScope.rowKeyValueDataTeamAgentCarReconciliation!=null or
+                                       pageFlowScope.rowKeyDataTeamAgentCarReconciliation!=null}</expression>
+                <outcome id="__181">SetCurrentRowDataTeamAgentCarReconciliation</outcome>
+            </case>
+            <case id="__182">
+                <expression id="__183">#{pageFlowScope.isDeepLink!=null and pageFlowScope.isDeepLink}</expression>
+                <outcome id="__184">deepLinkPage</outcome>
+            </case>
+            <default-outcome id="__185">firstPage</default-outcome>
+        </router>
+        <!-- DEBUG:END:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2 -->
+        <method-call id="SetCurrentRowDataTeamAgentCarReconciliation">
+            <method id="__186">#{jhsSetCurrentRow.execute}</method>
+            <!-- iterator param -->
+            <parameter>
+                <class id="__187">oracle.adf.model.binding.DCIteratorBinding</class>
+                <value id="__188">#{bindings.DataTeamAgentCarReconciliationIterator}</value>
+            </parameter>
+            <!-- rowKeyStr param -->
+            <parameter>
+                <class id="__189">java.lang.String</class>
+                <value id="__190">#{pageFlowScope.rowKeyStrDataTeamAgentCarReconciliation}</value>
+            </parameter>
+            <!-- rowKeyValue param -->
+            <parameter>
+                <class id="__191">java.lang.Object</class>
+                <value id="__192">#{pageFlowScope.rowKeyValueDataTeamAgentCarReconciliation}</value>
+            </parameter>
+            <!-- rowKey param -->
+            <parameter>
+                <class id="__193">oracle.jbo.Key</class>
+                <value id="__194">#{pageFlowScope.rowKeyDataTeamAgentCarReconciliation}</value>
+            </parameter>
+            <!-- altKeyName param -->
+            <parameter>
+                <class id="__195">java.lang.String</class>
+                <value id="__196">#{pageFlowScope.altKeyNameDataTeamAgentCarReconciliation}</value>
+            </parameter>
+            <outcome id="__197">
+                <fixed-outcome id="__198">deepLinkPage</fixed-outcome>
+            </outcome>
+        </method-call>
+        <!-- DEBUG:END:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2-->
+        <task-flow-return id="CancelDataTeamAgentCarReconciliationReturn">
+            <outcome id="__199">
+                <name id="__200">CancelDataTeamAgentCarReconciliation</name>
+            </outcome>
+        </task-flow-return>
+        <task-flow-return id="DoneDataTeamAgentCarReconciliationReturn">
+            <outcome id="__201">
+                <name id="__202">DoneDataTeamAgentCarReconciliation</name>
+            </outcome>
+        </task-flow-return>
+        <!-- DEBUG:BEGIN:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2 -->
+        <view id="DataTeamAgentCarReconciliationTable">
+            <page id="__203">/pages/DataTeamAgentCarReconciliationTable.jsff</page>
+        </view>
+        <view id="DataTeamAgentCarReconciliation">
+            <page id="__204">/pages/DataTeamAgentCarReconciliation.jsff</page>
+        </view>
+        <!-- DEBUG:END:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2 -->
+        <task-flow-call id="PilotCoverGroupTaskFlow">
+            <task-flow-reference>
+                <document>/WEB-INF/adfc-config-PilotCoverGroup.xml</document>
+                <id>PilotCoverGroupTaskFlow</id>
+            </task-flow-reference>
+            <input-parameter id="__258">
+                <name>ShipmentId</name>
+                <value>#{pageFlowScope.ShipmentId}</value>
+            </input-parameter>
+            <input-parameter id="__259">
+                <name>PilotCoverEdited</name>
+                <value>#{pageFlowScope.PilotCoverEdited}</value>
+            </input-parameter>
+            <run-as-dialog>
+                <display-type>
+                    <inline-popup/>
+                </display-type>
+            </run-as-dialog>
+        </task-flow-call>
+        <task-flow-call id="ProductDetailsGroupTaskFlow">
+            <task-flow-reference>
+                <document>/WEB-INF/adfc-config-ProductDetailsGroup.xml</document>
+                <id>ProductDetailsGroupTaskFlow</id>
+            </task-flow-reference>
+            <input-parameter id="__261">
+                <name>ProductId</name>
+                <value>#{pageFlowScope.ProductId}</value>
+            </input-parameter>
+            <input-parameter id="__262">
+                <name>ShipmentId</name>
+                <value>#{pageFlowScope.ShipmentId}</value>
+            </input-parameter>
+            <run-as-dialog>
+                <display-type>
+                    <inline-popup/>
+                </display-type>
+            </run-as-dialog>
+        </task-flow-call>
+        <task-flow-call id="HubCoverGroupTaskFlow">
+            <task-flow-reference>
+                <document>/WEB-INF/adfc-config-HubCoverGroup.xml</document>
+                <id>HubCoverGroupTaskFlow</id>
+            </task-flow-reference>
+            <input-parameter id="__264">
+                <name>ShipmentId</name>
+                <value>#{pageFlowScope.ShipmentId}</value>
+            </input-parameter>
+            <run-as-dialog>
+                <display-type>
+                    <inline-popup/>
+                </display-type>
+            </run-as-dialog>
+        </task-flow-call>
+        <control-flow-rule id="__205">
+            <from-activity-id id="__206">*</from-activity-id>
+            <control-flow-case id="__207">
+                <from-outcome id="__208">SetCurrentRowDataTeamAgentCarReconciliation</from-outcome>
+                <to-activity-id id="__209">SetCurrentRowDataTeamAgentCarReconciliation</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__210">
+                <from-outcome id="__211">firstPage</from-outcome>
+                <to-activity-id id="__212">DataTeamAgentCarReconciliationTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__213">
+                <from-outcome id="__214">deepLinkPage</from-outcome>
+                <to-activity-id id="__215">DataTeamAgentCarReconciliation</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__216">
+                <from-outcome id="__217">DataTeamAgentCarReconciliationTableBreadcrumb</from-outcome>
+                <to-activity-id id="__218">DataTeamAgentCarReconciliationTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__219">
+                <from-outcome id="__220">DataTeamAgentCarReconciliationBreadcrumb</from-outcome>
+                <to-activity-id id="__221">DataTeamAgentCarReconciliation</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__222">
+                <from-outcome id="__223">Cancel</from-outcome>
+                <to-activity-id id="__224">StartDataTeamAgentCarReconciliation</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__225">
+                <from-outcome id="__226">CancelDataTeamAgentCarReconciliationReturn</from-outcome>
+                <to-activity-id id="__227">CancelDataTeamAgentCarReconciliationReturn</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__228">
+                <from-outcome id="__229">DoneDataTeamAgentCarReconciliationReturn</from-outcome>
+                <to-activity-id id="__230">DoneDataTeamAgentCarReconciliationReturn</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__231">
+            <from-activity-id id="__232">DataTeamAgentCarReconciliationTable</from-activity-id>
+            <control-flow-case id="__233">
+                <from-outcome id="__234">DataTeamAgentCarReconciliationDetails</from-outcome>
+                <to-activity-id id="__235">DataTeamAgentCarReconciliation</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <!-- DEBUG:END:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2-->
+        <control-flow-rule id="__256">
+            <from-activity-id>DataTeamAgentCarReconciliation</from-activity-id>
+            <control-flow-case id="__257">
+                <from-outcome>GoToPilotCoverDetails</from-outcome>
+                <to-activity-id>PilotCoverGroupTaskFlow</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__260">
+                <from-outcome>GoToProductDetails</from-outcome>
+                <to-activity-id>ProductDetailsGroupTaskFlow</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__263">
+                <from-outcome>GoToHubCover</from-outcome>
+                <to-activity-id>HubCoverGroupTaskFlow</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <use-page-fragments/>
+    </task-flow-definition>
+    <!-- This bean must be defined outside the task-flow-definition element
+       because it needs to be available in the pageFlowScope of the unbounded
+       task-flow not in the pageFlowScope of the bounded task flow itself. -->
+    <!-- DEBUG:BEGIN:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2 -->
+    <managed-bean id="__236">
+        <managed-bean-name id="__237">DataTeamAgentCarReconciliationTaskFlowConfig</managed-bean-name>
+        <managed-bean-class id="__238">oracle.jheadstart.controller.jsf.bean.TaskFlowConfigBean</managed-bean-class>
+        <managed-bean-scope id="__239">pageFlow</managed-bean-scope>
+        <managed-property id="__240">
+            <property-name id="__241">params</property-name>
+            <property-class id="__242">java.util.Map</property-class>
+            <map-entries id="__243">
+                <map-entry id="__244">
+                    <key id="__245">parentContext</key>
+                    <value id="__246">#{pageFlowScope.parentContext}</value>
+                </map-entry>
+            </map-entries>
+        </managed-property>
+        <managed-property id="__247">
+            <property-name id="__248">name</property-name>
+            <value id="__249">DataTeamAgentCarReconciliation</value>
+        </managed-property>
+        <managed-property id="__250">
+            <property-name id="__251">taskFlowId</property-name>
+            <value id="__252">/WEB-INF/adfc-config-DataTeamAgentCarReconciliation.xml#DataTeamAgentCarReconciliationTaskFlow</value>
+        </managed-property>
+        <managed-property id="__253">
+            <property-name id="__254">label</property-name>
+            <value id="__255">#{nls['MENU1_TITLE_DATATEAMAGENTCARRECONCILIATION']}</value>
+        </managed-property>
+    </managed-bean>
+    <!-- DEBUG:END:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2-->
+</adfc-config>

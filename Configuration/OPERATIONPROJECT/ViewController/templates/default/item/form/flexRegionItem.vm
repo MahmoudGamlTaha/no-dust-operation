@@ -1,0 +1,273 @@
+## revision_history
+## 22-jun-2008   Steven Favelaar
+## 1.5           Added display type multiSelectListBox
+## 10-okt-2007   Steven Favelaar
+## 1.4           Moved shortDesc to panelLabelAndMessage element
+## 02-sep-2007   Steven Davelaar
+## 1.3           Added selectOneListbox
+## 09-jul-2007   Steven Davelaar
+## 1.2           Fixed issue with group name in id of flex item
+## 06-jul-2007   Steven Davelaar
+## 1.1           Moved link to seperate template
+## 31-may-2007   Steven Davelaar
+## 1.0           Initial creation 
+
+## This template is used both when FlexRegion defined in app def, and
+## when item with display type "flexRegion" is defined. The region name
+## must be set based on this usage
+#if (${JHS.current.flexRegion})
+  #set ($regionName = "${JHS.current.flexRegion.name}")
+#else
+  #set ($regionName = "${JHS.current.item.name}")
+#end
+#set ($fullRegionName = "${JHS.current.group.name}${regionName}")
+#set ($flexMethod = "getFlexItems${fullRegionName}")
+
+#if ($JHS.current.pageComponent.hasOverflowArea && $JHS.current.flexRegion.displayInTableOverflow)
+  #set ($readOnlyExpression = ${JHS.current.group.readOnlyInTableExpression})
+  #set ($updateableExpression = ${JHS.current.group.updateableInTableExpression})
+#else
+  #set ($readOnlyExpression = ${JHS.current.group.readOnlyInFormExpression})
+  #set ($updateableExpression = ${JHS.current.group.updateableInFormExpression})
+#end
+
+
+#if (!${JHS.current.flexRegion})
+    #JHS_PARSE("DEFINE_FLEX_REGION_LINK" ${JHS.current.model})
+#end
+    <af:forEach items="#{bindings.${flexMethod}.result}"
+                var="row">
+      <af:inputText id="textInputFlexItem${fullRegionName}"
+                    rendered="#{row.displayType=='textInput' and row.rendered}"
+                    value="#{row.itemValue}"
+                    #JHS_PROP("readOnly" ${readOnlyExpression})
+           columns="#{row.displayWidthInteger}"     
+           rows="#{row.displayHeightInteger}"     
+           maximumLength="#{row.maximumLengthInteger}"            
+           
+          autoSubmit="#{row.hasDependentItem}" 
+          immediate="#{row.hasDependentItem}"
+          valueChangeListener="#{jhsFlexItem.updateFlexItemModelValue}"
+          required="#{row.isMandatory and !row.hasDependentItem}"
+          showRequired="#{row.isMandatory and row.hasDependentItem}"
+          partialTriggers="#{row.partialTriggers}"
+          label="#{row.labelTranslationKey!=null ? nls[row.labelTranslationKey] : row.label}"
+          shortDesc="#{row.hintTextTranslationKey!=null ? nls[row.hintTextTranslationKey] : row.hintText}"/>
+
+      <af:inputText id="readOnlyTextFlexItem${fullRegionName}"
+                    rendered="#{row.displayType=='readOnlyText' and row.rendered}"
+                    value="#{row.itemValue}"
+                    readOnly="true"
+          partialTriggers="#{row.partialTriggers}"
+          label="#{row.labelTranslationKey!=null ? nls[row.labelTranslationKey] : row.label}"
+          shortDesc="#{row.hintTextTranslationKey!=null ? nls[row.hintTextTranslationKey] : row.hintText}"/>
+
+      <af:inputText id="numberInputFlexItem${fullRegionName}"
+                    rendered="#{row.displayType=='numberInput' and row.rendered}"
+                    value="#{row.itemValue}"
+                    #JHS_PROP("readOnly" ${readOnlyExpression})
+           columns="#{row.displayWidthInteger}"     
+           rows="#{row.displayHeightInteger}"     
+           maximumLength="#{row.maximumLengthInteger}"                       
+          autoSubmit="#{row.hasDependentItem}" 
+          immediate="#{row.hasDependentItem}"
+          valueChangeListener="#{jhsFlexItem.updateFlexItemModelValue}"
+          required="#{row.isMandatory and !row.hasDependentItem}"
+          showRequired="#{row.isMandatory and row.hasDependentItem}"
+          partialTriggers="#{row.partialTriggers}"
+          label="#{row.labelTranslationKey!=null ? nls[row.labelTranslationKey] : row.label}"
+          shortDesc="#{row.hintTextTranslationKey!=null ? nls[row.hintTextTranslationKey] : row.hintText}" >
+         <af:convertNumber groupingUsed="false" />
+      </af:inputText>    
+
+      <af:panelLabelAndMessage id="emailAddressFlexItem${fullRegionName}" label="#{row.labelTranslationKey!=null ? nls[row.labelTranslationKey] : row.label}"
+          partialTriggers="#{row.partialTriggers}"
+                 showRequired="#{row.isMandatory}" 
+                 rendered="#{row.displayType=='emailAddress' and row.rendered}"
+                 shortDesc ="#{row.hintTextTranslationKey!=null ? nls[row.hintTextTranslationKey] : row.hintText}"> 
+      <af:panelGroupLayout id="emailAddressFlexItem${fullRegionName}PH" valign="top" layout="horizontal">
+      <af:inputText id="emailAddressFlexItem${fullRegionName}IT"
+                       simple="true"
+                    #JHS_PROP("rendered" ${updateableExpression})                    
+                    value="#{row.itemValue}"
+                               columns="#{row.displayWidthInteger}"     
+           rows="#{row.displayHeightInteger}"     
+           maximumLength="#{row.maximumLengthInteger}"                       
+          autoSubmit="#{row.hasDependentItem}" 
+          immediate="#{row.hasDependentItem}"
+          valueChangeListener="#{jhsFlexItem.updateFlexItemModelValue}"
+          required="#{row.isMandatory and !row.hasDependentItem}"
+          showRequired="#{row.isMandatory and row.hasDependentItem}"
+           >
+      </af:inputText>    
+        <af:spacer width="8" id="emailAddressFlexItem${fullRegionName}OS"
+           #JHS_PROP("rendered" ${updateableExpression}) />
+        <af:goLink id="emailAddressFlexItem${fullRegionName}GL" text="#{row.itemValue}"  rendered="#{row.itemValue!=null}" destination="mailto:#{row.itemValue}"  />
+      </af:panelGroupLayout>
+
+      </af:panelLabelAndMessage>
+
+      <af:panelLabelAndMessage id="fileFlexItem${fullRegionName}" label="#{row.labelTranslationKey!=null ? nls[row.labelTranslationKey] : row.label}"
+          partialTriggers="#{row.partialTriggers}"
+                 showRequired="#{row.isMandatory}" rendered="#{row.displayType=='file' and row.rendered}" 
+                 shortDesc ="#{row.hintTextTranslationKey!=null ? nls[row.hintTextTranslationKey] : row.hintText}"> 
+      <af:panelGroupLayout id="fileFlexItem${fullRegionName}PH" valign="top" layout="horizontal">
+    ${JHS.dependenciesMgr.setValue("formUsesUpload", "true")} 
+     <af:inputFile id="fileFlexItem${fullRegionName}IF"
+                       simple="true"
+                               columns="#{row.displayWidthInteger}"     
+                    #JHS_PROP("rendered" ${updateableExpression})                    
+                    value="#{row.fileItemValue}"
+           />
+
+        <af:spacer width="8" id="fileFlexItem${fullRegionName}OS"
+           #JHS_PROP("rendered" ${updateableExpression}) />
+        <af:goLink id="fileFlexItem${fullRegionName}GL"  targetFrame="top" 
+        text="#{row.value}"  rendered="#{row.itemValue!=null}" destination="#{row.fileItemSource}"  />
+      </af:panelGroupLayout>
+
+      </af:panelLabelAndMessage>
+
+      <af:inputDate id="dateFlexItem${fullRegionName}"
+                            rendered="#{row.displayType=='date' and row.rendered}"
+                          value="#{row.dateItemValue}"
+                    #JHS_PROP("readOnly" ${readOnlyExpression})
+          autoSubmit="#{row.hasDependentItem}" 
+          immediate="#{row.hasDependentItem}"
+          valueChangeListener="#{jhsFlexItem.updateFlexItemModelValue}"
+          required="#{row.isMandatory and !row.hasDependentItem}"
+          showRequired="#{row.isMandatory and row.hasDependentItem}"
+          partialTriggers="#{row.partialTriggers}"
+          label="#{row.labelTranslationKey!=null ? nls[row.labelTranslationKey] : row.label}"
+          shortDesc="#{row.hintTextTranslationKey!=null ? nls[row.hintTextTranslationKey] : row.hintText}" >
+        <af:convertDateTime pattern="#{nls.datepattern}"/>
+      </af:inputDate>
+      <af:inputDate id="dateTimeFlexItem${fullRegionName}"
+                          rendered="#{row.displayType=='dateTime' and row.rendered}"
+                          value="#{row.dateItemValue}"
+                    #JHS_PROP("readOnly" ${readOnlyExpression})
+          autoSubmit="#{row.hasDependentItem}" 
+          immediate="#{row.hasDependentItem}"
+          valueChangeListener="#{jhsFlexItem.updateFlexItemModelValue}"
+          required="#{row.isMandatory and !row.hasDependentItem}"
+          showRequired="#{row.isMandatory and row.hasDependentItem}"
+          partialTriggers="#{row.partialTriggers}"
+          label="#{row.labelTranslationKey!=null ? nls[row.labelTranslationKey] : row.label}"
+          shortDesc="#{row.hintTextTranslationKey!=null ? nls[row.hintTextTranslationKey] : row.hintText}" >
+        <af:convertDateTime pattern="#{nls.datetimepattern}"/>
+      </af:inputDate>
+
+
+      <af:selectOneChoice id="dropDownListFlexItem${fullRegionName}"
+                           rendered="#{row.displayType=='dropDownList' and row.rendered}"
+                    value="#{row.itemValue}"
+                    #JHS_PROP("readOnly" ${readOnlyExpression})
+          autoSubmit="#{row.hasDependentItem}" 
+          immediate="#{row.hasDependentItem}" #UNSELECTED_LABEL()
+          valueChangeListener="#{jhsFlexItem.updateFlexItemModelValue}"
+          required="#{row.isMandatory and !row.hasDependentItem}"
+          showRequired="#{row.isMandatory and row.hasDependentItem}"
+          partialTriggers="#{row.partialTriggers}"
+          label="#{row.labelTranslationKey!=null ? nls[row.labelTranslationKey] : row.label}"
+          shortDesc="#{row.hintTextTranslationKey!=null ? nls[row.hintTextTranslationKey] : row.hintText}" >
+       <af:forEach items="#{row.allowableValues}"  var="av">
+           <af:selectItem id="dropDownListFlexItem${fullRegionName}SI"  value="#{av.Value}"  label="#{av.LabelTranslationKey!=null ? nls[av.LabelTranslationKey] : av.Label}"/>   
+        </af:forEach>
+      </af:selectOneChoice>
+      <af:selectOneRadio id="radioGroupHorizontalFlexItem${fullRegionName}"
+                         rendered="#{row.displayType=='radioGroupHorizontal' and row.rendered}"
+                         layout="horizontal"
+                         value="#{row.itemValue}"
+                    #JHS_PROP("readOnly" ${readOnlyExpression})
+          autoSubmit="#{row.hasDependentItem}" 
+          immediate="#{row.hasDependentItem}"
+          valueChangeListener="#{jhsFlexItem.updateFlexItemModelValue}"
+          required="#{row.isMandatory and !row.hasDependentItem}"
+          showRequired="#{row.isMandatory and row.hasDependentItem}"
+          partialTriggers="#{row.partialTriggers}"
+          label="#{row.labelTranslationKey!=null ? nls[row.labelTranslationKey] : row.label}"
+          shortDesc="#{row.hintTextTranslationKey!=null ? nls[row.hintTextTranslationKey] : row.hintText}" >
+       <af:forEach items="#{row.allowableValues}"  var="av">
+           <af:selectItem id="radioGroupHorizontalFlexItem${fullRegionName}SI"  value="#{av.Value}"  label="#{av.LabelTranslationKey!=null ? nls[av.LabelTranslationKey] : av.Label}"/>   
+        </af:forEach>
+      </af:selectOneRadio>
+      <af:selectOneRadio id="radioGroupVerticalFlexItem${fullRegionName}"
+                         rendered="#{row.displayType=='radioGroupVertical' and row.rendered}"
+                         layout="vertical"
+                         value="#{row.itemValue}"
+                    #JHS_PROP("readOnly" ${readOnlyExpression})
+          autoSubmit="#{row.hasDependentItem}" 
+          immediate="#{row.hasDependentItem}"
+          valueChangeListener="#{jhsFlexItem.updateFlexItemModelValue}"
+          required="#{row.isMandatory and !row.hasDependentItem}"
+          showRequired="#{row.isMandatory and row.hasDependentItem}"
+          partialTriggers="#{row.partialTriggers}"
+          label="#{row.labelTranslationKey!=null ? nls[row.labelTranslationKey] : row.label}"
+          shortDesc="#{row.hintTextTranslationKey!=null ? nls[row.hintTextTranslationKey] : row.hintText}" >
+       <af:forEach items="#{row.allowableValues}"  var="av">
+           <af:selectItem id="radioGroupVerticalFlexItem${fullRegionName}SI"  value="#{av.Value}"  label="#{av.LabelTranslationKey!=null ? nls[av.LabelTranslationKey] : av.Label}"/>   
+        </af:forEach>
+      </af:selectOneRadio>
+      <af:selectOneListbox id="listBoxFlexItem${fullRegionName}"
+                           rendered="#{row.displayType=='listBox' and row.rendered}"
+                           value="#{row.itemValue}"
+                    #JHS_PROP("readOnly" ${readOnlyExpression})
+           size="#{row.displayHeightInteger}"     
+          autoSubmit="#{row.hasDependentItem}" 
+          immediate="#{row.hasDependentItem}"
+          valueChangeListener="#{jhsFlexItem.updateFlexItemModelValue}"
+          required="#{row.isMandatory and !row.hasDependentItem}"
+          showRequired="#{row.isMandatory and row.hasDependentItem}"
+          partialTriggers="#{row.partialTriggers}"
+          label="#{row.labelTranslationKey!=null ? nls[row.labelTranslationKey] : row.label}"
+          shortDesc="#{row.hintTextTranslationKey!=null ? nls[row.hintTextTranslationKey] : row.hintText}" >
+       <af:forEach items="#{row.allowableValues}"  var="av">
+           <af:selectItem id="listBoxFlexItem${fullRegionName}SI"  value="#{av.Value}"  label="#{av.LabelTranslationKey!=null ? nls[av.LabelTranslationKey] : av.Label}"/>   
+        </af:forEach>
+      </af:selectOneListbox>
+      <af:selectManyListbox id="multiSelectListBoxFlexItem${fullRegionName}"
+                           rendered="#{row.displayType=='multiSelectListBox' and row.rendered}"
+                          value="#{row.selectedValues}"  
+                    #JHS_PROP("readOnly" ${readOnlyExpression})
+          autoSubmit="#{row.hasDependentItem}" 
+          size="#{row.displayHeightInteger}"     
+          immediate="#{row.hasDependentItem}"
+          valueChangeListener="#{jhsFlexItem.updateFlexItemModelValue}"
+          required="#{row.isMandatory and !row.hasDependentItem}"
+          showRequired="#{row.isMandatory and row.hasDependentItem}"
+          partialTriggers="#{row.partialTriggers}"
+          label="#{row.labelTranslationKey!=null ? nls[row.labelTranslationKey] : row.label}"
+          shortDesc="#{row.hintTextTranslationKey!=null ? nls[row.hintTextTranslationKey] : row.hintText}" >
+       <af:forEach items="#{row.allowableValues}"  var="av">
+           <af:selectItem id="multiSelectListBoxFlexItem${fullRegionName}SI" value="#{av.Value}"  label="#{av.LabelTranslationKey!=null ? nls[av.LabelTranslationKey] : av.Label}"/>   
+        </af:forEach>
+      </af:selectManyListbox>
+      <af:selectManyCheckbox id="multiSelectCheckBoxFlexItem${fullRegionName}"
+                           rendered="#{row.displayType=='multiSelectCheckBox' and row.rendered}"
+                          value="#{row.selectedValues}"  
+                    #JHS_PROP("readOnly" ${readOnlyExpression})
+          autoSubmit="#{row.hasDependentItem}" 
+          immediate="#{row.hasDependentItem}"
+          valueChangeListener="#{jhsFlexItem.updateFlexItemModelValue}"
+          required="#{row.isMandatory and !row.hasDependentItem}"
+          showRequired="#{row.isMandatory and row.hasDependentItem}"
+          partialTriggers="#{row.partialTriggers}"
+          label="#{row.labelTranslationKey!=null ? nls[row.labelTranslationKey] : row.label}"
+          shortDesc="#{row.hintTextTranslationKey!=null ? nls[row.hintTextTranslationKey] : row.hintText}" >
+       <af:forEach items="#{row.allowableValues}"  var="av">
+           <af:selectItem id="multiSelectCheckBoxFlexItem${fullRegionName}SI" value="#{av.Value}"  label="#{av.LabelTranslationKey!=null ? nls[av.LabelTranslationKey] : av.Label}"/>   
+        </af:forEach>
+      </af:selectManyCheckbox>
+
+      <af:selectBooleanCheckbox id="checkBoxFlexItem${fullRegionName}"
+           rendered="#{row.displayType=='checkBox' and row.rendered}"
+           value="#{row.checkboxItemValue}"
+                    #JHS_PROP("readOnly" ${readOnlyExpression})
+           autoSubmit="#{row.hasDependentItem}"
+           immediate="#{row.hasDependentItem}"
+           valueChangeListener="#{jhsFlexItem.updateFlexItemModelValue}"
+          partialTriggers="#{row.partialTriggers}"
+           label="#{row.labelTranslationKey!=null ? nls[row.labelTranslationKey] : row.label}"
+          shortDesc="#{row.hintTextTranslationKey!=null ? nls[row.hintTextTranslationKey] : row.hintText}" >
+      </af:selectBooleanCheckbox>
+    </af:forEach>

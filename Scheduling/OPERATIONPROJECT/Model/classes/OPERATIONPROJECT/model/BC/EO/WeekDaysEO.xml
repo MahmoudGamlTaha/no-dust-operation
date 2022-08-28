@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="WeekDaysEO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="WEEK_DAYS"
+  AliasName="WeekDaysEO"
+  BindingStyle="OracleName"
+  RowClass="OPERATIONPROJECT.model.BC.EO.WeekDaysEOImpl"
+  DefClass="OPERATIONPROJECT.model.BC.EO.WeekDaysEODefImpl">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+    <Attr Name="_codeGenFlag2" Value="Def"/>
+  </DesignTime>
+  <Attribute
+    Name="WorkingDate"
+    ColumnName="WORKING_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="WEEK_DAYS"
+    PrimaryKey="true" />
+  <Attribute
+    Name="DayName"
+    Precision="36"
+    ColumnName="DAY_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="WEEK_DAYS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="36"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="WeekdayseoPrimaryKey"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="WEEKDAYSEO_PRIMARY_KEY"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.WeekDaysEO.WorkingDate"/>
+    </AttrArray>
+  </Key>
+</Entity>

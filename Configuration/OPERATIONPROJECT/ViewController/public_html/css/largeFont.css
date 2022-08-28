@@ -1,0 +1,167 @@
+body
+{
+  background-color: White;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+}
+h1
+{
+  color: navy;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: x-large;
+  font-weight: bolder;
+  text-transform: capitalize;
+}
+h2
+{
+  color: navy;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
+  font-weight: bolder;
+  text-transform: capitalize;
+}
+h3
+{
+  color: navy;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
+  font-weight: lighter;
+  text-transform: capitalize;
+}
+af|outputFormatted,
+af|inputText::content,
+af|inputDate::content,
+af|selectOneChoice::content,
+af|inputListOfValues::content,
+af|panelLabelAndMessage,
+af|commandToolbarButton,
+af|commandButton,
+af|commandLink,
+af|Link,
+af|commandNavigationItem,
+af|navigationPane-buttons,
+af|breadCrumbs,
+af|panelTabbed::tab-text-link,
+af|panelTabbed::tab-text-link:selected,
+af|menu::bar-item-text,
+af|commandMenuItem::menu-item-text,
+af|panelBox::header-element,
+af|commandNavigationItem::access-key,
+af|goMenuItem,
+af|menu,
+af|navigationPane,
+af|commandNavigationItem
+{
+  font-size:large;
+}
+af|inputText::label,
+af|outputLabel,
+af|inputChoice::label,
+af|selectOneChoice::label 
+{-tr-rule-ref: ".AFLabel:alias"}
+.AFLabel:alias { font-size: large; }
+
+af|dvt-legendText,af|dvt-o1TickLabel
+{
+   -tr-font-size:large;
+}
+
+af|menu::bar-item:highlighted {
+    border: Green  ;
+    border-bottom: 3px solid #c00;
+    padding: 0px;
+}
+
+.AFBrandingBackgroundColor:alias {
+    color: #F7F7F7; 
+}
+
+af|statusIndicator::reconnecting-icon {
+    content: url("/afr/skyros-v1/reconnecting_light.gif"); 
+}
+
+af|statusIndicator::processing-icon {
+    content: url("/afr/skyros-v1/busy_light.gif"); 
+}
+
+af|statusIndicator::disconnected-icon {
+    content: url("/afr/skyros-v1/disconnected_light.gif"); 
+}
+
+af|statusIndicator::idle-icon {
+    content: url("/afr/skyros-v1/connected_light.png"); 
+}
+
+af|statusIndicator::connecting-icon {
+    content: url("/afr/skyros-v1/connecting_light.gif"); 
+}
+
+af|statusIndicator::connected-icon {
+    content: url("/afr/skyros-v1/connected_light.png"); 
+}
+
+.AFBrandingBarTitle {
+    color: #525252; 
+    font-size: xx-large; 
+}
+
+.AFBrandingLinkColor:alias {
+    color: #525252; 
+}
+
+.AFBrandingBarItem af|menu::bar-item-text {
+    color: #424242; 
+}
+
+.AFBrandingBarItem af|inputText::content {
+    color: #424242; 
+}
+
+.AFBrandingBarItem af|inputNumberSpinbox::content {
+    color: #424242; 
+}
+
+.AFBrandingBarItem af|inputDate::content {
+    color: #424242; 
+}
+
+.AFBrandingBarItem af|inputColor::content {
+    color: #424242; 
+}
+
+.AFBrandingBarItem af|inputComboboxListOfValues::container {
+    color: #424242; 
+}
+
+.AFBrandingBarItem af|inputListOfValues::content {
+    color: #424242; 
+}
+
+.AFBrandingBarItem af|selectOneChoice::content {
+    color: #424242; 
+}
+
+.AFBrandingBarItem af|selectManyChoice::content {
+    color: #424242; 
+}
+
+.AFBrandingBarItem af|selectBooleanCheckbox::content {
+    color: #424242; 
+}
+
+.AFBrandingBarItem af|selectManyCheckbox::content {
+    color: #424242; 
+}
+
+.AFBrandingBarItem af|inputFile::label[theme="medium"], .AFBrandingBarItem af|inputFile:read-only::content, .AFBrandingBarItem af|panelLabelAndMessage::label[theme="medium"], .AFBrandingBarItem af|selectOrderShuttle::label, .AFBrandingBarItem af|selectManyShuttle::label[theme="medium"], .AFBrandingBarItem af|selectOneRadio::label[theme="medium"], .AFBrandingBarItem af|selectManyCheckbox::label[theme="medium"], .AFBrandingBarItem af|selectOneListbox::label[theme="medium"], .AFBrandingBarItem af|inputNumberSlider::label[theme="medium"], .AFBrandingBarItem af|selectManyListbox::label[theme="medium"], .AFBrandingBarItem af|selectManyChoice::label[theme="medium"], .AFBrandingBarItem af|inputListOfValues::label[theme="medium"], .AFBrandingBarItem af|inputText::label[theme="medium"], .AFBrandingBarItem af|inputDate::label[theme="medium"], .AFBrandingBarItem af|selectManyShuttle::label, .AFBrandingBarItem af|panelFormLayout::label-cell[theme="medium"], .AFBrandingBarItem af|selectOneChoice::label[theme="medium"], .AFBrandingBarItem af|inputRangeSlider::label[theme="medium"], .AFBrandingBarItem af|quickQuery::label[theme="medium"], .AFBrandingBarItem af|selectOrderShuttle::label[theme="medium"], .AFBrandingBarItem af|inputNumberSpinbox::label[theme="medium"], .AFBrandingBarItem af|outputLabel[theme="medium"], .AFBrandingBarItem af|inputComboboxListOfValues::label[theme="medium"], .AFBrandingBarItem af|inputFile::label {
+    color: #424242; 
+}
+
+af|inputFile::label[theme="dark"], af|inputFile:read-only::content[theme="dark"], af|panelLabelAndMessage::label[theme="dark"], af|selectOrderShuttle::label[theme="dark"], af|selectManyShuttle::label[theme="dark"], af|selectOneRadio::label[theme="dark"], af|selectManyCheckbox::label[theme="dark"], af|selectOneListbox::label[theme="dark"], af|inputNumberSlider::label[theme="dark"], af|selectManyListbox::label[theme="dark"], af|selectManyChoice::label[theme="dark"], af|inputListOfValues::label[theme="dark"], af|inputText::label[theme="dark"], af|inputDate::label[theme="dark"], af|selectManyShuttle::label[theme="dark"], af|panelFormLayout::label-cell[theme="dark"], af|selectOneChoice::label[theme="dark"], af|inputRangeSlider::label[theme="dark"], af|quickQuery::label[theme="dark"], af|selectOrderShuttle::label[theme="dark"], af|inputNumberSpinbox::label[theme="dark"], af|outputLabel[theme="dark"], af|inputComboboxListOfValues::label[theme="dark"], af|inputFile::label[theme="dark"] {
+    color: #313131; 
+}
+
+af|link, af|goLink, af|commandLink, af|commandImageLink, af|goImageLink, af|messages::component-link, af|calendar::list-day-of-month-link, af|calendar::list-title-link, af|calendar::month-grid-cell-header-day-link, af|calendar::month-overflow-link, af|calendar::week-header-day-link {
+
+    font-size: x-large;
+}

@@ -1,0 +1,24 @@
+## revision_history
+## 20-feb-2012   Steven Davelaar
+## 1.3           Set groupingUsed = true so ADF BC formatting is picked up
+## 08-mar-2011   Steven Davelaar
+## 1.2           Added number converter to get same display format as summarized item
+## 25-mar-2010   Steven Davelaar
+## 1.1           Right align summary info
+## 24-feb-2007   Steven Davelaar
+## 1.0           Initial creation
+
+ #if ($JHS.current.item.displaySummaryInTable!='')
+  <f:facet name="footer">
+   <af:panelGroupLayout id="#NEW_ID("pgl")" halign="right" layout="horizontal">
+     <af:outputText value="#{#TABLE_BEAN().${JHS.current.item.displaySummaryInTable}Row['${JHS.current.item.attributeName}']}" id="#NEW_ID("ot")">
+## groupingUsed must be true to pick up formatting, so we cannot use number_converter macro
+##       #NUMBER_CONVERTER()
+      <af:convertNumber groupingUsed="true"
+        pattern="#{bindings.${JHS.current.group.name}Table.hints.${JHS.current.item.attributeName}.format}"/>
+     </af:outputText>
+   </af:panelGroupLayout>
+  </f:facet>
+  #ADD_CUR_GROUP_PARTIAL_TRIGGER($JHS.current.item.id)
+ #end
+

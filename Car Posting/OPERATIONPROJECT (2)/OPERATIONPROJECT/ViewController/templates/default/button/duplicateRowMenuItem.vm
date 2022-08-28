@@ -1,0 +1,20 @@
+## revision_history
+## 31-aug-2007   Sandra Muller
+## 1.1           replaced text by textAndAccessKey
+## 09-feb-2007   Steven Davelaar
+## 1.0           Initial creation
+#if ($JHS.current.group.tableInsertAllowed && $JHS.current.group.showDuplicateRowButton)
+  #if (${JHS.engine.getTemplateContext("TABLE_MENU")}=='true')
+    #set ($itemId = "${JHS.current.group.shortName}duprmTM")
+  #else
+    #set ($itemId = "${JHS.current.group.shortName}duprm")
+  #end
+  <af:commandMenuItem id="${itemId}" textAndAccessKey="#DUPLICATE_ROW_BUTTON_LABEL()"
+     immediate="true"  icon="/jheadstart/images/duplicateRow.png"
+     partialSubmit="true"
+     actionListener="#{#TABLE_BEAN().duplicateRow}"   
+     #JHS_PROP("rendered" $JHS.current.group.insertAllowedExpression)
+     >
+  </af:commandMenuItem>   
+  #ADD_CUR_GROUP_PARTIAL_TRIGGER("$itemId")
+#end

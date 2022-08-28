@@ -1,0 +1,376 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsRegionTemplate.jsf">
+        <!-- DEBUG:BEGIN:TABLE_PAGE_CONTENT : default/page/tablePageContent.vm, nesting level: 2 -->
+        <!-- DEBUG:BEGIN:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3 -->
+        <f:facet name="pageContent">
+            <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4 -->
+            <af:panelStretchLayout topHeight="auto" id="DataTeamAgentPendingWorkTopLc"
+                                   partialTriggers=" DataTeamAgentPendingWorkCancelButton as_DataTeamAgentPendingWork">
+                <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                <f:facet name="top">
+                    <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                    <af:group id="g0">
+                        <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+                        <af:panelHeader id="ph0" text="#{nls['TABLE_TITLE_DATATEAMAGENTPENDINGWORK']}">
+                            <f:facet name="toolbar">
+                                <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5 -->
+                                <af:toolbox id="tbox0">
+                                    <af:toolbar id="tbar0">
+                                        <af:group id="gr0">
+                                            <!-- DEBUG:BEGIN:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6 -->
+                                            <!-- DEBUG:END:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6-->
+                                        </af:group>
+                                        <af:group id="gr1"></af:group>
+                                        <af:group id="gr2">
+                                            <!-- DEBUG:BEGIN:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6 -->
+                                            <!-- DEBUG:END:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6 -->
+                                            <af:button textAndAccessKey="#{nls['CANCEL']}" immediate="true"
+                                                       partialSubmit="true"
+                                                       rendered="#{!pageFlowScope.hideCancelButton}"
+                                                       actionListener="#{jhsRollback.execute}" action="Cancel"
+                                                       id="DataTeamAgentPendingWorkCancelButton"></af:button>
+                                            <!-- DEBUG:END:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6-->
+                                        </af:group>
+                                    </af:toolbar>
+                                </af:toolbox>
+                                <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5-->
+                            </f:facet>
+                            <f:facet name="context">
+                                <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5 -->
+                                <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5-->
+                            </f:facet>
+                            <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+                            <!-- DEBUG:BEGIN:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 6 -->
+                            <af:panelGroupLayout id="modelSearchAreaDataTeamAgentPendingWork"
+                                                 rendered="#{!pageFlowScope.createModes.CreateDataTeamAgentPendingWork and !pageFlowScope.hideSearchArea}"
+                                                 partialTriggers="">
+                                <f:attribute name="JhsIgnoreChanges" value="true"/>
+                                <!-- DEBUG:BEGIN:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 7 -->
+                                <af:query id="as_DataTeamAgentPendingWork" headerText="#{nls['SEARCH']}"
+                                          disclosed="true" modeChangeVisible="false"
+                                          value="#{bindings.DataTeamAgentPendingWorkIteratorBasicSearchQuery.queryDescriptor}"
+                                          model="#{bindings.DataTeamAgentPendingWorkIteratorBasicSearchQuery.queryModel}"
+                                          queryListener="#{bindings.DataTeamAgentPendingWorkIteratorBasicSearchQuery.processQuery}"
+                                          queryOperationListener="#{bindings.DataTeamAgentPendingWorkIteratorBasicSearchQuery.processQueryOperation}"
+                                          rows="1" labelAlignment="start" maxColumns="2" saveQueryMode="readOnly"
+                                          resetButtonText="#{nls['ADVANCED_SEARCH_RESET']}">
+                                    <f:facet name="toolbar">
+                                        <af:toolbar id="tbar1">
+                                            <af:outputText value="#{nls['SEARCH_RESULTS']} #{bindings.DataTeamAgentPendingWorkIterator.estimatedRowCount}"
+                                                           id="ot0"
+                                                           inlineStyle="background-color:Highlight; color:white; border:4px solid white; border-radius:20px; padding:4px 7px; display:inline-block; font-size:14px; font-weight:bold;"/>
+                                        </af:toolbar>
+                                    </f:facet>
+                                </af:query>
+                                <!-- DEBUG:END:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 7-->
+                            </af:panelGroupLayout>
+                            <!-- DEBUG:END:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 6-->
+                            <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+                        </af:panelHeader>
+                        <af:spacer width="10" height="10" id="sp0"/>
+                    </af:group>
+                    <!-- Popped "disabled" from stretchContext, now: enabled (default) -->
+                </f:facet>
+                <f:facet name="center">
+                    <!-- DEBUG:BEGIN:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5 -->
+                    <af:panelStretchLayout topHeight="0" id="psl0">
+                        <f:facet name="top"></f:facet>
+                        <f:facet name="center">
+                            <af:panelCollection id="DataTeamAgentPendingWorkPC" featuresOff=" wrap    freeze "
+                                                styleClass="AFStretchWidth">
+                                <f:facet name="menus">
+                                    <!-- DEBUG:BEGIN:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6 -->
+                                    <af:menu textAndAccessKey="#{nls['ACTION_MENU_LABEL']}" id="menu0">
+                                        <af:menu textAndAccessKey="#{nls['GO_TO_MENU_LABEL']}" id="menu1">
+                                            <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                            <af:commandMenuItem id="mi0"
+                                                                textAndAccessKey="#{nls['DETAIL_VIEW_BUTTON_LABEL']}"
+                                                                action="DataTeamAgentPendingWorkDetails"></af:commandMenuItem>
+                                            <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7 -->
+                                            <af:group id="DataTeamAgentPendingWorktbb"
+                                                      rendered="#{ bindings.DataTeamAgentPendingWorkIterator.currentRow!=null }">
+                                                <af:commandMenuItem actionListener="#{bindings.FirstDataTeamAgentPendingWork.execute}"
+                                                                    id="DataTeamAgentPendingWorkFirst"
+                                                                    partialSubmit="true"
+                                                                    icon="/afr/shuttleleftall_ena.png"
+                                                                    textAndAccessKey="#{nls['FIRST_ROW']}"></af:commandMenuItem>
+                                                <af:commandMenuItem actionListener="#{bindings.PreviousDataTeamAgentPendingWork.execute}"
+                                                                    icon="/afr/shuttleleft_ena.png"
+                                                                    textAndAccessKey="#{nls['PREVIOUS_ROW']}"
+                                                                    id="DataTeamAgentPendingWorkPrevious"
+                                                                    partialSubmit="true"></af:commandMenuItem>
+                                                <af:commandMenuItem actionListener="#{bindings.NextDataTeamAgentPendingWork.execute}"
+                                                                    icon="/afr/shuttleright_ena.png"
+                                                                    textAndAccessKey="#{nls['NEXT_ROW']}"
+                                                                    id="DataTeamAgentPendingWorkNext"
+                                                                    partialSubmit="true"></af:commandMenuItem>
+                                                <af:commandMenuItem actionListener="#{bindings.LastDataTeamAgentPendingWork.execute}"
+                                                                    icon="/afr/shuttlerightall_ena.png"
+                                                                    textAndAccessKey="#{nls['LAST_ROW']}"
+                                                                    id="DataTeamAgentPendingWorkLast"
+                                                                    partialSubmit="true"></af:commandMenuItem>
+                                            </af:group>
+                                            <!-- DEBUG:END:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7-->
+                                        </af:menu>
+                                        <!-- DEBUG:BEGIN:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7-->
+                                    </af:menu>
+                                    <!-- DEBUG:END:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6-->
+                                </f:facet>
+                                <f:facet name="toolbar">
+                                    <!-- DEBUG:BEGIN:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6 -->
+                                    <af:toolbar id="tbar2">
+                                        <!-- DEBUG:BEGIN:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7-->
+                                    </af:toolbar>
+                                    <!-- DEBUG:END:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6-->
+                                </f:facet>
+                                <f:facet name="statusbar"/>
+                                <af:table id="DataTeamAgentPendingWorkTab" contentDelivery="immediate"
+                                          value="#{bindings.DataTeamAgentPendingWorkTable.collectionModel}"
+                                          columnStretching="last" rowBandingInterval="0" editingMode="editAll"
+                                          columnSelection="multiple" contextMenuSelect="true" rowSelection="single"
+                                          selectionListener="#{pageFlowScope.DataTeamAgentPendingWorkTable.makeCurrent}"
+                                          selectedRowKeys="#{pageFlowScope.DataTeamAgentPendingWorkTable.selectedRow}"
+                                          rowDisclosureListener="#{pageFlowScope.DataTeamAgentPendingWorkTable.discloseRow}"
+                                          var="row" varStatus="status"
+                                          fetchSize="#{bindings.DataTeamAgentPendingWorkTable.rangeSize}"
+                                          emptyText="#{nls['NO_ROWS_FOUND']}"
+                                          queryListener="#{bindings.DataTeamAgentPendingWorkIteratorQuery.processQuery}"
+                                          filterModel="#{bindings.DataTeamAgentPendingWorkIteratorQuery.queryDescriptor}"
+                                          filterVisible="true"
+                                          binding="#{pageFlowScope.DataTeamAgentPendingWorkTable.table}"
+                                          partialTriggers=" :::as_DataTeamAgentPendingWork :::DataTeamAgentPendingWorkPC ::DataTeamAgentPendingWorkFirst ::DataTeamAgentPendingWorkPrevious ::DataTeamAgentPendingWorkNext ::DataTeamAgentPendingWorkLast"
+                                          styleClass="AFStretchWidth"
+                                          summary="#{nls['TABLE_TITLE_DATATEAMAGENTPENDINGWORK']}">
+                                    <!-- DEBUG:BEGIN:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6 -->
+                                    <f:facet name="contextMenu">
+                                        <af:popup id="DataTeamAgentPendingWorkTablePopup" childCreation="deferred">
+                                            <af:menu id="menu2">
+                                                <af:menu text="#{nls['GO_TO_MENU_LABEL']}" id="menu3">
+                                                    <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                                    <af:commandMenuItem id="mi1"
+                                                                        textAndAccessKey="#{nls['DETAIL_VIEW_BUTTON_LABEL']}"
+                                                                        action="DataTeamAgentPendingWorkDetails"></af:commandMenuItem>
+                                                    <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                                </af:menu>
+                                                <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                            </af:menu>
+                                        </af:popup>
+                                    </f:facet><!-- DEBUG:END:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6 --><!-- DEBUG:END:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6 -->
+                                    <af:column id="DataTeamAgentPendingWorkIndexColumn" width="20" align="center"
+                                               headerText="#">
+                                        <af:outputFormatted value="#{status.index+1}" id="of0"/>
+                                    </af:column>
+                                    <af:column id="DataTeamAgentPendingWorkActionColumn" width="20" align="center"
+                                               headerText=" ">
+                                        <af:panelGroupLayout layout="horizontal" id="pgl0">
+                                            <!-- DEBUG:BEGIN:DETAILS_LINK : default/button/detailsLink.vm, nesting level: 7 -->
+                                            <af:link action="DataTeamAgentPendingWorkDetails"
+                                                     id="DataTeamAgentPendingWorkGtd"
+                                                     shortDesc="#{nls['DETAIL_VIEW_BUTTON_LABEL']}"
+                                                     icon="/jheadstart/images/editRow.png"/>
+                                            <!-- DEBUG:END:DETAILS_LINK : default/button/detailsLink.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:DELETE_ROW_LINK : default/button/deleteRowLink.vm, nesting level: 7 -->
+                                            <!-- DEBUG:END:DELETE_ROW_LINK : default/button/deleteRowLink.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:DUPLICATE_ROW_LINK : default/button/duplicateRowLink.vm, nesting level: 7 -->
+                                            <!-- DEBUG:END:DUPLICATE_ROW_LINK : default/button/duplicateRowLink.vm, nesting level: 7-->
+                                        </af:panelGroupLayout>
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="DataTeamAgentPendingWorkAssignDateCol" sortable="true"
+                                               filterable="true" noWrap="true" width="100" sortProperty="AssignDate"
+                                               rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.DataTeamAgentPendingWorkTable.hints.AssignDate.label}"
+                                                            id="ol0"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 7 -->
+                                        <f:facet name="filter">
+                                            <af:inputDate value="#{status.filterCriteria.AssignDate}" id="id0">
+                                                <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                            </af:inputDate>
+                                        </f:facet>
+                                        <af:inputDate id="DataTeamAgentPendingWorkAssignDate"
+                                                      value="#{row.bindings.AssignDate.inputValue}"
+                                                      label="#{bindings.DataTeamAgentPendingWorkTable.hints.AssignDate.label}"
+                                                      required="#{bindings.DataTeamAgentPendingWorkTable.hints.AssignDate.mandatory}"
+                                                      readOnly="true"
+                                                      shortDesc="#{bindings.DataTeamAgentPendingWorkTable.hints.AssignDate.tooltip}">
+                                            <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                        </af:inputDate>
+                                        <!-- DEBUG:END:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="DataTeamAgentPendingWorkAreaNameCol" sortable="true"
+                                               filterable="true" noWrap="true" width="200" sortProperty="AreaName"
+                                               rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.DataTeamAgentPendingWorkTable.hints.AreaName.label}"
+                                                            id="ol1"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                        <af:inputText id="DataTeamAgentPendingWorkAreaName"
+                                                      value="#{row.bindings.AreaName.inputValue}"
+                                                      label="#{bindings.DataTeamAgentPendingWorkTable.hints.AreaName.label}"
+                                                      required="#{bindings.DataTeamAgentPendingWorkTable.hints.AreaName.mandatory}"
+                                                      rows="#{bindings.DataTeamAgentPendingWorkTable.hints.AreaName.displayHeight}"
+                                                      columns="#{bindings.DataTeamAgentPendingWorkTable.hints.AreaName.displayWidth}"
+                                                      maximumLength="4000" readOnly="true"
+                                                      shortDesc="#{bindings.DataTeamAgentPendingWorkTable.hints.AreaName.tooltip}">
+                                            <f:validator binding="#{row.bindings.AreaName.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="DataTeamAgentPendingWorkDriverNameCol" sortable="true"
+                                               filterable="true" noWrap="true" width="300" sortProperty="DriverName"
+                                               rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.DataTeamAgentPendingWorkTable.hints.DriverName.label}"
+                                                            id="ol2"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                        <af:inputText id="DataTeamAgentPendingWorkDriverName"
+                                                      value="#{row.bindings.DriverName.inputValue}"
+                                                      label="#{bindings.DataTeamAgentPendingWorkTable.hints.DriverName.label}"
+                                                      required="#{bindings.DataTeamAgentPendingWorkTable.hints.DriverName.mandatory}"
+                                                      rows="#{bindings.DataTeamAgentPendingWorkTable.hints.DriverName.displayHeight}"
+                                                      columns="#{bindings.DataTeamAgentPendingWorkTable.hints.DriverName.displayWidth}"
+                                                      maximumLength="161" readOnly="true"
+                                                      shortDesc="#{bindings.DataTeamAgentPendingWorkTable.hints.DriverName.tooltip}">
+                                            <f:validator binding="#{row.bindings.DriverName.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="DataTeamAgentPendingWorkPilotNameCol" sortable="true"
+                                               filterable="true" noWrap="true" width="300" sortProperty="PilotName"
+                                             rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.DataTeamAgentPendingWorkTable.hints.PilotName.label}"
+                                                            id="ol3"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                        <af:inputText id="DataTeamAgentPendingWorkPilotName"
+                                                      value="#{row.bindings.PilotName.inputValue}"
+                                                      label="#{bindings.DataTeamAgentPendingWorkTable.hints.PilotName.label}"
+                                                      required="#{bindings.DataTeamAgentPendingWorkTable.hints.PilotName.mandatory}"
+                                                      rows="#{bindings.DataTeamAgentPendingWorkTable.hints.PilotName.displayHeight}"
+                                                      columns="#{bindings.DataTeamAgentPendingWorkTable.hints.PilotName.displayWidth}"
+                                                      maximumLength="161" readOnly="true"
+                                                      shortDesc="#{bindings.DataTeamAgentPendingWorkTable.hints.PilotName.tooltip}">
+                                            <f:validator binding="#{row.bindings.PilotName.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="DataTeamAgentPendingWorkTotalAssignemntCol" sortable="true"
+                                               filterable="true" noWrap="true" width="100"
+                                               sortProperty="TotalAssignemnt" rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.DataTeamAgentPendingWorkTable.hints.TotalAssignemnt.label}"
+                                                            id="ol4"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                        <af:inputText id="DataTeamAgentPendingWorkTotalAssignemnt"
+                                                      value="#{row.bindings.TotalAssignemnt.inputValue}"
+                                                      label="#{bindings.DataTeamAgentPendingWorkTable.hints.TotalAssignemnt.label}"
+                                                      required="#{bindings.DataTeamAgentPendingWorkTable.hints.TotalAssignemnt.mandatory}"
+                                                      rows="#{bindings.DataTeamAgentPendingWorkTable.hints.TotalAssignemnt.displayHeight}"
+                                                      columns="#{bindings.DataTeamAgentPendingWorkTable.hints.TotalAssignemnt.displayWidth}"
+                                                      readOnly="true"
+                                                      shortDesc="#{bindings.DataTeamAgentPendingWorkTable.hints.TotalAssignemnt.tooltip}">
+                                            <f:validator binding="#{row.bindings.TotalAssignemnt.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.DataTeamAgentPendingWorkTable.hints.TotalAssignemnt.format}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <af:column headerText="#{bindings.DataTeamAgentPendingWorkTable.hints.DoneContracts.label}"
+                                               id="c1">
+                                               <f:facet name="header">
+                                            <af:outputLabel value="Done Assignments" id="ol6"/>
+                                        </f:facet>
+                                        <af:inputText value="#{row.bindings.DoneContracts.inputValue}"
+                                                      label="#{bindings.DataTeamAgentPendingWorkTable.hints.DoneContracts.label}"
+                                               readOnly="true"       required="#{bindings.DataTeamAgentPendingWorkTable.hints.DoneContracts.mandatory}"
+                                                      columns="#{bindings.DataTeamAgentPendingWorkTable.hints.DoneContracts.displayWidth}"
+                                                      maximumLength="#{bindings.DataTeamAgentPendingWorkTable.hints.DoneContracts.precision}"
+                                                      shortDesc="#{bindings.DataTeamAgentPendingWorkTable.hints.DoneContracts.tooltip}"
+                                                      id="it1">
+                                            <f:validator binding="#{row.bindings.DoneContracts.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.DataTeamAgentPendingWorkTable.hints.DoneContracts.format}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.DataTeamAgentPendingWorkTable.hints.DonePer.label}"
+                                               id="c2">
+                                               <f:facet name="header">
+                                            <af:outputLabel value="Completed %" id="ol5"/>
+                                        </f:facet>
+                                        <af:inputText value="#{row.bindings.DonePer.inputValue}"
+                                       readOnly="true"               label="#{bindings.DataTeamAgentPendingWorkTable.hints.DonePer.label}"
+                                                      required="#{bindings.DataTeamAgentPendingWorkTable.hints.DonePer.mandatory}"
+                                                      columns="#{bindings.DataTeamAgentPendingWorkTable.hints.DonePer.displayWidth}"
+                                                      maximumLength="#{bindings.DataTeamAgentPendingWorkTable.hints.DonePer.precision}"
+                                                      shortDesc="#{bindings.DataTeamAgentPendingWorkTable.hints.DonePer.tooltip}"
+                                                      id="it2">
+                                            <f:validator binding="#{row.bindings.DonePer.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.DataTeamAgentPendingWorkTable.hints.DonePer.format}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                </af:table>
+                            </af:panelCollection>
+                        </f:facet>
+                    </af:panelStretchLayout>
+                    <!-- DEBUG:END:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5-->
+                </f:facet>
+            </af:panelStretchLayout>
+            <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4-->
+        </f:facet>
+        <f:facet name="popups">
+            <af:panelGroupLayout id="popupsPgl"></af:panelGroupLayout>
+        </f:facet>
+        <!-- DEBUG:END:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3-->
+        <!-- DEBUG:END:TABLE_PAGE_CONTENT : default/page/tablePageContent.vm, nesting level: 2-->
+    </af:pageTemplate>
+</ui:composition>
+
+
+

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="CustomerPaymentPlanPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="validateCurrentRows">
+  <parameters>
+    <parameter id="bindingContainersToPrepare" value="#{'CustomerProfilePageDef'}"/>
+  </parameters>
+  <executables>
+    <iterator id="CustomerPaymentPlanIterator" Binds="CustomerPayment1" DataControl="AppModuleAMDataControl"
+              RangeSize="10"/>
+    <searchRegion id="CustomerPaymentPlanIteratorQuery" Binds="CustomerPaymentPlanIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true" DefaultQuickSearchAttrName="PlanId"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator Binds="AppModuleAMDataControl" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="AppModuleAMDataControlIterator"/>
+  </executables>
+  <bindings>
+    <button IterBinding="CustomerPaymentPlanIterator" id="CustomerPaymentPlanActive" DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="Active"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <tree id="CustomerPaymentPlanTable" IterBinding="CustomerPaymentPlanIterator">
+      <nodeDefinition Name="CustomerPaymentPlan" DefName="OPERATIONPROJECT.model.BC.VO.CustomerPaymentVO">
+        <AttrNames>
+          <Item Value="PlanId"/>
+          <Item Value="DiscountRatio"/>
+          <Item Value="PostPaidDuration"/>
+          <Item Value="FromDate"/>
+          <Item Value="ToDate"/>
+          <Item Value="Active"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="CustomerPaymentPlanIterator" id="FirstCustomerPaymentPlan" RequiresUpdateModel="true"
+            Action="first"/>
+    <action IterBinding="CustomerPaymentPlanIterator" id="PreviousCustomerPaymentPlan" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="CustomerPaymentPlanIterator" id="NextCustomerPaymentPlan" RequiresUpdateModel="true"
+            Action="next"/>
+    <action IterBinding="CustomerPaymentPlanIterator" id="LastCustomerPaymentPlan" RequiresUpdateModel="true"
+            Action="last"/>
+    <action IterBinding="CustomerPaymentPlanIterator" id="SetCurrentRowWithKeyCustomerPaymentPlan"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrCustomerPaymentPlan}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="CustomerPaymentPlanIterator" id="CreateCustomerPaymentPlan" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="CustomerPaymentPlanIterator" id="DeleteCustomerPaymentPlan" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,61 @@
+## revision_history
+## 04-nov-2013   Steven Davelaar
+## 1.3           Check if control-flow rule has nav cases before generating element
+## 31-jan-2012   Steven Davelaar
+## 1.2           remove startInCreateMode, we now handle startInCreateMode inside called task flow
+## 18-may-2010   Steven Davelaar
+## 1.1           Added id property to all elements
+## 05-jul-2008   Steven Davelaar
+## 1.0           Initial creation
+<?xml version="1.0" #ENCODING_PROP() ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+
+  ## generate task-flow calls for base groups that start bounded task flows with standalone pages)
+  ## and generate a <view> for the skeleton pages (region pages)
+  #foreach ($group in ${JHS.service.baseGroups})
+   #if ($group.useAsStandalonePage )
+    <task-flow-call id="Start${group.name}">
+      <task-flow-reference>
+        <document id="#NEW_ID("__")">${JHS.service.groupBeansConfigDir}adfc-config-${group.name}.xml</document>
+        <id id="#NEW_ID("__")">${group.name}TaskFlow</id>
+      </task-flow-reference>
+    </task-flow-call>
+   #end
+   #if($group.generateSkeletonPage)
+      <view id="${group.name}">
+        <page id="#NEW_ID("__")">${JHS.service.pageVirtualDir}${group.name}${JHS.application.pageExtension}</page>
+      </view>
+   #end
+  #end
+
+  #foreach ($view in ${JHS.facesConfigGenerator.views})
+    #if ($view.viewId.indexOf("/")>-1)
+     #set ($pos=$view.viewId.lastIndexOf('/')+1)
+  <view id="$view.viewId.substring($pos)">
+    <page id="#NEW_ID("__")">${view.viewId}${view.extension}</page>
+  </view>  
+    #else  
+  <view id="$view.viewId">
+    <page id="#NEW_ID("__")">${JHS.service.pageVirtualDir}${view.viewId}${view.extension}</page>
+  </view> 
+    #end
+  #end
+
+  #foreach ($rule in ${JHS.facesConfigGenerator.navigationRules})
+   #if ($rule.navigationCases.size()>0)
+      <control-flow-rule id="#NEW_ID("__")">
+        <from-activity-id id="#NEW_ID("__")">$rule.fromViewIdWithoutExtension</from-activity-id>
+        #foreach ($case in $rule.navigationCases)
+        <control-flow-case id="#NEW_ID("__")">
+          <from-outcome id="#NEW_ID("__")">$case.fromOutcome</from-outcome>
+          <to-activity-id id="#NEW_ID("__")">$case.toViewIdWithoutExtension</to-activity-id>
+        </control-flow-case>
+        #end
+      </control-flow-rule>
+   #end   
+  #end
+
+  #JHS_PARSE("MENU_BEAN" $JHS.service)
+
+</adfc-config>
+

@@ -1,0 +1,12 @@
+## revision_history
+## 22-nov-2010   Steven Davelaar
+## 1.1           Shortened id
+## 02-sep-2008   Steven Davelaar
+## 1.0           Initial creation
+
+#if (${JHS.current.pageComponent.hasDetailsPage})
+<af:commandMenuItem id="#NEW_ID("mi")" textAndAccessKey="#DETAIL_VIEW_BUTTON_LABEL()" 
+   action="${JHS.facesConfigGenerator.addNavigationCase(${JHS.current.group},${JHS.page.name}, "${JHS.current.group.name}Details", ${JHS.current.pageComponent.detailsPage.name})}"
+   >
+</af:commandMenuItem>  
+#end

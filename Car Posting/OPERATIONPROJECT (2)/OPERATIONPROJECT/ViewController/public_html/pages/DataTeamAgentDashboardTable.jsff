@@ -1,0 +1,271 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsRegionTemplate.jsf">
+        <!-- DEBUG:BEGIN:TABLE_PAGE_CONTENT : default/page/tablePageContent.vm, nesting level: 2 -->
+        <!-- DEBUG:BEGIN:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3 -->
+        <f:facet name="pageContent">
+            <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4 -->
+            <af:panelStretchLayout topHeight="auto" id="DataTeamAgentDashboardTopLc"
+                                   partialTriggers=" DataTeamAgentDashboardCancelButton as_DataTeamAgentDashboard">
+                <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                <f:facet name="top">
+                    <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                    <af:group id="g0">
+                        <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+                        <af:panelHeader id="ph0" text="#{nls['TABLE_TITLE_DATATEAMAGENTDASHBOARD']}">
+                            <f:facet name="toolbar">
+                                <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5 -->
+                                <af:toolbox id="tbox0">
+                                    <af:toolbar id="tbar0">
+                                        <af:group id="gr0">
+                                            <!-- DEBUG:BEGIN:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6 -->
+                                            <!-- DEBUG:END:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6-->
+                                        </af:group>
+                                        <af:group id="gr1"></af:group>
+                                        <af:group id="gr2">
+                                            <!-- DEBUG:BEGIN:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6 -->
+                                            <!-- DEBUG:END:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6 -->
+                                            <af:button textAndAccessKey="#{nls['CANCEL']}" immediate="true"
+                                                       partialSubmit="true"
+                                                       rendered="#{!pageFlowScope.hideCancelButton}"
+                                                       actionListener="#{jhsRollback.execute}" action="Cancel"
+                                                       id="DataTeamAgentDashboardCancelButton"></af:button>
+                                            <!-- DEBUG:END:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6-->
+                                        </af:group>
+                                    </af:toolbar>
+                                </af:toolbox>
+                                <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5-->
+                            </f:facet>
+                            <f:facet name="context">
+                                <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5 -->
+                                <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5-->
+                            </f:facet>
+                            <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+                            <!-- DEBUG:BEGIN:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 6 -->
+                            <af:panelGroupLayout id="modelSearchAreaDataTeamAgentDashboard"
+                                                 rendered="#{!pageFlowScope.createModes.CreateDataTeamAgentDashboard and !pageFlowScope.hideSearchArea}"
+                                                 partialTriggers="">
+                                <f:attribute name="JhsIgnoreChanges" value="true"/>
+                                <!-- DEBUG:BEGIN:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 7 -->
+                                <af:query id="as_DataTeamAgentDashboard" headerText="#{nls['SEARCH']}" disclosed="true"
+                                          modeChangeVisible="false"
+                                          value="#{bindings.DataTeamAgentDashboardIteratorDataTeamAgentDashboardVOCriteriaQuery.queryDescriptor}"
+                                          model="#{bindings.DataTeamAgentDashboardIteratorDataTeamAgentDashboardVOCriteriaQuery.queryModel}"
+                                          queryListener="#{bindings.DataTeamAgentDashboardIteratorDataTeamAgentDashboardVOCriteriaQuery.processQuery}"
+                                          queryOperationListener="#{bindings.DataTeamAgentDashboardIteratorDataTeamAgentDashboardVOCriteriaQuery.processQueryOperation}"
+                                          rows="1" labelAlignment="start" maxColumns="1" saveQueryMode="readOnly"
+                                          resetButtonText="#{nls['ADVANCED_SEARCH_RESET']}">
+                                    <f:facet name="toolbar">
+                                        <af:toolbar id="tbar1">
+                                            <af:outputText value="#{nls['SEARCH_RESULTS']} #{bindings.DataTeamAgentDashboardIterator.estimatedRowCount}"
+                                                           id="ot0"
+                                                           inlineStyle="background-color:Highlight; color:white; border:4px solid white; border-radius:20px; padding:4px 7px; display:inline-block; font-size:14px; font-weight:bold;"/>
+                                        </af:toolbar>
+                                    </f:facet>
+                                </af:query>
+                                <!-- DEBUG:END:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 7-->
+                            </af:panelGroupLayout>
+                            <!-- DEBUG:END:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 6-->
+                            <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+                        </af:panelHeader>
+                        <af:spacer width="10" height="10" id="sp0"/>
+                    </af:group>
+                    <!-- Popped "disabled" from stretchContext, now: enabled (default) -->
+                </f:facet>
+                <f:facet name="center">
+                    <!-- DEBUG:BEGIN:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5 -->
+                    <af:panelStretchLayout topHeight="0" id="psl0">
+                        <f:facet name="top"></f:facet>
+                        <f:facet name="center">
+                            <af:panelCollection id="DataTeamAgentDashboardPC" featuresOff=" wrap    freeze "
+                                                styleClass="AFStretchWidth">
+                                <f:facet name="menus">
+                                    <!-- DEBUG:BEGIN:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6 -->
+                                    <af:menu textAndAccessKey="#{nls['ACTION_MENU_LABEL']}" id="menu0">
+                                        <af:menu textAndAccessKey="#{nls['GO_TO_MENU_LABEL']}" id="menu1">
+                                            <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                            <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7 -->
+                                            <af:group id="DataTeamAgentDashboardtbb"
+                                                      rendered="#{ bindings.DataTeamAgentDashboardIterator.currentRow!=null }">
+                                                <af:commandMenuItem actionListener="#{bindings.FirstDataTeamAgentDashboard.execute}"
+                                                                    id="DataTeamAgentDashboardFirst"
+                                                                    partialSubmit="true"
+                                                                    icon="/afr/shuttleleftall_ena.png"
+                                                                    textAndAccessKey="#{nls['FIRST_ROW']}"></af:commandMenuItem>
+                                                <af:commandMenuItem actionListener="#{bindings.PreviousDataTeamAgentDashboard.execute}"
+                                                                    icon="/afr/shuttleleft_ena.png"
+                                                                    textAndAccessKey="#{nls['PREVIOUS_ROW']}"
+                                                                    id="DataTeamAgentDashboardPrevious"
+                                                                    partialSubmit="true"></af:commandMenuItem>
+                                                <af:commandMenuItem actionListener="#{bindings.NextDataTeamAgentDashboard.execute}"
+                                                                    icon="/afr/shuttleright_ena.png"
+                                                                    textAndAccessKey="#{nls['NEXT_ROW']}"
+                                                                    id="DataTeamAgentDashboardNext"
+                                                                    partialSubmit="true"></af:commandMenuItem>
+                                                <af:commandMenuItem actionListener="#{bindings.LastDataTeamAgentDashboard.execute}"
+                                                                    icon="/afr/shuttlerightall_ena.png"
+                                                                    textAndAccessKey="#{nls['LAST_ROW']}"
+                                                                    id="DataTeamAgentDashboardLast"
+                                                                    partialSubmit="true"></af:commandMenuItem>
+                                            </af:group>
+                                            <!-- DEBUG:END:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7-->
+                                        </af:menu>
+                                        <!-- DEBUG:BEGIN:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7-->
+                                    </af:menu>
+                                    <!-- DEBUG:END:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6-->
+                                </f:facet>
+                                <f:facet name="toolbar">
+                                    <!-- DEBUG:BEGIN:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6 -->
+                                    <af:toolbar id="tbar2">
+                                        <!-- DEBUG:BEGIN:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7-->
+                                    </af:toolbar>
+                                    <!-- DEBUG:END:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6-->
+                                </f:facet>
+                                <f:facet name="statusbar"/>
+                                <af:table value="#{bindings.DataTeamAgentDashboardVO1.collectionModel}" var="row"
+                                          rows="#{bindings.DataTeamAgentDashboardVO1.rangeSize}"
+                                          emptyText="#{bindings.DataTeamAgentDashboardVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                          rowBandingInterval="0"
+                                          selectedRowKeys="#{bindings.DataTeamAgentDashboardVO1.collectionModel.selectedRow}"
+                                          selectionListener="#{bindings.DataTeamAgentDashboardVO1.collectionModel.makeCurrent}"
+                                          rowSelection="single"
+                                          fetchSize="#{bindings.DataTeamAgentDashboardVO1.rangeSize}"
+                                          filterModel="#{bindings.DataTeamAgentDashboardIteratorDataTeamAgentDashboardVOCriteriaQuery.queryDescriptor}"
+                                          filterVisible="true"
+                                          queryListener="#{bindings.DataTeamAgentDashboardIteratorDataTeamAgentDashboardVOCriteriaQuery.processQuery}"
+                                          varStatus="vs" id="t1"
+                                          partialTriggers="::DataTeamAgentDashboardFirst ::DataTeamAgentDashboardPrevious ::DataTeamAgentDashboardNext ::DataTeamAgentDashboardLast">
+                                    <af:column sortProperty="#{bindings.DataTeamAgentDashboardVO1.hints.DataDate.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.DataTeamAgentDashboardVO1.hints.DataDate.label}"
+                                               id="c1">
+                                               <f:facet name="header">
+                                            <af:outputLabel value="Data Date" id="ol1"/>
+                                        </f:facet>
+                                        <af:outputText value="#{row.DataDate}"
+                                                       shortDesc="#{bindings.DataTeamAgentDashboardVO1.hints.DataDate.tooltip}"
+                                                       id="ot1"/>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.DataTeamAgentDashboardVO1.hints.WorkType.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.DataTeamAgentDashboardVO1.hints.WorkType.label}"
+                                               id="c2">
+                                               <f:facet name="header">
+                                            <af:outputLabel value="Work Type" id="ol2"/>
+                                        </f:facet>
+                                        <af:outputText value="#{row.WorkType}"
+                                                       shortDesc="#{bindings.DataTeamAgentDashboardVO1.hints.WorkType.tooltip}"
+                                                       id="ot2"/>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.DataTeamAgentDashboardVO1.hints.AssignDate.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.DataTeamAgentDashboardVO1.hints.AssignDate.label}"
+                                               id="c3">
+                                               <f:facet name="header">
+                                            <af:outputLabel value="Assign Date" id="ol3"/>
+                                        </f:facet>
+                                        <f:facet name="filter">
+                                            <af:inputDate value="#{bindings.DataTeamAgentDashboardIteratorDataTeamAgentDashboardVOCriteriaQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.AssignDate.value}"
+                                                          id="id1">
+                                                <af:convertDateTime pattern="#{bindings.DataTeamAgentDashboardVO1.hints.AssignDate.format}"/>
+                                            </af:inputDate>
+                                        </f:facet>
+                                        <af:outputText value="#{row.AssignDate}"
+                                                       shortDesc="#{bindings.DataTeamAgentDashboardVO1.hints.AssignDate.tooltip}"
+                                                       id="ot3">
+                                            <af:convertDateTime pattern="dd/MM/yyyy"/>
+                                        </af:outputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.DataTeamAgentDashboardVO1.hints.AreaName.label}"
+                                            width="150" filterable="true" sortable="true" sortProperty="AreaName"   id="c7">
+                                            <f:facet name="header">
+                                            <af:outputLabel value="Area Name" id="ol7"/>
+                                        </f:facet>
+                                        <af:inputText value="#{row.bindings.AreaName.inputValue}"
+                                                      label="#{bindings.DataTeamAgentDashboardVO1.hints.AreaName.label}"
+                                                readOnly="true"      required="#{bindings.DataTeamAgentDashboardVO1.hints.AreaName.mandatory}"
+                                                      columns="#{bindings.DataTeamAgentDashboardVO1.hints.AreaName.displayWidth}"
+                                                      maximumLength="#{bindings.DataTeamAgentDashboardVO1.hints.AreaName.precision}"
+                                                      shortDesc="#{bindings.DataTeamAgentDashboardVO1.hints.AreaName.tooltip}"
+                                                      id="it1">
+                                            <f:validator binding="#{row.bindings.AreaName.validator}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.DataTeamAgentDashboardVO1.hints.DriverName.label}"
+                                            width="200" sortable="true" filterable="true" sortProperty="DriverName"   id="c4">
+                                            <f:facet name="header">
+                                            <af:outputLabel value="Driver Name" id="ol4"/>
+                                        </f:facet>
+                                        <af:inputText value="#{row.bindings.DriverName.inputValue}"
+                                                 readOnly="true"     label="#{bindings.DataTeamAgentDashboardVO1.hints.DriverName.label}"
+                                                      required="#{bindings.DataTeamAgentDashboardVO1.hints.DriverName.mandatory}"
+                                                      columns="#{bindings.DataTeamAgentDashboardVO1.hints.DriverName.displayWidth}"
+                                                      maximumLength="#{bindings.DataTeamAgentDashboardVO1.hints.DriverName.precision}"
+                                                      shortDesc="#{bindings.DataTeamAgentDashboardVO1.hints.DriverName.tooltip}"
+                                                      id="it2">
+                                            <f:validator binding="#{row.bindings.DriverName.validator}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.DataTeamAgentDashboardVO1.hints.CompletedCount.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.DataTeamAgentDashboardVO1.hints.CompletedCount.label}"
+                                               id="c5">
+                                               <f:facet name="header">
+                                            <af:outputLabel value="Total Done" id="ol5"/>
+                                        </f:facet>
+                                        <af:outputText value="#{row.CompletedCount}"
+                                                       shortDesc="#{bindings.DataTeamAgentDashboardVO1.hints.CompletedCount.tooltip}"
+                                                       id="ot5">
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.DataTeamAgentDashboardVO1.hints.CompletedCount.format}"/>
+                                        </af:outputText>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.DataTeamAgentDashboardVO1.hints.CompletedPer.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.DataTeamAgentDashboardVO1.hints.CompletedPer.label}"
+                                               id="c6">
+                                               <f:facet name="header">
+                                            <af:outputLabel value="Completed %" id="ol6"/>
+                                        </f:facet>
+                                        <af:outputText value="#{row.CompletedPer}"
+                                                       shortDesc="#{bindings.DataTeamAgentDashboardVO1.hints.CompletedPer.tooltip}"
+                                                       id="ot6">
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.DataTeamAgentDashboardVO1.hints.CompletedPer.format}"/>
+                                        </af:outputText>
+                                    </af:column>
+                                </af:table>
+                            </af:panelCollection>
+                        </f:facet>
+                    </af:panelStretchLayout>
+                    <!-- DEBUG:END:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5-->
+                </f:facet>
+            </af:panelStretchLayout>
+            <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4-->
+        </f:facet>
+        <f:facet name="popups">
+            <af:panelGroupLayout id="popupsPgl"></af:panelGroupLayout>
+        </f:facet>
+        <!-- DEBUG:END:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3-->
+        <!-- DEBUG:END:TABLE_PAGE_CONTENT : default/page/tablePageContent.vm, nesting level: 2-->
+    </af:pageTemplate>
+</ui:composition>
+
+
+

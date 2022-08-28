@@ -1,0 +1,688 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<f:view xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+        xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces" beforePhase="#{jhsPhaseListener.beforePhase}"
+        locale="#{jhsLocaleManager.currentLocale}">
+    <af:document title="#{nls['FORM_TITLE_HUBCOVERGROUP']}" id="doc0" uncommittedDataWarning="on">
+        <af:messages id="m1"/>
+        <f:facet name="metaContainer">
+            <af:resource type="javascript" source="/jheadstart/jhs11.js"/>
+        </f:facet>
+        <af:form id="dataForm" usesUpload="true">
+            <af:panelStretchLayout topHeight="auto" id="psl0"
+                                   partialTriggers=" HubCoverGroupfbb HubCoverGroupSaveButton HubCoverGroupCancelButton">
+                <f:facet name="top">
+                    <af:panelGroupLayout layout="scroll" id="HubCoverGroupTopLc"
+                                         partialTriggers=" HubCoverGroupfbb HubCoverGroupSaveButton HubCoverGroupCancelButton">
+                        <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                        <f:facet name="separator">
+                            <af:spacer width="10" height="10" id="sp0"/>
+                        </f:facet>
+                        <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                        <af:panelHeader id="ph0" text="#{nls['FORM_TITLE_HUBCOVERGROUP']}">
+                            <f:facet name="toolbar">
+                                <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5 -->
+                                <af:toolbox id="tbox0">
+                                    <af:toolbar id="tbar0">
+                                        <!-- DEBUG:BEGIN:FORM_BROWSE_BUTTONS : custom/pageComponent/MtsformBrowseButtons.vm, nesting level: 6 -->
+                                        <af:panelGroupLayout id="HubCoverGroupfbb" layout="horizontal"
+                                                             rendered="#{ bindings.HubCoverGroupIterator.currentRow!=null  and bindings.HubCoverGroupIterator.estimatedRowCount>1 and !pageFlowScope.createModes.CreateHubCoverGroup and !pageFlowScope.hideFormBrowseButtons}"
+                                                             partialTriggers="HubCoverGroupFirst HubCoverGroupPrevious HubCoverGroupNext HubCoverGroupLast">
+                                            <af:button actionListener="#{bindings.FirstHubCoverGroup.execute}"
+                                                       id="HubCoverGroupFirst" partialSubmit="true"
+                                                       icon="/afr/shuttleleftall_ena.png"
+                                                       shortDesc="#{nls['FIRST_ROW']}"
+                                                       rendered="#{bindings.HubCoverGroupIterator.rangeStart+bindings.HubCoverGroupIterator.currentRowIndexInRange+1>1}"/>
+                                            <af:image source="/afr/shuttleleftall_dis.png"
+                                                      rendered="#{!(bindings.HubCoverGroupIterator.rangeStart+bindings.HubCoverGroupIterator.currentRowIndexInRange+1>1)}"
+                                                      id="img0"/>
+                                            <af:button actionListener="#{bindings.PreviousHubCoverGroup.execute}"
+                                                       icon="/afr/shuttleleft_ena.png"
+                                                       shortDesc="#{nls['PREVIOUS_ROW']}" id="HubCoverGroupPrevious"
+                                                       partialSubmit="true"
+                                                       rendered="#{bindings.HubCoverGroupIterator.rangeStart+bindings.HubCoverGroupIterator.currentRowIndexInRange+1>1}"/>
+                                            <af:image source="/afr/shuttleleft_dis.png"
+                                                      rendered="#{!(bindings.HubCoverGroupIterator.rangeStart+bindings.HubCoverGroupIterator.currentRowIndexInRange+1>1)}"
+                                                      id="img1"/>
+                                            <af:spacer width="4" height="1" id="sp1"/>
+                                            <af:outputFormatted styleUsage="instruction"
+                                                                inlineStyle="white-space:nowrap; vertical-align:bottom;"
+                                                                value=" [#{bindings.HubCoverGroupIterator.rangeStart+bindings.HubCoverGroupIterator.currentRowIndexInRange+1} / #{bindings.HubCoverGroupIterator.estimatedRowCount}] "
+                                                                id="of0"/>
+                                            <af:button actionListener="#{bindings.NextHubCoverGroup.execute}"
+                                                       icon="/afr/shuttleright_ena.png" shortDesc="#{nls['NEXT_ROW']}"
+                                                       id="HubCoverGroupNext" partialSubmit="true"
+                                                       rendered="#{bindings.HubCoverGroupIterator.rangeStart+bindings.HubCoverGroupIterator.currentRowIndexInRange+1 lt bindings.HubCoverGroupIterator.estimatedRowCount}"/>
+                                            <af:image source="/afr/shuttleright_dis.png"
+                                                      rendered="#{!(bindings.HubCoverGroupIterator.rangeStart+bindings.HubCoverGroupIterator.currentRowIndexInRange+1 lt bindings.HubCoverGroupIterator.estimatedRowCount)}"
+                                                      id="img2"/>
+                                            <af:button actionListener="#{bindings.LastHubCoverGroup.execute}"
+                                                       icon="/afr/shuttlerightall_ena.png"
+                                                       shortDesc="#{nls['LAST_ROW']}" id="HubCoverGroupLast"
+                                                       partialSubmit="true"
+                                                       rendered="#{bindings.HubCoverGroupIterator.rangeStart+bindings.HubCoverGroupIterator.currentRowIndexInRange+1 lt bindings.HubCoverGroupIterator.estimatedRowCount}"/>
+                                            <af:image source="/afr/shuttlerightall_dis.png"
+                                                      rendered="#{!(bindings.HubCoverGroupIterator.rangeStart+bindings.HubCoverGroupIterator.currentRowIndexInRange+1 lt bindings.HubCoverGroupIterator.estimatedRowCount)}"
+                                                      id="img3"/>
+                                        </af:panelGroupLayout>
+                                        <!-- DEBUG:END:FORM_BROWSE_BUTTONS : custom/pageComponent/MtsformBrowseButtons.vm, nesting level: 6-->
+                                        <af:group id="gr0">
+                                            <!-- DEBUG:BEGIN:NEW_BUTTON : custom/button/MtsnewButton.vm, nesting level: 6 -->
+                                            <!-- DEBUG:END:NEW_BUTTON : custom/button/MtsnewButton.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:DELETE_BUTTON : default/button/deleteButton.vm, nesting level: 6 -->
+                                            <!-- DEBUG:END:DELETE_BUTTON : default/button/deleteButton.vm, nesting level: 6-->
+                                        </af:group>
+                                        <af:group id="gr1"/>
+                                        <af:group id="gr2">
+                                            <!-- DEBUG:BEGIN:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6 -->
+                                            <af:button action="#{SaveHubCoverGroup.execute}"
+                                                       rendered="#{((MTSPermission['DataTeamAgentCarReconciliation.update']) or (MTSPermission['DataTeamAgentCarReconciliation.update'])) and (!pageFlowScope.hideSaveButton)}"
+                                                       textAndAccessKey="#{nls['SAVE_BUTTON_LABEL']}"
+                                                       id="HubCoverGroupSaveButton" partialSubmit="true"/>
+                                            <!-- DEBUG:END:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6 -->
+                                            <af:button textAndAccessKey="#{nls['CANCEL']}" immediate="true"
+                                                       partialSubmit="true"
+                                                       rendered="#{!pageFlowScope.hideCancelButton}"
+                                                        action="DoneHubCoverGroupReturn"
+                                                       id="HubCoverGroupCancelButton"/>
+                                            <!-- DEBUG:END:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6-->
+                                        </af:group>
+                                    </af:toolbar>
+                                </af:toolbox>
+                                <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5-->
+                            </f:facet>
+                            <f:facet name="context">
+                                <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5 -->
+                                <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5-->
+                            </f:facet>
+                            <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+                            <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+                            <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+                            <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+                        </af:panelHeader>
+                        <!-- DEBUG:BEGIN:FORM_GROUP : custom/pageComponent/MtsformGroup.vm, nesting level: 5 -->
+                        <af:switcher rendered="#{bindings.HubCoverGroupIterator.findMode!='true'}" id="HubCoverGroupSw"
+                                     defaultFacet="hasRows"
+                                     facetName="#{( bindings.HubCoverGroupIterator.currentRow!=null ) ? 'hasRows' : 'noRows'}">
+                            <f:facet name="noRows">
+                                <af:outputFormatted value="#{nls['NO_ROWS_FOUND']}" styleUsage="pageStamp"
+                                                    id="HubCoverGroupNoRowsFound"/>
+                            </f:facet>
+                            <f:facet name="hasRows">
+                                <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm), disabled (custom/pageComponent/MtsformGroup.vm) -->
+                                <af:panelGroupLayout id="HubCoverGroupFC" layout="vertical">
+                                    <f:facet name="separator">
+                                        <af:spacer width="10" height="10" id="sp2"/>
+                                    </f:facet>
+                                    <af:panelFormLayout rows="3" labelAlignment="start" maxColumns="2"
+                                                        id="HubCoverGroupFI">
+                                        <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                        <af:inputText id="HubCoverGroupCreatedBy"
+                                                      value="#{bindings.HubCoverGroupCreatedBy.inputValue}"
+                                                      label="#{bindings.HubCoverGroupCreatedBy.hints.label}"
+                                                      required="#{bindings.HubCoverGroupCreatedBy.hints.mandatory}"
+                                                      rows="#{bindings.HubCoverGroupCreatedBy.hints.displayHeight}"
+                                                      columns="#{bindings.HubCoverGroupCreatedBy.hints.displayWidth}"
+                                                      maximumLength="4000" readOnly="true"
+                                                      shortDesc="#{bindings.HubCoverGroupCreatedBy.hints.tooltip}">
+                                            <f:validator binding="#{bindings.HubCoverGroupCreatedBy.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                        <af:inputText id="HubCoverGroupDispatchedBy"
+                                                      value="#{bindings.HubCoverGroupDispatchedBy.inputValue}"
+                                                      label="#{bindings.HubCoverGroupDispatchedBy.hints.label}"
+                                                      required="#{bindings.HubCoverGroupDispatchedBy.hints.mandatory}"
+                                                      rows="#{bindings.HubCoverGroupDispatchedBy.hints.displayHeight}"
+                                                      columns="#{bindings.HubCoverGroupDispatchedBy.hints.displayWidth}"
+                                                      maximumLength="1000" readOnly="true"
+                                                      shortDesc="#{bindings.HubCoverGroupDispatchedBy.hints.tooltip}">
+                                            <f:validator binding="#{bindings.HubCoverGroupDispatchedBy.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                        <af:panelGroupLayout id="plam1" layout="horizontal">
+                                            <af:selectBooleanCheckbox value="#{bindings.EditIn.inputValue}"
+                                             disabled="#{bindings.Edited.inputValue eq 1}"
+                                                                      label="#{bindings.EditIn.label}" partialTriggers="if1"
+                                                          autoSubmit="true"            shortDesc="#{bindings.EditIn.hints.tooltip}"
+                                                                      id="sbc1"/>
+                                            <af:inputFile label="" id="if1" autoSubmit="true" rendered="#{bindings.Edited.inputValue eq null}"
+                                                          valueChangeListener="#{DataTeamAgentBean.EditInChangeListener}"/>
+                                        </af:panelGroupLayout>
+                                        <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                        <af:panelGroupLayout id="pgl1" layout="horizontal">
+                                            <af:selectBooleanCheckbox value="#{bindings.EditOut.inputValue}"
+                                                                      label="#{bindings.EditOut.label}"
+                                                                  autoSubmit="true"    shortDesc="#{bindings.EditOut.hints.tooltip}"
+                                                                      disabled="#{bindings.Edited.inputValue eq 1}"
+                                                                      partialTriggers="if2"
+                                                                      id="sbc2"/>
+                                            <af:inputFile label="" id="if2" autoSubmit="true" rendered="#{bindings.Edited.inputValue eq null}"
+                                                          valueChangeListener="#{DataTeamAgentBean.EditOutChangeListener}"/>
+                                        </af:panelGroupLayout>
+                                        <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                        <af:inputText id="HubCoverGroupComment"
+                                                      value="#{bindings.HubCoverGroupComment.inputValue}"
+                                                      label="#{bindings.HubCoverGroupComment.hints.label}"
+                                                      required="true"
+                                                      rows="#{bindings.HubCoverGroupComment.hints.displayHeight}"
+                                                      columns="#{bindings.HubCoverGroupComment.hints.displayWidth}"
+                                                      maximumLength="4000"
+                                                      disabled="#{bindings.Edited.inputValue eq 1}"
+                                                      readOnly="#{!(MTSPermission['DataTeamAgentCarReconciliation.update'])}"
+                                                      shortDesc="#{bindings.HubCoverGroupComment.hints.tooltip}">
+                                            <f:validator binding="#{bindings.HubCoverGroupComment.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                    </af:panelFormLayout>
+                                    <!-- DEBUG:BEGIN:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 6 -->
+                                    <!-- DEBUG:END:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 6-->
+                                </af:panelGroupLayout>
+                                <!-- Popped "disabled" from stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                            </f:facet>
+                        </af:switcher>
+                        <!-- DEBUG:END:FORM_GROUP : custom/pageComponent/MtsformGroup.vm, nesting level: 5-->
+                        <!-- Popped "disabled" from stretchContext, now: enabled (default) -->
+                        <af:spacer width="10" height="10" id="sp3"/>
+                    </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="center">
+                    <!-- DEBUG:BEGIN:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 5 -->
+                    <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 6 -->
+                    <af:panelStretchLayout topHeight="auto" id="CoverProductTopLc"
+                                           partialTriggers=" HubCoverGroupTopLc">
+                        <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 7 -->
+                        <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 7-->
+                        <f:facet name="top">
+                            <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                            <af:group id="g0">
+                                <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 7 -->
+                                <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 7-->
+                                <af:panelHeader id="ph1" text="#{nls['TABLE_TITLE_COVERPRODUCT']}">
+                                    <f:facet name="toolbar">
+                                        <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 7 -->
+                                        <af:toolbox id="tbox1">
+                                            <af:toolbar id="tbar1">
+                                                <af:group id="gr3">
+                                                    <!-- DEBUG:BEGIN:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 8 -->
+                                                    <!-- DEBUG:END:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 8-->
+                                                </af:group>
+                                                <af:group id="gr4"/>
+                                            </af:toolbar>
+                                        </af:toolbox>
+                                        <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 7-->
+                                    </f:facet>
+                                    <f:facet name="context">
+                                        <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 7-->
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 7-->
+                                </af:panelHeader>
+                            </af:group>
+                            <!-- Popped "disabled" from stretchContext, now: enabled (default) -->
+                        </f:facet>
+                        <f:facet name="center">
+                            <!-- DEBUG:BEGIN:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 7 -->
+                            <af:panelStretchLayout topHeight="0" id="psl1">
+                                <f:facet name="top"/>
+                                <f:facet name="center">
+                                    <af:panelCollection id="CoverProductPC" featuresOff=" wrap    freeze " partialTriggers=":if1 :if2"
+                                                        styleClass="AFStretchWidth">
+                                        <f:facet name="menus">
+                                            <!-- DEBUG:BEGIN:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 8 -->
+                                            <af:menu textAndAccessKey="#{nls['ACTION_MENU_LABEL']}" id="menu0">
+                                                <af:menu textAndAccessKey="#{nls['GO_TO_MENU_LABEL']}" id="menu1">
+                                                    <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9 -->
+                                                    <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9-->
+                                                    <!-- DEBUG:BEGIN:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 9 -->
+                                                    <af:group id="CoverProducttbb"
+                                                              rendered="#{ bindings.CoverProductIterator.currentRow!=null }">
+                                                        <af:commandMenuItem actionListener="#{bindings.FirstCoverProduct.execute}"
+                                                                            id="CoverProductFirst" partialSubmit="true"
+                                                                            icon="/afr/shuttleleftall_ena.png"
+                                                                            textAndAccessKey="#{nls['FIRST_ROW']}"/>
+                                                        <af:commandMenuItem actionListener="#{bindings.PreviousCoverProduct.execute}"
+                                                                            icon="/afr/shuttleleft_ena.png"
+                                                                            textAndAccessKey="#{nls['PREVIOUS_ROW']}"
+                                                                            id="CoverProductPrevious"
+                                                                            partialSubmit="true"/>
+                                                        <af:commandMenuItem actionListener="#{bindings.NextCoverProduct.execute}"
+                                                                            icon="/afr/shuttleright_ena.png"
+                                                                            textAndAccessKey="#{nls['NEXT_ROW']}"
+                                                                            id="CoverProductNext" partialSubmit="true"/>
+                                                        <af:commandMenuItem actionListener="#{bindings.LastCoverProduct.execute}"
+                                                                            icon="/afr/shuttlerightall_ena.png"
+                                                                            textAndAccessKey="#{nls['LAST_ROW']}"
+                                                                            id="CoverProductLast" partialSubmit="true"/>
+                                                    </af:group>
+                                                    <!-- DEBUG:END:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 9-->
+                                                </af:menu>
+                                                <!-- DEBUG:BEGIN:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 9-->
+                                            </af:menu>
+                                            <!-- DEBUG:END:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 8-->
+                                        </f:facet>
+                                        <f:facet name="toolbar">
+                                            <!-- DEBUG:BEGIN:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 8 -->
+                                            <af:toolbar id="tbar2">
+                                                <!-- DEBUG:BEGIN:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 9-->
+                                            </af:toolbar>
+                                            <!-- DEBUG:END:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 8-->
+                                        </f:facet>
+                                        <f:facet name="statusbar"/>
+                                        <af:table id="CoverProductTab" contentDelivery="immediate"
+                                                  value="#{bindings.CoverProductTable.collectionModel}"
+                                                  columnStretching="last" rowBandingInterval="0" editingMode="editAll"
+                                                  columnSelection="multiple" contextMenuSelect="true"
+                                                  rowSelection="single"
+                                                  selectionListener="#{pageFlowScope.CoverProductTable.makeCurrent}"
+                                                  selectedRowKeys="#{pageFlowScope.CoverProductTable.selectedRow}"
+                                                  rowDisclosureListener="#{pageFlowScope.CoverProductTable.discloseRow}"
+                                                  var="row" varStatus="status"
+                                                  fetchSize="#{bindings.CoverProductTable.rangeSize}"
+                                                  emptyText="#{nls['NO_ROWS_FOUND']}"
+                                                  queryListener="#{bindings.CoverProductIteratorQuery.processQuery}"
+                                                  filterModel="#{bindings.CoverProductIteratorQuery.queryDescriptor}"
+                                                  filterVisible="true"
+                                                  binding="#{pageFlowScope.CoverProductTable.table}"
+                                                  partialTriggers=" :::CoverProductPC ::CoverProductFirst ::CoverProductPrevious ::CoverProductNext ::CoverProductLast"
+                                                  styleClass="AFStretchWidth"
+                                                  summary="#{nls['TABLE_TITLE_COVERPRODUCT']}">
+                                            <!-- DEBUG:BEGIN:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 8 -->
+                                            <f:facet name="contextMenu">
+                                                <af:popup id="CoverProductTablePopup" childCreation="deferred">
+                                                    <af:menu id="menu2">
+                                                        <af:menu text="#{nls['GO_TO_MENU_LABEL']}" id="menu3">
+                                                            <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9 -->
+                                                            <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9-->
+                                                        </af:menu>
+                                                        <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9-->
+                                                    </af:menu>
+                                                </af:popup>
+                                            </f:facet><!-- DEBUG:END:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 8--><!-- DEBUG:BEGIN:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 8 --><!-- DEBUG:END:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 8--><!-- DEBUG:BEGIN:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 8 -->
+                                            <af:column id="CoverProductIndexColumn" width="20" align="center"
+                                                       headerText="#">
+                                                <af:outputFormatted value="#{status.index+1}" id="of1"/>
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 8-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                            <af:column id="CoverProductAssignmentDateCol" sortable="true"
+                                                       filterable="true" noWrap="true" width="100"
+                                                       sortProperty="AssignmentDate" rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="Assignment Date"
+                                                                    id="ol0"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 9 -->
+                                                <f:facet name="filter">
+                                                    <af:inputDate value="#{status.filterCriteria.AssignmentDate}"
+                                                                  id="id0">
+                                                        <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                                    </af:inputDate>
+                                                </f:facet>
+                                                <af:inputDate id="CoverProductAssignmentDate"
+                                                              value="#{row.bindings.AssignmentDate.inputValue}"
+                                                              label="#{bindings.CoverProductTable.hints.AssignmentDate.label}"
+                                                              required="#{bindings.CoverProductTable.hints.AssignmentDate.mandatory}"
+                                                              readOnly="true"
+                                                              shortDesc="#{bindings.CoverProductTable.hints.AssignmentDate.tooltip}">
+                                                    <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                                </af:inputDate>
+                                                <!-- DEBUG:END:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                            <af:column id="CoverProductProductIdCol" sortable="true" filterable="true"
+                                                       noWrap="true" width="200" sortProperty="ProductId"
+                                                       rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="Product"
+                                                                    id="ol1"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 9 -->
+                                                <af:selectOneChoice id="CoverProductProductId"
+                                                                    value="#{row.bindings.ProductId.inputValue}"
+                                                                    label="#{bindings.CoverProductTable.hints.ProductId.label}"
+                                                                    required="#{bindings.CoverProductTable.hints.ProductId.mandatory}"
+                                                                    readOnly="true"
+                                                                    shortDesc="#{bindings.CoverProductTable.hints.ProductId.tooltip}">
+                                                    <f:selectItems value="#{row.bindings.ProductId.items}" id="si1"/>
+                                                </af:selectOneChoice>
+                                                <!-- DEBUG:END:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                            <af:column id="CoverProductTreatmentIdCol" sortable="true" filterable="true"
+                                                       noWrap="true" width="100" sortProperty="TreatmentId"
+                                                       rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="Treatment"
+                                                                    id="ol2"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 9 -->
+                                                <af:selectOneChoice id="CoverProductTreatmentId"
+                                                                    value="#{row.bindings.TreatmentId.inputValue}"
+                                                                    label="#{bindings.CoverProductTable.hints.TreatmentId.label}"
+                                                                    required="#{bindings.CoverProductTable.hints.TreatmentId.mandatory}"
+                                                                    readOnly="true"
+                                                                    shortDesc="#{bindings.CoverProductTable.hints.TreatmentId.tooltip}">
+                                                    <f:selectItems value="#{row.bindings.TreatmentId.items}" id="si2"/>
+                                                </af:selectOneChoice>
+                                                <!-- DEBUG:END:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                            <af:column id="CoverProductQuantityCol" sortable="true" filterable="true"
+                                                       noWrap="true" width="70" sortProperty="Quantity"
+                                                       rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="Quantity"
+                                                                    id="ol3"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                <af:inputText id="CoverProductQuantity"
+                                                              value="#{row.bindings.Quantity.inputValue}"
+                                                              label="#{bindings.CoverProductTable.hints.Quantity.label}"
+                                                              required="#{bindings.CoverProductTable.hints.Quantity.mandatory}"
+                                                              rows="#{bindings.CoverProductTable.hints.Quantity.displayHeight}"
+                                                              columns="#{bindings.CoverProductTable.hints.Quantity.displayWidth}"
+                                                              readOnly="true"
+                                                              shortDesc="#{bindings.CoverProductTable.hints.Quantity.tooltip}">
+                                                    <f:validator binding="#{row.bindings.Quantity.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.CoverProductTable.hints.Quantity.format}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                            <af:column id="CoverProductNewOutQtyCol" sortable="true" filterable="true"
+                                                       noWrap="true" width="70" sortProperty="NewOutQty"
+                                                       rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="New Out Qty"
+                                                                    showRequired="#{bindings.CoverProductTable.hints.NewOutQty.mandatory}"
+                                                                    id="ol4"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                <af:inputText id="CoverProductNewOutQty"
+                                                              value="#{row.bindings.NewOutQty.inputValue}"
+                                                              label="#{bindings.CoverProductTable.hints.NewOutQty.label}"
+                                                              required="#{bindings.CoverProductTable.hints.NewOutQty.mandatory}"
+                                                              rows="#{bindings.CoverProductTable.hints.NewOutQty.displayHeight}"
+                                                              columns="#{bindings.CoverProductTable.hints.NewOutQty.displayWidth}"
+                                                              disabled="#{bindings.EditOut.inputValue eq false or bindings.Edited.inputValue eq 1}"
+                                                              readOnly="#{!(MTSPermission['DataTeamAgentCarReconciliation.update'])}"
+                                                           autoSubmit="true"   shortDesc="#{bindings.CoverProductTable.hints.NewOutQty.tooltip}"
+                                                              valueChangeListener="#{DataTeamAgentBean.ChangeCoverProductAgent}">
+                                                    <f:validator binding="#{row.bindings.NewOutQty.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.CoverProductTable.hints.NewOutQty.format}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                            <af:column id="CoverProductCleanQuantityCol" sortable="true"
+                                                       filterable="true" noWrap="true" width="70"
+                                                       sortProperty="CleanQuantity" rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="Clean Quantity"
+                                                                    id="ol5"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                <af:inputText id="CoverProductCleanQuantity"
+                                                              value="#{row.bindings.CleanQuantity.inputValue}"
+                                                              label="#{bindings.CoverProductTable.hints.CleanQuantity.label}"
+                                                              required="#{bindings.CoverProductTable.hints.CleanQuantity.mandatory}"
+                                                              rows="#{bindings.CoverProductTable.hints.CleanQuantity.displayHeight}"
+                                                              columns="#{bindings.CoverProductTable.hints.CleanQuantity.displayWidth}"
+                                                              readOnly="true"
+                                                              shortDesc="#{bindings.CoverProductTable.hints.CleanQuantity.tooltip}">
+                                                    <f:validator binding="#{row.bindings.CleanQuantity.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.CoverProductTable.hints.CleanQuantity.format}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                            <af:column id="CoverProductNewCleanQtyCol" sortable="true" filterable="true"
+                                                       noWrap="true" width="70" sortProperty="NewCleanQty"
+                                                       rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="New Clean Qty"
+                                                                    showRequired="#{bindings.CoverProductTable.hints.NewCleanQty.mandatory}"
+                                                                    id="ol6"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                <af:inputText id="CoverProductNewCleanQty"
+                                                              value="#{row.bindings.NewCleanQty.inputValue}"
+                                                              label="#{bindings.CoverProductTable.hints.NewCleanQty.label}"
+                                                              required="#{bindings.CoverProductTable.hints.NewCleanQty.mandatory}"
+                                                              rows="#{bindings.CoverProductTable.hints.NewCleanQty.displayHeight}"
+                                                              columns="#{bindings.CoverProductTable.hints.NewCleanQty.displayWidth}"
+                                                            autoSubmit="true"  readOnly="#{!(MTSPermission['DataTeamAgentCarReconciliation.update'])}"
+                                                              disabled="#{bindings.EditIn.inputValue eq false or bindings.Edited.inputValue eq 1}"
+                                                              shortDesc="#{bindings.CoverProductTable.hints.NewCleanQty.tooltip}"
+                                                              valueChangeListener="#{DataTeamAgentBean.ChangeCoverProductAgent}">
+                                                    <f:validator binding="#{row.bindings.NewCleanQty.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.CoverProductTable.hints.NewCleanQty.format}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                            <af:column id="CoverProductDirtyQuantityCol" sortable="true"
+                                                       filterable="true" noWrap="true" width="70"
+                                                       sortProperty="DirtyQuantity" rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="Dirty Qty"
+                                                                    id="ol7"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                <af:inputText id="CoverProductDirtyQuantity"
+                                                              value="#{row.bindings.DirtyQuantity.inputValue}"
+                                                              label="#{bindings.CoverProductTable.hints.DirtyQuantity.label}"
+                                                              required="#{bindings.CoverProductTable.hints.DirtyQuantity.mandatory}"
+                                                              rows="#{bindings.CoverProductTable.hints.DirtyQuantity.displayHeight}"
+                                                              columns="#{bindings.CoverProductTable.hints.DirtyQuantity.displayWidth}"
+                                                              readOnly="true"
+                                                              shortDesc="#{bindings.CoverProductTable.hints.DirtyQuantity.tooltip}">
+                                                    <f:validator binding="#{row.bindings.DirtyQuantity.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.CoverProductTable.hints.DirtyQuantity.format}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                            <af:column id="CoverProductNewDirtyQtyCol" sortable="true" filterable="true"
+                                                       noWrap="true" width="70" sortProperty="NewDirtyQty"
+                                                       rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="New Dirty Qty"
+                                                                    showRequired="#{bindings.CoverProductTable.hints.NewDirtyQty.mandatory}"
+                                                                    id="ol8"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                <af:inputText id="CoverProductNewDirtyQty"
+                                                              value="#{row.bindings.NewDirtyQty.inputValue}"
+                                                              label="#{bindings.CoverProductTable.hints.NewDirtyQty.label}"
+                                                              required="#{bindings.CoverProductTable.hints.NewDirtyQty.mandatory}"
+                                                              rows="#{bindings.CoverProductTable.hints.NewDirtyQty.displayHeight}"
+                                                              columns="#{bindings.CoverProductTable.hints.NewDirtyQty.displayWidth}"
+                                                      autoSubmit="true"        readOnly="#{!(MTSPermission['DataTeamAgentCarReconciliation.update'])}"
+                                                              disabled="#{bindings.EditIn.inputValue eq false or bindings.Edited.inputValue eq 1}"
+                                                              shortDesc="#{bindings.CoverProductTable.hints.NewDirtyQty.tooltip}"
+                                                              valueChangeListener="#{DataTeamAgentBean.ChangeCoverProductAgent}">
+                                                    <f:validator binding="#{row.bindings.NewDirtyQty.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.CoverProductTable.hints.NewDirtyQty.format}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                            <af:column id="CoverProductManualCancelCol" sortable="true"
+                                                       filterable="true" noWrap="true" width="70"
+                                                       sortProperty="ManualCancel" rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="Cancel"
+                                                                    id="ol9"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                <af:inputText id="CoverProductManualCancel"
+                                                              value="#{row.bindings.ManualCancel.inputValue}"
+                                                              label="#{bindings.CoverProductTable.hints.ManualCancel.label}"
+                                                              required="#{bindings.CoverProductTable.hints.ManualCancel.mandatory}"
+                                                              rows="#{bindings.CoverProductTable.hints.ManualCancel.displayHeight}"
+                                                              columns="#{bindings.CoverProductTable.hints.ManualCancel.displayWidth}"
+                                                              readOnly="true"
+                                                              shortDesc="#{bindings.CoverProductTable.hints.ManualCancel.tooltip}">
+                                                    <f:validator binding="#{row.bindings.ManualCancel.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.CoverProductTable.hints.ManualCancel.format}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                            <af:column id="CoverProductNewCancelQtyCol" sortable="true"
+                                                       filterable="true" noWrap="true" width="70"
+                                                       sortProperty="NewCancelQty" rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="New Cancel"
+                                                                    showRequired="#{bindings.CoverProductTable.hints.NewCancelQty.mandatory}"
+                                                                    id="ol10"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                <af:inputText id="CoverProductNewCancelQty"
+                                                              value="#{row.bindings.NewCancelQty.inputValue}"
+                                                              label="#{bindings.CoverProductTable.hints.NewCancelQty.label}"
+                                                              required="#{bindings.CoverProductTable.hints.NewCancelQty.mandatory}"
+                                                              rows="#{bindings.CoverProductTable.hints.NewCancelQty.displayHeight}"
+                                                   autoSubmit="true"           columns="#{bindings.CoverProductTable.hints.NewCancelQty.displayWidth}"
+                                                              readOnly="#{!(MTSPermission['DataTeamAgentCarReconciliation.update'])}"
+                                                              disabled="#{bindings.EditIn.inputValue eq false or bindings.Edited.inputValue eq 1}"
+                                                              shortDesc="#{bindings.CoverProductTable.hints.NewCancelQty.tooltip}"
+                                                              valueChangeListener="#{DataTeamAgentBean.ChangeCoverProductAgent}">
+                                                    <f:validator binding="#{row.bindings.NewCancelQty.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.CoverProductTable.hints.NewCancelQty.format}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                            <af:column id="CoverProductManualNewCol" sortable="true" filterable="true"
+                                                       noWrap="true" width="70" sortProperty="ManualNew"
+                                                       rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="New Qty"
+                                                                    id="ol11"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                <af:inputText id="CoverProductManualNew"
+                                                              value="#{row.bindings.ManualNew.inputValue}"
+                                                              label="#{bindings.CoverProductTable.hints.ManualNew.label}"
+                                                              required="#{bindings.CoverProductTable.hints.ManualNew.mandatory}"
+                                                              rows="#{bindings.CoverProductTable.hints.ManualNew.displayHeight}"
+                                                              columns="#{bindings.CoverProductTable.hints.ManualNew.displayWidth}"
+                                                              readOnly="true"
+                                                              shortDesc="#{bindings.CoverProductTable.hints.ManualNew.tooltip}">
+                                                    <f:validator binding="#{row.bindings.ManualNew.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.CoverProductTable.hints.ManualNew.format}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                            <af:column id="CoverProductNewNewQtyCol" sortable="true" filterable="true"
+                                                       noWrap="true" width="70" sortProperty="NewNewQty"
+                                                       rowHeader="false">
+                                                <f:facet name="header">
+                                                    <af:outputLabel value="New New Qty"
+                                                                    showRequired="#{bindings.CoverProductTable.hints.NewNewQty.mandatory}"
+                                                                    id="ol12"/>
+                                                </f:facet>
+                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                <af:inputText id="CoverProductNewNewQty"
+                                                              value="#{row.bindings.NewNewQty.inputValue}"
+                                                              label="#{bindings.CoverProductTable.hints.NewNewQty.label}"
+                                                              required="#{bindings.CoverProductTable.hints.NewNewQty.mandatory}"
+                                                              rows="#{bindings.CoverProductTable.hints.NewNewQty.displayHeight}"
+                                                              columns="#{bindings.CoverProductTable.hints.NewNewQty.displayWidth}"
+                                                     autoSubmit="true"         readOnly="#{!(MTSPermission['DataTeamAgentCarReconciliation.update'])}"
+                                                              disabled="#{bindings.EditIn.inputValue eq false or bindings.Edited.inputValue eq 1}"
+                                                              shortDesc="#{bindings.CoverProductTable.hints.NewNewQty.tooltip}"
+                                                              valueChangeListener="#{DataTeamAgentBean.ChangeCoverProductAgent}">
+                                                    <f:validator binding="#{row.bindings.NewNewQty.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.CoverProductTable.hints.NewNewQty.format}"/>
+                                                </af:inputText>
+                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                            </af:column>
+                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                        </af:table>
+                                    </af:panelCollection>
+                                </f:facet>
+                            </af:panelStretchLayout>
+                            <!-- DEBUG:END:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 7-->
+                        </f:facet>
+                    </af:panelStretchLayout>
+                    <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 6-->
+                    <!-- DEBUG:END:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 5-->
+                </f:facet>
+            </af:panelStretchLayout>
+        </af:form>
+    </af:document>
+</f:view>

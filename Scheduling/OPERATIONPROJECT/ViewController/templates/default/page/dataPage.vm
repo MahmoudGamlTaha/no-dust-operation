@@ -1,0 +1,84 @@
+## revision_history
+## 31-oct-2013   Steven Davelaar
+## 2.5           Moved metaContainer facet to separate macro, use PAGE_TEMPLATE_ID macro
+##               added UNCOMMITTED_DATA_WARNING
+## 11-oct-2011   Steven Davelaar
+## 2.4           Use page_start/end macros to switch between facelets and jspx 
+## 04-feb-2011   Steven Davelaar
+## 2.3           replaced hardcoded JSP version number with JSP_VERSION macro
+##               Change encoding to pageEncoding
+##               Fix region partialTrigger generation 
+## 01-nov-2010   Steven Davelaar
+## 2.2           Added call to keyboard server listener
+## 10-aug-2009   Steven Davelaar
+## 2.1           Added dvt namespace
+## 23-jun-2009   Paco van der Linden
+## 2.0           Restructured layout according to (stretching) best-practices.
+## 07-may-2009   Paco van der Linden
+## 1.6           Shortened some id's to improve PPR performance and added resetNamingContainerContext call
+## 27-mar-2009   Steven Davelaar
+## 1.5           Added oraFormsFaces namespace
+## 31-okt-2007   Steven Davelaar/Jaco Verheul/Evert-Jan de Bruin
+## 1.4           R11 upgrade
+## 06-feb-2007   Steven Davelaar
+## 1.3           Add graph namespace when graph used in page
+## 12-jan-2007   Jaco Verheul
+## 1.2           Only generate script when generateJavaScript is true
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+<?xml version='1.0' #PAGE_ENCODING_PROP()?>
+#PAGE_START()
+    <af:document title="#PAGE_TITLE()" id="#NEW_ID("doc")" #UNCOMMITTED_DATA_WARNING()>
+      #META_CONTAINER_FACET()
+      <af:form id="dataForm">
+
+${JHS.engine.resetNamingContainerContext()}
+
+        <af:pageTemplate id="#PAGE_TEMPLATE_ID()" viewId="${JHS.application.pageTemplate}">
+          <f:attribute name="showMessagesInline" value="${JHS.application.showMessagesInline}"/>
+          #if (${JHS.application.runtimeCustomizationMenuAllowed})
+            <f:attribute name="headerImage1" value="#{jhsDynamicMenu.currentModule.uisHeaderImage1}"/>
+            <f:attribute name="headerImage2" value="#{jhsDynamicMenu.currentModule.uisHeaderImage2}"/>
+          #else
+            <f:attribute name="menuModel" value="#{RootMenu}"/>
+            <f:attribute name="menuStartLevel" value="${JHS.application.startMenuLevel}"/>
+          #end
+          #if( $JHS.current.group.isUseAsStandalonePage && !$JHS.current.group.wizardBaseGroup)
+            <f:attribute name="showBreadcrumbs" value="true"/>
+          #end
+          #if ($JHS.page.group.hasTreeFormLayout || $JHS.page.group.hasTreeLayout)
+             <f:attribute name="showMenu3" value="true"/>
+             <f:attribute name="navigation3Size" #if (${JHS.current.group.treeBaseGroup.treeWidth}!='') value="${JHS.current.group.treeBaseGroup.treeWidth}" #else value="150" #end/>             
+            <f:facet name="menu3">
+##                #TREE_MENU3(${JHS.current.group.treeBaseGroup.name})
+                #JHS_PARSE("TREE" ${JHS.treeGenerator.getTree(${JHS.current.group.treeBaseGroup.name})})
+            </f:facet>
+          #else
+            #BREADCRUMB_BEAN()
+          #end
+
+        #if( $JHS.current.group.isUseAsStandalonePage )
+          #JHS_PARSE(${JHS.page.contentTemplateIdentifier} ${JHS.current.model})
+        #else
+          <f:facet name="pageContent">
+              #if ($JHS.page.group.treeBaseGroup)
+              <af:region id="tr" value="#{bindings.${JHS.page.group.name}TreeTaskFlow.regionModel}"
+                     partialTriggers="::${JHS.page.group.shortName}TPC:${JHS.page.group.shortName}Tree "    />
+              #else
+              <af:region id="mr" value="#{bindings.${JHS.page.regionTaskFlowName}.regionModel}"
+               #if (${JHS.application.useJhsTreeMenuPageTemplate})
+                  partialTriggers="::pctree:Menu1 ::pendingChangesDialog" 
+               #else         
+                  partialTriggers="::Menu1 ::Menu2 ::pendingChangesDialog" 
+               #end
+                  />
+              #end
+          </f:facet>
+        #end
+
+
+        </af:pageTemplate>
+      </af:form>
+      #KEYBOARD_SERVER_LISTENER()
+    </af:document>
+#PAGE_END()

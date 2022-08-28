@@ -1,0 +1,112 @@
+## revision_history
+## 12-oct-2017   Ahmed Magdy
+##               Add icon expression to tree link
+## 11-nov-2013   Steven Davelaar
+## 1.4           Added CHECK_UNCOMMITTED_DATA_BEHAVIOR_MENU, PENDING_CHANGES_ACTION_LISTENER
+##               Undo change in rev 1.2, popup no longer auto-closes and reference to mg:Menu0
+##               causes runtime error
+## 14-feb-2013   Steven Davelaar
+## 1.3           Added IMMEDIATE_MENU_ITEM macro to tree commandLink
+##               Added partialtriggers=pctree on content psl
+##               Added selectedRowKeys property on af:tree when using static menu to correctly
+##               show selected node after pending changes alert (doesn't work yet with
+##               dynamic menu)
+## 28-feb-2012   Steven Davelaar
+## 1.2           - Added partialSubmit=true
+##               - Added Item1 partialTriggers to Menu
+##               - Set mg:Menu0 as partial trigger when using db table resource bundle, otherwise change text popup
+##                 auto-closes when changing language or page.  
+## 28-feb-2011   Steven Davelaar
+## 1.1           Dynamic table-driven menu can now be displayed in tree as well
+##               Changed MenuTreeBean to pageFlowScope so state is remembered accross shell pages 
+## 07-jul-2010   Steven Davelaar
+## 1.0           Initial creation
+<af:decorativeBox theme="light"
+                  topHeight="#{attrs.navigation2Size}"
+                  id="pt_db1">
+  <f:facet name="center">
+    <af:panelSplitter orientation="horizontal"
+                      splitterPosition="200" id="pt_ps2">
+      <f:facet name="first">
+        <af:decorativeBox theme="default" topHeight="100px"
+                          partialTriggers="::mg"
+                          styleClass="TabletPageContent"
+                          id="pt_db2">
+          <f:facet name="top">
+            <af:image source="/jheadstart/images/Customer Logo.png" id="pt_i2"/>
+          </f:facet>
+          <f:facet name="center">
+            <af:listView id="Menu1" var="menuItem" varStatus="stat"
+                   #if (${JHS.application.runtimeCustomizationMenuAllowed}) 
+                      value="#{jhsDynamicMenu.menuModel}" 
+                  #else 
+                      value="#{attrs.menuModel}" 
+                      selectedRowKeys="#{attrs.menuModel.selectedRowKeySet}"
+                   #end
+                       selection="single" partialTriggers="Item1">
+                <af:listItem id="pt_li1" rendered="#{menuItem.rendered}" shortDesc="#{menuItem.label}">
+                  <!-- partialSubmit="true" only works correctly with common UI shell page but needed to get pending changes alert -->
+                  <af:panelGroupLayout id="pt_pgl3">
+                    <af:panelGridLayout id="pt_pgl4">
+                      <af:gridRow marginTop="5px" height="25px" marginBottom="5px" id="pt_gr1">
+                        <af:gridCell id="gc1">
+                          <af:image source="#{menuItem.icon}" id="i2" inlineStyle="width: 32px; height: 32px;" shortDesc="#{menuItem.label}"/>
+                        </af:gridCell>
+                        <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="pt_gc1">
+                                                            <af:link id="Items1" 
+                  #if (${JHS.application.runtimeCustomizationMenuAllowed}) textAndAccessKey="#{menuItem.labelTranslationKey!=null ? nls[menuItem.labelTranslationKey] : menuItem.label}" #else textAndAccessKey="#{menuItem.label}" #end
+                                            #IMMEDIATE_MENU_ITEM()
+                                            #PENDING_CHANGES_ACTION_LISTENER()
+                                            action="#{menuItem.doAction}" partialSubmit="true" inlineStyle="font-size: medium;">
+                    #CHECK_UNCOMMITTED_DATA_BEHAVIOR_MENU()  
+</af:link> 
+                                                        </af:gridCell>
+                                                    </af:gridRow>
+                                                </af:panelGridLayout>
+                                            </af:panelGroupLayout>
+                                <af:button action="#{menuItem.doAction}" id="CfgGovernrateGtd" #IMMEDIATE_MENU_ITEM() #PENDING_CHANGES_ACTION_LISTENER()
+                                           inlineStyle="cursor:pointer; bottom: 0px; width: 100.0%; height: 100%; position: absolute; background-color: transparent; #{facesContext.viewRoot.locale.language=='en' ? 'right: 0; background-image:url();' : 'left: 0; background-image:url();'}"
+                                           >
+                                                #CHECK_UNCOMMITTED_DATA_BEHAVIOR_MENU()
+                                            </af:button>
+                                        </af:listItem>
+                                    </af:listView>
+          </f:facet>
+        </af:decorativeBox>
+      </f:facet>
+      <f:facet name="second">
+        <af:decorativeBox theme="default"
+                          styleClass="TabletPageContent"
+                          id="pt_db3">
+          <f:facet name="center">
+            <af:panelStretchLayout topHeight="auto" partialTriggers="pctree"
+                                   id="pt_psl3">
+              <f:facet name="top">
+                <af:group id="pt_g3">
+                  <af:breadCrumbs rendered="#{attrs.showBreadcrumbs and (pageFlowScope.jhsBreadcrumbStack.size gt 1)}"
+                                  var="bc" varStatus="vs"
+                                  value="#{pageFlowScope.jhsBreadcrumbStack}"
+                                  id="bcp">
+                    <f:facet name="nodeStamp">
+                      <af:commandNavigationItem id="ni"
+                                                action="#{bc.doAction}"
+                                                text="#{bc.label}"
+                                                visible="#{pageFlowScope.jhsBreadcrumbStack.rowIndex lt (pageFlowScope.jhsBreadcrumbStack.size-1)}"/>
+                    </f:facet>
+                  </af:breadCrumbs>
+                  <af:messages visible="#{attrs.showMessages}"
+                               id="msgp"
+                               inline="#{attrs.showMessagesInline}"/>
+                  <af:facetRef facetName="processTrain"/>
+                </af:group>
+              </f:facet>
+              <f:facet name="center">
+                <af:facetRef facetName="pageContent"/>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+        </af:decorativeBox>
+      </f:facet>
+    </af:panelSplitter>
+  </f:facet>
+</af:decorativeBox>

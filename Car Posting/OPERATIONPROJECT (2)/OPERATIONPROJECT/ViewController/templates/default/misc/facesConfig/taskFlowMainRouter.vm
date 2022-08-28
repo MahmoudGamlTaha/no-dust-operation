@@ -1,0 +1,51 @@
+## revision_history
+## 25-jan-2012  Steven Davelaar
+## 1.1          Changed LOV router conditions
+## 15-nov-2010  Steven Davelaar
+## 1.0          Initial creation, extracted from groupAdfcConfig.vm, added check for isDeepLink
+
+#set ($group = ${JHS.current.group})
+#set ($groupName = ${JHS.current.group.name})
+
+  <router id="Start${groupName}">
+    #foreach ($case in ${JHS.current.groupFacesConfig.mainRouterCases})
+      <case id="#NEW_ID("__")">
+        <expression id="#NEW_ID("__")">${case.expression}</expression>
+        <outcome id="#NEW_ID("__")">${case.outcome}</outcome>
+      </case>  
+    #end
+    #if( $JHS.current.group.reusableTree)
+      <case id="#NEW_ID("__")">
+        <expression id="#NEW_ID("__")">#{true}</expression>
+        <outcome id="#NEW_ID("__")">deepLinkTree</outcome>
+      </case>  
+    #else
+      #if ($JHS.current.group.useAsLov && $JHS.current.group.jhsSearchUsed)
+        <case id="#NEW_ID("__")">
+          <expression id="#NEW_ID("__")">#{pageFlowScope.lovItemBeanRef.validationStarted}</expression>
+          <outcome id="#NEW_ID("__")">DoValidation</outcome>
+        </case>
+        <case id="#NEW_ID("__")">
+          <expression id="#NEW_ID("__")">#{pageFlowScope.lovItemBeanRef.lovSearchValue!=null}</expression>
+          <outcome id="#NEW_ID("__")">PreQueryUsingSearchValue</outcome>
+        </case>
+      #end
+      #if ($JHS.current.group.formInsertAllowed)
+        <case id="#NEW_ID("__")">
+          <expression id="#NEW_ID("__")">#{pageFlowScope.create${groupName}!=null}</expression>
+          <outcome id="#NEW_ID("__")">create${groupName}</outcome>
+        </case>
+      #end
+      #if ($JHS.current.group.databound)
+        <case id="#NEW_ID("__")">
+          <expression id="#NEW_ID("__")">#{pageFlowScope.rowKeyStr${groupName}!=null or pageFlowScope.rowKeyValue${groupName}!=null or pageFlowScope.rowKey${groupName}!=null}</expression>
+          <outcome id="#NEW_ID("__")">SetCurrentRow${groupName}</outcome>
+        </case>
+      #end
+      <case id="#NEW_ID("__")">
+        <expression id="#NEW_ID("__")">#{pageFlowScope.isDeepLink!=null and pageFlowScope.isDeepLink}</expression>
+        <outcome id="#NEW_ID("__")">deepLinkPage</outcome>
+      </case>
+    #end
+    <default-outcome id="#NEW_ID("__")">${JHS.current.groupFacesConfig.mainRouterDefaultOutcome}</default-outcome>
+  </router>

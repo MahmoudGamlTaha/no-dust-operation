@@ -1,0 +1,48 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1">
+      <property
+         name="x">88.01758</property>
+      <property
+         name="y">239.20117</property>
+   </OverallProperties>
+   <TaskFlowCall
+      id="TaskFlowCall2">
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>DoLovValidation&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="activityId">DoLovValidation</property>
+      <property
+         name="x">259.73145</property>
+      <property
+         name="y">83.5</property>
+      <property
+         name="exceptionHandler">false</property>
+   </TaskFlowCall>
+   <WildcardControlFlowRule
+      id="WildcardControlFlowRule3">
+      <property
+         name="activityId">*</property>
+      <property
+         name="srcid">__16</property>
+      <property
+         name="x">88.01758</property>
+      <property
+         name="y">84.0</property>
+   </WildcardControlFlowRule>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="WildcardControlFlowRule3"
+      to="TaskFlowCall2">
+      <property
+         name="tosrcid">__18</property>
+      <property
+         name="fromOutcome">doLovValidation</property>
+      <property
+         name="fromsrcid">__16</property>
+      <property
+         name="sdm:polyPoints">R50,124.01758,84.149414,218.73145,83.149414,L50</property>
+   </ControlFlowCase>
+</SDM>

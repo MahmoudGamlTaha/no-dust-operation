@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CarIssueFk1ASSOC"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="Shipment"
+    Cardinality="1"
+    Source="true"
+    Owner="OPERATIONPROJECT.model.BC.EO.ShipmentEO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="Shipment"/>
+      <Attr Name="_foreignKey" Value="OPERATIONPROJECT.model.BC.EO.ShipmentEO.ShipmentPkey"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.ShipmentEO.ShipmentId"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="CarIssue"
+    Cardinality="-1"
+    Owner="OPERATIONPROJECT.model.BC.EO.CarIssueEO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="CarIssue"/>
+      <Attr Name="_foreignKey" Value="OPERATIONPROJECT.model.BC.EO.CarIssueEO.CarIssueFk1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.CarIssueEO.ShipmentId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

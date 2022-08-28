@@ -1,0 +1,25 @@
+## revision_history
+## 04-jul-2011   Steven Davelaar
+## 1.5           Removed af:resetACtionListsner because the latter does not reset any regions 
+##               embedded in the page, we now perform reset in rollback bean. Also moved
+##               rollback,excute to actionListener property, because we need actionEvent to
+##               obtain UIComponent for programatic reset.
+## 05-nov-2010   Steven Davelaar
+## 1.4           Added call to ADD_GROUP_ACTION to support function keys
+## 31-aug-2007   Sandra Muller
+## 1.3           replaced text by textAndAccessKey
+## 12-jan-2007   Jaco Verheul
+## 1.2           JavaScript now embedded in ALERT_FOR_CHANGES macro
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+<af:button textAndAccessKey="#CANCEL_LABEL()"
+                  immediate="true" partialSubmit="true"
+                  rendered="#{!pageFlowScope.hideCancelButton}"
+                  actionListener="#{#CANCEL_BEAN().execute}"
+                  action="Cancel"
+                  id="${JHS.current.group.shortName}CancelButton">
+</af:button>
+  ## top level group shoul be refreshed when saving, will cascade down to all detail groups
+  #ADD_GROUP_PARTIAL_TRIGGER(${JHS.page.group} "${JHS.current.group.shortName}CancelButton")
+  #ADD_GROUP_ACTION(${JHS.current.group} "Rollback" "${JHS.current.group.shortName}CancelButton")
+

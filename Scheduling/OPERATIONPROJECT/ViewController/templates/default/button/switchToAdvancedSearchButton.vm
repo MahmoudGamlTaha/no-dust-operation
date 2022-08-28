@@ -1,0 +1,10 @@
+## revision_history
+## 16-nov-2010   Steven Davelaar
+## 1.2           Changed into commandLink, end users were confused what button to press
+##               to execute quick search, also in line with fusion apps standards
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+<af:link id="#ADVANCED_SEARCH_BUTTON_ID()"
+                  textAndAccessKey="#ADVANCED_SEARCH_LABEL()"
+                  partialSubmit="true" immediate="true"
+                  action="#{#SEARCH_BEAN().switchToAdvancedSearchMode}"/>

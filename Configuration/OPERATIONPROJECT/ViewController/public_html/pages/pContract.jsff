@@ -1,0 +1,340 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsRegionTemplateNoStretch.jsf">
+        <f:attribute name="showBreadcrumbs" value="false"/>
+        <!-- DEBUG:BEGIN:WIZARD_PAGE_CONTENT : default/page/wizardPageContent.vm, nesting level: 2 -->
+        <f:facet name="processTrain">
+            <af:train value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}" id="tr0"/>
+        </f:facet>
+        <!-- DEBUG:BEGIN:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3 -->
+        <f:facet name="pageContent">
+            <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+            <af:panelGroupLayout id="pcpg" layout="scroll">
+                <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4 -->
+                <af:panelGroupLayout layout="vertical" id="pContractTopLc"
+                                     partialTriggers=" pContractDeleteDialog pContractfbb pContractNewButton pContractDelB pContractCancelButton">
+                    <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                    <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                    <f:facet name="separator">
+                        <af:spacer width="10" height="10" id="sp0"/>
+                    </f:facet>
+                    <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+                    <af:panelHeader id="ph0"
+                                    text="#{pageFlowScope.createModes.CreatepContract ? nls['INSERT_TITLE_PCONTRACT'] :  (MTSPermission['ContractManagment.update'] ? nls['EDIT_TITLE_PCONTRAC: #{bindings.pContractId.inputValue}'] : nls['VIEW_TITLE_PCONTRAC: #{bindings.pContractId.inputValue}'])  }">
+                        <f:facet name="toolbar">
+                            <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5 -->
+                            <af:toolbox id="tbox0">
+                                <af:toolbar id="tbar0">
+                                    <!-- DEBUG:BEGIN:FORM_BROWSE_BUTTONS : custom/pageComponent/MtsformBrowseButtons.vm, nesting level: 6 -->
+                                    <af:panelGroupLayout id="pContractfbb" layout="horizontal"
+                                                         rendered="#{ bindings.pContractIterator.currentRow!=null  and bindings.pContractIterator.estimatedRowCount>1 and !pageFlowScope.createModes.CreatepContract and !pageFlowScope.hideFormBrowseButtons}"
+                                                         partialTriggers="pContractFirst pContractPrevious pContractNext pContractLast">
+                                        <af:button actionListener="#{bindings.FirstpContract.execute}"
+                                                   id="pContractFirst" partialSubmit="true"
+                                                   icon="/afr/shuttleleftall_ena.png" shortDesc="#{nls['FIRST_ROW']}"
+                                                   rendered="#{bindings.pContractIterator.rangeStart+bindings.pContractIterator.currentRowIndexInRange+1>1}"></af:button>
+                                        <af:image source="/afr/shuttleleftall_dis.png"
+                                                  rendered="#{!(bindings.pContractIterator.rangeStart+bindings.pContractIterator.currentRowIndexInRange+1>1)}"
+                                                  id="img0"/>
+                                        <af:button actionListener="#{bindings.PreviouspContract.execute}"
+                                                   icon="/afr/shuttleleft_ena.png" shortDesc="#{nls['PREVIOUS_ROW']}"
+                                                   id="pContractPrevious" partialSubmit="true"
+                                                   rendered="#{bindings.pContractIterator.rangeStart+bindings.pContractIterator.currentRowIndexInRange+1>1}"></af:button>
+                                        <af:image source="/afr/shuttleleft_dis.png"
+                                                  rendered="#{!(bindings.pContractIterator.rangeStart+bindings.pContractIterator.currentRowIndexInRange+1>1)}"
+                                                  id="img1"/>
+                                        <af:spacer width="4" height="1" id="sp1"/>
+                                        <af:outputFormatted styleUsage="instruction"
+                                                            inlineStyle="white-space:nowrap; vertical-align:bottom;"
+                                                            value=" [#{bindings.pContractIterator.rangeStart+bindings.pContractIterator.currentRowIndexInRange+1} / #{bindings.pContractIterator.estimatedRowCount}] "
+                                                            id="of0"/>
+                                        <af:button actionListener="#{bindings.NextpContract.execute}"
+                                                   icon="/afr/shuttleright_ena.png" shortDesc="#{nls['NEXT_ROW']}"
+                                                   id="pContractNext" partialSubmit="true"
+                                                   rendered="#{bindings.pContractIterator.rangeStart+bindings.pContractIterator.currentRowIndexInRange+1 lt bindings.pContractIterator.estimatedRowCount}"></af:button>
+                                        <af:image source="/afr/shuttleright_dis.png"
+                                                  rendered="#{!(bindings.pContractIterator.rangeStart+bindings.pContractIterator.currentRowIndexInRange+1 lt bindings.pContractIterator.estimatedRowCount)}"
+                                                  id="img2"/>
+                                        <af:button actionListener="#{bindings.LastpContract.execute}"
+                                                   icon="/afr/shuttlerightall_ena.png" shortDesc="#{nls['LAST_ROW']}"
+                                                   id="pContractLast" partialSubmit="true"
+                                                   rendered="#{bindings.pContractIterator.rangeStart+bindings.pContractIterator.currentRowIndexInRange+1 lt bindings.pContractIterator.estimatedRowCount}"></af:button>
+                                        <af:image source="/afr/shuttlerightall_dis.png"
+                                                  rendered="#{!(bindings.pContractIterator.rangeStart+bindings.pContractIterator.currentRowIndexInRange+1 lt bindings.pContractIterator.estimatedRowCount)}"
+                                                  id="img3"/>
+                                    </af:panelGroupLayout>
+                                    <!-- DEBUG:END:FORM_BROWSE_BUTTONS : custom/pageComponent/MtsformBrowseButtons.vm, nesting level: 6-->
+                                    <af:group id="gr0">
+                                        <!-- DEBUG:BEGIN:NEW_BUTTON : custom/button/MtsnewButton.vm, nesting level: 6 -->
+                                        <af:button actionListener="#{CreatepContract.execute}" action="CreatepContract"
+                                                   icon="/jheadstart/images/newRowInForm.png" partialSubmit="true"
+                                                   shortDesc="#{nls['NEW_BUTTON_LABEL_PCONTRACT']}"
+                                                   rendered="#{!pageFlowScope.createModes.CreatepContract and (true) and (MTSPermission['ContractManagment.create'])}"
+                                                   id="pContractNewButton"></af:button>
+                                        <!-- DEBUG:END:NEW_BUTTON : custom/button/MtsnewButton.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:DELETE_BUTTON : default/button/deleteButton.vm, nesting level: 6 -->
+                                        <af:button action="DeletepContract" partialSubmit="true"
+                                                   icon="/jheadstart/images/deleteRow.png"
+                                                   shortDesc="#{nls['DELETE_BUTTON_LABEL_PCONTRACT']}"
+                                                   rendered="#{!pageFlowScope.createModes.CreatepContract and  bindings.pContractIterator.currentRow!=null   and (MTSPermission['ContractManagment.delete'])}"
+                                                   immediate="true" id="pContractDelB">
+                                            <af:showPopupBehavior popupId="pContractDeletePopup"/>
+                                        </af:button>
+                                        <!-- DEBUG:END:DELETE_BUTTON : default/button/deleteButton.vm, nesting level: 6-->
+                                    </af:group>
+                                    <af:group id="gr1"></af:group>
+                                    <af:group id="gr2">
+                                        <af:trainButtonBar value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"/>
+                                        <!-- DEBUG:BEGIN:WIZARD_FINISH_BUTTON : default/button/wizardFinishButton.vm, nesting level: 6 -->
+                                        <af:button action="#{SavepContract.execute}" textAndAccessKey="#{nls['FINISH']}"
+                                                   id="pContractWizardFinishButton"></af:button>
+                                        <!-- DEBUG:END:WIZARD_FINISH_BUTTON : default/button/wizardFinishButton.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6 -->
+                                        <af:button textAndAccessKey="#{nls['CANCEL']}" immediate="true"
+                                                   partialSubmit="true" rendered="#{!pageFlowScope.hideCancelButton}"
+                                                   actionListener="#{jhsRollback.execute}" action="Cancel"
+                                                   id="pContractCancelButton"></af:button>
+                                        <!-- DEBUG:END:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6-->
+                                    </af:group>
+                                </af:toolbar>
+                            </af:toolbox>
+                            <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5-->
+                        </f:facet>
+                        <f:facet name="context">
+                            <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5 -->
+                            <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5-->
+                        </f:facet>
+                        <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+                        <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+                    </af:panelHeader>
+                    <!-- DEBUG:BEGIN:FORM_GROUP : custom/pageComponent/MtsformGroup.vm, nesting level: 5 -->
+                    <af:switcher rendered="#{bindings.pContractIterator.findMode!='true'}" id="pContractSw"
+                                 defaultFacet="hasRows"
+                                 facetName="#{( bindings.pContractIterator.currentRow!=null ) ? 'hasRows' : 'noRows'}">
+                        <f:facet name="noRows">
+                            <af:outputFormatted value="#{nls['NO_ROWS_FOUND']}" styleUsage="pageStamp"
+                                                id="pContractNoRowsFound"/>
+                        </f:facet>
+                        <f:facet name="hasRows">
+                            <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+                            <af:panelGroupLayout id="pContractFC" layout="vertical">
+                                <f:facet name="separator">
+                                    <af:spacer width="10" height="10" id="sp2"/>
+                                </f:facet>
+                                <af:panelFormLayout rows="1" labelAlignment="start" maxColumns="1" id="pContractFI">
+                                    <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                    <af:inputText id="pContractActive" value="#{bindings.pContractActive.inputValue}"
+                                                  label="#{bindings.pContractActive.hints.label}"
+                                                  required="#{bindings.pContractActive.hints.mandatory}"
+                                                  rows="#{bindings.pContractActive.hints.displayHeight}"
+                                                  columns="#{bindings.pContractActive.hints.displayWidth}"
+                                                  readOnly="#{((pageFlowScope.createModes.CreatepContract) and (!(MTSPermission['ContractManagment.create']))) or ((!pageFlowScope.createModes.CreatepContract) and (!(MTSPermission['ContractManagment.update'])))}"
+                                                  shortDesc="#{bindings.pContractActive.hints.tooltip}">
+                                        <f:validator binding="#{bindings.pContractActive.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.pContractActive.format}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:FORM_DATE_FIELD : default/item/form/formDateField.vm, nesting level: 6 -->
+                                    <af:inputDate id="pContractActiveFrom"
+                                                  value="#{bindings.pContractActiveFrom.inputValue}"
+                                                  label="#{bindings.pContractActiveFrom.hints.label}"
+                                                  required="#{bindings.pContractActiveFrom.hints.mandatory}"
+                                                  readOnly="#{((pageFlowScope.createModes.CreatepContract) and (!(MTSPermission['ContractManagment.create']))) or ((!pageFlowScope.createModes.CreatepContract) and (!(MTSPermission['ContractManagment.update'])))}"
+                                                  shortDesc="#{bindings.pContractActiveFrom.hints.tooltip}">
+                                        <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                    </af:inputDate>
+                                    <!-- DEBUG:END:FORM_DATE_FIELD : default/item/form/formDateField.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:FORM_DATE_FIELD : default/item/form/formDateField.vm, nesting level: 6 -->
+                                    <af:inputDate id="pContractActiveTo"
+                                                  value="#{bindings.pContractActiveTo.inputValue}"
+                                                  label="#{bindings.pContractActiveTo.hints.label}"
+                                                  required="#{bindings.pContractActiveTo.hints.mandatory}"
+                                                  readOnly="#{((pageFlowScope.createModes.CreatepContract) and (!(MTSPermission['ContractManagment.create']))) or ((!pageFlowScope.createModes.CreatepContract) and (!(MTSPermission['ContractManagment.update'])))}"
+                                                  shortDesc="#{bindings.pContractActiveTo.hints.tooltip}">
+                                        <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                    </af:inputDate>
+                                    <!-- DEBUG:END:FORM_DATE_FIELD : default/item/form/formDateField.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                    <af:inputText id="pContractCardNo" value="#{bindings.pContractCardNo.inputValue}"
+                                                  label="#{bindings.pContractCardNo.hints.label}"
+                                                  required="#{bindings.pContractCardNo.hints.mandatory}"
+                                                  rows="#{bindings.pContractCardNo.hints.displayHeight}"
+                                                  columns="#{bindings.pContractCardNo.hints.displayWidth}"
+                                                  readOnly="#{((pageFlowScope.createModes.CreatepContract) and (!(MTSPermission['ContractManagment.create']))) or ((!pageFlowScope.createModes.CreatepContract) and (!(MTSPermission['ContractManagment.update'])))}"
+                                                  shortDesc="#{bindings.pContractCardNo.hints.tooltip}">
+                                        <f:validator binding="#{bindings.pContractCardNo.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.pContractCardNo.format}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                    <af:inputText id="pContractId" value="#{bindings.pContractId.inputValue}"
+                                                  label="#{bindings.pContractId.hints.label}"
+                                                  required="#{bindings.pContractId.hints.mandatory}"
+                                                  rows="#{bindings.pContractId.hints.displayHeight}"
+                                                  columns="#{bindings.pContractId.hints.displayWidth}"
+                                                  maximumLength="38"
+                                                  readOnly="#{((pageFlowScope.createModes.CreatepContract) and (!(MTSPermission['ContractManagment.create']))) or ((!pageFlowScope.createModes.CreatepContract) and (!(MTSPermission['ContractManagment.update'])))}"
+                                                  shortDesc="#{bindings.pContractId.hints.tooltip}">
+                                        <f:validator binding="#{bindings.pContractId.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.pContractId.format}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                    <af:inputText id="pContractPackageNo"
+                                                  value="#{bindings.pContractPackageNo.inputValue}"
+                                                  label="#{bindings.pContractPackageNo.hints.label}"
+                                                  required="#{bindings.pContractPackageNo.hints.mandatory}"
+                                                  rows="#{bindings.pContractPackageNo.hints.displayHeight}"
+                                                  columns="#{bindings.pContractPackageNo.hints.displayWidth}"
+                                                  readOnly="#{((pageFlowScope.createModes.CreatepContract) and (!(MTSPermission['ContractManagment.create']))) or ((!pageFlowScope.createModes.CreatepContract) and (!(MTSPermission['ContractManagment.update'])))}"
+                                                  shortDesc="#{bindings.pContractPackageNo.hints.tooltip}">
+                                        <f:validator binding="#{bindings.pContractPackageNo.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.pContractPackageNo.format}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                    <af:inputText id="pContractPackageVersion"
+                                                  value="#{bindings.pContractPackageVersion.inputValue}"
+                                                  label="#{bindings.pContractPackageVersion.hints.label}"
+                                                  required="#{bindings.pContractPackageVersion.hints.mandatory}"
+                                                  rows="#{bindings.pContractPackageVersion.hints.displayHeight}"
+                                                  columns="#{bindings.pContractPackageVersion.hints.displayWidth}"
+                                                  readOnly="#{((pageFlowScope.createModes.CreatepContract) and (!(MTSPermission['ContractManagment.create']))) or ((!pageFlowScope.createModes.CreatepContract) and (!(MTSPermission['ContractManagment.update'])))}"
+                                                  shortDesc="#{bindings.pContractPackageVersion.hints.tooltip}">
+                                        <f:validator binding="#{bindings.pContractPackageVersion.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.pContractPackageVersion.format}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                    <af:inputText id="pContractPendingConfirmation"
+                                                  value="#{bindings.pContractPendingConfirmation.inputValue}"
+                                                  label="#{bindings.pContractPendingConfirmation.hints.label}"
+                                                  required="#{bindings.pContractPendingConfirmation.hints.mandatory}"
+                                                  rows="#{bindings.pContractPendingConfirmation.hints.displayHeight}"
+                                                  columns="#{bindings.pContractPendingConfirmation.hints.displayWidth}"
+                                                  readOnly="#{((pageFlowScope.createModes.CreatepContract) and (!(MTSPermission['ContractManagment.create']))) or ((!pageFlowScope.createModes.CreatepContract) and (!(MTSPermission['ContractManagment.update'])))}"
+                                                  shortDesc="#{bindings.pContractPendingConfirmation.hints.tooltip}">
+                                        <f:validator binding="#{bindings.pContractPendingConfirmation.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.pContractPendingConfirmation.format}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                    <af:inputText id="pContractProductId"
+                                                  value="#{bindings.pContractProductId.inputValue}"
+                                                  label="#{bindings.pContractProductId.hints.label}"
+                                                  required="#{bindings.pContractProductId.hints.mandatory}"
+                                                  rows="#{bindings.pContractProductId.hints.displayHeight}"
+                                                  columns="#{bindings.pContractProductId.hints.displayWidth}"
+                                                  maximumLength="4000"
+                                                  readOnly="#{((pageFlowScope.createModes.CreatepContract) and (!(MTSPermission['ContractManagment.create']))) or ((!pageFlowScope.createModes.CreatepContract) and (!(MTSPermission['ContractManagment.update'])))}"
+                                                  shortDesc="#{bindings.pContractProductId.hints.tooltip}">
+                                        <f:validator binding="#{bindings.pContractProductId.validator}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                    <af:inputText id="pContractProductSku"
+                                                  value="#{bindings.pContractProductSku.inputValue}"
+                                                  label="#{bindings.pContractProductSku.hints.label}"
+                                                  required="#{bindings.pContractProductSku.hints.mandatory}"
+                                                  rows="#{bindings.pContractProductSku.hints.displayHeight}"
+                                                  columns="#{bindings.pContractProductSku.hints.displayWidth}"
+                                                  maximumLength="4000"
+                                                  readOnly="#{((pageFlowScope.createModes.CreatepContract) and (!(MTSPermission['ContractManagment.create']))) or ((!pageFlowScope.createModes.CreatepContract) and (!(MTSPermission['ContractManagment.update'])))}"
+                                                  shortDesc="#{bindings.pContractProductSku.hints.tooltip}">
+                                        <f:validator binding="#{bindings.pContractProductSku.validator}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                    <af:inputText id="pContractQuantity"
+                                                  value="#{bindings.pContractQuantity.inputValue}"
+                                                  label="#{bindings.pContractQuantity.hints.label}"
+                                                  required="#{bindings.pContractQuantity.hints.mandatory}"
+                                                  rows="#{bindings.pContractQuantity.hints.displayHeight}"
+                                                  columns="#{bindings.pContractQuantity.hints.displayWidth}"
+                                                  readOnly="#{((pageFlowScope.createModes.CreatepContract) and (!(MTSPermission['ContractManagment.create']))) or ((!pageFlowScope.createModes.CreatepContract) and (!(MTSPermission['ContractManagment.update'])))}"
+                                                  shortDesc="#{bindings.pContractQuantity.hints.tooltip}">
+                                        <f:validator binding="#{bindings.pContractQuantity.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.pContractQuantity.format}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                    <af:inputText id="pContractTreatmentId"
+                                                  value="#{bindings.pContractTreatmentId.inputValue}"
+                                                  label="#{bindings.pContractTreatmentId.hints.label}"
+                                                  required="#{bindings.pContractTreatmentId.hints.mandatory}"
+                                                  rows="#{bindings.pContractTreatmentId.hints.displayHeight}"
+                                                  columns="#{bindings.pContractTreatmentId.hints.displayWidth}"
+                                                  readOnly="#{((pageFlowScope.createModes.CreatepContract) and (!(MTSPermission['ContractManagment.create']))) or ((!pageFlowScope.createModes.CreatepContract) and (!(MTSPermission['ContractManagment.update'])))}"
+                                                  shortDesc="#{bindings.pContractTreatmentId.hints.tooltip}">
+                                        <f:validator binding="#{bindings.pContractTreatmentId.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.pContractTreatmentId.format}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                    <af:inputText id="pContractUnitPrice"
+                                                  value="#{bindings.pContractUnitPrice.inputValue}"
+                                                  label="#{bindings.pContractUnitPrice.hints.label}"
+                                                  required="#{bindings.pContractUnitPrice.hints.mandatory}"
+                                                  rows="#{bindings.pContractUnitPrice.hints.displayHeight}"
+                                                  columns="#{bindings.pContractUnitPrice.hints.displayWidth}"
+                                                  readOnly="#{((pageFlowScope.createModes.CreatepContract) and (!(MTSPermission['ContractManagment.create']))) or ((!pageFlowScope.createModes.CreatepContract) and (!(MTSPermission['ContractManagment.update'])))}"
+                                                  shortDesc="#{bindings.pContractUnitPrice.hints.tooltip}">
+                                        <f:validator binding="#{bindings.pContractUnitPrice.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.pContractUnitPrice.format}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                </af:panelFormLayout>
+                                <!-- DEBUG:BEGIN:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 6 -->
+                                <!-- DEBUG:END:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 6-->
+                            </af:panelGroupLayout>
+                            <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+                        </f:facet>
+                    </af:switcher>
+                    <!-- DEBUG:END:FORM_GROUP : custom/pageComponent/MtsformGroup.vm, nesting level: 5-->
+                    <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+                </af:panelGroupLayout>
+                <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4-->
+            </af:panelGroupLayout>
+            <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+        </f:facet>
+        <f:facet name="popups">
+            <af:panelGroupLayout id="popupsPgl">
+                <!-- DEBUG:BEGIN:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 7 -->
+                <af:popup id="pContractDeletePopup" contentDelivery="lazyUncached" childCreation="deferred">
+                    <af:dialog type="none" title="#{nls['WARNING']}" modal="true" id="pContractDeleteDialog">
+                        <af:outputText value="#{nls['DELETE_WARNING_PCONTRAC:#{bindings.pContractIterator.currentRowIndexInRange+1}']} "
+                                       id="ot0"/>
+                        <f:attribute name="methodExpression" value="#{'#{DeletepContract.execute}'}"/>
+                        <f:facet name="buttonBar">
+                            <af:group id="g0">
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_YES']}" id="cb0" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.confirm}"/>
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_NO']}" id="cb1" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.abort}"/>
+                            </af:group>
+                        </f:facet>
+                    </af:dialog>
+                </af:popup>
+                <!-- DEBUG:END:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 7-->
+            </af:panelGroupLayout>
+        </f:facet>
+        <!-- DEBUG:END:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3-->
+        <!-- DEBUG:END:WIZARD_PAGE_CONTENT : default/page/wizardPageContent.vm, nesting level: 2-->
+    </af:pageTemplate>
+</ui:composition>
+
+
+

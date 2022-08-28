@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="NewCancelSalesContractsVL"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="OPERATIONPROJECT.model.BC.VO.VL.NewCancelSalesContractsVL_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="DataAgentContractsReview"
+    Cardinality="1"
+    Source="true"
+    Owner="OPERATIONPROJECT.model.BC.VO.DataAgentContractsReviewVO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="DataAgentContractsReview"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.VO.DataAgentContractsReviewVO.AreaId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.DataAgentContractsReviewVO.AssignDate"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.DataAgentContractsReviewVO.DeliveryType"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.DataAgentContractsReviewVO.DrivId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.DataAgentContractsReviewVO.PilotId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="NewCancelSalesContracts"
+    Cardinality="-1"
+    Owner="OPERATIONPROJECT.model.BC.VO.NewCancelSalesContractsVO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="NewCancelSalesContracts"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.VO.NewCancelSalesContractsVO.AreaId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.NewCancelSalesContractsVO.AssignDate"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.NewCancelSalesContractsVO.DeliveryType"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.NewCancelSalesContractsVO.DrivId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.NewCancelSalesContractsVO.PilotId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

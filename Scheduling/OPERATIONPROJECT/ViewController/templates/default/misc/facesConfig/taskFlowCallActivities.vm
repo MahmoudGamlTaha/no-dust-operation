@@ -1,0 +1,42 @@
+## revision_history
+## 15-nov-2010  Steven Davelaar
+## 1.0          Initial creation, extracted from groupAdfcConfig.vm
+
+#set ($group = ${JHS.current.group})
+#set ($groupName = ${JHS.current.group.name})
+
+  #foreach ($taskFlowCall in ${JHS.current.groupFacesConfig.taskFlowCalls})
+    <task-flow-call id="${taskFlowCall.id}">
+    #if ($taskFlowCall.usesFragments && $taskFlowCall.showInPopup)
+      <task-flow-reference>
+        <document id="#NEW_ID("__")">/WEB-INF/popup-shell-taskflow.xml</document>
+        <id id="#NEW_ID("__")">popup-shell-taskflow</id>
+      </task-flow-reference>
+      <input-parameter id="#NEW_ID("__")">
+        <name id="#NEW_ID("__")">popupTitle</name>
+        <value id="#NEW_ID("__")">#POPUP_TITLE($taskFlowCall)</value>
+      </input-parameter>
+      <input-parameter id="#NEW_ID("__")">
+        <name id="#NEW_ID("__")">taskFlowId</name>
+        <value id="#NEW_ID("__")">${taskFlowCall.document}#${taskFlowCall.taskFlowId}</value>
+      </input-parameter>
+      <input-parameter id="#NEW_ID("__")">
+        <name id="#NEW_ID("__")">parametersMap</name>
+        <value id="#NEW_ID("__")">#{${taskFlowCall.id}Parameters}</value>
+      </input-parameter>
+    #else
+      <task-flow-reference>
+        <document id="#NEW_ID("__")">${taskFlowCall.document}</document>
+        <id id="#NEW_ID("__")">${taskFlowCall.taskFlowId}</id>
+      </task-flow-reference>
+      <input-parameter-map id="#NEW_ID("__")">#{${taskFlowCall.id}Parameters}</input-parameter-map>
+    #end
+    #if ($taskFlowCall.showInPopup)
+      <run-as-dialog id="#NEW_ID("__")">
+        <display-type id="#NEW_ID("__")">
+          <inline-popup/>
+        </display-type>
+      </run-as-dialog>
+    #end
+    </task-flow-call>
+  #end

@@ -1,0 +1,22 @@
+## revision_history
+## 14-jul-2009   Steven Davelaar
+## 1.3           Commented out
+## 31-okt-2007   Steven Davelaar/Jaco Verheul/Evert-Jan de Bruin
+## 1.2           R11 upgrade
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+
+## comment out parent context, already displayed through breadcrumbs
+## and uses obsolete data.XXXPageDef syntax
+
+## #if ($JHS.current.group.hasParentGroup && $JHS.page.group==$JHS.current.group)
+## <af:panelGroupLayout id="${JHS.current.group.shortName}PCtx" layout="horizontal">
+##    <af:outputText value="#PARENT_CONTEXT_LABEL(${JHS.current.group.parentGroup})" id="#NEW_ID("ot")"/>
+##    <af:spacer width="4" id="#NEW_ID("sp")"/>
+##    <af:outputText styleClass="parentContext"
+##        value="#{data.${JHS.current.group.parentGroup.baseGroupSamePage.name}PageDef.${JHS.current.group.parentGroup.descriptorItem.bindingName}}"
+##        id="${JHS.current.group.shortName}Pcv"/>
+##    <af:spacer width="10" id="#NEW_ID("sp")"/>
+## </af:panelGroupLayout>
+## #end
+

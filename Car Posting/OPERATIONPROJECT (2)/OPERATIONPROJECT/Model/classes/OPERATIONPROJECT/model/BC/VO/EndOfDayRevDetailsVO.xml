@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="EndOfDayRevDetailsVO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  RowClass="OPERATIONPROJECT.model.BC.VO.EndOfDayRevDetailsVORowImpl"
+  ComponentClass="OPERATIONPROJECT.model.BC.VO.EndOfDayRevDetailsVOImpl"
+  PageIterMode="Partial">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Coll"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="OPERATIONPROJECT.model.BC.VO.EndOfDayRevDetailsVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="DataStatusActionVO1"
+    ViewObjectName="OPERATIONPROJECT.model.BC.VO.Lookups.DataStatusActionVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_Status"
+    ListVOName="DataStatusActionVO1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Status"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Id"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="DataStatus"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <SQLQuery><![CDATA[SELECT    
+    END_OF_DAY_REV_DETAILS.RETURN_DATE RETURN_DATE,    
+    END_OF_DAY_REV_DETAILS.DRIVER_ID DRIVER_ID,    
+    PILOT.FULL_NAME_EN PILOT_NAME,    
+    END_OF_DAY_REV_DETAILS.PILOT_ID PILOT_ID,    
+    END_OF_DAY_REV_DETAILS.AREA_ID AREA_ID,    
+    END_OF_DAY_REV_DETAILS.DATA_AGENT DATA_AGENT,    
+    END_OF_DAY_REV_DETAILS.EXPECTED_MONEY EXPECTED_MONEY,    
+    END_OF_DAY_REV_DETAILS.APPROVED_MONEY APPROVED_MONEY,    
+    END_OF_DAY_REV_DETAILS.ACTUAL_MONEY ACTUAL_MONEY,    
+    END_OF_DAY_REV_DETAILS.NOTES NOTES,    
+    END_OF_DAY_REV_DETAILS.STATUS,    
+    END_OF_DAY_REV_DETAILS.ID,    
+    END_OF_DAY_REV_DETAILS.UPDATED_BY     
+FROM    
+    RECONCILIATION_DRIVER_PILOT END_OF_DAY_REV_DETAILS,    
+    PILOTS PILOT    
+WHERE    
+    END_OF_DAY_REV_DETAILS.PILOT_ID = PILOT.DRIVER_USER_NAME AND (END_OF_DAY_REV_DETAILS.NOTES!='' OR END_OF_DAY_REV_DETAILS.NOTES IS NOT NULL)]]></SQLQuery>
+  <EntityUsage
+    Name="ReconciliationDriverPilotEO"
+    Entity="OPERATIONPROJECT.model.BC.EO.ReconciliationDriverPilotEO"/>
+  <ViewAttribute
+    Name="ReturnDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    AliasName="RETURN_DATE"
+    Expression="RETURN_DATE"
+    SQLType="DATE"/>
+  <ViewAttribute
+    Name="DriverId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DRIVER_ID"
+    Expression="DRIVER_ID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PilotName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="161"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PILOT_NAME"
+    Expression="PILOT_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="161"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="OPERATIONPROJECT.model.BC.VO.EndOfDayRevDetailsVO.PilotName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PilotId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PILOT_ID"
+    Expression="PILOT_ID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AreaId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="AREA_ID"
+    Expression="AREA_ID"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DataAgent"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="500"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DATA_AGENT"
+    Expression="DATA_AGENT"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ExpectedMoney"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="EXPECTED_MONEY"
+    Expression="EXPECTED_MONEY"
+    SQLType="NUMERIC">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="OPERATIONPROJECT.model.BC.VO.EndOfDayRevDetailsVO.ExpectedMoney_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ApprovedMoney"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="APPROVED_MONEY"
+    Expression="APPROVED_MONEY"
+    SQLType="NUMERIC">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="OPERATIONPROJECT.model.BC.VO.EndOfDayRevDetailsVO.ApprovedMoney_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ActualMoney"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="ACTUAL_MONEY"
+    Expression="ACTUAL_MONEY"
+    SQLType="NUMERIC">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="OPERATIONPROJECT.model.BC.VO.EndOfDayRevDetailsVO.ActualMoney_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Notes"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="NOTES"
+    Expression="NOTES"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Status"
+    PrecisionRule="true"
+    AliasName="STATUS"
+    EntityAttrName="Status"
+    EntityUsage="ReconciliationDriverPilotEO"
+    LOVName="LOV_Status">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="ReconciliationDriverPilotEO"
+    AliasName="ID"/>
+  <ViewAttribute
+    Name="UpdatedBy"
+    PrecisionRule="true"
+    EntityAttrName="UpdatedBy"
+    EntityUsage="ReconciliationDriverPilotEO"
+    AliasName="UPDATED_BY"/>
+  <ViewLinkAccessor
+    Name="DataTeamAgentEndOfDayReviewVo"
+    ViewLink="OPERATIONPROJECT.model.BC.VO.VL.EndOfDayRevDetailsVL"
+    Type="OPERATIONPROJECT.model.BC.VO.DataTeamAgentEndOfDayReviewVoRowImpl"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="MTS.security.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

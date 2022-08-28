@@ -1,0 +1,23 @@
+## revision_history
+## 23-aug-2011   Steven Davelaar
+## 1.6           Changed to iconic button to be in line with new button in form page.
+## 05-nov-2010   Steven Davelaar
+## 1.5           Added call to ADD_CUR_GROUP_ACTION to support function keys
+## 24-mar-2010   Steven Davelaar
+## 1.4           Check parent row found in rendered property
+## 11-may-2008   Steven Davelaar
+## 1.3           Added support for non-databound groups
+## 12-jan-2007   Jaco Verheul
+## 1.2           JavaScript now embedded in ALERT_FOR_CHANGES macro
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+#if ($JHS.current.group.databound && $JHS.current.pageComponent.hasDetailsPage && $JHS.current.group.formInsertAllowed)
+  <af:button actionListener="#{#CREATE_ROW_BEAN().execute}" 
+                    action="${JHS.facesConfigGenerator.addNavigationCase(${JHS.current.group},${JHS.page.name}, "Create${JHS.current.group.shortName}", ${JHS.current.pageComponent.detailsPage.name})}"
+                    shortDesc="#NEW_BUTTON_LABEL()"
+                    icon="/jheadstart/images/newRowInForm.png"
+                    rendered="#{#PARENT_GROUP_HAS_ROW() ${JHS.addELExpression(${JHS.current.group.insertAllowedExpression},"and")}}"
+                    id="${JHS.current.group.shortName}NewButton">
+  </af:button>  
+  #ADD_CUR_GROUP_ACTION("CreateRow" "${JHS.current.group.shortName}NewButton")
+#end

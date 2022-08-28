@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RelatedShipmentEO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="RECONCILIATION_SHIPMENT_COVER"
+  AliasName="RelatedShipmentEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="ShipmentId"
+    Precision="38"
+    Scale="0"
+    ColumnName="SHIPMENT_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    TableName="RECONCILIATION_SHIPMENT_COVER"/>
+  <Attribute
+    Name="DispatchedId"
+    ColumnName="DISPATCHED_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    TableName="RECONCILIATION_SHIPMENT_COVER"
+    IsNotNull="true"
+    Precision="38"
+    Scale="0"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="CoverDate"
+    ColumnName="COVER_DATE"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="RECONCILIATION_SHIPMENT_COVER"/>
+  <Attribute
+    Name="DriverId"
+    Precision="4000"
+    ColumnName="DRIVER_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="RECONCILIATION_SHIPMENT_COVER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedBy"
+    Precision="4000"
+    ColumnName="CREATED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="RECONCILIATION_SHIPMENT_COVER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ShipmentDate"
+    ColumnName="SHIPMENT_DATE"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="RECONCILIATION_SHIPMENT_COVER"/>
+  <ViewLinkAccessor
+    Name="DataTeamAgentCarReconciliation"
+    ViewLink="OPERATIONPROJECT.model.BC.VO.VL.DataTeamAgentCarReconVL"
+    ViewLinkEnd="OPERATIONPROJECT.model.BC.VO.VL.DataTeamAgentCarReconVL.DataTeamAgentCarReconciliation"
+    ViewLinkOtherEnd="OPERATIONPROJECT.model.BC.VO.VL.DataTeamAgentCarReconVL.RelatedShipment"
+    Type="OPERATIONPROJECT.model.BC.VO.DataTeamAgentCarReconciliationVORowImpl"
+    IsUpdateable="false"/>
+  <Key
+    Name="ReconciliationShipmentCoverDispatchedIdCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_checkCondition" Value='"DISPATCHED_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="RECONCILIATION_SHIPMENT_COVER_"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.RelatedShipmentEO.DispatchedId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="RelatedshipmenteoPrimaryKey"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="RELATEDSHIPMENTEO_PRIMARY_KEY"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.RelatedShipmentEO.DispatchedId"/>
+    </AttrArray>
+  </Key>
+</Entity>

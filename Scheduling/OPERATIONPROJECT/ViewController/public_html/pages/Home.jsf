@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+        xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces" beforePhase="#{jhsPhaseListener.beforePhase}"
+        locale="#{jhsLocaleManager.currentLocale}">
+    <af:document title="#{nls['HOME_PAGE_TITLE']}" id="doc0">
+        <f:facet name="metaContainer">
+            <af:resource type="javascript" source="/jheadstart/jhs11.js"/>
+        </f:facet>
+        <af:form id="dataForm" usesUpload="true">
+            <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsPageTemplate.jsf">
+                <f:attribute name="showMessagesInline" value="false"/>
+                <f:attribute name="menuModel" value="#{RootMenu}"/>
+                <f:attribute name="menuStartLevel" value="0"/>
+                <f:attribute name="brandingTitle" value="#{nls['PRODUCT_TITLE']}"/>
+                <f:facet name="pageContent">
+                    <af:switcher id="s0" facetName="#{MTSPermission['isAuthorized'] ? 'Authorized' : 'NotAuthorized' }"
+                                 defaultFacet="NotAuthorized">
+                        <f:facet name="Authorized">
+                            <af:panelGroupLayout id="pgl0" layout="vertical">
+                                <af:panelGridLayout id="pgl1">
+                                    <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr0">
+                                        <af:gridCell marginStart="5px" width="34%" id="gc0"></af:gridCell>
+                                        <af:gridCell marginStart="5px" width="33%" id="gc1" valign="middle">
+                                            <af:panelGroupLayout id="pgl2" layout="vertical" halign="center">
+                                                <af:image source="/jheadstart/images/Customer Logo.png" id="i0"/>
+                                                <af:spacer width="10" height="10" id="s1"/>
+                                                <af:outputFormatted value="#{nls['PRODUCT_TITLE']}" id="of0"
+                                                                    inlineStyle="font-size: 30px; font-weight: bold; font-family: 'Times New Roman'; color: #313131;"/>
+                                            </af:panelGroupLayout>
+                                        </af:gridCell>
+                                        <af:gridCell marginStart="5px" width="33%" marginEnd="5px" id="gc4"/>
+                                    </af:gridRow>
+                                </af:panelGridLayout>
+                                <af:listView id="homeMenu" var="menuItem" varStatus="stat" value="#{RootMenu}"
+                                             selection="single">
+                                    <af:listItem id="pt_li1"
+                                                 rendered="#{menuItem.rendered and menuItem.focusViewId ne '/Home'}"
+                                                 shortDesc="#{menuItem.label}"
+                                                 inlineStyle="border: #F7F7F7 solid;  background-color: White;"
+                                                 styleClass="WBDisplayBlock WBDisplayBlockPadding WBDisplayBlockCenterUndo">
+                                        <af:panelGroupLayout id="pt_pgl3">
+                                            <af:panelGridLayout id="pt_pgl4">
+                                                <af:gridRow marginTop="0px" marginBottom="0px" id="pt_gr1"
+                                                            height="80px">
+                                                    <af:gridCell id="gc1">
+                                                        <af:image source="#{menuItem.icon}" id="i1" styleClass="WBImage"
+                                                                  shortDesc="#{menuItem.label}"/>
+                                                    </af:gridCell>
+                                                    <af:gridCell marginStart="10px" width="200px" marginEnd="10px"
+                                                                 valign="top" id="pt_gc1">
+                                                        <af:panelGroupLayout id="pgl1" layout="vertical">
+                                                            <af:outputFormatted id="Items1"
+                                                                                inlineStyle="font-size: medium; font-weight: bold;"
+                                                                                value="#{menuItem.label}"/>
+                                                            <af:outputFormatted id="Items23"
+                                                                                inlineStyle="color: #878c90; font-size:14px;"
+                                                                                value="#{menuItem.label}"/>
+                                                        </af:panelGroupLayout>
+                                                    </af:gridCell>
+                                                </af:gridRow>
+                                            </af:panelGridLayout>
+                                        </af:panelGroupLayout>
+                                        <af:button action="#{menuItem.doAction}" id="CfgGovernrateGtd" immediate="true"
+                                                   actionListener="#{pageFlowScope.pendingChangesBean.revert}"
+                                                   inlineStyle="cursor:pointer; bottom: 0px; width: 100.0%; height: 100%; position: absolute; background-color: transparent; #{facesContext.viewRoot.locale.language=='en' ? 'right: 0; background-image:url();' : 'left: 0; background-image:url();'}"/>
+                                    </af:listItem>
+                                </af:listView>
+                            </af:panelGroupLayout>
+                        </f:facet>
+                        <f:facet name="NotAuthorized">
+                            <af:panelHeader text="#{nls['NOT_AUTHORIZED_ERROR']}" id="ph0" size="-1"/>
+                        </f:facet>
+                    </af:switcher>
+                </f:facet>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+</f:view>
+
+
+  

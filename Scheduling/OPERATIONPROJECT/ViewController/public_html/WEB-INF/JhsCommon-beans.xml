@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <method-call id="CallMenuItem">
+        <method id="__0">#{jhsDynamicRouter.getOutcome}</method>
+        <parameter>
+            <class id="__1">java.lang.String</class>
+            <value id="__2">#{requestScope.currentMenuItem}</value>
+        </parameter>
+        <outcome id="__3">
+            <to-string/>
+        </outcome>
+    </method-call>
+    <view id="Home">
+        <page id="__4">/pages/Home.jsf</page>
+    </view>
+    <view id="UIShell">
+        <page id="__5">/pages/UIShell.jsf</page>
+    </view>
+    <control-flow-rule id="__6">
+        <from-activity-id id="__7">*</from-activity-id>
+        <control-flow-case id="__8">
+            <from-outcome id="__9">CallMenuItem</from-outcome>
+            <to-activity-id id="__10">CallMenuItem</to-activity-id>
+        </control-flow-case>
+        <control-flow-case id="__11">
+            <from-outcome id="__12">home</from-outcome>
+            <to-activity-id id="__13">Home</to-activity-id>
+        </control-flow-case>
+        <control-flow-case id="__14">
+            <from-outcome id="__15">uishell</from-outcome>
+            <to-activity-id id="__16">UIShell</to-activity-id>
+        </control-flow-case>
+    </control-flow-rule>
+    <managed-bean id="__17">
+        <managed-bean-name id="__18">parentContext</managed-bean-name>
+        <managed-bean-class id="__19">java.util.HashMap</managed-bean-class>
+        <managed-bean-scope id="__20">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__21">
+        <managed-bean-name id="__22">RootMenu</managed-bean-name>
+        <managed-bean-class id="__23">oracle.jheadstart.controller.jsf.bean.JhsXMLMenuModel</managed-bean-class>
+        <managed-bean-scope id="__24">request</managed-bean-scope>
+        <managed-property id="__25">
+            <property-name id="__26">removeHiddenMenuItems</property-name>
+            <value id="__27">true</value>
+        </managed-property>
+        <managed-property id="__28">
+            <property-name id="__29">source</property-name>
+            <property-class id="__30">java.lang.String</property-class>
+            <value id="__31">/WEB-INF/menu_root.xml</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean id="__32">
+        <managed-bean-name id="__33">MenuTreeBean</managed-bean-name>
+        <managed-bean-class id="__34">oracle.jheadstart.controller.jsf.bean.TreeBean</managed-bean-class>
+        <managed-bean-scope id="__35">pageFlow</managed-bean-scope>
+        <managed-property id="__36">
+            <property-name id="__37">showExpanded</property-name>
+            <value id="__38">true</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean id="__39">
+        <managed-bean-name id="__40">pendingChangesBean</managed-bean-name>
+        <managed-bean-class id="__41">oracle.jheadstart.controller.jsf.bean.PendingChangesBean</managed-bean-class>
+        <managed-bean-scope id="__42">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__43">
+        <managed-bean-name id="__44">jhsMainRegionManager</managed-bean-name>
+        <managed-bean-class id="__45">oracle.jheadstart.controller.jsf.bean.DynamicRegionManager</managed-bean-class>
+        <managed-bean-scope id="__46">pageFlow</managed-bean-scope>
+        <managed-property id="__47">
+            <property-name id="__48">resetFormUsesUpload</property-name>
+            <value id="__49">false</value>
+        </managed-property>
+        <managed-property id="__50">
+            <property-name id="__51">enableDeepLinkingFromRequestParams</property-name>
+            <value id="__52">true</value>
+        </managed-property>
+        <managed-property id="__53">
+            <property-name id="__54">currentTaskFlowName</property-name>
+            <value id="__55">WeekDaysVO</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean id="__56">
+        <managed-bean-name id="__57">jhsCommit</managed-bean-name>
+        <managed-bean-class id="__58">oracle.jheadstart.controller.jsf.bean.CommitBean</managed-bean-class>
+        <managed-bean-scope id="__59">request</managed-bean-scope>
+        <managed-property id="__60">
+            <property-name id="__61">commitBinding</property-name>
+            <value id="__62">#{bindings.Commit}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean id="__63">
+        <managed-bean-name id="__64">jhsRollback</managed-bean-name>
+        <managed-bean-class id="__65">oracle.jheadstart.controller.jsf.bean.RollbackBean</managed-bean-class>
+        <managed-bean-scope id="__66">request</managed-bean-scope>
+        <managed-property id="__67">
+            <property-name id="__68">rollbackBinding</property-name>
+            <value id="__69">#{bindings.Rollback}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean id="__70">
+        <managed-bean-name id="__71">jhsLocaleManager</managed-bean-name>
+        <managed-bean-class id="__72">oracle.jheadstart.controller.jsf.bean.LocaleManager</managed-bean-class>
+        <managed-bean-scope id="__73">session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__74">
+        <managed-bean-name id="__75">jhsLookAndFeelBean</managed-bean-name>
+        <managed-bean-class id="__76">oracle.jheadstart.controller.jsf.bean.LookAndFeelBean</managed-bean-class>
+        <managed-bean-scope id="__77">session</managed-bean-scope>
+        <managed-property id="__78">
+            <property-name id="__79">currentPageTemplate</property-name>
+            <value id="__80">/common/pageTemplates/JhsPageTemplate.jsf</value>
+        </managed-property>
+        <managed-property id="__81">
+            <property-name id="__82">currentRegionTemplate</property-name>
+            <value id="__83">/common/pageTemplates/JhsRegionTemplate.jsf</value>
+        </managed-property>
+        <managed-property id="__84">
+            <property-name id="__85">currentSkin</property-name>
+            <value id="__86">smallFont.desktop</value>
+        </managed-property>
+        <managed-property id="__87">
+            <property-name id="__88">pageTemplates</property-name>
+            <map-entries id="__89">
+                <map-entry id="__90">
+                    <key id="__91">/common/pageTemplates/JhsPageTemplate.jsf</key>
+                    <value id="__92">Tabbed Menu</value>
+                </map-entry>
+                <map-entry id="__93">
+                    <key id="__94">/common/pageTemplates/JhsTreeMenuPageTemplate.jsf</key>
+                    <value id="__95">Tree Menu</value>
+                </map-entry>
+            </map-entries>
+        </managed-property>
+        <managed-property id="__96">
+            <property-name id="__97">availableSkins</property-name>
+            <map-entries id="__98">
+                <map-entry id="__99">
+                    <key id="__100">smallFont.desktop</key>
+                    <value id="__101">#{nls['SMALL_FONT']}</value>
+                </map-entry>
+                <map-entry id="__102">
+                    <key id="__103">mediumFont.desktop</key>
+                    <value id="__104">#{nls['MEDIUM_FONT']}</value>
+                </map-entry>
+                <map-entry id="__105">
+                    <key id="__106">largeFont.desktop</key>
+                    <value id="__107">#{nls['LARGE_FONT']}</value>
+                </map-entry>
+            </map-entries>
+        </managed-property>
+    </managed-bean>
+    <managed-bean id="__108">
+        <managed-bean-name id="__109">jhsModelServiceProvider</managed-bean-name>
+        <managed-bean-class id="__110">oracle.jheadstart.controller.jsf.bean.JhsModelServiceProvider</managed-bean-class>
+        <managed-bean-scope id="__111">session</managed-bean-scope>
+        <managed-property id="__112">
+            <property-name id="__113">fallbackBindingContainerEL</property-name>
+            <value id="__114">#{'#{data.OPERATIONPROJECT_UIShellPageDef}'}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean id="__115">
+        <managed-bean-name id="__116">LoginBean</managed-bean-name>
+        <managed-bean-class id="__117">oracle.jheadstart.controller.jsf.bean.LoginBean</managed-bean-class>
+        <managed-bean-scope id="__118">request</managed-bean-scope>
+        <managed-property id="__119">
+            <property-name id="__120">useADFWLSAuthentication</property-name>
+            <value id="__121">true</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean id="__122">
+        <managed-bean-name id="__123">LogoutBean</managed-bean-name>
+        <managed-bean-class id="__124">oracle.jheadstart.controller.jsf.bean.LogoutBean</managed-bean-class>
+        <managed-bean-scope id="__125">request</managed-bean-scope>
+        <managed-property id="__126">
+            <property-name id="__127">logoutDestination</property-name>
+            <value id="__128">/</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean id="__129">
+        <managed-bean-name id="__130">nls</managed-bean-name>
+        <managed-bean-class id="__131">oracle.jheadstart.controller.jsf.util.MessageFactoryMap</managed-bean-class>
+        <managed-bean-scope id="__132">session</managed-bean-scope>
+        <managed-property id="__133">
+            <property-name id="__134">messageFactory</property-name>
+            <value id="__135">#{jhsMessageFactory}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean id="__136">
+        <managed-bean-name id="__137">jhsPageText</managed-bean-name>
+        <managed-bean-class id="__138">oracle.jheadstart.controller.jsf.bean.PageTextBean</managed-bean-class>
+        <managed-bean-scope id="__139">session</managed-bean-scope>
+        <managed-property id="__140">
+            <property-name id="__141">nlsFactory</property-name>
+            <value id="__142">#{nls}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean id="__143">
+        <managed-bean-name id="__144">jhsMessageFactory</managed-bean-name>
+        <managed-bean-class id="__145">oracle.jheadstart.controller.jsf.util.MessageFactory</managed-bean-class>
+        <managed-bean-scope id="__146">application</managed-bean-scope>
+        <managed-property id="__147">
+            <property-name id="__148">bundleNames</property-name>
+            <list-entries id="__149">
+                <value id="__150">OPERATIONPROJECT.view.ApplicationResources</value>
+                <value id="__151">oracle.jheadstart.exception.JhsUserMessages</value>
+                <value id="__152">javax.faces.Messages</value>
+            </list-entries>
+        </managed-property>
+    </managed-bean>
+    <managed-bean id="__153">
+        <managed-bean-name id="__154">jsfUtils</managed-bean-name>
+        <managed-bean-class id="__155">oracle.jheadstart.controller.jsf.util.JsfUtils</managed-bean-class>
+        <managed-bean-scope id="__156">application</managed-bean-scope>
+        <managed-property id="__157">
+            <property-name id="__158">messageFactory</property-name>
+            <value id="__159">#{jhsMessageFactory}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean id="__160">
+        <managed-bean-name id="__161">jhsBreadcrumbStack</managed-bean-name>
+        <managed-bean-class id="__162">oracle.jheadstart.controller.jsf.util.breadcrumbs.BreadcrumbStack</managed-bean-class>
+        <managed-bean-scope id="__163">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__164">
+        <managed-bean-name id="__165">jhsBreadcrumbManager</managed-bean-name>
+        <managed-bean-class id="__166">oracle.jheadstart.controller.jsf.util.breadcrumbs.BreadcrumbManager</managed-bean-class>
+        <managed-bean-scope id="__167">application</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__168">
+        <managed-bean-name id="__169">jhsTypeConverter</managed-bean-name>
+        <managed-bean-class id="__170">oracle.jheadstart.controller.jsf.bean.TypeConverter</managed-bean-class>
+        <managed-bean-scope id="__171">request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__172">
+        <managed-bean-name id="__173">UIComponentState</managed-bean-name>
+        <managed-bean-class id="__174">java.util.HashMap</managed-bean-class>
+        <managed-bean-scope id="__175">session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__176">
+        <managed-bean-name id="__177">jhsPageDefs</managed-bean-name>
+        <managed-bean-class id="__178">oracle.jheadstart.controller.jsf.bean.PageDefAccessorBean</managed-bean-class>
+        <managed-bean-scope id="__179">session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__180">
+        <managed-bean-name id="__181">jhsDynamicRouter</managed-bean-name>
+        <managed-bean-class id="__182">oracle.jheadstart.controller.jsf.bean.DynamicRouter</managed-bean-class>
+        <managed-bean-scope id="__183">request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__184">
+        <managed-bean-name id="__185">jhsSetCurrentRow</managed-bean-name>
+        <managed-bean-class id="__186">oracle.jheadstart.controller.jsf.bean.SetCurrentRowBean</managed-bean-class>
+        <managed-bean-scope id="__187">request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__188">
+        <managed-bean-name id="__189">ExecuteActionAfterConfirmation</managed-bean-name>
+        <managed-bean-class id="__190">oracle.jheadstart.controller.jsf.bean.ExecuteActionAfterConfirmation</managed-bean-class>
+        <managed-bean-scope id="__191">application</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__192">
+        <managed-bean-name id="__193">jhsDependsOnItem</managed-bean-name>
+        <managed-bean-class id="__194">oracle.jheadstart.controller.jsf.bean.DependsOnItemBean</managed-bean-class>
+        <managed-bean-scope id="__195">application</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__196">
+        <managed-bean-name id="__197">jhsFlexItem</managed-bean-name>
+        <managed-bean-class id="__198">oracle.jheadstart.controller.jsf.bean.FlexItemBean</managed-bean-class>
+        <managed-bean-scope id="__199">application</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__200">
+        <managed-bean-name id="__201">exceptionHandlerBean</managed-bean-name>
+        <managed-bean-class id="__202">oracle.jheadstart.controller.jsf.bean.ExceptionHandlerBean</managed-bean-class>
+        <managed-bean-scope id="__203">request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__204">
+        <managed-bean-name id="__205">jhsPhaseListener</managed-bean-name>
+        <managed-bean-class id="__206">oracle.jheadstart.controller.jsf.listener.JhsPhaseListener</managed-bean-class>
+        <managed-bean-scope id="__207">request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__208">
+        <managed-bean-name id="__209">jhsPendingChangesVisitCallBack</managed-bean-name>
+        <managed-bean-class id="__210">oracle.jheadstart.controller.jsf.bean.PendingChangesVisitCallBack</managed-bean-class>
+        <managed-bean-scope id="__211">request</managed-bean-scope>
+    </managed-bean>
+</adfc-config>

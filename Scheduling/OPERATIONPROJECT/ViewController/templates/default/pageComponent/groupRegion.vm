@@ -1,0 +1,124 @@
+## revision_history
+## 26-mar-2012   Steven Davelaar
+## 2.9           Do not use long group name region id when layout is reusable Tree or functyion keys not enabled. 
+##               Causes duplicate component id when same region referenced twice in recursive tree.
+## 17-feb-2012   Steven Davelaar
+## 2.8           $groupPageComponent can be null when group is reusable tree
+## 31-jan-2012   Steven Davelaar
+## 2.7           undo 2.5: remove startInCreateMode, we now handle startInCreateMode inside called task flow
+## 14-nov-2011   Steven Davelaar
+## 2.6           Add group action attrs to af:region when including group as adfc region 
+## 29-oct-2011   Steven Davelaar
+## 2.5           Added createMode taskflow param when display new row on entry is set, and activation defereed
+## 11-jan-2011   Steven Davelaar
+## 2.4           Added parentContext taskflow param
+## 11-jan-2011   Steven Davelaar
+## 2.4           Fixed bug: JHS.current.model.itemRegion changed to JHS.current.model.groupItemRegion
+## 06-dec-2010   Steven Davelaar
+## 2.3           Shortened af:region id
+## 01-nov-2010   Steven Davelaar
+## 2.2           TaskflowId in static binding contained hard-coded path to WEB-INF dir
+## 08-oct-2009   Steven Davelaar
+## 2.1           Added support for secondary group regions
+## 23-jun-2009   Paco van der Linden
+## 2.0           Restructured layout according to (stretching) best-practices.
+## 20-apr-2008   Steven davelaar
+## 1.5           Added group partial triggers
+## 18-jan-2008   Paco van der Linden
+## 1.4           Added support for Adfc Regions
+## 13-jun-2008   Steven Davelaar
+## 1.3           Added check for new group property showTitle
+## 31-aug-2007   Steven Davelaar
+## 1.2           Call GROUP_CONTENT template
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+
+#if (${JHS.current.model.adfcRegion})
+
+  #if(${JHS.current.regionContainer.parentGroup.reusableTree})
+    ##for reusable trees, we must create dynamic taskflow bindings, instead of the
+    ##static ones that are normally used
+
+    #set( $treeBaseGroup = ${JHS.current.regionContainer.parentGroup.treeBaseGroup} )
+    #set( $tree_bean = ${JHS.facesConfigGenerator.addManagedBean(${treeBaseGroup}, "tree", "${treeBaseGroup.name}Tree", ${JHS.current}, ${JHS.page}, ${treeBaseGroup.reusableTree})} )
+
+    #macro (CUSTOM_BINDING)
+      <taskFlow id="${JHS.current.model.name}TaskFlowBinding"
+                taskFlowId="#{pageFlowScope.${tree_bean}.taskFlowMap['${JHS.current.model.name}']}"
+                Refresh="ifNeeded" activation="deferred"
+                xmlns="http://xmlns.oracle.com/adf/controller/binding">
+        <parameters>
+         #if(${JHS.current.model.treeSetCurrentRow})
+           <parameter id="rowKey${JHS.current.group.name}" value="#{pageFlowScope.treeNodeKey}"
+                      xmlns="http://xmlns.oracle.com/adfm/uimodel"/>
+         #end
+           <parameter id="parentContext" value="#{pageFlowScope.parentContext}"
+                      xmlns="http://xmlns.oracle.com/adfm/uimodel"/>           
+           <parameter id="hideFormBrowseButtons" value="true"
+                      xmlns="http://xmlns.oracle.com/adfm/uimodel"/>
+         #foreach ($param in ${JHS.current.model.params})
+           <parameter id="${param.name}" value="${param.value}"
+                      xmlns="http://xmlns.oracle.com/adfm/uimodel"/>
+         #end
+        </parameters>
+      </taskFlow>
+    #end
+    ${JHS.pageDefGenerator.addExecutable($JHS.page,"${JHS.current.model.name}TaskFlowBinding","#CUSTOM_BINDING()")}
+
+  #else
+
+    #macro (CUSTOM_BINDING_STATIC)
+      <taskFlow id="${JHS.current.model.name}TaskFlowBinding"
+                taskFlowId="${JHS.current.group.taskFlowId}"
+                Refresh="ifNeeded" activation="deferred"
+                xmlns="http://xmlns.oracle.com/adf/controller/binding">
+        <parameters>
+           <parameter id="parentContext" value="#{pageFlowScope.parentContext}"
+                      xmlns="http://xmlns.oracle.com/adfm/uimodel"/>           
+         #foreach ($param in ${JHS.current.model.params})
+           <parameter id="${param.name}" value="${param.value}"
+                      xmlns="http://xmlns.oracle.com/adfm/uimodel"/>
+         #end
+        </parameters>
+      </taskFlow>
+    #end
+    ${JHS.pageDefGenerator.addExecutable($JHS.page,"${JHS.current.model.name}TaskFlowBinding","#CUSTOM_BINDING_STATIC()")}
+  #end
+
+    #if ($JHS.current.pageComponent.getGroupRegionPageComponent($JHS.current.group) && $JHS.application.enableFunctionKeys && !${JHS.current.regionContainer.parentGroup.reusableTree})
+      #set ($groupPageComponent = $JHS.current.pageComponent.getGroupRegionPageComponent($JHS.current.group)) 
+      ## can be null with reusable tree layout
+      <af:region value="#{bindings.${JHS.current.model.name}TaskFlowBinding.regionModel}" id="${groupPageComponent.containerName}">
+      
+        #GROUP_ACTION_ATTRS($pageComponent)
+        #if ($JHS.application.enableFunctionKeys)
+          <f:attribute name="GroupRegionTopContainer" value="${groupPageComponent.group.shortName}TopLc"/>
+        #end  
+    #else
+      <af:region value="#{bindings.${JHS.current.model.name}TaskFlowBinding.regionModel}" id="#NEW_ID("r")">
+    #end  
+  </af:region>
+
+#else
+
+  ## check whether the group region is a secondary group region with an item region defined
+  ## if so, only render the items in the item region, otherwise render the whole group
+
+  #if (${JHS.current.model.groupItemRegion})
+    #JHS_PARSE("ITEM_REGION" ${JHS.current.model.groupItemRegion})
+  #else
+
+  ${JHS.engine.putTemplateContext("isGroupRegion", "true")}
+## don't need to set context as below anymore, we always add showDetailItem for group region
+## in stackedRegionContainer.vm
+##  #if ($JHS.current.regionContainer.tabbed || $JHS.current.regionContainer.accordion)
+##    ${JHS.engine.putTemplateContext("isStackedContainer", "true")}
+##    ${JHS.engine.putTemplateContext("isTabbedContainer", "${JHS.current.regionContainer.tabbed}")}
+##  #end
+  #set ($groupPageComponent = $JHS.current.pageComponent.getGroupRegionPageComponent($JHS.current.group)) 
+  #JHS_PARSE("GROUP_CONTENT" ${groupPageComponent} )
+  ${JHS.engine.putTemplateContext("isGroupRegion", "false")}
+
+  #end
+
+#end

@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <task-flow-definition id="WeekDaysAgentVOTaskFlow">
+        <!-- DEBUG:BEGIN:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2 -->
+        <template-reference>
+            <document id="__0">/WEB-INF/jhs-fragment-taskflow-template.xml</document>
+            <id id="__1">jhs-fragment-taskflow-template</id>
+        </template-reference>
+        <!-- DEBUG:END:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2-->
+        <default-activity id="__2">StartWeekDaysAgentVO</default-activity>
+        <!-- DEBUG:BEGIN:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2 -->
+        <transaction>
+            <new-transaction/>
+        </transaction>
+        <input-parameter-definition id="__3">
+            <name id="__4">rowKeyStrWeekDaysAgentVO</name>
+            <value id="__5">#{pageFlowScope.rowKeyStrWeekDaysAgentVO}</value>
+            <class id="__6">java.lang.String</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__7">
+            <name id="__8">rowKeyValueWeekDaysAgentVO</name>
+            <value id="__9">#{pageFlowScope.rowKeyValueWeekDaysAgentVO}</value>
+            <class id="__10">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__11">
+            <name id="__12">rowKeyWeekDaysAgentVO</name>
+            <value id="__13">#{pageFlowScope.rowKeyWeekDaysAgentVO}</value>
+            <class id="__14">oracle.jbo.Key</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__15">
+            <name id="__16">altKeyNameWeekDaysAgentVO</name>
+            <value id="__17">#{pageFlowScope.altKeyNameWeekDaysAgentVO}</value>
+            <class id="__18">java.lang.String</class>
+        </input-parameter-definition>
+        <!-- DEBUG:END:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2 -->
+        <managed-bean id="__19">
+            <managed-bean-name id="__20">jhsTaskFlowManager</managed-bean-name>
+            <managed-bean-class id="__21">oracle.jheadstart.controller.jsf.bean.TaskFlowManager</managed-bean-class>
+            <managed-bean-scope id="__22">pageFlow</managed-bean-scope>
+            <managed-property id="__23">
+                <property-name id="__24">initializeParentContextEntries</property-name>
+                <map-entries id="__25">
+                    <map-entry id="__26">
+                        <key id="__27">jhsCurrentGroupName</key>
+                        <value id="__28">WeekDaysAgentVO</value>
+                    </map-entry>
+                </map-entries>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2 -->
+        <managed-bean id="__29">
+            <managed-bean-name id="__30">SaveWeekDaysAgentVO</managed-bean-name>
+            <managed-bean-class id="__31">oracle.jheadstart.controller.jsf.bean.CommitBean</managed-bean-class>
+            <managed-bean-scope id="__32">request</managed-bean-scope>
+            <managed-property id="__33">
+                <property-name id="__34">commitBinding</property-name>
+                <value id="__35">#{bindings.Commit}</value>
+            </managed-property>
+            <managed-property id="__36">
+                <property-name id="__37">successOutcome</property-name>
+                <value id="__38">Commit</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2 -->
+        <managed-bean id="__39">
+            <managed-bean-name id="__40">jhsRollback</managed-bean-name>
+            <managed-bean-class id="__41">oracle.jheadstart.controller.jsf.bean.RollbackBean</managed-bean-class>
+            <managed-bean-scope id="__42">request</managed-bean-scope>
+            <managed-property id="__43">
+                <property-name id="__44">rollbackBinding</property-name>
+                <value id="__45">#{bindings.Rollback}</value>
+            </managed-property>
+            <managed-property id="__46">
+                <property-name id="__47">successOutcome</property-name>
+                <value id="__48">Cancel</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__49">
+            <managed-bean-name id="__50">AgentAreasDetVOTable</managed-bean-name>
+            <managed-bean-class id="__51">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__52">pageFlow</managed-bean-scope>
+            <managed-property id="__53">
+                <property-name id="__54">name</property-name>
+                <value id="__55">AgentAreasDetVOTable</value>
+            </managed-property>
+            <managed-property id="__56">
+                <property-name id="__57">rangeBindingExpr</property-name>
+                <value id="__58">#{'#{bindings.AgentAreasDetVOTable}'}</value>
+            </managed-property>
+            <managed-property id="__59">
+                <property-name id="__60">focusItemId</property-name>
+                <value id="__61">AgentAreasDetVOAreaName</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__62">
+            <managed-bean-name id="__63">DeleteAgentAreasDetVO</managed-bean-name>
+            <managed-bean-class id="__64">oracle.jheadstart.controller.jsf.bean.DeleteRowBean</managed-bean-class>
+            <managed-bean-scope id="__65">request</managed-bean-scope>
+            <managed-property id="__66">
+                <property-name id="__67">deleteBinding</property-name>
+                <value id="__68">#{bindings.DeleteAgentAreasDetVO}</value>
+            </managed-property>
+            <managed-property id="__69">
+                <property-name id="__70">commitBean</property-name>
+                <value id="__71">#{jhsCommit}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__72">
+            <managed-bean-name id="__73">CreateAgentAreasDetVO</managed-bean-name>
+            <managed-bean-class id="__74">oracle.jheadstart.controller.jsf.bean.CreateRowBean</managed-bean-class>
+            <managed-bean-scope id="__75">request</managed-bean-scope>
+            <managed-property id="__76">
+                <property-name id="__77">createBinding</property-name>
+                <value id="__78">#{bindings.CreateAgentAreasDetVO}</value>
+            </managed-property>
+            <managed-property id="__79">
+                <property-name id="__80">successOutcome</property-name>
+                <value id="__81">deepLinkPage</value>
+            </managed-property>
+            <managed-property id="__82">
+                <property-name id="__83">failureOutcome</property-name>
+                <value id="__84">firstPage</value>
+            </managed-property>
+        </managed-bean>
+                <managed-bean id="__174">
+            <managed-bean-name id="__175">DeleteProductContractDeliveryVO</managed-bean-name>
+            <managed-bean-class id="__176">oracle.jheadstart.controller.jsf.bean.DeleteRowBean</managed-bean-class>
+            <managed-bean-scope id="__177">request</managed-bean-scope>
+            <managed-property id="__178">
+                <property-name id="__179">deleteBinding</property-name>
+                <value id="__180">#{bindings.DeleteProductContractDeliveryVO}</value>
+            </managed-property>
+            <managed-property id="__181">
+                <property-name id="__182">commitBean</property-name>
+                <value id="__183">#{jhsCommit}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2 -->
+        <managed-bean id="__166">
+            <managed-bean-name>AgentBean</managed-bean-name>
+            <managed-bean-class>MTS.security.MTSClasses.AgentBean</managed-bean-class>
+            <managed-bean-scope>pageFlow</managed-bean-scope>
+        </managed-bean>
+               <managed-bean id="__282">
+            <managed-bean-name id="__283">DeletePromosDeliveryVO</managed-bean-name>
+            <managed-bean-class id="__284">oracle.jheadstart.controller.jsf.bean.DeleteRowBean</managed-bean-class>
+            <managed-bean-scope id="__285">request</managed-bean-scope>
+            <managed-property id="__286">
+                <property-name id="__287">deleteBinding</property-name>
+                <value id="__288">#{bindings.DeletePromosDeliveryVO}</value>
+            </managed-property>
+            <managed-property id="__289">
+                <property-name id="__290">commitBean</property-name>
+                <value id="__291">#{jhsCommit}</value>
+            </managed-property>
+        </managed-bean>
+        <router id="StartWeekDaysAgentVO">
+            <case id="__85">
+                <expression id="__86">#{pageFlowScope.rowKeyStrWeekDaysAgentVO!=null or
+                                      pageFlowScope.rowKeyValueWeekDaysAgentVO!=null or
+                                      pageFlowScope.rowKeyWeekDaysAgentVO!=null}</expression>
+                <outcome id="__87">SetCurrentRowWeekDaysAgentVO</outcome>
+            </case>
+            <case id="__88">
+                <expression id="__89">#{pageFlowScope.isDeepLink!=null and pageFlowScope.isDeepLink}</expression>
+                <outcome id="__90">deepLinkPage</outcome>
+            </case>
+            <default-outcome id="__91">firstPage</default-outcome>
+        </router>
+        <!-- DEBUG:END:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2 -->
+        <method-call id="CreateWeekDaysAgentVO">
+            <method id="__92">#{bindings.CreateWeekDaysAgentVO.execute}</method>
+            <!-- execute condition param -->
+            <parameter>
+                <class id="__93">java.lang.Object</class>
+                <value id="__94">#{pageFlowScope.createWeekDaysAgentVO}</value>
+            </parameter>
+            <outcome id="__95">
+                <to-string/>
+            </outcome>
+        </method-call>
+        <method-call id="SetCurrentRowWeekDaysAgentVO">
+            <method id="__96">#{jhsSetCurrentRow.execute}</method>
+            <!-- iterator param -->
+            <parameter>
+                <class id="__97">oracle.adf.model.binding.DCIteratorBinding</class>
+                <value id="__98">#{bindings.WeekDaysAgentVOIterator}</value>
+            </parameter>
+            <!-- rowKeyStr param -->
+            <parameter>
+                <class id="__99">java.lang.String</class>
+                <value id="__100">#{pageFlowScope.rowKeyStrWeekDaysAgentVO}</value>
+            </parameter>
+            <!-- rowKeyValue param -->
+            <parameter>
+                <class id="__101">java.lang.Object</class>
+                <value id="__102">#{pageFlowScope.rowKeyValueWeekDaysAgentVO}</value>
+            </parameter>
+            <!-- rowKey param -->
+            <parameter>
+                <class id="__103">oracle.jbo.Key</class>
+                <value id="__104">#{pageFlowScope.rowKeyWeekDaysAgentVO}</value>
+            </parameter>
+            <!-- altKeyName param -->
+            <parameter>
+                <class id="__105">java.lang.String</class>
+                <value id="__106">#{pageFlowScope.altKeyNameWeekDaysAgentVO}</value>
+            </parameter>
+            <outcome id="__107">
+                <fixed-outcome id="__108">deepLinkPage</fixed-outcome>
+            </outcome>
+        </method-call>
+        <!-- DEBUG:END:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2-->
+        <task-flow-return id="CancelWeekDaysAgentVOReturn">
+            <outcome id="__109">
+                <name id="__110">CancelWeekDaysAgentVO</name>
+            </outcome>
+        </task-flow-return>
+        <task-flow-return id="DoneWeekDaysAgentVOReturn">
+            <outcome id="__111">
+                <name id="__112">DoneWeekDaysAgentVO</name>
+            </outcome>
+        </task-flow-return>
+        <!-- DEBUG:BEGIN:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2 -->
+        <view id="WeekDaysAgentVO">
+            <page id="__113">/pages/WeekDaysAgentVO.jsff</page>
+        </view>
+        <!-- DEBUG:END:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2 -->
+        <view id="AgentAreasVO">
+            <page>/pages/AgentAreasVO.jsff</page>
+        </view>
+        <control-flow-rule id="__114">
+            <from-activity-id id="__115">*</from-activity-id>
+            <control-flow-case id="__116">
+                <from-outcome id="__117">SetCurrentRowWeekDaysAgentVO</from-outcome>
+                <to-activity-id id="__118">SetCurrentRowWeekDaysAgentVO</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__119">
+                <from-outcome id="__120">firstPage</from-outcome>
+                <to-activity-id id="__121">WeekDaysAgentVO</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__122">
+                <from-outcome id="__123">deepLinkPage</from-outcome>
+                <to-activity-id id="__124">WeekDaysAgentVO</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__125">
+                <from-outcome id="__126">WeekDaysAgentVOBreadcrumb</from-outcome>
+                <to-activity-id id="__127">WeekDaysAgentVO</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__128">
+                <from-outcome id="__129">Cancel</from-outcome>
+                <to-activity-id id="__130">StartWeekDaysAgentVO</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__131">
+                <from-outcome id="__132">CancelWeekDaysAgentVOReturn</from-outcome>
+                <to-activity-id id="__133">CancelWeekDaysAgentVOReturn</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__134">
+                <from-outcome id="__135">DoneWeekDaysAgentVOReturn</from-outcome>
+                <to-activity-id id="__136">DoneWeekDaysAgentVOReturn</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__137">
+            <from-activity-id id="__138">*</from-activity-id>
+            <control-flow-case id="__139">
+                <from-outcome id="__140">createWeekDaysAgentVO</from-outcome>
+                <to-activity-id id="__141">CreateWeekDaysAgentVO</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <!-- DEBUG:END:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2-->
+        <control-flow-rule id="__162">
+            <from-activity-id>WeekDaysAgentVO</from-activity-id>
+            <control-flow-case id="__163">
+                <from-outcome>editAc</from-outcome>
+                <to-activity-id>AgentAreasVO</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__164">
+            <from-activity-id>AgentAreasVO</from-activity-id>
+            <control-flow-case id="__165">
+                <from-outcome>returnAc</from-outcome>
+                <to-activity-id>WeekDaysAgentVO</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <use-page-fragments/>
+    </task-flow-definition>
+    <!-- This bean must be defined outside the task-flow-definition element
+       because it needs to be available in the pageFlowScope of the unbounded
+       task-flow not in the pageFlowScope of the bounded task flow itself. -->
+    <!-- DEBUG:BEGIN:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2 -->
+    <managed-bean id="__142">
+        <managed-bean-name id="__143">WeekDaysAgentVOTaskFlowConfig</managed-bean-name>
+        <managed-bean-class id="__144">oracle.jheadstart.controller.jsf.bean.TaskFlowConfigBean</managed-bean-class>
+        <managed-bean-scope id="__145">pageFlow</managed-bean-scope>
+        <managed-property id="__146">
+            <property-name id="__147">params</property-name>
+            <property-class id="__148">java.util.Map</property-class>
+            <map-entries id="__149">
+                <map-entry id="__150">
+                    <key id="__151">parentContext</key>
+                    <value id="__152">#{pageFlowScope.parentContext}</value>
+                </map-entry>
+            </map-entries>
+        </managed-property>
+        <managed-property id="__153">
+            <property-name id="__154">name</property-name>
+            <value id="__155">WeekDaysAgentVO</value>
+        </managed-property>
+        <managed-property id="__156">
+            <property-name id="__157">taskFlowId</property-name>
+            <value id="__158">/WEB-INF/adfc-config-WeekDaysAgentVO.xml#WeekDaysAgentVOTaskFlow</value>
+        </managed-property>
+        <managed-property id="__159">
+            <property-name id="__160">label</property-name>
+            <value id="__161">#{nls['MENU1_TITLE_WEEKDAYSAGENTVO']}</value>
+        </managed-property>
+    </managed-bean>
+    <!-- DEBUG:END:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2-->
+</adfc-config>

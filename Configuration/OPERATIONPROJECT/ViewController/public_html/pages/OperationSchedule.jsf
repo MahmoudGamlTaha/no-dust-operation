@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+        xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces" beforePhase="#{jhsPhaseListener.beforePhase}"
+        locale="#{jhsLocaleManager.currentLocale}">
+    <af:document title="#{nls['TABLE_TITLE_OPERATIONSCHEDULE']}" id="doc0" uncommittedDataWarning="on">
+        <f:facet name="metaContainer">
+            <af:resource type="javascript" source="/jheadstart/jhs11.js"/>
+        </f:facet>
+        <af:form id="dataForm">
+            <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsTreeMenuPageTemplate.jsf">
+                <f:attribute name="showMessagesInline" value="false"/>
+                <f:attribute name="menuModel" value="#{RootMenu}"/>
+                <f:attribute name="menuStartLevel" value="0"/>
+                <f:facet name="pageContent">
+                    <af:region id="mr" value="#{bindings.OperationScheduleTaskFlow.regionModel}"
+                               partialTriggers="::Menu1 ::Menu2 ::pendingChangesDialog"/>
+                </f:facet>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+</f:view>

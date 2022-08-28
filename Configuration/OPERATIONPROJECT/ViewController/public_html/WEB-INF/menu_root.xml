@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu">
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <itemNode id="ActionCategoryMI" label="#{nls['MENU1_TITLE_ACTIONCATEGORY']}"
+              icon="../jheadstart/images/group-icon.png" action="uishell:ActionCategory" focusViewId="ActionCategory"
+              rendered="#{MTSPermission['ActionCategory.view']}"></itemNode>
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <itemNode id="AddressMI" label="#{nls['MENU1_TITLE_ADDRESS']}" icon="../jheadstart/images/group-icon.png"
+              action="uishell:Address" focusViewId="Address" rendered="#{MTSPermission['Address.view']}"></itemNode>
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <itemNode id="CustomerProfileMI" label="#{nls['MENU1_TITLE_CUSTOMERPROFILE']}"
+              icon="../jheadstart/images/group-icon.png" action="uishell:CustomerProfile" focusViewId="CustomerProfile"
+              rendered="#{MTSPermission['CustomerProfile.view']}"></itemNode>
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <itemNode id="ContractManagmentMI" label="#{nls['MENU1_TITLE_CONTRACTMANAGMENT']}"
+              icon="../jheadstart/images/group-icon.png" action="uishell:ContractManagment"
+              focusViewId="ContractManagment" rendered="#{MTSPermission['ContractManagment.view']}"></itemNode>
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <itemNode id="FinancialPeriodMI" label="#{nls['MENU1_TITLE_FINANCIALPERIOD']}"
+              icon="../jheadstart/images/group-icon.png" action="uishell:FinancialPeriod" focusViewId="FinancialPeriod"
+              rendered="#{MTSPermission['FinancialPeriod.view']}"></itemNode>
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <itemNode id="OperationScheduleMI" label="#{nls['MENU1_TITLE_OPERATIONSCHEDULE']}"
+              icon="../jheadstart/images/group-icon.png" action="uishell:OperationSchedule"
+              focusViewId="OperationSchedule" rendered="#{MTSPermission['OperationSchedule.view']}"></itemNode>
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <itemNode id="PackageMI" label="#{nls['MENU1_TITLE_PACKAGE']}" icon="../jheadstart/images/group-icon.png"
+              action="uishell:Package" focusViewId="Package" rendered="#{MTSPermission['Package.view']}"></itemNode>
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <itemNode id="CollectionPlanTypeMI" label="#{nls['MENU1_TITLE_COLLECTIONPLANTYPE']}"
+              icon="../jheadstart/images/group-icon.png" action="uishell:CollectionPlanType"
+              focusViewId="CollectionPlanType" rendered="#{MTSPermission['CollectionPlanType.view']}"></itemNode>
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <itemNode id="PointCatalogMI" label="#{nls['MENU1_TITLE_POINTCATALOG']}" icon="../jheadstart/images/group-icon.png"
+              action="uishell:PointCatalog" focusViewId="PointCatalog" rendered="#{MTSPermission['PointCatalog.view']}"></itemNode>
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <itemNode id="SchedulingExcludeReasonMI" label="#{nls['MENU1_TITLE_SCHEDULINGEXCLUDEREASON']}"
+              icon="../jheadstart/images/group-icon.png" action="uishell:SchedulingExcludeReason"
+              focusViewId="SchedulingExcludeReason" rendered="#{MTSPermission['SchedulingExcludeReason.view']}"></itemNode>
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <itemNode id="TemplateConfigurationMI" label="#{nls['MENU1_TITLE_TEMPLATECONFIGURATION']}"
+              icon="../jheadstart/images/group-icon.png" action="uishell:TemplateConfiguration"
+              focusViewId="TemplateConfiguration" rendered="#{MTSPermission['TemplateConfiguration.view']}"></itemNode>
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <itemNode id="UsersMI" label="#{nls['MENU1_TITLE_USERS']}" icon="../jheadstart/images/group-icon.png"
+              action="uishell:Users" focusViewId="Users" rendered="#{MTSPermission['Users.view']}"></itemNode>
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <itemNode id="ProductsMI" label="#{nls['MENU1_TITLE_PRODUCTS']}" icon="../jheadstart/images/group-icon.png"
+              action="uishell:Products" focusViewId="Products" rendered="#{MTSPermission['Products.view']}"></itemNode>
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+</menu>

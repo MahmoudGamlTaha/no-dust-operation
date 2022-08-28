@@ -1,0 +1,26 @@
+## revision_history
+## 20-jan-2011   Steven Davelaar
+## 2.2           Added popups facet
+## 03-jan-2011   Steven Davelaar
+## 2.1           Added support for group region as child of separate pages region container
+##               useful when including group region as reusable adfc region 
+## 23-jun-2009   Paco van der Linden
+## 2.0           Restructured layout according to (stretching) best-practices.
+## 31-okt-2007   Steven Davelaar/Jaco Verheul/Evert-Jan de Bruin
+## 1.2           R11 upgrade 
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+#set ($group= ${JHS.current.group})
+
+#if ($JHS.page.groupRegion)
+    <f:facet name="pageContent">
+      #JHS_PARSE($JHS.page.groupRegion.templateIdentifier $JHS.page.groupRegion)
+    </f:facet>  
+    <f:facet name="popups">
+     <af:panelGroupLayout id="popupsPgl">
+      ${JHS.page.popupsContent}
+      </af:panelGroupLayout>
+    </f:facet>
+#else
+  #JHS_PARSE("PAGE_CONTENT" ${JHS.current.model})
+#end

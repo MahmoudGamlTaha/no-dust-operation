@@ -1,0 +1,4 @@
+## revision_history
+## 15-aug-2007   Steven Davelaar
+## 1.0           Initial creation
+<% response.sendRedirect("faces/pages/Home.jsf"); %>

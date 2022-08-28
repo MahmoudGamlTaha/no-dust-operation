@@ -1,0 +1,248 @@
+# --------------
+# PAGE TEMPLATES
+# --------------
+DATA_PAGE=doc/page/dataPage.vm
+#DIALOG_PAGE=doc/page/dialogPage.vm
+FRAGMENT_PAGE=doc/page/fragmentPage.vm
+SKELETON_PAGE=doc/page/dataPage.vm
+
+# ----------------------
+# PAGE CONTENT TEMPLATES
+# ----------------------
+PAGE_CONTENT=doc/page/pageContent.vm
+WIZARD_PAGE_CONTENT=doc/page/wizardPageContent.vm
+FIND_PAGE_CONTENT=doc/page/findPageContent.vm
+FORM_PAGE_CONTENT=doc/page/formPageContent.vm
+SELECT_PAGE_CONTENT=doc/page/selectPageContent.vm
+TABLE_PAGE_CONTENT=doc/page/tablePageContent.vm
+TREE_FORM_PAGE_CONTENT=doc/page/treeFormPageContent.vm
+TREE_PAGE_CONTENT=doc/page/treePageContent.vm
+SHUTTLE_PAGE_CONTENT=doc/page/shuttlePageContent.vm
+
+# ----------------------
+# PAGE COMPONENT TEMPLATES
+# ----------------------
+GROUP_CONTENT=doc/pageComponent/groupContent.vm
+GROUP_TOOLBAR=doc/pageComponent/groupToolbar.vm
+BREADCRUMB_AREA=doc/pageComponent/breadcrumbArea.vm
+FORM_GROUP=doc/pageComponent/formGroup.vm
+FORM_REGION_GROUP=doc/pageComponent/formRegionGroup.vm
+REUSABLE_TREE_GROUP=doc/pageComponent/reusableTreeGroup.vm
+SELECT_GROUP=doc/pageComponent/selectGroup.vm
+TABLE_ACTION_COLUMN=doc/pageComponent/tableActionColumn.vm
+TABLE_FOOTER=doc/pageComponent/tableFooter.vm
+TABLE_GROUP=doc/pageComponent/tableGroup.vm
+TABLE_MENU=doc/pageComponent/tableMenu.vm
+TABLE_OVERFLOW_AREA=doc/pageComponent/tableOverflowArea.vm
+TABLE_ROW_POPUP_MENU=doc/pageComponent/tableRowPopupMenu.vm
+TABLE_TOOLBAR=doc/pageComponent/tableToolbar.vm
+PARENT_SHUTTLE_GROUP=doc/pageComponent/parentShuttleGroup.vm
+INTERSECTION_SHUTTLE_GROUP=doc/pageComponent/intersectionShuttleGroup.vm
+DETAIL_GROUPS=doc/pageComponent/detailGroups.vm
+STACKED_REGION_CONTAINER=doc/pageComponent/stackedRegionContainer.vm
+VERTICAL_REGION_CONTAINER=doc/pageComponent/verticalRegionContainer.vm
+VERTICAL_SPLITTER_REGION_CONTAINER=doc/pageComponent/splitterRegionContainer.vm
+HORIZONTAL_REGION_CONTAINER=doc/pageComponent/horizontalRegionContainer.vm
+HORIZONTAL_SPLITTER_REGION_CONTAINER=doc/pageComponent/splitterRegionContainer.vm
+GROUPED_ITEM_REGIONS_CONTAINER=doc/pageComponent/groupedItemRegionsContainer.vm
+POPUP_REGION_CONTAINER=doc/pageComponent/popupRegionContainer.vm
+ITEM_REGION=doc/pageComponent/itemRegion.vm
+GROUP_REGION=doc/pageComponent/groupRegion.vm
+FLEX_REGION=doc/pageComponent/flexRegion.vm
+DEFINE_FLEX_REGION_LINK=doc/pageComponent/defineFlexRegionLink.vm
+PARENT_CONTEXT=doc/pageComponent/parentContext.vm
+
+
+# Group level buttons template used when page group has table layout
+# and multiple groups are displayed on the same page
+# Group level buttons template used when page group has select-form layout
+# and group is displayed on the same page as parent group
+SELECT_GROUP_BUTTONS=doc/pageComponent/selectGroupButtons.vm
+
+FORM_BROWSE_BUTTONS=doc/pageComponent/formBrowseButtons.vm
+
+# ----------------
+# SEARCH TEMPLATES
+# ----------------
+ADVANCED_SEARCH_BUTTONS=doc/search/advancedSearchButtons.vm
+ADVANCED_SEARCH_REGION=doc/search/advancedSearchRegion.vm
+MODEL_ADVANCED_SEARCH_REGION=doc/search/modelAdvancedSearchRegion.vm
+MODEL_QUICK_SEARCH_REGION=doc/search/modelQuickSearchRegion.vm
+QUICK_SEARCH_BUTTONS=doc/search/quickSearchButtons.vm
+QUICK_SEARCH_DROP_DOWN_REGION=doc/search/quickSearchDropDownRegion.vm
+QUICK_SEARCH_SINGLE_FIELD_REGION=doc/search/quickSearchSingleFieldRegion.vm
+SEARCH_AREA=doc/search/searchArea.vm
+GROUP_SEARCH_AREA=doc/search/groupSearchArea.vm
+
+# --------------
+# ITEM TEMPLATES
+# --------------
+DYNAMIC_DOMAIN_OPTIONS=doc/item/dynamicDomainOptions.vm
+STATIC_DOMAIN_OPTIONS=doc/item/staticDomainOptions.vm
+
+# -------------------
+# FORM ITEM TEMPLATES
+# -------------------
+FORM_TEXT_INPUT=doc/item/form/formTextInput.vm
+FORM_CHECK_BOX=doc/item/form/formCheckbox.vm
+FORM_DROP_DOWN_LIST=doc/item/form/formDropDownList.vm
+FORM_RADIO_VERTICAL=doc/item/form/formRadioVertical.vm
+FORM_RADIO_HORIZONTAL=doc/item/form/formRadioHorizontal.vm
+FORM_LIST=doc/item/form/formList.vm
+FORM_EDITOR=doc/item/form/formEditor.vm
+FORM_DATE_FIELD=doc/item/form/formDateField.vm
+FORM_DATE_TIME_FIELD=doc/item/form/formDateTimeField.vm
+FORM_DISPLAY_FIELD=doc/item/form/formDisplayField.vm
+FORM_HIDDEN_FIELD=doc/item/form/formHiddenField.vm
+FORM_SECRET=doc/item/form/formSecret.vm
+FORM_FILE_UPLOAD=doc/item/form/formFileUpload.vm
+FORM_FILE_DOWNLOAD=doc/item/form/formFileDownload.vm
+FORM_IMAGE=doc/item/form/formImage.vm
+FORM_GRAPH=doc/item/form/formGraph.vm
+FORM_GROUP_LINK=doc/item/form/formGroupLink.vm
+FORM_HIDDEN_FIELD=doc/item/form/formHiddenField.vm
+FORM_LOV_ITEM=doc/item/form/formLovItem.vm
+FORM_MODEL_CHOICELIST=doc/item/form/formModelChoiceList.vm
+FORM_MODEL_COMBOBOX=doc/item/form/formModelComboBox.vm
+FORM_MODEL_COMBOBOX_LOV=doc/item/form/formModelComboBoxLov.vm
+FORM_MODEL_INPUTTEXT_LOV=doc/item/form/formModelInputTextLov.vm
+FORM_MODEL_LISTBOX=doc/item/form/formModelListbox.vm
+FORM_MODEL_RADIO_HORIZONTAL=doc/item/form/formModelRadioHorizontal.vm
+FORM_MODEL_RADIO_VERTICAL=doc/item/form/formModelRadioVertical.vm
+
+FLEX_REGION_ITEM=doc/item/form/flexRegionItem.vm
+ORA_FORMS_FACES=doc/item/form/oraFormsFaces.vm
+FORM_COMMAND_BUTTON=doc/item/form/formCommandButton.vm
+
+# --------------------
+# TABLE ITEM TEMPLATES
+# --------------------
+TABLE_TEXT_INPUT=doc/item/table/tableTextInput.vm
+TABLE_COLUMN=doc/item/table/tableColumn.vm
+TABLE_CHECK_BOX=doc/item/table/tableCheckbox.vm
+TABLE_DROP_DOWN_LIST=doc/item/table/tableDropDownList.vm
+TABLE_RADIO_VERTICAL=doc/item/table/tableRadioVertical.vm
+TABLE_RADIO_HORIZONTAL=doc/item/table/tableRadioHorizontal.vm
+TABLE_LIST=doc/item/table/tableList.vm
+TABLE_EDITOR=doc/item/table/tableEditor.vm
+TABLE_DATE_FIELD=doc/item/table/tableDateField.vm
+TABLE_DATE_TIME_FIELD=doc/item/table/tableDateTimeField.vm
+TABLE_DISPLAY_FIELD=doc/item/table/tableDisplayField.vm
+TABLE_HIDDEN_FIELD=doc/item/table/tableHiddenField.vm
+TABLE_SECRET=doc/item/table/tableSecret.vm
+TABLE_FILE_UPLOAD=doc/item/table/tableFileUpload.vm
+TABLE_FILE_DOWNLOAD=doc/item/table/tableFileDownload.vm
+TABLE_IMAGE=doc/item/table/tableImage.vm
+TABLE_GRAPH=doc/item/table/tableGraph.vm
+TABLE_GROUP_LINK=doc/item/table/tableGroupLink.vm
+TABLE_LOV_ITEM=doc/item/table/tableLovItem.vm
+TABLE_MODEL_CHOICELIST=doc/item/table/tableModelChoiceList.vm
+TABLE_MODEL_COMBOBOX=doc/item/table/tableModelComboBox.vm
+TABLE_MODEL_COMBOBOX_LOV=doc/item/table/tableModelComboBoxLov.vm
+TABLE_MODEL_INPUTTEXT_LOV=doc/item/table/tableModelInputTextLov.vm
+TABLE_MODEL_LISTBOX=doc/item/table/tableModelListbox.vm
+TABLE_MODEL_RADIO_HORIZONTAL=doc/item/table/tableModelRadioHorizontal.vm
+TABLE_MODEL_RADIO_VERTICAL=doc/item/table/tableModelRadioVertical.vm
+
+
+TABLE_FORM_HYPERLINK=doc/item/table/tableFormHyperlink.vm
+TABLE_ITEM_FOOTER=doc/item/table/tableItemFooter.vm
+TABLE_COMMAND_BUTTON=doc/item/table/tableCommandButton.vm
+
+# -------------------
+# FIND ITEM TEMPLATES
+# -------------------
+ADVANCED_SEARCH_TEXT_INPUT=doc/item/find/findTextInput.vm
+ADVANCED_SEARCH_EDITOR=doc/item/find/findEditor.vm
+ADVANCED_SEARCH_SET_BY_USER_TEXT_INPUT=doc/item/find/findTextInputSetByUser.vm
+ADVANCED_SEARCH_BETWEEN_TEXT_INPUT=doc/item/find/findTextInputBetween.vm
+ADVANCED_SEARCH_CHECK_BOX=doc/item/find/findCheckbox.vm
+ADVANCED_SEARCH_DROP_DOWN_LIST=doc/item/find/findDropDownList.vm
+ADVANCED_SEARCH_RADIO_VERTICAL=doc/item/find/findRadioVertical.vm
+ADVANCED_SEARCH_RADIO_HORIZONTAL=doc/item/find/findRadioHorizontal.vm
+ADVANCED_SEARCH_LIST=doc/item/find/findList.vm
+ADVANCED_SEARCH_EDITOR=doc/item/find/findEditor.vm
+ADVANCED_SEARCH_DATE_FIELD=doc/item/find/findDateField.vm
+ADVANCED_SEARCH_SET_BY_USER_DATE_FIELD=doc/item/find/findDateFieldSetByUser.vm
+ADVANCED_SEARCH_BETWEEN_DATE_FIELD=doc/item/find/findDateFieldBetween.vm
+ADVANCED_SEARCH_DATE_TIME_FIELD=doc/item/find/findDateTimeField.vm
+ADVANCED_SEARCH_SET_BY_USER_DATE_TIME_FIELD=doc/item/find/findDateTimeFieldSetByUser.vm
+ADVANCED_SEARCH_BETWEEN_DATE_TIME_FIELD=doc/item/find/findDateTimeFieldBetween.vm
+ADVANCED_SEARCH_LOV_ITEM=doc/item/find/findLovItem.vm
+ADVANCED_SEARCH_MODEL_LOV=doc/item/find/findModelLov.vm
+
+QUICK_SEARCH_TEXT_INPUT=doc/item/find/quickSearchTextInput.vm
+QUICK_SEARCH_EDITOR=doc/item/find/quickSearchEditor.vm
+QUICK_SEARCH_CHECK_BOX=doc/item/find/quickSearchCheckbox.vm
+QUICK_SEARCH_DROP_DOWN_LIST=doc/item/find/quickSearchDropDownList.vm
+QUICK_SEARCH_RADIO_VERTICAL=doc/item/find/quickSearchRadioVertical.vm
+QUICK_SEARCH_RADIO_HORIZONTAL=doc/item/find/quickSearchRadioHorizontal.vm
+QUICK_SEARCH_LIST=doc/item/find/quickSearchList.vm
+QUICK_SEARCH_EDITOR=doc/item/find/quickSearchEditor.vm
+QUICK_SEARCH_DATE_FIELD=doc/item/find/quickSearchDateField.vm
+QUICK_SEARCH_DATE_TIME_FIELD=doc/item/find/quickSearchDateTimeField.vm
+QUICK_SEARCH_LOV_ITEM=doc/item/find/quickSearchLovItem.vm
+QUICK_SEARCH_MODEL_LOV=doc/item/find/quickSearchModelLov.vm
+
+
+# ----------------
+# BUTTON TEMPLATES
+# ----------------
+ADD_ROW_LINK=doc/button/addRowLink.vm
+ADD_ROW_MENU_ITEM=doc/button/addRowMenuItem.vm
+CLEAR_SEARCH_CRITERIA_BUTTON=doc/button/clearSearchCriteriaButton.vm
+DELETE_BUTTON=doc/button/deleteButton.vm
+DELETE_ROW_LINK=doc/button/deleteRowLink.vm
+DELETE_ROW_MENU_ITEM=doc/button/deleteRowMenuItem.vm
+DELETE_WARNING_DIALOG=doc/button/deleteWarningDialog.vm
+DETAILS_LINK=doc/button/detailsLink.vm
+DETAILS_MENU_ITEM=doc/button/detailsMenuItem.vm
+DIALOG_CANCEL_BUTTON=doc/button/dialogCancelButton.vm
+DIALOG_OK_BUTTON=doc/button/dialogOKButton.vm
+DO_ADVANCED_SEARCH_BUTTON=doc/button/doAdvancedSearchButton.vm
+DO_QUICK_SEARCH_BUTTON=doc/button/doQuickSearchButton.vm
+DUPLICATE_ROW_LINK=doc/button/duplicateRowLink.vm
+DUPLICATE_ROW_MENU_ITEM=doc/button/duplicateRowMenuItem.vm
+EDIT_OR_VIEW_BUTTON=doc/button/editOrViewButton.vm
+LOV_CANCEL_BUTTON=doc/button/lovCancelButton.vm
+LOV_SELECT_BUTTON=doc/button/lovSelectButton.vm
+NEW_BUTTON=doc/button/newButton.vm
+NEW_BUTTON_NOT_IN_FORM_LAYOUT=doc/button/newButtonNotInFormLayout.vm
+NEW_CHILD_BUTTON=doc/button/newChildButton.vm
+PARENT_TO_CHILD_BUTTON=doc/button/parentToChildButton.vm
+PARENT_TO_CHILD_MENU_ITEM=doc/button/parentToChildMenuItem.vm
+SAVE_BUTTON=doc/button/saveButton.vm
+SWITCH_TO_ADVANCED_SEARCH_BUTTON=doc/button/switchToAdvancedSearchButton.vm
+SWITCH_TO_QUICK_SEARCH_BUTTON=doc/button/switchToQuickSearchButton.vm
+TABLE_EXPORT_LINK=doc/button/tableExportLink.vm
+TABLE_EXPORT_MENU_ITEM=doc/button/tableExportMenuItem.vm
+WIZARD_CANCEL_BUTTON=doc/button/wizardCancelButton.vm
+WIZARD_FINISH_BUTTON=doc/button/wizardFinishButton.vm
+FORM_REGION_PAGE_BUTTON=doc/button/formRegionPageButton.vm
+TOOLBAR_BUTTON=doc/button/toolbarButton.vm
+GROUP_LINK_TOOLBAR_BUTTON=doc/button/groupLinkToolbarButton.vm
+
+# --------------
+# MENU TEMPLATES
+# --------------
+XML_ROOT_MENU_MODEL=doc/misc/menu/xmlRootMenuModel.vm
+XML_MENU_MODEL=doc/misc/menu/xmlMenuModel.vm
+XML_MENU_MODEL_ITEM=doc/misc/menu/xmlMenuModelItem.vm
+
+
+# -----------------
+# INCLUDE TEMPLATES
+# -----------------
+INCLUDE=doc/misc/include/include.vm
+INCLUDE_DEF=doc/misc/include/includeDef.vm
+
+
+#-------
+# FILES 
+#-------
+FILE_GENERATOR=doc/misc/file/fileGenerator.vm
+
+#-------
+# COMMON 
+#-------
+EMPTY=doc/common/empty.vm

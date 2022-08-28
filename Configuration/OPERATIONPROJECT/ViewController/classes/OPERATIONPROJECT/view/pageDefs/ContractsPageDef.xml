@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="ContractsPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="true">
+  <parameters>
+    <parameter id="bindingContainersToPrepare" value="#{'CustomerProfilePageDef'}"/>
+  </parameters>
+  <executables>
+    <iterator id="ContractsIterator" Binds="ContractInfoVO1" DataControl="AppModuleAMDataControl" RangeSize="10"/>
+    <searchRegion id="ContractsIteratorQuery" Binds="ContractsIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="CardNo"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator Binds="AppModuleAMDataControl" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="AppModuleAMDataControlIterator"/>
+    <iterator id="NewGroupIterator" Binds="ContractAddressVO1" DataControl="AppModuleAMDataControl" RangeSize="10"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="ContractsIterator" id="ContractsCardNo">
+      <AttrNames>
+        <Item Value="CardNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractsIterator" id="ContractsContractClientName">
+      <AttrNames>
+        <Item Value="ContractClientName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractsIterator" id="ContractsContractDate">
+      <AttrNames>
+        <Item Value="ContractDate"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="ContractsIterator" id="ContractsReplacementDuration" Uses="LOV_ReplacementDuration"
+          StaticList="false"/>
+    <list IterBinding="ContractsIterator" id="ContractsAreaId" Uses="LOV_AreaId" StaticList="false"/>
+    <attributeValues IterBinding="ContractsIterator" id="ContractsContractEmail">
+      <AttrNames>
+        <Item Value="ContractEmail"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractsIterator" id="ContractsContractMobile">
+      <AttrNames>
+        <Item Value="ContractMobile"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractsIterator" id="ContractsContractMobile2">
+      <AttrNames>
+        <Item Value="ContractMobile2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractsIterator" id="ContractsContractPhone">
+      <AttrNames>
+        <Item Value="ContractPhone"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractsIterator" id="ContractsContractPhone2">
+      <AttrNames>
+        <Item Value="ContractPhone2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractsIterator" id="ContractsPNum">
+      <AttrNames>
+        <Item Value="PNum"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractsIterator" id="ContractsNextDeliveryDate">
+      <AttrNames>
+        <Item Value="NextDeliveryDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractsIterator" id="ContractsLastChangedDate">
+      <AttrNames>
+        <Item Value="LastChangedDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractsIterator" id="ContractsX">
+      <AttrNames>
+        <Item Value="X"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractsIterator" id="ContractsY">
+      <AttrNames>
+        <Item Value="Y"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractsIterator" id="ContractsCancelDate">
+      <AttrNames>
+        <Item Value="CancelDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractsIterator" id="ContractsCancelReason">
+      <AttrNames>
+        <Item Value="CancelReason"/>
+      </AttrNames>
+    </attributeValues>
+    <button IterBinding="ContractsIterator" id="ContractsActive" DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="Active"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <tree id="ContractsTable" IterBinding="ContractsIterator">
+      <nodeDefinition Name="Contracts" DefName="OPERATIONPROJECT.model.BC.VO.ContractInfoVO">
+        <AttrNames>
+          <Item Value="CardNo"/>
+          <Item Value="ContractClientName"/>
+          <Item Value="ContractDate"/>
+          <Item Value="ReplacementDuration"/>
+          <Item Value="AreaId"/>
+          <Item Value="ContractEmail"/>
+          <Item Value="ContractMobile"/>
+          <Item Value="ContractMobile2"/>
+          <Item Value="ContractPhone"/>
+          <Item Value="ContractPhone2"/>
+          <Item Value="PNum"/>
+          <Item Value="NextDeliveryDate"/>
+          <Item Value="LastChangedDate"/>
+          <Item Value="X"/>
+          <Item Value="Y"/>
+          <Item Value="CancelDate"/>
+          <Item Value="CancelReason"/>
+          <Item Value="Active"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ContractsIterator" id="FirstContracts" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="ContractsIterator" id="PreviousContracts" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="ContractsIterator" id="NextContracts" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="ContractsIterator" id="LastContracts" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="ContractsIterator" id="SetCurrentRowWithKeyContracts" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrContracts}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="ContractsIterator" id="CreateContracts" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="ContractsIterator" id="DeleteContracts" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <tree id="NewGroupTable" IterBinding="NewGroupIterator">
+      <nodeDefinition Name="NewGroup" DefName="OPERATIONPROJECT.model.BC.VO.ContractAddressVO">
+        <AttrNames>
+          <Item Value="Active"/>
+          <Item Value="ActiveFrom"/>
+          <Item Value="ActiveTo"/>
+          <Item Value="Address"/>
+          <Item Value="AddressId"/>
+          <Item Value="AreaId"/>
+          <Item Value="CardNo"/>
+          <Item Value="CityId"/>
+          <Item Value="FlatNo"/>
+          <Item Value="FloorNo"/>
+          <Item Value="HomeNo"/>
+          <Item Value="RegionId"/>
+          <Item Value="Remarks"/>
+          <Item Value="StreetId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="NewGroupIterator" id="FirstNewGroup" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="NewGroupIterator" id="PreviousNewGroup" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="NewGroupIterator" id="NextNewGroup" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="NewGroupIterator" id="LastNewGroup" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="NewGroupIterator" id="SetCurrentRowWithKeyNewGroup" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrNewGroup}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="NewGroupIterator" id="CreateNewGroup" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="NewGroupIterator" id="DeleteNewGroup" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

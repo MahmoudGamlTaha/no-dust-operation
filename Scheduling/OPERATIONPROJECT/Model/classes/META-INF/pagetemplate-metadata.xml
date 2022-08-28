@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<pageTemplateDefs xmlns="http://xmlns.oracle.com/adf/faces/rich/pagetemplate">
+  <pagetemplate-jsp-ui-def>/common/pageTemplates/JhsRegionTemplateNoStretch.jsf</pagetemplate-jsp-ui-def>
+  <pagetemplate-jsp-ui-def>/common/pageTemplates/JhsRegionTemplate.jsf</pagetemplate-jsp-ui-def>
+  <pagetemplate-jsp-ui-def>/common/pageTemplates/JhsDynamicTabsPageTemplate.jsf</pagetemplate-jsp-ui-def>
+  <pagetemplate-jsp-ui-def>/common/pageTemplates/JhsTreeMenuPageTemplate.jsf</pagetemplate-jsp-ui-def>
+  <pagetemplate-jsp-ui-def>/common/pageTemplates/JhsPageTemplate.jsf</pagetemplate-jsp-ui-def>
+</pageTemplateDefs>

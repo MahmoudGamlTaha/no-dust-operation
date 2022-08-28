@@ -1,0 +1,859 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsRegionTemplate.jsf">
+        <f:attribute name="showBreadcrumbs" value="false"/>
+        <!-- DEBUG:BEGIN:WIZARD_PAGE_CONTENT : default/page/wizardPageContent.vm, nesting level: 2 -->
+        <f:facet name="processTrain">
+            <af:train value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}" id="tr0"/>
+        </f:facet>
+        <!-- DEBUG:BEGIN:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3 -->
+        <f:facet name="pageContent">
+            <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4 -->
+            <af:panelSplitter orientation="vertical" styleClass="AFStretchWidth" id="ps0"
+                              partialTriggers=" ContractInfoDeleteDialog ContractInfofbb ContractInfoNewButton ContractInfoDelB ContractInfoCancelButton">
+                <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                <f:facet name="first">
+                    <af:panelGroupLayout layout="scroll" id="ContractInfoTopLc"
+                                         partialTriggers=" ContractInfoDeleteDialog ContractInfofbb ContractInfoNewButton ContractInfoDelB ContractInfoCancelButton">
+                        <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                        <f:facet name="separator">
+                            <af:spacer width="10" height="10" id="sp0"/>
+                        </f:facet>
+                        <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                        <af:panelHeader id="ph0"
+                                        text="#{pageFlowScope.createModes.CreateContractInfo ? nls['INSERT_TITLE_CONTRACTINFO'] :  (MTSPermission['CustomerProfile.update'] ? nls['EDIT_TITLE_CONTRACTINF: #{bindings.ContractInfoCardNo.inputValue}'] : nls['VIEW_TITLE_CONTRACTINF: #{bindings.ContractInfoCardNo.inputValue}'])  }">
+                            <f:facet name="toolbar">
+                                <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5 -->
+                                <af:toolbox id="tbox0">
+                                    <af:toolbar id="tbar0">
+                                        <!-- DEBUG:BEGIN:FORM_BROWSE_BUTTONS : custom/pageComponent/MtsformBrowseButtons.vm, nesting level: 6 -->
+                                        <af:panelGroupLayout id="ContractInfofbb" layout="horizontal"
+                                                             rendered="#{ bindings.ContractInfoIterator.currentRow!=null  and bindings.ContractInfoIterator.estimatedRowCount>1 and !pageFlowScope.createModes.CreateContractInfo and !pageFlowScope.hideFormBrowseButtons}"
+                                                             partialTriggers="ContractInfoFirst ContractInfoPrevious ContractInfoNext ContractInfoLast">
+                                            <af:button actionListener="#{bindings.FirstContractInfo.execute}"
+                                                       id="ContractInfoFirst" partialSubmit="true"
+                                                       icon="/afr/shuttleleftall_ena.png"
+                                                       shortDesc="#{nls['FIRST_ROW']}"
+                                                       rendered="#{bindings.ContractInfoIterator.rangeStart+bindings.ContractInfoIterator.currentRowIndexInRange+1>1}"></af:button>
+                                            <af:image source="/afr/shuttleleftall_dis.png"
+                                                      rendered="#{!(bindings.ContractInfoIterator.rangeStart+bindings.ContractInfoIterator.currentRowIndexInRange+1>1)}"
+                                                      id="img0"/>
+                                            <af:button actionListener="#{bindings.PreviousContractInfo.execute}"
+                                                       icon="/afr/shuttleleft_ena.png"
+                                                       shortDesc="#{nls['PREVIOUS_ROW']}" id="ContractInfoPrevious"
+                                                       partialSubmit="true"
+                                                       rendered="#{bindings.ContractInfoIterator.rangeStart+bindings.ContractInfoIterator.currentRowIndexInRange+1>1}"></af:button>
+                                            <af:image source="/afr/shuttleleft_dis.png"
+                                                      rendered="#{!(bindings.ContractInfoIterator.rangeStart+bindings.ContractInfoIterator.currentRowIndexInRange+1>1)}"
+                                                      id="img1"/>
+                                            <af:spacer width="4" height="1" id="sp1"/>
+                                            <af:outputFormatted styleUsage="instruction"
+                                                                inlineStyle="white-space:nowrap; vertical-align:bottom;"
+                                                                value=" [#{bindings.ContractInfoIterator.rangeStart+bindings.ContractInfoIterator.currentRowIndexInRange+1} / #{bindings.ContractInfoIterator.estimatedRowCount}] "
+                                                                id="of0"/>
+                                            <af:button actionListener="#{bindings.NextContractInfo.execute}"
+                                                       icon="/afr/shuttleright_ena.png" shortDesc="#{nls['NEXT_ROW']}"
+                                                       id="ContractInfoNext" partialSubmit="true"
+                                                       rendered="#{bindings.ContractInfoIterator.rangeStart+bindings.ContractInfoIterator.currentRowIndexInRange+1 lt bindings.ContractInfoIterator.estimatedRowCount}"></af:button>
+                                            <af:image source="/afr/shuttleright_dis.png"
+                                                      rendered="#{!(bindings.ContractInfoIterator.rangeStart+bindings.ContractInfoIterator.currentRowIndexInRange+1 lt bindings.ContractInfoIterator.estimatedRowCount)}"
+                                                      id="img2"/>
+                                            <af:button actionListener="#{bindings.LastContractInfo.execute}"
+                                                       icon="/afr/shuttlerightall_ena.png"
+                                                       shortDesc="#{nls['LAST_ROW']}" id="ContractInfoLast"
+                                                       partialSubmit="true"
+                                                       rendered="#{bindings.ContractInfoIterator.rangeStart+bindings.ContractInfoIterator.currentRowIndexInRange+1 lt bindings.ContractInfoIterator.estimatedRowCount}"></af:button>
+                                            <af:image source="/afr/shuttlerightall_dis.png"
+                                                      rendered="#{!(bindings.ContractInfoIterator.rangeStart+bindings.ContractInfoIterator.currentRowIndexInRange+1 lt bindings.ContractInfoIterator.estimatedRowCount)}"
+                                                      id="img3"/>
+                                        </af:panelGroupLayout>
+                                        <!-- DEBUG:END:FORM_BROWSE_BUTTONS : custom/pageComponent/MtsformBrowseButtons.vm, nesting level: 6-->
+                                        <af:group id="gr0">
+                                            <!-- DEBUG:BEGIN:NEW_BUTTON : custom/button/MtsnewButton.vm, nesting level: 6 -->
+                                            <af:button actionListener="#{CreateContractInfo.execute}"
+                                                       action="CreateContractInfo"
+                                                       icon="/jheadstart/images/newRowInForm.png" partialSubmit="true"
+                                                       shortDesc="#{nls['NEW_BUTTON_LABEL_CONTRACTINFO']}"
+                                                       rendered="#{!pageFlowScope.createModes.CreateContractInfo and (true) and (MTSPermission['CustomerProfile.create'])}"
+                                                       id="ContractInfoNewButton"></af:button>
+                                            <!-- DEBUG:END:NEW_BUTTON : custom/button/MtsnewButton.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:DELETE_BUTTON : default/button/deleteButton.vm, nesting level: 6 -->
+                                            <af:button action="DeleteContractInfo" partialSubmit="true"
+                                                       icon="/jheadstart/images/deleteRow.png"
+                                                       shortDesc="#{nls['DELETE_BUTTON_LABEL_CONTRACTINFO']}"
+                                                       rendered="#{!pageFlowScope.createModes.CreateContractInfo and  bindings.ContractInfoIterator.currentRow!=null   and (MTSPermission['CustomerProfile.delete'])}"
+                                                       immediate="true" id="ContractInfoDelB">
+                                                <af:showPopupBehavior popupId="ContractInfoDeletePopup"/>
+                                            </af:button>
+                                            <!-- DEBUG:END:DELETE_BUTTON : default/button/deleteButton.vm, nesting level: 6-->
+                                        </af:group>
+                                        <af:group id="gr1"></af:group>
+                                        <af:group id="gr2">
+                                            <af:trainButtonBar value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"/>
+                                            <!-- DEBUG:BEGIN:WIZARD_FINISH_BUTTON : default/button/wizardFinishButton.vm, nesting level: 6 -->
+                                            <af:button action="#{SaveContractInfo.execute}"
+                                                       textAndAccessKey="#{nls['FINISH']}"
+                                                       id="ContractInfoWizardFinishButton"></af:button>
+                                            <!-- DEBUG:END:WIZARD_FINISH_BUTTON : default/button/wizardFinishButton.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6 -->
+                                            <af:button textAndAccessKey="#{nls['CANCEL']}" immediate="true"
+                                                       partialSubmit="true"
+                                                       rendered="#{!pageFlowScope.hideCancelButton}"
+                                                       actionListener="#{jhsRollback.execute}" action="Cancel"
+                                                       id="ContractInfoCancelButton"></af:button>
+                                            <!-- DEBUG:END:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6-->
+                                        </af:group>
+                                    </af:toolbar>
+                                </af:toolbox>
+                                <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5-->
+                            </f:facet>
+                            <f:facet name="context">
+                                <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5 -->
+                                <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5-->
+                            </f:facet>
+                            <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+                            <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+                            <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+                            <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+                        </af:panelHeader>
+                        <!-- DEBUG:BEGIN:FORM_GROUP : custom/pageComponent/MtsformGroup.vm, nesting level: 5 -->
+                        <af:switcher rendered="#{bindings.ContractInfoIterator.findMode!='true'}" id="ContractInfoSw"
+                                     defaultFacet="hasRows"
+                                     facetName="#{( bindings.ContractInfoIterator.currentRow!=null ) ? 'hasRows' : 'noRows'}">
+                            <f:facet name="noRows">
+                                <af:outputFormatted value="#{nls['NO_ROWS_FOUND']}" styleUsage="pageStamp"
+                                                    id="ContractInfoNoRowsFound"/>
+                            </f:facet>
+                            <f:facet name="hasRows">
+                                <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm), disabled (custom/pageComponent/MtsformGroup.vm) -->
+                                <af:panelGroupLayout id="ContractInfoFC" layout="vertical">
+                                    <f:facet name="separator">
+                                        <af:spacer width="10" height="10" id="sp2"/>
+                                    </f:facet>
+                                    <af:panelFormLayout rows="1" labelAlignment="start" maxColumns="1"
+                                                        id="ContractInfoFI">
+                                        <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                        <af:inputText id="ContractInfoCardNo"
+                                                      value="#{bindings.ContractInfoCardNo.inputValue}"
+                                                      label="#{bindings.ContractInfoCardNo.hints.label}"
+                                                      required="#{bindings.ContractInfoCardNo.hints.mandatory}"
+                                                      rows="#{bindings.ContractInfoCardNo.hints.displayHeight}"
+                                                      columns="#{bindings.ContractInfoCardNo.hints.displayWidth}"
+                                                      readOnly="true"
+                                                      shortDesc="#{bindings.ContractInfoCardNo.hints.tooltip}">
+                                            <f:validator binding="#{bindings.ContractInfoCardNo.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.ContractInfoCardNo.format}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:FORM_DATE_FIELD : default/item/form/formDateField.vm, nesting level: 6 -->
+                                        <af:inputDate id="ContractInfoContractDate"
+                                                      value="#{bindings.ContractInfoContractDate.inputValue}"
+                                                      label="#{bindings.ContractInfoContractDate.hints.label}"
+                                                      required="#{bindings.ContractInfoContractDate.hints.mandatory}"
+                                                      readOnly="#{(((pageFlowScope.createModes.CreateContractInfo) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.createModes.CreateContractInfo) and (!(MTSPermission['CustomerProfile.update'])))) or (!(pageFlowScope.createModes.CreateContractInfo))}"
+                                                      shortDesc="#{bindings.ContractInfoContractDate.hints.tooltip}">
+                                            <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                        </af:inputDate>
+                                        <!-- DEBUG:END:FORM_DATE_FIELD : default/item/form/formDateField.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                        <af:inputText id="ContractInfoContractClientName"
+                                                      value="#{bindings.ContractInfoContractClientName.inputValue}"
+                                                      label="#{bindings.ContractInfoContractClientName.hints.label}"
+                                                      required="#{bindings.ContractInfoContractClientName.hints.mandatory}"
+                                                      rows="#{bindings.ContractInfoContractClientName.hints.displayHeight}"
+                                                      columns="#{bindings.ContractInfoContractClientName.hints.displayWidth}"
+                                                      maximumLength="4000"
+                                                      readOnly="#{((pageFlowScope.createModes.CreateContractInfo) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.createModes.CreateContractInfo) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                                      shortDesc="#{bindings.ContractInfoContractClientName.hints.tooltip}">
+                                            <f:validator binding="#{bindings.ContractInfoContractClientName.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:FORM_MODEL_CHOICELIST : default/item/form/formModelChoiceList.vm, nesting level: 6 -->
+                                        <af:selectOneChoice id="ContractInfoReplacementDuration"
+                                                            value="#{bindings.ContractInfoReplacementDuration.inputValue}"
+                                                            label="#{bindings.ContractInfoReplacementDuration.hints.label}"
+                                                            required="#{bindings.ContractInfoReplacementDuration.hints.mandatory}"
+                                                            readOnly="#{((pageFlowScope.createModes.CreateContractInfo) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.createModes.CreateContractInfo) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                                            shortDesc="#{bindings.ContractInfoReplacementDuration.hints.tooltip}">
+                                            <f:selectItems value="#{bindings.ContractInfoReplacementDuration.items}"/>
+                                        </af:selectOneChoice>
+                                        <!-- DEBUG:END:FORM_MODEL_CHOICELIST : default/item/form/formModelChoiceList.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                        <af:inputText id="ContractInfoPNum"
+                                                      value="#{bindings.ContractInfoPNum.inputValue}"
+                                                      label="#{bindings.ContractInfoPNum.hints.label}"
+                                                      required="#{bindings.ContractInfoPNum.hints.mandatory}"
+                                                      rows="#{bindings.ContractInfoPNum.hints.displayHeight}"
+                                                      columns="#{bindings.ContractInfoPNum.hints.displayWidth}"
+                                                      readOnly="true"
+                                                      shortDesc="#{bindings.ContractInfoPNum.hints.tooltip}">
+                                            <f:validator binding="#{bindings.ContractInfoPNum.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.ContractInfoPNum.format}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                        <af:inputText id="ContractInfoContractPhone"
+                                                      value="#{bindings.ContractInfoContractPhone.inputValue}"
+                                                      label="#{bindings.ContractInfoContractPhone.hints.label}"
+                                                      required="#{bindings.ContractInfoContractPhone.hints.mandatory}"
+                                                      rows="#{bindings.ContractInfoContractPhone.hints.displayHeight}"
+                                                      columns="#{bindings.ContractInfoContractPhone.hints.displayWidth}"
+                                                      maximumLength="4000"
+                                                      readOnly="#{((pageFlowScope.createModes.CreateContractInfo) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.createModes.CreateContractInfo) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                                      shortDesc="#{bindings.ContractInfoContractPhone.hints.tooltip}">
+                                            <f:validator binding="#{bindings.ContractInfoContractPhone.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                        <af:inputText id="ContractInfoContractMobile"
+                                                      value="#{bindings.ContractInfoContractMobile.inputValue}"
+                                                      label="#{bindings.ContractInfoContractMobile.hints.label}"
+                                                      required="#{bindings.ContractInfoContractMobile.hints.mandatory}"
+                                                      rows="#{bindings.ContractInfoContractMobile.hints.displayHeight}"
+                                                      columns="#{bindings.ContractInfoContractMobile.hints.displayWidth}"
+                                                      maximumLength="4000"
+                                                      readOnly="#{((pageFlowScope.createModes.CreateContractInfo) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.createModes.CreateContractInfo) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                                      shortDesc="#{bindings.ContractInfoContractMobile.hints.tooltip}">
+                                            <f:validator binding="#{bindings.ContractInfoContractMobile.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                        <af:inputText id="ContractInfoContractPhone2"
+                                                      value="#{bindings.ContractInfoContractPhone2.inputValue}"
+                                                      label="#{bindings.ContractInfoContractPhone2.hints.label}"
+                                                      required="#{bindings.ContractInfoContractPhone2.hints.mandatory}"
+                                                      rows="#{bindings.ContractInfoContractPhone2.hints.displayHeight}"
+                                                      columns="#{bindings.ContractInfoContractPhone2.hints.displayWidth}"
+                                                      maximumLength="4000"
+                                                      readOnly="#{((pageFlowScope.createModes.CreateContractInfo) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.createModes.CreateContractInfo) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                                      shortDesc="#{bindings.ContractInfoContractPhone2.hints.tooltip}">
+                                            <f:validator binding="#{bindings.ContractInfoContractPhone2.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                        <af:inputText id="ContractInfoContractMobile2"
+                                                      value="#{bindings.ContractInfoContractMobile2.inputValue}"
+                                                      label="#{bindings.ContractInfoContractMobile2.hints.label}"
+                                                      required="#{bindings.ContractInfoContractMobile2.hints.mandatory}"
+                                                      rows="#{bindings.ContractInfoContractMobile2.hints.displayHeight}"
+                                                      columns="#{bindings.ContractInfoContractMobile2.hints.displayWidth}"
+                                                      maximumLength="4000"
+                                                      readOnly="#{((pageFlowScope.createModes.CreateContractInfo) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.createModes.CreateContractInfo) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                                      shortDesc="#{bindings.ContractInfoContractMobile2.hints.tooltip}">
+                                            <f:validator binding="#{bindings.ContractInfoContractMobile2.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                        <af:inputText id="ContractInfoContractEmail"
+                                                      value="#{bindings.ContractInfoContractEmail.inputValue}"
+                                                      label="#{bindings.ContractInfoContractEmail.hints.label}"
+                                                      required="#{bindings.ContractInfoContractEmail.hints.mandatory}"
+                                                      rows="#{bindings.ContractInfoContractEmail.hints.displayHeight}"
+                                                      columns="#{bindings.ContractInfoContractEmail.hints.displayWidth}"
+                                                      maximumLength="4000"
+                                                      readOnly="#{((pageFlowScope.createModes.CreateContractInfo) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.createModes.CreateContractInfo) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                                      shortDesc="#{bindings.ContractInfoContractEmail.hints.tooltip}">
+                                            <f:validator binding="#{bindings.ContractInfoContractEmail.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:FORM_DATE_FIELD : default/item/form/formDateField.vm, nesting level: 6 -->
+                                        <af:inputDate id="ContractInfoLastChangedDate"
+                                                      value="#{bindings.ContractInfoLastChangedDate.inputValue}"
+                                                      label="#{bindings.ContractInfoLastChangedDate.hints.label}"
+                                                      required="#{bindings.ContractInfoLastChangedDate.hints.mandatory}"
+                                                      readOnly="true"
+                                                      shortDesc="#{bindings.ContractInfoLastChangedDate.hints.tooltip}">
+                                            <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                        </af:inputDate>
+                                        <!-- DEBUG:END:FORM_DATE_FIELD : default/item/form/formDateField.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:FORM_DATE_FIELD : default/item/form/formDateField.vm, nesting level: 6 -->
+                                        <af:inputDate id="ContractInfoNextDeliveryDate"
+                                                      value="#{bindings.ContractInfoNextDeliveryDate.inputValue}"
+                                                      label="#{bindings.ContractInfoNextDeliveryDate.hints.label}"
+                                                      required="#{bindings.ContractInfoNextDeliveryDate.hints.mandatory}"
+                                                      readOnly="true"
+                                                      shortDesc="#{bindings.ContractInfoNextDeliveryDate.hints.tooltip}">
+                                            <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                        </af:inputDate>
+                                        <!-- DEBUG:END:FORM_DATE_FIELD : default/item/form/formDateField.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:FORM_CHECK_BOX : default/item/form/formCheckbox.vm, nesting level: 6 -->
+                                        <af:selectBooleanCheckbox id="ContractInfoActive"
+                                                                  value="#{bindings.ContractInfoActive.inputValue}"
+                                                                  label="#{bindings.ContractInfoActive.hints.label}"
+                                                                  readOnly="#{((pageFlowScope.createModes.CreateContractInfo) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.createModes.CreateContractInfo) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                                                  shortDesc="#{bindings.ContractInfoActive.hints.tooltip}"></af:selectBooleanCheckbox>
+                                        <!-- DEBUG:END:FORM_CHECK_BOX : default/item/form/formCheckbox.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:FORM_MODEL_CHOICELIST : default/item/form/formModelChoiceList.vm, nesting level: 6 -->
+                                        <af:selectOneChoice id="ContractInfoAreaId"
+                                                            value="#{bindings.ContractInfoAreaId.inputValue}"
+                                                            label="#{bindings.ContractInfoAreaId.hints.label}"
+                                                            required="#{bindings.ContractInfoAreaId.hints.mandatory}"
+                                                            readOnly="#{((pageFlowScope.createModes.CreateContractInfo) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.createModes.CreateContractInfo) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                                            shortDesc="#{bindings.ContractInfoAreaId.hints.tooltip}">
+                                            <f:selectItems value="#{bindings.ContractInfoAreaId.items}"/>
+                                        </af:selectOneChoice>
+                                        <!-- DEBUG:END:FORM_MODEL_CHOICELIST : default/item/form/formModelChoiceList.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:FORM_DATE_FIELD : default/item/form/formDateField.vm, nesting level: 6 -->
+                                        <af:inputDate id="ContractInfoCancelDate"
+                                                      value="#{bindings.ContractInfoCancelDate.inputValue}"
+                                                      label="#{bindings.ContractInfoCancelDate.hints.label}"
+                                                      required="#{bindings.ContractInfoCancelDate.hints.mandatory}"
+                                                      readOnly="#{(((pageFlowScope.createModes.CreateContractInfo) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.createModes.CreateContractInfo) and (!(MTSPermission['CustomerProfile.update'])))) or (!(!pageFlowScope.createModes.CreateContractInfo))}"
+                                                      shortDesc="#{bindings.ContractInfoCancelDate.hints.tooltip}">
+                                            <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                        </af:inputDate>
+                                        <!-- DEBUG:END:FORM_DATE_FIELD : default/item/form/formDateField.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                        <af:inputText id="ContractInfoCancelReason"
+                                                      value="#{bindings.ContractInfoCancelReason.inputValue}"
+                                                      label="#{bindings.ContractInfoCancelReason.hints.label}"
+                                                      required="#{bindings.ContractInfoCancelReason.hints.mandatory}"
+                                                      rows="#{bindings.ContractInfoCancelReason.hints.displayHeight}"
+                                                      columns="#{bindings.ContractInfoCancelReason.hints.displayWidth}"
+                                                      maximumLength="4000"
+                                                      readOnly="#{(((pageFlowScope.createModes.CreateContractInfo) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.createModes.CreateContractInfo) and (!(MTSPermission['CustomerProfile.update'])))) or (!(!pageFlowScope.createModes.CreateContractInfo))}"
+                                                      shortDesc="#{bindings.ContractInfoCancelReason.hints.tooltip}">
+                                            <f:validator binding="#{bindings.ContractInfoCancelReason.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                        <af:inputText id="ContractInfoUpdatedBy"
+                                                      value="#{bindings.ContractInfoUpdatedBy.inputValue}"
+                                                      label="#{bindings.ContractInfoUpdatedBy.hints.label}"
+                                                      required="#{bindings.ContractInfoUpdatedBy.hints.mandatory}"
+                                                      rows="#{bindings.ContractInfoUpdatedBy.hints.displayHeight}"
+                                                      columns="#{bindings.ContractInfoUpdatedBy.hints.displayWidth}"
+                                                      maximumLength="4000" readOnly="true"
+                                                      shortDesc="#{bindings.ContractInfoUpdatedBy.hints.tooltip}">
+                                            <f:validator binding="#{bindings.ContractInfoUpdatedBy.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                    </af:panelFormLayout>
+                                    <!-- DEBUG:BEGIN:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 6 -->
+                                    <!-- DEBUG:END:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 6-->
+                                </af:panelGroupLayout>
+                                <!-- Popped "disabled" from stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                            </f:facet>
+                        </af:switcher>
+                        <!-- DEBUG:END:FORM_GROUP : custom/pageComponent/MtsformGroup.vm, nesting level: 5-->
+                        <!-- Popped "disabled" from stretchContext, now: enabled (default) -->
+                    </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="second">
+                    <!-- DEBUG:BEGIN:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 5 -->
+                    <af:panelTabbed position="above" childCreation="lazy" id="pst0" dimensionsFrom="auto">
+                        <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 6 -->
+                        <af:showDetailItem stretchChildren="first" text="#{nls['TABLE_TITLE_PRODUCTCONTRACT']}"
+                                           partialTriggers=" ContractInfoTopLc ProductContractDeleteDialog as_ProductContract ProductContractPC:ProductContractArm ProductContractPC:ProductContractduprmTM ProductContractPC:ProductContractdelrmTM ProductContractPC:ProductContractArl ProductContractPC:ProductContractTab:ProductContractduprm ProductContractPC:ProductContractTab:ProductContractdelrm ProductContractPC:ProductContractTab:ProductContractdelrl ProductContractPC:ProductContractTab:ProductContractduprl"
+                                           id="ProductContractTopLcSdi">
+                            <af:panelStretchLayout topHeight="auto" id="ProductContractTopLc"
+                                                   partialTriggers=" ContractInfoTopLc ProductContractDeleteDialog as_ProductContract ProductContractPC:ProductContractArm ProductContractPC:ProductContractduprmTM ProductContractPC:ProductContractdelrmTM ProductContractPC:ProductContractArl ProductContractPC:ProductContractTab:ProductContractduprm ProductContractPC:ProductContractTab:ProductContractdelrm ProductContractPC:ProductContractTab:ProductContractdelrl ProductContractPC:ProductContractTab:ProductContractduprl">
+                                <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 7 -->
+                                <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 7-->
+                                <f:facet name="top">
+                                    <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                                    <af:group id="g1">
+                                        <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 7 -->
+                                        <!-- DEBUG:BEGIN:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 8 -->
+                                        <af:panelGroupLayout id="modelSearchAreaProductContract"
+                                                             rendered="#{!pageFlowScope.createModes.CreateProductContract and !pageFlowScope.hideSearchArea}"
+                                                             partialTriggers="">
+                                            <f:attribute name="JhsIgnoreChanges" value="true"/>
+                                            <!-- DEBUG:BEGIN:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 9 -->
+                                            <af:query id="as_ProductContract" headerText="#{nls['ADVANCED_SEARCH']}"
+                                                      disclosed="true"
+                                                      value="#{bindings.ProductContractIteratorQuery.queryDescriptor}"
+                                                      model="#{bindings.ProductContractIteratorQuery.queryModel}"
+                                                      queryListener="#{bindings.ProductContractIteratorQuery.processQuery}"
+                                                      queryOperationListener="#{bindings.ProductContractIteratorQuery.processQueryOperation}"
+                                                      rows="1" labelAlignment="start" maxColumns="3"></af:query>
+                                            <!-- DEBUG:END:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 9-->
+                                        </af:panelGroupLayout>
+                                        <!-- DEBUG:END:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 8-->
+                                        <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 7-->
+                                        <af:spacer width="10" height="10" id="sp3"/>
+                                    </af:group>
+                                    <!-- Popped "disabled" from stretchContext, now: enabled (default) -->
+                                </f:facet>
+                                <f:facet name="center">
+                                    <!-- DEBUG:BEGIN:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 7 -->
+                                    <af:panelStretchLayout topHeight="0" id="psl0">
+                                        <f:facet name="top"></f:facet>
+                                        <f:facet name="center">
+                                            <af:panelCollection id="ProductContractPC" featuresOff="  "
+                                                                styleClass="AFStretchWidth">
+                                                <f:facet name="menus">
+                                                    <!-- DEBUG:BEGIN:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 8 -->
+                                                    <af:menu textAndAccessKey="#{nls['ACTION_MENU_LABEL']}" id="menu0">
+                                                        <af:menu textAndAccessKey="#{nls['GO_TO_MENU_LABEL']}"
+                                                                 id="menu1">
+                                                            <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9 -->
+                                                            <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9-->
+                                                            <!-- DEBUG:BEGIN:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 9 -->
+                                                            <af:group id="ProductContracttbb"
+                                                                      rendered="#{ bindings.ProductContractIterator.currentRow!=null }">
+                                                                <af:commandMenuItem actionListener="#{bindings.FirstProductContract.execute}"
+                                                                                    id="ProductContractFirst"
+                                                                                    partialSubmit="true"
+                                                                                    icon="/afr/shuttleleftall_ena.png"
+                                                                                    textAndAccessKey="#{nls['FIRST_ROW']}"></af:commandMenuItem>
+                                                                <af:commandMenuItem actionListener="#{bindings.PreviousProductContract.execute}"
+                                                                                    icon="/afr/shuttleleft_ena.png"
+                                                                                    textAndAccessKey="#{nls['PREVIOUS_ROW']}"
+                                                                                    id="ProductContractPrevious"
+                                                                                    partialSubmit="true"></af:commandMenuItem>
+                                                                <af:commandMenuItem actionListener="#{bindings.NextProductContract.execute}"
+                                                                                    icon="/afr/shuttleright_ena.png"
+                                                                                    textAndAccessKey="#{nls['NEXT_ROW']}"
+                                                                                    id="ProductContractNext"
+                                                                                    partialSubmit="true"></af:commandMenuItem>
+                                                                <af:commandMenuItem actionListener="#{bindings.LastProductContract.execute}"
+                                                                                    icon="/afr/shuttlerightall_ena.png"
+                                                                                    textAndAccessKey="#{nls['LAST_ROW']}"
+                                                                                    id="ProductContractLast"
+                                                                                    partialSubmit="true"></af:commandMenuItem>
+                                                            </af:group>
+                                                            <!-- DEBUG:END:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 9-->
+                                                        </af:menu>
+                                                        <!-- DEBUG:BEGIN:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 9 -->
+                                                        <af:commandMenuItem id="ProductContractArm"
+                                                                            textAndAccessKey="#{nls['ADD_ROW']}"
+                                                                            immediate="false"
+                                                                            icon="/jheadstart/images/addRow.png"
+                                                                            partialSubmit="true"
+                                                                            actionListener="#{pageFlowScope.ProductContractTable.addRow}"
+                                                                            rendered="#{ bindings.ContractInfoIterator.currentRow!=null  and (MTSPermission['CustomerProfile.create'])}"></af:commandMenuItem>
+                                                        <!-- DEBUG:END:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9 -->
+                                                        <af:commandMenuItem id="ProductContractduprmTM"
+                                                                            textAndAccessKey="#{nls['DUPLICATE_ROW']}"
+                                                                            immediate="true"
+                                                                            icon="/jheadstart/images/duplicateRow.png"
+                                                                            partialSubmit="true"
+                                                                            actionListener="#{pageFlowScope.ProductContractTable.duplicateRow}"
+                                                                            rendered="#{MTSPermission['CustomerProfile.create']}"></af:commandMenuItem>
+                                                        <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9 -->
+                                                        <af:commandMenuItem id="ProductContractdelrmTM"
+                                                                            textAndAccessKey="#{nls['DELETE_ROW']}"
+                                                                            icon="/jheadstart/images/deleteRow.png"
+                                                                            partialSubmit="true" immediate="true"
+                                                                            rendered="#{MTSPermission['CustomerProfile.delete']}">
+                                                            <af:showPopupBehavior popupId="::ProductContractDeletePopup"/>
+                                                        </af:commandMenuItem>
+                                                        <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 9-->
+                                                    </af:menu>
+                                                    <!-- DEBUG:END:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 8-->
+                                                </f:facet>
+                                                <f:facet name="toolbar">
+                                                    <!-- DEBUG:BEGIN:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 8 -->
+                                                    <af:toolbar id="tbar1">
+                                                        <!-- DEBUG:BEGIN:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 9 -->
+                                                        <!-- Also create CreateProductContract bean so we can start table group in create mode as well -->
+                                                        <af:link id="ProductContractArl" immediate="false"
+                                                                 rendered="#{ bindings.ContractInfoIterator.currentRow!=null  and (MTSPermission['CustomerProfile.create'])}"
+                                                                 partialSubmit="true"
+                                                                 actionListener="#{pageFlowScope.ProductContractTable.addRow}"
+                                                                 shortDesc="#{nls['ADD_ROW']}"
+                                                                 icon="/jheadstart/images/addRow.png"/>
+                                                        <!-- DEBUG:END:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 9-->
+                                                    </af:toolbar>
+                                                    <!-- DEBUG:END:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 8-->
+                                                </f:facet>
+                                                <f:facet name="statusbar"/>
+                                                <af:table id="ProductContractTab" contentDelivery="immediate"
+                                                          value="#{bindings.ProductContractTable.collectionModel}"
+                                                          columnStretching="last" rowBandingInterval="0"
+                                                          editingMode="editAll" columnSelection="multiple"
+                                                          contextMenuSelect="true" rowSelection="single"
+                                                          selectionListener="#{pageFlowScope.ProductContractTable.makeCurrent}"
+                                                          selectedRowKeys="#{pageFlowScope.ProductContractTable.selectedRow}"
+                                                          rowDisclosureListener="#{pageFlowScope.ProductContractTable.discloseRow}"
+                                                          var="row" varStatus="status"
+                                                          fetchSize="#{bindings.ProductContractTable.rangeSize}"
+                                                          emptyText="#{nls['NO_ROWS_FOUND']}"
+                                                          queryListener="#{bindings.ProductContractIteratorQuery.processQuery}"
+                                                          filterModel="#{bindings.ProductContractIteratorQuery.queryDescriptor}"
+                                                          filterVisible="true"
+                                                          binding="#{pageFlowScope.ProductContractTable.table}"
+                                                          partialTriggers=" :::as_ProductContract :::ProductContractPC ::ProductContractFirst ::ProductContractPrevious ::ProductContractNext ::ProductContractLast"
+                                                          styleClass="AFStretchWidth"
+                                                          summary="#{nls['TABLE_TITLE_PRODUCTCONTRACT']}">
+                                                    <!-- DEBUG:BEGIN:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 8 -->
+                                                    <f:facet name="contextMenu">
+                                                        <af:popup id="ProductContractTablePopup"
+                                                                  childCreation="deferred">
+                                                            <af:menu id="menu2">
+                                                                <af:menu text="#{nls['GO_TO_MENU_LABEL']}" id="menu3">
+                                                                    <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9 -->
+                                                                    <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9-->
+                                                                </af:menu>
+                                                                <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9 -->
+                                                                <af:commandMenuItem id="ProductContractduprm"
+                                                                                    textAndAccessKey="#{nls['DUPLICATE_ROW']}"
+                                                                                    immediate="true"
+                                                                                    icon="/jheadstart/images/duplicateRow.png"
+                                                                                    partialSubmit="true"
+                                                                                    actionListener="#{pageFlowScope.ProductContractTable.duplicateRow}"
+                                                                                    rendered="#{MTSPermission['CustomerProfile.create']}"></af:commandMenuItem>
+                                                                <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9-->
+                                                                <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9 -->
+                                                                <af:commandMenuItem id="ProductContractdelrm"
+                                                                                    textAndAccessKey="#{nls['DELETE_ROW']}"
+                                                                                    icon="/jheadstart/images/deleteRow.png"
+                                                                                    partialSubmit="true"
+                                                                                    immediate="true"
+                                                                                    rendered="#{MTSPermission['CustomerProfile.delete']}">
+                                                                    <af:showPopupBehavior popupId=":::ProductContractDeletePopup"/>
+                                                                </af:commandMenuItem>
+                                                                <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9-->
+                                                            </af:menu>
+                                                        </af:popup>
+                                                    </f:facet><!-- DEBUG:END:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 8--><!-- DEBUG:BEGIN:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 8 --><!-- DEBUG:END:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 8--><!-- DEBUG:BEGIN:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 8 -->
+                                                    <af:column id="ProductContractActionColumn" width="40"
+                                                               align="center" headerText=" ">
+                                                        <af:panelGroupLayout layout="horizontal" id="pgl0">
+                                                            <!-- DEBUG:BEGIN:DETAILS_LINK : default/button/detailsLink.vm, nesting level: 9 -->
+                                                            <!-- DEBUG:END:DETAILS_LINK : default/button/detailsLink.vm, nesting level: 9-->
+                                                            <!-- DEBUG:BEGIN:DELETE_ROW_LINK : default/button/deleteRowLink.vm, nesting level: 9 -->
+                                                            <af:link id="ProductContractdelrl" partialSubmit="true"
+                                                                     immediate="true"
+                                                                     rendered="#{MTSPermission['CustomerProfile.delete']}"
+                                                                     shortDesc="#{nls['DELETE_ROW']}"
+                                                                     icon="/jheadstart/images/deleteRow.png">
+                                                                <af:showPopupBehavior popupId=":::ProductContractDeletePopup"/>
+                                                            </af:link>
+                                                            <!-- DEBUG:END:DELETE_ROW_LINK : default/button/deleteRowLink.vm, nesting level: 9-->
+                                                            <!-- DEBUG:BEGIN:DUPLICATE_ROW_LINK : default/button/duplicateRowLink.vm, nesting level: 9 -->
+                                                            <af:link id="ProductContractduprl" immediate="true"
+                                                                     partialSubmit="true"
+                                                                     actionListener="#{pageFlowScope.ProductContractTable.duplicateRow}"
+                                                                     rendered="#{MTSPermission['CustomerProfile.create']}"
+                                                                     shortDesc="#{nls['DUPLICATE_ROW']}"
+                                                                     icon="/jheadstart/images/duplicateRow.png"/>
+                                                            <!-- DEBUG:END:DUPLICATE_ROW_LINK : default/button/duplicateRowLink.vm, nesting level: 9-->
+                                                        </af:panelGroupLayout>
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 8-->
+                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                                    <af:column id="ProductContractProductIdCol" sortable="true"
+                                                               filterable="true" noWrap="true" width="100"
+                                                               sortProperty="ProductId" rowHeader="false">
+                                                        <f:facet name="header">
+                                                            <af:outputLabel value="#{bindings.ProductContractTable.hints.ProductId.label}"
+                                                                            showRequired="#{bindings.ProductContractTable.hints.ProductId.mandatory}"
+                                                                            id="ol0"/>
+                                                        </f:facet>
+                                                        <!-- DEBUG:BEGIN:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 9 -->
+                                                        <af:selectOneChoice id="ProductContractProductId"
+                                                                            value="#{row.bindings.ProductId.inputValue}"
+                                                                            label="#{bindings.ProductContractTable.hints.ProductId.label}"
+                                                                            required="#{bindings.ProductContractTable.hints.ProductId.mandatory}"
+                                                                            readOnly="#{(((pageFlowScope.ProductContractTable.newRow) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.ProductContractTable.newRow) and (!(MTSPermission['CustomerProfile.update'])))) or (!(pageFlowScope.ProductContractTable.newRow))}"
+                                                                            shortDesc="#{bindings.ProductContractTable.hints.ProductId.tooltip}">
+                                                            <f:selectItems value="#{row.bindings.ProductId.items}"/>
+                                                        </af:selectOneChoice>
+                                                        <!-- DEBUG:END:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                                    <af:column id="ProductContractTreatmentIdCol" sortable="true"
+                                                               filterable="true" noWrap="true" width="100"
+                                                               sortProperty="TreatmentId" rowHeader="false">
+                                                        <f:facet name="header">
+                                                            <af:outputLabel value="#{bindings.ProductContractTable.hints.TreatmentId.label}"
+                                                                            showRequired="#{bindings.ProductContractTable.hints.TreatmentId.mandatory}"
+                                                                            id="ol1"/>
+                                                        </f:facet>
+                                                        <!-- DEBUG:BEGIN:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 9 -->
+                                                        <af:selectOneChoice id="ProductContractTreatmentId"
+                                                                            value="#{row.bindings.TreatmentId.inputValue}"
+                                                                            label="#{bindings.ProductContractTable.hints.TreatmentId.label}"
+                                                                            required="#{bindings.ProductContractTable.hints.TreatmentId.mandatory}"
+                                                                            readOnly="#{(((pageFlowScope.ProductContractTable.newRow) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.ProductContractTable.newRow) and (!(MTSPermission['CustomerProfile.update'])))) or (!(pageFlowScope.ProductContractTable.newRow))}"
+                                                                            shortDesc="#{bindings.ProductContractTable.hints.TreatmentId.tooltip}">
+                                                            <f:selectItems value="#{row.bindings.TreatmentId.items}"/>
+                                                        </af:selectOneChoice>
+                                                        <!-- DEBUG:END:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                                    <af:column id="ProductContractPackageNoCol" filterable="true"
+                                                               noWrap="true" width="50" rowHeader="false">
+                                                        <f:facet name="header">
+                                                            <af:outputLabel value="#{bindings.ProductContractTable.hints.PackageNo.label}"
+                                                                            id="ol2"/>
+                                                        </f:facet>
+                                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                        <af:inputText id="ProductContractPackageNo"
+                                                                      value="#{row.bindings.PackageNo.inputValue}"
+                                                                      label="#{bindings.ProductContractTable.hints.PackageNo.label}"
+                                                                      required="#{bindings.ProductContractTable.hints.PackageNo.mandatory}"
+                                                                      rows="#{bindings.ProductContractTable.hints.PackageNo.displayHeight}"
+                                                                      columns="#{bindings.ProductContractTable.hints.PackageNo.displayWidth}"
+                                                                      readOnly="true"
+                                                                      shortDesc="#{bindings.ProductContractTable.hints.PackageNo.tooltip}">
+                                                            <f:validator binding="#{row.bindings.PackageNo.validator}"/>
+                                                            <af:convertNumber groupingUsed="false"
+                                                                              pattern="#{bindings.ProductContractTable.hints.PackageNo.format}"/>
+                                                        </af:inputText>
+                                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                                    <af:column id="ProductContractPackageVersionCol" sortable="true"
+                                                               filterable="true" noWrap="true" width="50"
+                                                               sortProperty="PackageVersion" align="right"
+                                                               rowHeader="false">
+                                                        <f:facet name="header">
+                                                            <af:outputLabel value="#{bindings.ProductContractTable.hints.PackageVersion.label}"
+                                                                            id="ol3"/>
+                                                        </f:facet>
+                                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                        <af:inputText id="ProductContractPackageVersion"
+                                                                      value="#{row.bindings.PackageVersion.inputValue}"
+                                                                      label="#{bindings.ProductContractTable.hints.PackageVersion.label}"
+                                                                      required="#{bindings.ProductContractTable.hints.PackageVersion.mandatory}"
+                                                                      rows="#{bindings.ProductContractTable.hints.PackageVersion.displayHeight}"
+                                                                      columns="#{bindings.ProductContractTable.hints.PackageVersion.displayWidth}"
+                                                                      readOnly="true"
+                                                                      shortDesc="#{bindings.ProductContractTable.hints.PackageVersion.tooltip}">
+                                                            <f:validator binding="#{row.bindings.PackageVersion.validator}"/>
+                                                            <af:convertNumber groupingUsed="false"
+                                                                              pattern="#{bindings.ProductContractTable.hints.PackageVersion.format}"/>
+                                                        </af:inputText>
+                                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                                    <af:column id="ProductContractQuantityCol" sortable="true"
+                                                               filterable="true" noWrap="true" width="100"
+                                                               sortProperty="Quantity" rowHeader="false">
+                                                        <f:facet name="header">
+                                                            <af:outputLabel value="#{bindings.ProductContractTable.hints.Quantity.label}"
+                                                                            showRequired="#{bindings.ProductContractTable.hints.Quantity.mandatory}"
+                                                                            id="ol4"/>
+                                                        </f:facet>
+                                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                        <af:inputText id="ProductContractQuantity"
+                                                                      value="#{row.bindings.Quantity.inputValue}"
+                                                                      label="#{bindings.ProductContractTable.hints.Quantity.label}"
+                                                                      required="#{bindings.ProductContractTable.hints.Quantity.mandatory}"
+                                                                      rows="#{bindings.ProductContractTable.hints.Quantity.displayHeight}"
+                                                                      columns="#{bindings.ProductContractTable.hints.Quantity.displayWidth}"
+                                                                      readOnly="#{((pageFlowScope.ProductContractTable.newRow) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.ProductContractTable.newRow) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                                                      shortDesc="#{bindings.ProductContractTable.hints.Quantity.tooltip}">
+                                                            <f:validator binding="#{row.bindings.Quantity.validator}"/>
+                                                            <af:convertNumber groupingUsed="false"
+                                                                              pattern="#{bindings.ProductContractTable.hints.Quantity.format}"/>
+                                                        </af:inputText>
+                                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                                    <af:column id="ProductContractUnitPriceCol" sortable="true"
+                                                               filterable="true" noWrap="true" width="100"
+                                                               sortProperty="UnitPrice" rowHeader="false">
+                                                        <f:facet name="header">
+                                                            <af:outputLabel value="#{bindings.ProductContractTable.hints.UnitPrice.label}"
+                                                                            showRequired="#{bindings.ProductContractTable.hints.UnitPrice.mandatory}"
+                                                                            id="ol5"/>
+                                                        </f:facet>
+                                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                        <af:inputText id="ProductContractUnitPrice"
+                                                                      value="#{row.bindings.UnitPrice.inputValue}"
+                                                                      label="#{bindings.ProductContractTable.hints.UnitPrice.label}"
+                                                                      required="#{bindings.ProductContractTable.hints.UnitPrice.mandatory}"
+                                                                      rows="#{bindings.ProductContractTable.hints.UnitPrice.displayHeight}"
+                                                                      columns="#{bindings.ProductContractTable.hints.UnitPrice.displayWidth}"
+                                                                      readOnly="#{((pageFlowScope.ProductContractTable.newRow) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.ProductContractTable.newRow) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                                                      shortDesc="#{bindings.ProductContractTable.hints.UnitPrice.tooltip}">
+                                                            <f:validator binding="#{row.bindings.UnitPrice.validator}"/>
+                                                            <af:convertNumber groupingUsed="false"
+                                                                              pattern="#{bindings.ProductContractTable.hints.UnitPrice.format}"/>
+                                                        </af:inputText>
+                                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                                    <af:column id="ProductContractActiveFromCol" sortable="true"
+                                                               filterable="true" noWrap="true" width="100"
+                                                               sortProperty="ActiveFrom" rowHeader="false">
+                                                        <f:facet name="header">
+                                                            <af:outputLabel value="#{bindings.ProductContractTable.hints.ActiveFrom.label}"
+                                                                            showRequired="#{bindings.ProductContractTable.hints.ActiveFrom.mandatory}"
+                                                                            id="ol6"/>
+                                                        </f:facet>
+                                                        <!-- DEBUG:BEGIN:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 9 -->
+                                                        <f:facet name="filter">
+                                                            <af:inputDate value="#{status.filterCriteria.ActiveFrom}"
+                                                                          id="id0">
+                                                                <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                                            </af:inputDate>
+                                                        </f:facet>
+                                                        <af:inputDate id="ProductContractActiveFrom"
+                                                                      value="#{row.bindings.ActiveFrom.inputValue}"
+                                                                      label="#{bindings.ProductContractTable.hints.ActiveFrom.label}"
+                                                                      required="#{bindings.ProductContractTable.hints.ActiveFrom.mandatory}"
+                                                                      readOnly="#{(((pageFlowScope.ProductContractTable.newRow) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.ProductContractTable.newRow) and (!(MTSPermission['CustomerProfile.update'])))) or (!(pageFlowScope.ProductContractTable.newRow))}"
+                                                                      shortDesc="#{bindings.ProductContractTable.hints.ActiveFrom.tooltip}">
+                                                            <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                                        </af:inputDate>
+                                                        <!-- DEBUG:END:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                                    <af:column id="ProductContractActiveToCol" sortable="true"
+                                                               filterable="true" noWrap="true" width="100"
+                                                               sortProperty="ActiveTo" rowHeader="false">
+                                                        <f:facet name="header">
+                                                            <af:outputLabel value="#{bindings.ProductContractTable.hints.ActiveTo.label}"
+                                                                            showRequired="#{bindings.ProductContractTable.hints.ActiveTo.mandatory}"
+                                                                            id="ol7"/>
+                                                        </f:facet>
+                                                        <!-- DEBUG:BEGIN:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 9 -->
+                                                        <f:facet name="filter">
+                                                            <af:inputDate value="#{status.filterCriteria.ActiveTo}"
+                                                                          id="id1">
+                                                                <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                                            </af:inputDate>
+                                                        </f:facet>
+                                                        <af:inputDate id="ProductContractActiveTo"
+                                                                      value="#{row.bindings.ActiveTo.inputValue}"
+                                                                      label="#{bindings.ProductContractTable.hints.ActiveTo.label}"
+                                                                      required="#{bindings.ProductContractTable.hints.ActiveTo.mandatory}"
+                                                                      readOnly="#{(((pageFlowScope.ProductContractTable.newRow) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.ProductContractTable.newRow) and (!(MTSPermission['CustomerProfile.update'])))) or (!(!(pageFlowScope.ProductContractTable.newRow)))}"
+                                                                      shortDesc="#{bindings.ProductContractTable.hints.ActiveTo.tooltip}">
+                                                            <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                                        </af:inputDate>
+                                                        <!-- DEBUG:END:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                                    <af:column id="ProductContractActiveCol" sortable="true"
+                                                               filterable="true" noWrap="true" width="50"
+                                                               sortProperty="Active" rowHeader="false">
+                                                        <f:facet name="header">
+                                                            <af:outputLabel value="#{bindings.ProductContractTable.hints.Active.label}"
+                                                                            showRequired="#{bindings.ProductContractTable.hints.Active.mandatory}"
+                                                                            id="ol8"/>
+                                                        </f:facet>
+                                                        <!-- DEBUG:BEGIN:TABLE_CHECK_BOX : default/item/table/tableCheckbox.vm, nesting level: 9 -->
+                                                        <af:selectBooleanCheckbox id="ProductContractActive"
+                                                                                  label="#{bindings.ProductContractTable.hints.Active.label}"
+                                                                                  value="#{ProductContractActivecheckboxInTable.value}"
+                                                                                  readOnly="#{((pageFlowScope.ProductContractTable.newRow) and (!(MTSPermission['CustomerProfile.create']))) or ((!pageFlowScope.ProductContractTable.newRow) and (!(MTSPermission['CustomerProfile.update'])))}"
+                                                                                  shortDesc="#{bindings.ProductContractTable.hints.Active.tooltip}"></af:selectBooleanCheckbox>
+                                                        <!-- DEBUG:END:TABLE_CHECK_BOX : default/item/table/tableCheckbox.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                                    <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (custom/pageComponent/MtstableGroup.vm) -->
+                                                    <f:facet name="detailStamp">
+                                                        <!-- DEBUG:BEGIN:TABLE_OVERFLOW_AREA : default/pageComponent/tableOverflowArea.vm, nesting level: 8 -->
+                                                        <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (custom/pageComponent/MtstableGroup.vm), disabled (default/pageComponent/tableOverflowArea.vm) -->
+                                                        <af:panelGroupLayout id="pgl1"
+                                                                             rendered="#{bindings.ProductContractIterator.estimatedRowCount>0}"
+                                                                             layout="scroll">
+                                                            <f:facet name="separator">
+                                                                <af:spacer width="10" height="10" id="sp4"/>
+                                                            </f:facet>
+                                                            <af:panelFormLayout rows="1" maxColumns="1"
+                                                                                labelAlignment="start" id="pfl0"></af:panelFormLayout>
+                                                            <!-- DEBUG:BEGIN:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 9 -->
+                                                            <!-- DEBUG:END:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 9-->
+                                                            <!-- DEBUG:BEGIN:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 9 -->
+                                                            <!-- DEBUG:END:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 9-->
+                                                        </af:panelGroupLayout>
+                                                        <!-- Popped "disabled" from stretchContext, now: enabled (default), disabled (custom/pageComponent/MtstableGroup.vm) -->
+                                                        <!-- DEBUG:END:TABLE_OVERFLOW_AREA : default/pageComponent/tableOverflowArea.vm, nesting level: 8-->
+                                                    </f:facet><!-- Popped "disabled" from stretchContext, now: enabled (default) -->
+                                                </af:table>
+                                            </af:panelCollection>
+                                        </f:facet>
+                                    </af:panelStretchLayout>
+                                    <!-- DEBUG:END:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 7-->
+                                </f:facet>
+                            </af:panelStretchLayout>
+                        </af:showDetailItem>
+                        <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 6-->
+                    </af:panelTabbed>
+                    <!-- DEBUG:END:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 5-->
+                </f:facet>
+            </af:panelSplitter>
+            <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4-->
+        </f:facet>
+        <f:facet name="popups">
+            <af:panelGroupLayout id="popupsPgl">
+                <!-- DEBUG:BEGIN:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 7 -->
+                <af:popup id="ContractInfoDeletePopup" contentDelivery="lazyUncached" childCreation="deferred">
+                    <af:dialog type="none" title="#{nls['WARNING']}" modal="true" id="ContractInfoDeleteDialog">
+                        <af:outputText value="#{nls['DELETE_WARNING_CONTRACTINF:#{bindings.ContractInfoIterator.currentRowIndexInRange+1}']} "
+                                       id="ot0"/>
+                        <f:attribute name="methodExpression" value="#{'#{DeleteContractInfo.execute}'}"/>
+                        <f:facet name="buttonBar">
+                            <af:group id="g0">
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_YES']}" id="cb0" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.confirm}"/>
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_NO']}" id="cb1" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.abort}"/>
+                            </af:group>
+                        </f:facet>
+                    </af:dialog>
+                </af:popup>
+                <!-- DEBUG:END:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 7-->
+                <!-- DEBUG:BEGIN:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 10 -->
+                <af:popup id="ProductContractDeletePopup" contentDelivery="lazyUncached" childCreation="deferred">
+                    <af:dialog type="none" title="#{nls['WARNING']}" modal="true" id="ProductContractDeleteDialog">
+                        <af:outputText value="#{nls['DELETE_WARNING_PRODUCTCONTRAC:#{bindings.ProductContractIterator.currentRowIndexInRange+1}']} "
+                                       id="ot1"/>
+                        <f:attribute name="methodExpression" value="#{'#{DeleteProductContract.execute}'}"/>
+                        <f:facet name="buttonBar">
+                            <af:group id="g2">
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_YES']}" id="cb2" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.confirm}"/>
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_NO']}" id="cb3" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.abort}"/>
+                            </af:group>
+                        </f:facet>
+                    </af:dialog>
+                </af:popup>
+                <!-- DEBUG:END:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 10-->
+            </af:panelGroupLayout>
+        </f:facet>
+        <!-- DEBUG:END:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3-->
+        <!-- DEBUG:END:WIZARD_PAGE_CONTENT : default/page/wizardPageContent.vm, nesting level: 2-->
+    </af:pageTemplate>
+</ui:composition>
+
+
+

@@ -1,0 +1,98 @@
+## revision_history
+## 08-nov-2013   Steven Davelaar
+## 1.8           Removed showCloseIcon attribute
+## 17-jan-2013   Steven Davelaar
+## 1.7           Added comment to explain pending changes are now also detected with immediate=true
+##               Added partialTriggers="::pctree" on center panelStretchLayout
+## 02-mar-2012   Steven Davelaar
+## 1.6           Changed to use new JDev 1.1.2 multiTaskFlow binding
+## 09-nov-2011   Steven Davelaar
+## 1.5           Added POPUP_DEFERRED_CHILD_CREATION call to af:popup
+## 11-oct-2011   Steven Davelaar
+## 1.4           Use page_fragment_start/end macros to switch between facelets and jspx 
+## 06-oct-2011   Steven Davelaar
+## 1.3           Added af:messages tag, inline messages setting wqs ignored
+## 10-jun-2011   Steven Davelaar
+## 1.2           Changes required to identify dynamic tabs by id rather than by index to fix
+##               bug that taskflow got restarted and thereby loosing state (with thanks to
+##               Paco van der Linden)
+##               Added bottomheight=0
+## 30-may-2010   Sandra Muller
+## 1.1           Introduced DYNTAB_SCOPE macro, to allow easy switching between viewScope and pageFlowScope
+## 28-jan-2011   Steven Davelaar
+## 1.0           Initial creation
+<?xml version='1.0' #PAGE_ENCODING_PROP()?>
+#PAGE_FRAGMENT_START()
+  <af:componentDef var="attrs">
+#TOO_MANY_OPEN_TABS_TEXT()
+    <af:xmlContent>
+      <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+        <description></description>
+      </component>
+    </af:xmlContent>
+    <af:decorativeBox id="pt_psl4" theme="light" topHeight="24" binding="#{#DYNTAB_SCOPE()Scope.jhsDynTabContext.contentArea}">
+      <f:facet name="top">
+        <af:panelBorderLayout id="pt_psl6" styleClass="AFStretchWidth" rendered="#{not empty #DYNTAB_SCOPE()Scope.jhsDynTabContext.selectedTabId}">
+        <af:navigationPane id="dynTabsPane" binding="#{#DYNTAB_SCOPE()Scope.jhsDynTabContext.tabsNavigationPane}"
+                           value="#{#DYNTAB_SCOPE()Scope.jhsDynTabContext.tabMenuModel}" varStatus="vs"
+                           var="tab" #if (!${showCloseIcon}) itemRemoval="all" #end >
+          <f:facet name="nodeStamp">
+              <!-- Functional choice whether immediate is set to true:
+                   - true: you can switch tabs while required fields are empty, drawback
+                     is that tab is only marked dirty after a request has been sent to the server
+                     so if you change tabs while changes have not been sent to the
+                     server yet, the tab ypu leave is not marked dirty. 
+                     (JSF Model update phase is not executed when immediate=true)
+                     UPDATE: Jhs 11.1.2.1 now contains feature that detects pending changes not yet sent
+                     to model by inspecting the JSF UI Tree, so we can now set immediate=true without any drawbacks
+                   - false: if you switch tabs, the latest change is first processed in JSF Model
+                     Update phase, so the tab is marked dirty. Drawback is that
+                     you cannot switch tabs when validation errors occur. -->
+              <af:commandNavigationItem id="tabIndex" 
+                                        actionListener="#{#DYNTAB_SCOPE()Scope.jhsDynTabContext.tabActivatedEvent}"
+                                        inlineStyle="#{tab.dirty ? 'font-style: italic' : ''}" partialSubmit="true"
+                                        textAndAccessKey="#{tab.title}" immediate="true" 
+                                        remove="#{tab.closeable ? 'inherit' : 'no'}" itemListener="#{#DYNTAB_SCOPE()Scope.jhsDynTabContext.removeTab}"
+                                        >
+                <f:attribute name="tabId" value="#{tab.id}"/>
+                #CHECK_UNCOMMITTED_DATA_BEHAVIOR_DYNTAB()
+              </af:commandNavigationItem>
+          </f:facet>
+        </af:navigationPane>
+        </af:panelBorderLayout>
+      </f:facet>
+      <f:facet name="center">
+        ## we need to add partialtriggers property here to make sure the last changes made in current tab, that are not yet sent
+        ## to the server are preserved when opening a new tab. Unfortunately, we cannot set this partialTrigger property on the
+        ## declarativeComponent in the page template where pctree is a known component. So, the partialTriggers property
+        ## will be red-underligned but it works!
+        <af:panelStretchLayout topHeight="auto" bottomHeight="0" id="pt_db3" partialTriggers="::pctree">
+          <f:facet name="top">
+              <af:messages id="msgp"
+                           inline="${JHS.application.showMessagesInline}"/>
+          </f:facet>
+          <f:facet name="center">
+            <af:group id="pt_g10">
+              <af:forEach var="tf" varStatus="vs" items="#{bindings.dynTabsMultiTaskFlows.taskFlowBindingList}">
+                <af:region value="#{tf.regionModel}" id="dr#{vs.index}"
+                           rendered="#{tf.name==#DYNTAB_SCOPE()Scope.jhsDynTabContext.selectedTabId}"/>
+              </af:forEach>
+            </af:group>
+          </f:facet>
+          <f:facet name="bottom">
+            <af:group id="dc_g1">
+              <af:popup id="pt_tabdirty" clientComponent="true" contentDelivery="lazy"
+                        binding="#{#DYNTAB_SCOPE()Scope.jhsDynTabContext.tabDirtyPopup}" #POPUP_DEFERRED_CHILD_CREATION()>
+                <af:dialog title="#PENDING_CHANGES_TITLE()" type="yesNo" id="pt_d2"
+                           dialogListener="#{#DYNTAB_SCOPE()Scope.jhsDynTabContext.handleDirtyTabDialog}">
+                  <af:outputText value="#TAB_PENDING_CHANGES_TEXT()"
+                                 id="pt_ot7"/>
+                </af:dialog>
+              </af:popup>
+            </af:group>            
+          </f:facet>
+        </af:panelStretchLayout>
+      </f:facet>
+    </af:decorativeBox>
+  </af:componentDef>
+#PAGE_FRAGMENT_END()

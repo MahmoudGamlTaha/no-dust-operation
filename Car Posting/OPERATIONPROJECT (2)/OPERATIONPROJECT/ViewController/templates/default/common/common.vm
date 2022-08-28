@@ -1,0 +1,752 @@
+## revision_history
+## 31-oct-2013   Steven Davelaar
+## 2.22          Added macro META_CONTAINER_FACET, PAGE_TEMPLATE_ID, UNCOMMITTED_DATA_WARNING, CHECK_UNCOMMITTED_DATA_BEHAVIOR
+##               CHECK_UNCOMMITTED_DATA_BEHAVIOR_MENU, CHECK_UNCOMMITTED_DATA_BEHAVIOR_DYNTAB, MENU_ACTION_LISTENER 
+## 14-feb-2013   Steven Davelaar
+## 2.23          Added macro IMMEDIATE_MENU_ITEM, IGNORE_CHANGES_ATTRIBUTE
+## 01-may-2012   Steven Davelaar
+## 2.22          Fixed bug in REGION_PARTIAL_TRIGGERS: region not refreshed when depends-on-item displayed in table and
+##               region in overflow below/right
+## 05-apr-2012   Steven Davelaar
+## 2.21          Shortened search area id, fixed reference to jhs search sub form
+## 11-oct-2011   Steven Davelaar
+## 2.20          Get page extension from application view type instead of hardcoding .jspx
+## 16-jan-2012   Steven Davelaar
+## 2.19          TABLE_PARTIAL_TRIGGERS Added panel collection as partialTrigger to not loose values in overflow items
+## 14-nov-2011   Steven Davelaar
+## 2.18          - GROUP_ACTION_ATTRS: Use pageComponent as macro param instead of group, also set 
+##                 pageComponentNavList and initialFocusId 
+##               - Added SET_INITIAL_FOCUS_ID, ADD_INITIAL_FOCUS_ID and DUMMY_ITEM_TO_SET_INITIAL_FOCUS macros
+##               - Added call to SET_INITIAL_FOCUS_ID in FORM_ITEMS, TABLE_OVERFLOW_ITEMS, TABLE_COLUMNS, ADVANCED_SEARCH_ITEMS 
+##               - Changed jhsKeyboardMappingHandler bean to request scope
+##               - Added JHS_PHASE_LISTENER macro
+##               - Moved SEPARATOR macros to the top so they can be reused inside this file
+##               - Changed TABLE_PARTIAL_TRIGGERS to add table browse menu options
+## 28-oct-2011   Sandra Muller
+## 2.17          Use macro for DynamicRegionManager class, to allow easy override with custom class
+## 05-jul-2011   Steven Davelaar
+## 2.16          Added REGION_SIZE, SEARCH_SIZE, PANEL_COLLECTION_FEATURES_OFF, MODEL_QUERY_ADDITIONAL_PROPERTIES
+## 10-jun-2011   Steven Davelaar
+## 2.15          Fixed issue in GROUP_HAS_ROW and PARENT_GROUP_HAS_ROW: when group starts in form layout the 
+##               data were never shown initially
+## 30-may-2011   Sandra Muller
+## 2.14          Introduced macro for DYNTAB_SCOPE and added id to value in GROUP_PERMISSION_LIST
+## 08-apr-2011   Sandra Muller
+## 2.13          replaced some occurrences of "&&" by "and", to avoid "&amp;&amp;" in generated files
+## 04-mar-2011   Steven Davelaar
+## 2.12          - Only generate NLS resource bundle entries for help text/isntrucin text when online help provider
+##                 is resource bundle help provider.
+##               - Added BLANK_TASK_FLOW_PATH
+## 21-feb-2011   Steven Davelaar
+## 2.11          - Added PAGE_ENCODING_PROP, DIMENSIONS_FROM
+## 21-jan-2011   Steven Davelaar
+## 2.10          - Added DELETE_POPUP, JSP_VERSION, do not generate inline style width when set to 100%, added STRETCH_STYLE_CLASS
+##               - Added INIT_REGION_CONTAINER_VARS
+##               - Check iterator is refreshed in GROUP_HAS_ROW and GROUP_HAS_PARENT_ROW macro's, remove check for findMode in same macro
+##               we need to get current row through viewObject instead of directly from iter binding
+##               , otherwise a full-table query will still be performed when auto query switched off!
+##               - Added POPUP_DEFERRED_CHILD_CREATION 
+## 21-oct-2010   Steven Davelaar
+## 2.9           Modified JHS_PARSE_INCLUDE to use short id for declarative component
+## 21-oct-2010   Steven Davelaar
+## 2.8           Modified JHS_PARSE_INCLUDE to use declarative component, added KEYBOARD_SERVER_LISTENER
+## 18-oct-2010   Steven Davelaar
+## 2.7           - Added call to $item.parsedContent in FORM_ITEMS and TABLE_OVERFLOW_ITEMS, exlude toolbarItem in TABLE_COLUMNS 
+##               - Fixed bug in JHS_PARSE_GROUP_CONTENT: check for jhs current group instead of pageComponent group
+## 08-oct-2010   Steven Davelaar
+## 2.6           - Added GROUP_HELP, GROUP_REGION_HELP, ITEM_REGION_HELP, REGION_CONTAINER_HELP, SUB_REGION_HELP
+## 17-aug-2010   Jaco Verheul
+## 2.5           - Added macro GROUP_PERMISSION_LIST
+## 27-may-2010   Steven Davelaar
+## 2.5           - Added REGION_PARTIAL_TARGET 
+## 24-mar-2010   Steven Davelaar
+## 2.4           - Changed CUR_GROUP_RENDERED, no longer checks whether parent group row exists
+##               This causes problems when group is in a splitter, and is first hidden and then becomes
+##               visible because parent row is created: ADF faces Javascript errors. We now only hide the create button
+##               when no parent row found. Additional advantage is that all groups are displayed fromthe start, so it is
+##               clearer for the end user what can be done in the page
+##               - CUR_GROUP_PARTIAL_TRIGGERS and GROUP_PARTIAL_TRIGGERS no longer add parent panelCollection:table or TopLc. Is now handled
+##               in groupContent.vm
+## 15-feb-2010   Steven Davelaar
+## 2.3           Added REMOVE_UNUSED_PAGE_VALUE_BINDINGS
+##               and REMOVE_UNUSED_PAGE_COMPONENT_VALUE_BINDINGS
+## 09-feb-2010   Steven Davelaar
+## 2.2           Added CONTENT_WIDTH, CONTENT_HEIGHT
+## 30-nov-2009   Steven Davelaar
+## 2.1           Added FIRST_DISPLAYED_TABLE_ITEM
+## 23-jun-2009   Paco van der Linden
+## 2.0           Restructured layout according to (stretching) best-practices.
+## 06-may-2009   Paco van der Linden
+## 1.11          Fixed: Sometimes NO_ROWS_FOUND is shown when rows are available
+##               Removed whitespace from GROUP_PARTIAL_TRIGGERS
+## 07-may-2009   Paco van der Linden
+## 1.10          Shortened some id's to improve PPR performance and added a unique-id mechanism
+## 11-may-2008   Steven Davelaar
+## 1.9           Added support for non-databound groups in macros checking whether group has a row
+## 31-aug-2007   Steven Davelaar
+## 1.8           Added JHS_PARSE_GROUP_CONTENT, PARENT_ITERATOR, PARENT_GROUP_HAS_ROW,
+##               PARENT_GROUP_HAS_NO_ROW
+## 29-aug-2007   Steven Davelaar
+## 1.7           Added JHS_PARSE_INCLUDE, needed to split page in regions to work
+##               around page too large error
+## 29-jun-2007   Steven Davelaar
+## 1.6           Added IGNORE_CHANGED_FIELD
+## 25-apr-2007   Steven Davelaar
+## 1.5           Added JHS_PARSE_NO_DEBUG for use in fileGenerator.vm
+## 04-apr-2007   Steven Davelaar
+## 1.4           Fixed bug in REGION_PARTIAL_TRIGGERS: Search prefix added when needed
+## 12-jan-2007   Jaco Verheul
+## 1.3           GENERATE_SCRIPT, ALERT_FOR_CHANGES and VALIDATE_FORM macro added
+## 04-dec-2006   Steven Davelaar
+## 1.2           Added REGION_PARTIAL_TRIGGERS and GROUP_PARTIAL_TRIGGERS
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+
+#macro (PAGE_START)
+#if ($JHS.application.viewTypeFacelets)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns:ui="http://java.sun.com/jsf/facelets" 
+        xmlns:f="http://java.sun.com/jsf/core" 
+        xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:trh="http://myfaces.apache.org/trinidad/html"
+        xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+        #if (${JHS.dependenciesMgr.getValue("formUsesOraFormsFaces", "false")}=='true')xmlns:off="http://commit-consulting.com/OraFormsFaces/tags" #end
+        #JHS_PHASE_LISTENER() locale="#{jhsLocaleManager.currentLocale}">
+#else
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" #JSP_VERSION()
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:trh="http://myfaces.apache.org/trinidad/html"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+          #if (${JHS.dependenciesMgr.getValue("formUsesOraFormsFaces", "false")}=='true')xmlns:off="http://commit-consulting.com/OraFormsFaces/tags" #end
+          >
+   <jsp:output omit-xml-declaration="true" doctype-root-element="HTML"
+              doctype-system="http://www.w3.org/TR/html4/loose.dtd"
+              doctype-public="-//W3C//DTD HTML 4.01 Transitional//EN"/>
+  <jsp:directive.page contentType="text/html;charset=${JHS.pageEncoding}"/>
+  <f:view #JHS_PHASE_LISTENER()>
+#end#end
+#macro (SPACE_SEPARATED $list)
+#set($first="true")#foreach($element in $list)#if ($first=="false") #end${element}#set($first="false")#end#end
+
+#macro (PAGE_END)
+</f:view>
+#if ($JHS.application.viewTypeJsp)
+</jsp:root>
+#end#end
+
+#macro (PAGE_FRAGMENT_START)
+#if ($JHS.application.viewTypeFacelets)
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" 
+        xmlns:f="http://java.sun.com/jsf/core" 
+        xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:trh="http://myfaces.apache.org/trinidad/html"
+        xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+        #if (${JHS.dependenciesMgr.getValue("formUsesOraFormsFaces", "false")}=='true')xmlns:off="http://commit-consulting.com/OraFormsFaces/tags" #end
+        >
+#else
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" #JSP_VERSION()
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:trh="http://myfaces.apache.org/trinidad/html"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+          #if (${JHS.dependenciesMgr.getValue("formUsesOraFormsFaces", "false")}=='true')xmlns:off="http://commit-consulting.com/OraFormsFaces/tags" #end
+          >
+   <jsp:output omit-xml-declaration="true" doctype-root-element="HTML"
+              doctype-system="http://www.w3.org/TR/html4/loose.dtd"
+              doctype-public="-//W3C//DTD HTML 4.01 Transitional//EN"/>
+  <jsp:directive.page contentType="text/html;charset=${JHS.pageEncoding}"/>
+#end#end
+
+#macro (PAGE_FRAGMENT_END)
+#if ($JHS.application.viewTypeFacelets)
+</ui:composition>
+#else
+</jsp:root>
+#end#end
+
+#macro (PAGE_TEMPLATE_START)
+#if ($JHS.application.viewTypeFacelets)
+<af:pageTemplateDef xmlns:af="http://xmlns.oracle.com/adf/faces/rich" var="attrs" definition="private"
+                    xmlns:f="http://java.sun.com/jsf/core" xmlns:afc="http://xmlns.oracle.com/adf/faces/rich/component">
+
+#else
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" #JSP_VERSION()
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:pageTemplateDef var="attrs">
+#end#end
+
+#macro (PAGE_TEMPLATE_END)
+</af:pageTemplateDef>
+ #if ($JHS.application.viewTypeJsp)
+</jsp:root>
+#end#end
+#macro (COMMA_SEPARATED $list)
+#set($first="true")#foreach($element in $list)#if ($first=="false"),#end${element}#set($first="false")#end#end
+
+#macro (COMMA_SEPARATED_CREATE_BINDINGS)
+#set($first="true")#foreach($pageComponent in $JHS.current.pageComponent.detailFormPageComponents)#if ($first=="false"),#end bindings.Create${pageComponent.group.shortName}#set($first="false")#end#end
+
+#macro (SET_INITIAL_FOCUS_ID $id)
+#if (!($JHS.current.pageComponent.initialFocusId))
+ ${JHS.current.pageComponent.setInitialFocusId($id)}
+#end#end
+
+#macro (ADD_INITIAL_FOCUS_ID $id)
+#if (!($JHS.current.pageComponent.initialFocusId))
+ ${JHS.current.pageComponent.setInitialFocusId($id)}
+#else 
+  #set ($focusId = $JHS.current.pageComponent.initialFocusId)
+ ${JHS.current.pageComponent.setInitialFocusId("${focusId},${id}")}
+#end#end
+
+
+#macro (NEW_ID $prefix)
+${JHS.engine.createId(${prefix})}#end
+
+#macro (CURRENT_ID $prefix)
+${JHS.engine.getCurrentId(${prefix})}#end
+
+#macro (JHS_PHASE_LISTENER)
+beforePhase="#{jhsPhaseListener.beforePhase}"#end
+
+#macro (ENCODING_PROP)
+encoding="${JHS.encoding}"#end
+
+#macro (PAGE_ENCODING_PROP)
+encoding="${JHS.pageEncoding}"#end
+
+#macro (JSP_VERSION)
+#if (${JHS.getJDeveloperVersion()} >= 1111405923) version="2.1" #else version="2.0" #end#end
+
+#macro ( JHS_PARSE $templateIdentifier $modelPointer )
+${JHS.engine.pushModelPointer(${modelPointer}, ${templateIdentifier})}
+#set( $vmname = ${JHS.engine.locateTemplate($templateIdentifier)} )
+## Only pop and push templates for logging purposes
+${JHS.engine.pushTemplate($vmname)}
+#if (${JHS.service.showTemplateNames})
+<!-- DEBUG:BEGIN:${templateIdentifier} : ${JHS.engine.template} -->
+#end
+#parse( $vmname )
+#if (${JHS.service.showTemplateNames})
+<!-- DEBUG:END:${templateIdentifier} : ${JHS.engine.template}-->
+#end
+${JHS.engine.popTemplate()}
+${JHS.engine.popModelPointer()}
+#end
+
+## This macro def should remain on one line, because it is used to generate xml documents that should start with <?xml ...
+#macro(JHS_PARSE_NO_DEBUG $templateIdentifier $modelPointer)${JHS.engine.pushModelPointer(${modelPointer}, ${templateIdentifier})}#set($vmname=${JHS.engine.locateTemplate($templateIdentifier)} )#parse($vmname) ${JHS.engine.popModelPointer()} #end
+
+#macro (JHS_PARSE_INCLUDE $includeId $includeName $templateIdentifier $modelPointer )
+## Include Context is used for partial-page rendering to work accross regions:
+## UI components inside a declarative component must be referenced using the DC id as a prefix
+${JHS.engine.pushNamingContainer("${includeId}")}
+## the $includeName and $includeId values might change during parsing if detail groups also call this macro!!
+## we therefore store the current include name against the template context and retrieve it from
+## this context again after parsing
+${JHS.engine.putTemplateContext("currentIncludeName", "${includeName}")}
+${JHS.engine.putTemplateContext("currentIncludeId", "${includeId}")}
+#set ($parsedContent = "#JHS_PARSE($templateIdentifier $modelPointer)")
+#set ($currentIncludeName = "${JHS.engine.getTemplateContext('currentIncludeName')}")
+#set ($currentIncludeId = "${JHS.engine.getTemplateContext('currentIncludeId')}")
+#set ($includeModel = ${JHS.getParsedIncludeModel($currentIncludeName, ${parsedContent})})
+${JHS.engine.popNamingContainer()}
+  <af:declarativeComponent id="${currentIncludeId}" viewId="${JHS.service.pageIncludesVirtualDir}${currentIncludeName}.jsff"/>
+#end
+
+#macro (JHS_PARSE_GROUP_CONTENT $pageComponent)
+#set ($includeId = "${JHS.current.group.shortName}Ic")
+#if ($pageComponent.tableLayout)
+  #set ($regionName = "${JHS.current.group.name}TableRegion")
+#else
+  #set ($regionName = "${JHS.current.group.name}Region")
+#end
+#if (${JHS.page.group}==${JHS.current.group})
+  #if (${JHS.current.group.generateGroupInFragment})
+    #JHS_PARSE_INCLUDE($includeId ${regionName} ${JHS.page.groupContentTemplateIdentifier} ${JHS.current.model})
+  #else
+    #JHS_PARSE(${JHS.page.groupContentTemplateIdentifier} ${JHS.current.model})
+  #end
+#else
+  #if (${JHS.current.group.generateGroupInFragment})
+    #JHS_PARSE_INCLUDE($includeId ${regionName} ${pageComponent.contentTemplateIdentifier} ${JHS.current.model})
+  #else
+    #JHS_PARSE(${pageComponent.contentTemplateIdentifier} ${JHS.current.model})
+  #end
+#end
+#end
+
+#macro (JHS_PROP $name $value)
+#if ($value && ($value != ""))
+${name}="${value}"#end
+#end
+
+#macro (JHS_PRESENT $value)
+#if ($value && ($value != ""))
+${value}#end
+#end
+
+## Expressions below do not include JSF EL brackets so they can be combined if required
+## We use negative operators to force the visual editor to show all conditionally rendered
+## page regions
+
+#macro (ITERATOR)
+bindings.${JHS.current.group.name}Iterator#end
+
+#macro (PARENT_ITERATOR)
+bindings.${JHS.current.group.parentGroup.name}Iterator#end
+
+#macro (CONTENT_WIDTH $group)
+#JHS_PROP("contentWidth" $group.groupWidthAsInteger)#end
+
+#macro (CONTENT_HEIGHT $group)
+#JHS_PROP("contentHeight" $group.groupHeightAsInteger)#end
+
+#macro (GROUP_HAS_ROW)
+## we need to get current row through viewObject instead of directly from iter binding
+## otherwise a full-table query will still be performed when auto query switched off!
+## but we only do this when auto-query switched off, otherwise in form alyout, the
+## switcher element shows "no rows"!
+#if ($JHS.current.group.databound) #if ($JHS.current.group.autoQuery)#ITERATOR().currentRow!=null #else(#ITERATOR().viewObject!=null and #ITERATOR().viewObject.currentRow!=null)#end#else(true)#end#end
+
+#macro (PARENT_GROUP_HAS_ROW)
+#if ($JHS.current.group.databound && $JHS.page.group!=$JHS.current.group)#if (${JHS.current.group.parentGroup} && ${JHS.current.group.parentGroup.databound})#if ($JHS.current.group.parentGroup.autoQuery) #PARENT_ITERATOR().currentRow!=null #else (#PARENT_ITERATOR().viewObject!=null and #PARENT_ITERATOR().viewObject.currentRow!=null)#end#else true#end#else(true)#end#end
+
+#macro (GROUP_HAS_NO_ROW)
+!(#GROUP_HAS_ROW())#end
+
+#macro (PARENT_GROUP_HAS_NO_ROW)
+!(#PARENT_GROUP_HAS_ROW())#end
+
+#macro (GROUP_IN_FIND_MODE)
+#if ($JHS.current.group.databound)#ITERATOR().findMode!='false'#else(false)#end#end
+
+#macro (GROUP_NOT_IN_FIND_MODE)
+#if ($JHS.current.group.databound)#ITERATOR().findMode!='true'#else(true)#end#end
+
+#macro (GROUP_IN_CREATE_MODE)
+#if ($JHS.current.group.databound)pageFlowScope.createModes.Create${JHS.current.group.name}#else(false)#end#end
+
+#macro (SPECIFIED_GROUP_IN_CREATE_MODE $group)
+#if ($group.databound)pageFlowScope.createModes.Create${group.name}#else(false)#end#end
+
+#macro (GROUP_NOT_IN_CREATE_MODE)
+#if ($JHS.current.group.databound)!pageFlowScope.createModes.Create${JHS.current.group.name}#else(true)#end#end
+
+#macro (ADD_GROUP_PARTIAL_TRIGGER $group $pt)
+${JHS.dependenciesMgr.addToList("${group.name}PartialTriggers", "${JHS.engine.fullNamingContainerPath}${pt}")}#end
+
+#macro (ADD_CUR_GROUP_PARTIAL_TRIGGER $pt)
+#ADD_GROUP_PARTIAL_TRIGGER(${JHS.current.group} ${pt})#end
+
+#macro (CUR_GROUP_PARTIAL_TRIGGERS)
+partialTriggers = "#foreach($pt in $JHS.dependenciesMgr.getList("${JHS.current.group.name}PartialTriggers")) ${JHS.engine.stripCurrentNamingContainerPath("${pt}")}#end" #end
+
+#macro (GROUP_PARTIAL_TRIGGERS $pageComponent $group)
+partialTriggers = "#foreach($pt in $JHS.dependenciesMgr.getList("${group.name}PartialTriggers")) ${JHS.engine.stripCurrentNamingContainerPath("${pt}")}#end" #end
+
+#macro (CUR_GROUP_RENDERED)
+#if ($JHS.current.pageComponent.group.roles) rendered="#{jhsUserRoles['${JHS.current.pageComponent.group.roles}']}" #end#end
+
+#macro (ADD_GROUP_ACTION $group $action $commandId)
+#if ($JHS.application.enableFunctionKeys) ${JHS.dependenciesMgr.addToList("${group.name}Actions", "${action},${JHS.engine.fullNamingContainerPath}${commandId}")}#end#end
+
+#macro (ADD_CUR_GROUP_ACTION $action $commandId)
+#ADD_GROUP_ACTION($JHS.current.group $action $commandId) #end
+
+#macro (GROUP_ACTION_ATTRS $pageComponent)
+  #JHS_PARSE("GROUP_ACTION_ATTRIBUTES" ${pageComponent})
+#end
+
+#macro (DUMMY_ITEM_TO_SET_INITIAL_FOCUS)
+  #JHS_PARSE("DUMMY_ITEM_FOR_INITIAL_FOCUS" ${JHS.current.model})
+#end
+
+#macro (NLS_HELP $code $helpobject)
+#if ($JHS.application.onlineHelpProvider=='oracle.adf.view.rich.help.ResourceBundleHelpProvider')
+ ${JHS.nlsVoid(${helpobject.helpText},"${code}_DEFINITION")}${JHS.nlsVoid(${helpobject.instructionText}, "${code}_INSTRUCTIONS")} helpTopicId="${code}" 
+#else
+  ## just set the helpTopicId property, do not generate resource bundle entry
+  helpTopicId="${code}"
+#end#end
+
+#macro (GROUP_HELP)
+#if ($JHS.application.useOnlineHelp) #NLS_HELP("RBH_${JHS.current.group.name.toUpperCase()}" ${JHS.current.group}) #end #end
+
+#macro (REGION_CONTAINER_HELP)
+#if ($JHS.application.useOnlineHelp) #NLS_HELP("RBH_${JHS.current.group.name.toUpperCase()}_${JHS.current.regionContainer.name.toUpperCase()}" ${JHS.current.regionContainer})#end #end
+
+#macro (ITEM_REGION_HELP)
+#if ($JHS.application.useOnlineHelp) #NLS_HELP("RBH_${JHS.current.group.name.toUpperCase()}_${JHS.current.itemRegion.name.toUpperCase()}" ${JHS.current.itemRegion})#end #end
+
+#macro (GROUP_REGION_HELP)
+#if ($JHS.application.useOnlineHelp) #NLS_HELP("RBH_${JHS.current.group.name.toUpperCase()}_${JHS.current.groupRegion.name.toUpperCase()}" ${JHS.current.groupRegion})#end #end
+
+#macro (SUB_REGION_HELP $subRegion)
+#if ($JHS.application.useOnlineHelp) #NLS_HELP("RBH_${JHS.current.group.name}_${subRegion.name}" ${subRegion})#end #end
+
+#macro (INLINE_STYLE_PROP $name $value)
+#if ($value && $value != "")${name}:${value};#end#end
+
+#macro (INLINE_STYLE_WIDTH $width)
+#if ($width && "100%"!=$width) #INLINE_STYLE_PROP("width" $width)#end#end
+
+#macro (INLINE_STYLE_HEIGHT $height)
+#INLINE_STYLE_PROP("height" $height)#end
+
+#macro (STRETCH_STYLE_CLASS $containerElement)
+#if ($containerElement.stretchWidth) styleClass="AFStretchWidth"#end#end
+
+## TODO remove hardcoded regions path
+#macro (INCLUDE_OPEN $includeName $regionContent)
+  #set ($includeModel = ${JHS.getIncludeModel($includeName, $regionContent)})
+  <af:pageTemplate id="#NEW_ID("pt")" viewId="${JHS.service.pageIncludesVirtualDir}${includeName}.jspx">
+##  <af:region id="$includeModel.name" value="#{bindings}" regionType="$includeModel.getType($JHS.service)">
+#end
+
+#macro (INCLUDE_ATTRIBUTE $includeName $attributeName $attributeValue $attributeClass $required)
+  #set ($includeModel = ${JHS.getIncludeModel($includeName)})
+  ${includeModel.addAttribute($attributeName, $attributeValue, $attributeClass, $required)}
+  <f:attribute name="$attributeName" value="$attributeValue"/>
+#end
+
+#macro (INCLUDE_CLOSE $includeName)
+  </af:pageTemplate>
+#end
+
+#macro (FORM_ITEMS)
+#foreach($item in ${JHS.current.itemContainer.items})
+  #if ($item.displayInForm)
+     #SET_INITIAL_FOCUS_ID("${item.id}")
+     #JHS_PARSE($item.formTemplateIdentifier $item)
+     ## add parsed popup content from popups launched through this item here
+     $item.parsedContent
+  #end
+#end
+#end
+
+#macro (TABLE_OVERFLOW_ITEMS)
+#set ($overflowFocusId="")
+#foreach($item in ${JHS.current.itemContainer.items})
+  #if ($item.displayInTableOverflow && !${item.displayInTable})
+     #if (!$JHS.current.pageComponent.hasOverflowInline && $overflowFocusId=="")
+      #set ($overflowFocusId="${item.id}")
+       #ADD_INITIAL_FOCUS_ID("${item.id}")
+     #end  
+     #JHS_PARSE($item.formTemplateIdentifier $item)
+     ## add parsed popup content from popups launched through this item here
+     $item.parsedContent
+  #end
+#end
+#end
+
+#macro (ADVANCED_SEARCH_ITEMS)
+#foreach($item in ${JHS.current.itemContainer.items})
+  #if ($item.showInAdvancedSearch)
+     #SET_INITIAL_FOCUS_ID("Search${item.id}")
+     #JHS_PARSE($item.advancedSearchTemplateIdentifier $item)
+  #end
+#end
+#end
+
+#macro (TABLE_COLUMNS)
+#foreach($item in ${JHS.current.group.allItems})
+  #if ($item.displayInTable && !$item.displayedAtRightOfItem && !$item.toolbarItem)
+    #SET_INITIAL_FOCUS_ID("${JHS.current.group.shortName}Tab:${item.id}")
+    #JHS_PARSE("TABLE_COLUMN" $item)
+  #end
+#end
+#end
+
+#macro (FIRST_DISPLAYED_TABLE_ITEM)
+#set ($firstItem = "")
+#foreach($item in ${JHS.current.group.allItems})
+  #if ($item.displayInTable && $firstItem=="")
+    #set ($firstItem = $item.id)
+  #end
+#end
+$firstItem
+#end
+
+#macro (BINDINGS_TABLE)
+bindings.${JHS.current.group.name}Table#end
+
+#macro (NAVIGATE_TO_GROUP $detailGroup)
+${JHS.facesConfigGenerator.addNavigationCase(${JHS.current.group},${JHS.page.name}, "Start${detailGroup.name}", "${detailGroup.firstPage.name}")}#end
+
+#macro (MENU1)
+<f:facet name="menu1">
+  #set ($includeName = "${JHS.service.name}Menu1Tabs")
+  #INCLUDE_OPEN($includeName ${JHS.menuGenerator.menu1})
+   #INCLUDE_ATTRIBUTE($includeName "selectedTab" ${JHS.current.group.baseGroup.name} "java.lang.String" "false")
+  #INCLUDE_CLOSE($includeName)
+</f:facet>
+#end
+
+#macro (MENU2 $menuName)
+#if (${JHS.page.menu2Allowed} && ${JHS.menuGenerator.containsMenu($menuName)})
+<f:facet name="menu2">
+  #set ($includeName = "${JHS.service.name}${menuName}Menu2Tabs")
+  #INCLUDE_OPEN($includeName ${JHS.menuGenerator.getMenu2($menuName)})
+   #INCLUDE_ATTRIBUTE($includeName "selectedTab" ${JHS.page.selectedMenu2Tab} "java.lang.String" "false")
+  #INCLUDE_CLOSE($includeName)
+</f:facet>
+#end
+#end
+
+
+#macro (TREE_MENU3 $treeBaseGroupName)
+  #set ($includeName = "${treeBaseGroupName}Tree")
+  #INCLUDE_OPEN($includeName ${JHS.treeGenerator.getTree($treeBaseGroupName)})
+  #INCLUDE_CLOSE($includeName)
+#end
+
+#macro (ADVANCED_SEARCH_BUTTON_ID)
+asButton${JHS.current.group.shortName}#end
+
+#macro (QUICK_SEARCH_BUTTON_ID)
+qsButton${JHS.current.group.shortName}#end
+
+#macro (MODEL_AS_BUTTON_ID)
+#if( $JHS.current.pageComponent.hasModelQuickSearchArea )
+qs_${JHS.current.group.shortName}:#ADVANCED_SEARCH_BUTTON_ID()
+#else
+${JHS.current.group.shortName}Sbf:#ADVANCED_SEARCH_BUTTON_ID()
+#end#end
+
+#macro (MODEL_QS_BUTTON_ID)
+#if( $JHS.current.pageComponent.hasModelAdvancedSearchArea )
+as_${JHS.current.group.shortName}:#QUICK_SEARCH_BUTTON_ID()
+#else
+${JHS.current.group.shortName}Sbf:#QUICK_SEARCH_BUTTON_ID()
+#end#end
+
+#macro (JHS_QS_BUTTON_ID)
+#if( $JHS.current.pageComponent.hasModelAdvancedSearchArea )
+::as_${JHS.current.group.shortName}:#QUICK_SEARCH_BUTTON_ID()
+#else
+#QUICK_SEARCH_BUTTON_ID()
+#end#end
+
+#macro (JHS_AS_BUTTON_ID)
+#if( $JHS.current.pageComponent.hasModelQuickSearchArea )
+::qs_${JHS.current.group.shortName}:#ADVANCED_SEARCH_BUTTON_ID()
+#else
+#ADVANCED_SEARCH_BUTTON_ID()
+#end#end
+
+#macro (QS_SELECT_ID)
+qsSelect${JHS.current.group.shortName}#end
+
+#macro (REGION_ID)
+#if (${JHS.current.pageComponent.processingAdvancedSearchArea})Search#end${JHS.current.group.shortName}${JHS.current.regionContainer.name}#end
+
+#macro (REGION_POPUP_ID $region)
+${region.parentGroup.shortName}${region.name}Popup#end
+
+#macro (REGION_PARTIAL_TRIGGERS $region)
+#if (!${region.showInPopup} && ${region.hasDependsOnItem}) partialTriggers = "#foreach($item in $region.dependsOnItems) #if (${JHS.current.pageComponent.processingAdvancedSearchArea})Search#elseif($item.displayInTable && !$JHS.current.group.tableOverflowStyleInline)${JHS.current.group.shortName}PC:${JHS.current.group.shortName}Tab:#end${item.id}#end" #end#end
+
+#macro (REGION_PARTIAL_TARGET $region $partialTarget)
+ #if (${region.hasDependsOnChildLovItem}) #foreach($item in $region.dependsOnChildLovItems) ${item.setPartialTarget($partialTarget)} #end#end#end
+
+#macro (MARGIN_SPACER)
+<af:spacer width="10" height="10" id="#NEW_ID("sp")"/>#end
+
+#macro (SEPARATOR_SPACER $size)
+#if ($size!='')
+<f:facet name="separator">
+   <af:spacer height="${size}" width="${size}" id="#NEW_ID("sp")"/>
+</f:facet>
+#end#end
+
+#macro(TABLE_PARTIAL_TRIGGERS)
+partialTriggers="#if ($JHS.current.pageComponent.hasModelQuickSearchArea):::qs_${JHS.current.group.shortName}#end#if ($JHS.current.pageComponent.hasModelAdvancedSearchArea) :::as_${JHS.current.group.shortName}#end :::${JHS.current.group.shortName}PC ::${JHS.current.group.shortName}First ::${JHS.current.group.shortName}Previous ::${JHS.current.group.shortName}Next ::${JHS.current.group.shortName}Last"
+#end
+
+#macro (DELETE_POPUP)
+#JHS_PARSE("DELETE_WARNING_DIALOG" ${JHS.current.group})
+#end
+
+#macro (POPUP_DEFERRED_CHILD_CREATION)
+#if (${JHS.getJDeveloperVersion()} >= 1111405923) childCreation="deferred" #end#end
+
+#macro (TABS_LAZY_CHILD_CREATION)
+#if (${JHS.getJDeveloperVersion()} >= 1111405923) childCreation="lazy" #end#end
+
+#macro (DIMENSIONS_FROM)
+#if (${JHS.getJDeveloperVersion()} >= 1111405923) dimensionsFrom="auto" #end#end
+
+#macro(PANEL_HEADER_TOP_HEIGHT)
+topHeight="${JHS.application.panelHeaderHeight}"
+#end
+
+#macro (REMOVE_UNUSED_PAGE_COMPONENT_VALUE_BINDINGS $page $pageComponent)
+## check for form layout depends on whether it is top group of page. if so
+## we need to check the group layout style because table and form page use
+## same page def. In case of detail group, we only need to check the pageComponent
+## layout style
+#if ($page.group == $pageComponent.group)
+ #set ($formLayout = $page.group.hasFormLayout || $page.group.hasTableFormLayout || $page.group.hasTreeFormLayout)
+#else
+ #set ($formLayout = $pageComponent.formLayout)
+#end
+  #foreach($item in ${pageComponent.group.allDataBoundItems})
+    ## remove value binding UNLESS
+    ## 1. Item is decriptor item (used in breadcrumbs)
+    ## 2. form layout and displayInForm true
+    ## 3. table overflow below/right and displayInOverflow true
+    #if ($item.name==$pageComponent.group.descriptorItem.name || ($formLayout && $item.displayInForm) || (($pageComponent.hasOverflowArea && !$pageComponent.hasOverflowInline) && $item.displayInTableOverflow))
+      ## don't remove
+    #else
+       ${JHS.pageDefGenerator.removeBinding($pageComponent,"${item.bindingName}")}
+    #end
+  #end
+#end
+
+#macro (REMOVE_UNUSED_PAGE_VALUE_BINDINGS $page)
+  #REMOVE_UNUSED_PAGE_COMPONENT_VALUE_BINDINGS($page $page)
+  ## process detail page components
+  #foreach($pageComponent in ${page.pageComponents})
+    #REMOVE_UNUSED_PAGE_COMPONENT_VALUE_BINDINGS($page $pageComponent)
+  #end
+  #foreach($pageComponent in ${page.groupRegionPageComponents})
+    #REMOVE_UNUSED_PAGE_COMPONENT_VALUE_BINDINGS($page $pageComponent)
+  #end
+#end
+
+#macro (KEYBOARD_SERVER_LISTENER)
+#if (${JHS.application.enableFunctionKeys})
+<af:serverListener type="keyboardToServerNotify"
+                   method="#{jhsKeyboardMappingHandler.handleKeyboardEvent}"/>
+#end#end                   
+
+#macro (REGION_SIZE)
+size="1" #end
+
+#macro (SEARCH_SIZE)
+size="1" #end
+
+#macro (PANEL_COLLECTION_FEATURES_OFF)
+featuresOff="#if (!$JHS.current.group.wrapTable) wrap #end #if (!$JHS.current.group.detachTable) detach #end #if($JHS.current.group.tableFreezeStyle=="none") freeze #end" #end
+
+#macro (MODEL_QUERY_ADDITIONAL_PROPERTIES)
+ #end
+
+#macro (INIT_REGION_CONTAINER_VARS)
+#set ($subRegions = ${JHS.current.regionContainer.subRegions})
+#set ($regions = [])
+#foreach ($subRegion in $subRegions)
+  #if (${JHS.current.pageComponent.processingAdvancedSearchArea})
+     ## with advanced search, we skip it when the region does not contain search items or is a group region
+     #if ((${subRegion.itemRegion} && !${subRegion.hasAdvancedSearchItems}) || ${subRegion.groupRegion} )
+        ## skip
+     #else
+        ## A usable region has been found.
+        #set ($dummy = ${regions.add($subRegion)})
+     #end
+  #elseif (${JHS.current.regionContainer.showInPopup})
+        ## always process content of popup region container
+        #set ($dummy = ${regions.add($subRegion)})
+  #elseif ((${JHS.current.pageComponent.tableLayout} && ${subRegion.itemRegion} && !${subRegion.hasTableOverflowItems})
+           || (${JHS.current.pageComponent.formLayout} && ${subRegion.itemRegion} && !${subRegion.hasFormItems})
+           || (${JHS.current.pageComponent.tableLayout} && ${JHS.current.group.hasTableFormLayout} && ${subRegion.groupRegion}))
+    ## do nothing, we always skip 
+    ## item region in table overflow when it does not contain table overflow items and 
+    ## item region in form when it does not contain form items and 
+    ## with table overflow, we skip it when the parent group has table-form layout
+  #else    
+    ## A usable region has been found.
+    #set ($dummy = ${regions.add($subRegion)})
+  #end
+#end
+ #end
+
+#macro (BLANK_TASK_FLOW_PATH)
+/common/config/Blank.xml#end
+
+#macro (BLANK_PAGE_PATH)
+${JHS.application.commonPagesDir}Blank.jsff#end
+
+#macro (MODEL_POINTER)
+
+<!--
+============================================================================
+MODEL POINTER
+============================================================================
+Model pointer points to: ${JHS.current.model}
+
+JHS.current.group:                 ${JHS.current.group}
+JHS.current.tree:                  ${JHS.current.tree}
+JHS.current.item:                  ${JHS.current.item}
+JHS.current.itemContainer:         ${JHS.current.itemContainer}
+JHS.current.itemRegion:            ${JHS.current.itemRegion}
+JHS.current.regionContainer:       ${JHS.current.regionContainer}
+JHS.current.include:               ${JHS.current.include}
+JHS.current.managedBean:           ${JHS.current.managedBean}
+JHS.current.templateBindingsModel: ${JHS.current.templateBindingsModel}
+JHS.current.menu:                  ${JHS.current.menu}
+JHS.current.groupFacesConfig:      ${JHS.current.groupFacesConfig}
+JHS.current.domainFacesConfig:     ${JHS.current.domainFacesConfig}
+JHS.current.pageComponent:         ${JHS.current.pageComponent}
+JHS.current.domain:                ${JHS.current.domain}
+============================================================================
+-->
+
+#end
+
+#macro (GROUP_PERMISSION_LIST $group)
+#if ($group.service.application.useGroupPermissions && !$group.useAsLov)  
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">permissionList</property-name>
+    <property-class id="#NEW_ID("__")">java.util.List</property-class>
+    <list-entries id="#NEW_ID("__")">
+        <value id="#NEW_ID("__")">${JHS.service.rolePrefix}${group.name}</value>
+    </list-entries>
+    </managed-property>
+#end
+#end
+
+#macro (DYNTAB_SCOPE)    
+view#end
+
+#macro (DYNAMIC_REGION_MANAGER_CLASS)
+oracle.jheadstart.controller.jsf.bean.DynamicRegionManager#end
+
+#macro (IMMEDIATE_MENU_ITEM)
+#if (${JHS.application.checkUITreePendingChanges} || ${JHS.application.useUncommittedDataBehavior}) immediate="true"#end#end
+
+#macro (IGNORE_CHANGES_ATTRIBUTE)
+#if (${JHS.application.checkUITreePendingChanges})
+<f:attribute name="JhsIgnoreChanges" value="true"/>#end#end
+
+#macro (META_CONTAINER_FACET)
+<f:facet name="metaContainer">
+  <af:resource type="javascript" source="/jheadstart/jhs11.js"/>
+</f:facet>#end
+
+#macro (PAGE_TEMPLATE_ID)
+pt#end
+
+#macro (UNCOMMITTED_DATA_WARNING)
+#if (${JHS.application.useUncommittedDataBehavior}) uncommittedDataWarning="on" #end#end
+
+#macro (CHECK_UNCOMMITTED_DATA_BEHAVIOR $regiondIds)
+#if (${JHS.application.useUncommittedDataBehavior})
+  <af:checkRegionUncommittedDataBehavior  message="#{nls['PENDING_CHANGES_TEXT']}" regionIds="${regiondIds}" />
+#end#end
+
+#macro (CHECK_UNCOMMITTED_DATA_BEHAVIOR_MENU)
+#if (!${JHS.application.useDynamicTabs})
+ #CHECK_UNCOMMITTED_DATA_BEHAVIOR(':pt:mr')
+#end#end
+
+#macro (CHECK_UNCOMMITTED_DATA_BEHAVIOR_DYNTAB)
+## EL expression currently does not work in regionsIds property (bug), so cannot use with dyn tabs
+## #CHECK_UNCOMMITTED_DATA_BEHAVIOR('dr#{vs.index}')
+ #end
+
+#macro (PENDING_CHANGES_ACTION_LISTENER)
+#if (${JHS.application.useUncommittedDataBehavior}) actionListener="#{pageFlowScope.pendingChangesBean.revert}" #else actionListener="#{pageFlowScope.pendingChangesBean.handle}"#end#end

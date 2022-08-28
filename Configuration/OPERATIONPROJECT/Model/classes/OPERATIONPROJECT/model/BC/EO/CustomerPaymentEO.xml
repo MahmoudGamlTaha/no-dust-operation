@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CustomerPaymentEO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="CUSTOMER_PAYMENT_PLAN"
+  AliasName="CustomerPaymentEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="Id"
+    IsNotNull="true"
+    Precision="38"
+    Scale="0"
+    ColumnName="ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    TableName="CUSTOMER_PAYMENT_PLAN"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="CustomerId"
+    Precision="38"
+    Scale="0"
+    ColumnName="CUSTOMER_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    TableName="CUSTOMER_PAYMENT_PLAN"/>
+  <Attribute
+    Name="PlanId"
+    Precision="38"
+    Scale="0"
+    ColumnName="PLAN_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    TableName="CUSTOMER_PAYMENT_PLAN"/>
+  <Attribute
+    Name="FromDate"
+    ColumnName="FROM_DATE"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="CUSTOMER_PAYMENT_PLAN"/>
+  <Attribute
+    Name="ToDate"
+    ColumnName="TO_DATE"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="CUSTOMER_PAYMENT_PLAN"/>
+  <Attribute
+    Name="Active"
+    ColumnName="ACTIVE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="CUSTOMER_PAYMENT_PLAN"/>
+  <Attribute
+    Name="PostPaidDuration"
+    ColumnName="POST_PAID_DURATION"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="CUSTOMER_PAYMENT_PLAN"/>
+  <Attribute
+    Name="DiscountRatio"
+    Domain="OPERATIONPROJECT.model.BC.EO.BinaryDouble"
+    ColumnName="DISCOUNT_RATIO"
+    SQLType="STRUCT"
+    Type="OPERATIONPROJECT.model.BC.EO.common.BinaryDouble"
+    ColumnType="BINARY_DOUBLE"
+    TableName="CUSTOMER_PAYMENT_PLAN"/>
+  <Key
+    Name="CustomerPaymentPlanPkey"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="customer_payment_plan_pkey"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.CustomerPaymentEO.Id"/>
+    </AttrArray>
+  </Key>
+</Entity>

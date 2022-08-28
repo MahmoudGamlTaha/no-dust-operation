@@ -1,0 +1,57 @@
+## revision_history
+## 26-jun-2013   Steven Davelaar / Paco van der Linden
+## 1.9           Moved ITEM_ADDITIONAL_PROPERTIES to the end so it can also be used to
+##               override generated properties (last one wins)
+## 09-nov-2011   Steven Davelaar
+## 1.8           Added POPUP_DEFERRED_CHILD_CREATION call to af:popup
+## 21-jan-2011   Steven Davelaar
+## 1.7           Use end facet instead of panelGroupLayout to fix undesirable layout indentation with jdev 11.1.1.4 
+## 21-jan-2011   Steven Davelaar
+## 1.6           Use call to JHS.page.addPopup to add editor popup at end of page
+## 18-oct-2010   Steven Davelaar
+## 1.5           Added ITEM_CONTEXT_FACET
+## 04-oct-2010   Steven Davelaar
+## 1.4           Added ITEM_HELP, ITEM_ADDITIONAL_PROPERTIES
+## 10-okt-2007   Steven Favelaar
+## 1.3           Moved ITEM_HINT() to panelLabelAndMessage element
+## 24-aug-2007   Steven Davelaar
+## 1.2           Added #ITEM_PARTIAL_TRIGGERS macro
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+
+#macro (EDITOR_POPUP)
+<af:popup id="${JHS.current.item.bindingName}Popup" contentDelivery="lazyUncached" eventContext="launcher" #POPUP_DEFERRED_CHILD_CREATION()>
+  <af:dialog modal="true"  resize="on" title="#TEXT_EDITOR_TITLE()" id="#NEW_ID("dialog")">
+    <af:inputText rows="10" columns="100" #ITEM_VALUE_IN_FORM() 
+                  simple="true" #ITEM_MAXIMUM_LENGTH() id="${JHS.current.item.bindingName}EditorText"/>
+  </af:dialog>
+</af:popup>
+#end
+
+<af:panelLabelAndMessage #ITEM_PROMPT_IN_FORM() #ITEM_RENDERED_IN_FORM() #ITEM_HINT() #ITEM_HELP()
+#ITEM_PARTIAL_TRIGGERS() #ITEM_SHOW_REQUIRED_IN_FORM() id="${JHS.current.item.bindingName}Label">
+  <af:inputText #ITEM_ID_IN_FORM() #ITEM_VALUE_IN_FORM()
+     #ITEM_REQUIRED_IN_FORM() #ITEM_ROWS() #ITEM_COLUMNS() 
+     #ITEM_MAXIMUM_LENGTH() #ITEM_READ_ONLY_IN_FORM() 
+     #ITEM_DISABLED_IN_FORM()    #DEPENDS_ON_ITEM_PROPS_FORM()  
+     simple="true" partialTriggers="${JHS.current.item.bindingName}EditorLink ${JHS.current.item.bindingName}EditorText"
+     #ITEM_ADDITIONAL_PROPERTIES()>
+    #REGULAR_EXPRESSION_VALIDATOR()
+    #VALIDATOR_BINDING()
+    #NUMBER_CONVERTER()
+    #ITEM_CONTEXT_FACET()
+  </af:inputText>  
+  <f:facet name="end">
+   <af:panelGroupLayout id="#NEW_ID("pgl")" valign="top" layout="horizontal">
+    <af:link id="${JHS.current.item.bindingName}EditorLink"  
+        #JHS_PROP("rendered" $JHS.current.item.renderEditorLinkInForm)
+        immediate="true" partialSubmit="true">
+      <af:showPopupBehavior popupId="${JHS.page.addPopup("${JHS.current.item.bindingName}Popup","${JHS.engine.fullNamingContainerPath}","#EDITOR_POPUP()")}"/>
+      <af:image source="/jheadstart/images/editor.gif" id="${JHS.current.item.bindingName}Icon"
+        clientComponent="true"/>
+    </af:link>
+    #ITEMS_DISPLAYED_AT_RIGHT_PLM_PRIM()
+  </af:panelGroupLayout>
+  </f:facet>
+</af:panelLabelAndMessage>
+#ITEMS_DISPLAYED_AT_RIGHT_PLM_SEC()

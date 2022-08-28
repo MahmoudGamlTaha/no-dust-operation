@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="WINDOWS-1252"?>
+
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<!---->
+
+<ViewObject PageIterMode="Partial" SelectAllAttributes="false" CustomQuery="false" BindingStyle="OracleName" WhereFlags="1" FromListFlags="1" SelectListFlags="1" InheritPersonalization="merge" Version="12.2.1.9.14" Name="AgentAreasSupervisor" xmlns="http://xmlns.oracle.com/bc4j">
+
+
+<Properties>
+
+
+<SchemaBasedProperties>
+
+<LABEL ResId="OPERATIONPROJECT.model.BC.VO.AgentAreasSupervisor_LABEL"/>
+
+</SchemaBasedProperties>
+
+</Properties>
+
+<ViewAccessor Name="AgentAreasSupervisor_WeekDaysVOLookup" RowLevelBinds="false" ViewObjectName="OPERATIONPROJECT.model.BC.VO.WeekDaysVO"/>
+
+<ViewAccessor Name="UsersROV" RowLevelBinds="true" ViewObjectName="OPERATIONPROJECT.model.BC.VO.Lookups.UsersROV"/>
+
+<EntityUsage Name="AgentAreasEO" Entity="OPERATIONPROJECT.model.BC.EO.DispatchSupervisorAreasEO"/>
+
+<ViewAttribute Name="AreaFlag" SQLType="BIT" AliasName="VIEW_ATTR" ColumnType="NUMBER" Type="java.lang.Boolean" PrecisionRule="true" IsPersistent="false" IsSelected="false"/>
+
+
+<ViewAttribute Name="TotalSelectedContracts" SQLType="NUMERIC" AliasName="VIEW_ATTR" ColumnType="LONGINT" Type="java.lang.Long" PrecisionRule="true" IsPersistent="false" IsSelected="false">
+
+
+<Properties>
+
+
+<SchemaBasedProperties>
+
+<LABEL ResId="OPERATIONPROJECT.model.BC.VO.AgentAreasSupervisor.TotalSelectedContracts_LABEL"/>
+
+</SchemaBasedProperties>
+
+</Properties>
+
+</ViewAttribute>
+
+<ViewAttribute Name="Agent" AliasName="AGENT" PrecisionRule="true" EntityUsage="AgentAreasEO" EntityAttrName="Agent"/>
+
+<ViewAttribute Name="AnsweredResult" AliasName="ANSWERED_RESULT" PrecisionRule="true" EntityUsage="AgentAreasEO" EntityAttrName="AnsweredResult"/>
+
+<ViewAttribute Name="AreaId" AliasName="AREA_ID" PrecisionRule="true" EntityUsage="AgentAreasEO" EntityAttrName="AreaId"/>
+
+<ViewAttribute Name="AreaName" AliasName="AREA_NAME" PrecisionRule="true" EntityUsage="AgentAreasEO" EntityAttrName="AreaName"/>
+
+<ViewAttribute Name="AreaStatus" AliasName="AREA_STATUS" PrecisionRule="true" EntityUsage="AgentAreasEO" EntityAttrName="AreaStatus"/>
+
+<ViewAttribute Name="AssignedDrivers" AliasName="ASSIGNED_DRIVERS" PrecisionRule="true" EntityUsage="AgentAreasEO" EntityAttrName="AssignedDrivers"/>
+
+<ViewAttribute Name="AssignedSpares" AliasName="ASSIGNED_SPARES" PrecisionRule="true" EntityUsage="AgentAreasEO" EntityAttrName="AssignedSpares"/>
+
+<ViewAttribute Name="BoverLostDispatched" AliasName="BOVER_LOST_DISPATCHED" PrecisionRule="true" EntityUsage="AgentAreasEO" EntityAttrName="BoverLostDispatched"/>
+
+<ViewAttribute Name="ConfirmedDelivery" AliasName="CONFIRMED_DELIVERY" PrecisionRule="true" EntityUsage="AgentAreasEO" EntityAttrName="ConfirmedDelivery"/>
+
+<ViewAttribute Name="CoverDate" AliasName="COVER_DATE" PrecisionRule="true" EntityUsage="AgentAreasEO" EntityAttrName="CoverDate"/>
+
+<ViewAttribute Name="DispatchableContracts" AliasName="DISPATCHABLE_CONTRACTS" PrecisionRule="true" EntityUsage="AgentAreasEO" EntityAttrName="DispatchableContracts"/>
+
+<ViewAttribute Name="DriversName" AliasName="DRIVERS_NAME" PrecisionRule="true" EntityUsage="AgentAreasEO" EntityAttrName="DriversName"/>
+
+<ViewAttribute Name="Id" AliasName="ID" PrecisionRule="true" EntityUsage="AgentAreasEO" EntityAttrName="Id"/>
+
+<ViewAttribute Name="NeedCall" AliasName="NEED_CALL" PrecisionRule="true" EntityUsage="AgentAreasEO" EntityAttrName="NeedCall"/>
+
+<ViewAttribute Name="PNumForDispatch" AliasName="P_NUM_FOR_DISPATCH" PrecisionRule="true" EntityUsage="AgentAreasEO" EntityAttrName="PNumForDispatch"/>
+
+<ViewAttribute Name="Promos" AliasName="PROMOS" PrecisionRule="true" EntityUsage="AgentAreasEO" EntityAttrName="Promos"/>
+
+<ViewAttribute Name="Splitted" AliasName="SPLITTED" PrecisionRule="true" EntityUsage="AgentAreasEO" EntityAttrName="Splitted"/>
+
+<ViewAttribute Name="SplittedOn2Drivers" AliasName="SPLITTED_ON_2_DRIVERS" PrecisionRule="true" EntityUsage="AgentAreasEO" EntityAttrName="SplittedOn2Drivers"/>
+
+<ViewAttribute Name="StatusName" AliasName="STATUS_NAME" PrecisionRule="true" EntityUsage="AgentAreasEO" EntityAttrName="StatusName"/>
+
+<ViewAttribute Name="StreetCounts" AliasName="STREET_COUNTS" PrecisionRule="true" EntityUsage="AgentAreasEO" EntityAttrName="StreetCounts"/>
+
+<ViewAttribute Name="StreetIds" AliasName="STREET_IDS" PrecisionRule="true" EntityUsage="AgentAreasEO" EntityAttrName="StreetIds"/>
+
+<ViewAttribute Name="TotalContracts" AliasName="TOTAL_CONTRACTS" PrecisionRule="true" EntityUsage="AgentAreasEO" EntityAttrName="TotalContracts"/>
+
+<ViewAttribute Name="WorkDate" AliasName="WORK_DATE" PrecisionRule="true" EntityUsage="AgentAreasEO" EntityAttrName="WorkDate"/>
+  <ViewAttribute
+    Name="PilotFlag"
+    PrecisionRule="true"
+    EntityAttrName="PilotFlag"
+    EntityUsage="AgentAreasEO"
+    AliasName="PILOT_FLAG"/>
+  <ViewAttribute
+    Name="SpareName"
+    PrecisionRule="true"
+    EntityAttrName="SpareName"
+    EntityUsage="AgentAreasEO"
+    AliasName="SPARE_NAME"/>
+  <ViewAttribute
+    Name="CollectionDriver"
+    PrecisionRule="true"
+    EntityAttrName="CollectionDriver"
+    EntityUsage="AgentAreasEO"
+    AliasName="COLLECTION_DRIVER"/>
+  <ViewAttribute
+    Name="CollectionDriverId"
+    PrecisionRule="true"
+    EntityAttrName="CollectionDriverId"
+    EntityUsage="AgentAreasEO"
+    AliasName="COLLECTION_DRIVER_ID"/>
+  <ViewAttribute
+    Name="CollectionSpare"
+    PrecisionRule="true"
+    EntityAttrName="CollectionSpare"
+    EntityUsage="AgentAreasEO"
+    AliasName="COLLECTION_SPARE"/>
+  <ViewAttribute
+    Name="CollectionSpareId"
+    PrecisionRule="true"
+    EntityAttrName="CollectionSpareId"
+    EntityUsage="AgentAreasEO"
+    AliasName="COLLECTION_SPARE_ID"/>
+  <ViewLinkAccessor Name="AssignedDriversAreas" Type="oracle.jbo.RowIterator" IsUpdateable="false" ViewLink="OPERATIONPROJECT.model.BC.VO.VL.Areas_AssignedDriversVL"/>
+
+<ViewLinkAccessor Name="DriversStreet" Type="oracle.jbo.RowIterator" IsUpdateable="false" ViewLink="OPERATIONPROJECT.model.BC.VO.VL.DriversStreetSuperVisorAreasVL"/>
+
+<ViewLinkAccessor Name="DailyWork" Type="oracle.jbo.RowIterator" IsUpdateable="false" ViewLink="OPERATIONPROJECT.model.BC.VO.VL.SupervisorAssignedStreetsVL"/>
+
+
+<ResourceBundle>
+
+<PropertiesBundle PropertiesFile="OPERATIONPROJECT.model.BC.ModelBundle"/>
+
+</ResourceBundle>
+
+
+<DeclarativeWhereClause Name="DeclarativeWhereClause">
+
+
+<ViewCriteria Name="AgentAreasSupervisorWhereCriteria" ViewObjectName="OPERATIONPROJECT.model.BC.VO.AgentAreasSupervisor" Mode="3" Conjunction="AND">
+
+
+<ViewCriteriaRow Name="AgentAreasSupervisorWhereCriteria_row_0" UpperColumns="1">
+
+<ViewCriteriaItem Name="Splitted" Conjunction="AND" Required="Optional" Operator="ISBLANK" ViewAttribute="Splitted"/>
+
+<ViewCriteriaItem Name="SplittedOn2Drivers" Conjunction="AND" Required="Optional" Operator="ISBLANK" ViewAttribute="SplittedOn2Drivers"/>
+
+</ViewCriteriaRow>
+
+</ViewCriteria>
+
+</DeclarativeWhereClause>
+</ViewObject>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu">
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <itemNode id="WeekDaysVOMI" label="#{nls['MENU1_TITLE_WEEKDAYSVO']}" icon="../jheadstart/images/group-icon.png"
+              action="uishell:WeekDaysVO" focusViewId="WeekDaysVO" rendered="#{MTSPermission['WeekDaysVO.view']}"></itemNode>
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <itemNode id="WeekDaysAgentVOMI" label="#{nls['MENU1_TITLE_WEEKDAYSAGENTVO']}"
+              icon="../jheadstart/images/group-icon.png" action="uishell:WeekDaysAgentVO" focusViewId="WeekDaysAgentVO"
+              rendered="#{MTSPermission['WeekDaysAgentVO.view']}"></itemNode>
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <itemNode id="WeekDaysSupervisorVOMI" label="#{nls['MENU1_TITLE_WEEKDAYSSUPERVISORVO']}"
+              icon="../jheadstart/images/group-icon.png" action="uishell:WeekDaysSupervisorVO"
+              focusViewId="WeekDaysSupervisorVO" rendered="#{MTSPermission['WeekDaysSupervisorVO.view']}"></itemNode>
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <itemNode id="AccountingTeamLeaderMI" label="#{nls['MENU1_TITLE_ACCOUNTINGTEAMLEADER']}"
+              icon="../jheadstart/images/group-icon.png" action="uishell:AccountingTeamLeader"
+              focusViewId="AccountingTeamLeader" rendered="#{MTSPermission['AccountingTeamLeader.view']}"></itemNode>
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <itemNode id="AccountingAgentMI" label="#{nls['MENU1_TITLE_ACCOUNTINGAGENT']}"
+              icon="../jheadstart/images/group-icon.png" action="uishell:AccountingAgent" focusViewId="AccountingAgent"
+              rendered="#{MTSPermission['AccountingAgent.view']}"></itemNode>
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <itemNode id="AccountingDispatchSupervisorMI" label="#{nls['MENU1_TITLE_ACCOUNTINGDISPATCHSUPERVISOR']}"
+              icon="../jheadstart/images/group-icon.png" action="uishell:AccountingDispatchSupervisor"
+              focusViewId="AccountingDispatchSupervisor"
+              rendered="#{MTSPermission['AccountingDispatchSupervisor.view']}"></itemNode>
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+</menu>

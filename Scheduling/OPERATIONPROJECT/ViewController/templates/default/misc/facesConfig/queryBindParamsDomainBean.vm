@@ -1,0 +1,36 @@
+## revision_history
+## 18-may-2010   Steven Davelaar
+## 1.2           Added id property to all elements
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+#set ($bean = ${JHS.current.managedBean})
+#set ($queryObject = ${JHS.current.domain})
+
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">${bean.beanName}</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.QueryBindParams</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">request</managed-bean-scope>
+    #if ($queryObject.namedQueryBindParams) 
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">namedParamDefs</property-name>
+      <map-entries id="#NEW_ID("__")">
+       #foreach ($bindParam in $queryObject.namedQueryBindParams.keySet())
+        <map-entry id="#NEW_ID("__")">
+          <key id="#NEW_ID("__")">$bindParam</key>
+          <value id="#NEW_ID("__")">#{'$queryObject.namedQueryBindParams.get($bindParam)'}</value>
+        </map-entry>
+       #end 
+      </map-entries>
+    </managed-property>
+    #else
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">indexedParamDefs</property-name>
+      <list-entries id="#NEW_ID("__")">
+       #foreach ($bindParam in $queryObject.indexedQueryBindParams)
+          <value id="#NEW_ID("__")">#{'$bindParam'}</value>
+       #end 
+      </list-entries>
+    </managed-property>
+    #end
+  </managed-bean>
+

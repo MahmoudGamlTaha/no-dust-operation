@@ -1,0 +1,10 @@
+## revision_history
+## 04-jan-2011   Steven Davelaar
+## 1.2           Removed actionListener property, no longer needed we now use navigationList binding
+##               in selectGroup.vm 
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+<af:button 
+    #if ($JHS.current.group.formUpdateAllowed) textAndAccessKey="#EDIT_BUTTON_LABEL()" #else textAndAccessKey="#VIEW_BUTTON_LABEL()" #end 
+    action="${JHS.facesConfigGenerator.addNavigationCase(${JHS.current.group},${JHS.page.name}, "details", ${JHS.current.pageComponent.detailsPage.name})}"
+    rendered="#{#GROUP_HAS_ROW()}" id="#NEW_ID("cb")"/>

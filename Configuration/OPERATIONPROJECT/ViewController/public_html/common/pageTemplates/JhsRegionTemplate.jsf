@@ -1,0 +1,55 @@
+<af:pageTemplateDef xmlns:af="http://xmlns.oracle.com/adf/faces/rich" var="attrs" definition="private"
+                    xmlns:f="http://java.sun.com/jsf/core" xmlns:afc="http://xmlns.oracle.com/adf/faces/rich/component">
+    <af:xmlContent>
+        <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+            <description>This component lays out an entire region.</description>
+            <facet>
+                <description>The main page content.</description>
+                <facet-name>pageContent</facet-name>
+            </facet>
+            <facet>
+                <description>The content of all popups used in the page fragment</description>
+                <facet-name>popups</facet-name>
+            </facet>
+            <facet>
+                <description>The process train (wizards).</description>
+                <facet-name>processTrain</facet-name>
+            </facet>
+            <attribute>
+                <description>display breadcrumbs</description>
+                <attribute-name>showBreadcrumbs</attribute-name>
+                <attribute-class>boolean</attribute-class>
+                <default-value>true</default-value>
+            </attribute>
+        </component>
+    </af:xmlContent>
+    <af:panelStretchLayout topHeight="auto" id="pt_psl1" bottomHeight="0" styleClass="AFStretchWidth">
+        <f:facet name="top">
+            <af:group id="pt_g1">
+                <af:breadCrumbs rendered="#{attrs.showBreadcrumbs and (pageFlowScope.jhsBreadcrumbStack.size gt 1)}"
+                                var="bc" varStatus="vs" value="#{pageFlowScope.jhsBreadcrumbStack}" id="bcr">
+                    <f:facet name="nodeStamp">
+                        <af:commandNavigationItem id="ni" action="#{bc.doAction}" textAndAccessKey="#{bc.label}"
+                                                  visible="#{pageFlowScope.jhsBreadcrumbStack.rowIndex lt (pageFlowScope.jhsBreadcrumbStack.size-1)}"/>
+                    </f:facet>
+                </af:breadCrumbs>
+                <af:facetRef facetName="processTrain"/>
+            </af:group>
+        </f:facet>
+        <f:facet name="center">
+            <af:facetRef facetName="pageContent"/>
+        </f:facet>
+        <f:facet name="bottom">
+            <af:group id="pt_g2">
+                <af:popup id="pendingChangesPopup" childCreation="deferred"
+                          binding="#{pageFlowScope.pendingChangesBean.alertPopup}">
+                    <af:dialog id="pendingChangesDialog" type="yesNo" title="#{nls['PENDING_CHANGES_TITLE']}"
+                               dialogListener="#{pageFlowScope.pendingChangesBean.processDialogEvent}" modal="true">
+                        <af:outputText value="#{nls['PENDING_CHANGES_TEXT']}" id="pt_ot55"/>
+                    </af:dialog>
+                </af:popup>
+                <af:facetRef facetName="popups"/>
+            </af:group>
+        </f:facet>
+    </af:panelStretchLayout>
+</af:pageTemplateDef>

@@ -1,0 +1,55 @@
+## revision_history
+## 18-nov-2011   Steven Davelaar
+## 2.2           Add calls to ADD_CUR_GROUP_ACTION for 4 browse actions
+##               Added shortDesc property to 4 browse buttons
+## 04-nov-2009   Steven Davelaar
+## 2.1           Hide form browse buttons when only one row found
+## 23-jun-2009   Paco van der Linden
+## 2.0           Restructured layout according to (stretching) best-practices.
+## 07-may-2009   Paco van der Linden
+## 1.2           Solved inconsistent use of group.shortName vs. group.name
+## 15-jun-2007   Jaco Verheul. R11
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+
+## group layout container must have partial trigger pointing to panel group layout id
+## of form browse buttons
+
+#if ($JHS.current.group.databound && !$JHS.current.group.hasTreeFormLayout)
+     <af:panelGroupLayout id="${JHS.current.group.shortName}fbb" layout="horizontal"
+     rendered="#{#GROUP_HAS_ROW() and #ITERATOR().estimatedRowCount>1 and #GROUP_NOT_IN_CREATE_MODE() and !pageFlowScope.hideFormBrowseButtons}" partialTriggers="${JHS.current.group.shortName}First ${JHS.current.group.shortName}Previous ${JHS.current.group.shortName}Next ${JHS.current.group.shortName}Last">
+      #ADD_CUR_GROUP_PARTIAL_TRIGGER("${JHS.current.group.shortName}fbb")
+      <af:button actionListener="#{bindings.First${JHS.current.group.name}.execute}"
+                      id="${JHS.current.group.shortName}First" partialSubmit="true"
+                      icon="/afr/shuttleleftall_ena.png" shortDesc="#FIRST_ROW_LABEL()"
+                      rendered="#{#ITERATOR().rangeStart+#ITERATOR().currentRowIndexInRange+1>1}">
+      </af:button>
+      #ADD_CUR_GROUP_ACTION("FirstRow" "${JHS.current.group.shortName}First")
+      <af:image source="/afr/shuttleleftall_dis.png" rendered="#{!(#ITERATOR().rangeStart+#ITERATOR().currentRowIndexInRange+1>1)}" id="#NEW_ID("img")"/>
+      <af:button actionListener="#{bindings.Previous${JHS.current.group.name}.execute}"
+                       icon="/afr/shuttleleft_ena.png" shortDesc="#PREVIOUS_ROW_LABEL()"
+                      id="${JHS.current.group.shortName}Previous" partialSubmit="true"
+                      rendered="#{#ITERATOR().rangeStart+#ITERATOR().currentRowIndexInRange+1>1}">
+      </af:button>
+      #ADD_CUR_GROUP_ACTION("PreviousRow" "${JHS.current.group.shortName}Previous")
+      <af:image source="/afr/shuttleleft_dis.png" rendered="#{!(#ITERATOR().rangeStart+#ITERATOR().currentRowIndexInRange+1>1)}" id="#NEW_ID("img")"/>
+      <af:spacer width="4" height="1" id="#NEW_ID("sp")"/>
+      <af:outputFormatted styleUsage="instruction"
+                          inlineStyle="white-space:nowrap; vertical-align:bottom;" 
+                          value=" [#{#ITERATOR().rangeStart+#ITERATOR().currentRowIndexInRange+1} / #{#ITERATOR().estimatedRowCount}] " id="#NEW_ID("of")"/>
+      <af:button actionListener="#{bindings.Next${JHS.current.group.name}.execute}"
+                      icon="/afr/shuttleright_ena.png" shortDesc="#NEXT_ROW_LABEL()"
+                      id="${JHS.current.group.shortName}Next" partialSubmit="true"
+                      rendered="#{#ITERATOR().rangeStart+#ITERATOR().currentRowIndexInRange+1 lt #ITERATOR().estimatedRowCount}">
+      </af:button>
+      #ADD_CUR_GROUP_ACTION("NextRow" "${JHS.current.group.shortName}Next")
+      <af:image source="/afr/shuttleright_dis.png" rendered="#{!(#ITERATOR().rangeStart+#ITERATOR().currentRowIndexInRange+1 lt #ITERATOR().estimatedRowCount)}" id="#NEW_ID("img")"/>
+      <af:button actionListener="#{bindings.Last${JHS.current.group.name}.execute}"
+        icon="/afr/shuttlerightall_ena.png" shortDesc="#LAST_ROW_LABEL()"
+                      id="${JHS.current.group.shortName}Last" partialSubmit="true"
+                      rendered="#{#ITERATOR().rangeStart+#ITERATOR().currentRowIndexInRange+1 lt #ITERATOR().estimatedRowCount}">
+      </af:button>
+      #ADD_CUR_GROUP_ACTION("LastRow" "${JHS.current.group.shortName}Last")
+      <af:image source="/afr/shuttlerightall_dis.png" rendered="#{!(#ITERATOR().rangeStart+#ITERATOR().currentRowIndexInRange+1 lt #ITERATOR().estimatedRowCount)}" id="#NEW_ID("img")"/>
+</af:panelGroupLayout>
+#end

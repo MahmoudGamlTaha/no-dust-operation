@@ -1,0 +1,7 @@
+## revision_history
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+<af:button partialSubmit="true" id="#QUICK_SEARCH_BUTTON_ID()"
+                  immediate="true"
+                  textAndAccessKey="#QUICK_SEARCH_LABEL()"
+                  action="#{#SEARCH_BEAN().switchToQuickSearchMode}"/>

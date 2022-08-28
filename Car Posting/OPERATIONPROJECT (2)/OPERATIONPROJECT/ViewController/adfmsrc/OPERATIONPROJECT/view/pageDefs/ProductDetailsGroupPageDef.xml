@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="ProductDetailsGroupPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="validateCurrentRows">
+  <parameters/>
+  <executables>
+    <invokeAction id="clearDeepLinkViewCriteriaInvoke" Binds="clearDeepLinkViewCriteria" Refresh="renderModel"
+                  RefreshCondition="#{'true' != pageFlowScope.jhsQueryByKeyValue}"/>
+    <iterator id="ProductDetailsGroupIterator" Binds="ProductDetailsHubReconciliationSummaryVO1"
+              DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <searchRegion id="ProductDetailsGroupIteratorQuery" Binds="ProductDetailsGroupIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true"
+                  DefaultQuickSearchAttrName="ProductName"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator id="ProductDetailsSummaryIterator" Binds="ProductDetailsProductDetailsSummaryVO1"
+              DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <searchRegion id="ProductDetailsSummaryIteratorQuery" Binds="ProductDetailsSummaryIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true"
+                  DefaultQuickSearchAttrName="PilotName"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator id="TotalProductsDetailsIterator" Binds="ProductDetailsTotalProductDetailsSummaryVO1"
+              DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <searchRegion id="TotalProductsDetailsIteratorQuery" Binds="TotalProductsDetailsIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true"
+                  DefaultQuickSearchAttrName="ProductName"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator id="RLostIterator" Binds="ProductDetailsRLostReconciliationVO1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+    <searchRegion id="RLostIteratorQuery" Binds="RLostIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="PilotName"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <variableIterator id="variables">
+      <variable Name="RLostLostHistoryVar" Type="String"/>
+    </variableIterator>
+    <iterator id="LostIterator" Binds="ProductDetailsLostReconciliationVO1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+    <searchRegion id="LostIteratorQuery" Binds="LostIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="PilotName"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator id="EligibleRLostHeaderVO1Iterator" Binds="EligibleRLostHeaderVO1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+    <iterator Binds="EligibleLostHeaderVO1" RangeSize="10" DataControl="AppModuleAMDataControl"
+              id="EligibleLostHeaderVO1Iterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="clearDeepLinkViewCriteria" RequiresUpdateModel="true" Action="invokeMethod"
+                  DataControl="AppModuleAMDataControl" InstanceName="AppModuleAMDataControl.dataProvider"
+                  MethodName="clearDeepLinkViewCriteria"
+                  ReturnName="AppModuleAMDataControl.methodResults.AppModuleAMDataControl_dataProvider_clearDeepLinkViewCriteria_result"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="viewObjectUsage" NDValue="ProductDetailsHubReconciliationSummaryVO1"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="requeryIfFound" NDValue="#{true}" NDType="java.lang.Boolean"/>
+    </methodAction>
+    <tree id="ProductDetailsGroupTable" IterBinding="ProductDetailsGroupIterator">
+      <nodeDefinition Name="ProductDetailsGroup"
+                      DefName="OPERATIONPROJECT.model.BC.VO.ProductDetailsHubReconciliationSummaryVO">
+        <AttrNames>
+          <Item Value="ProductName"/>
+          <Item Value="OutQuantity"/>
+          <Item Value="ExpectedReturned"/>
+          <Item Value="QtyReturned"/>
+          <Item Value="ProductBalance"/>
+          <Item Value="DirtyBalance"/>
+          <Item Value="HubClean"/>
+          <Item Value="DataClean"/>
+          <Item Value="HubDirty"/>
+          <Item Value="DataDirty"/>
+          <Item Value="HubCancel"/>
+          <Item Value="DataCancel"/>
+          <Item Value="HubNew"/>
+          <Item Value="DataNew"/>
+          <Item Value="LostNew"/>
+          <Item Value="HubRlost"/>
+          <Item Value="ReconciledRlost"/>
+          <Item Value="NetRlost"/>
+          <Item Value="RlostEligble"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ProductDetailsGroupIterator" id="FirstProductDetailsGroup" RequiresUpdateModel="true"
+            Action="first"/>
+    <action IterBinding="ProductDetailsGroupIterator" id="PreviousProductDetailsGroup" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="ProductDetailsGroupIterator" id="NextProductDetailsGroup" RequiresUpdateModel="true"
+            Action="next"/>
+    <action IterBinding="ProductDetailsGroupIterator" id="LastProductDetailsGroup" RequiresUpdateModel="true"
+            Action="last"/>
+    <action IterBinding="ProductDetailsGroupIterator" id="SetCurrentRowWithKeyProductDetailsGroup"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrProductDetailsGroup}" NDType="java.lang.String"/>
+    </action>
+    <tree id="ProductDetailsSummaryTable" IterBinding="ProductDetailsSummaryIterator">
+      <nodeDefinition Name="ProductDetailsSummary"
+                      DefName="OPERATIONPROJECT.model.BC.VO.ProductDetailsProductDetailsSummaryVO">
+        <AttrNames>
+          <Item Value="PilotName"/>
+          <Item Value="Product"/>
+          <Item Value="OutQuantity"/>
+          <Item Value="ExpectedReturned"/>
+          <Item Value="QtyReturned"/>
+          <Item Value="ProductBalance"/>
+          <Item Value="DirtyBalance"/>
+          <Item Value="PilotClean"/>
+          <Item Value="DataClean"/>
+          <Item Value="PilotDirty"/>
+          <Item Value="DataDirty"/>
+          <Item Value="PilotCancel"/>
+          <Item Value="DataCancel"/>
+          <Item Value="PilotNew"/>
+          <Item Value="DataNew"/>
+          <Item Value="LostNew"/>
+          <Item Value="RLost"/>
+          <Item Value="ReconciliatedRlost"/>
+          <Item Value="NetRlost"/>
+          <Item Value="RlostEligible"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ProductDetailsSummaryIterator" id="FirstProductDetailsSummary" RequiresUpdateModel="true"
+            Action="first"/>
+    <action IterBinding="ProductDetailsSummaryIterator" id="PreviousProductDetailsSummary" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="ProductDetailsSummaryIterator" id="NextProductDetailsSummary" RequiresUpdateModel="true"
+            Action="next"/>
+    <action IterBinding="ProductDetailsSummaryIterator" id="LastProductDetailsSummary" RequiresUpdateModel="true"
+            Action="last"/>
+    <action IterBinding="ProductDetailsSummaryIterator" id="SetCurrentRowWithKeyProductDetailsSummary"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrProductDetailsSummary}"
+                 NDType="java.lang.String"/>
+    </action>
+    <tree id="TotalProductsDetailsTable" IterBinding="TotalProductsDetailsIterator">
+      <nodeDefinition Name="TotalProductsDetails"
+                      DefName="OPERATIONPROJECT.model.BC.VO.ProductDetailsTotalProductDetailsSummaryVO">
+        <AttrNames>
+          <Item Value="ProductName"/>
+          <Item Value="OutQuantity"/>
+          <Item Value="ExpectedReturned"/>
+          <Item Value="QtyReturned"/>
+          <Item Value="ProductBalance"/>
+          <Item Value="DirtyBalance"/>
+          <Item Value="HubClean"/>
+          <Item Value="DataClean"/>
+          <Item Value="HubDirty"/>
+          <Item Value="DataDirty"/>
+          <Item Value="DataCancel"/>
+          <Item Value="HubCancel"/>
+          <Item Value="HubNew"/>
+          <Item Value="DataNew"/>
+          <Item Value="LostNew"/>
+          <Item Value="HubRlost"/>
+          <Item Value="NetRlost"/>
+          <Item Value="RlostElegible"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="TotalProductsDetailsIterator" id="FirstTotalProductsDetails" RequiresUpdateModel="true"
+            Action="first"/>
+    <action IterBinding="TotalProductsDetailsIterator" id="PreviousTotalProductsDetails" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="TotalProductsDetailsIterator" id="NextTotalProductsDetails" RequiresUpdateModel="true"
+            Action="next"/>
+    <action IterBinding="TotalProductsDetailsIterator" id="LastTotalProductsDetails" RequiresUpdateModel="true"
+            Action="last"/>
+    <action IterBinding="TotalProductsDetailsIterator" id="SetCurrentRowWithKeyTotalProductsDetails"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrTotalProductsDetails}" NDType="java.lang.String"/>
+    </action>
+    <tree id="RLostTable" IterBinding="RLostIterator">
+      <nodeDefinition Name="RLost" DefName="OPERATIONPROJECT.model.BC.VO.ProductDetailsRLostReconciliationVO">
+        <AttrNames>
+          <Item Value="PilotName"/>
+          <Item Value="RlostEligible"/>
+          <Item Value="PilotId"/>
+          <Item Value="ProductId"/>
+          <Item Value="ShipmentId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="RLostIterator" id="FirstRLost" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="RLostIterator" id="PreviousRLost" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="RLostIterator" id="NextRLost" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="RLostIterator" id="LastRLost" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="RLostIterator" id="SetCurrentRowWithKeyRLost" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrRLost}" NDType="java.lang.String"/>
+    </action>
+    <tree id="LostTable" IterBinding="LostIterator">
+      <nodeDefinition Name="Lost" DefName="OPERATIONPROJECT.model.BC.VO.ProductDetailsLostReconciliationVO">
+        <AttrNames>
+          <Item Value="PilotName"/>
+          <Item Value="ProductBalance"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="LostIterator" id="FirstLost" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="LostIterator" id="PreviousLost" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="LostIterator" id="NextLost" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="LostIterator" id="LastLost" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="LostIterator" id="SetCurrentRowWithKeyLost" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrLost}" NDType="java.lang.String"/>
+    </action>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+    <attributeValues IterBinding="EligibleRLostHeaderVO1Iterator" id="RlostEligble">
+      <AttrNames>
+        <Item Value="RlostEligble"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EligibleLostHeaderVO1Iterator" id="Total">
+      <AttrNames>
+        <Item Value="Total"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

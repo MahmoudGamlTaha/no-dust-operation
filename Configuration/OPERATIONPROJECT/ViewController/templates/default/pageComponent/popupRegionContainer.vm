@@ -1,0 +1,33 @@
+## revision_history
+## 11-feb-2011 Steven Davelaar
+## 1.1         Defer popup child creation, add dialog partialTriggers prop to refresh when modeless
+## 16-oct-2010 Steven Davelaar
+## 1.0         Initial creation
+
+#macro (POPUP_CONTENT)
+<af:popup id="#REGION_POPUP_ID(${JHS.current.regionContainer})" contentDelivery="lazyUncached" #POPUP_DEFERRED_CHILD_CREATION()>
+ <af:dialog  id="#NEW_ID("nw")" title="#REGION_CONTAINER_TITLE()"  type="ok" #REGION_CONTAINER_HELP()
+             partialTriggers="${JHS.current.pageComponent.topLayoutContainerPath} ${JHS.current.pageComponent.tablePath}"
+             resize="on" #if (${JHS.current.regionContainer.enableStretching}) stretchChildren="first" #end
+             #JHS_PROP("contentWidth" $JHS.current.regionContainer.widthAsNumber)
+             #JHS_PROP("contentHeight" $JHS.current.regionContainer.heightAsNumber)
+             #if (${JHS.current.regionContainer.layoutStyle}=="modalPopup") modal="true" #else modal="false" #end >
+   #JHS_PARSE("VERTICAL_REGION_CONTAINER" ${JHS.current.model})
+ </af:dialog>
+</af:popup>
+#end
+
+## if popup region is dependent on an item, the context info facet of the item is used to launch the popup
+## and no button is required here. In that case the parsed popup content is cached against the item model, and then 
+## retrieved and added to the page through tableColumn.vm (item displayed in table), or FORM_ITEMS macro (item displayed in form)
+## or TABLE_OVERFLOW_ITEMS macro (item is displayed in table overflow).
+## We have to do this because the af:popup cannot be added inside the item context facet.
+#if (!${JHS.current.pageComponent.processingAdvancedSearchArea})
+  #if (!${JHS.current.regionContainer.hasDependsOnItem} )
+    <af:button id="#NEW_ID("cb")" textAndAccessKey="#REGION_CONTAINER_TITLE()" >
+      <af:showPopupBehavior popupId="${JHS.page.addPopup("#REGION_POPUP_ID(${JHS.current.regionContainer})","${JHS.engine.fullNamingContainerPath}","#POPUP_CONTENT()")}"/>
+    </af:button>
+  #else
+    ${JHS.page.addPopup("#REGION_POPUP_ID(${JHS.current.regionContainer})","${JHS.engine.fullNamingContainerPath}","#POPUP_CONTENT()",false)}
+  #end
+#end  

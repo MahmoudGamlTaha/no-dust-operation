@@ -1,0 +1,6 @@
+<af:link text="Products"  id="l1" action="GoToProductContractPage" useWindow="true"
+                                                windowHeight="500" windowWidth="1100"
+                                                         returnListener="#{DataTeamAgentBean.RefreshPendingAssView}">
+                                                    <af:setActionListener from="#{row.bindings.AssignmentId.inputValue}"
+                                                                          to="#{pageFlowScope.AssignmentId}"/>
+                                                </af:link>

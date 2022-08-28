@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="DataTeamAgentEndOfDayReviewPageDef" Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="validateCurrentRows">
+  <parameters/>
+  <executables>
+    <invokeAction id="clearDeepLinkViewCriteriaInvoke" Binds="clearDeepLinkViewCriteria" Refresh="renderModel"
+                  RefreshCondition="#{'true' != pageFlowScope.jhsQueryByKeyValue}"/>
+    <iterator id="DataTeamAgentEndOfDayReviewIterator" Binds="DataTeamAgentEndOfDayReviewVo1"
+              DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <searchRegion id="DataTeamAgentEndOfDayReviewIteratorSearchQuery" Binds="DataTeamAgentEndOfDayReviewIterator"
+                  Criteria="Search" InitialQueryOverridden="true" DefaultQuickSearchAttrName="ReturnDate"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <searchRegion id="DataTeamAgentEndOfDayReviewIteratorQuery" Binds="DataTeamAgentEndOfDayReviewIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true"
+                  DefaultQuickSearchAttrName="ReturnDate"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator id="EndOfDayRevDetailsIterator" Binds="EndOfDayRevDetailsVO1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+    <searchRegion id="EndOfDayRevDetailsIteratorQuery" Binds="EndOfDayRevDetailsIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true" DefaultQuickSearchAttrName="Status"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+  </executables>
+  <bindings>
+    <methodAction id="clearDeepLinkViewCriteria" RequiresUpdateModel="true" Action="invokeMethod"
+                  DataControl="AppModuleAMDataControl" InstanceName="AppModuleAMDataControl.dataProvider"
+                  MethodName="clearDeepLinkViewCriteria"
+                  ReturnName="AppModuleAMDataControl.methodResults.AppModuleAMDataControl_dataProvider_clearDeepLinkViewCriteria_result"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="viewObjectUsage" NDValue="DataTeamAgentEndOfDayReviewVo1" NDType="java.lang.String"/>
+      <NamedData NDName="requeryIfFound" NDValue="#{true}" NDType="java.lang.Boolean"/>
+    </methodAction>
+    <attributeValues IterBinding="DataTeamAgentEndOfDayReviewIterator" id="DataTeamAgentEndOfDayReviewReturnDate">
+      <AttrNames>
+        <Item Value="ReturnDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DataTeamAgentEndOfDayReviewIterator" id="DataTeamAgentEndOfDayReviewAreaName">
+      <AttrNames>
+        <Item Value="AreaName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DataTeamAgentEndOfDayReviewIterator" id="DataTeamAgentEndOfDayReviewDriverName">
+      <AttrNames>
+        <Item Value="DriverName"/>
+      </AttrNames>
+    </attributeValues>
+    <tree id="DataTeamAgentEndOfDayReviewTable" IterBinding="DataTeamAgentEndOfDayReviewIterator">
+      <nodeDefinition Name="DataTeamAgentEndOfDayReview"
+                      DefName="OPERATIONPROJECT.model.BC.VO.DataTeamAgentEndOfDayReviewVo">
+        <AttrNames>
+          <Item Value="ReturnDate"/>
+          <Item Value="AreaName"/>
+          <Item Value="DriverName"/>
+          <Item Value="TotalContracts"/>
+          <Item Value="DoneContracts"/>
+          <Item Value="DonePer"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="DataTeamAgentEndOfDayReviewIterator" id="FirstDataTeamAgentEndOfDayReview"
+            RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="DataTeamAgentEndOfDayReviewIterator" id="PreviousDataTeamAgentEndOfDayReview"
+            RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="DataTeamAgentEndOfDayReviewIterator" id="NextDataTeamAgentEndOfDayReview"
+            RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="DataTeamAgentEndOfDayReviewIterator" id="LastDataTeamAgentEndOfDayReview"
+            RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="DataTeamAgentEndOfDayReviewIterator" id="SetCurrentRowWithKeyDataTeamAgentEndOfDayReview"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrDataTeamAgentEndOfDayReview}"
+                 NDType="java.lang.String"/>
+    </action>
+    <tree id="EndOfDayRevDetailsTable" IterBinding="EndOfDayRevDetailsIterator">
+      <nodeDefinition Name="EndOfDayRevDetails" DefName="OPERATIONPROJECT.model.BC.VO.EndOfDayRevDetailsVO">
+        <AttrNames>
+          <Item Value="Status"/>
+          <Item Value="PilotName"/>
+          <Item Value="ExpectedMoney"/>
+          <Item Value="ActualMoney"/>
+          <Item Value="ApprovedMoney"/>
+          <Item Value="Notes"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="EndOfDayRevDetailsIterator" id="FirstEndOfDayRevDetails" RequiresUpdateModel="true"
+            Action="first"/>
+    <action IterBinding="EndOfDayRevDetailsIterator" id="PreviousEndOfDayRevDetails" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="EndOfDayRevDetailsIterator" id="NextEndOfDayRevDetails" RequiresUpdateModel="true"
+            Action="next"/>
+    <action IterBinding="EndOfDayRevDetailsIterator" id="LastEndOfDayRevDetails" RequiresUpdateModel="true"
+            Action="last"/>
+    <action IterBinding="EndOfDayRevDetailsIterator" id="SetCurrentRowWithKeyEndOfDayRevDetails"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrEndOfDayRevDetails}" NDType="java.lang.String"/>
+    </action>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich" version="2.1">
+  <jsp:text>
+    <![CDATA[ <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> ]]>
+  </jsp:text>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" title="Editor">
+      <af:form id="f1">
+        <af:panelHeader text="Text Editor" id="ph1">
+          <af:inputText rows="10" columns="100"
+                        value="#{processScope.editorValue}"
+                        maximumLength="#{processScope.editorMaxLength}"
+                        id="it1" label="Text Editor" simple="true"/>
+          <f:facet name="toolbar">
+            <af:toolbar id="t1">
+              <af:commandButton text="Cancel" immediate="true" id="cb1">
+                <af:returnActionListener/>
+              </af:commandButton>
+              <af:commandButton text="OK" id="cb2">
+                <af:returnActionListener value="#{processScope.editorValue}"/>
+              </af:commandButton>
+            </af:toolbar>
+          </f:facet>
+        </af:panelHeader>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

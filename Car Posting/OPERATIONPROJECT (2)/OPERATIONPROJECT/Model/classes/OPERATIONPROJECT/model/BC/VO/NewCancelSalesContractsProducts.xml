@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="NewCancelSalesContractsProducts"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Partial">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="OPERATIONPROJECT.model.BC.VO.NewCancelSalesContractsProducts_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="P_ASSIGNMENT_ID"
+    Kind="where"
+    Type="java.math.BigDecimal"/>
+  <ViewAccessor
+    Name="ProductDataVO1"
+    ViewObjectName="OPERATIONPROJECT.model.BC.VO.ProductDataVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="TreatmentTypesVO1"
+    ViewObjectName="OPERATIONPROJECT.model.BC.VO.TreatmentTypesVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="AllProductsVO1"
+    ViewObjectName="OPERATIONPROJECT.model.BC.VO.AllProductsVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="ProductDeliveryTypeVO1"
+    ViewObjectName="OPERATIONPROJECT.model.BC.VO.Lookups.ProductDeliveryTypeVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_ComponentId"
+    ListVOName="AllProductsVO1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ComponentId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="DmsProductId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ProductName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_TreatmentCode"
+    ListVOName="TreatmentTypesVO1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="TreatmentCode"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="TreatmentId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="TreatmentName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_DeliveryType"
+    ListVOName="ProductDeliveryTypeVO1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="DeliveryType"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Id"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="TypeName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ProductDelivery"
+    ListVOName="ProductDeliveryTypeVO1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ProductDelivery"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Id"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="TypeName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <SQLQuery><![CDATA[SELECT   
+    ProductContractDDownloadEO.ACTION_DATE,   
+    ProductContractDDownloadEO.AID,   
+    ProductContractDDownloadEO.ASSIGN_ID,   
+    ProductContractDDownloadEO.ASSIGNMENT_ID,   
+    ProductContractDDownloadEO.CARD_NO,   
+    ProductContractDDownloadEO.COMPONENT_ID,   
+    ProductContractDDownloadEO.DELIVERY_TYPE,   
+    ProductContractDDownloadEO.DRIVER_ID,   
+    ProductContractDDownloadEO.HANDLE,   
+    ProductContractDDownloadEO.HANDLE_CODE,   
+    ProductContractDDownloadEO.ID,   
+    ProductContractDDownloadEO.ITEM_ID,   
+    ProductContractDDownloadEO.PACKAGE_NO,   
+    ProductContractDDownloadEO.QUANTITY_CANCEL,   
+    ProductContractDDownloadEO.QUANTITY_DIRTY,   
+    ProductContractDDownloadEO.QUNTITY,   
+    ProductContractDDownloadEO.QUNTITY_REPLACED,   
+    ProductContractDDownloadEO.TREATMENT_CODE,   
+    ProductContractDDownloadEO.UNIT_PRICE,   
+    PRODUCT_DELIV_D_VIEW.PRODUCT_DELIVERY,   
+    PRODUCT_DELIV_D_VIEW.ID ID1  
+FROM   
+    PRODUCT_CONTRACT_D_DOWNLOAD ProductContractDDownloadEO,   
+    PRODUCT_DELIV_D_VIEW   
+WHERE   
+    ProductContractDDownloadEO.ASSIGNMENT_ID = :P_ASSIGNMENT_ID and ProductContractDDownloadEO.ID=PRODUCT_DELIV_D_VIEW.ID]]></SQLQuery>
+  <EntityUsage
+    Name="ProductContractDDownloadEO"
+    Entity="OPERATIONPROJECT.model.BC.EO.ProductContractDDownloadEO"/>
+  <EntityUsage
+    Name="PDeliveryDownloadViewEO"
+    Entity="OPERATIONPROJECT.model.BC.EO.PDeliveryDownloadViewEO"
+    Association="OPERATIONPROJECT.model.BC.EO.Assoc.PDeliveryTypeASSOC"
+    AssociationEnd="OPERATIONPROJECT.model.BC.EO.Assoc.PDeliveryTypeASSOC.ProductContractDDownload1"
+    SourceUsage="OPERATIONPROJECT.model.BC.VO.NewCancelSalesContractsProducts.ProductContractDDownloadEO"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="LEFT OUTER JOIN">
+    <DesignTime>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="OPERATIONPROJECT.model.BC.EO.PDeliveryDownloadViewEO.Id"/>
+      </AttrArray>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="OPERATIONPROJECT.model.BC.EO.ProductContractDDownloadEO.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <ViewAttribute
+    Name="ActionDate"
+    PrecisionRule="true"
+    EntityAttrName="ActionDate"
+    EntityUsage="ProductContractDDownloadEO"
+    AliasName="ACTION_DATE"/>
+  <ViewAttribute
+    Name="Aid"
+    PrecisionRule="true"
+    EntityAttrName="Aid"
+    EntityUsage="ProductContractDDownloadEO"
+    AliasName="AID"/>
+  <ViewAttribute
+    Name="AssignId"
+    PrecisionRule="true"
+    EntityAttrName="AssignId"
+    EntityUsage="ProductContractDDownloadEO"
+    AliasName="ASSIGN_ID"/>
+  <ViewAttribute
+    Name="AssignmentId"
+    PrecisionRule="true"
+    EntityAttrName="AssignmentId"
+    EntityUsage="ProductContractDDownloadEO"
+    AliasName="ASSIGNMENT_ID"/>
+  <ViewAttribute
+    Name="CardNo"
+    PrecisionRule="true"
+    EntityAttrName="CardNo"
+    EntityUsage="ProductContractDDownloadEO"
+    AliasName="CARD_NO"/>
+  <ViewAttribute
+    Name="ComponentId"
+    PrecisionRule="true"
+    EntityAttrName="ComponentId"
+    EntityUsage="ProductContractDDownloadEO"
+    AliasName="COMPONENT_ID"
+    LOVName="LOV_ComponentId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DeliveryType"
+    PrecisionRule="true"
+    EntityAttrName="DeliveryType"
+    EntityUsage="ProductContractDDownloadEO"
+    AliasName="DELIVERY_TYPE"
+    LOVName="LOV_DeliveryType">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DriverId"
+    PrecisionRule="true"
+    EntityAttrName="DriverId"
+    EntityUsage="ProductContractDDownloadEO"
+    AliasName="DRIVER_ID"/>
+  <ViewAttribute
+    Name="Handle"
+    PrecisionRule="true"
+    EntityAttrName="Handle"
+    EntityUsage="ProductContractDDownloadEO"
+    AliasName="HANDLE"/>
+  <ViewAttribute
+    Name="HandleCode"
+    PrecisionRule="true"
+    EntityAttrName="HandleCode"
+    EntityUsage="ProductContractDDownloadEO"
+    AliasName="HANDLE_CODE"/>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="ProductContractDDownloadEO"
+    AliasName="ID"/>
+  <ViewAttribute
+    Name="ItemId"
+    PrecisionRule="true"
+    EntityAttrName="ItemId"
+    EntityUsage="ProductContractDDownloadEO"
+    AliasName="ITEM_ID"/>
+  <ViewAttribute
+    Name="PackageNo"
+    PrecisionRule="true"
+    EntityAttrName="PackageNo"
+    EntityUsage="ProductContractDDownloadEO"
+    AliasName="PACKAGE_NO"/>
+  <ViewAttribute
+    Name="QuantityCancel"
+    PrecisionRule="true"
+    EntityAttrName="QuantityCancel"
+    EntityUsage="ProductContractDDownloadEO"
+    AliasName="QUANTITY_CANCEL"/>
+  <ViewAttribute
+    Name="QuantityDirty"
+    PrecisionRule="true"
+    EntityAttrName="QuantityDirty"
+    EntityUsage="ProductContractDDownloadEO"
+    AliasName="QUANTITY_DIRTY"/>
+  <ViewAttribute
+    Name="Quntity"
+    PrecisionRule="true"
+    EntityAttrName="Quntity"
+    EntityUsage="ProductContractDDownloadEO"
+    AliasName="QUNTITY"/>
+  <ViewAttribute
+    Name="QuntityReplaced"
+    PrecisionRule="true"
+    EntityAttrName="QuntityReplaced"
+    EntityUsage="ProductContractDDownloadEO"
+    AliasName="QUNTITY_REPLACED"/>
+  <ViewAttribute
+    Name="TreatmentCode"
+    PrecisionRule="true"
+    EntityAttrName="TreatmentCode"
+    EntityUsage="ProductContractDDownloadEO"
+    AliasName="TREATMENT_CODE"
+    LOVName="LOV_TreatmentCode">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnitPrice"
+    PrecisionRule="true"
+    EntityAttrName="UnitPrice"
+    EntityUsage="ProductContractDDownloadEO"
+    AliasName="UNIT_PRICE"/>
+  <ViewAttribute
+    Name="ProductDelivery"
+    PrecisionRule="true"
+    EntityAttrName="ProductDelivery"
+    EntityUsage="PDeliveryDownloadViewEO"
+    AliasName="PRODUCT_DELIVERY"
+    LOVName="LOV_ProductDelivery">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Id1"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="PDeliveryDownloadViewEO"
+    AliasName="ID1"/>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Id"/>
+  </AttrArray>
+  <ViewLinkAccessor
+    Name="NewCancelSalesContracts"
+    ViewLink="OPERATIONPROJECT.model.BC.VO.VL.NewCancelSalesContractProductsVL"
+    Type="oracle.jbo.server.ViewRowImpl"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="MTS.security.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

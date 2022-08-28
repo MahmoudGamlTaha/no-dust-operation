@@ -1,0 +1,409 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsRegionTemplate.jsf">
+        <f:attribute name="showBreadcrumbs" value="false"/>
+        <!-- DEBUG:BEGIN:WIZARD_PAGE_CONTENT : default/page/wizardPageContent.vm, nesting level: 2 -->
+        <f:facet name="processTrain">
+            <af:train value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}" id="tr0"/>
+        </f:facet>
+        <!-- DEBUG:BEGIN:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3 -->
+        <f:facet name="pageContent">
+            <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4 -->
+            <af:panelStretchLayout topHeight="auto" id="OperationScheduleTopLc"
+                                   partialTriggers=" OperationScheduleDeleteDialog OperationScheduleCancelButton as_OperationSchedule OperationSchedulePC:OperationScheduleArm OperationSchedulePC:OperationScheduleduprmTM OperationSchedulePC:OperationScheduledelrmTM OperationSchedulePC:OperationScheduleArl OperationSchedulePC:OperationScheduleTab:OperationScheduleduprm OperationSchedulePC:OperationScheduleTab:OperationScheduledelrm OperationSchedulePC:OperationScheduleTab:OperationScheduledelrl OperationSchedulePC:OperationScheduleTab:OperationScheduleduprl">
+                <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                <f:facet name="top">
+                    <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                    <af:group id="g0">
+                        <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+                        <af:panelHeader id="ph0" text="#{nls['TABLE_TITLE_OPERATIONSCHEDULE']}">
+                            <f:facet name="toolbar">
+                                <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5 -->
+                                <af:toolbox id="tbox0">
+                                    <af:toolbar id="tbar0">
+                                        <af:group id="gr0">
+                                            <!-- DEBUG:BEGIN:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6 -->
+                                            <!-- DEBUG:END:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6-->
+                                        </af:group>
+                                        <af:group id="gr1"></af:group>
+                                        <af:group id="gr2">
+                                            <af:trainButtonBar value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"/>
+                                            <!-- DEBUG:BEGIN:WIZARD_FINISH_BUTTON : default/button/wizardFinishButton.vm, nesting level: 6 -->
+                                            <af:button action="#{SaveOperationSchedule.execute}"
+                                                       textAndAccessKey="#{nls['FINISH']}"
+                                                       id="OperationScheduleWizardFinishButton"></af:button>
+                                            <!-- DEBUG:END:WIZARD_FINISH_BUTTON : default/button/wizardFinishButton.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6 -->
+                                            <af:button textAndAccessKey="#{nls['CANCEL']}" immediate="true"
+                                                       partialSubmit="true"
+                                                       rendered="#{!pageFlowScope.hideCancelButton}"
+                                                       actionListener="#{jhsRollback.execute}" action="Cancel"
+                                                       id="OperationScheduleCancelButton"></af:button>
+                                            <!-- DEBUG:END:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6-->
+                                        </af:group>
+                                    </af:toolbar>
+                                </af:toolbox>
+                                <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5-->
+                            </f:facet>
+                            <f:facet name="context">
+                                <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5 -->
+                                <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5-->
+                            </f:facet>
+                            <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+                            <!-- DEBUG:BEGIN:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 6 -->
+                            <af:panelGroupLayout id="modelSearchAreaOperationSchedule"
+                                                 rendered="#{!pageFlowScope.createModes.CreateOperationSchedule and !pageFlowScope.hideSearchArea}"
+                                                 partialTriggers="">
+                                <f:attribute name="JhsIgnoreChanges" value="true"/>
+                                <!-- DEBUG:BEGIN:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 7 -->
+                                <af:query id="as_OperationSchedule" headerText="#{nls['ADVANCED_SEARCH']}"
+                                          disclosed="true"
+                                          value="#{bindings.OperationScheduleIteratorQuery.queryDescriptor}"
+                                          model="#{bindings.OperationScheduleIteratorQuery.queryModel}"
+                                          queryListener="#{bindings.OperationScheduleIteratorQuery.processQuery}"
+                                          queryOperationListener="#{bindings.OperationScheduleIteratorQuery.processQueryOperation}"
+                                          rows="1" labelAlignment="start" maxColumns="3"></af:query>
+                                <!-- DEBUG:END:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 7-->
+                            </af:panelGroupLayout>
+                            <!-- DEBUG:END:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 6-->
+                            <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+                        </af:panelHeader>
+                        <af:spacer width="10" height="10" id="sp0"/>
+                    </af:group>
+                    <!-- Popped "disabled" from stretchContext, now: enabled (default) -->
+                </f:facet>
+                <f:facet name="center">
+                    <!-- DEBUG:BEGIN:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5 -->
+                    <af:panelStretchLayout topHeight="0" id="psl0">
+                        <f:facet name="top"></f:facet>
+                        <f:facet name="center">
+                            <af:panelCollection id="OperationSchedulePC" featuresOff="   freeze "
+                                                styleClass="AFStretchWidth">
+                                <f:facet name="menus">
+                                    <!-- DEBUG:BEGIN:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6 -->
+                                    <af:menu textAndAccessKey="#{nls['ACTION_MENU_LABEL']}" id="menu0">
+                                        <af:menu textAndAccessKey="#{nls['GO_TO_MENU_LABEL']}" id="menu1">
+                                            <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                            <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7 -->
+                                            <af:group id="OperationScheduletbb"
+                                                      rendered="#{ bindings.OperationScheduleIterator.currentRow!=null }">
+                                                <af:commandMenuItem actionListener="#{bindings.FirstOperationSchedule.execute}"
+                                                                    id="OperationScheduleFirst" partialSubmit="true"
+                                                                    icon="/afr/shuttleleftall_ena.png"
+                                                                    textAndAccessKey="#{nls['FIRST_ROW']}"></af:commandMenuItem>
+                                                <af:commandMenuItem actionListener="#{bindings.PreviousOperationSchedule.execute}"
+                                                                    icon="/afr/shuttleleft_ena.png"
+                                                                    textAndAccessKey="#{nls['PREVIOUS_ROW']}"
+                                                                    id="OperationSchedulePrevious" partialSubmit="true"></af:commandMenuItem>
+                                                <af:commandMenuItem actionListener="#{bindings.NextOperationSchedule.execute}"
+                                                                    icon="/afr/shuttleright_ena.png"
+                                                                    textAndAccessKey="#{nls['NEXT_ROW']}"
+                                                                    id="OperationScheduleNext" partialSubmit="true"></af:commandMenuItem>
+                                                <af:commandMenuItem actionListener="#{bindings.LastOperationSchedule.execute}"
+                                                                    icon="/afr/shuttlerightall_ena.png"
+                                                                    textAndAccessKey="#{nls['LAST_ROW']}"
+                                                                    id="OperationScheduleLast" partialSubmit="true"></af:commandMenuItem>
+                                            </af:group>
+                                            <!-- DEBUG:END:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7-->
+                                        </af:menu>
+                                        <!-- DEBUG:BEGIN:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7 -->
+                                        <af:commandMenuItem id="OperationScheduleArm"
+                                                            textAndAccessKey="#{nls['ADD_ROW']}" immediate="false"
+                                                            icon="/jheadstart/images/addRow.png" partialSubmit="true"
+                                                            actionListener="#{pageFlowScope.OperationScheduleTable.addRow}"
+                                                            rendered="#{(true) and (MTSPermission['OperationSchedule.create'])}"></af:commandMenuItem>
+                                        <!-- DEBUG:END:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                        <af:commandMenuItem id="OperationScheduleduprmTM"
+                                                            textAndAccessKey="#{nls['DUPLICATE_ROW']}" immediate="true"
+                                                            icon="/jheadstart/images/duplicateRow.png"
+                                                            partialSubmit="true"
+                                                            actionListener="#{pageFlowScope.OperationScheduleTable.duplicateRow}"
+                                                            rendered="#{MTSPermission['OperationSchedule.create']}"></af:commandMenuItem>
+                                        <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                        <af:commandMenuItem id="OperationScheduledelrmTM"
+                                                            textAndAccessKey="#{nls['DELETE_ROW']}"
+                                                            icon="/jheadstart/images/deleteRow.png" partialSubmit="true"
+                                                            immediate="true"
+                                                            rendered="#{MTSPermission['OperationSchedule.delete']}">
+                                            <af:showPopupBehavior popupId="::OperationScheduleDeletePopup"/>
+                                        </af:commandMenuItem>
+                                        <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7-->
+                                    </af:menu>
+                                    <!-- DEBUG:END:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6-->
+                                </f:facet>
+                                <f:facet name="toolbar">
+                                    <!-- DEBUG:BEGIN:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6 -->
+                                    <af:toolbar id="tbar1">
+                                        <!-- DEBUG:BEGIN:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7 -->
+                                        <!-- Also create CreateOperationSchedule bean so we can start table group in create mode as well -->
+                                        <af:link id="OperationScheduleArl" immediate="false"
+                                                 rendered="#{(true) and (MTSPermission['OperationSchedule.create'])}"
+                                                 partialSubmit="true"
+                                                 actionListener="#{pageFlowScope.OperationScheduleTable.addRow}"
+                                                 shortDesc="#{nls['ADD_ROW']}" icon="/jheadstart/images/addRow.png"/>
+                                        <!-- DEBUG:END:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7-->
+                                    </af:toolbar>
+                                    <!-- DEBUG:END:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6-->
+                                </f:facet>
+                                <f:facet name="statusbar"/>
+                                <af:table id="OperationScheduleTab" contentDelivery="immediate"
+                                          value="#{bindings.OperationScheduleTable.collectionModel}"
+                                          columnStretching="last" rowBandingInterval="0" editingMode="editAll"
+                                          columnSelection="multiple" contextMenuSelect="true" rowSelection="single"
+                                          selectionListener="#{pageFlowScope.OperationScheduleTable.makeCurrent}"
+                                          selectedRowKeys="#{pageFlowScope.OperationScheduleTable.selectedRow}"
+                                          rowDisclosureListener="#{pageFlowScope.OperationScheduleTable.discloseRow}"
+                                          var="row" varStatus="status"
+                                          fetchSize="#{bindings.OperationScheduleTable.rangeSize}"
+                                          emptyText="#{nls['NO_ROWS_FOUND']}"
+                                          queryListener="#{bindings.OperationScheduleIteratorQuery.processQuery}"
+                                          filterModel="#{bindings.OperationScheduleIteratorQuery.queryDescriptor}"
+                                          filterVisible="true" binding="#{pageFlowScope.OperationScheduleTable.table}"
+                                          partialTriggers=" :::as_OperationSchedule :::OperationSchedulePC ::OperationScheduleFirst ::OperationSchedulePrevious ::OperationScheduleNext ::OperationScheduleLast"
+                                          styleClass="AFStretchWidth" summary="#{nls['TABLE_TITLE_OPERATIONSCHEDULE']}">
+                                    <!-- DEBUG:BEGIN:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6 -->
+                                    <f:facet name="contextMenu">
+                                        <af:popup id="OperationScheduleTablePopup" childCreation="deferred">
+                                            <af:menu id="menu2">
+                                                <af:menu text="#{nls['GO_TO_MENU_LABEL']}" id="menu3">
+                                                    <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                                    <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                                </af:menu>
+                                                <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                                <af:commandMenuItem id="OperationScheduleduprm"
+                                                                    textAndAccessKey="#{nls['DUPLICATE_ROW']}"
+                                                                    immediate="true"
+                                                                    icon="/jheadstart/images/duplicateRow.png"
+                                                                    partialSubmit="true"
+                                                                    actionListener="#{pageFlowScope.OperationScheduleTable.duplicateRow}"
+                                                                    rendered="#{MTSPermission['OperationSchedule.create']}"></af:commandMenuItem>
+                                                <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                                <af:commandMenuItem id="OperationScheduledelrm"
+                                                                    textAndAccessKey="#{nls['DELETE_ROW']}"
+                                                                    icon="/jheadstart/images/deleteRow.png"
+                                                                    partialSubmit="true" immediate="true"
+                                                                    rendered="#{MTSPermission['OperationSchedule.delete']}">
+                                                    <af:showPopupBehavior popupId=":::OperationScheduleDeletePopup"/>
+                                                </af:commandMenuItem>
+                                                <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                            </af:menu>
+                                        </af:popup>
+                                    </f:facet><!-- DEBUG:END:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6 --><!-- DEBUG:END:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6 -->
+                                    <af:column id="OperationScheduleActionColumn" width="40" align="center"
+                                               headerText=" ">
+                                        <af:panelGroupLayout layout="horizontal" id="pgl0">
+                                            <!-- DEBUG:BEGIN:DETAILS_LINK : default/button/detailsLink.vm, nesting level: 7 -->
+                                            <!-- DEBUG:END:DETAILS_LINK : default/button/detailsLink.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:DELETE_ROW_LINK : default/button/deleteRowLink.vm, nesting level: 7 -->
+                                            <af:link id="OperationScheduledelrl" partialSubmit="true" immediate="true"
+                                                     rendered="#{MTSPermission['OperationSchedule.delete']}"
+                                                     shortDesc="#{nls['DELETE_ROW']}"
+                                                     icon="/jheadstart/images/deleteRow.png">
+                                                <af:showPopupBehavior popupId=":::OperationScheduleDeletePopup"/>
+                                            </af:link>
+                                            <!-- DEBUG:END:DELETE_ROW_LINK : default/button/deleteRowLink.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:DUPLICATE_ROW_LINK : default/button/duplicateRowLink.vm, nesting level: 7 -->
+                                            <af:link id="OperationScheduleduprl" immediate="true" partialSubmit="true"
+                                                     actionListener="#{pageFlowScope.OperationScheduleTable.duplicateRow}"
+                                                     rendered="#{MTSPermission['OperationSchedule.create']}"
+                                                     shortDesc="#{nls['DUPLICATE_ROW']}"
+                                                     icon="/jheadstart/images/duplicateRow.png"/>
+                                            <!-- DEBUG:END:DUPLICATE_ROW_LINK : default/button/duplicateRowLink.vm, nesting level: 7-->
+                                        </af:panelGroupLayout>
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="OperationScheduleDayCol" sortable="true" filterable="true"
+                                               noWrap="true" width="200" sortProperty="Day" rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.OperationScheduleTable.hints.Day.label}"
+                                                            showRequired="#{bindings.OperationScheduleTable.hints.Day.mandatory}"
+                                                            id="ol0"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 7 -->
+                                        <af:selectOneChoice id="OperationScheduleDay"
+                                                            value="#{row.bindings.Day.inputValue}"
+                                                            label="#{bindings.OperationScheduleTable.hints.Day.label}"
+                                                            required="#{bindings.OperationScheduleTable.hints.Day.mandatory}"
+                                                            readOnly="#{((pageFlowScope.OperationScheduleTable.newRow) and (!(MTSPermission['OperationSchedule.create']))) or ((!pageFlowScope.OperationScheduleTable.newRow) and (!(MTSPermission['OperationSchedule.update'])))}"
+                                                            shortDesc="#{bindings.OperationScheduleTable.hints.Day.tooltip}">
+                                            <f:selectItems value="#{row.bindings.Day.items}"/>
+                                        </af:selectOneChoice>
+                                        <!-- DEBUG:END:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="OperationScheduleAreaNameCol" sortable="true" filterable="true"
+                                               noWrap="true" width="250" sortProperty="AreaName" rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.OperationScheduleTable.hints.AreaName.label}"
+                                                            showRequired="#{bindings.OperationScheduleTable.hints.AreaName.mandatory}"
+                                                            id="ol1"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                        <af:inputText id="OperationScheduleAreaName"
+                                                      value="#{row.bindings.AreaName.inputValue}"
+                                                      label="#{bindings.OperationScheduleTable.hints.AreaName.label}"
+                                                      required="#{bindings.OperationScheduleTable.hints.AreaName.mandatory}"
+                                                      rows="#{bindings.OperationScheduleTable.hints.AreaName.displayHeight}"
+                                                      columns="#{bindings.OperationScheduleTable.hints.AreaName.displayWidth}"
+                                                      maximumLength="4000"
+                                                      readOnly="#{(((pageFlowScope.OperationScheduleTable.newRow) and (!(MTSPermission['OperationSchedule.create']))) or ((!pageFlowScope.OperationScheduleTable.newRow) and (!(MTSPermission['OperationSchedule.update'])))) or (!(pageFlowScope.OperationScheduleTable.newRow))}"
+                                                      shortDesc="#{bindings.OperationScheduleTable.hints.AreaName.tooltip}">
+                                            <f:validator binding="#{row.bindings.AreaName.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="OperationSchedulePNumForDispatchCol" sortable="true"
+                                               filterable="true" noWrap="true" width="100"
+                                               sortProperty="PNumForDispatch" rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.OperationScheduleTable.hints.PNumForDispatch.label}"
+                                                            showRequired="#{bindings.OperationScheduleTable.hints.PNumForDispatch.mandatory}"
+                                                            id="ol2"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                        <af:inputText id="OperationSchedulePNumForDispatch"
+                                                      value="#{row.bindings.PNumForDispatch.inputValue}"
+                                                      label="#{bindings.OperationScheduleTable.hints.PNumForDispatch.label}"
+                                                      required="#{bindings.OperationScheduleTable.hints.PNumForDispatch.mandatory}"
+                                                      rows="#{bindings.OperationScheduleTable.hints.PNumForDispatch.displayHeight}"
+                                                      columns="#{bindings.OperationScheduleTable.hints.PNumForDispatch.displayWidth}"
+                                                      readOnly="#{((pageFlowScope.OperationScheduleTable.newRow) and (!(MTSPermission['OperationSchedule.create']))) or ((!pageFlowScope.OperationScheduleTable.newRow) and (!(MTSPermission['OperationSchedule.update'])))}"
+                                                      shortDesc="#{bindings.OperationScheduleTable.hints.PNumForDispatch.tooltip}">
+                                            <f:validator binding="#{row.bindings.PNumForDispatch.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.OperationScheduleTable.hints.PNumForDispatch.format}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="OperationScheduleActiveFromCol" sortable="true" filterable="true"
+                                               noWrap="true" width="156" sortProperty="ActiveFrom" rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.OperationScheduleTable.hints.ActiveFrom.label}"
+                                                            showRequired="#{bindings.OperationScheduleTable.hints.ActiveFrom.mandatory}"
+                                                            id="ol3"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 7 -->
+                                        <f:facet name="filter">
+                                            <af:inputDate value="#{status.filterCriteria.ActiveFrom}" id="id0">
+                                                <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                            </af:inputDate>
+                                        </f:facet>
+                                        <af:inputDate id="OperationScheduleActiveFrom"
+                                                      value="#{row.bindings.ActiveFrom.inputValue}"
+                                                      label="#{bindings.OperationScheduleTable.hints.ActiveFrom.label}"
+                                                      required="#{bindings.OperationScheduleTable.hints.ActiveFrom.mandatory}"
+                                                      readOnly="#{((pageFlowScope.OperationScheduleTable.newRow) and (!(MTSPermission['OperationSchedule.create']))) or ((!pageFlowScope.OperationScheduleTable.newRow) and (!(MTSPermission['OperationSchedule.update'])))}"
+                                                      shortDesc="#{bindings.OperationScheduleTable.hints.ActiveFrom.tooltip}">
+                                            <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                        </af:inputDate>
+                                        <!-- DEBUG:END:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="OperationScheduleActiveToCol" sortable="true" filterable="true"
+                                               noWrap="true" width="156" sortProperty="ActiveTo" rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.OperationScheduleTable.hints.ActiveTo.label}"
+                                                            id="ol4"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 7 -->
+                                        <f:facet name="filter">
+                                            <af:inputDate value="#{status.filterCriteria.ActiveTo}" id="id1">
+                                                <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                            </af:inputDate>
+                                        </f:facet>
+                                        <af:inputDate id="OperationScheduleActiveTo"
+                                                      value="#{row.bindings.ActiveTo.inputValue}"
+                                                      label="#{bindings.OperationScheduleTable.hints.ActiveTo.label}"
+                                                      required="#{bindings.OperationScheduleTable.hints.ActiveTo.mandatory}"
+                                                      readOnly="true"
+                                                      shortDesc="#{bindings.OperationScheduleTable.hints.ActiveTo.tooltip}">
+                                            <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                        </af:inputDate>
+                                        <!-- DEBUG:END:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="OperationScheduleActiveCol" sortable="true" filterable="true"
+                                               noWrap="true" width="50" sortProperty="Active" rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.OperationScheduleTable.hints.Active.label}"
+                                                            showRequired="#{bindings.OperationScheduleTable.hints.Active.mandatory}"
+                                                            id="ol5"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_CHECK_BOX : default/item/table/tableCheckbox.vm, nesting level: 7 -->
+                                        <af:selectBooleanCheckbox id="OperationScheduleActive"
+                                                                  label="#{bindings.OperationScheduleTable.hints.Active.label}"
+                                                                  value="#{OperationScheduleActivecheckboxInTable.value}"
+                                                                  readOnly="#{((pageFlowScope.OperationScheduleTable.newRow) and (!(MTSPermission['OperationSchedule.create']))) or ((!pageFlowScope.OperationScheduleTable.newRow) and (!(MTSPermission['OperationSchedule.update'])))}"
+                                                                  shortDesc="#{bindings.OperationScheduleTable.hints.Active.tooltip}"></af:selectBooleanCheckbox>
+                                        <!-- DEBUG:END:TABLE_CHECK_BOX : default/item/table/tableCheckbox.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                </af:table>
+                            </af:panelCollection>
+                        </f:facet>
+                    </af:panelStretchLayout>
+                    <!-- DEBUG:END:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5-->
+                </f:facet>
+            </af:panelStretchLayout>
+            <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4-->
+        </f:facet>
+        <f:facet name="popups">
+            <af:panelGroupLayout id="popupsPgl">
+                <!-- DEBUG:BEGIN:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 8 -->
+                <af:popup id="OperationScheduleDeletePopup" contentDelivery="lazyUncached" childCreation="deferred">
+                    <af:dialog type="none" title="#{nls['WARNING']}" modal="true" id="OperationScheduleDeleteDialog">
+                        <af:outputText value="#{nls['DELETE_WARNING_OPERATIONSCHEDUL:#{bindings.OperationScheduleIterator.currentRowIndexInRange+1}']} "
+                                       id="ot0"/>
+                        <f:attribute name="methodExpression" value="#{'#{DeleteOperationSchedule.execute}'}"/>
+                        <f:facet name="buttonBar">
+                            <af:group id="g1">
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_YES']}" id="cb0" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.confirm}"/>
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_NO']}" id="cb1" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.abort}"/>
+                            </af:group>
+                        </f:facet>
+                    </af:dialog>
+                </af:popup>
+                <!-- DEBUG:END:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 8-->
+            </af:panelGroupLayout>
+        </f:facet>
+        <!-- DEBUG:END:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3-->
+        <!-- DEBUG:END:WIZARD_PAGE_CONTENT : default/page/wizardPageContent.vm, nesting level: 2-->
+    </af:pageTemplate>
+</ui:composition>
+
+
+

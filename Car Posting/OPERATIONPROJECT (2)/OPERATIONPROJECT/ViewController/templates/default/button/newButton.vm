@@ -1,0 +1,23 @@
+## revision_history
+## 05-nov-2010   Steven Davelaar
+## 1.5           Added call to ADD_CUR_GROUP_ACTION to support function keys
+## 24-mar-2010   Steven Davelaar
+## 1.4           Check parent row found in rendered property
+## 11-may-2008   Steven Davelaar
+## 1.3           Added support for non-databound groups
+## 12-jan-2007   Jaco Verheul
+## 1.2           JavaScript now embedded in ALERT_FOR_CHANGES macro
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+#if ($JHS.current.group.databound && $JHS.current.group.formInsertAllowed)
+  <af:button actionListener="#{#CREATE_ROW_BEAN().execute}"
+                    action="Create${JHS.current.group.shortName}"
+                    icon="/jheadstart/images/newRowInForm.png"
+                    partialSubmit="true"
+                    shortDesc="#NEW_BUTTON_LABEL()"
+                    rendered="#{#GROUP_NOT_IN_CREATE_MODE() and #PARENT_GROUP_HAS_ROW() ${JHS.addELExpression(${JHS.current.group.insertAllowedExpression},"and")}}"
+                    id="${JHS.current.group.shortName}NewButton">
+  </af:button>  
+  #ADD_CUR_GROUP_PARTIAL_TRIGGER("${JHS.current.group.shortName}NewButton")
+  #ADD_CUR_GROUP_ACTION("CreateRow" "${JHS.current.group.shortName}NewButton")
+#end

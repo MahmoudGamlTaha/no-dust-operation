@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SchedulingSummaryVO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Partial">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="OPERATIONPROJECT.model.BC.VO.SchedulingSummaryVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <SQLQuery><![CDATA[SELECT      
+    sh.WORKING_DATE,      
+    SUM(CASE      
+      WHEN sh.TOTAL_CONTRACTS IS NULL THEN 0      
+      ELSE sh.TOTAL_CONTRACTS      
+    END) total_contracts,      
+    SUM(CASE      
+      WHEN sh.ZEROB_CONTRACTS IS NULL THEN 0      
+      ELSE sh.ZEROB_CONTRACTS      
+    END) ZEROB_CONTRACTS,    
+    SUM(CASE WHEN sh.issue_bover IS NULL THEN 0     
+    ELSE sh.issue_bover end ) ISSUE_BOVER  ,    
+    SUM(CASE      
+      WHEN sh.TOTAL_CONTRACTS_LOST IS NULL THEN 0      
+      ELSE sh.TOTAL_CONTRACTS_LOST      
+    END) TOTAL_CONTRACTS_LOST,      
+    SUM(CASE      
+      WHEN sh.LOST IS NULL THEN 0      
+      ELSE sh.LOST      
+    END) LOST,      
+    SUM(CASE      
+      WHEN sh.NEED_CALL_CONTRACTS IS NULL THEN 0      
+      ELSE sh.NEED_CALL_CONTRACTS      
+    END) NEED_CALL_CONTRACTS,      
+    SUM(CASE      
+      WHEN sh.PRIORITY_8_CONTRACTS IS NULL THEN 0      
+      ELSE sh.PRIORITY_8_CONTRACTS      
+    END) PRIORITY_8_CONTRACTS,      
+    SUM(CASE      
+      WHEN sh.PRIORITY_9_CONTRACTS IS NULL THEN 0      
+      ELSE sh.PRIORITY_9_CONTRACTS      
+    END) PRIORITY_9_CONTRACTS,      
+    SUM(CASE      
+      WHEN sh.PRIORITY_10_CONTRACTS IS NULL THEN 0      
+      ELSE sh.PRIORITY_10_CONTRACTS      
+    END) PRIORITY_10_CONTRACTS,      
+    SUM(CASE      
+      WHEN sh.DISPATCHABLE_CONTRACTS IS NULL THEN 0      
+      ELSE sh.DISPATCHABLE_CONTRACTS      
+    END) DISPATCHABLE_CONTRACTS,      
+    SUM(CASE      
+      WHEN sh.WEEK_1_CONTRACTS IS NULL THEN 0      
+      ELSE sh.WEEK_1_CONTRACTS      
+    END) WEEK_1_CONTRACTS,      
+    SUM(CASE      
+      WHEN sh.WEEK_2_CONTRACTS IS NULL THEN 0      
+      ELSE sh.WEEK_2_CONTRACTS      
+    END) WEEK_2_CONTRACTS,      
+    SUM(CASE      
+      WHEN sh.WEEK_3_CONTRACTS IS NULL THEN 0      
+      ELSE sh.WEEK_3_CONTRACTS      
+    END) WEEK_3_CONTRACTS  ,  
+    SUM(CASE   
+    WHEN sh.PERFECT IS NULL THEN 0   
+    ELSE sh.PERFECT END )PERFECT  
+FROM      
+    SCHEDULING_TABLE sh      
+WHERE      
+    sh.SCHEDULED = 1      
+GROUP BY      
+    sh.WORKING_DATE]]></SQLQuery>
+  <ViewAttribute
+    Name="WorkingDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    AliasName="WORKING_DATE"
+    Expression="WORKING_DATE"
+    SQLType="DATE"/>
+  <ViewAttribute
+    Name="TotalContracts"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="TOTAL_CONTRACTS"
+    Expression="TOTAL_CONTRACTS"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="ZerobContracts"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="ZEROB_CONTRACTS"
+    Expression="ZEROB_CONTRACTS"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="IssueBover"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="ISSUE_BOVER"
+    Expression="ISSUE_BOVER"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="TotalContractsLost"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="TOTAL_CONTRACTS_LOST"
+    Expression="TOTAL_CONTRACTS_LOST"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="Lost"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="LOST"
+    Expression="LOST"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="NeedCallContracts"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="NEED_CALL_CONTRACTS"
+    Expression="NEED_CALL_CONTRACTS"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="Priority8Contracts"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="PRIORITY_8_CONTRACTS"
+    Expression="PRIORITY_8_CONTRACTS"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="Priority9Contracts"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="PRIORITY_9_CONTRACTS"
+    Expression="PRIORITY_9_CONTRACTS"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="Priority10Contracts"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="PRIORITY_10_CONTRACTS"
+    Expression="PRIORITY_10_CONTRACTS"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DispatchableContracts"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="DISPATCHABLE_CONTRACTS"
+    Expression="DISPATCHABLE_CONTRACTS"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="Week1Contracts"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="WEEK_1_CONTRACTS"
+    Expression="WEEK_1_CONTRACTS"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="Week2Contracts"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="WEEK_2_CONTRACTS"
+    Expression="WEEK_2_CONTRACTS"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="Week3Contracts"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="WEEK_3_CONTRACTS"
+    Expression="WEEK_3_CONTRACTS"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="Perfect"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="PERFECT"
+    Expression="PERFECT"
+    SQLType="NUMERIC"/>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="WorkingDate"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="OPERATIONPROJECT.model.BC.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

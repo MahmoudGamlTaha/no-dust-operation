@@ -1,0 +1,18 @@
+DROP VIEW  jhs_user_role_info;
+DROP TABLE JHS_ROLES cascade constraints;
+DROP TABLE JHS_USER_INTERFACE_SKINS cascade constraints;
+DROP TABLE JHS_LOCALES cascade constraints;
+DROP TABLE JHS_TRANSLATIONS cascade constraints;
+DROP TABLE JHS_ALLOWABLE_VALUES cascade constraints;
+DROP TABLE JHS_MENU_ITEMS cascade constraints;
+DROP TABLE JHS_PERMISSIONS cascade constraints;
+DROP TABLE JHS_FLEX_ITEM_DEFINITIONS cascade constraints;
+DROP TABLE JHS_ROLE_PERMISSION_GRANTS cascade constraints; 
+DROP TABLE JHS_FLEX_ITEMS cascade constraints;
+DROP TABLE JHS_CUSTOMIZED_STANDARD_ITEMS cascade constraints;
+DROP TABLE JHS_USER_ROLE_GRANTS cascade constraints;
+DROP TABLE JHS_FLEX_REGIONS cascade constraints;
+DROP TABLE JHS_USERS cascade constraints;
+DROP TABLE JHS_FLEX_REGION_DEFINITIONS cascade constraints;
+DROP TABLE JHS_MODULES  cascade constraints;
+drop sequence jhs_Seq;

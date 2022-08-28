@@ -1,0 +1,12 @@
+## revision_history
+## 23-jun-2009   Paco van der Linden
+## 2.0           Restructured layout according to stretching best-practices.
+## 29-jan-2009   Steven Davelaar
+## 1.2           replaced graph with placeholder text, in R11's graphs should be cerated using drag and drop
+## 01-mar-2007   Steven Davelaar
+## 1.1           Added rendered property to panelGroup element
+## 06-feb-2007   Steven Davelaar
+## 1.0           Initial creation
+<af:outputText #ITEM_ID_IN_FORM() #ITEM_PARTIAL_TRIGGERS()  
+               rendered="#{bindings.${JHS.current.group.name}Iterator.estimatedRowCount>0}"
+               value="Use drag and drop to replace this text with a graph, and then create a custom template with the graph element to preserve the graph upon regeneration. To preserve the graph binding created in the page definition during drag and drop, you can either add this binding to the custom template or uncheck the group-level checkbox 'Clear Bindings before Generation'"/>

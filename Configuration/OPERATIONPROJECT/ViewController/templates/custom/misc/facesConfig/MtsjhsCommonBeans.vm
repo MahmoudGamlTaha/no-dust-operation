@@ -1,0 +1,533 @@
+## revision_history
+## 12-oct-2017   Ahmed Magdy
+##               Convert jhs default skins to font skins
+## 16-aug-2013   Steven Davelaar
+## 1.19          Added managed property availableSkins in jhsLookAndFeelbean
+## 09-jul-2013   Steven Davelaar
+## 1.18          Added support for Skyros skin in jhsLookAndFeelbean: currentSkin property
+##               now set conditionally based on value of JHS_PAGE_TEMPLATE
+## 18-feb-2013   Steven Davelaar
+## 1.17          Added managed bean jhsPendingChangesVisitCallBack
+##               Change scope of TypeConverter from application to request
+## 18-nov-2011   Steven Davelaar
+## 1.16          Changed jhsKeyboardMappingHandler to request scope, added jhsPhaseListener bean
+## 28-oct-2011   Sandra Muller
+## 1.15          Use macro for DynamicRegionManager class, to allow easy override with custom class
+## 11-oct-2011   Steven Davelaar
+## 1.14          Get page extension from application view type instead of hardcoding .jspx
+## 16-sep-2011   Steven Davelaar
+## 1.13          Changed jhsLookAndFeelBean, now injecting skinID instead of skin property, default changed to R11.2
+## 30-may-2010   Sandra Muller
+## 1.12          Introduced DYNTAB_SCOPE macro, to allow easy switching between viewScope and pageFlowScope
+## 08-mar-2011   Steven Davelaar
+## 1.11          Changed MenuTreeBean to pageFlowScope so state is remembered accross shell pages
+##               also generate it when using TreeMenu template, not just dyn tabs template
+##               Added removeHiddenMenuItems property to jshDynamicMenu
+## 28-jan-2011   Steven Davelaar
+## 1.10          Added parsing of DYNAMIC_TABS_BEANS, exceptionHandlerBean
+##               Added importedNlsBundles to jhsMessageFactory  
+##               prefix UIShellPageDef with app name in fallbackContainer property of JhsModelServiceProvider 
+## 02-dec-2010   Steven Davelaar
+## 1.9           Only set current taskflow name in jhsMainregionManager when no dyn tabs used
+## 01-nov-2010   Steven Davelaar
+## 1.8           Added jhsKeyboardMappingHandler and jhsFunctionKeyHandler beans
+## 01-okt-2010   Steven Davelaar
+## 1.7           Added enableDeepLinkingFromRequestParams to DynamicRegionManager
+## 07-sep-2010   Steven Davelaar
+## 1.6           Added removeHiddenMenuItems property to root menu bean
+## 13-jul-2010   Steven Davelaar
+## 1.5           Added MenuTreeBean, added currentSubMenu, useDynamicTabs properties to jhsMainRegionManager
+## 18-may-2010   Steven Davelaar
+## 1.4           Added id property to all elements
+## 16-dec-2008   Paco van der Linden
+## 1.3           Added jhsMainRegionManager, pendingChangesBean
+## 03-oct-2008   Sandra Muller
+## 1.2           removed errorReportingUtils, is now configured in DataBindings.cpx
+## 19-sep-2008   Steven Davelaar
+## 1.1           removed jhsPageLifecycle
+## 05-jul-2008   Steven Davelaar
+## 1.0           Initial creation for R11
+<?xml version="1.0" #ENCODING_PROP()?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+
+  <method-call id="CallMenuItem">
+    <method id="#NEW_ID("__")">#{jhsDynamicRouter.getOutcome}</method>
+    <parameter>
+      <class id="#NEW_ID("__")">java.lang.String</class>
+      <value id="#NEW_ID("__")">#{requestScope.currentMenuItem}</value>
+    </parameter>
+    <outcome id="#NEW_ID("__")">
+      <to-string/>
+    </outcome>
+  </method-call>
+
+#if (${JHS.application.useDynamicTabs})
+  <method-call id="LaunchTab">
+    <method id="#NEW_ID("__")">#{pageFlowScope.parentContext.jhsDynTabLauncher.launchTab}</method>
+    <outcome id="#NEW_ID("__")">
+      <fixed-outcome>TabLaunched</fixed-outcome>
+    </outcome>
+  </method-call>
+  <method-call id="CloseCurrentTab">
+    <method id="#NEW_ID("__")">#{#DYNTAB_SCOPE()Scope.jhsDynTabContext.removeCurrentTab}</method>
+    <outcome id="#NEW_ID("__")">
+      <fixed-outcome>TabClosed</fixed-outcome>
+    </outcome>
+  </method-call>
+#end
+
+  <view id="Home">
+    <page id="#NEW_ID("__")">${JHS.application.commonPagesDir}Home${JHS.application.pageExtension}</page>
+  </view>  
+
+  <view id="UIShell">
+    <page id="#NEW_ID("__")">${JHS.application.commonPagesDir}UIShell${JHS.application.pageExtension}</page>
+  </view>  
+
+#if (${JHS.application.runtimeCustomizationMenuAllowed})
+  <view id="iFrameMenuItem">
+    <page id="#NEW_ID("__")">${JHS.application.commonPagesDir}iFrameMenuItem${JHS.application.pageExtension}</page>
+  </view>  
+#end      
+  <control-flow-rule id="#NEW_ID("__")">
+    <from-activity-id id="#NEW_ID("__")">*</from-activity-id>
+    <control-flow-case id="#NEW_ID("__")">
+      <from-outcome id="#NEW_ID("__")">CallMenuItem</from-outcome>
+      <to-activity-id id="#NEW_ID("__")">CallMenuItem</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="#NEW_ID("__")">
+      <from-outcome id="#NEW_ID("__")">home</from-outcome>
+      <to-activity-id id="#NEW_ID("__")">Home</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="#NEW_ID("__")">
+      <from-outcome id="#NEW_ID("__")">uishell</from-outcome>
+      <to-activity-id id="#NEW_ID("__")">UIShell</to-activity-id>
+    </control-flow-case>
+#if (${JHS.application.runtimeCustomizationMenuAllowed})
+    <control-flow-case id="#NEW_ID("__")">
+      <from-outcome id="#NEW_ID("__")">iFrameMenuItem</from-outcome>
+      <to-activity-id id="#NEW_ID("__")">iFrameMenuItem</to-activity-id>
+    </control-flow-case>
+#end
+#if (${JHS.application.useDynamicTabs})
+    <control-flow-case id="#NEW_ID("__")">
+      <from-outcome id="#NEW_ID("__")">LaunchTab</from-outcome>
+      <to-activity-id id="#NEW_ID("__")">LaunchTab</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="#NEW_ID("__")">
+      <from-outcome id="#NEW_ID("__")">CloseCurrentTab</from-outcome>
+      <to-activity-id id="#NEW_ID("__")">CloseCurrentTab</to-activity-id>
+    </control-flow-case>
+#end
+  </control-flow-rule>
+
+<managed-bean id="#NEW_ID("__")">
+  <managed-bean-name id="#NEW_ID("__")">parentContext</managed-bean-name>
+  <managed-bean-class id="#NEW_ID("__")">java.util.HashMap</managed-bean-class>
+  <managed-bean-scope id="#NEW_ID("__")">pageFlow</managed-bean-scope>
+</managed-bean>
+
+<managed-bean id="#NEW_ID("__")">
+  <managed-bean-name id="#NEW_ID("__")">RootMenu</managed-bean-name>
+  <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.JhsXMLMenuModel</managed-bean-class>
+  <managed-bean-scope id="#NEW_ID("__")">request</managed-bean-scope>
+  #if (!${JHS.application.useJhsPageTemplate})
+  ## this poperty MUST be sequenced before source property to work correctly!
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">removeHiddenMenuItems</property-name>
+    <value id="#NEW_ID("__")">true</value>
+  </managed-property>
+  #end
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">source</property-name>
+    <property-class id="#NEW_ID("__")">java.lang.String</property-class>
+    <value id="#NEW_ID("__")">${JHS.application.rootMenuModel}</value>
+  </managed-property>
+</managed-bean>
+
+#if (!${JHS.application.useJhsPageTemplate})
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">MenuTreeBean</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.TreeBean</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">pageFlow</managed-bean-scope>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">showExpanded</property-name>
+      <value id="#NEW_ID("__")">true</value>
+    </managed-property>
+  </managed-bean>
+#end
+#if (${JHS.application.useDynamicTabs})
+  #JHS_PARSE("DYNAMIC_TABS_BEANS" ${JHS.current.model})
+#end
+    <managed-bean id="#NEW_ID("__")">
+      <managed-bean-name id="#NEW_ID("__")">pendingChangesBean</managed-bean-name>
+      <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.PendingChangesBean</managed-bean-class>
+      <managed-bean-scope id="#NEW_ID("__")">pageFlow</managed-bean-scope>
+    </managed-bean>
+
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">jhsMainRegionManager</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">#DYNAMIC_REGION_MANAGER_CLASS()</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">pageFlow</managed-bean-scope>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">resetFormUsesUpload</property-name>
+      <value id="#NEW_ID("__")">false</value>
+    </managed-property>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">enableDeepLinkingFromRequestParams</property-name>
+      <value id="#NEW_ID("__")">true</value>
+    </managed-property>
+#if ($JHS.application.contentTopLevelMenu=='serviceGroups' && ($JHS.application.useJhsTreeMenuPageTemplate || $JHS.application.useDynamicTabs))
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">currentSubMenu</property-name>
+    <property-class id="#NEW_ID("__")">java.lang.String</property-class>
+    <value id="#NEW_ID("__")">${JHS.application.allServices.get(0).getName()}Menu</value>
+  </managed-property>
+#end
+#if ($JHS.application.useDynamicTabs)
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">useDynamicTabs</property-name>
+    <value id="#NEW_ID("__")">true</value>
+  </managed-property>
+#else
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">currentTaskFlowName</property-name>
+      <value id="#NEW_ID("__")">${JHS.application.firstGroup.name}</value>
+    </managed-property>
+#end
+  </managed-bean>
+
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">jhsCommit</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.CommitBean</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">request</managed-bean-scope>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">commitBinding</property-name>
+      <value id="#NEW_ID("__")">#{bindings.Commit}</value>
+    </managed-property>
+  </managed-bean>
+
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">jhsRollback</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.RollbackBean</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">request</managed-bean-scope>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">rollbackBinding</property-name>
+      <value id="#NEW_ID("__")">#{bindings.Rollback}</value>
+    </managed-property>
+  </managed-bean>
+
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">jhsLocaleManager</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.LocaleManager</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">session</managed-bean-scope>
+    #if (${JHS.application.deriveUserLocale}!='browser') 
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">useBrowserLocale</property-name>
+      <value id="#NEW_ID("__")">false</value>
+    </managed-property>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">calculateLocaleExpression</property-name>
+      <value id="#NEW_ID("__")">#{'${JHS.application.deriveUserLocale}'}</value>
+    </managed-property>
+    #end
+  </managed-bean>
+
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">jhsLookAndFeelBean</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.LookAndFeelBean</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">session</managed-bean-scope>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">currentPageTemplate</property-name>
+      <value id="#NEW_ID("__")">/common/pageTemplates/JhsPageTemplate${JHS.application.pageExtension}</value>
+    </managed-property>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">currentRegionTemplate</property-name>
+      <value id="#NEW_ID("__")">/common/pageTemplates/JhsRegionTemplate${JHS.application.pageExtension}</value>
+    </managed-property>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">currentSkin</property-name>
+      #if (${JHS.application.templateBindingsContainer.templateBindings.get("JHS_PAGE_TEMPLATE").endsWith('Skyros.vm')})
+      <value id="#NEW_ID("__")">smallFont.desktop</value>
+      #else
+      <value id="#NEW_ID("__")">smallFont.desktop</value>
+      #end
+    </managed-property>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">pageTemplates</property-name>
+        <map-entries id="#NEW_ID("__")">
+         <map-entry id="#NEW_ID("__")">
+          <key id="#NEW_ID("__")">/common/pageTemplates/JhsPageTemplate${JHS.application.pageExtension}</key>
+          <value id="#NEW_ID("__")">Tabbed Menu</value>
+         </map-entry>
+         <map-entry id="#NEW_ID("__")">
+          <key id="#NEW_ID("__")">/common/pageTemplates/JhsTreeMenuPageTemplate${JHS.application.pageExtension}</key>
+          <value id="#NEW_ID("__")">Tree Menu</value>
+         </map-entry>
+        </map-entries>      
+    </managed-property>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">availableSkins</property-name>
+      <map-entries id="#NEW_ID("__")">
+        <map-entry id="#NEW_ID("__")">
+          <key id="#NEW_ID("__")">smallFont.desktop</key>
+          <value id="#NEW_ID("__")">${JHS.nls('Small','SMALL_FONT')}</value>
+        </map-entry>
+        <map-entry id="#NEW_ID("__")">
+          <key id="#NEW_ID("__")">mediumFont.desktop</key>
+          <value id="#NEW_ID("__")">${JHS.nls('Medium','MEDIUM_FONT')}</value>
+        </map-entry>
+        <map-entry id="#NEW_ID("__")">
+          <key id="#NEW_ID("__")">largeFont.desktop</key>
+          <value id="#NEW_ID("__")">${JHS.nls('Large','LARGE_FONT')}</value>
+        </map-entry>
+      </map-entries>
+    </managed-property>
+  </managed-bean>
+
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">jhsModelServiceProvider</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.JhsModelServiceProvider</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">session</managed-bean-scope>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">fallbackBindingContainerEL</property-name>
+             <value id="#NEW_ID("__")">#{'#{data.${JHS.application.name}_UIShellPageDef}'}</value>
+    </managed-property>
+  </managed-bean>
+
+  #if (${JHS.application.securityType}!='') 
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">LoginBean</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.LoginBean</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">request</managed-bean-scope>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">useADFWLSAuthentication</property-name>
+      #if (${JHS.application.securityType}!='customjhs') 
+       <value id="#NEW_ID("__")">true</value>
+      #else
+       <value id="#NEW_ID("__")">false</value>
+      #end
+    </managed-property>
+  </managed-bean>
+
+  #if (${JHS.application.securityType}!='customjhs')   
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">LogoutBean</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.LogoutBean</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">request</managed-bean-scope>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">logoutDestination</property-name>
+       <value id="#NEW_ID("__")">/</value>
+    </managed-property>
+  </managed-bean>
+  #end
+  #end
+  
+  #if (${JHS.application.runtimeCustomizationItemsAllowed} || ${JHS.application.useFlexRegions})
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">jhsPageCustomization</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.PageCustomizationBean</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">session</managed-bean-scope>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">runtimeCustomizationItemsAllowed</property-name>
+      <value id="#NEW_ID("__")">${JHS.application.runtimeCustomizationItemsAllowed}</value>
+    </managed-property>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">customizeDialogNavigationOutcome</property-name>
+      <value id="#NEW_ID("__")">dialog:StartCustomizedStandardItem</value>
+    </managed-property>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">customizeItemWindowWidth</property-name>
+      <value id="#NEW_ID("__")">400</value>
+    </managed-property>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">customizeItemWindowHeight</property-name>
+      <value id="#NEW_ID("__")">300</value>
+    </managed-property>
+  </managed-bean>
+  #end
+  #if (${JHS.application.runtimeCustomizationMenuAllowed})
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">jhsDynamicMenu</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.DynamicMenuBean</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">session</managed-bean-scope>
+  </managed-bean>
+  #end
+
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">nls</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.util.MessageFactoryMap</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">session</managed-bean-scope>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">messageFactory</property-name>
+      <value id="#NEW_ID("__")">#{jhsMessageFactory}</value>
+    </managed-property>
+  </managed-bean>
+
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">jhsPageText</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.PageTextBean</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">session</managed-bean-scope>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">nlsFactory</property-name>
+      <value id="#NEW_ID("__")">#{nls}</value>
+    </managed-property>
+  </managed-bean>
+
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">jhsMessageFactory</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.util.MessageFactory</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">application</managed-bean-scope>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">bundleNames</property-name>
+      <list-entries id="#NEW_ID("__")">
+        <value id="#NEW_ID("__")">${JHS.application.nlsBundle}</value>
+        #foreach ($bundle in ${JHS.application.importedNlsBundles})
+          <value id="#NEW_ID("__")">${bundle}</value>
+        #end
+        <value id="#NEW_ID("__")">oracle.jheadstart.exception.JhsUserMessages</value>
+        <value id="#NEW_ID("__")">javax.faces.Messages</value>
+      </list-entries>
+    </managed-property>
+  </managed-bean>
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">jsfUtils</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.util.JsfUtils</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">application</managed-bean-scope>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">messageFactory</property-name>
+      <value id="#NEW_ID("__")">#{jhsMessageFactory}</value>
+    </managed-property>
+  </managed-bean>
+
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">jhsBreadcrumbStack</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.util.breadcrumbs.BreadcrumbStack</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">pageFlow</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">jhsBreadcrumbManager</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.util.breadcrumbs.BreadcrumbManager</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">application</managed-bean-scope>
+  </managed-bean>
+
+  #if (${JHS.application.useAuthorization})
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">jhsUserRoles</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.JhsAuthorizationProxy</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">session</managed-bean-scope>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">authorizationType</property-name>
+      <value id="#NEW_ID("__")">${JHS.application.authorizationType}</value>
+    </managed-property>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">authorizeUsingPermissions</property-name>
+      <value id="#NEW_ID("__")">${JHS.application.useGroupPermissions}</value>
+    </managed-property>
+  </managed-bean>
+  #end
+
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">jhsTypeConverter</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.TypeConverter</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">request</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">UIComponentState</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">java.util.HashMap</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">session</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">jhsPageDefs</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.PageDefAccessorBean</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">session</managed-bean-scope>
+  </managed-bean>   
+
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">jhsDynamicRouter</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.DynamicRouter</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">request</managed-bean-scope>
+  </managed-bean>   
+
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">jhsSetCurrentRow</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.SetCurrentRowBean</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">request</managed-bean-scope>
+  </managed-bean>   
+
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">ExecuteActionAfterConfirmation</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.ExecuteActionAfterConfirmation</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">application</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">jhsDependsOnItem</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.DependsOnItemBean</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">application</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">jhsFlexItem</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.FlexItemBean</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">application</managed-bean-scope>
+  </managed-bean>
+
+## Note thate the FlexRegionDefinitions Task Flow itself also contains a TaskFlowConfigBean
+## The following bean name therefore starts with 'App' to avoid confusion. 
+## We can't access (and reuse) the bean inside adfc-config-FlexRegionDefinitions.xml because it is added
+## to the pageFlowScope of the UIShell instead of the current region
+
+#if( ${JHS.application.useFlexRegions} )
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">AppFlexRegionDefinitionsTaskFlowConfig</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.TaskFlowConfigBean</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">application</managed-bean-scope>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">name</property-name>
+      <value id="#NEW_ID("__")">FlexRegionDefinitions</value>
+    </managed-property>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">taskFlowId</property-name>
+      <value id="#NEW_ID("__")">/flex/adfcConfig/adfc-config-FlexRegionDefinitions.xml#FlexRegionDefinitionsTaskFlow</value>
+    </managed-property>
+  </managed-bean>
+#end
+
+#if( ${JHS.application.enableFunctionKeys} )
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">jhsKeyboardMappingHandler</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.KeyboardFunctionMappingHandler</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">request</managed-bean-scope>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">functionKeyHandler</property-name>
+      <value id="#NEW_ID("__")">#{jhsFunctionKeyHandler}</value>
+    </managed-property>
+  </managed-bean>
+  #JHS_PARSE("FUNCTION_KEY_HANDLER_BEAN" ${JHS.current.model})
+#end
+
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">exceptionHandlerBean</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.ExceptionHandlerBean</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">request</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">jhsPhaseListener</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.listener.JhsPhaseListener</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">request</managed-bean-scope>
+  </managed-bean>
+
+#if( ${JHS.application.checkUITreePendingChanges} )
+  <managed-bean id="#NEW_ID("__")">
+    <managed-bean-name id="#NEW_ID("__")">jhsPendingChangesVisitCallBack</managed-bean-name>
+    <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.PendingChangesVisitCallBack</managed-bean-class>
+    <managed-bean-scope id="#NEW_ID("__")">request</managed-bean-scope>
+  </managed-bean>
+#end
+
+</adfc-config>

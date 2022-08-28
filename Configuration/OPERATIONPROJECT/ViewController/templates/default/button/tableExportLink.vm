@@ -1,0 +1,14 @@
+## revision_history
+## 09-sep-2010   Sandra Muller
+## 1.2           changed commandLink with nested image to commandImageLink, so that shortDesc works in IE
+## 07-may-2009   Paco van der Linden
+## 1.1           Shortened some id's to improve PPR performance
+## 01-sep-2008   Steven Davelaar
+## 1.0           Initial creation
+
+#if ($JHS.current.group.tableExport=='excel')
+  <af:link  immediate="true" partialSubmit="true" id="#NEW_ID("cl")"
+     shortDesc="#EXPORT_LABEL_DESC()" icon="/jheadstart/images/excel.png">
+    <af:exportCollectionActionListener exportedId="${JHS.current.group.shortName}Tab" type="excelHTML"/>
+  </af:link>
+#end

@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <task-flow-definition id="ProductDetailsGroupTaskFlow">
+        <!-- DEBUG:BEGIN:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2 -->
+        <template-reference>
+            <document id="__0">/WEB-INF/jhs-bounded-taskflow-template.xml</document>
+            <id id="__1">jhs-bounded-taskflow-template</id>
+        </template-reference>
+        <!-- DEBUG:END:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2-->
+        <default-activity id="__2">FilterDetails</default-activity>
+        <!-- DEBUG:BEGIN:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2 -->
+        <input-parameter-definition id="__3">
+            <name id="__4">rowKeyStrProductDetailsGroup</name>
+            <value id="__5">#{pageFlowScope.rowKeyStrProductDetailsGroup}</value>
+            <class id="__6">java.lang.String</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__7">
+            <name id="__8">rowKeyValueProductDetailsGroup</name>
+            <value id="__9">#{pageFlowScope.rowKeyValueProductDetailsGroup}</value>
+            <class id="__10">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__11">
+            <name id="__12">rowKeyProductDetailsGroup</name>
+            <value id="__13">#{pageFlowScope.rowKeyProductDetailsGroup}</value>
+            <class id="__14">oracle.jbo.Key</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__15">
+            <name id="__16">altKeyNameProductDetailsGroup</name>
+            <value id="__17">#{pageFlowScope.altKeyNameProductDetailsGroup}</value>
+            <class id="__18">java.lang.String</class>
+        </input-parameter-definition>
+        <!-- DEBUG:END:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2 -->
+        <input-parameter-definition id="__183">
+            <name>ShipmentId</name>
+            <value>#{pageFlowScope.ShipmentId}</value>
+        </input-parameter-definition>
+        <input-parameter-definition id="__184">
+            <name>ProductId</name>
+            <value>#{pageFlowScope.ProductId}</value>
+        </input-parameter-definition>
+        <managed-bean id="__19">
+            <managed-bean-name id="__20">jhsTaskFlowManager</managed-bean-name>
+            <managed-bean-class id="__21">oracle.jheadstart.controller.jsf.bean.TaskFlowManager</managed-bean-class>
+            <managed-bean-scope id="__22">pageFlow</managed-bean-scope>
+            <managed-property id="__23">
+                <property-name id="__24">initializeParentContextEntries</property-name>
+                <map-entries id="__25">
+                    <map-entry id="__26">
+                        <key id="__27">jhsCurrentGroupName</key>
+                        <value id="__28">ProductDetailsGroup</value>
+                    </map-entry>
+                </map-entries>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2-->
+        <managed-bean id="__29">
+            <managed-bean-name id="__30">MenuViewIdMapping</managed-bean-name>
+            <managed-bean-class id="__31">java.util.HashMap</managed-bean-class>
+            <managed-bean-scope id="__32">pageFlow</managed-bean-scope>
+            <map-entries id="__33">
+                <map-entry id="__34">
+                    <key id="__35">/ProductDetailsGroupTaskFlow/ProductDetailsGroupTable</key>
+                    <value id="__36">ProductDetailsGroup</value>
+                </map-entry>
+            </map-entries>
+        </managed-bean>
+        <!-- DEBUG:BEGIN:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2 -->
+        <managed-bean id="__37">
+            <managed-bean-name id="__38">jhsRollback</managed-bean-name>
+            <managed-bean-class id="__39">oracle.jheadstart.controller.jsf.bean.RollbackBean</managed-bean-class>
+            <managed-bean-scope id="__40">request</managed-bean-scope>
+            <managed-property id="__41">
+                <property-name id="__42">rollbackBinding</property-name>
+                <value id="__43">#{bindings.Rollback}</value>
+            </managed-property>
+            <managed-property id="__44">
+                <property-name id="__45">successOutcome</property-name>
+                <value id="__46">Cancel</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__47">
+            <managed-bean-name id="__48">ProductDetailsGroupTable</managed-bean-name>
+            <managed-bean-class id="__49">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__50">pageFlow</managed-bean-scope>
+            <managed-property id="__51">
+                <property-name id="__52">name</property-name>
+                <value id="__53">ProductDetailsGroupTable</value>
+            </managed-property>
+            <managed-property id="__54">
+                <property-name id="__55">rangeBindingExpr</property-name>
+                <value id="__56">#{'#{bindings.ProductDetailsGroupTable}'}</value>
+            </managed-property>
+            <managed-property id="__57">
+                <property-name id="__58">focusItemId</property-name>
+                <value id="__59">ProductDetailsGroupProductName</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__60">
+            <managed-bean-name id="__61">ProductDetailsSummaryTable</managed-bean-name>
+            <managed-bean-class id="__62">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__63">pageFlow</managed-bean-scope>
+            <managed-property id="__64">
+                <property-name id="__65">name</property-name>
+                <value id="__66">ProductDetailsSummaryTable</value>
+            </managed-property>
+            <managed-property id="__67">
+                <property-name id="__68">rangeBindingExpr</property-name>
+                <value id="__69">#{'#{bindings.ProductDetailsSummaryTable}'}</value>
+            </managed-property>
+            <managed-property id="__70">
+                <property-name id="__71">focusItemId</property-name>
+                <value id="__72">ProductDetailsSummaryPilotName</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__73">
+            <managed-bean-name id="__74">TotalProductsDetailsTable</managed-bean-name>
+            <managed-bean-class id="__75">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__76">pageFlow</managed-bean-scope>
+            <managed-property id="__77">
+                <property-name id="__78">name</property-name>
+                <value id="__79">TotalProductsDetailsTable</value>
+            </managed-property>
+            <managed-property id="__80">
+                <property-name id="__81">rangeBindingExpr</property-name>
+                <value id="__82">#{'#{bindings.TotalProductsDetailsTable}'}</value>
+            </managed-property>
+            <managed-property id="__83">
+                <property-name id="__84">focusItemId</property-name>
+                <value id="__85">TotalProductsDetailsProductName</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__86">
+            <managed-bean-name id="__87">RLostTable</managed-bean-name>
+            <managed-bean-class id="__88">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__89">pageFlow</managed-bean-scope>
+            <managed-property id="__90">
+                <property-name id="__91">name</property-name>
+                <value id="__92">RLostTable</value>
+            </managed-property>
+            <managed-property id="__93">
+                <property-name id="__94">rangeBindingExpr</property-name>
+                <value id="__95">#{'#{bindings.RLostTable}'}</value>
+            </managed-property>
+            <managed-property id="__96">
+                <property-name id="__97">focusItemId</property-name>
+                <value id="__98">RLostPilotName</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__99">
+            <managed-bean-name id="__100">LostTable</managed-bean-name>
+            <managed-bean-class id="__101">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__102">pageFlow</managed-bean-scope>
+            <managed-property id="__103">
+                <property-name id="__104">name</property-name>
+                <value id="__105">LostTable</value>
+            </managed-property>
+            <managed-property id="__106">
+                <property-name id="__107">rangeBindingExpr</property-name>
+                <value id="__108">#{'#{bindings.LostTable}'}</value>
+            </managed-property>
+            <managed-property id="__109">
+                <property-name id="__110">focusItemId</property-name>
+                <value id="__111">LostPilotName</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2 -->
+        <managed-bean id="__180">
+            <managed-bean-name>DataTeamAgentBean</managed-bean-name>
+            <managed-bean-class>MTS.security.MTSClasses.DataTeamAgentBean</managed-bean-class>
+            <managed-bean-scope>request</managed-bean-scope>
+        </managed-bean>
+        <router id="StartProductDetailsGroup">
+            <case id="__112">
+                <expression id="__113">#{pageFlowScope.rowKeyStrProductDetailsGroup!=null or
+                                       pageFlowScope.rowKeyValueProductDetailsGroup!=null or
+                                       pageFlowScope.rowKeyProductDetailsGroup!=null}</expression>
+                <outcome id="__114">SetCurrentRowProductDetailsGroup</outcome>
+            </case>
+            <case id="__115">
+                <expression id="__116">#{pageFlowScope.isDeepLink!=null and pageFlowScope.isDeepLink}</expression>
+                <outcome id="__117">deepLinkPage</outcome>
+            </case>
+            <default-outcome id="__118">firstPage</default-outcome>
+        </router>
+        <!-- DEBUG:END:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2 -->
+        <method-call id="SetCurrentRowProductDetailsGroup">
+            <method id="__119">#{jhsSetCurrentRow.execute}</method>
+            <!-- iterator param -->
+            <parameter>
+                <class id="__120">oracle.adf.model.binding.DCIteratorBinding</class>
+                <value id="__121">#{bindings.ProductDetailsGroupIterator}</value>
+            </parameter>
+            <!-- rowKeyStr param -->
+            <parameter>
+                <class id="__122">java.lang.String</class>
+                <value id="__123">#{pageFlowScope.rowKeyStrProductDetailsGroup}</value>
+            </parameter>
+            <!-- rowKeyValue param -->
+            <parameter>
+                <class id="__124">java.lang.Object</class>
+                <value id="__125">#{pageFlowScope.rowKeyValueProductDetailsGroup}</value>
+            </parameter>
+            <!-- rowKey param -->
+            <parameter>
+                <class id="__126">oracle.jbo.Key</class>
+                <value id="__127">#{pageFlowScope.rowKeyProductDetailsGroup}</value>
+            </parameter>
+            <!-- altKeyName param -->
+            <parameter>
+                <class id="__128">java.lang.String</class>
+                <value id="__129">#{pageFlowScope.altKeyNameProductDetailsGroup}</value>
+            </parameter>
+            <outcome id="__130">
+                <fixed-outcome id="__131">deepLinkPage</fixed-outcome>
+            </outcome>
+        </method-call>
+        <!-- DEBUG:END:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2-->
+        <task-flow-return id="CancelProductDetailsGroupReturn">
+            <outcome id="__132">
+                <name id="__133">CancelProductDetailsGroup</name>
+            </outcome>
+        </task-flow-return>
+        <task-flow-return id="DoneProductDetailsGroupReturn">
+            <outcome id="__134">
+                <name id="__135">DoneProductDetailsGroup</name>
+            </outcome>
+        </task-flow-return>
+        <!-- DEBUG:BEGIN:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2 -->
+        <view id="ProductDetailsGroupTable">
+            <page id="__136">/pages/ProductDetailsGroupTable.jsf</page>
+        </view>
+        <!-- DEBUG:END:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2 -->
+        <method-call id="FilterDetails">
+            <method>#{DataTeamAgentBean.FilterProductDetails}</method>
+            <outcome>
+                <fixed-outcome>GoToPage</fixed-outcome>
+            </outcome>
+        </method-call>
+        <task-flow-call id="ProductLostRlostTaskFlow">
+            <task-flow-reference>
+                <document>/WEB-INF/adfc-config-ProductLostRlost.xml</document>
+                <id>ProductLostRlostTaskFlow</id>
+            </task-flow-reference>
+            <input-parameter id="__187">
+                <name>PilotId</name>
+                <value>#{pageFlowScope.PilotId}</value>
+            </input-parameter>
+            <input-parameter id="__188">
+                <name>ProductId</name>
+                <value>#{pageFlowScope.ProductId}</value>
+            </input-parameter>
+            <input-parameter id="__189">
+                <name>ShipmentId</name>
+                <value>#{pageFlowScope.ShipmentId}</value>
+            </input-parameter>
+            <run-as-dialog>
+                <display-type>
+                    <inline-popup/>
+                </display-type>
+            </run-as-dialog>
+        </task-flow-call>
+        <control-flow-rule id="__137">
+            <from-activity-id id="__138">*</from-activity-id>
+            <control-flow-case id="__139">
+                <from-outcome id="__140">SetCurrentRowProductDetailsGroup</from-outcome>
+                <to-activity-id id="__141">SetCurrentRowProductDetailsGroup</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__142">
+                <from-outcome id="__143">firstPage</from-outcome>
+                <to-activity-id id="__144">ProductDetailsGroupTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__145">
+                <from-outcome id="__146">deepLinkPage</from-outcome>
+                <to-activity-id id="__147">ProductDetailsGroupTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__148">
+                <from-outcome id="__149">ProductDetailsGroupTableBreadcrumb</from-outcome>
+                <to-activity-id id="__150">ProductDetailsGroupTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__151">
+                <from-outcome id="__152">Cancel</from-outcome>
+                <to-activity-id id="__153">StartProductDetailsGroup</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__154">
+                <from-outcome id="__155">CancelProductDetailsGroupReturn</from-outcome>
+                <to-activity-id id="__156">CancelProductDetailsGroupReturn</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__157">
+                <from-outcome id="__158">DoneProductDetailsGroupReturn</from-outcome>
+                <to-activity-id id="__159">DoneProductDetailsGroupReturn</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <!-- DEBUG:END:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2-->
+        <control-flow-rule id="__181">
+            <from-activity-id>FilterDetails</from-activity-id>
+            <control-flow-case id="__182">
+                <from-outcome>GoToPage</from-outcome>
+                <to-activity-id>ProductDetailsGroupTable</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__185">
+            <from-activity-id>ProductDetailsGroupTable</from-activity-id>
+            <control-flow-case id="__186">
+                <from-outcome>GoToLostDetails</from-outcome>
+                <to-activity-id>ProductLostRlostTaskFlow</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+    </task-flow-definition>
+    <!-- This bean must be defined outside the task-flow-definition element
+       because it needs to be available in the pageFlowScope of the unbounded
+       task-flow not in the pageFlowScope of the bounded task flow itself. -->
+    <!-- DEBUG:BEGIN:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2 -->
+    <managed-bean id="__160">
+        <managed-bean-name id="__161">ProductDetailsGroupTaskFlowConfig</managed-bean-name>
+        <managed-bean-class id="__162">oracle.jheadstart.controller.jsf.bean.TaskFlowConfigBean</managed-bean-class>
+        <managed-bean-scope id="__163">pageFlow</managed-bean-scope>
+        <managed-property id="__164">
+            <property-name id="__165">params</property-name>
+            <property-class id="__166">java.util.Map</property-class>
+            <map-entries id="__167">
+                <map-entry id="__168">
+                    <key id="__169">parentContext</key>
+                    <value id="__170">#{pageFlowScope.parentContext}</value>
+                </map-entry>
+            </map-entries>
+        </managed-property>
+        <managed-property id="__171">
+            <property-name id="__172">name</property-name>
+            <value id="__173">ProductDetailsGroup</value>
+        </managed-property>
+        <managed-property id="__174">
+            <property-name id="__175">taskFlowId</property-name>
+            <value id="__176">/WEB-INF/adfc-config-ProductDetailsGroup.xml#ProductDetailsGroupTaskFlow</value>
+        </managed-property>
+        <managed-property id="__177">
+            <property-name id="__178">label</property-name>
+            <value id="__179">#{nls['MENU1_TITLE_PRODUCTDETAILSGROUP']}</value>
+        </managed-property>
+    </managed-bean>
+    <!-- DEBUG:END:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2-->
+</adfc-config>

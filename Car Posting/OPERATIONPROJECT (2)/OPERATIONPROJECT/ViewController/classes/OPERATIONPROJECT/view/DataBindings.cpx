@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.9.14" id="DataBindings"
+             SeparateXMLFiles="false" Package="OPERATIONPROJECT.view" ClientType="Generic"
+             ErrorHandlerClass="oracle.jheadstart.controller.jsf.util.JhsDCErrorHandlerImpl">
+  <pageMap>
+    <page path="/pages/UIShell.jsf" usageId="OPERATIONPROJECT_UIShellPageDef"/>
+    <page path="/pages/PopupShell.jsf" usageId="OPERATIONPROJECT_PopupShellPageDef"/>
+    <page path="/WEB-INF/adfc-config-Countries1.xml#Countries1TaskFlow@CreateCountries1" usageId="Countries1PageDef"/>
+    <page path="/WEB-INF/adfc-config-Countries1.xml#Countries1TaskFlow@SetCurrentRowCountries1"
+          usageId="Countries1PageDef"/>
+    <page path="/pages/Countries1Table.jsff" usageId="Countries1PageDef"/>
+    <page path="/pages/Countries1.jsff" usageId="Countries1PageDef"/>
+    <page path="/WEB-INF/adfc-config-ddd.xml#dddTaskFlow@Createddd" usageId="dddPageDef"/>
+    <page path="/WEB-INF/adfc-config-ddd.xml#dddTaskFlow@SetCurrentRowddd" usageId="dddPageDef"/>
+    <page path="/pages/ddd.jsff" usageId="dddPageDef"/>
+    <page path="/WEB-INF/adfc-config-WeekDaysVO.xml#WeekDaysVOTaskFlow@CreateWeekDaysVO" usageId="WeekDaysVOPageDef"/>
+    <page path="/WEB-INF/adfc-config-WeekDaysVO.xml#WeekDaysVOTaskFlow@SetCurrentRowWeekDaysVO"
+          usageId="WeekDaysVOPageDef"/>
+    <page path="/pages/WeekDaysVO.jsff" usageId="WeekDaysVOPageDef"/>
+    <page path="/WEB-INF/adfc-config-CarReconciliation.xml#CarReconciliationTaskFlow@CreateCarReconciliation"
+          usageId="CarReconciliationPageDef"/>
+    <page path="/WEB-INF/adfc-config-CarReconciliation.xml#CarReconciliationTaskFlow@SetCurrentRowCarReconciliation"
+          usageId="CarReconciliationPageDef"/>
+    <page path="/pages/CarReconciliationTable.jsff" usageId="CarReconciliationPageDef"/>
+    <page path="/WEB-INF/adfc-config-PostTeamleader.xml#PostTeamleaderTaskFlow@CreatePostTeamleader"
+          usageId="PostTeamleaderPageDef"/>
+    <page path="/pages/PostTeamleader.jsff" usageId="PostTeamleaderPageDef"/>
+    <page path="/WEB-INF/adfc-config-DataTeamLeaderScreen.xml#DataTeamLeaderScreenTaskFlow@CreateDataTeamLeaderScreen"
+          usageId="DataTeamLeaderScreenPageDef"/>
+    <page path="/pages/DataTeamLeaderScreen.jsff" usageId="DataTeamLeaderScreenPageDef"/>
+    <page path="/WEB-INF/adfc-config-PostScreen.xml#PostScreenTaskFlow@CreatePostScreen" usageId="PostScreenPageDef"/>
+    <page path="/pages/PostScreen.jsff" usageId="PostScreenPageDef"/>
+    <page path="/WEB-INF/adfc-config-DataTeamAgent.xml#DataTeamAgentTaskFlow@CreateDataTeamAgent"
+          usageId="DataTeamAgentPageDef"/>
+    <page path="/pages/DataTeamAgent.jsff" usageId="DataTeamAgentPageDef"/>
+    <page path="/WEB-INF/adfc-config-DataTeamAgentPendingWork.xml#DataTeamAgentPendingWorkTaskFlow@SetCurrentRowDataTeamAgentPendingWork"
+          usageId="DataTeamAgentPendingWorkPageDef"/>
+    <page path="/pages/DataTeamAgentPendingWorkTable.jsff" usageId="DataTeamAgentPendingWorkPageDef"/>
+    <page path="/pages/DataTeamAgentPendingWork.jsff" usageId="DataTeamAgentPendingWorkPageDef"/>
+    <page path="/WEB-INF/adfc-config-ProductContractDDownloadVO.xml#ProductContractDDownloadVOTaskFlow@SetCurrentRowProductContractDDownloadVO"
+          usageId="ProductContractDDownloadVOPageDef"/>
+    <page path="/pages/ProductContractDDownloadVOTable.jsf" usageId="ProductContractDDownloadVOPageDef"/>
+    <page path="/WEB-INF/adfc-config-ProductContractDDownloadVO.xml#ProductContractDDownloadVOTaskFlow@FilterProductContractData"
+          usageId="OPERATIONPROJECT_view_adfc_config_ProductContractDDownloadVO_ProductContractDDownloadVOTaskFlow_FilterProductContractDataPageDef"/>
+    <page path="/WEB-INF/adfc-config-DataTeamAgentDashboard.xml#DataTeamAgentDashboardTaskFlow@SetCurrentRowDataTeamAgentDashboard"
+          usageId="DataTeamAgentDashboardPageDef"/>
+    <page path="/pages/DataTeamAgentDashboardTable.jsff" usageId="DataTeamAgentDashboardPageDef"/>
+    <page path="/WEB-INF/adfc-config-DataTeamAgentNotesReview.xml#DataTeamAgentNotesReviewTaskFlow@SetCurrentRowDataTeamAgentNotesReview"
+          usageId="DataTeamAgentNotesReviewPageDef"/>
+    <page path="/pages/DataTeamAgentNotesReviewTable.jsff" usageId="DataTeamAgentNotesReviewPageDef"/>
+    <page path="/pages/DataTeamAgentNotesReview.jsff" usageId="DataTeamAgentNotesReviewPageDef"/>
+    <page path="/WEB-INF/adfc-config-DataTeamAgentEndOfDayReview.xml#DataTeamAgentEndOfDayReviewTaskFlow@SetCurrentRowDataTeamAgentEndOfDayReview"
+          usageId="DataTeamAgentEndOfDayReviewPageDef"/>
+    <page path="/pages/DataTeamAgentEndOfDayReviewTable.jsff" usageId="DataTeamAgentEndOfDayReviewPageDef"/>
+    <page path="/pages/DataTeamAgentEndOfDayReview.jsff" usageId="DataTeamAgentEndOfDayReviewPageDef"/>
+    <page path="/WEB-INF/adfc-config-DataTeamAgentContractReview.xml#DataTeamAgentContractReviewTaskFlow@SetCurrentRowDataTeamAgentContractReview"
+          usageId="DataTeamAgentContractReviewPageDef"/>
+    <page path="/pages/DataTeamAgentContractReviewTable.jsff" usageId="DataTeamAgentContractReviewPageDef"/>
+    <page path="/pages/DataTeamAgentContractReview.jsff" usageId="DataTeamAgentContractReviewPageDef"/>
+    <page path="/WEB-INF/adfc-config-NewCancelSalesContractProducts.xml#NewCancelSalesContractProductsTaskFlow@SetCurrentRowNewCancelSalesContractProducts"
+          usageId="NewCancelSalesContractProductsPageDef"/>
+    <page path="/pages/NewCancelSalesContractProductsTable.jsf" usageId="NewCancelSalesContractProductsPageDef"/>
+    <page path="/WEB-INF/adfc-config-NewCancelSalesContractProducts.xml#NewCancelSalesContractProductsTaskFlow@FilterProducts"
+          usageId="OPERATIONPROJECT_view_adfc_config_NewCancelSalesContractProducts_NewCancelSalesContractProductsTaskFlow_FilterProductsPageDef"/>
+    <page path="/WEB-INF/adfc-config-DataTeamAgentCarReconciliation.xml#DataTeamAgentCarReconciliationTaskFlow@SetCurrentRowDataTeamAgentCarReconciliation"
+          usageId="DataTeamAgentCarReconciliationPageDef"/>
+    <page path="/pages/DataTeamAgentCarReconciliationTable.jsff" usageId="DataTeamAgentCarReconciliationPageDef"/>
+    <page path="/pages/DataTeamAgentCarReconciliation.jsff" usageId="DataTeamAgentCarReconciliationPageDef"/>
+    <page path="/pages/PilotCoverGroup.jsf" usageId="PilotCoverGroupPageDef"/>
+    <page path="/WEB-INF/adfc-config-PilotCoverGroup.xml#PilotCoverGroupTaskFlow@FilterPilotCoverGroup"
+          usageId="OPERATIONPROJECT_view_adfc_config_PilotCoverGroup_PilotCoverGroupTaskFlow_FilterPilotCoverGroupPageDef"/>
+    <page path="/WEB-INF/adfc-config-ProductDetailsGroup.xml#ProductDetailsGroupTaskFlow@SetCurrentRowProductDetailsGroup"
+          usageId="ProductDetailsGroupPageDef"/>
+    <page path="/pages/ProductDetailsGroupTable.jsf" usageId="ProductDetailsGroupPageDef"/>
+    <page path="/WEB-INF/adfc-config-ProductDetailsGroup.xml#ProductDetailsGroupTaskFlow@FilterDetails"
+          usageId="OPERATIONPROJECT_view_adfc_config_ProductDetailsGroup_ProductDetailsGroupTaskFlow_FilterDetailsPageDef"/>
+    <page path="/WEB-INF/adfc-config-ProductLostRlost.xml#ProductLostRlostTaskFlow@SetCurrentRowProductLostRlost"
+          usageId="ProductLostRlostPageDef"/>
+    <page path="/pages/ProductLostRlostTable.jsf" usageId="ProductLostRlostPageDef"/>
+    <page path="/WEB-INF/adfc-config-ProductLostRlost.xml#ProductLostRlostTaskFlow@FilterLostHistory"
+          usageId="OPERATIONPROJECT_view_adfc_config_ProductLostRlost_ProductLostRlostTaskFlow_FilterLostHistoryPageDef"/>
+    <page path="/WEB-INF/adfc-config-HubCoverGroup.xml#HubCoverGroupTaskFlow@SetCurrentRowHubCoverGroup"
+          usageId="HubCoverGroupPageDef"/>
+    <page path="/pages/HubCoverGroup.jsf" usageId="HubCoverGroupPageDef"/>
+    <page path="/WEB-INF/adfc-config-HubCoverGroup.xml#HubCoverGroupTaskFlow@FilterHubCoverGroup"
+          usageId="OPERATIONPROJECT_view_adfc_config_HubCoverGroup_HubCoverGroupTaskFlow_FilterHubCoverGroupPageDef"/>
+  </pageMap>
+  <definitionFactories>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+    <factory className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"
+             nameSpace="http://xmlns.oracle.com/adf/controller/binding"/>
+    <factory className="oracle.adfinternal.view.faces.dvt.model.binding.FacesBindingFactory"
+             nameSpace="http://xmlns.oracle.com/adfm/dvt"/>
+  </definitionFactories>
+  <pageDefinitionUsages>
+    <page id="OPERATIONPROJECT_UIShellPageDef" path="OPERATIONPROJECT.view.pageDefs.OPERATIONPROJECT_UIShellPageDef"/>
+    <page id="OPERATIONPROJECT_PopupShellPageDef"
+          path="OPERATIONPROJECT.view.pageDefs.OPERATIONPROJECT_PopupShellPageDef"/>
+    <page id="Countries1PageDef" path="OPERATIONPROJECT.view.pageDefs.Countries1PageDef"/>
+    <page id="dddPageDef" path="OPERATIONPROJECT.view.pageDefs.dddPageDef"/>
+    <page id="WeekDaysVOPageDef" path="OPERATIONPROJECT.view.pageDefs.WeekDaysVOPageDef"/>
+    <page id="CarReconciliationPageDef" path="OPERATIONPROJECT.view.pageDefs.CarReconciliationPageDef"/>
+    <page id="PostTeamleaderPageDef" path="OPERATIONPROJECT.view.pageDefs.PostTeamleaderPageDef"/>
+    <page id="DataTeamLeaderScreenPageDef" path="OPERATIONPROJECT.view.pageDefs.DataTeamLeaderScreenPageDef"/>
+    <page id="PostScreenPageDef" path="OPERATIONPROJECT.view.pageDefs.PostScreenPageDef"/>
+    <page id="DataTeamAgentPageDef" path="OPERATIONPROJECT.view.pageDefs.DataTeamAgentPageDef"/>
+    <page id="DataTeamAgentPendingWorkPageDef" path="OPERATIONPROJECT.view.pageDefs.DataTeamAgentPendingWorkPageDef"/>
+    <page id="ProductContractDDownloadVOPageDef"
+          path="OPERATIONPROJECT.view.pageDefs.ProductContractDDownloadVOPageDef"/>
+    <page id="OPERATIONPROJECT_view_adfc_config_ProductContractDDownloadVO_ProductContractDDownloadVOTaskFlow_FilterProductContractDataPageDef"
+          path="OPERATIONPROJECT.view.pageDefs.adfc_config_ProductContractDDownloadVO_ProductContractDDownloadVOTaskFlow_FilterProductContractDataPageDef"/>
+    <page id="DataTeamAgentDashboardPageDef" path="OPERATIONPROJECT.view.pageDefs.DataTeamAgentDashboardPageDef"/>
+    <page id="DataTeamAgentNotesReviewPageDef" path="OPERATIONPROJECT.view.pageDefs.DataTeamAgentNotesReviewPageDef"/>
+    <page id="DataTeamAgentEndOfDayReviewPageDef"
+          path="OPERATIONPROJECT.view.pageDefs.DataTeamAgentEndOfDayReviewPageDef"/>
+    <page id="DataTeamAgentContractReviewPageDef"
+          path="OPERATIONPROJECT.view.pageDefs.DataTeamAgentContractReviewPageDef"/>
+    <page id="NewCancelSalesContractProductsPageDef"
+          path="OPERATIONPROJECT.view.pageDefs.NewCancelSalesContractProductsPageDef"/>
+    <page id="OPERATIONPROJECT_view_adfc_config_NewCancelSalesContractProducts_NewCancelSalesContractProductsTaskFlow_FilterProductsPageDef"
+          path="OPERATIONPROJECT.view.pageDefs.adfc_config_NewCancelSalesContractProducts_NewCancelSalesContractProductsTaskFlow_FilterProductsPageDef"/>
+    <page id="DataTeamAgentCarReconciliationPageDef"
+          path="OPERATIONPROJECT.view.pageDefs.DataTeamAgentCarReconciliationPageDef"/>
+    <page id="PilotCoverGroupPageDef" path="OPERATIONPROJECT.view.pageDefs.PilotCoverGroupPageDef"/>
+    <page id="OPERATIONPROJECT_view_adfc_config_PilotCoverGroup_PilotCoverGroupTaskFlow_FilterPilotCoverGroupPageDef"
+          path="OPERATIONPROJECT.view.pageDefs.adfc_config_PilotCoverGroup_PilotCoverGroupTaskFlow_FilterPilotCoverGroupPageDef"/>
+    <page id="ProductDetailsGroupPageDef" path="OPERATIONPROJECT.view.pageDefs.ProductDetailsGroupPageDef"/>
+    <page id="OPERATIONPROJECT_view_adfc_config_ProductDetailsGroup_ProductDetailsGroupTaskFlow_FilterDetailsPageDef"
+          path="OPERATIONPROJECT.view.pageDefs.adfc_config_ProductDetailsGroup_ProductDetailsGroupTaskFlow_FilterDetailsPageDef"/>
+    <page id="ProductLostRlostPageDef" path="OPERATIONPROJECT.view.pageDefs.ProductLostRlostPageDef"/>
+    <page id="OPERATIONPROJECT_view_adfc_config_ProductLostRlost_ProductLostRlostTaskFlow_FilterLostHistoryPageDef"
+          path="OPERATIONPROJECT.view.pageDefs.adfc_config_ProductLostRlost_ProductLostRlostTaskFlow_FilterLostHistoryPageDef"/>
+    <page id="HubCoverGroupPageDef" path="OPERATIONPROJECT.view.pageDefs.HubCoverGroupPageDef"/>
+    <page id="OPERATIONPROJECT_view_adfc_config_HubCoverGroup_HubCoverGroupTaskFlow_FilterHubCoverGroupPageDef"
+          path="OPERATIONPROJECT.view.pageDefs.adfc_config_HubCoverGroup_HubCoverGroupTaskFlow_FilterHubCoverGroupPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="AppModuleAMDataControl" Package="OPERATIONPROJECT.model.BC.AM"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="AppModuleAMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

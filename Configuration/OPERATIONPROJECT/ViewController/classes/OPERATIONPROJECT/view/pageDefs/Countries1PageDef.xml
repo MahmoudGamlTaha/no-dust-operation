@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="Countries1PageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="validateCurrentRows">
+  <parameters/>
+  <executables>
+    <invokeAction id="clearDeepLinkViewCriteriaInvoke" Binds="clearDeepLinkViewCriteria" Refresh="renderModel"
+                  RefreshCondition="#{'true' != pageFlowScope.jhsQueryByKeyValue}"/>
+    <iterator id="Countries1Iterator" Binds="Countries1" DataControl="AppModuleAMDataControl" RangeSize="10"/>
+    <searchRegion id="Countries1IteratorQuery" Binds="Countries1Iterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="CountryId"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+  </executables>
+  <bindings>
+    <methodAction id="clearDeepLinkViewCriteria" RequiresUpdateModel="true" Action="invokeMethod"
+                  DataControl="AppModuleAMDataControl" InstanceName="AppModuleAMDataControl.dataProvider"
+                  MethodName="clearDeepLinkViewCriteria"
+                  ReturnName="AppModuleAMDataControl.methodResults.AppModuleAMDataControl_dataProvider_clearDeepLinkViewCriteria_result"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="viewObjectUsage" NDValue="Countries1" NDType="java.lang.String"/>
+      <NamedData NDName="requeryIfFound" NDValue="#{true}" NDType="java.lang.Boolean"/>
+    </methodAction>
+    <attributeValues IterBinding="Countries1Iterator" id="Countries1CountryId">
+      <AttrNames>
+        <Item Value="CountryId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Countries1Iterator" id="Countries1CountryName">
+      <AttrNames>
+        <Item Value="CountryName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Countries1Iterator" id="Countries1RegionId">
+      <AttrNames>
+        <Item Value="RegionId"/>
+      </AttrNames>
+    </attributeValues>
+    <tree id="Countries1Table" IterBinding="Countries1Iterator">
+      <nodeDefinition Name="Countries1" DefName="OPERATIONPROJECT.model.BC.VO.CountriesVO">
+        <AttrNames>
+          <Item Value="CountryId"/>
+          <Item Value="CountryName"/>
+          <Item Value="RegionId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="Countries1Iterator" id="FirstCountries1" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="Countries1Iterator" id="PreviousCountries1" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="Countries1Iterator" id="NextCountries1" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="Countries1Iterator" id="LastCountries1" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="Countries1Iterator" id="SetCurrentRowWithKeyCountries1" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrCountries1}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="Countries1Iterator" id="CreateCountries1" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="Countries1Iterator" id="DeleteCountries1" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

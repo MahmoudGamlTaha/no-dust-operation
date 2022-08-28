@@ -1,0 +1,33 @@
+## revision_history
+## 18-feb-2012   Steven Davelaar
+## 1.2           Added successOutcome, failureOutcome properties
+## 18-may-2010   Steven Davelaar
+## 1.1           Added id property to all elements
+## 17-jan-2009   Steven Davelaar
+## 1.0           Initial creation
+#set ($bean = ${JHS.current.managedBean})
+#set ($group = ${JHS.current.group})
+
+<managed-bean id="#NEW_ID("__")">
+  <managed-bean-name id="#NEW_ID("__")">${bean.beanName}</managed-bean-name>
+  <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.CreateRowBean</managed-bean-class>
+  <managed-bean-scope id="#NEW_ID("__")">request</managed-bean-scope>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">createBinding</property-name>
+    <value id="#NEW_ID("__")">#{bindings.Create${group.name}}</value>
+  </managed-property>
+  #if ($group.hasDefaultValues)
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">defaultValuesBean</property-name>
+    <value id="#NEW_ID("__")">#{pageFlowScope.${JHS.current.group.name}DefaultValues}</value>
+  </managed-property>
+  #end
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">successOutcome</property-name>
+    <value id="#NEW_ID("__")">deepLinkPage</value>
+  </managed-property>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">failureOutcome</property-name>
+    <value id="#NEW_ID("__")">firstPage</value>
+  </managed-property>
+</managed-bean>

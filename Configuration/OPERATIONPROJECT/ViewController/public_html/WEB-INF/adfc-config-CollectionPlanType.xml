@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <task-flow-definition id="CollectionPlanTypeTaskFlow">
+        <!-- DEBUG:BEGIN:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2 -->
+        <template-reference>
+            <document id="__0">/WEB-INF/jhs-fragment-taskflow-template.xml</document>
+            <id id="__1">jhs-fragment-taskflow-template</id>
+        </template-reference>
+        <!-- DEBUG:END:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2-->
+        <default-activity id="__2">StartCollectionPlanType</default-activity>
+        <!-- DEBUG:BEGIN:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2 -->
+        <input-parameter-definition id="__3">
+            <name id="__4">createCollectionPlanType</name>
+            <value id="__5">#{pageFlowScope.createCollectionPlanType}</value>
+            <class id="__6">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__7">
+            <name id="__8">rowKeyStrCollectionPlanType</name>
+            <value id="__9">#{pageFlowScope.rowKeyStrCollectionPlanType}</value>
+            <class id="__10">java.lang.String</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__11">
+            <name id="__12">rowKeyValueCollectionPlanType</name>
+            <value id="__13">#{pageFlowScope.rowKeyValueCollectionPlanType}</value>
+            <class id="__14">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__15">
+            <name id="__16">rowKeyCollectionPlanType</name>
+            <value id="__17">#{pageFlowScope.rowKeyCollectionPlanType}</value>
+            <class id="__18">oracle.jbo.Key</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__19">
+            <name id="__20">altKeyNameCollectionPlanType</name>
+            <value id="__21">#{pageFlowScope.altKeyNameCollectionPlanType}</value>
+            <class id="__22">java.lang.String</class>
+        </input-parameter-definition>
+        <!-- DEBUG:END:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2 -->
+        <managed-bean id="__23">
+            <managed-bean-name id="__24">jhsTaskFlowManager</managed-bean-name>
+            <managed-bean-class id="__25">oracle.jheadstart.controller.jsf.bean.TaskFlowManager</managed-bean-class>
+            <managed-bean-scope id="__26">pageFlow</managed-bean-scope>
+            <managed-property id="__27">
+                <property-name id="__28">initializeParentContextEntries</property-name>
+                <map-entries id="__29">
+                    <map-entry id="__30">
+                        <key id="__31">jhsCurrentGroupName</key>
+                        <value id="__32">CollectionPlanType</value>
+                    </map-entry>
+                </map-entries>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__33">
+            <managed-bean-name id="__34">CreateCollectionPlanType</managed-bean-name>
+            <managed-bean-class id="__35">oracle.jheadstart.controller.jsf.bean.CreateRowBean</managed-bean-class>
+            <managed-bean-scope id="__36">request</managed-bean-scope>
+            <managed-property id="__37">
+                <property-name id="__38">createBinding</property-name>
+                <value id="__39">#{bindings.CreateCollectionPlanType}</value>
+            </managed-property>
+            <managed-property id="__40">
+                <property-name id="__41">successOutcome</property-name>
+                <value id="__42">deepLinkPage</value>
+            </managed-property>
+            <managed-property id="__43">
+                <property-name id="__44">failureOutcome</property-name>
+                <value id="__45">firstPage</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2 -->
+        <managed-bean id="__46">
+            <managed-bean-name id="__47">SaveCollectionPlanType</managed-bean-name>
+            <managed-bean-class id="__48">oracle.jheadstart.controller.jsf.bean.CommitBean</managed-bean-class>
+            <managed-bean-scope id="__49">request</managed-bean-scope>
+            <managed-property id="__50">
+                <property-name id="__51">commitBinding</property-name>
+                <value id="__52">#{bindings.Commit}</value>
+            </managed-property>
+            <managed-property id="__53">
+                <property-name id="__54">successOutcome</property-name>
+                <value id="__55">Commit</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2 -->
+        <managed-bean id="__56">
+            <managed-bean-name id="__57">jhsRollback</managed-bean-name>
+            <managed-bean-class id="__58">oracle.jheadstart.controller.jsf.bean.RollbackBean</managed-bean-class>
+            <managed-bean-scope id="__59">request</managed-bean-scope>
+            <managed-property id="__60">
+                <property-name id="__61">rollbackBinding</property-name>
+                <value id="__62">#{bindings.Rollback}</value>
+            </managed-property>
+            <managed-property id="__63">
+                <property-name id="__64">successOutcome</property-name>
+                <value id="__65">Cancel</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__66">
+            <managed-bean-name id="__67">CollectionPlanTypeTable</managed-bean-name>
+            <managed-bean-class id="__68">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__69">pageFlow</managed-bean-scope>
+            <managed-property id="__70">
+                <property-name id="__71">name</property-name>
+                <value id="__72">CollectionPlanTypeTable</value>
+            </managed-property>
+            <managed-property id="__73">
+                <property-name id="__74">rangeBindingExpr</property-name>
+                <value id="__75">#{'#{bindings.CollectionPlanTypeTable}'}</value>
+            </managed-property>
+            <managed-property id="__76">
+                <property-name id="__77">focusItemId</property-name>
+                <value id="__78">CollectionPlanTypeTypeName</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__79">
+            <managed-bean-name id="__80">DeleteCollectionPlanType</managed-bean-name>
+            <managed-bean-class id="__81">oracle.jheadstart.controller.jsf.bean.DeleteRowBean</managed-bean-class>
+            <managed-bean-scope id="__82">request</managed-bean-scope>
+            <managed-property id="__83">
+                <property-name id="__84">deleteBinding</property-name>
+                <value id="__85">#{bindings.DeleteCollectionPlanType}</value>
+            </managed-property>
+            <managed-property id="__86">
+                <property-name id="__87">commitBean</property-name>
+                <value id="__88">#{jhsCommit}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__89">
+            <managed-bean-name id="__90">CollectionPlanTable</managed-bean-name>
+            <managed-bean-class id="__91">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__92">pageFlow</managed-bean-scope>
+            <managed-property id="__93">
+                <property-name id="__94">name</property-name>
+                <value id="__95">CollectionPlanTable</value>
+            </managed-property>
+            <managed-property id="__96">
+                <property-name id="__97">rangeBindingExpr</property-name>
+                <value id="__98">#{'#{bindings.CollectionPlanTable}'}</value>
+            </managed-property>
+            <managed-property id="__99">
+                <property-name id="__100">focusItemId</property-name>
+                <value id="__101">CollectionPlanPlanName</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__102">
+            <managed-bean-name id="__103">DeleteCollectionPlan</managed-bean-name>
+            <managed-bean-class id="__104">oracle.jheadstart.controller.jsf.bean.DeleteRowBean</managed-bean-class>
+            <managed-bean-scope id="__105">request</managed-bean-scope>
+            <managed-property id="__106">
+                <property-name id="__107">deleteBinding</property-name>
+                <value id="__108">#{bindings.DeleteCollectionPlan}</value>
+            </managed-property>
+            <managed-property id="__109">
+                <property-name id="__110">commitBean</property-name>
+                <value id="__111">#{jhsCommit}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__112">
+            <managed-bean-name id="__113">CreateCollectionPlan</managed-bean-name>
+            <managed-bean-class id="__114">oracle.jheadstart.controller.jsf.bean.CreateRowBean</managed-bean-class>
+            <managed-bean-scope id="__115">request</managed-bean-scope>
+            <managed-property id="__116">
+                <property-name id="__117">createBinding</property-name>
+                <value id="__118">#{bindings.CreateCollectionPlan}</value>
+            </managed-property>
+            <managed-property id="__119">
+                <property-name id="__120">successOutcome</property-name>
+                <value id="__121">deepLinkPage</value>
+            </managed-property>
+            <managed-property id="__122">
+                <property-name id="__123">failureOutcome</property-name>
+                <value id="__124">firstPage</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2 -->
+        <router id="StartCollectionPlanType">
+            <case id="__125">
+                <expression id="__126">#{pageFlowScope.createCollectionPlanType!=null}</expression>
+                <outcome id="__127">createCollectionPlanType</outcome>
+            </case>
+            <case id="__128">
+                <expression id="__129">#{pageFlowScope.rowKeyStrCollectionPlanType!=null or
+                                       pageFlowScope.rowKeyValueCollectionPlanType!=null or
+                                       pageFlowScope.rowKeyCollectionPlanType!=null}</expression>
+                <outcome id="__130">SetCurrentRowCollectionPlanType</outcome>
+            </case>
+            <case id="__131">
+                <expression id="__132">#{pageFlowScope.isDeepLink!=null and pageFlowScope.isDeepLink}</expression>
+                <outcome id="__133">deepLinkPage</outcome>
+            </case>
+            <default-outcome id="__134">firstPage</default-outcome>
+        </router>
+        <!-- DEBUG:END:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2 -->
+        <method-call id="CreateCollectionPlanType">
+            <method id="__135">#{CreateCollectionPlanType.execute}</method>
+            <!-- execute condition param -->
+            <parameter>
+                <class id="__136">java.lang.Object</class>
+                <value id="__137">#{pageFlowScope.createCollectionPlanType}</value>
+            </parameter>
+            <outcome id="__138">
+                <to-string/>
+            </outcome>
+        </method-call>
+        <method-call id="SetCurrentRowCollectionPlanType">
+            <method id="__139">#{jhsSetCurrentRow.execute}</method>
+            <!-- iterator param -->
+            <parameter>
+                <class id="__140">oracle.adf.model.binding.DCIteratorBinding</class>
+                <value id="__141">#{bindings.CollectionPlanTypeIterator}</value>
+            </parameter>
+            <!-- rowKeyStr param -->
+            <parameter>
+                <class id="__142">java.lang.String</class>
+                <value id="__143">#{pageFlowScope.rowKeyStrCollectionPlanType}</value>
+            </parameter>
+            <!-- rowKeyValue param -->
+            <parameter>
+                <class id="__144">java.lang.Object</class>
+                <value id="__145">#{pageFlowScope.rowKeyValueCollectionPlanType}</value>
+            </parameter>
+            <!-- rowKey param -->
+            <parameter>
+                <class id="__146">oracle.jbo.Key</class>
+                <value id="__147">#{pageFlowScope.rowKeyCollectionPlanType}</value>
+            </parameter>
+            <!-- altKeyName param -->
+            <parameter>
+                <class id="__148">java.lang.String</class>
+                <value id="__149">#{pageFlowScope.altKeyNameCollectionPlanType}</value>
+            </parameter>
+            <outcome id="__150">
+                <fixed-outcome id="__151">deepLinkPage</fixed-outcome>
+            </outcome>
+        </method-call>
+        <!-- DEBUG:END:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2-->
+        <task-flow-return id="CancelCollectionPlanTypeReturn">
+            <outcome id="__152">
+                <name id="__153">CancelCollectionPlanType</name>
+            </outcome>
+        </task-flow-return>
+        <task-flow-return id="DoneCollectionPlanTypeReturn">
+            <outcome id="__154">
+                <name id="__155">DoneCollectionPlanType</name>
+            </outcome>
+        </task-flow-return>
+        <!-- DEBUG:BEGIN:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2 -->
+        <view id="CollectionPlanTypeTable">
+            <page id="__156">/pages/CollectionPlanTypeTable.jsff</page>
+            <train-stop id="__157">
+                <display-name id="__158">#{nls['TABLE_TITLE_COLLECTIONPLANTYPE']}</display-name>
+            </train-stop>
+        </view>
+        <view id="CollectionPlanType">
+            <page id="__159">/pages/CollectionPlanType.jsff</page>
+            <train-stop id="__160">
+                <display-name id="__161">#{nls['TABLE_TITLE_COLLECTIONPLANTYPE']}</display-name>
+            </train-stop>
+        </view>
+        <!-- DEBUG:END:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2-->
+        <train/>
+        <!-- DEBUG:BEGIN:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2 -->
+        <control-flow-rule id="__162">
+            <from-activity-id id="__163">*</from-activity-id>
+            <control-flow-case id="__164">
+                <from-outcome id="__165">SetCurrentRowCollectionPlanType</from-outcome>
+                <to-activity-id id="__166">SetCurrentRowCollectionPlanType</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__167">
+                <from-outcome id="__168">firstPage</from-outcome>
+                <to-activity-id id="__169">CollectionPlanTypeTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__170">
+                <from-outcome id="__171">deepLinkPage</from-outcome>
+                <to-activity-id id="__172">CollectionPlanType</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__173">
+                <from-outcome id="__174">CollectionPlanTypeTableBreadcrumb</from-outcome>
+                <to-activity-id id="__175">CollectionPlanTypeTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__176">
+                <from-outcome id="__177">CollectionPlanTypeBreadcrumb</from-outcome>
+                <to-activity-id id="__178">CollectionPlanType</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__179">
+                <from-outcome id="__180">Cancel</from-outcome>
+                <to-activity-id id="__181">StartCollectionPlanType</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__182">
+                <from-outcome id="__183">CancelCollectionPlanTypeReturn</from-outcome>
+                <to-activity-id id="__184">CancelCollectionPlanTypeReturn</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__185">
+                <from-outcome id="__186">DoneCollectionPlanTypeReturn</from-outcome>
+                <to-activity-id id="__187">DoneCollectionPlanTypeReturn</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__188">
+            <from-activity-id id="__189">CollectionPlanTypeTable</from-activity-id>
+            <control-flow-case id="__190">
+                <from-outcome id="__191">CreateCollectionPlanType</from-outcome>
+                <to-activity-id id="__192">CollectionPlanType</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__193">
+                <from-outcome id="__194">CollectionPlanTypeDetails</from-outcome>
+                <to-activity-id id="__195">CollectionPlanType</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__196">
+            <from-activity-id id="__197">*</from-activity-id>
+            <control-flow-case id="__198">
+                <from-outcome id="__199">createCollectionPlanType</from-outcome>
+                <to-activity-id id="__200">CreateCollectionPlanType</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <!-- DEBUG:END:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2-->
+        <use-page-fragments/>
+    </task-flow-definition>
+    <!-- This bean must be defined outside the task-flow-definition element
+       because it needs to be available in the pageFlowScope of the unbounded
+       task-flow not in the pageFlowScope of the bounded task flow itself. -->
+    <!-- DEBUG:BEGIN:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2 -->
+    <managed-bean id="__201">
+        <managed-bean-name id="__202">CollectionPlanTypeTaskFlowConfig</managed-bean-name>
+        <managed-bean-class id="__203">oracle.jheadstart.controller.jsf.bean.TaskFlowConfigBean</managed-bean-class>
+        <managed-bean-scope id="__204">pageFlow</managed-bean-scope>
+        <managed-property id="__205">
+            <property-name id="__206">params</property-name>
+            <property-class id="__207">java.util.Map</property-class>
+            <map-entries id="__208">
+                <map-entry id="__209">
+                    <key id="__210">parentContext</key>
+                    <value id="__211">#{pageFlowScope.parentContext}</value>
+                </map-entry>
+            </map-entries>
+        </managed-property>
+        <managed-property id="__212">
+            <property-name id="__213">name</property-name>
+            <value id="__214">CollectionPlanType</value>
+        </managed-property>
+        <managed-property id="__215">
+            <property-name id="__216">taskFlowId</property-name>
+            <value id="__217">/WEB-INF/adfc-config-CollectionPlanType.xml#CollectionPlanTypeTaskFlow</value>
+        </managed-property>
+        <managed-property id="__218">
+            <property-name id="__219">label</property-name>
+            <value id="__220">#{nls['MENU1_TITLE_COLLECTIONPLANTYPE']}</value>
+        </managed-property>
+    </managed-bean>
+    <!-- DEBUG:END:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2-->
+</adfc-config>

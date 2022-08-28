@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="DataTeamLeaderScreenPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="validateCurrentRows">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Name="DataTeamLeaderScreenNewItemVar" Type="String"/>
+    </variableIterator>
+    <iterator Binds="DataTeamLeaderPendingWorkVO1" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="DataTeamLeaderPendingWorkVO1Iterator"/>
+    <searchRegion Binds="DataTeamLeaderPendingWorkVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="DataTeamLeaderPendingWorkVO1Query"/>
+    <iterator Binds="DataAgentVO1" RangeSize="25" DataControl="AppModuleAMDataControl" id="DataAgentVO1Iterator"/>
+    <iterator Binds="DataTeamLeaderNotesReviewVO1" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="DataTeamLeaderNotesReviewVO1Iterator"/>
+    <searchRegion Binds="DataTeamLeaderNotesReviewVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="DataTeamLeaderNotesReviewVO1Query"/>
+    <iterator Binds="DataTeamLeaderEndOfDayVO1" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="DataTeamLeaderEndOfDayVO1Iterator"/>
+    <searchRegion Binds="DataTeamLeaderEndOfDayVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="DataTeamLeaderEndOfDayVO1Query"/>
+    <iterator Binds="DataTeamLeaderContractsReviewVO1" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="DataTeamLeaderContractsReviewVO1Iterator"/>
+    <searchRegion Binds="DataTeamLeaderContractsReviewVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="DataTeamLeaderContractsReviewVO1Query"/>
+    <iterator Binds="DataAgentVO1" RangeSize="10" DataControl="AppModuleAMDataControl" id="DataAgentVO1Iterator1"/>
+    <iterator Binds="DataTeamLeaderDashboardVO1" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="DataTeamLeaderDashboardVO1Iterator"/>
+    <searchRegion Binds="DataTeamLeaderDashboardVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="DataTeamLeaderDashboardVO1Query"/>
+    <iterator id="ResceduleDeliveryROV1Iterator" Binds="ResceduleDeliveryROV1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+  </executables>
+  <bindings>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+    <tree IterBinding="DataTeamLeaderPendingWorkVO1Iterator" id="DataTeamLeaderPendingWorkVO1">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.DataTeamLeaderPendingWorkVO"
+                      Name="DataTeamLeaderPendingWorkVO10">
+        <AttrNames>
+          <Item Value="AreaId"/>
+          <Item Value="AreaName"/>
+          <Item Value="AssignDate"/>
+          <Item Value="DataAgent"/>
+          <Item Value="DrivId"/>
+          <Item Value="DriverName"/>
+          <Item Value="PilotId"/>
+          <Item Value="PilotName"/>
+          <Item Value="TotalAssignemnt"/>
+          <Item Value="PendingWorkFlag" Binds="PendingWorkFlag"/>
+          <Item Value="RescheduleDelivery"/>
+          <Item Value="NewDeliveryDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="DataAgentVO1Iterator1" ListOperMode="navigation" ListIter="DataAgentVO1Iterator"
+          id="DataAgentVO1" DTSupportsMRU="true" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="AgentName"/>
+      </AttrNames>
+    </list>
+    <tree IterBinding="DataTeamLeaderNotesReviewVO1Iterator" id="DataTeamLeaderNotesReviewVO1">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.DataTeamLeaderNotesReviewVO"
+                      Name="DataTeamLeaderNotesReviewVO10">
+        <AttrNames>
+          <Item Value="AreaId"/>
+          <Item Value="AreaName"/>
+          <Item Value="AssignDate"/>
+          <Item Value="DataAgent"/>
+          <Item Value="DrivId"/>
+          <Item Value="DriverName"/>
+          <Item Value="PilotId"/>
+          <Item Value="PilotName"/>
+          <Item Value="TotalAssignemnt"/>
+          <Item Value="NotesFlag" Binds="NotesFlag"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="DataTeamLeaderEndOfDayVO1Iterator" id="DataTeamLeaderEndOfDayVO1">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.DataTeamLeaderEndOfDayVO" Name="DataTeamLeaderEndOfDayVO10">
+        <AttrNames>
+          <Item Value="AreaId"/>
+          <Item Value="AreaName"/>
+          <Item Value="DataAgent"/>
+          <Item Value="DriverId"/>
+          <Item Value="ReturnDate"/>
+          <Item Value="DriverName"/>
+          <Item Value="endofdayflag" Binds="endofdayflag"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="DataAgentVO1Iterator" id="Username">
+      <AttrNames>
+        <Item Value="Username"/>
+      </AttrNames>
+    </attributeValues>
+    <button IterBinding="DataTeamLeaderPendingWorkVO1Iterator" id="PendingWorkFlag" DTSupportsMRU="false"
+            StaticList="true">
+      <AttrNames>
+        <Item Value="PendingWorkFlag"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <button IterBinding="DataTeamLeaderNotesReviewVO1Iterator" id="NotesFlag" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="NotesFlag"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <tree IterBinding="DataTeamLeaderContractsReviewVO1Iterator" id="DataTeamLeaderContractsReviewVO1">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.DataTeamLeaderContractsReviewVO"
+                      Name="DataTeamLeaderContractsReviewVO10">
+        <AttrNames>
+          <Item Value="AreaId"/>
+          <Item Value="AreaName"/>
+          <Item Value="AssignDate"/>
+          <Item Value="DataAgent"/>
+          <Item Value="DeliveryType"/>
+          <Item Value="DrivId"/>
+          <Item Value="DriverName"/>
+          <Item Value="PilotId"/>
+          <Item Value="PilotName"/>
+          <Item Value="TotalAssignemnt"/>
+          <Item Value="ContractFlag" Binds="ContractFlag"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="DataTeamLeaderContractsReviewVO1Iterator" id="ContractFlag" DTSupportsMRU="false"
+            StaticList="true">
+      <AttrNames>
+        <Item Value="ContractFlag"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <action IterBinding="DataTeamLeaderContractsReviewVO1Iterator" id="Execute"
+            InstanceName="AppModuleAMDataControl.DataTeamLeaderContractsReviewVO1" DataControl="AppModuleAMDataControl"
+            RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <action IterBinding="DataTeamLeaderEndOfDayVO1Iterator" id="Execute1"
+            InstanceName="AppModuleAMDataControl.DataTeamLeaderEndOfDayVO1" DataControl="AppModuleAMDataControl"
+            RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <action IterBinding="DataTeamLeaderNotesReviewVO1Iterator" id="Execute2"
+            InstanceName="AppModuleAMDataControl.DataTeamLeaderNotesReviewVO1" DataControl="AppModuleAMDataControl"
+            RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <action IterBinding="DataTeamLeaderPendingWorkVO1Iterator" id="Execute3"
+            InstanceName="AppModuleAMDataControl.DataTeamLeaderPendingWorkVO1" DataControl="AppModuleAMDataControl"
+            RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <button IterBinding="DataTeamLeaderEndOfDayVO1Iterator" id="endofdayflag" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="endofdayflag"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <tree IterBinding="DataTeamLeaderDashboardVO1Iterator" id="DataTeamLeaderDashboardVO1">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.DataTeamLeaderDashboardVO"
+                      Name="DataTeamLeaderDashboardVO10">
+        <AttrNames>
+          <Item Value="DataDate"/>
+          <Item Value="DataAgentName"/>
+          <Item Value="WorkType"/>
+          <Item Value="AssignDate"/>
+          <Item Value="TotalAssignemnt"/>
+          <Item Value="CompletedCount"/>
+          <Item Value="CompletedPer"/>
+          <Item Value="AreaName"/>
+          <Item Value="DriverName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

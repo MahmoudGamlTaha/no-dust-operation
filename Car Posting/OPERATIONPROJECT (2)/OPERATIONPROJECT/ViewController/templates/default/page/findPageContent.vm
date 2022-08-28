@@ -1,0 +1,42 @@
+## revision_history
+## 20-jan-2011   Steven Davelaar
+## 1.4           Added popups facet
+## 10-jul-2009   Steven Davelaar
+## 1.3           redesigned
+## 31-okt-2007   Steven Davelaar/Jaco Verheul/Evert-Jan de Bruin
+## 1.2           R11 upgrade 
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+
+<f:facet name="pageContent">
+    $JHS.engine.pushStretchEnabled(false)    
+    <af:panelGroupLayout id="pcpg" layout="scroll">
+      <af:panelHeader id="pcph" text="#PAGE_TITLE()" #CUR_GROUP_PARTIAL_TRIGGERS()>
+        <f:facet name="toolbar">
+         <af:toolbox id="#NEW_ID("tbox")">
+          <af:toolbar id="#NEW_ID("tbar")">
+            #JHS_PARSE("NEW_BUTTON_NOT_IN_FORM_LAYOUT" ${JHS.current.model})
+            #JHS_PARSE("ADVANCED_SEARCH_BUTTONS" ${JHS.current.model})
+            #if ($JHS.page.group.useAsDialog)
+              #JHS_PARSE("DIALOG_OK_BUTTON" ${JHS.current.model})      
+              #JHS_PARSE("DIALOG_CANCEL_BUTTON" ${JHS.current.model})      
+            #end
+          </af:toolbar>
+         </af:toolbox>
+        </f:facet>
+        <f:facet name="context">
+          #JHS_PARSE("PARENT_CONTEXT" ${JHS.current.model})
+        </f:facet>
+        #JHS_PARSE("ADVANCED_SEARCH_REGION" ${JHS.current.model})
+      </af:panelHeader>
+    </af:panelGroupLayout> 
+     $JHS.engine.popStretchEnabled()
+</f:facet>
+<f:facet name="popups">
+ <af:panelGroupLayout id="popupsPgl">
+  ${JHS.page.popupsContent}
+  </af:panelGroupLayout>
+</f:facet>
+
+
+ 

@@ -1,0 +1,18 @@
+## revision_history
+## 08-mar-2011 Steven Davelaar
+## 1.1         Column width now obtained from actionColumnWidth property in PGGroupModel
+## 02-sep-2008 Steven Davelaar
+## 1.0         Initial creation
+
+#if ($JHS.current.group.tableDeleteAllowed || $JHS.current.group.showDuplicateRowButton || ($JHS.current.pageComponent.hasDetailsPage && "hyperlink"!=$JHS.current.group.formLink))
+<af:column id="${JHS.current.group.shortName}ActionColumn" #if($JHS.current.group.spreadTable && $JHS.current.group.tableFreezeStyle=="actionColumn")frozen="true"#end
+  width="${JHS.current.group.actionColumnWidth}" align="center" headerText="#ACTION_MENU_LABEL_DESC()">
+
+<af:panelGroupLayout layout="horizontal" id="#NEW_ID("pgl")">
+  #JHS_PARSE("DETAILS_LINK" ${JHS.current.model})
+  #JHS_PARSE("DELETE_ROW_LINK" ${JHS.current.model})
+  #JHS_PARSE("DUPLICATE_ROW_LINK" ${JHS.current.model})
+</af:panelGroupLayout>
+
+</af:column>
+#end

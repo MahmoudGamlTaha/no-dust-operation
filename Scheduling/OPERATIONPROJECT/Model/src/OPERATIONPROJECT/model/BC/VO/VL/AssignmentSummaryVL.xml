@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AssignmentSummaryVL"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="OPERATIONPROJECT.model.BC.VO.VL.AssignmentSummaryVL_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="SupervisorAreaSummary"
+    Cardinality="1"
+    Source="true"
+    Owner="OPERATIONPROJECT.model.BC.VO.SupervisorAreaSummaryVO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="SupervisorAreaSummary"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.VO.SupervisorAreaSummaryVO.WorkDate"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.SupervisorAreaSummaryVO.CoverDate"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.SupervisorAreaSummaryVO.AreaId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.SupervisorAreaSummaryVO.DriverId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.SupervisorAreaSummaryVO.PilotId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="AssignmentSummary"
+    Cardinality="-1"
+    Owner="OPERATIONPROJECT.model.BC.VO.AssignmentSummaryVO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="AssignmentSummary"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.VO.AssignmentSummaryVO.WorkDate"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.AssignmentSummaryVO.AssignDate"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.AssignmentSummaryVO.AreaId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.AssignmentSummaryVO.DrivId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.AssignmentSummaryVO.PilotId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="OPERATIONPROJECT.model.BC.ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

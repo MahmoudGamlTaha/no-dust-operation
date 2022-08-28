@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="DataTeamAgentNotesReviewPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="validateCurrentRows">
+  <parameters/>
+  <executables>
+    <invokeAction id="clearDeepLinkViewCriteriaInvoke" Binds="clearDeepLinkViewCriteria" Refresh="renderModel"
+                  RefreshCondition="#{'true' != pageFlowScope.jhsQueryByKeyValue}"/>
+    <iterator id="DataTeamAgentNotesReviewIterator" Binds="DataTeamAgentNotesReviewVO1"
+              DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <searchRegion id="DataTeamAgentNotesReviewIteratorSearchQuery" Binds="DataTeamAgentNotesReviewIterator"
+                  Criteria="Search" InitialQueryOverridden="true" DefaultQuickSearchAttrName="AssignDate"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <searchRegion id="DataTeamAgentNotesReviewIteratorQuery" Binds="DataTeamAgentNotesReviewIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true"
+                  DefaultQuickSearchAttrName="AssignDate"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator id="AssNotesReviewDetailsIterator" Binds="AssNotesReviewDetailsVO1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+    <searchRegion id="AssNotesReviewDetailsIteratorQuery" Binds="AssNotesReviewDetailsIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true" DefaultQuickSearchAttrName="CardNo"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator Binds="ProductContractDDownloadVO2" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="ProductContractDDownloadVO2Iterator"/>
+    <searchRegion Binds="ProductContractDDownloadVO2Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ProductContractDDownloadVO2Query"/>
+    <iterator Binds="ProductContractVO1" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="ProductContractVO1Iterator"/>
+    <iterator id="ProductPackageVO1Iterator" Binds="ProductPackageVO1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+    <iterator Binds="ProductContractVO2" RangeSize="10" DataControl="AppModuleAMDataControl"
+              id="ProductContractVO2Iterator"/>
+    <searchRegion Binds="ProductContractVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="ProductContractVO1Query"/>
+    <iterator Binds="ProductContractDDownloadVO1" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="ProductContractDDownloadVO1Iterator"/>
+    <iterator id="NewAssNotesReviewDetailsVO1Iterator" Binds="NewAssNotesReviewDetailsVO1"
+              DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <searchRegion Binds="NewAssNotesReviewDetailsVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="NewAssNotesReviewDetailsVO1Query"/>
+    <iterator Binds="NAssNotesDetVO3" RangeSize="25" DataControl="AppModuleAMDataControl" id="NAssNotesDetVO3Iterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="clearDeepLinkViewCriteria" RequiresUpdateModel="true" Action="invokeMethod"
+                  DataControl="AppModuleAMDataControl" InstanceName="AppModuleAMDataControl.dataProvider"
+                  MethodName="clearDeepLinkViewCriteria"
+                  ReturnName="AppModuleAMDataControl.methodResults.AppModuleAMDataControl_dataProvider_clearDeepLinkViewCriteria_result"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="viewObjectUsage" NDValue="DataTeamAgentNotesReviewVO1" NDType="java.lang.String"/>
+      <NamedData NDName="requeryIfFound" NDValue="#{true}" NDType="java.lang.Boolean"/>
+    </methodAction>
+    <attributeValues IterBinding="DataTeamAgentNotesReviewIterator" id="DataTeamAgentNotesReviewAssignDate">
+      <AttrNames>
+        <Item Value="AssignDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DataTeamAgentNotesReviewIterator" id="DataTeamAgentNotesReviewAreaName">
+      <AttrNames>
+        <Item Value="AreaName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DataTeamAgentNotesReviewIterator" id="DataTeamAgentNotesReviewDriverName">
+      <AttrNames>
+        <Item Value="DriverName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DataTeamAgentNotesReviewIterator" id="DataTeamAgentNotesReviewPilotName">
+      <AttrNames>
+        <Item Value="PilotName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DataTeamAgentNotesReviewIterator" id="DataTeamAgentNotesReviewTotalAssignemnt">
+      <AttrNames>
+        <Item Value="TotalAssignemnt"/>
+      </AttrNames>
+    </attributeValues>
+    <tree id="DataTeamAgentNotesReviewTable" IterBinding="DataTeamAgentNotesReviewIterator">
+      <nodeDefinition Name="DataTeamAgentNotesReview" DefName="OPERATIONPROJECT.model.BC.VO.DataTeamAgentNotesReviewVO">
+        <AttrNames>
+          <Item Value="AssignDate"/>
+          <Item Value="AreaName"/>
+          <Item Value="DriverName"/>
+          <Item Value="PilotName"/>
+          <Item Value="TotalAssignemnt"/>
+          <Item Value="DoneContracts"/>
+          <Item Value="DonePer"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="DataTeamAgentNotesReviewIterator" id="FirstDataTeamAgentNotesReview" RequiresUpdateModel="true"
+            Action="first"/>
+    <action IterBinding="DataTeamAgentNotesReviewIterator" id="PreviousDataTeamAgentNotesReview"
+            RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="DataTeamAgentNotesReviewIterator" id="NextDataTeamAgentNotesReview" RequiresUpdateModel="true"
+            Action="next"/>
+    <action IterBinding="DataTeamAgentNotesReviewIterator" id="LastDataTeamAgentNotesReview" RequiresUpdateModel="true"
+            Action="last"/>
+    <action IterBinding="DataTeamAgentNotesReviewIterator" id="SetCurrentRowWithKeyDataTeamAgentNotesReview"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrDataTeamAgentNotesReview}"
+                 NDType="java.lang.String"/>
+    </action>
+    <tree id="AssNotesReviewDetailsTable" IterBinding="AssNotesReviewDetailsIterator">
+      <nodeDefinition Name="AssNotesReviewDetails" DefName="OPERATIONPROJECT.model.BC.VO.AssNotesReviewDetailsVO">
+        <AttrNames>
+          <Item Value="CardNo"/>
+          <Item Value="Status"/>
+          <Item Value="CloseCodeReason"/>
+          <Item Value="CustomerNotes"/>
+          <Item Value="ClientName"/>
+          <Item Value="DataStatus"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="AssNotesReviewDetailsIterator" id="FirstAssNotesReviewDetails" RequiresUpdateModel="true"
+            Action="first"/>
+    <action IterBinding="AssNotesReviewDetailsIterator" id="PreviousAssNotesReviewDetails" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="AssNotesReviewDetailsIterator" id="NextAssNotesReviewDetails" RequiresUpdateModel="true"
+            Action="next"/>
+    <action IterBinding="AssNotesReviewDetailsIterator" id="LastAssNotesReviewDetails" RequiresUpdateModel="true"
+            Action="last"/>
+    <action IterBinding="AssNotesReviewDetailsIterator" id="SetCurrentRowWithKeyAssNotesReviewDetails"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrAssNotesReviewDetails}"
+                 NDType="java.lang.String"/>
+    </action>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+    <tree IterBinding="ProductContractDDownloadVO2Iterator" id="ProductContractDDownloadVO2">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.ProductContractDDownloadVO"
+                      Name="ProductContractDDownloadVO20">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="AssignId"/>
+          <Item Value="ItemId"/>
+          <Item Value="ComponentId"/>
+          <Item Value="Quntity"/>
+          <Item Value="QuntityReplaced"/>
+          <Item Value="TreatmentCode"/>
+          <Item Value="PackageNo"/>
+          <Item Value="CardNo"/>
+          <Item Value="DriverId"/>
+          <Item Value="ActionDate"/>
+          <Item Value="QuantityCancel"/>
+          <Item Value="QuantityDirty"/>
+          <Item Value="Handle1"/>
+          <Item Value="DeliveryType"/>
+          <Item Value="Aid"/>
+          <Item Value="HandleCode"/>
+          <Item Value="UnitPrice"/>
+          <Item Value="AssignmentId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="AssNotesReviewDetailsIterator" id="AssignmentId">
+      <AttrNames>
+        <Item Value="AssignmentId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AssNotesReviewDetailsIterator" id="CardNo">
+      <AttrNames>
+        <Item Value="CardNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AssNotesReviewDetailsIterator" id="Status">
+      <AttrNames>
+        <Item Value="Status"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AssNotesReviewDetailsIterator" id="CloseCodeReason">
+      <AttrNames>
+        <Item Value="CloseCodeReason"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AssNotesReviewDetailsIterator" id="CustomerNotes">
+      <AttrNames>
+        <Item Value="CustomerNotes"/>
+      </AttrNames>
+    </attributeValues>
+    <button IterBinding="ProductContractVO1Iterator" id="CancelledSel" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="CancelledSel"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <action IterBinding="ProductContractVO1Iterator" id="CreateInsert"
+            InstanceName="AppModuleAMDataControl.ProductContractVO1" DataControl="AppModuleAMDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <attributeValues IterBinding="ProductContractDDownloadVO2Iterator" id="Handle1_1">
+      <AttrNames>
+        <Item Value="Handle1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DataTeamAgentNotesReviewIterator" id="VALID">
+      <AttrNames>
+        <Item Value="VALID"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DataTeamAgentNotesReviewIterator" id="CheckPackageName">
+      <AttrNames>
+        <Item Value="CheckPackageName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DataTeamAgentNotesReviewIterator" id="SelectedId">
+      <AttrNames>
+        <Item Value="SelectedId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DataTeamAgentNotesReviewIterator" id="PackSelected">
+      <AttrNames>
+        <Item Value="PackSelected"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AssNotesReviewDetailsIterator" id="Duration">
+      <AttrNames>
+        <Item Value="Duration"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="ProductContractVO1Iterator" id="ProductContractVO1">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.ProductContractVO" Name="ProductContractVO10">
+        <AttrNames>
+          <Item Value="ActiveFrom"/>
+          <Item Value="ActiveTo"/>
+          <Item Value="PackageNo"/>
+          <Item Value="ProductId"/>
+          <Item Value="Quantity"/>
+          <Item Value="TreatmentId"/>
+          <Item Value="UnitPrice"/>
+          <Item Value="Active" Binds="Active"/>
+          <Item Value="Cancelled" Binds="Cancelled"/>
+          <Item Value="Paid" Binds="Paid"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="ProductContractVO1Iterator" id="Active" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="Active"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <button IterBinding="ProductContractVO1Iterator" id="Cancelled" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="Cancelled"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <button IterBinding="ProductContractVO1Iterator" id="Paid" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="Paid"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <attributeValues IterBinding="AssNotesReviewDetailsIterator" id="ActualPaid">
+      <AttrNames>
+        <Item Value="ActualPaid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AssNotesReviewDetailsIterator" id="ClientName">
+      <AttrNames>
+        <Item Value="ClientName"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="AssNotesReviewDetailsIterator" StaticList="false" Uses="LOV_DataStatus" id="DataStatus"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="AssNotesReviewDetailsIterator" StaticList="false" Uses="LOV_Status" id="Status1"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="AssNotesReviewDetailsIterator" StaticList="false" Uses="LOV_CloseCodeReason"
+          id="CloseCodeReason1" DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="ProductContractDDownloadVO1Iterator" id="QuntityReplaced">
+      <AttrNames>
+        <Item Value="QuntityReplaced"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductContractDDownloadVO1Iterator" id="QuantityCancel">
+      <AttrNames>
+        <Item Value="QuantityCancel"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductContractDDownloadVO1Iterator" id="QuantityDirty">
+      <AttrNames>
+        <Item Value="QuantityDirty"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductContractDDownloadVO1Iterator" id="QuntityReplaced1">
+      <AttrNames>
+        <Item Value="QuntityReplaced"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="NewAssNotesReviewDetailsVO1Iterator" id="NewAssNotesReviewDetailsVO1">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.NewAssNotesReviewDetailsVO"
+                      Name="NewAssNotesReviewDetailsVO10">
+        <AttrNames>
+          <Item Value="ActualPaid"/>
+          <Item Value="AreaId"/>
+          <Item Value="AreaName"/>
+          <Item Value="AssignDate"/>
+          <Item Value="AssignmentId"/>
+          <Item Value="CardNo"/>
+          <Item Value="ClientName"/>
+          <Item Value="CloseCodeReason"/>
+          <Item Value="CustomerNotes"/>
+          <Item Value="DataAgent"/>
+          <Item Value="DataStatus"/>
+          <Item Value="DrivId"/>
+          <Item Value="DriverName"/>
+          <Item Value="Duration"/>
+          <Item Value="PilotId"/>
+          <Item Value="PilotName"/>
+          <Item Value="Status"/>
+          <Item Value="SelectedId"/>
+          <Item Value="PackSelected"/>
+          <Item Value="VALID"/>
+          <Item Value="CheckPackageName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="NewAssNotesReviewDetailsVO1Iterator" id="CardNo1">
+      <AttrNames>
+        <Item Value="CardNo"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="NewAssNotesReviewDetailsVO1Iterator" StaticList="false" Uses="LOV_Status" id="Status2"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="NewAssNotesReviewDetailsVO1Iterator" StaticList="false" Uses="LOV_CloseCodeReason"
+          id="CloseCodeReason2" DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="NewAssNotesReviewDetailsVO1Iterator" id="ActualPaid1">
+      <AttrNames>
+        <Item Value="ActualPaid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="NewAssNotesReviewDetailsVO1Iterator" id="CustomerNotes1">
+      <AttrNames>
+        <Item Value="CustomerNotes"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="NewAssNotesReviewDetailsVO1Iterator" id="ClientName1">
+      <AttrNames>
+        <Item Value="ClientName"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="NewAssNotesReviewDetailsVO1Iterator" StaticList="false" Uses="LOV_DataStatus" id="DataStatus1"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="NAssNotesDetVO3Iterator" StaticList="false" Uses="LOV_ContractStatus" id="ContractStatus"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="NAssNotesDetVO3Iterator" StaticList="false" Uses="LOV_CloseCode" id="CloseCode"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="NAssNotesDetVO3Iterator" id="ActualPaid2">
+      <AttrNames>
+        <Item Value="ActualPaid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="NAssNotesDetVO3Iterator" id="CustomerNotes2">
+      <AttrNames>
+        <Item Value="CustomerNotes"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="NAssNotesDetVO3Iterator" StaticList="false" Uses="LOV_DataStatus" id="DataStatus2"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+  </bindings>
+</pageDefinition>

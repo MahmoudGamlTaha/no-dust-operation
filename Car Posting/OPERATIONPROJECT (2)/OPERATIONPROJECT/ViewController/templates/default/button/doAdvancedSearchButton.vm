@@ -1,0 +1,22 @@
+## revision_history
+## 17-oct-2006   Steven Davelaar
+## 1.2           Added false as 4th argument in call to JHS.facesConfigGenerator.addNavigationCase
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+#if ($JHS.page.findLayout) 
+    ## we must add nav rules for oneRowFound, manyRowsFound
+    #if ($JHS.page.hasDetailsPage && $JHS.page.hasSummaryPage)
+     #set ($detailsPage = ${JHS.page.detailsPage})
+     #set ($summaryPage = ${JHS.page.summaryPage})
+    #elseif ($JHS.page.hasDetailsPage)
+     #set ($detailsPage = ${JHS.page.detailsPage})
+     #set ($summaryPage = ${JHS.page.detailsPage})
+    #else
+     #set ($detailsPage = ${JHS.page.summaryPage})
+     #set ($summaryPage = ${JHS.page.summaryPage})
+    #end
+  ${JHS.facesConfigGenerator.addNavigationCase(${JHS.current.group},${JHS.page.name}, "oneRowFound", ${detailsPage.name},false)} 
+  ${JHS.facesConfigGenerator.addNavigationCase(${JHS.current.group},${JHS.page.name}, "manyRowsFound", ${summaryPage.name},false)} 
+#end   
+<af:button textAndAccessKey="#FIND_LABEL()"
+     action="#{#SEARCH_BEAN().advancedSearch}" id="#NEW_ID("cb")"/>

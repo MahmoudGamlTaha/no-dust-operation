@@ -1,0 +1,53 @@
+## revision_history
+## 31-oct-2013   Steven Davelaar
+## 1.0           Initial creation
+<af:group id="pt_pgl4">
+#IGNORE_CHANGES_ATTRIBUTE()
+    <af:panelGridLayout id="pt_tl3">
+      <af:gridRow id="pt_rb1" height="auto" marginTop="2px" marginBottom="2px">
+        <af:gridCell id="pt_crc" width="auto" valign="middle" marginStart="2px">
+          <af:outputText value="#COPYRIGHT_NOTICE()" id="pt_ot2"/>
+        </af:gridCell>  
+        <af:gridCell id="pt_flexSpaceBot" width="100%"/>
+        <af:gridCell id="pt_br" width="auto" valign="middle">
+          <af:outputText value="#PAGE_TEMPLATE_BOTTOM_RIGHT()" id="pt_ot3"/>
+        </af:gridCell>  
+      </af:gridRow>
+      <af:gridRow id="pr_rb2" height="10px" marginTop="2px" marginBottom="2px">
+        <af:gridCell id="pt_bl" columnSpan="3" valign="middle" marginStart="2px">
+          <af:outputText value="#PAGE_TEMPLATE_BOTTOM_LEFT()" id="pt_ot4"/>
+        </af:gridCell>  
+      </af:gridRow>
+    </af:panelGridLayout>
+      <af:popup id="pendingChangesPopup" #POPUP_DEFERRED_CHILD_CREATION() binding="#{pageFlowScope.pendingChangesBean.alertPopup}">
+        <af:dialog id="pendingChangesDialog" type="yesNo" title="#PENDING_CHANGES_TITLE()"
+                   dialogListener="#{pageFlowScope.pendingChangesBean.processDialogEvent}"
+                   modal="true">
+          <af:outputText value="#PENDING_CHANGES_TEXT()"
+                         id="pt_ot5"/>
+        </af:dialog>
+      </af:popup>
+      #if (${JHS.application.enableFunctionKeys})
+      ## using deferred child creation sometimes causes content to disappear when scrolling
+      ## inside the table, very strange ..
+      <af:popup id="ShowKeysPopup" contentDelivery="lazyUncached">
+        <af:dialog id="#NEW_ID("dl")" type="ok" modal="false" resize="on"
+                   title="#FUNCTION_KEYS_LABEL()" stretchChildren="first" contentWidth="300" contentHeight="200">
+            <af:table id="#NEW_ID("t")" value="#{jhsFunctionKeyHandler.availableFunctionKeys}" contentDelivery="immediate" var="fk"
+                      disableColumnReordering="true" rowBandingInterval="0" horizontalGridVisible="false"  
+                  rows="#{jhsFunctionKeyHandler.availableFunctionKeyCount}" fetchSize="#{jhsFunctionKeyHandler.availableFunctionKeyCount}"
+                  styleClass="AFStretchWidth" columnStretching="last" columnSelection="none"
+                      verticalGridVisible="false">
+            <af:column id="#NEW_ID("c")" headerText="Key">
+                <af:outputLabel id="#NEW_ID("ol")" value="#{fk.displayCode}" />
+            </af:column>
+            <af:column id="#NEW_ID("c")" headerText="Description">
+                <af:outputLabel id="#NEW_ID("ol")" value="#{fk.labelWithoutAccessKey}" />
+            </af:column>
+            </af:table>
+        </af:dialog>
+      </af:popup>
+      #end
+      <af:facetRef facetName="popups"/>
+</af:group>
+

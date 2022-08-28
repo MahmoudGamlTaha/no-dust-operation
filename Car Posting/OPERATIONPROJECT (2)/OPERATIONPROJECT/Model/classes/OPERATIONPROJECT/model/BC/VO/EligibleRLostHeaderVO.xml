@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="EligibleRLostHeaderVO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  RowClass="OPERATIONPROJECT.model.BC.VO.EligibleRLostHeaderVORowImpl"
+  ComponentClass="OPERATIONPROJECT.model.BC.VO.EligibleRLostHeaderVOImpl"
+  PageIterMode="Partial">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Coll"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="OPERATIONPROJECT.model.BC.VO.EligibleRLostHeaderVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="P_SHIPMENT_ID"
+    Kind="where"
+    Type="java.math.BigDecimal"/>
+  <Variable
+    Name="P_PRODUCT_ID"
+    Kind="where"
+    Type="java.lang.String"/>
+  <SQLQuery><![CDATA[SELECT     
+    HUB_RECONCILIATION_SUMMARY.PRODUCT_NAME PRODUCT_NAME,     
+    HUB_RECONCILIATION_SUMMARY.SHIPMENT_ID SHIPMENT_ID,     
+    HUB_RECONCILIATION_SUMMARY.PRODUCT_ID PRODUCT_ID,     
+    HUB_RECONCILIATION_SUMMARY.RLOST_ELIGBLE RLOST_ELIGBLE,     
+    HUB_RECONCILIATION_SUMMARY.OUT_QUANTITY OUT_QUANTITY,     
+    HUB_RECONCILIATION_SUMMARY.EXPECTED_RETURNED EXPECTED_RETURNED,     
+    HUB_RECONCILIATION_SUMMARY.QTY_RETURNED QTY_RETURNED,     
+    HUB_RECONCILIATION_SUMMARY.PRODUCT_BALANCE PRODUCT_BALANCE,     
+    HUB_RECONCILIATION_SUMMARY.DIRTY_BALANCE DIRTY_BALANCE,     
+    HUB_RECONCILIATION_SUMMARY.HUB_CLEAN HUB_CLEAN,     
+    HUB_RECONCILIATION_SUMMARY.DATA_CLEAN DATA_CLEAN,     
+    HUB_RECONCILIATION_SUMMARY.HUB_DIRTY HUB_DIRTY,     
+    HUB_RECONCILIATION_SUMMARY.DATA_DIRTY DATA_DIRTY,     
+    HUB_RECONCILIATION_SUMMARY.HUB_CANCEL HUB_CANCEL,     
+    HUB_RECONCILIATION_SUMMARY.DATA_CANCEL DATA_CANCEL,     
+    HUB_RECONCILIATION_SUMMARY.HUB_NEW HUB_NEW,     
+    HUB_RECONCILIATION_SUMMARY.DATA_NEW DATA_NEW,     
+    HUB_RECONCILIATION_SUMMARY.LOST_NEW LOST_NEW,     
+    HUB_RECONCILIATION_SUMMARY.HUB_RLOST HUB_RLOST,     
+    HUB_RECONCILIATION_SUMMARY.RECONCILED_RLOST RECONCILED_RLOST,     
+    HUB_RECONCILIATION_SUMMARY.NET_RLOST NET_RLOST,     
+    HUB_RECONCILIATION_SUMMARY.DIRTY_VALUE DIRTY_VALUE,     
+    HUB_RECONCILIATION_SUMMARY.LOST_VALUE LOST_VALUE     
+FROM     
+    HUB_RECONCILIATION_SUMMARY    
+WHERE HUB_RECONCILIATION_SUMMARY.SHIPMENT_ID = :P_SHIPMENT_ID   
+AND HUB_RECONCILIATION_SUMMARY.PRODUCT_ID = :P_PRODUCT_ID]]></SQLQuery>
+  <ViewAttribute
+    Name="ProductName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PRODUCT_NAME"
+    Expression="PRODUCT_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ShipmentId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="38"
+    Scale="0"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    AliasName="SHIPMENT_ID"
+    Expression="SHIPMENT_ID"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="ProductId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PRODUCT_ID"
+    Expression="PRODUCT_ID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RlostEligble"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="RLOST_ELIGBLE"
+    Expression="RLOST_ELIGBLE"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="OutQuantity"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="OUT_QUANTITY"
+    Expression="OUT_QUANTITY"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="ExpectedReturned"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="EXPECTED_RETURNED"
+    Expression="EXPECTED_RETURNED"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="QtyReturned"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="QTY_RETURNED"
+    Expression="QTY_RETURNED"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="ProductBalance"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="PRODUCT_BALANCE"
+    Expression="PRODUCT_BALANCE"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DirtyBalance"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="DIRTY_BALANCE"
+    Expression="DIRTY_BALANCE"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="HubClean"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="HUB_CLEAN"
+    Expression="HUB_CLEAN"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DataClean"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="DATA_CLEAN"
+    Expression="DATA_CLEAN"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="HubDirty"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="HUB_DIRTY"
+    Expression="HUB_DIRTY"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DataDirty"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="DATA_DIRTY"
+    Expression="DATA_DIRTY"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="HubCancel"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="HUB_CANCEL"
+    Expression="HUB_CANCEL"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DataCancel"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="DATA_CANCEL"
+    Expression="DATA_CANCEL"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="HubNew"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="HUB_NEW"
+    Expression="HUB_NEW"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DataNew"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="DATA_NEW"
+    Expression="DATA_NEW"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="LostNew"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="LOST_NEW"
+    Expression="LOST_NEW"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="HubRlost"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="HUB_RLOST"
+    Expression="HUB_RLOST"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="ReconciledRlost"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="RECONCILED_RLOST"
+    Expression="RECONCILED_RLOST"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="NetRlost"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="NET_RLOST"
+    Expression="NET_RLOST"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DirtyValue"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="DIRTY_VALUE"
+    Expression="DIRTY_VALUE"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="LostValue"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="LOST_VALUE"
+    Expression="LOST_VALUE"
+    SQLType="NUMERIC"/>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="ShipmentId"/>
+    <Item Value="ProductId"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="MTS.security.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="ProductsPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <invokeAction id="clearDeepLinkViewCriteriaInvoke" Binds="clearDeepLinkViewCriteria" Refresh="renderModel"
+                  RefreshCondition="#{'true' != pageFlowScope.jhsQueryByKeyValue}"/>
+    <iterator id="ProductsIterator" Binds="ProductDataVO1" DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <searchRegion id="ProductsIteratorQuery" Binds="ProductsIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="DmsProductId"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+  </executables>
+  <bindings>
+    <methodAction id="clearDeepLinkViewCriteria" RequiresUpdateModel="true" Action="invokeMethod"
+                  DataControl="AppModuleAMDataControl" InstanceName="AppModuleAMDataControl.dataProvider"
+                  MethodName="clearDeepLinkViewCriteria"
+                  ReturnName="AppModuleAMDataControl.methodResults.AppModuleAMDataControl_dataProvider_clearDeepLinkViewCriteria_result"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="viewObjectUsage" NDValue="ProductDataVO1" NDType="java.lang.String"/>
+      <NamedData NDName="requeryIfFound" NDValue="#{true}" NDType="java.lang.Boolean"/>
+    </methodAction>
+    <tree id="ProductsTable" IterBinding="ProductsIterator">
+      <nodeDefinition Name="Products" DefName="OPERATIONPROJECT.model.BC.VO.ProductDataVO">
+        <AttrNames>
+          <Item Value="DmsProductId"/>
+          <Item Value="HandleSkuCode"/>
+          <Item Value="IsHandle"/>
+          <Item Value="Kind"/>
+          <Item Value="Price1w"/>
+          <Item Value="Price2w"/>
+          <Item Value="Price3w"/>
+          <Item Value="Price4w"/>
+          <Item Value="ProductCategory"/>
+          <Item Value="ProductName"/>
+          <Item Value="ProductSku"/>
+          <Item Value="SellingPrice"/>
+          <Item Value="TreatmentId"/>
+          <Item Value="Type"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ProductsIterator" id="FirstProducts" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="ProductsIterator" id="PreviousProducts" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="ProductsIterator" id="NextProducts" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="ProductsIterator" id="LastProducts" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="ProductsIterator" id="SetCurrentRowWithKeyProducts" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrProducts}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="ProductsIterator" id="CreateProducts" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="ProductsIterator" id="DeleteProducts" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

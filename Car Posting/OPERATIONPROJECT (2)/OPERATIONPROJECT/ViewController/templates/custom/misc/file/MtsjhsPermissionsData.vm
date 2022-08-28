@@ -1,0 +1,64 @@
+## revision_history
+## 12-okt-2007   Steven Davelaar
+## 1.2           Added rolePrefix
+## 19-sep-2007   Steven Davelaar
+## 1.1           Renamed object priv to permission 
+## 31-may-2007   Steven Davelaar
+## 1.0           Initial creation
+
+##   insert into SD_SUBSYS_MODULEPERMISSONS (PERMISSION_ID, MODULE_ID, PERMISSION_NAME) 
+##   select SD_SEQ.nextval, MODULE_ID, MODULE_NAME
+##   from SD_SUBSYS_MODULES
+##   where MODULE_ID = 22
+##   and not exists (select '1' from SD_SUBSYS_MODULEPERMISSONS
+##                     where PERMISSION_NAME=(select MODULE_NAME from SD_SUBSYS_MODULES where MODULE_ID = 22));
+
+  #foreach ($group in $JHS.service.baseGroups)
+       insert into SD_SUBSYS_MODULEPERMISSONS (PERMISSION_ID, MODULE_ID, PERMISSION_NAME) 
+       select SD_SEQ.nextval, 22, '${JHS.service.rolePrefix}${group.name}.view'
+       from dual
+       where not exists (select '1' from SD_SUBSYS_MODULEPERMISSONS
+                         where PERMISSION_NAME='${JHS.service.rolePrefix}${group.name}.view' and MODULE_ID=22);
+
+       insert into SD_SUBSYS_MODULEPERMISSONS (PERMISSION_ID, MODULE_ID, PERMISSION_NAME) 
+       select SD_SEQ.nextval, 22, '${JHS.service.rolePrefix}${group.name}.create'
+       from SD_SUBSYS_MODULEPERMISSONS PMN
+       where PERMISSION_NAME = '${JHS.service.rolePrefix}${group.name}.view' and PMN.MODULE_ID=22
+       and not exists (select '1' from SD_SUBSYS_MODULEPERMISSONS 
+                         where PERMISSION_NAME='${JHS.service.rolePrefix}${group.name}.create' and MODULE_ID=22);
+
+       insert into SD_SUBSYS_MODULEPERMISSONS (PERMISSION_ID, MODULE_ID, PERMISSION_NAME) 
+       select SD_SEQ.nextval, 22, '${JHS.service.rolePrefix}${group.name}.update'
+       from SD_SUBSYS_MODULEPERMISSONS PMN
+       where PERMISSION_NAME = '${JHS.service.rolePrefix}${group.name}.view' and PMN.MODULE_ID=22
+       and not exists (select '1' from SD_SUBSYS_MODULEPERMISSONS 
+                         where PERMISSION_NAME='${JHS.service.rolePrefix}${group.name}.update'  
+						 and MODULE_ID=22);
+
+       insert into SD_SUBSYS_MODULEPERMISSONS (PERMISSION_ID, MODULE_ID, PERMISSION_NAME) 
+       select SD_SEQ.nextval, 22, '${JHS.service.rolePrefix}${group.name}.delete'
+       from SD_SUBSYS_MODULEPERMISSONS PMN
+       where PERMISSION_NAME = '${JHS.service.rolePrefix}${group.name}.view' and PMN.MODULE_ID=22
+       and not exists (select '1' from SD_SUBSYS_MODULEPERMISSONS 
+                         where PERMISSION_NAME='${JHS.service.rolePrefix}${group.name}.delete' 
+						 and MODULE_ID=22);
+
+  #end
+
+-- Assign all permissions to Administrator role
+insert into SC_ROLESUBSYS(ROLE_ID,SUBSYS_ID)
+SELECT 1,1 FROM DUAL WHERE NOT EXISTS (SELECT '1' FROM SC_ROLESUBSYS WHERE ROLE_ID=1 AND SUBSYS_ID=6);
+
+insert into SC_ROLESUBSYS_MOD(ROLE_ID,SUBSYS_ID,MODULE_ID)
+SELECT 1,6,22 FROM DUAL WHERE NOT EXISTS (SELECT '1' FROM SC_ROLESUBSYS_MOD WHERE ROLE_ID=1 AND SUBSYS_ID=6 AND MODULE_ID=22);
+
+insert into SC_ROLESUBMOD_PERMISSIONS (ROLE_ID,PERMISSION_ID,MODULE_ID,SUBSYS_ID)
+select 1,PERMISSION_ID , MODULE_ID,6
+from SD_SUBSYS_MODULEPERMISSONS PMN
+where MODULE_ID=22
+and  not exists (select '1' 
+                 from SC_ROLESUBMOD_PERMISSIONS
+                 where ROLE_ID = 1
+                 and PERMISSION_ID = PMN.PERMISSION_ID
+                 and MODULE_ID = PMN.MODULE_ID
+                 and SUBSYS_ID = 6);

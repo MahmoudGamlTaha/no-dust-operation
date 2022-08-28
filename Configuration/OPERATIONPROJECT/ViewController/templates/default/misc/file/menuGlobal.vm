@@ -1,0 +1,232 @@
+## revision_history
+## 30-oct-2013   Steven Davelaar
+## 1.12          - Bind value property of skin switcher to currentSkin property rather than currentSkinId
+##               - Enclose items in panelGroupLayout with theme=dark, although that property is deprecated
+##               we need it to get white prompt with skyros skin on items like skin switcher, also allows us
+##               to remove hardcoded inlineStyle properties on all links 
+##               - Added CHECK_UNCOMMITTED_DATA_BEHAVIOR_MENU, PENDING_CHANGES_ACTION_LISTENER
+##               - restyled translate text poup, now stretchable and uncached content! 
+## 11-oct-2011   Steven Davelaar
+## 1.11           Use page_fragment_start/end macros to switch between facelets and jspx 
+## 16-sep-2011   Steven Davelaar
+## 1.10          Changed LookAndFeelBean switcher value property, now binding to currentSkinId
+##               value of fusionFx-v2.desktop
+## 04-feb-2011   Steven Davelaar
+## 1.9           - replaced hardcoded JSP version number with JSP_VERSION macro
+##               - deferred popup child creation
+##               - Change encoding to pageEncoding
+##               - do not show dyn menu modules drop down when tree or dyn tabstemplate used
+## 01-oct-2010   Steven Davelaar
+## 1.8           Also show logoff link when securityContext.authenticated is true
+## 10-jul-2010   Steven Davelaar
+## 1.7           Generate menu0 items differently, based on page template
+## 16-apr-2010   Steven Davelaar
+## 1.6           Module selector label was not added to resource bundle
+## 23-mar-2010   Steven Davelaar
+## 1.5           Menu modules drop down list now uses new method
+##               jhsDynamicMenu.authorizedModules
+## 01-nov-2007   Steven Davelaar
+## 1.4           Upgraded to R11
+## 11-sep-2007   Steven Davelaar
+## 1.3           Change condition to generate security admin button
+## 25-jun-2007   Steven Davelaar
+## 1.2           Auto-submit module switcher, added locale switcher
+## 05-jun-2007   Marcel Marsman
+## 1.1           Added modules drop down
+## 04-jun-2007   Steven Davelaar
+## 1.0           Initial creation
+<?xml version='1.0' #PAGE_ENCODING_PROP()?>
+#PAGE_FRAGMENT_START()
+    <af:panelGroupLayout id="menuGlobalToolbar" layout="horizontal" theme="dark">
+
+      #if (${JHS.application.runtimeCustomizationMenuAllowed})
+      ## Dynamic menu, show home link
+      <af:link  #PENDING_CHANGES_ACTION_LISTENER()
+           text="#HOME_BUTTON_LABEL()" action="home" id="#NEW_ID("mgcl")">
+         #CHECK_UNCOMMITTED_DATA_BEHAVIOR_MENU()  
+      </af:link>
+      <af:spacer width="8" id="#NEW_ID("mgsp")"/>
+     
+     ## Dynamic menu show top-modules as pulldown, when normal page template used
+     #if (${JHS.application.useJhsPageTemplate})
+     <af:selectOneChoice id="Menu0" immediate="true" 
+                        labelAndAccessKey="${JHS.nls('Module','MODULE_SELECTOR_LABEL')}"
+                        autoSubmit="true" rendered="#{jhsDynamicMenu.authorizedModules!=null}"
+                        valueChangeListener="#{jhsDynamicMenu.changeModule}"
+                        value="#{jhsDynamicMenu.currentModuleName}">
+      <f:selectItems  id="moduleItem" value="#{jhsDynamicMenu.authorizedModules}"/>
+    </af:selectOneChoice>
+    #end
+
+      #else
+        ## show level 0 of the Root XML Menu Model if individual pages do not show this level
+       #if (${JHS.application.startMenuLevel}!='0')
+        <af:navigationPane id="Menu0" var="menuItem" partialTriggers="Item"  value="#{RootMenu}"
+                           level="0" hint="buttons">
+          <f:facet name="nodeStamp">
+            #if ($JHS.application.useJhsPageTemplate || $JHS.application.usePageTemplateSwitcher)
+              <af:commandNavigationItem id="Item"  partialSubmit="true"
+                                        textAndAccessKey="#{menuItem.label}" #IMMEDIATE_MENU_ITEM()
+                                        #PENDING_CHANGES_ACTION_LISTENER()
+                                        action="#{menuItem.doAction}"
+                                        rendered="#{menuItem.rendered}">
+                 #CHECK_UNCOMMITTED_DATA_BEHAVIOR_MENU()  
+               </af:commandNavigationItem>
+             #else 
+              <af:commandNavigationItem id="Item" partialSubmit="true" textAndAccessKey="#{menuItem.label}" 
+                                        action="#{menuItem.doAction}"
+                                        #IMMEDIATE_MENU_ITEM() rendered="#{menuItem.rendered}">
+                #CHECK_UNCOMMITTED_DATA_BEHAVIOR_MENU()  
+              </af:commandNavigationItem>
+            #end
+          </f:facet>
+        </af:navigationPane>
+        #end
+      #end
+
+     #if ($JHS.application.pageTemplate=='#{jhsLookAndFeelBean.currentPageTemplate}')
+      <af:selectOneChoice id="templateSwitcher" immediate="true" autoSubmit="true"
+                          labelAndAccessKey="${JHS.nls('Page Template','PAGE_TEMPLATE_LABEL')}"
+                          valueChangeListener="#{jhsLookAndFeelBean.changePageTemplate}"
+                            required="true" showRequired="false"
+                          value="#{jhsLookAndFeelBean.currentPageTemplate}">
+          <f:selectItems value="#{jhsLookAndFeelBean.templateList}"/>
+      </af:selectOneChoice>
+      <af:spacer width="8" id="#NEW_ID("mgsp")"/>
+     #end
+
+     #if ($JHS.application.generateSkinSwitcher)
+      <af:selectOneChoice id="skinSwitcher" immediate="true" autoSubmit="true"
+                          labelAndAccessKey="${JHS.nls('Skin','SKIN_LABEL')}"
+                          valueChangeListener="#{jhsLookAndFeelBean.changeSkin}"
+                            required="true" showRequired="false"
+                          value="#{jhsLookAndFeelBean.currentSkin}">
+          <f:selectItems value="#{jhsLookAndFeelBean.skinList}"/>
+      </af:selectOneChoice>
+      <af:spacer width="8" id="#NEW_ID("mgsp")"/>
+     #end
+
+      #if (${JHS.application.generateLocaleSwitcher})
+      <af:spacer width="8" id="#NEW_ID("mgsp")"/>
+      <af:selectOneChoice id="localeSwitcher" immediate="true" autoSubmit="true"
+                          labelAndAccessKey="${JHS.nls('Language','LANGUAGE_SELECTOR_LABEL')}"
+                          valueChangeListener="#{jhsLocaleManager.changeLocale}"
+                          value="#{jhsLocaleManager.currentLocale}">
+        <af:forEach items="#{jhsLocaleManager.supportedLocales}" var="row">
+          <af:selectItem value="#{row.locale}" label="#{row.description}"/>
+        </af:forEach>
+      </af:selectOneChoice>
+      #end
+
+
+      #if (${JHS.application.runtimeCustomizationItemsAllowed} || ${JHS.application.useFlexRegions})
+      <af:spacer width="8" id="#NEW_ID("mgsp")"/>
+      <af:link immediate="true" 
+         partialSubmit="true" text="${JHS.nls('Customize Mode','CUSTOMIZE_MODE_BUTTON_LABEL')}"
+        rendered = "#{#if (${JHS.application.useAuthorization}) jhsUserRoles['${JHS.application.adminRole}'] and #end !jhsPageCustomization.customizeMode}" actionListener="#{jhsPageCustomization.setCustomizeMode}"/>
+## No longer generate button to switch back to normal mode, user should start new session
+## to prevent issues with customize icons still being rendered
+##      <af:link  inlineStyle="color:#A9DFF5;" text="${JHS.nls('Normal Mode','NORMAL_MODE_BUTTON_LABEL')}"
+##            rendered = "#{#if (${JHS.application.useAuthorization}) jhsUserRoles['${JHS.application.adminRole}'] and #end jhsPageCustomization.customizeMode}" actionListener="#{jhsPageCustomization.setNormalMode}"/>
+      #end
+
+      #if (${JHS.application.bundleType}=='databaseTable')
+      <af:spacer width="8" id="#NEW_ID("mgsp")"/>
+      <af:link   immediate="true"
+         text="${JHS.nls('Record Page Text','RECORD_PAGE_TEXT_BUTTON_LABEL')}" rendered = "#{#if (${JHS.application.useAuthorization}) jhsUserRoles['${JHS.application.adminRole}'] and #end !jhsPageText.recordMode}" actionListener="#{jhsPageText.setRecordMode}"/>
+
+      <af:link   immediate="true"
+                        text="Change/Translate Page Text"
+                        rendered = "#{ jhsPageText.recordMode}"
+                        >
+         <af:showPopupBehavior popupId="changePageText"  />
+      </af:link>
+
+      <af:popup id="changePageText"  #POPUP_DEFERRED_CHILD_CREATION() contentDelivery="lazyUncached" >
+        <af:dialog modal="true" resize="on" title="${JHS.nls('Translate or Modify Page Text','CHANGE_PAGE_TEXT_TITLE')}" dialogListener="#{jhsPageText.dialogListener}" 
+               id="#NEW_ID("mgdialog")" contentWidth="600" contentHeight="400" stretchChildren="first">
+          <af:panelStretchLayout id="#NEW_ID("mgpsl")" topHeight="80" >
+           <f:facet name="top">
+            <af:panelFormLayout id="pf" rows="1" maxColumns="1" labelAlignment="start">
+              <af:selectOneChoice id="pageSelector" label="${JHS.nls('Page','PAGE_SELECTOR_LABEL')}"
+                                  autoSubmit="true"
+                                  valueChangeListener="#{jhsPageText.changePage}"
+                                  value="#{jhsPageText.currentPage}">
+                <f:selectItems value="#{jhsPageText.recordedPages}"/>
+              </af:selectOneChoice>
+                            <af:selectOneChoice id="cptLocaleSwitcher" autoSubmit="true"
+                                  labelAndAccessKey="${JHS.nls('Language','LANGUAGE_SELECTOR_LABEL')}"
+                                  valueChangeListener="#{jhsPageText.changeLocale}"
+                                  value="#{jhsPageText.locale}">
+                <af:forEach items="#{jhsLocaleManager.supportedLocales}"
+                            var="row">
+                  <af:selectItem id="localeItem" value="#{row.locale}"
+                                 label="#{row.description}"/>
+                </af:forEach>
+              </af:selectOneChoice>
+              <af:inputText id="keyFilter" value="#{jhsPageText.keyFilter}"
+                  labelAndAccessKey="${JHS.nls('Filter by Key','KEY_FILTER_LABEL')}"
+                  autoSubmit="true"
+                  valueChangeListener="#{jhsPageText.changeKeyFilter}"/>
+            </af:panelFormLayout>
+           </f:facet>
+           <f:facet name="center">
+            <af:table id="nlst" emptyText="${JHS.nls("NO_ROWS_FOUND")}" width="600"
+                  partialTriggers="::pageSelector ::cptLocaleSwitcher ::keyFilter"
+                        columnStretching="last"
+                      value="#{jhsPageText.pageEntries}" var="row" rows="10">
+              <af:column sortProperty="key" sortable="true" width="200" headerText="${JHS.nls('Key','NLS_KEY_LABEL')}">
+                <af:outputText id="nlsKey" value="#{row.key}"/>
+              </af:column>
+              <af:column sortProperty="value" sortable="true"
+                         headerText="${JHS.nls('Value','NLS_VALUE_LABEL')}">
+                <af:inputText id="nlsValue" value="#{row.value}"/>
+              </af:column>
+            </af:table>
+           </f:facet>
+        </af:panelStretchLayout>
+        <f:facet name="buttonBar">
+                <af:button textAndAccessKey="#SAVE_LABEL()"  action="#{jhsPageText.save}" id="#NEW_ID("mgcb")"/>
+        </f:facet>
+      </af:dialog>
+    </af:popup>
+      #end
+
+
+      #if (${JHS.application.securityType}!='')
+          <af:spacer width="8" id="#NEW_ID("mgsp")"/>
+          ## use visible instead of rendered, otherwise strange IndexOutOfBoundsError is thrown...
+          <af:goLink text="${JHS.nls('Log Off','LOG_OFF_BUTTON_LABEL')}" visible="#{jhsUser!=null or securityContext.authenticated}"
+                   id="#NEW_ID("mggl")"     
+               #if (${JHS.application.securityType}=='customjhs')
+                  destination="/faces/security/pages/Logout" 
+               #else
+                  destination="/adfAuthentication?logout=true&amp;end_url=/faces/Home"
+               #end
+          />
+
+        #if (!${JHS.application.secureAllPages})
+          <af:link    immediate="true"
+                            text="${JHS.nls('Login','LOGIN_BUTTON_LABEL')}"
+                            visible = "#{jhsUser==null}"
+                            >
+             <af:showPopupBehavior popupId="loginPopup"  />
+          </af:link>
+          <af:popup id="loginPopup" #POPUP_DEFERRED_CHILD_CREATION()>
+            <af:dialog modal="true" resize="on" title="${JHS.nls('Please Login','LOGIN_PAGE_TITLE')}"     
+                  dialogListener="#{LoginBean.dialogListener}" 
+                  affirmativeTextAndAccessKey="${JHS.nls('Login','LOGIN_BUTTON_LABEL')}"
+                  id="#NEW_ID("mgdialog")">
+              <af:panelFormLayout id="mgpfl" labelAlignment="start">
+                  <af:inputText label="${JHS.nls('Username','LOGIN_USERNAME_LABEL')}" id="mgusername"
+                                value="#{LoginBean.username}" required="true"/>
+                  <af:inputText label="${JHS.nls('Password','LOGIN_PASSWORD_LABEL')}" id="mgpassword"
+                                value="#{LoginBean.password}" secret="true"
+                                required="true"/>
+              </af:panelFormLayout>
+            </af:dialog>
+          </af:popup>
+        #end           
+      #end
+     </af:panelGroupLayout>
+#PAGE_FRAGMENT_END()

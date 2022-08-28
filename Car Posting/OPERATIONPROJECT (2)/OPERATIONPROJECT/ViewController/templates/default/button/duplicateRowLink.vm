@@ -1,0 +1,17 @@
+## revision_history
+## 05-nov-2010   Steven Davelaar
+## 1.2           Added call to ADD_CUR_GROUP_ACTION to support function keys
+## 09-sep-2010   Sandra Muller
+## 1.1           changed commandLink with nested image to commandImageLink, so that shortDesc works in IE
+## 01-sep-2008   Steven Davelaar
+## 1.0           Initial creation
+#if ($JHS.current.group.showDuplicateRowButton)
+  ## no need to prefix id with group name, is within unique panel collection naming container
+  <af:link id="${JHS.current.group.shortName}duprl"
+      immediate="true"      partialSubmit="true"
+     actionListener="#{#TABLE_BEAN().duplicateRow}"   
+     #JHS_PROP("rendered" $JHS.current.group.insertAllowedExpression)
+     shortDesc="#DUPLICATE_ROW_BUTTON_LABEL_DESC()" icon="/jheadstart/images/duplicateRow.png"/>
+  #ADD_CUR_GROUP_PARTIAL_TRIGGER("${JHS.current.group.shortName}duprl")
+  #ADD_CUR_GROUP_ACTION("DuplicateRow" "${JHS.current.group.shortName}duprl")
+#end

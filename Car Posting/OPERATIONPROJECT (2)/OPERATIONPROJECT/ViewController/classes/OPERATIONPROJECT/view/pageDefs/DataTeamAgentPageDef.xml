@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="DataTeamAgentPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="validateCurrentRows">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Name="DataTeamAgentNewItemVar" Type="String"/>
+    </variableIterator>
+    <taskFlow id="DataTeamAgentPendingWorkTaskFlowBinding"
+              taskFlowId="/WEB-INF/adfc-config-DataTeamAgentPendingWork.xml#DataTeamAgentPendingWorkTaskFlow"
+              Refresh="ifNeeded" activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="parentContext" value="#{pageFlowScope.parentContext}"
+                   xmlns="http://xmlns.oracle.com/adfm/uimodel"/>
+      </parameters>
+    </taskFlow>
+    <taskFlow id="NotesReviewTaskFlowBinding"
+              taskFlowId="/WEB-INF/adfc-config-DataTeamAgentNotesReview.xml#DataTeamAgentNotesReviewTaskFlow"
+              Refresh="ifNeeded" activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="parentContext" value="#{pageFlowScope.parentContext}"
+                   xmlns="http://xmlns.oracle.com/adfm/uimodel"/>
+      </parameters>
+    </taskFlow>
+    <taskFlow id="ContractReviewTaskFlowBinding"
+              taskFlowId="/WEB-INF/adfc-config-DataTeamAgentContractReview.xml#DataTeamAgentContractReviewTaskFlow"
+              Refresh="ifNeeded" activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="parentContext" value="#{pageFlowScope.parentContext}"
+                   xmlns="http://xmlns.oracle.com/adfm/uimodel"/>
+      </parameters>
+    </taskFlow>
+    <taskFlow id="EndOfDayReviewTaskFlowBinding"
+              taskFlowId="/WEB-INF/adfc-config-DataTeamAgentEndOfDayReview.xml#DataTeamAgentEndOfDayReviewTaskFlow"
+              Refresh="ifNeeded" activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="parentContext" value="#{pageFlowScope.parentContext}"
+                   xmlns="http://xmlns.oracle.com/adfm/uimodel"/>
+      </parameters>
+    </taskFlow>
+    <taskFlow id="DataTeamAgentDashboardTaskFlowBinding"
+              taskFlowId="/WEB-INF/adfc-config-DataTeamAgentDashboard.xml#DataTeamAgentDashboardTaskFlow"
+              Refresh="ifNeeded" activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="parentContext" value="#{pageFlowScope.parentContext}"
+                   xmlns="http://xmlns.oracle.com/adfm/uimodel"/>
+      </parameters>
+    </taskFlow>
+  </executables>
+  <bindings>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

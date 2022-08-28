@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="UsersPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="validateCurrentRows">
+  <parameters/>
+  <executables>
+    <invokeAction id="clearDeepLinkViewCriteriaInvoke" Binds="clearDeepLinkViewCriteria" Refresh="renderModel"
+                  RefreshCondition="#{'true' != pageFlowScope.jhsQueryByKeyValue}"/>
+    <iterator id="UsersIterator" Binds="UsersVO1" DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <searchRegion id="UsersIteratorQuery" Binds="UsersIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="UserName"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator Binds="AppModuleAMDataControl" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="AppModuleAMDataControlIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="clearDeepLinkViewCriteria" RequiresUpdateModel="true" Action="invokeMethod"
+                  DataControl="AppModuleAMDataControl" InstanceName="AppModuleAMDataControl.dataProvider"
+                  MethodName="clearDeepLinkViewCriteria"
+                  ReturnName="AppModuleAMDataControl.methodResults.AppModuleAMDataControl_dataProvider_clearDeepLinkViewCriteria_result"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="viewObjectUsage" NDValue="UsersVO1" NDType="java.lang.String"/>
+      <NamedData NDName="requeryIfFound" NDValue="#{true}" NDType="java.lang.Boolean"/>
+    </methodAction>
+    <button IterBinding="UsersIterator" id="UsersActiveFlag" DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="ActiveFlag"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <tree id="UsersTable" IterBinding="UsersIterator">
+      <nodeDefinition Name="Users" DefName="OPERATIONPROJECT.model.BC.VO.UsersVO">
+        <AttrNames>
+          <Item Value="UserName"/>
+          <Item Value="FullNameEn"/>
+          <Item Value="FullNameAr"/>
+          <Item Value="UsergroupId"/>
+          <Item Value="EmployeeCode"/>
+          <Item Value="PassWord"/>
+          <Item Value="ActiveFlag"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="UsersIterator" id="FirstUsers" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="UsersIterator" id="PreviousUsers" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="UsersIterator" id="NextUsers" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="UsersIterator" id="LastUsers" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="UsersIterator" id="SetCurrentRowWithKeyUsers" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrUsers}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="UsersIterator" id="CreateUsers" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="UsersIterator" id="DeleteUsers" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

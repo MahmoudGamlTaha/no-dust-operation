@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<Application xmlns="http://www.oracle.com/jheadstart/applicationStructure" name="OPERATIONPROJECT" asfVersion="1.0" viewType="adfFaces" pageTemplate="/common/pageTemplates/JhsTreeMenuPageTemplate" templatesBaseDir="\templates\" viewPackage="OPERATIONPROJECT.view" nlsBundle="OPERATIONPROJECT.view.ApplicationResources" overwriteNlsEntries="false" useNls="true" locales="ar" generateLocaleSwitcher="true" generateSkinSwitcher="true" contentTopLevelMenu="allGroups" securityType="jaas">
+    <ServiceDefinitionRef name="AppModuleAM" location="AppModuleAMServiceDefinition.xml"/>
+    <Templates>
+        <TemplateBinding templateIdentifier="JHS_COMMON_BEANS" templateFile="custom/misc/facesConfig/MtsjhsCommonBeans.vm"/>
+        <TemplateBinding templateIdentifier="XML_ROOT_MENU_MODEL" templateFile="default/misc/menu/MtsxmlRootMenuModel.vm"/>
+        <TemplateBinding templateIdentifier="XML_MENU_MODEL_ITEM" templateFile="default/misc/menu/MtsxmlMenuModelItem.vm"/>
+    </Templates>
+</Application>

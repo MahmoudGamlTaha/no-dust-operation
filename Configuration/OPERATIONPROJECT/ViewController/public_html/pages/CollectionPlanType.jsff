@@ -1,0 +1,503 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsRegionTemplate.jsf">
+        <f:attribute name="showBreadcrumbs" value="false"/>
+        <!-- DEBUG:BEGIN:WIZARD_PAGE_CONTENT : default/page/wizardPageContent.vm, nesting level: 2 -->
+        <f:facet name="processTrain">
+            <af:train value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}" id="tr0"/>
+        </f:facet>
+        <!-- DEBUG:BEGIN:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3 -->
+        <f:facet name="pageContent">
+            <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4 -->
+            <af:panelSplitter orientation="vertical" styleClass="AFStretchWidth" id="ps0"
+                              partialTriggers=" CollectionPlanTypeDeleteDialog CollectionPlanTypefbb CollectionPlanTypeNewButton CollectionPlanTypeDelB CollectionPlanTypeCancelButton"
+                              splitterPosition="100">
+                <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                <f:facet name="first">
+                    <af:panelGroupLayout layout="scroll" id="CollectionPlanTypeTopLc"
+                                         partialTriggers=" CollectionPlanTypeDeleteDialog CollectionPlanTypefbb CollectionPlanTypeNewButton CollectionPlanTypeDelB CollectionPlanTypeCancelButton">
+                        <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                        <f:facet name="separator">
+                            <af:spacer width="10" height="10" id="sp0"/>
+                        </f:facet>
+                        <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                        <af:panelHeader id="ph0"
+                                        text="#{pageFlowScope.createModes.CreateCollectionPlanType ? nls['INSERT_TITLE_COLLECTIONPLANTYPE'] :  (MTSPermission['CollectionPlanType.update'] ? nls['EDIT_TITLE_COLLECTIONPLANTYP: #{bindings.CollectionPlanTypeTypeId.inputValue}'] : nls['VIEW_TITLE_COLLECTIONPLANTYP: #{bindings.CollectionPlanTypeTypeId.inputValue}'])  }">
+                            <f:facet name="toolbar">
+                                <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5 -->
+                                <af:toolbox id="tbox0">
+                                    <af:toolbar id="tbar0">
+                                        <!-- DEBUG:BEGIN:FORM_BROWSE_BUTTONS : custom/pageComponent/MtsformBrowseButtons.vm, nesting level: 6 -->
+                                        <af:panelGroupLayout id="CollectionPlanTypefbb" layout="horizontal"
+                                                             rendered="#{ bindings.CollectionPlanTypeIterator.currentRow!=null  and bindings.CollectionPlanTypeIterator.estimatedRowCount>1 and !pageFlowScope.createModes.CreateCollectionPlanType and !pageFlowScope.hideFormBrowseButtons}"
+                                                             partialTriggers="CollectionPlanTypeFirst CollectionPlanTypePrevious CollectionPlanTypeNext CollectionPlanTypeLast">
+                                            <af:button actionListener="#{bindings.FirstCollectionPlanType.execute}"
+                                                       id="CollectionPlanTypeFirst" partialSubmit="true"
+                                                       icon="/afr/shuttleleftall_ena.png"
+                                                       shortDesc="#{nls['FIRST_ROW']}"
+                                                       rendered="#{bindings.CollectionPlanTypeIterator.rangeStart+bindings.CollectionPlanTypeIterator.currentRowIndexInRange+1>1}"></af:button>
+                                            <af:image source="/afr/shuttleleftall_dis.png"
+                                                      rendered="#{!(bindings.CollectionPlanTypeIterator.rangeStart+bindings.CollectionPlanTypeIterator.currentRowIndexInRange+1>1)}"
+                                                      id="img0"/>
+                                            <af:button actionListener="#{bindings.PreviousCollectionPlanType.execute}"
+                                                       icon="/afr/shuttleleft_ena.png"
+                                                       shortDesc="#{nls['PREVIOUS_ROW']}"
+                                                       id="CollectionPlanTypePrevious" partialSubmit="true"
+                                                       rendered="#{bindings.CollectionPlanTypeIterator.rangeStart+bindings.CollectionPlanTypeIterator.currentRowIndexInRange+1>1}"></af:button>
+                                            <af:image source="/afr/shuttleleft_dis.png"
+                                                      rendered="#{!(bindings.CollectionPlanTypeIterator.rangeStart+bindings.CollectionPlanTypeIterator.currentRowIndexInRange+1>1)}"
+                                                      id="img1"/>
+                                            <af:spacer width="4" height="1" id="sp1"/>
+                                            <af:outputFormatted styleUsage="instruction"
+                                                                inlineStyle="white-space:nowrap; vertical-align:bottom;"
+                                                                value=" [#{bindings.CollectionPlanTypeIterator.rangeStart+bindings.CollectionPlanTypeIterator.currentRowIndexInRange+1} / #{bindings.CollectionPlanTypeIterator.estimatedRowCount}] "
+                                                                id="of0"/>
+                                            <af:button actionListener="#{bindings.NextCollectionPlanType.execute}"
+                                                       icon="/afr/shuttleright_ena.png" shortDesc="#{nls['NEXT_ROW']}"
+                                                       id="CollectionPlanTypeNext" partialSubmit="true"
+                                                       rendered="#{bindings.CollectionPlanTypeIterator.rangeStart+bindings.CollectionPlanTypeIterator.currentRowIndexInRange+1 lt bindings.CollectionPlanTypeIterator.estimatedRowCount}"></af:button>
+                                            <af:image source="/afr/shuttleright_dis.png"
+                                                      rendered="#{!(bindings.CollectionPlanTypeIterator.rangeStart+bindings.CollectionPlanTypeIterator.currentRowIndexInRange+1 lt bindings.CollectionPlanTypeIterator.estimatedRowCount)}"
+                                                      id="img2"/>
+                                            <af:button actionListener="#{bindings.LastCollectionPlanType.execute}"
+                                                       icon="/afr/shuttlerightall_ena.png"
+                                                       shortDesc="#{nls['LAST_ROW']}" id="CollectionPlanTypeLast"
+                                                       partialSubmit="true"
+                                                       rendered="#{bindings.CollectionPlanTypeIterator.rangeStart+bindings.CollectionPlanTypeIterator.currentRowIndexInRange+1 lt bindings.CollectionPlanTypeIterator.estimatedRowCount}"></af:button>
+                                            <af:image source="/afr/shuttlerightall_dis.png"
+                                                      rendered="#{!(bindings.CollectionPlanTypeIterator.rangeStart+bindings.CollectionPlanTypeIterator.currentRowIndexInRange+1 lt bindings.CollectionPlanTypeIterator.estimatedRowCount)}"
+                                                      id="img3"/>
+                                        </af:panelGroupLayout>
+                                        <!-- DEBUG:END:FORM_BROWSE_BUTTONS : custom/pageComponent/MtsformBrowseButtons.vm, nesting level: 6-->
+                                        <af:group id="gr0">
+                                            <!-- DEBUG:BEGIN:NEW_BUTTON : custom/button/MtsnewButton.vm, nesting level: 6 -->
+                                            <af:button actionListener="#{CreateCollectionPlanType.execute}"
+                                                       action="CreateCollectionPlanType"
+                                                       icon="/jheadstart/images/newRowInForm.png" partialSubmit="true"
+                                                       shortDesc="#{nls['NEW_BUTTON_LABEL_COLLECTIONPLANTYPE']}"
+                                                       rendered="#{!pageFlowScope.createModes.CreateCollectionPlanType and (true) and (MTSPermission['CollectionPlanType.create'])}"
+                                                       id="CollectionPlanTypeNewButton"></af:button>
+                                            <!-- DEBUG:END:NEW_BUTTON : custom/button/MtsnewButton.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:DELETE_BUTTON : default/button/deleteButton.vm, nesting level: 6 -->
+                                            <af:button action="DeleteCollectionPlanType" partialSubmit="true"
+                                                       icon="/jheadstart/images/deleteRow.png"
+                                                       shortDesc="#{nls['DELETE_BUTTON_LABEL_COLLECTIONPLANTYPE']}"
+                                                       rendered="#{!pageFlowScope.createModes.CreateCollectionPlanType and  bindings.CollectionPlanTypeIterator.currentRow!=null   and (MTSPermission['CollectionPlanType.delete'])}"
+                                                       immediate="true" id="CollectionPlanTypeDelB">
+                                                <af:showPopupBehavior popupId="CollectionPlanTypeDeletePopup"/>
+                                            </af:button>
+                                            <!-- DEBUG:END:DELETE_BUTTON : default/button/deleteButton.vm, nesting level: 6-->
+                                        </af:group>
+                                        <af:group id="gr1"></af:group>
+                                        <af:group id="gr2">
+                                            <af:trainButtonBar value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"/>
+                                            <!-- DEBUG:BEGIN:WIZARD_FINISH_BUTTON : default/button/wizardFinishButton.vm, nesting level: 6 -->
+                                            <af:button action="#{SaveCollectionPlanType.execute}"
+                                                       textAndAccessKey="#{nls['FINISH']}"
+                                                       id="CollectionPlanTypeWizardFinishButton"></af:button>
+                                            <!-- DEBUG:END:WIZARD_FINISH_BUTTON : default/button/wizardFinishButton.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6 -->
+                                            <af:button textAndAccessKey="#{nls['CANCEL']}" immediate="true"
+                                                       partialSubmit="true"
+                                                       rendered="#{!pageFlowScope.hideCancelButton}"
+                                                       actionListener="#{jhsRollback.execute}" action="Cancel"
+                                                       id="CollectionPlanTypeCancelButton"></af:button>
+                                            <!-- DEBUG:END:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6-->
+                                        </af:group>
+                                    </af:toolbar>
+                                </af:toolbox>
+                                <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5-->
+                            </f:facet>
+                            <f:facet name="context">
+                                <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5 -->
+                                <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5-->
+                            </f:facet>
+                            <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+                            <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+                            <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+                            <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+                        </af:panelHeader>
+                        <!-- DEBUG:BEGIN:FORM_GROUP : custom/pageComponent/MtsformGroup.vm, nesting level: 5 -->
+                        <af:switcher rendered="#{bindings.CollectionPlanTypeIterator.findMode!='true'}"
+                                     id="CollectionPlanTypeSw" defaultFacet="hasRows"
+                                     facetName="#{( bindings.CollectionPlanTypeIterator.currentRow!=null ) ? 'hasRows' : 'noRows'}">
+                            <f:facet name="noRows">
+                                <af:outputFormatted value="#{nls['NO_ROWS_FOUND']}" styleUsage="pageStamp"
+                                                    id="CollectionPlanTypeNoRowsFound"/>
+                            </f:facet>
+                            <f:facet name="hasRows">
+                                <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm), disabled (custom/pageComponent/MtsformGroup.vm) -->
+                                <af:panelGroupLayout id="CollectionPlanTypeFC" layout="vertical">
+                                    <f:facet name="separator">
+                                        <af:spacer width="10" height="10" id="sp2"/>
+                                    </f:facet>
+                                    <af:panelFormLayout rows="1" labelAlignment="start" maxColumns="1"
+                                                        id="CollectionPlanTypeFI">
+                                        <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                        <af:inputText id="CollectionPlanTypeTypeName"
+                                                      value="#{bindings.CollectionPlanTypeTypeName.inputValue}"
+                                                      label="#{nls['COLLECTIONPLANTYPE_TYPENAME']}"
+                                                      required="#{bindings.CollectionPlanTypeTypeName.hints.mandatory}"
+                                                      rows="#{bindings.CollectionPlanTypeTypeName.hints.displayHeight}"
+                                                      columns="#{bindings.CollectionPlanTypeTypeName.hints.displayWidth}"
+                                                      maximumLength="4000"
+                                                      readOnly="#{((pageFlowScope.createModes.CreateCollectionPlanType) and (!(MTSPermission['CollectionPlanType.create']))) or ((!pageFlowScope.createModes.CreateCollectionPlanType) and (!(MTSPermission['CollectionPlanType.update'])))}"
+                                                      shortDesc="#{bindings.CollectionPlanTypeTypeName.hints.tooltip}">
+                                            <f:validator binding="#{bindings.CollectionPlanTypeTypeName.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                    </af:panelFormLayout>
+                                    <!-- DEBUG:BEGIN:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 6 -->
+                                    <!-- DEBUG:END:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 6-->
+                                </af:panelGroupLayout>
+                                <!-- Popped "disabled" from stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                            </f:facet>
+                        </af:switcher>
+                        <!-- DEBUG:END:FORM_GROUP : custom/pageComponent/MtsformGroup.vm, nesting level: 5-->
+                        <!-- Popped "disabled" from stretchContext, now: enabled (default) -->
+                    </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="second">
+                    <!-- DEBUG:BEGIN:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 5 -->
+                    <af:panelTabbed position="above" childCreation="lazy" id="pst0" dimensionsFrom="auto">
+                        <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 6 -->
+                        <af:showDetailItem stretchChildren="first" text="#{nls['TABLE_TITLE_COLLECTIONPLAN']}"
+                                           partialTriggers=" CollectionPlanTypeTopLc CollectionPlanDeleteDialog as_CollectionPlan CollectionPlanPC:CollectionPlanArm CollectionPlanPC:CollectionPlanduprmTM CollectionPlanPC:CollectionPlandelrmTM CollectionPlanPC:CollectionPlanArl CollectionPlanPC:CollectionPlanTab:CollectionPlanduprm CollectionPlanPC:CollectionPlanTab:CollectionPlandelrm CollectionPlanPC:CollectionPlanTab:CollectionPlandelrl CollectionPlanPC:CollectionPlanTab:CollectionPlanduprl"
+                                           id="CollectionPlanTopLcSdi">
+                            <af:panelStretchLayout topHeight="auto" id="CollectionPlanTopLc"
+                                                   partialTriggers=" CollectionPlanTypeTopLc CollectionPlanDeleteDialog as_CollectionPlan CollectionPlanPC:CollectionPlanArm CollectionPlanPC:CollectionPlanduprmTM CollectionPlanPC:CollectionPlandelrmTM CollectionPlanPC:CollectionPlanArl CollectionPlanPC:CollectionPlanTab:CollectionPlanduprm CollectionPlanPC:CollectionPlanTab:CollectionPlandelrm CollectionPlanPC:CollectionPlanTab:CollectionPlandelrl CollectionPlanPC:CollectionPlanTab:CollectionPlanduprl">
+                                <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 7 -->
+                                <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 7-->
+                                <f:facet name="top">
+                                    <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                                    <af:group id="g1">
+                                        <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 7 -->
+                                        <!-- DEBUG:BEGIN:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 8 -->
+                                        <af:panelGroupLayout id="modelSearchAreaCollectionPlan"
+                                                             rendered="#{!pageFlowScope.createModes.CreateCollectionPlan and !pageFlowScope.hideSearchArea}"
+                                                             partialTriggers="">
+                                            <f:attribute name="JhsIgnoreChanges" value="true"/>
+                                            <!-- DEBUG:BEGIN:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 9 -->
+                                            <af:query id="as_CollectionPlan" headerText="#{nls['ADVANCED_SEARCH']}"
+                                                      disclosed="true"
+                                                      value="#{bindings.CollectionPlanIteratorQuery.queryDescriptor}"
+                                                      model="#{bindings.CollectionPlanIteratorQuery.queryModel}"
+                                                      queryListener="#{bindings.CollectionPlanIteratorQuery.processQuery}"
+                                                      queryOperationListener="#{bindings.CollectionPlanIteratorQuery.processQueryOperation}"
+                                                      rows="1" labelAlignment="start" maxColumns="3"></af:query>
+                                            <!-- DEBUG:END:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 9-->
+                                        </af:panelGroupLayout>
+                                        <!-- DEBUG:END:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 8-->
+                                        <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 7-->
+                                        <af:spacer width="10" height="10" id="sp3"/>
+                                    </af:group>
+                                    <!-- Popped "disabled" from stretchContext, now: enabled (default) -->
+                                </f:facet>
+                                <f:facet name="center">
+                                    <!-- DEBUG:BEGIN:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 7 -->
+                                    <af:panelStretchLayout topHeight="0" id="psl0">
+                                        <f:facet name="top"></f:facet>
+                                        <f:facet name="center">
+                                            <af:panelCollection id="CollectionPlanPC" featuresOff="  "
+                                                                styleClass="AFStretchWidth">
+                                                <f:facet name="menus">
+                                                    <!-- DEBUG:BEGIN:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 8 -->
+                                                    <af:menu textAndAccessKey="#{nls['ACTION_MENU_LABEL']}" id="menu0">
+                                                        <af:menu textAndAccessKey="#{nls['GO_TO_MENU_LABEL']}"
+                                                                 id="menu1">
+                                                            <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9 -->
+                                                            <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9-->
+                                                            <!-- DEBUG:BEGIN:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 9 -->
+                                                            <af:group id="CollectionPlantbb"
+                                                                      rendered="#{ bindings.CollectionPlanIterator.currentRow!=null }">
+                                                                <af:commandMenuItem actionListener="#{bindings.FirstCollectionPlan.execute}"
+                                                                                    id="CollectionPlanFirst"
+                                                                                    partialSubmit="true"
+                                                                                    icon="/afr/shuttleleftall_ena.png"
+                                                                                    textAndAccessKey="#{nls['FIRST_ROW']}"></af:commandMenuItem>
+                                                                <af:commandMenuItem actionListener="#{bindings.PreviousCollectionPlan.execute}"
+                                                                                    icon="/afr/shuttleleft_ena.png"
+                                                                                    textAndAccessKey="#{nls['PREVIOUS_ROW']}"
+                                                                                    id="CollectionPlanPrevious"
+                                                                                    partialSubmit="true"></af:commandMenuItem>
+                                                                <af:commandMenuItem actionListener="#{bindings.NextCollectionPlan.execute}"
+                                                                                    icon="/afr/shuttleright_ena.png"
+                                                                                    textAndAccessKey="#{nls['NEXT_ROW']}"
+                                                                                    id="CollectionPlanNext"
+                                                                                    partialSubmit="true"></af:commandMenuItem>
+                                                                <af:commandMenuItem actionListener="#{bindings.LastCollectionPlan.execute}"
+                                                                                    icon="/afr/shuttlerightall_ena.png"
+                                                                                    textAndAccessKey="#{nls['LAST_ROW']}"
+                                                                                    id="CollectionPlanLast"
+                                                                                    partialSubmit="true"></af:commandMenuItem>
+                                                            </af:group>
+                                                            <!-- DEBUG:END:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 9-->
+                                                        </af:menu>
+                                                        <!-- DEBUG:BEGIN:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 9 -->
+                                                        <af:commandMenuItem id="CollectionPlanArm"
+                                                                            textAndAccessKey="#{nls['ADD_ROW']}"
+                                                                            immediate="false"
+                                                                            icon="/jheadstart/images/addRow.png"
+                                                                            partialSubmit="true"
+                                                                            actionListener="#{pageFlowScope.CollectionPlanTable.addRow}"
+                                                                            rendered="#{ bindings.CollectionPlanTypeIterator.currentRow!=null  and (MTSPermission['CollectionPlanType.create'])}"></af:commandMenuItem>
+                                                        <!-- DEBUG:END:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9 -->
+                                                        <af:commandMenuItem id="CollectionPlanduprmTM"
+                                                                            textAndAccessKey="#{nls['DUPLICATE_ROW']}"
+                                                                            immediate="true"
+                                                                            icon="/jheadstart/images/duplicateRow.png"
+                                                                            partialSubmit="true"
+                                                                            actionListener="#{pageFlowScope.CollectionPlanTable.duplicateRow}"
+                                                                            rendered="#{MTSPermission['CollectionPlanType.create']}"></af:commandMenuItem>
+                                                        <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9 -->
+                                                        <af:commandMenuItem id="CollectionPlandelrmTM"
+                                                                            textAndAccessKey="#{nls['DELETE_ROW']}"
+                                                                            icon="/jheadstart/images/deleteRow.png"
+                                                                            partialSubmit="true" immediate="true"
+                                                                            rendered="#{MTSPermission['CollectionPlanType.delete']}">
+                                                            <af:showPopupBehavior popupId="::CollectionPlanDeletePopup"/>
+                                                        </af:commandMenuItem>
+                                                        <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 9-->
+                                                    </af:menu>
+                                                    <!-- DEBUG:END:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 8-->
+                                                </f:facet>
+                                                <f:facet name="toolbar">
+                                                    <!-- DEBUG:BEGIN:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 8 -->
+                                                    <af:toolbar id="tbar1">
+                                                        <!-- DEBUG:BEGIN:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 9 -->
+                                                        <!-- Also create CreateCollectionPlan bean so we can start table group in create mode as well -->
+                                                        <af:link id="CollectionPlanArl" immediate="false"
+                                                                 rendered="#{ bindings.CollectionPlanTypeIterator.currentRow!=null  and (MTSPermission['CollectionPlanType.create'])}"
+                                                                 partialSubmit="true"
+                                                                 actionListener="#{pageFlowScope.CollectionPlanTable.addRow}"
+                                                                 shortDesc="#{nls['ADD_ROW']}"
+                                                                 icon="/jheadstart/images/addRow.png"/>
+                                                        <!-- DEBUG:END:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 9-->
+                                                    </af:toolbar>
+                                                    <!-- DEBUG:END:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 8-->
+                                                </f:facet>
+                                                <f:facet name="statusbar"/>
+                                                <af:table id="CollectionPlanTab" contentDelivery="immediate"
+                                                          value="#{bindings.CollectionPlanTable.collectionModel}"
+                                                          columnStretching="last" rowBandingInterval="0"
+                                                          editingMode="editAll" columnSelection="multiple"
+                                                          contextMenuSelect="true" rowSelection="single"
+                                                          selectionListener="#{pageFlowScope.CollectionPlanTable.makeCurrent}"
+                                                          selectedRowKeys="#{pageFlowScope.CollectionPlanTable.selectedRow}"
+                                                          rowDisclosureListener="#{pageFlowScope.CollectionPlanTable.discloseRow}"
+                                                          var="row" varStatus="status"
+                                                          fetchSize="#{bindings.CollectionPlanTable.rangeSize}"
+                                                          emptyText="#{nls['NO_ROWS_FOUND']}"
+                                                          queryListener="#{bindings.CollectionPlanIteratorQuery.processQuery}"
+                                                          filterModel="#{bindings.CollectionPlanIteratorQuery.queryDescriptor}"
+                                                          filterVisible="true"
+                                                          binding="#{pageFlowScope.CollectionPlanTable.table}"
+                                                          partialTriggers=" :::as_CollectionPlan :::CollectionPlanPC ::CollectionPlanFirst ::CollectionPlanPrevious ::CollectionPlanNext ::CollectionPlanLast"
+                                                          styleClass="AFStretchWidth"
+                                                          summary="#{nls['TABLE_TITLE_COLLECTIONPLAN']}">
+                                                    <!-- DEBUG:BEGIN:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 8 -->
+                                                    <f:facet name="contextMenu">
+                                                        <af:popup id="CollectionPlanTablePopup"
+                                                                  childCreation="deferred">
+                                                            <af:menu id="menu2">
+                                                                <af:menu text="#{nls['GO_TO_MENU_LABEL']}" id="menu3">
+                                                                    <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9 -->
+                                                                    <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9-->
+                                                                </af:menu>
+                                                                <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9 -->
+                                                                <af:commandMenuItem id="CollectionPlanduprm"
+                                                                                    textAndAccessKey="#{nls['DUPLICATE_ROW']}"
+                                                                                    immediate="true"
+                                                                                    icon="/jheadstart/images/duplicateRow.png"
+                                                                                    partialSubmit="true"
+                                                                                    actionListener="#{pageFlowScope.CollectionPlanTable.duplicateRow}"
+                                                                                    rendered="#{MTSPermission['CollectionPlanType.create']}"></af:commandMenuItem>
+                                                                <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9-->
+                                                                <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9 -->
+                                                                <af:commandMenuItem id="CollectionPlandelrm"
+                                                                                    textAndAccessKey="#{nls['DELETE_ROW']}"
+                                                                                    icon="/jheadstart/images/deleteRow.png"
+                                                                                    partialSubmit="true"
+                                                                                    immediate="true"
+                                                                                    rendered="#{MTSPermission['CollectionPlanType.delete']}">
+                                                                    <af:showPopupBehavior popupId=":::CollectionPlanDeletePopup"/>
+                                                                </af:commandMenuItem>
+                                                                <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9-->
+                                                            </af:menu>
+                                                        </af:popup>
+                                                    </f:facet><!-- DEBUG:END:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 8--><!-- DEBUG:BEGIN:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 8 --><!-- DEBUG:END:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 8--><!-- DEBUG:BEGIN:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 8 -->
+                                                    <af:column id="CollectionPlanActionColumn" width="40" align="center"
+                                                               headerText=" ">
+                                                        <af:panelGroupLayout layout="horizontal" id="pgl0">
+                                                            <!-- DEBUG:BEGIN:DETAILS_LINK : default/button/detailsLink.vm, nesting level: 9 -->
+                                                            <!-- DEBUG:END:DETAILS_LINK : default/button/detailsLink.vm, nesting level: 9-->
+                                                            <!-- DEBUG:BEGIN:DELETE_ROW_LINK : default/button/deleteRowLink.vm, nesting level: 9 -->
+                                                            <af:link id="CollectionPlandelrl" partialSubmit="true"
+                                                                     immediate="true"
+                                                                     rendered="#{MTSPermission['CollectionPlanType.delete']}"
+                                                                     shortDesc="#{nls['DELETE_ROW']}"
+                                                                     icon="/jheadstart/images/deleteRow.png">
+                                                                <af:showPopupBehavior popupId=":::CollectionPlanDeletePopup"/>
+                                                            </af:link>
+                                                            <!-- DEBUG:END:DELETE_ROW_LINK : default/button/deleteRowLink.vm, nesting level: 9-->
+                                                            <!-- DEBUG:BEGIN:DUPLICATE_ROW_LINK : default/button/duplicateRowLink.vm, nesting level: 9 -->
+                                                            <af:link id="CollectionPlanduprl" immediate="true"
+                                                                     partialSubmit="true"
+                                                                     actionListener="#{pageFlowScope.CollectionPlanTable.duplicateRow}"
+                                                                     rendered="#{MTSPermission['CollectionPlanType.create']}"
+                                                                     shortDesc="#{nls['DUPLICATE_ROW']}"
+                                                                     icon="/jheadstart/images/duplicateRow.png"/>
+                                                            <!-- DEBUG:END:DUPLICATE_ROW_LINK : default/button/duplicateRowLink.vm, nesting level: 9-->
+                                                        </af:panelGroupLayout>
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 8-->
+                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                                    <af:column id="CollectionPlanPlanNameCol" sortable="true"
+                                                               filterable="true" noWrap="true" width="250"
+                                                               sortProperty="PlanName" rowHeader="false">
+                                                        <f:facet name="header">
+                                                            <af:outputLabel value="#{nls['COLLECTIONPLAN_TABLE_PLANNAME']}"
+                                                                            showRequired="#{bindings.CollectionPlanTable.hints.PlanName.mandatory}"
+                                                                            id="ol0"/>
+                                                        </f:facet>
+                                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                        <af:inputText id="CollectionPlanPlanName"
+                                                                      value="#{row.bindings.PlanName.inputValue}"
+                                                                      label="#{nls['COLLECTIONPLAN_TABLE_PLANNAME']}"
+                                                                      required="#{bindings.CollectionPlanTable.hints.PlanName.mandatory}"
+                                                                      rows="#{bindings.CollectionPlanTable.hints.PlanName.displayHeight}"
+                                                                      columns="#{bindings.CollectionPlanTable.hints.PlanName.displayWidth}"
+                                                                      maximumLength="4000"
+                                                                      readOnly="#{((pageFlowScope.CollectionPlanTable.newRow) and (!(MTSPermission['CollectionPlanType.create']))) or ((!pageFlowScope.CollectionPlanTable.newRow) and (!(MTSPermission['CollectionPlanType.update'])))}"
+                                                                      shortDesc="#{bindings.CollectionPlanTable.hints.PlanName.tooltip}">
+                                                            <f:validator binding="#{row.bindings.PlanName.validator}"/>
+                                                        </af:inputText>
+                                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                                    <af:column id="CollectionPlanRatioCol" sortable="true"
+                                                               filterable="true" noWrap="true" width="300"
+                                                               sortProperty="Ratio" rowHeader="false">
+                                                        <f:facet name="header">
+                                                            <af:outputLabel value="#{bindings.CollectionPlanTable.hints.Ratio.label}"
+                                                                            showRequired="#{bindings.CollectionPlanTable.hints.Ratio.mandatory}"
+                                                                            id="ol1"/>
+                                                        </f:facet>
+                                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                        <af:inputText id="CollectionPlanRatio"
+                                                                      value="#{row.bindings.Ratio.inputValue}"
+                                                                      label="#{bindings.CollectionPlanTable.hints.Ratio.label}"
+                                                                      required="#{bindings.CollectionPlanTable.hints.Ratio.mandatory}"
+                                                                      rows="#{bindings.CollectionPlanTable.hints.Ratio.displayHeight}"
+                                                                      columns="#{bindings.CollectionPlanTable.hints.Ratio.displayWidth}"
+                                                                      readOnly="#{((pageFlowScope.CollectionPlanTable.newRow) and (!(MTSPermission['CollectionPlanType.create']))) or ((!pageFlowScope.CollectionPlanTable.newRow) and (!(MTSPermission['CollectionPlanType.update'])))}"
+                                                                      shortDesc="#{bindings.CollectionPlanTable.hints.Ratio.tooltip}">
+                                                            <f:validator binding="#{row.bindings.Ratio.validator}"/>
+                                                        </af:inputText>
+                                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                                    <af:column id="CollectionPlanLimitCol" sortable="true"
+                                                               filterable="true" noWrap="true" width="300"
+                                                               sortProperty="Limit" rowHeader="false">
+                                                        <f:facet name="header">
+                                                            <af:outputLabel value="#{bindings.CollectionPlanTable.hints.Limit.label}"
+                                                                            showRequired="#{bindings.CollectionPlanTable.hints.Limit.mandatory}"
+                                                                            id="ol2"/>
+                                                        </f:facet>
+                                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                        <af:inputText id="CollectionPlanLimit"
+                                                                      value="#{row.bindings.Limit.inputValue}"
+                                                                      label="#{bindings.CollectionPlanTable.hints.Limit.label}"
+                                                                      required="#{bindings.CollectionPlanTable.hints.Limit.mandatory}"
+                                                                      rows="#{bindings.CollectionPlanTable.hints.Limit.displayHeight}"
+                                                                      columns="#{bindings.CollectionPlanTable.hints.Limit.displayWidth}"
+                                                                      readOnly="#{((pageFlowScope.CollectionPlanTable.newRow) and (!(MTSPermission['CollectionPlanType.create']))) or ((!pageFlowScope.CollectionPlanTable.newRow) and (!(MTSPermission['CollectionPlanType.update'])))}"
+                                                                      shortDesc="#{bindings.CollectionPlanTable.hints.Limit.tooltip}">
+                                                            <f:validator binding="#{row.bindings.Limit.validator}"/>
+                                                            <af:convertNumber groupingUsed="false"
+                                                                              pattern="#{bindings.CollectionPlanTable.hints.Limit.format}"/>
+                                                        </af:inputText>
+                                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                                </af:table>
+                                            </af:panelCollection>
+                                        </f:facet>
+                                    </af:panelStretchLayout>
+                                    <!-- DEBUG:END:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 7-->
+                                </f:facet>
+                            </af:panelStretchLayout>
+                        </af:showDetailItem>
+                        <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 6-->
+                    </af:panelTabbed>
+                    <!-- DEBUG:END:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 5-->
+                </f:facet>
+            </af:panelSplitter>
+            <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4-->
+        </f:facet>
+        <f:facet name="popups">
+            <af:panelGroupLayout id="popupsPgl">
+                <!-- DEBUG:BEGIN:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 7 -->
+                <af:popup id="CollectionPlanTypeDeletePopup" contentDelivery="lazyUncached" childCreation="deferred">
+                    <af:dialog type="none" title="#{nls['WARNING']}" modal="true" id="CollectionPlanTypeDeleteDialog">
+                        <af:outputText value="#{nls['DELETE_WARNING_COLLECTIONPLANTYP:#{bindings.CollectionPlanTypeIterator.currentRowIndexInRange+1}']} "
+                                       id="ot0"/>
+                        <f:attribute name="methodExpression" value="#{'#{DeleteCollectionPlanType.execute}'}"/>
+                        <f:facet name="buttonBar">
+                            <af:group id="g0">
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_YES']}" id="cb0" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.confirm}"/>
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_NO']}" id="cb1" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.abort}"/>
+                            </af:group>
+                        </f:facet>
+                    </af:dialog>
+                </af:popup>
+                <!-- DEBUG:END:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 7-->
+                <!-- DEBUG:BEGIN:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 10 -->
+                <af:popup id="CollectionPlanDeletePopup" contentDelivery="lazyUncached" childCreation="deferred">
+                    <af:dialog type="none" title="#{nls['WARNING']}" modal="true" id="CollectionPlanDeleteDialog">
+                        <af:outputText value="#{nls['DELETE_WARNING_COLLECTIONPLA:#{bindings.CollectionPlanIterator.currentRowIndexInRange+1}']} "
+                                       id="ot1"/>
+                        <f:attribute name="methodExpression" value="#{'#{DeleteCollectionPlan.execute}'}"/>
+                        <f:facet name="buttonBar">
+                            <af:group id="g2">
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_YES']}" id="cb2" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.confirm}"/>
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_NO']}" id="cb3" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.abort}"/>
+                            </af:group>
+                        </f:facet>
+                    </af:dialog>
+                </af:popup>
+                <!-- DEBUG:END:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 10-->
+            </af:panelGroupLayout>
+        </f:facet>
+        <!-- DEBUG:END:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3-->
+        <!-- DEBUG:END:WIZARD_PAGE_CONTENT : default/page/wizardPageContent.vm, nesting level: 2-->
+    </af:pageTemplate>
+</ui:composition>
+
+
+

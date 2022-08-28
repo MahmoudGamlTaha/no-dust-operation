@@ -1,0 +1,14 @@
+## revision_history
+## 04-Jun-2007   Marcel Marsman
+## 1.0           Initial creation
+package ${JHS.nlsGenerator.bundlePackageName};
+
+import oracle.jheadstart.controller.jsf.util.TranslationTableResourceBundle;
+
+public class ${JHS.nlsGenerator.bundleFileName} extends TranslationTableResourceBundle 
+{
+  public String getLocaleCode()
+  {
+    return "${JHS.nlsGenerator.bundleFileLocale}";
+  }
+}

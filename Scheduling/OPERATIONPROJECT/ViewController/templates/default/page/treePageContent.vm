@@ -1,0 +1,13 @@
+## revision_history
+## 15-jan-2010   Steven Davelaar
+##               Moved reusableTree-specific content to reusableTreeGroup.vm
+## 31-aug-2009   Evert-Jan de Bruin
+##               Added support for tree-layout with reusable regions
+## 31-aug-2009   Evert-Jan de Bruin
+##               Added support for tree-layout with reusable regions
+## 26-jun-2007   Evert-Jan de Bruin
+##               Adapted to R11; support pageTemplates instead of regions
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+
+#JHS_PARSE("PAGE_CONTENT" ${JHS.current.model})

@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <task-flow-definition id="AccountingAgentTaskFlow">
+        <!-- DEBUG:BEGIN:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2 -->
+        <template-reference>
+            <document id="__0">/WEB-INF/jhs-fragment-taskflow-template.xml</document>
+            <id id="__1">jhs-fragment-taskflow-template</id>
+        </template-reference>
+        <!-- DEBUG:END:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2-->
+        <default-activity id="__2">StartAccountingAgent</default-activity>
+        <!-- DEBUG:BEGIN:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2 -->
+        <input-parameter-definition id="__3">
+            <name id="__4">createAccountingAgent</name>
+            <value id="__5">#{pageFlowScope.createAccountingAgent}</value>
+            <class id="__6">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__7">
+            <name id="__8">rowKeyStrAccountingAgent</name>
+            <value id="__9">#{pageFlowScope.rowKeyStrAccountingAgent}</value>
+            <class id="__10">java.lang.String</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__11">
+            <name id="__12">rowKeyValueAccountingAgent</name>
+            <value id="__13">#{pageFlowScope.rowKeyValueAccountingAgent}</value>
+            <class id="__14">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__15">
+            <name id="__16">rowKeyAccountingAgent</name>
+            <value id="__17">#{pageFlowScope.rowKeyAccountingAgent}</value>
+            <class id="__18">oracle.jbo.Key</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__19">
+            <name id="__20">altKeyNameAccountingAgent</name>
+            <value id="__21">#{pageFlowScope.altKeyNameAccountingAgent}</value>
+            <class id="__22">java.lang.String</class>
+        </input-parameter-definition>
+        <!-- DEBUG:END:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2 -->
+        <managed-bean id="__23">
+            <managed-bean-name id="__24">jhsTaskFlowManager</managed-bean-name>
+            <managed-bean-class id="__25">oracle.jheadstart.controller.jsf.bean.TaskFlowManager</managed-bean-class>
+            <managed-bean-scope id="__26">pageFlow</managed-bean-scope>
+            <managed-property id="__27">
+                <property-name id="__28">initializeParentContextEntries</property-name>
+                <map-entries id="__29">
+                    <map-entry id="__30">
+                        <key id="__31">jhsCurrentGroupName</key>
+                        <value id="__32">AccountingAgent</value>
+                    </map-entry>
+                </map-entries>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__33">
+            <managed-bean-name id="__34">CreateAccountingAgent</managed-bean-name>
+            <managed-bean-class id="__35">oracle.jheadstart.controller.jsf.bean.CreateRowBean</managed-bean-class>
+            <managed-bean-scope id="__36">request</managed-bean-scope>
+            <managed-property id="__37">
+                <property-name id="__38">createBinding</property-name>
+                <value id="__39">#{bindings.CreateAccountingAgent}</value>
+            </managed-property>
+            <managed-property id="__40">
+                <property-name id="__41">successOutcome</property-name>
+                <value id="__42">deepLinkPage</value>
+            </managed-property>
+            <managed-property id="__43">
+                <property-name id="__44">failureOutcome</property-name>
+                <value id="__45">firstPage</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__46">
+            <managed-bean-name id="__47">DeleteAccountingAgent</managed-bean-name>
+            <managed-bean-class id="__48">oracle.jheadstart.controller.jsf.bean.DeleteRowBean</managed-bean-class>
+            <managed-bean-scope id="__49">request</managed-bean-scope>
+            <managed-property id="__50">
+                <property-name id="__51">deleteBinding</property-name>
+                <value id="__52">#{bindings.DeleteAccountingAgent}</value>
+            </managed-property>
+            <managed-property id="__53">
+                <property-name id="__54">commitBean</property-name>
+                <value id="__55">#{jhsCommit}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2 -->
+        <managed-bean id="__56">
+            <managed-bean-name id="__57">SaveAccountingAgent</managed-bean-name>
+            <managed-bean-class id="__58">oracle.jheadstart.controller.jsf.bean.CommitBean</managed-bean-class>
+            <managed-bean-scope id="__59">request</managed-bean-scope>
+            <managed-property id="__60">
+                <property-name id="__61">commitBinding</property-name>
+                <value id="__62">#{bindings.Commit}</value>
+            </managed-property>
+            <managed-property id="__63">
+                <property-name id="__64">successOutcome</property-name>
+                <value id="__65">Commit</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2 -->
+        <managed-bean id="__66">
+            <managed-bean-name id="__67">jhsRollback</managed-bean-name>
+            <managed-bean-class id="__68">oracle.jheadstart.controller.jsf.bean.RollbackBean</managed-bean-class>
+            <managed-bean-scope id="__69">request</managed-bean-scope>
+            <managed-property id="__70">
+                <property-name id="__71">rollbackBinding</property-name>
+                <value id="__72">#{bindings.Rollback}</value>
+            </managed-property>
+            <managed-property id="__73">
+                <property-name id="__74">successOutcome</property-name>
+                <value id="__75">Cancel</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__76">
+            <managed-bean-name id="__77">AreaInvoiceSummaryTable</managed-bean-name>
+            <managed-bean-class id="__78">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__79">pageFlow</managed-bean-scope>
+            <managed-property id="__80">
+                <property-name id="__81">name</property-name>
+                <value id="__82">AreaInvoiceSummaryTable</value>
+            </managed-property>
+            <managed-property id="__83">
+                <property-name id="__84">rangeBindingExpr</property-name>
+                <value id="__85">#{'#{bindings.AreaInvoiceSummaryTable}'}</value>
+            </managed-property>
+            <managed-property id="__86">
+                <property-name id="__87">focusItemId</property-name>
+                <value id="__88">AreaInvoiceSummaryAreaName</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2 -->
+        <managed-bean id="__89">
+            <managed-bean-name id="__90">SaveAreaInvoiceSummary</managed-bean-name>
+            <managed-bean-class id="__91">oracle.jheadstart.controller.jsf.bean.CommitBean</managed-bean-class>
+            <managed-bean-scope id="__92">request</managed-bean-scope>
+            <managed-property id="__93">
+                <property-name id="__94">commitBinding</property-name>
+                <value id="__95">#{bindings.Commit}</value>
+            </managed-property>
+            <managed-property id="__96">
+                <property-name id="__97">successOutcome</property-name>
+                <value id="__98">Commit</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__99">
+            <managed-bean-name id="__100">CreateContractCards</managed-bean-name>
+            <managed-bean-class id="__101">oracle.jheadstart.controller.jsf.bean.CreateRowBean</managed-bean-class>
+            <managed-bean-scope id="__102">request</managed-bean-scope>
+            <managed-property id="__103">
+                <property-name id="__104">createBinding</property-name>
+                <value id="__105">#{bindings.CreateContractCards}</value>
+            </managed-property>
+            <managed-property id="__106">
+                <property-name id="__107">successOutcome</property-name>
+                <value id="__108">deepLinkPage</value>
+            </managed-property>
+            <managed-property id="__109">
+                <property-name id="__110">failureOutcome</property-name>
+                <value id="__111">firstPage</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CREATE_ROW_BEAN : default/misc/facesConfig/createRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2 -->
+        <managed-bean id="__112">
+            <managed-bean-name id="__113">DeleteContractCards</managed-bean-name>
+            <managed-bean-class id="__114">oracle.jheadstart.controller.jsf.bean.DeleteRowBean</managed-bean-class>
+            <managed-bean-scope id="__115">request</managed-bean-scope>
+            <managed-property id="__116">
+                <property-name id="__117">deleteBinding</property-name>
+                <value id="__118">#{bindings.DeleteContractCards}</value>
+            </managed-property>
+            <managed-property id="__119">
+                <property-name id="__120">commitBean</property-name>
+                <value id="__121">#{jhsCommit}</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:DELETE_ROW_BEAN : default/misc/facesConfig/deleteRowBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2 -->
+        <managed-bean id="__122">
+            <managed-bean-name id="__123">SaveContractCards</managed-bean-name>
+            <managed-bean-class id="__124">oracle.jheadstart.controller.jsf.bean.CommitBean</managed-bean-class>
+            <managed-bean-scope id="__125">request</managed-bean-scope>
+            <managed-property id="__126">
+                <property-name id="__127">commitBinding</property-name>
+                <value id="__128">#{bindings.Commit}</value>
+            </managed-property>
+            <managed-property id="__129">
+                <property-name id="__130">successOutcome</property-name>
+                <value id="__131">Commit</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__132">
+            <managed-bean-name id="__133">ContractCardsTable</managed-bean-name>
+            <managed-bean-class id="__134">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__135">pageFlow</managed-bean-scope>
+            <managed-property id="__136">
+                <property-name id="__137">name</property-name>
+                <value id="__138">ContractCardsTable</value>
+            </managed-property>
+            <managed-property id="__139">
+                <property-name id="__140">rangeBindingExpr</property-name>
+                <value id="__141">#{'#{bindings.ContractCardsTable}'}</value>
+            </managed-property>
+            <managed-property id="__142">
+                <property-name id="__143">focusItemId</property-name>
+                <value id="__144">ContractCardsCardNo</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2 -->
+        <managed-bean id="__253">
+            <managed-bean-name>AccountingAgent</managed-bean-name>
+            <managed-bean-class>MTS.security.MTSClasses.AccountingAgent</managed-bean-class>
+            <managed-bean-scope>pageFlow</managed-bean-scope>
+        </managed-bean>
+        <router id="StartAccountingAgent">
+            <case id="__145">
+                <expression id="__146">#{pageFlowScope.createAccountingAgent!=null}</expression>
+                <outcome id="__147">createAccountingAgent</outcome>
+            </case>
+            <case id="__148">
+                <expression id="__149">#{pageFlowScope.rowKeyStrAccountingAgent!=null or
+                                       pageFlowScope.rowKeyValueAccountingAgent!=null or
+                                       pageFlowScope.rowKeyAccountingAgent!=null}</expression>
+                <outcome id="__150">SetCurrentRowAccountingAgent</outcome>
+            </case>
+            <case id="__151">
+                <expression id="__152">#{pageFlowScope.isDeepLink!=null and pageFlowScope.isDeepLink}</expression>
+                <outcome id="__153">deepLinkPage</outcome>
+            </case>
+            <default-outcome id="__154">firstPage</default-outcome>
+        </router>
+        <!-- DEBUG:END:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2 -->
+        <method-call id="CreateAccountingAgent">
+            <method id="__155">#{CreateAccountingAgent.execute}</method>
+            <!-- execute condition param -->
+            <parameter>
+                <class id="__156">java.lang.Object</class>
+                <value id="__157">#{pageFlowScope.createAccountingAgent}</value>
+            </parameter>
+            <outcome id="__158">
+                <to-string/>
+            </outcome>
+        </method-call>
+        <method-call id="SetCurrentRowAccountingAgent">
+            <method id="__159">#{jhsSetCurrentRow.execute}</method>
+            <!-- iterator param -->
+            <parameter>
+                <class id="__160">oracle.adf.model.binding.DCIteratorBinding</class>
+                <value id="__161">#{bindings.AccountingAgentIterator}</value>
+            </parameter>
+            <!-- rowKeyStr param -->
+            <parameter>
+                <class id="__162">java.lang.String</class>
+                <value id="__163">#{pageFlowScope.rowKeyStrAccountingAgent}</value>
+            </parameter>
+            <!-- rowKeyValue param -->
+            <parameter>
+                <class id="__164">java.lang.Object</class>
+                <value id="__165">#{pageFlowScope.rowKeyValueAccountingAgent}</value>
+            </parameter>
+            <!-- rowKey param -->
+            <parameter>
+                <class id="__166">oracle.jbo.Key</class>
+                <value id="__167">#{pageFlowScope.rowKeyAccountingAgent}</value>
+            </parameter>
+            <!-- altKeyName param -->
+            <parameter>
+                <class id="__168">java.lang.String</class>
+                <value id="__169">#{pageFlowScope.altKeyNameAccountingAgent}</value>
+            </parameter>
+            <outcome id="__170">
+                <fixed-outcome id="__171">deepLinkPage</fixed-outcome>
+            </outcome>
+        </method-call>
+        <!-- DEBUG:END:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2-->
+        <task-flow-return id="CancelAccountingAgentReturn">
+            <outcome id="__172">
+                <name id="__173">CancelAccountingAgent</name>
+            </outcome>
+        </task-flow-return>
+        <task-flow-return id="DoneAccountingAgentReturn">
+            <outcome id="__174">
+                <name id="__175">DoneAccountingAgent</name>
+            </outcome>
+        </task-flow-return>
+        <!-- DEBUG:BEGIN:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2 -->
+        <view id="AccountingAgent">
+            <page id="__176">/pages/AccountingAgent.jsff</page>
+        </view>
+        <view id="AreaInvoiceSummary">
+            <page id="__177">/pages/AreaInvoiceSummary.jsff</page>
+        </view>
+        <view id="ContractCards">
+            <page id="__178">/pages/ContractCards.jsff</page>
+        </view>
+        <view id="ContractCardsTable">
+            <page id="__179">/pages/ContractCardsTable.jsff</page>
+        </view>
+        <!-- DEBUG:END:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2 -->
+        <control-flow-rule id="__180">
+            <from-activity-id id="__181">*</from-activity-id>
+            <control-flow-case id="__182">
+                <from-outcome id="__183">SetCurrentRowAccountingAgent</from-outcome>
+                <to-activity-id id="__184">SetCurrentRowAccountingAgent</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__185">
+                <from-outcome id="__186">firstPage</from-outcome>
+                <to-activity-id id="__187">AccountingAgent</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__188">
+                <from-outcome id="__189">deepLinkPage</from-outcome>
+                <to-activity-id id="__190">AccountingAgent</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__191">
+                <from-outcome id="__192">AccountingAgentBreadcrumb</from-outcome>
+                <to-activity-id id="__193">AccountingAgent</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__194">
+                <from-outcome id="__195">AreaInvoiceSummaryBreadcrumb</from-outcome>
+                <to-activity-id id="__196">AreaInvoiceSummary</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__197">
+                <from-outcome id="__198">ContractCardsBreadcrumb</from-outcome>
+                <to-activity-id id="__199">ContractCards</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__200">
+                <from-outcome id="__201">ContractCardsTableBreadcrumb</from-outcome>
+                <to-activity-id id="__202">ContractCardsTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__203">
+                <from-outcome id="__204">Cancel</from-outcome>
+                <to-activity-id id="__205">StartAccountingAgent</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__206">
+                <from-outcome id="__207">CancelAccountingAgentReturn</from-outcome>
+                <to-activity-id id="__208">CancelAccountingAgentReturn</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__209">
+                <from-outcome id="__210">DoneAccountingAgentReturn</from-outcome>
+                <to-activity-id id="__211">DoneAccountingAgentReturn</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__212">
+            <from-activity-id id="__213">AccountingAgent</from-activity-id>
+            <control-flow-case id="__214">
+                <from-outcome id="__215">AreaInvoiceSummaryDetails</from-outcome>
+                <to-activity-id id="__216">AreaInvoiceSummary</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__217">
+                <from-outcome id="__218">StartContractCards</from-outcome>
+                <to-activity-id id="__219">ContractCardsTable</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__220">
+            <from-activity-id id="__221">ContractCardsTable</from-activity-id>
+            <control-flow-case id="__222">
+                <from-outcome id="__223">CreateContractCards</from-outcome>
+                <to-activity-id id="__224">ContractCards</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__225">
+                <from-outcome id="__226">ContractCardsDetails</from-outcome>
+                <to-activity-id id="__227">ContractCards</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__228">
+            <from-activity-id id="__229">*</from-activity-id>
+            <control-flow-case id="__230">
+                <from-outcome id="__231">createAccountingAgent</from-outcome>
+                <to-activity-id id="__232">CreateAccountingAgent</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <!-- DEBUG:END:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2-->
+        <use-page-fragments/>
+    </task-flow-definition>
+    <!-- This bean must be defined outside the task-flow-definition element
+       because it needs to be available in the pageFlowScope of the unbounded
+       task-flow not in the pageFlowScope of the bounded task flow itself. -->
+    <!-- DEBUG:BEGIN:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2 -->
+    <managed-bean id="__233">
+        <managed-bean-name id="__234">AccountingAgentTaskFlowConfig</managed-bean-name>
+        <managed-bean-class id="__235">oracle.jheadstart.controller.jsf.bean.TaskFlowConfigBean</managed-bean-class>
+        <managed-bean-scope id="__236">pageFlow</managed-bean-scope>
+        <managed-property id="__237">
+            <property-name id="__238">params</property-name>
+            <property-class id="__239">java.util.Map</property-class>
+            <map-entries id="__240">
+                <map-entry id="__241">
+                    <key id="__242">parentContext</key>
+                    <value id="__243">#{pageFlowScope.parentContext}</value>
+                </map-entry>
+            </map-entries>
+        </managed-property>
+        <managed-property id="__244">
+            <property-name id="__245">name</property-name>
+            <value id="__246">AccountingAgent</value>
+        </managed-property>
+        <managed-property id="__247">
+            <property-name id="__248">taskFlowId</property-name>
+            <value id="__249">/WEB-INF/adfc-config-AccountingAgent.xml#AccountingAgentTaskFlow</value>
+        </managed-property>
+        <managed-property id="__250">
+            <property-name id="__251">label</property-name>
+            <value id="__252">#{nls['MENU1_TITLE_ACCOUNTINGAGENT']}</value>
+        </managed-property>
+    </managed-bean>
+    <!-- DEBUG:END:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2-->
+</adfc-config>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="InvoiceScheduleVO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  SelectAllAttributes="false"
+  PageIterMode="Partial"
+  RowClass="OPERATIONPROJECT.model.BC.VO.InvoiceScheduleVORowImpl"
+  ComponentClass="OPERATIONPROJECT.model.BC.VO.InvoiceScheduleVOImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="OPERATIONPROJECT.model.BC.VO.InvoiceScheduleVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="AccountingAgentVO1"
+    ViewObjectName="OPERATIONPROJECT.model.BC.VO.AccountingAgentVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_AccountingAgent"
+    ListVOName="AccountingAgentVO1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="AccountingAgent"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Username"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="AgentName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="InvoiceScheduleEO"
+    Entity="OPERATIONPROJECT.model.BC.EO.InvoiceScheduleEO"/>
+  <ViewAttribute
+    Name="AreaId"
+    PrecisionRule="true"
+    EntityAttrName="AreaId"
+    EntityUsage="InvoiceScheduleEO"
+    AliasName="AREA_ID"/>
+  <ViewAttribute
+    Name="AreaName"
+    PrecisionRule="true"
+    EntityAttrName="AreaName"
+    EntityUsage="InvoiceScheduleEO"
+    AliasName="AREA_NAME"/>
+  <ViewAttribute
+    Name="ContractNum"
+    PrecisionRule="true"
+    EntityAttrName="ContractNum"
+    EntityUsage="InvoiceScheduleEO"
+    AliasName="CONTRACT_NUM"/>
+  <ViewAttribute
+    Name="WorkingDate"
+    PrecisionRule="true"
+    EntityAttrName="WorkingDate"
+    EntityUsage="InvoiceScheduleEO"
+    AliasName="WORKING_DATE"/>
+  <ViewAttribute
+    Name="AccountingAgent"
+    PrecisionRule="true"
+    EntityAttrName="AccountingAgent"
+    EntityUsage="InvoiceScheduleEO"
+    AliasName="ACCOUNTING_AGENT"
+    LOVName="LOV_AccountingAgent">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Track"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="OPERATIONPROJECT.model.BC.ModelBundle"/>
+  </ResourceBundle>
+  <SortCriteria>
+    <Sort
+      Attribute="AreaName"/>
+  </SortCriteria>
+  <SortCriteria>
+    <Sort
+      Attribute="AreaName"/>
+  </SortCriteria>
+  <SortCriteria>
+    <Sort
+      Attribute="AreaName"/>
+  </SortCriteria>
+</ViewObject>

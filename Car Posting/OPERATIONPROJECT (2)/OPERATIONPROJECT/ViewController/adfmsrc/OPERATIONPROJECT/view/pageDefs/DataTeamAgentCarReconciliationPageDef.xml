@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="DataTeamAgentCarReconciliationPageDef" Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="validateCurrentRows">
+  <parameters/>
+  <executables>
+    <invokeAction id="clearDeepLinkViewCriteriaInvoke" Binds="clearDeepLinkViewCriteria" Refresh="renderModel"
+                  RefreshCondition="#{'true' != pageFlowScope.jhsQueryByKeyValue}"/>
+    <iterator id="DataTeamAgentCarReconciliationIterator" Binds="DataTeamAgentCarReconciliationVO1"
+              DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <searchRegion id="DataTeamAgentCarReconciliationIteratorDataTeamAgentCarReconciliationVOCriteriaQuery"
+                  Binds="DataTeamAgentCarReconciliationIterator" Criteria="DataTeamAgentCarReconciliationVOCriteria"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="DriverName"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <searchRegion id="DataTeamAgentCarReconciliationIteratorQuery" Binds="DataTeamAgentCarReconciliationIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true"
+                  DefaultQuickSearchAttrName="DriverName"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator id="RelatedShipmentsIterator" Binds="RelatedShipmentVO1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+    <searchRegion id="RelatedShipmentsIteratorQuery" Binds="RelatedShipmentsIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true"
+                  DefaultQuickSearchAttrName="ShipmentId"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator id="ContractsReviewIterator" Binds="ContractsReviewVO1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+    <searchRegion id="ContractsReviewIteratorQuery" Binds="ContractsReviewIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="Verification"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator id="ReconciliationNotesIterator" Binds="ReconciliationNotesVO1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+    <searchRegion id="ReconciliationNotesIteratorQuery" Binds="ReconciliationNotesIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true"
+                  DefaultQuickSearchAttrName="Verification"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator id="HubReconciliationIterator" Binds="CarReconHubReconVO1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+    <searchRegion id="HubReconciliationIteratorQuery" Binds="HubReconciliationIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true"
+                  DefaultQuickSearchAttrName="ProductName"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator id="PilotsLostNewIterator" Binds="CarReconPilotsLostNewVO1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+    <searchRegion id="PilotsLostNewIteratorQuery" Binds="PilotsLostNewIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="PilotName"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator id="CarLostNewIterator" Binds="CarLostNewVO1" DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <searchRegion id="CarLostNewIteratorQuery" Binds="CarLostNewIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="ProductName"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator id="HubFinancialReconciliationIterator" Binds="PilotReconciliationSummaryVO1"
+              DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <searchRegion id="HubFinancialReconciliationIteratorQuery" Binds="HubFinancialReconciliationIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true"
+                  DefaultQuickSearchAttrName="PilotName"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator id="ReconciledAmountIterator" Binds="CarReconCarSummaryVO1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+    <searchRegion id="ReconciledAmountIteratorQuery" Binds="ReconciledAmountIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true"
+                  DefaultQuickSearchAttrName="ActualAmount"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator id="CarBalanceIterator" Binds="CarReconCarSummaryVO1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+    <searchRegion id="CarBalanceIteratorQuery" Binds="CarBalanceIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="ActualAmount"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator Binds="RelatedCRVO1" RangeSize="25" DataControl="AppModuleAMDataControl" id="RelatedCRVO1Iterator"/>
+    <iterator Binds="RelatedAssVO1" RangeSize="25" DataControl="AppModuleAMDataControl" id="RelatedAssVO1Iterator"/>
+    <searchRegion Binds="RelatedAssVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="RelatedAssVO1Query"/>
+    <searchRegion Binds="RelatedCRVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="RelatedCRVO11Query"/>
+    <iterator Binds="CarIssueVO1" RangeSize="25" DataControl="AppModuleAMDataControl" id="CarIssueVO1Iterator"/>
+    <iterator Binds="InternalIssueVO1" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="InternalIssueVO1Iterator"/>
+    <searchRegion Binds="InternalIssueVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="InternalIssueVO1Query"/>
+    <iterator Binds="DriverPilotIssueVO1" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="DriverPilotIssueVO1Iterator"/>
+    <searchRegion Binds="DriverPilotIssueVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="DriverPilotIssueVO1Query"/>
+  </executables>
+  <bindings>
+    <methodAction id="clearDeepLinkViewCriteria" RequiresUpdateModel="true" Action="invokeMethod"
+                  DataControl="AppModuleAMDataControl" InstanceName="AppModuleAMDataControl.dataProvider"
+                  MethodName="clearDeepLinkViewCriteria"
+                  ReturnName="AppModuleAMDataControl.methodResults.AppModuleAMDataControl_dataProvider_clearDeepLinkViewCriteria_result"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="viewObjectUsage" NDValue="DataTeamAgentCarReconciliationVO1" NDType="java.lang.String"/>
+      <NamedData NDName="requeryIfFound" NDValue="#{true}" NDType="java.lang.Boolean"/>
+    </methodAction>
+    <attributeValues IterBinding="DataTeamAgentCarReconciliationIterator" id="DataTeamAgentCarReconciliationDriverName">
+      <AttrNames>
+        <Item Value="DriverName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DataTeamAgentCarReconciliationIterator" id="DataTeamAgentCarReconciliationReturnDate">
+      <AttrNames>
+        <Item Value="ReturnDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DataTeamAgentCarReconciliationIterator" id="DataTeamAgentCarReconciliationCoverDate">
+      <AttrNames>
+        <Item Value="CoverDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DataTeamAgentCarReconciliationIterator"
+                     id="DataTeamAgentCarReconciliationToCoverDate">
+      <AttrNames>
+        <Item Value="ToCoverDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DataTeamAgentCarReconciliationIterator" id="DataTeamAgentCarReconciliationStatusName">
+      <AttrNames>
+        <Item Value="StatusName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DataTeamAgentCarReconciliationIterator" id="DataTeamAgentCarReconciliationDataStatus">
+      <AttrNames>
+        <Item Value="DataStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <tree id="DataTeamAgentCarReconciliationTable" IterBinding="DataTeamAgentCarReconciliationIterator">
+      <nodeDefinition Name="DataTeamAgentCarReconciliation"
+                      DefName="OPERATIONPROJECT.model.BC.VO.DataTeamAgentCarReconciliationVO">
+        <AttrNames>
+          <Item Value="DriverName"/>
+          <Item Value="ReturnDate"/>
+          <Item Value="CoverDate"/>
+          <Item Value="ToCoverDate"/>
+          <Item Value="StatusName"/>
+          <Item Value="DataStatus"/>
+          <Item Value="ShipmentDate"/>
+          <Item Value="CoverDate1"/>
+          <Item Value="ToCoverDate1"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="DataTeamAgentCarReconciliationIterator" id="FirstDataTeamAgentCarReconciliation"
+            RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="DataTeamAgentCarReconciliationIterator" id="PreviousDataTeamAgentCarReconciliation"
+            RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="DataTeamAgentCarReconciliationIterator" id="NextDataTeamAgentCarReconciliation"
+            RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="DataTeamAgentCarReconciliationIterator" id="LastDataTeamAgentCarReconciliation"
+            RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="DataTeamAgentCarReconciliationIterator" id="SetCurrentRowWithKeyDataTeamAgentCarReconciliation"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrDataTeamAgentCarReconciliation}"
+                 NDType="java.lang.String"/>
+    </action>
+    <attributeValues IterBinding="DataTeamAgentCarReconciliationIterator" id="ShipmentId">
+      <AttrNames>
+        <Item Value="ShipmentId"/>
+      </AttrNames>
+    </attributeValues>
+    <tree id="RelatedShipmentsTable" IterBinding="RelatedShipmentsIterator">
+      <nodeDefinition Name="RelatedShipments" DefName="OPERATIONPROJECT.model.BC.VO.RelatedShipmentVO">
+        <AttrNames>
+          <Item Value="ShipmentId"/>
+          <Item Value="ShipmentDate"/>
+          <Item Value="CoverDate"/>
+          <Item Value="DispatchedId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="RelatedShipmentsIterator" id="FirstRelatedShipments" RequiresUpdateModel="true"
+            Action="first"/>
+    <action IterBinding="RelatedShipmentsIterator" id="PreviousRelatedShipments" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="RelatedShipmentsIterator" id="NextRelatedShipments" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="RelatedShipmentsIterator" id="LastRelatedShipments" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="RelatedShipmentsIterator" id="SetCurrentRowWithKeyRelatedShipments" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrRelatedShipments}" NDType="java.lang.String"/>
+    </action>
+    <tree id="ContractsReviewTable" IterBinding="ContractsReviewIterator">
+      <nodeDefinition Name="ContractsReview" DefName="OPERATIONPROJECT.model.BC.VO.ContractsReviewVO">
+        <AttrNames>
+          <Item Value="Verification"/>
+          <Item Value="AssignDate"/>
+          <Item Value="DeliveryType"/>
+          <Item Value="CardNo"/>
+          <Item Value="CustomerNotes"/>
+          <Item Value="DataStatus"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ContractsReviewIterator" id="FirstContractsReview" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="ContractsReviewIterator" id="PreviousContractsReview" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="ContractsReviewIterator" id="NextContractsReview" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="ContractsReviewIterator" id="LastContractsReview" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="ContractsReviewIterator" id="SetCurrentRowWithKeyContractsReview" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrContractsReview}" NDType="java.lang.String"/>
+    </action>
+    <tree id="ReconciliationNotesTable" IterBinding="ReconciliationNotesIterator">
+      <nodeDefinition Name="ReconciliationNotes" DefName="OPERATIONPROJECT.model.BC.VO.ReconciliationNotesVO">
+        <AttrNames>
+          <Item Value="Verification"/>
+          <Item Value="PilotId"/>
+          <Item Value="Notes"/>
+          <Item Value="Status"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ReconciliationNotesIterator" id="FirstReconciliationNotes" RequiresUpdateModel="true"
+            Action="first"/>
+    <action IterBinding="ReconciliationNotesIterator" id="PreviousReconciliationNotes" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="ReconciliationNotesIterator" id="NextReconciliationNotes" RequiresUpdateModel="true"
+            Action="next"/>
+    <action IterBinding="ReconciliationNotesIterator" id="LastReconciliationNotes" RequiresUpdateModel="true"
+            Action="last"/>
+    <action IterBinding="ReconciliationNotesIterator" id="SetCurrentRowWithKeyReconciliationNotes"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrReconciliationNotes}" NDType="java.lang.String"/>
+    </action>
+    <tree id="HubReconciliationTable" IterBinding="HubReconciliationIterator">
+      <nodeDefinition Name="HubReconciliation" DefName="OPERATIONPROJECT.model.BC.VO.CarReconHubReconVO">
+        <AttrNames>
+          <Item Value="ProductName"/>
+          <Item Value="OutQuantity"/>
+          <Item Value="ExpectedReturned"/>
+          <Item Value="QtyReturned"/>
+          <Item Value="ProductBalance"/>
+          <Item Value="DirtyBalance"/>
+          <Item Value="HubClean"/>
+          <Item Value="DataClean"/>
+          <Item Value="HubDirty"/>
+          <Item Value="DataDirty"/>
+          <Item Value="HubCancel"/>
+          <Item Value="DataCancel"/>
+          <Item Value="HubNew"/>
+          <Item Value="DataNew"/>
+          <Item Value="LostNew"/>
+          <Item Value="HubRlost"/>
+          <Item Value="ReconciledRlost"/>
+          <Item Value="NetRlost"/>
+          <Item Value="DirtyValue"/>
+          <Item Value="LostValue"/>
+          <Item Value="ProductId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="HubReconciliationIterator" id="FirstHubReconciliation" RequiresUpdateModel="true"
+            Action="first"/>
+    <action IterBinding="HubReconciliationIterator" id="PreviousHubReconciliation" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="HubReconciliationIterator" id="NextHubReconciliation" RequiresUpdateModel="true"
+            Action="next"/>
+    <action IterBinding="HubReconciliationIterator" id="LastHubReconciliation" RequiresUpdateModel="true"
+            Action="last"/>
+    <action IterBinding="HubReconciliationIterator" id="SetCurrentRowWithKeyHubReconciliation"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrHubReconciliation}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="HubReconciliationIterator" id="CreateHubReconciliation" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <tree id="PilotsLostNewTable" IterBinding="PilotsLostNewIterator">
+      <nodeDefinition Name="PilotsLostNew" DefName="OPERATIONPROJECT.model.BC.VO.CarReconPilotsLostNewVO">
+        <AttrNames>
+          <Item Value="PilotName"/>
+          <Item Value="ProductName"/>
+          <Item Value="ItemType"/>
+          <Item Value="Quantity"/>
+          <Item Value="Value"/>
+          <Item Value="ProductId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="PilotsLostNewIterator" id="FirstPilotsLostNew" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="PilotsLostNewIterator" id="PreviousPilotsLostNew" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="PilotsLostNewIterator" id="NextPilotsLostNew" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="PilotsLostNewIterator" id="LastPilotsLostNew" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="PilotsLostNewIterator" id="SetCurrentRowWithKeyPilotsLostNew" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrPilotsLostNew}" NDType="java.lang.String"/>
+    </action>
+    <tree id="CarLostNewTable" IterBinding="CarLostNewIterator">
+      <nodeDefinition Name="CarLostNew" DefName="OPERATIONPROJECT.model.BC.VO.CarLostNewVO">
+        <AttrNames>
+          <Item Value="ProductName"/>
+          <Item Value="ItemType"/>
+          <Item Value="Quantity"/>
+          <Item Value="DistributedQty"/>
+          <Item Value="Balance"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="CarLostNewIterator" id="FirstCarLostNew" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="CarLostNewIterator" id="PreviousCarLostNew" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="CarLostNewIterator" id="NextCarLostNew" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="CarLostNewIterator" id="LastCarLostNew" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="CarLostNewIterator" id="SetCurrentRowWithKeyCarLostNew" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrCarLostNew}" NDType="java.lang.String"/>
+    </action>
+    <tree id="HubFinancialReconciliationTable" IterBinding="HubFinancialReconciliationIterator">
+      <nodeDefinition Name="HubFinancialReconciliation"
+                      DefName="OPERATIONPROJECT.model.BC.VO.PilotReconciliationSummaryVO">
+        <AttrNames>
+          <Item Value="PilotName"/>
+          <Item Value="Amount"/>
+          <Item Value="DataAmount"/>
+          <Item Value="AssignedDirty"/>
+          <Item Value="TotalDue"/>
+          <Item Value="Due"/>
+          <Item Value="PenaltyFromCover"/>
+          <Item Value="PenaltyFromCashier"/>
+          <Item Value="TotalPenalty"/>
+          <Item Value="RelatedAss"/>
+          <Item Value="RelatedCr"/>
+          <Item Value="SalesConPerPilot"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="HubFinancialReconciliationIterator" id="FirstHubFinancialReconciliation"
+            RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="HubFinancialReconciliationIterator" id="PreviousHubFinancialReconciliation"
+            RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="HubFinancialReconciliationIterator" id="NextHubFinancialReconciliation"
+            RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="HubFinancialReconciliationIterator" id="LastHubFinancialReconciliation"
+            RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="HubFinancialReconciliationIterator" id="SetCurrentRowWithKeyHubFinancialReconciliation"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrHubFinancialReconciliation}"
+                 NDType="java.lang.String"/>
+    </action>
+    <tree id="ReconciledAmountTable" IterBinding="ReconciledAmountIterator">
+      <nodeDefinition Name="ReconciledAmount" DefName="OPERATIONPROJECT.model.BC.VO.CarReconCarSummaryVO">
+        <AttrNames>
+          <Item Value="ActualAmount"/>
+          <Item Value="DataAmount"/>
+          <Item Value="DirtyFromWork"/>
+          <Item Value="DirtyFromLost"/>
+          <Item Value="TotalAdded"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ReconciledAmountIterator" id="FirstReconciledAmount" RequiresUpdateModel="true"
+            Action="first"/>
+    <action IterBinding="ReconciledAmountIterator" id="PreviousReconciledAmount" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="ReconciledAmountIterator" id="NextReconciledAmount" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="ReconciledAmountIterator" id="LastReconciledAmount" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="ReconciledAmountIterator" id="SetCurrentRowWithKeyReconciledAmount" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrReconciledAmount}" NDType="java.lang.String"/>
+    </action>
+    <tree id="CarBalanceTable" IterBinding="CarBalanceIterator">
+      <nodeDefinition Name="CarBalance" DefName="OPERATIONPROJECT.model.BC.VO.CarReconCarSummaryVO">
+        <AttrNames>
+          <Item Value="ActualAmount"/>
+          <Item Value="DataAmount"/>
+          <Item Value="CarBalance"/>
+          <Item Value="FinancialStatus"/>
+          <Item Value="ProductStatus"/>
+          <Item Value="CarStatus"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="CarBalanceIterator" id="FirstCarBalance" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="CarBalanceIterator" id="PreviousCarBalance" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="CarBalanceIterator" id="NextCarBalance" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="CarBalanceIterator" id="LastCarBalance" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="CarBalanceIterator" id="SetCurrentRowWithKeyCarBalance" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrCarBalance}" NDType="java.lang.String"/>
+    </action>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+    <attributeValues IterBinding="DataTeamAgentCarReconciliationIterator" id="PilotCoverEdited">
+      <AttrNames>
+        <Item Value="PilotCoverEdited"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DataTeamAgentCarReconciliationIterator"
+                     id="DataTeamAgentCarReconciliationPilotCoverComment">
+      <AttrNames>
+        <Item Value="PilotCoverComment"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DataTeamAgentCarReconciliationIterator" id="CarStatusId">
+      <AttrNames>
+        <Item Value="CarStatusId"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="RelatedAssVO1Iterator" id="RelatedAssVO1">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.RelatedAssVO" Name="RelatedAssVO10">
+        <AttrNames>
+          <Item Value="ActualPaid"/>
+          <Item Value="AreaName"/>
+          <Item Value="AssignDate"/>
+          <Item Value="CardNo"/>
+          <Item Value="ComponentId"/>
+          <Item Value="PilotId"/>
+          <Item Value="PilotName"/>
+          <Item Value="ProductName"/>
+          <Item Value="QtyNew"/>
+          <Item Value="Quantity"/>
+          <Item Value="QuantityCancel"/>
+          <Item Value="QuantityClean"/>
+          <Item Value="QuantityDirty"/>
+          <Item Value="QuantityReplaced"/>
+          <Item Value="ShipmentId"/>
+          <Item Value="Status"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="HubFinancialReconciliationIterator" id="PilotId">
+      <AttrNames>
+        <Item Value="PilotId"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="RelatedAssVO1Iterator" id="RelatedAssVO11">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.RelatedAssVO" Name="RelatedAssVO110">
+        <AttrNames>
+          <Item Value="ActualPaid"/>
+          <Item Value="AreaName"/>
+          <Item Value="AssignDate"/>
+          <Item Value="CardNo"/>
+          <Item Value="ComponentId"/>
+          <Item Value="PilotId"/>
+          <Item Value="PilotName"/>
+          <Item Value="ProductName"/>
+          <Item Value="QtyNew"/>
+          <Item Value="Quantity"/>
+          <Item Value="QuantityCancel"/>
+          <Item Value="QuantityClean"/>
+          <Item Value="QuantityDirty"/>
+          <Item Value="QuantityReplaced"/>
+          <Item Value="ShipmentId"/>
+          <Item Value="Status"/>
+          <Item Value="ClientName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="RelatedCRVO1Iterator" id="RelatedCRVO11">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.RelatedCRVO" Name="RelatedCRVO110">
+        <AttrNames>
+          <Item Value="ActualPaid"/>
+          <Item Value="Amount"/>
+          <Item Value="AreaName"/>
+          <Item Value="AssignDate"/>
+          <Item Value="AssignmentId"/>
+          <Item Value="CardNo"/>
+          <Item Value="InvoiceDate"/>
+          <Item Value="InvoiceNo"/>
+          <Item Value="PaidAmount"/>
+          <Item Value="PaidCredit"/>
+          <Item Value="PilotId"/>
+          <Item Value="PilotName"/>
+          <Item Value="ShipmentId"/>
+          <Item Value="Status"/>
+          <Item Value="ClientName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="CarIssueVO1Iterator" id="CarNo">
+      <AttrNames>
+        <Item Value="CarNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CarIssueVO1Iterator" id="PostAgent">
+      <AttrNames>
+        <Item Value="PostAgent"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CarIssueVO1Iterator" id="DriverId">
+      <AttrNames>
+        <Item Value="DriverId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CarIssueVO1Iterator" id="PostDate">
+      <AttrNames>
+        <Item Value="PostDate"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="InternalIssueVO1Iterator" id="InternalIssueVO1">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.InternalIssueVO" Name="InternalIssueVO10">
+        <AttrNames>
+          <Item Value="Active"/>
+          <Item Value="IssueId"/>
+          <Item Value="IssueName"/>
+          <Item Value="issue_selected" Binds="issue_selected"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="InternalIssueVO1Iterator" id="issue_selected" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="issue_selected"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <tree IterBinding="DriverPilotIssueVO1Iterator" id="DriverPilotIssueVO1">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.DriverPilotIssueVO" Name="DriverPilotIssueVO10">
+        <AttrNames>
+          <Item Value="Active"/>
+          <Item Value="IssueId"/>
+          <Item Value="IssueName"/>
+          <Item Value="d_issue_selected" Binds="d_issue_selected"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="DriverPilotIssueVO1Iterator" id="d_issue_selected" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="d_issue_selected"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <attributeValues IterBinding="CarIssueVO1Iterator" id="IssueCardNo">
+      <AttrNames>
+        <Item Value="IssueCardNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CarIssueVO1Iterator" id="AgentdriverName">
+      <AttrNames>
+        <Item Value="AgentdriverName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CarIssueVO1Iterator" id="CaseNotes">
+      <AttrNames>
+        <Item Value="CaseNotes"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CarIssueVO1Iterator" id="ReviewCoaching">
+      <AttrNames>
+        <Item Value="ReviewCoaching"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CarIssueVO1Iterator" id="TeamleaderReview">
+      <AttrNames>
+        <Item Value="TeamleaderReview"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CarIssueVO1Iterator" id="EmployeeSignature">
+      <AttrNames>
+        <Item Value="EmployeeSignature"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CarIssueVO1Iterator" id="PostagentSignature">
+      <AttrNames>
+        <Item Value="PostagentSignature"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CarIssueVO1Iterator" id="TeamSpvsignature">
+      <AttrNames>
+        <Item Value="TeamSpvsignature"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CarIssueVO1Iterator" id="DataSpvsignature">
+      <AttrNames>
+        <Item Value="DataSpvsignature"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="CarIssueVO1Iterator" id="CreateInsert" InstanceName="AppModuleAMDataControl.CarIssueVO1"
+            DataControl="AppModuleAMDataControl" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="CarIssueVO1Iterator" id="Delete" InstanceName="AppModuleAMDataControl.CarIssueVO1"
+            DataControl="AppModuleAMDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <attributeValues IterBinding="CarBalanceIterator" id="CarBalance">
+      <AttrNames>
+        <Item Value="CarBalance"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CarBalanceIterator" id="CarStatus">
+      <AttrNames>
+        <Item Value="CarStatus"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

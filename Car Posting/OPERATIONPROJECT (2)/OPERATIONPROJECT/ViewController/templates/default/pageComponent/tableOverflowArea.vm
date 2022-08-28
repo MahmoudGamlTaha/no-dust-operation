@@ -1,0 +1,93 @@
+## revision_history
+## 22-nov-2010   Steven Davelaar
+## 2.4           Shortened id's
+## 01-nov-2010   Steven Davelaar
+## 2.3           Use labelAlignment property
+## 06-aug-2009   Steven Davelaar
+## 2.2           Table overflow is stretchable when there are not detail groups and the region container
+##               is marked as stratchable. This allows detail groups defined as group region to be stretchable.
+##               strecthable layout can be achieved by not using overflow but relative positioning
+## 06-aug-2009   Steven Davelaar
+## 2.1           Table overflow is never stretchable. When overflow only contains detail table
+##               strecthable layout can be achieved by not using overflow but relative positioning
+## 23-jun-2009   Paco van der Linden
+## 2.0           Restructured layout according to (stretching) best-practices.
+## 07-may-2009   Paco van der Linden
+## 1.4           Shortened some id's to improve PPR performance
+## 31-okt-2007   Steven Davelaar
+## 1.3           R11 Upgrade 
+## 30-aug-2007   Steven Davelaar
+## 1.2           Added display of detail groups with display position overflow
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+
+## if we are still in stretchable mode, and the top level region container of this group is enabled for stretching, 
+## and there are no detail groups, then we should create panelStretchLayout with the region container in the center facet so the
+## contents of the region container will be stretched if possible.
+
+#if ($JHS.engine.stretchEnabled && $JHS.current.group.regionContainer && $JHS.current.group.regionContainer.enableStretching && $JHS.current.pageComponent.pageComponentsOverflow.size()==0)
+  #set ($rcStretchable = true)
+ #else
+  #set ($rcStretchable = false)
+#end    
+
+$JHS.engine.pushStretchEnabled($rcStretchable)
+#if ($rcStretchable)
+  <af:panelStretchLayout #if ($group.groupHeight!='') topHeight="${group.groupHeightAsInteger}" #else topHeight="auto" #end 
+                       rendered="#{bindings.${JHS.current.group.name}Iterator.estimatedRowCount>0}"
+                       #if (!${JHS.current.group.tableOverflowStyleInline}) partialTriggers="${group.shortName}PC:${JHS.current.group.shortName}Tab" #end
+                       id="#NEW_ID("psl")">
+    <f:facet name="top">
+      ## Default items
+      <af:panelGroupLayout id="${JHS.current.group.shortName}FormContent" layout="vertical">      
+        <af:panelFormLayout rows="${JHS.current.group.rows}" labelAlignment="${JHS.current.group.labelAlignment}"
+                            maxColumns="${JHS.current.group.columns}"
+                            #JHS_PROP("labelWidth" ${JHS.current.group.labelWidth})
+                            #JHS_PROP("fieldWidth" ${JHS.current.group.fieldWidth})
+                            id="#NEW_ID("pfl")">
+          #TABLE_OVERFLOW_ITEMS()
+        </af:panelFormLayout>
+        #MARGIN_SPACER()
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="center">
+      ## Optional regionContainer and its subregions
+      #if ($JHS.current.group.regionContainer)
+       #JHS_PARSE(${JHS.current.group.regionContainer.templateIdentifier} ${JHS.current.group.regionContainer})
+      #end
+    </f:facet>
+   </af:panelStretchLayout> 
+#else
+  <af:panelGroupLayout id="#NEW_ID("pgl")"
+                       rendered="#{bindings.${JHS.current.group.name}Iterator.estimatedRowCount>0}"
+                       #if (!${JHS.current.group.tableOverflowStyleInline}) partialTriggers="${group.shortName}PC:${JHS.current.group.shortName}Tab" #end
+                       layout="scroll">
+  <f:facet name="separator">
+    #MARGIN_SPACER()
+  </f:facet>
+
+  ## Default items
+  <af:panelFormLayout rows="${JHS.current.group.rows}"
+                      maxColumns="${JHS.current.group.columns}" labelAlignment="start"
+                      #JHS_PROP("labelWidth" ${JHS.current.group.labelWidth})
+                      #JHS_PROP("fieldWidth" ${JHS.current.group.fieldWidth})
+                      id="#NEW_ID("pfl")">
+    #TABLE_OVERFLOW_ITEMS()
+  </af:panelFormLayout>
+
+  ## Optional regionContainer and its subregions
+  #if ($JHS.current.group.regionContainer)
+   #JHS_PARSE(${JHS.current.group.regionContainer.templateIdentifier} ${JHS.current.group.regionContainer})
+  #end
+
+## Use the following code instead of the above if you do not want to have item regions in overflow area
+##      #foreach($item in ${JHS.current.group.tableOverflowItems})
+##        #JHS_PARSE(${item.formTemplateIdentifier} $item)
+##      #end
+
+  ${JHS.engine.putTemplateContext("detailGroupsPosition", "Overflow")}
+  #JHS_PARSE("DETAIL_GROUPS" ${JHS.current.model})
+
+</af:panelGroupLayout>
+$JHS.engine.popStretchEnabled()    
+#end

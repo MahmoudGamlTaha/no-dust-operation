@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="ProductLostRlostPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="validateCurrentRows">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <invokeAction id="clearDeepLinkViewCriteriaInvoke" Binds="clearDeepLinkViewCriteria" Refresh="renderModel"
+                  RefreshCondition="#{'true' != pageFlowScope.jhsQueryByKeyValue}"/>
+    <iterator id="ProductLostRlostIterator" Binds="ProductLostRlostVO1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+    <searchRegion id="ProductLostRlostIteratorQuery" Binds="ProductLostRlostIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true"
+                  DefaultQuickSearchAttrName="LostQuantity"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+  </executables>
+  <bindings>
+    <methodAction id="clearDeepLinkViewCriteria" RequiresUpdateModel="true" Action="invokeMethod"
+                  DataControl="AppModuleAMDataControl" InstanceName="AppModuleAMDataControl.dataProvider"
+                  MethodName="clearDeepLinkViewCriteria"
+                  ReturnName="AppModuleAMDataControl.methodResults.AppModuleAMDataControl_dataProvider_clearDeepLinkViewCriteria_result"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="viewObjectUsage" NDValue="ProductLostRlostVO1" NDType="java.lang.String"/>
+      <NamedData NDName="requeryIfFound" NDValue="#{true}" NDType="java.lang.Boolean"/>
+    </methodAction>
+    <tree id="ProductLostRlostTable" IterBinding="ProductLostRlostIterator">
+      <nodeDefinition Name="ProductLostRlost" DefName="OPERATIONPROJECT.model.BC.VO.ProductLostRlostVO">
+        <AttrNames>
+          <Item Value="LostQuantity"/>
+          <Item Value="LostDate"/>
+          <Item Value="Status"/>
+          <Item Value="QtyReturned"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ProductLostRlostIterator" id="FirstProductLostRlost" RequiresUpdateModel="true"
+            Action="first"/>
+    <action IterBinding="ProductLostRlostIterator" id="PreviousProductLostRlost" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="ProductLostRlostIterator" id="NextProductLostRlost" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="ProductLostRlostIterator" id="LastProductLostRlost" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="ProductLostRlostIterator" id="SetCurrentRowWithKeyProductLostRlost" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrProductLostRlost}" NDType="java.lang.String"/>
+    </action>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,68 @@
+## revision_history
+## 18-may-2010   Steven Davelaar
+## 1.3           Added id property to all elements
+## 30-dec-2008   Steven Davelaar
+## 1.2           Changed scope to pageFlow, changed binding container to "UIShell", 
+##               added treeRegionManager property
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+#set ($bean = ${JHS.current.managedBean})
+#set ($group = ${JHS.current.group})
+
+<managed-bean id="#NEW_ID("__")">
+  <managed-bean-name id="#NEW_ID("__")">${bean.beanName}</managed-bean-name>
+  <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.TreeBean</managed-bean-class>
+  <managed-bean-scope id="#NEW_ID("__")">pageFlow</managed-bean-scope>
+  #if($group.nonReusableTree)
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">treeRegionManager</property-name>
+      <value id="#NEW_ID("__")">#{pageFlowScope.${bean.beanName}RegionManager}</value>
+    </managed-property>
+  #end
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">showExpanded</property-name>
+    <value id="#NEW_ID("__")">${JHS.current.group.showTreeExpanded}</value>
+  </managed-property>
+  #if($group.reusableTree)
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">associatedRegions</property-name>
+      <list-entries id="#NEW_ID("__")">
+        #foreach( $region in ${group.allNestedAdfcRegionsList} )
+          <value id="#NEW_ID("__")">#{pageFlowScope.${region.name}}</value>
+        #end  
+      </list-entries>
+    </managed-property>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">treeNodeTypes</property-name>
+      <list-entries id="#NEW_ID("__")">
+        #foreach( $treeGroup in $group.allNestedGroups )
+          <value id="#NEW_ID("__")">${treeGroup.name}</value>
+        #end  
+      </list-entries>
+    </managed-property>
+  #end
+</managed-bean>
+
+#foreach( $region in ${group.allNestedAdfcRegionsList} )
+<managed-bean id="#NEW_ID("__")">
+  <managed-bean-name id="#NEW_ID("__")">${region.name}</managed-bean-name>
+  <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.AssociatedRegionBean</managed-bean-class>
+  <managed-bean-scope id="#NEW_ID("__")">pageFlow</managed-bean-scope>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">groupName</property-name>
+      <value id="#NEW_ID("__")">${region.parentGroup.name}</value>
+    </managed-property>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">treeDepth</property-name>
+      <value id="#NEW_ID("__")">${region.parentGroup.treeDepth}</value>
+    </managed-property>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">taskFlowId</property-name>
+      <value id="#NEW_ID("__")">${region.group.taskFlowId}</value>
+    </managed-property>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">regionName</property-name>
+      <value id="#NEW_ID("__")">${region.name}</value>
+    </managed-property>
+</managed-bean>
+#end  

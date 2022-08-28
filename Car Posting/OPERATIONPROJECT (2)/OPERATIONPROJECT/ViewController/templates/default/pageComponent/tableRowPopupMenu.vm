@@ -1,0 +1,24 @@
+## revision_history
+## 09-nov-2011   Steven Davelaar
+## 1.1           Added POPUP_DEFERRED_CHILD_CREATION call to af:popup
+## 02-sep-2008   Steven Davelaar
+## 1.0           Initial creation
+
+#set ($pageComponent = ${JHS.current.pageComponent})
+#set ($group = ${JHS.current.group})
+
+${JHS.engine.putTemplateContext("TABLE_ROW_POPUP_MENU","true")}
+<f:facet name="contextMenu">
+  <af:popup id="${group.shortName}TablePopup" #POPUP_DEFERRED_CHILD_CREATION()>
+     <af:menu id="#NEW_ID("menu")">
+       <af:menu text="#GO_TO_MENU_LABEL()" id="#NEW_ID("menu")">
+        #JHS_PARSE("DETAILS_MENU_ITEM" ${JHS.current.model})
+        #foreach ($detailGroup in ${group.detailGroupsOnSeparatePage})
+          #JHS_PARSE("PARENT_TO_CHILD_MENU_ITEM" ${JHS.current.model})
+        #end
+       </af:menu>
+      #JHS_PARSE("DUPLICATE_ROW_MENU_ITEM" ${JHS.current.model})
+      #JHS_PARSE("DELETE_ROW_MENU_ITEM" ${JHS.current.model})
+    </af:menu>
+  </af:popup>
+</f:facet>

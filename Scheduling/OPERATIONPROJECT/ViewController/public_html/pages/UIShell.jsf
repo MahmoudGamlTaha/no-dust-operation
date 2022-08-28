@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+        xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces" beforePhase="#{jhsPhaseListener.beforePhase}"
+        locale="#{jhsLocaleManager.currentLocale}">
+    <af:document title="#{nls['APPLICATION_TITLE']}" id="doc0">
+        <f:facet name="metaContainer">
+            <af:resource type="javascript" source="/jheadstart/jhs11.js"/>
+        </f:facet>
+        <af:form id="dataForm" usesUpload="true">
+            <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsTreeMenuPageTemplate.jsf">
+                <f:attribute name="showMessagesInline" value="false"/>
+                <f:attribute name="menuModel" value="#{RootMenu}"/>
+                <f:attribute name="menuStartLevel" value="0"/>
+                <f:attribute name="brandingTitle" value="#{nls['PRODUCT_TITLE']}"/>
+                <f:facet name="pageContent">
+                    <af:switcher id="s1" defaultFacet="NotAuthorized"
+                                 facetName="#{MTSPermission['isAuthorized'] ? 'Authorized' : 'NotAuthorized' }">
+                        <f:facet name="Authorized">
+                            <af:region id="mr" value="#{bindings.mainRegion.regionModel}"
+                                       partialTriggers="::Menu1 ::Menu2 ::pendingChangesDialog"/>
+                        </f:facet>
+                        <f:facet name="NotAuthorized">
+                            <af:panelHeader text="#{nls['NOT_AUTHORIZED_ERROR']}" id="ph1"/>
+                        </f:facet>
+                    </af:switcher>
+                </f:facet>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+</f:view>
+  

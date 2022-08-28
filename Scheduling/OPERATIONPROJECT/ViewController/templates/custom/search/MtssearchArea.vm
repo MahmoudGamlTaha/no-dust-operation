@@ -1,0 +1,54 @@
+## revision_history
+## 2.1           Added calls to IGNORE_CHANGES_ATTRIBUTE macro to skip
+##               search area in check for UITree pending changes
+## 23-jun-2009   Paco van der Linden
+## 2.0           Restructured layout according to (stretching) best-practices.
+## 30-sep-2008   Evert-Jan de Bruin
+##               Put conditions around partialTriggers
+## 03-sep-2008   Evert-Jan de Bruin
+##               Added Model advanced search. Do NOT use subform when using af:query.
+## 15-jun-2007   Jaco Verheul R11.
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+#set ($pageComponent = ${JHS.current.pageComponent})
+#set ($group= ${JHS.current.group})
+
+#if ($pageComponent.hasSearchArea)
+
+#if ($pageComponent.hasJhsAdvancedSearchArea || $pageComponent.hasJhsQuickSearchArea)
+${JHS.engine.pushNamingContainer("${group.shortName}Sbf")}
+<af:subform id="${group.shortName}Sbf" rendered="#{#GROUP_NOT_IN_CREATE_MODE() and !pageFlowScope.hideSearchArea}" #if ($group.jhsQuickSearchUsed) defaultCommand="${group.shortName}QuickSearchButton" #end >
+
+<af:panelGroupLayout id="searchArea${group.shortName}" partialTriggers="#if ($pageComponent.hasSwitchButtons) #JHS_QS_BUTTON_ID() #JHS_AS_BUTTON_ID() #end">
+  #IGNORE_CHANGES_ATTRIBUTE()
+  #if ($pageComponent.hasJhsAdvancedSearchArea)
+    #JHS_PARSE("ADVANCED_SEARCH_REGION" ${JHS.current.model})
+  #end  
+  #if ($group.quickSearchDropDownList)
+    #JHS_PARSE("QUICK_SEARCH_DROP_DOWN_REGION" ${JHS.current.model})
+  #end  
+  #if ($group.quickSearchSingleField)
+    #JHS_PARSE("QUICK_SEARCH_SINGLE_FIELD_REGION" ${group.singleSearchItem})
+  #end  
+
+</af:panelGroupLayout>
+#if ($pageComponent.hasJhsAdvancedSearchArea || $pageComponent.hasJhsQuickSearchArea)
+</af:subform>
+${JHS.engine.popNamingContainer()}
+#end
+#end
+
+## We need a seperate area for model search, because it must not be placed in a subform.
+#if ($pageComponent.hasModelAdvancedSearchArea || $pageComponent.hasModelQuickSearchArea)
+<af:panelGroupLayout id="modelSearchArea${group.shortName}" rendered="#{#GROUP_NOT_IN_CREATE_MODE() and !pageFlowScope.hideSearchArea}" partialTriggers="#if ($pageComponent.hasSwitchButtons) #MODEL_QS_BUTTON_ID() #MODEL_AS_BUTTON_ID() #end">
+  #IGNORE_CHANGES_ATTRIBUTE()
+  #if ($pageComponent.hasModelAdvancedSearchArea)
+    #JHS_PARSE("MODEL_ADVANCED_SEARCH_REGION" ${JHS.current.model})
+  #end
+  #if ($pageComponent.hasModelQuickSearchArea)
+    #JHS_PARSE("MODEL_QUICK_SEARCH_REGION" ${JHS.current.model})
+  #end
+
+</af:panelGroupLayout>
+#end
+#end

@@ -1,0 +1,25 @@
+## revision_history
+## 05-oct-2010   Steven Davelaar
+## 1.2           Added call to ITEM_HELP
+## 25-may-2010   Steven Davelaar
+## 1.1           Added call to ITEM_PARTIAL_TRIGGERS
+## 18-may-2010   Steven Davelaar
+## 1.0           Initial creation
+<af:column  #ITEM_ID_IN_COLUMN() #ITEM_SORTABLE() #ITEM_FROZEN()  #ITEM_FILTERABLE()  #ITEM_WRAP()  #ITEM_COLUMN_WIDTH()
+           #ITEM_SORT_PROPERTY() #ITEM_ALIGNMENT() #ITEM_RENDERED_IN_TABLE() #ITEM_ROW_HEADER_PROPERTY() #ITEM_HELP() >
+  <f:facet name="header">
+    <af:outputLabel #COLUMN_HEADER_LABEL() #ITEM_SHOW_REQUIRED_IN_TABLE() id="#NEW_ID("ol")" />
+  </f:facet>
+
+#if ($JHS.current.item.hasItemDisplayedAtRight)
+ <af:panelGroupLayout id="#NEW_ID("pgl")" valign="top" layout="horizontal" #ITEM_PARTIAL_TRIGGERS()>
+   #JHS_PARSE($JHS.current.item.tableTemplateIdentifier $JHS.current.item)
+ </af:panelGroupLayout>
+#else
+   #JHS_PARSE($JHS.current.item.tableTemplateIdentifier $JHS.current.item)
+#end
+ ## add parsed popup content from popups launched through this item here
+ ${JHS.current.item.parsedContent}
+ #JHS_PARSE("TABLE_ITEM_FOOTER" ${JHS.current.model})
+</af:column>
+

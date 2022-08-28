@@ -1,0 +1,16 @@
+## revision_history
+## 15-nov-2010  Steven Davelaar
+## 1.0          Initial creation, extracted from groupAdfcConfig.vm
+
+<template-reference>
+  #if ($JHS.current.group.useAsLov)
+    <document id="#NEW_ID("__")">${JHS.service.lovTaskflowTemplate}</document>
+    <id id="#NEW_ID("__")">jhs-lov-taskflow-template</id>
+  #elseif ($JHS.current.group.useAsFragment)
+    <document id="#NEW_ID("__")">${JHS.service.fragmentTaskflowTemplate}</document>
+    <id id="#NEW_ID("__")">jhs-fragment-taskflow-template</id>
+  #else
+    <document id="#NEW_ID("__")">${JHS.service.boundedTaskflowTemplate}</document>
+    <id id="#NEW_ID("__")">jhs-bounded-taskflow-template</id>
+  #end
+</template-reference>

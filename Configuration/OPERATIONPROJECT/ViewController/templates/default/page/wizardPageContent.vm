@@ -1,0 +1,22 @@
+## revision_history
+## 23-jun-2009   Paco van der Linden
+## 2.0           Restructured layout according to (stretching) best-practices.
+## 31-okt-2007   Steven Davelaar
+## 1.2           R11 upgrade
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+
+#set ($wizardBaseGroup = ${JHS.current.group.wizardBaseGroup})
+#if (!${wizardBaseGroup.wizardLastPage})
+  $wizardBaseGroup.setWizardLastPage($JHS.page)
+#else
+  #set ($lastWizardPage = ${wizardBaseGroup.wizardLastPage})
+  ${wizardBaseGroup.setWizardLastPage($JHS.page)}
+#end
+
+<f:facet name="processTrain">
+    <af:train value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}" id="#NEW_ID("tr")"/>
+</f:facet>
+
+#JHS_PARSE("PAGE_CONTENT" ${JHS.current.model})
+

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="conaddPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle" SkipValidation="true">
+  <parameters>
+    <parameter id="bindingContainersToPrepare" value="#{'ContractsPageDef'}"/>
+  </parameters>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator id="conaddIterator" Binds="ContractAddressVO1" DataControl="AppModuleAMDataControl" RangeSize="10"/>
+    <searchRegion id="conaddIteratorQuery" Binds="conaddIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="Active"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+  </executables>
+  <bindings>
+    <tree id="conaddTable" IterBinding="conaddIterator">
+      <nodeDefinition Name="conadd" DefName="OPERATIONPROJECT.model.BC.VO.ContractAddressVO">
+        <AttrNames>
+          <Item Value="Active"/>
+          <Item Value="ActiveFrom"/>
+          <Item Value="ActiveTo"/>
+          <Item Value="Address"/>
+          <Item Value="AddressId"/>
+          <Item Value="AreaId"/>
+          <Item Value="CardNo"/>
+          <Item Value="CityId"/>
+          <Item Value="FlatNo"/>
+          <Item Value="FloorNo"/>
+          <Item Value="HomeNo"/>
+          <Item Value="RegionId"/>
+          <Item Value="Remarks"/>
+          <Item Value="StreetId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="conaddIterator" id="Firstconadd" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="conaddIterator" id="Previousconadd" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="conaddIterator" id="Nextconadd" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="conaddIterator" id="Lastconadd" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="conaddIterator" id="SetCurrentRowWithKeyconadd" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrconadd}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="conaddIterator" id="Createconadd" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="conaddIterator" id="Deleteconadd" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

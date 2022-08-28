@@ -1,0 +1,215 @@
+## revision_history
+## 30-oct-2013   Steven Davelaar
+## 1.11          set dimensionsFrom to parent on top-level decorative box, use
+##               panelGridLayout in header part
+##               Moved footer to separate template
+## 15-feb-2013   Steven Davelaar
+## 1.10          Added 2 calls to IGNORE_CHANGES_ATTRIBUTE macro to skip
+##               check for UITree pending changes
+## 18-nov-2011   Steven Davelaar
+## 1.9           Changed scope of jhsFunctionKeyHandler from view to request
+##               Added rangeSize=-1 to function key table
+## 18-apr-2011   Sandra Muller
+## 1.8           Replaced windows-1252 by UTF-8
+## 07-mar-2011   Steven Davelaar
+## 1.7           Replaced hardcoded references to page template content templates with logical templates names
+## 04-feb-2011   Steven Davelaar
+## 1.6           replaced hardcoded JSP version number with JSP_VERSION macro
+## 21-jan-2011   Steven Davelaar
+## 1.5           Added popups facetref
+## 21-nov-2010   Steven Davelaar
+## 1.4           Added showKeys popup
+## 21-jul-2010   Steven Davelaar
+## 1.3           Use this template as "shell" template, with seperate templates to generate body for each 
+##               page template
+## 21-apr-2010   Steven Davelaar
+## 1.2           Changed id "img0" to "pt_imgLogo" cause duplicate id with stand-alone page
+## 16-dec-2009   Steven Davelaar
+## 1.1           Modified to support fusion skin
+## 11-aug-2009   Steven Davelaar
+## 1.0           Initial creation
+<?xml version='1.0' encoding='UTF-8'?>
+#PAGE_TEMPLATE_START()
+    <af:xmlContent>
+      <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+        <description>This component lays out an entire page.</description>
+        <facet>
+          <description>An optional vertically oriented region of contexual components for the main
+                       content. Often this contains a list or tree of links for deeper navigation
+                       structure than the global, primary, and secondary regions can provide.</description>
+          <facet-name>menu3</facet-name>
+        </facet>
+        <facet>
+          <description>The user information region. This region provides a location for presenting
+                       user sign-in and connection information.</description>
+          <facet-name>infoUser</facet-name>
+        </facet>
+        <facet>
+          <description>The content of all popups used on the page.</description>
+          <facet-name>popups</facet-name>
+        </facet>
+      #if (${JHS.engine.getTemplateContext("pageTemplate")}=='jhsDynamicTabsPageTemplate')
+        <facet>
+          <description>The main page content.</description>
+          <facet-name>welcome</facet-name>
+        </facet>
+      #else  
+        <facet>
+          <description>The main page content.</description>
+          <facet-name>pageContent</facet-name>
+        </facet>
+        <facet>
+          <description>The process train (wizards).</description>
+          <facet-name>processTrain</facet-name>
+        </facet>
+        <attribute>
+          <description>Specifies the number of pixels tall that the navigation2 content should
+                       consume.</description>
+          <attribute-name>navigation2Size</attribute-name>
+          <attribute-class>int</attribute-class>
+          <default-value>26</default-value>
+        </attribute>
+        <attribute>
+          <description>Specifies the number of pixels wide that the navigation3 content should
+                       consume.</description>
+          <attribute-name>navigation3Size</attribute-name>
+          <attribute-class>int</attribute-class>
+          <default-value>150</default-value>
+        </attribute>
+      #end  
+        <attribute>
+          <description>Specifies the number of pixels tall that the global content should consume.</description>
+          <attribute-name>headerGlobalSize</attribute-name>
+          <attribute-class>int</attribute-class>
+          <default-value>40</default-value>
+        </attribute>
+        <attribute>
+          <description>Specifies the number of pixels tall that the global footer content should
+                       consume.</description>
+          <attribute-name>footerGlobalSize</attribute-name>
+          <attribute-class>int</attribute-class>
+          <default-value>30</default-value>
+        </attribute>
+        <attribute>
+          <description>Specifies the number of pixels tall that the secondary header content should
+                       consume.</description>
+          <attribute-name>header2Size</attribute-name>
+          <attribute-class>int</attribute-class>
+          <default-value>20</default-value>
+        </attribute>
+        <attribute>
+          <description>menu model bean reference</description>
+          <attribute-name>menuModel</attribute-name>
+          <attribute-class>org.apache.myfaces.trinidad.model.XMLMenuModel</attribute-class>
+        </attribute>
+        <attribute>
+          <description>whether the menu level 1 is displayed</description>
+          <attribute-name>showMenu1</attribute-name>
+          <attribute-class>boolean</attribute-class>
+          <default-value>true</default-value>
+        </attribute>
+        <attribute>
+          <description>whether the menu level 2 is displayed</description>
+          <attribute-name>showMenu2</attribute-name>
+          <attribute-class>boolean</attribute-class>
+          <default-value>true</default-value>
+        </attribute>
+        <attribute>
+          <description>whether the menu level 3 is displayed</description>
+          <attribute-name>showMenu3</attribute-name>
+          <attribute-class>boolean</attribute-class>
+          <default-value>false</default-value>
+        </attribute>
+        <attribute>
+          <description>Initial menu level.</description>
+          <attribute-name>menuStartLevel</attribute-name>
+          <attribute-class>int</attribute-class>
+          <default-value>1</default-value>
+        </attribute>
+        <attribute>
+          <description>display breadcrumbs</description>
+          <attribute-name>showBreadcrumbs</attribute-name>
+          <attribute-class>boolean</attribute-class>
+          <default-value>false</default-value>
+        </attribute>
+        <attribute>
+          <description>display messages</description>
+          <attribute-name>showMessages</attribute-name>
+          <attribute-class>boolean</attribute-class>
+          <default-value>true</default-value>
+        </attribute>
+        <attribute>
+          <description>display messages</description>
+          <attribute-name>showMessagesInline</attribute-name>
+          <attribute-class>boolean</attribute-class>
+          <default-value>false</default-value>
+        </attribute>
+        <attribute>
+          <description>branding title</description>
+          <attribute-name>brandingTitle</attribute-name>
+          <attribute-class>string</attribute-class>
+          <default-value>#PRODUCT_TITLE()</default-value>
+        </attribute>
+      </component>
+    </af:xmlContent>
+  <!-- We need to set dimensionsFrom="parent" to keep correct layout when web.xml contains
+      DEFAULT_DIMENSIONS context param set to 'auto'. See bug 17156560  -->
+      <af:decorativeBox id="db0" centerLandmark="none" topLandmark="none" dimensionsFrom="parent"
+                        styleClass="#{adfFacesContext.skinFamily=='fusion' ? '' : 'AFVisualRoot'}"
+                        theme="#{adfFacesContext.skinFamily=='fusion' ? 'contentBody' : 'dark'}">
+        <f:facet name="center">
+          <af:panelStretchLayout bottomHeight="#{attrs.footerGlobalSize}"
+                                 id="pt_psl1">
+            <f:facet name="center">
+              <af:panelSplitter orientation="vertical"
+                                splitterPosition="#{attrs.headerGlobalSize}"
+                                id="pt_ps1">
+                <f:facet name="first">
+                  <af:panelGridLayout id="pt_gPbl" styleClass="AFBrandingBar">
+                    #IGNORE_CHANGES_ATTRIBUTE()
+                    <af:gridRow id="pt_rh1" height="auto" marginTop="4px" marginBottom="4px">
+                      <af:gridCell id="logoCell" width="auto" valign="middle" marginStart="4px">
+                        <af:spacer shortDesc="Oracle" styleClass="AFBrandingBarLogo" id="pts1"/>
+##                          <af:image id="pt_imgLogo" source="/afr/logo-oracle-light.png"/>
+                      </af:gridCell>  
+                      <af:gridCell id="pt_bt" width="auto" valign="middle" marginStart="4px">
+                          <af:outputText value="#{attrs.brandingTitle}"
+                                         styleClass="AFBrandingBarTitle"
+                                         inlineStyle="color: white;"
+                                         id="pt_ot1"/>
+                      </af:gridCell>  
+                      <af:gridCell id="pt_flexSpaceHead" width="100%"/>
+                      <af:gridCell id="mgie" width="auto" valign="middle" marginStart="4px">
+                           <af:declarativeComponent id="mg"
+                                                 partialTriggers="::pendingChangesDialog #if (${JHS.engine.getTemplateContext("pageTemplate")}=='jhsPageTemplate')::Menu1#end"
+                                                 viewId="/common/regions/menuGlobal.jsff"/>
+                      </af:gridCell>  
+                      <af:gridCell id="pt_sic" width="auto" valign="middle" marginStart="4px">
+                          <af:statusIndicator id="pt_statInd"/>
+                      </af:gridCell>  
+                    </af:gridRow>
+                  </af:panelGridLayout>
+
+
+
+                </f:facet>
+            <f:facet name="second">
+              #if (${JHS.engine.getTemplateContext("pageTemplate")}=='jhsPageTemplate')
+                #JHS_PARSE("PAGE_TEMPLATE_CONTENT" ${JHS.current.model})
+              #elseif (${JHS.engine.getTemplateContext("pageTemplate")}=='jhsTreeMenuPageTemplate')
+                #JHS_PARSE("PAGE_TEMPLATE_TREE_MENU_CONTENT" ${JHS.current.model})
+              #elseif (${JHS.engine.getTemplateContext("pageTemplate")}=='jhsDynamicTabsPageTemplate')
+                #JHS_PARSE("PAGE_TEMPLATE_DYNAMIC_TABS_CONTENT" ${JHS.current.model})
+              #end  
+            </f:facet>
+          </af:panelSplitter>
+          <!-- end of global auxiliary splitter -->
+        </f:facet>
+        <!-- end of global top splitter -->
+        <f:facet name="bottom">
+           #JHS_PARSE("PAGE_TEMPLATE_FOOTER" ${JHS.current.model})
+        </f:facet>
+      </af:panelStretchLayout>
+    </f:facet>
+ </af:decorativeBox>
+#PAGE_TEMPLATE_END()

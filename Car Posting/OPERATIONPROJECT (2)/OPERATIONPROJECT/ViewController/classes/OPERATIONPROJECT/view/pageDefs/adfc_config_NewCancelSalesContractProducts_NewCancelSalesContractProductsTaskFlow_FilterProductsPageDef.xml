@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="adfc_config_NewCancelSalesContractProducts_NewCancelSalesContractProductsTaskFlow_FilterProductsPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator id="NewCancelSalesContractsProducts1Iterator" Binds="NewCancelSalesContractsProducts1"
+              DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <iterator Binds="NewCancelSalesContractsVO1" RangeSize="10" DataControl="AppModuleAMDataControl"
+              id="NewCancelSalesContractsVO1Iterator"/>
+    <iterator id="ProductContractVO2Iterator" Binds="ProductContractVO2" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+    <iterator id="CloseCodesGroupsVO1Iterator" Binds="CloseCodesGroupsVO1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+    <iterator id="CloseCodeReasonsVO1Iterator" Binds="CloseCodeReasonsVO1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+    <iterator Binds="DataStatusActionVO1" RangeSize="10" DataControl="AppModuleAMDataControl"
+              id="DataStatusActionVO1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="NewCancelSalesContractsVO1Iterator" id="CardNo">
+      <AttrNames>
+        <Item Value="CardNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="NewCancelSalesContractsVO1Iterator" id="ContractStatus">
+      <AttrNames>
+        <Item Value="ContractStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="NewCancelSalesContractsVO1Iterator" id="CloseCodeReason">
+      <AttrNames>
+        <Item Value="CloseCodeReason"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="NewCancelSalesContractsVO1Iterator" id="CustomerNotes">
+      <AttrNames>
+        <Item Value="CustomerNotes"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="NewCancelSalesContractsVO1Iterator" id="CloseCode">
+      <AttrNames>
+        <Item Value="CloseCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DataStatusActionVO1Iterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

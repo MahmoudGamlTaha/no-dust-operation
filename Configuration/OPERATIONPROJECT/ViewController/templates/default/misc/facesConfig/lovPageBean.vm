@@ -1,0 +1,24 @@
+## revision_history
+## 18-may-2010   Steven Davelaar
+## 1.4           Added id property to all elements
+## 30-sep-2008   Evert-Jan de Bruin
+## 1.3           Changed scope to pageFlow, added lovItemBean property, removed iterBinding
+## 05-feb-2007   Steven Davelaar
+## 1.2           Added property multiSelect
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+#set ($bean = ${JHS.current.managedBean})
+
+<managed-bean id="#NEW_ID("__")">
+  <managed-bean-name id="#NEW_ID("__")">${bean.beanName}</managed-bean-name>
+  <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.LovPageBean</managed-bean-class>
+  <managed-bean-scope id="#NEW_ID("__")">pageFlow</managed-bean-scope>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">multiSelect</property-name>
+    <value id="#NEW_ID("__")">${JHS.current.group.multiSelect}</value>
+  </managed-property>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">lovItemBean</property-name>
+    <value id="#NEW_ID("__")">#{pageFlowScope.lovItemBeanRef}</value>
+  </managed-property>  
+</managed-bean>

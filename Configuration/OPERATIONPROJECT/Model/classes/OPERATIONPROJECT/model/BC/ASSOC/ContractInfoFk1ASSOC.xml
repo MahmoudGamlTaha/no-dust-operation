@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ContractInfoFk1ASSOC"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="ContractAddress1"
+    Cardinality="1"
+    Source="true"
+    Owner="OPERATIONPROJECT.model.BC.EO.ContractAddressEO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="ContractAddress1"/>
+      <Attr Name="_foreignKey" Value="OPERATIONPROJECT.model.BC.EO.ContractAddressEO.ContractAddressPkey"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.ContractAddressEO.AddressId"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="ContractInfoData"
+    Cardinality="-1"
+    Owner="OPERATIONPROJECT.model.BC.EO.ContractInfoDataEO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="ContractInfoData"/>
+      <Attr Name="_foreignKey" Value="OPERATIONPROJECT.model.BC.EO.ContractInfoDataEO.ContractInfoFk1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.ContractInfoDataEO.ContractAddress"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

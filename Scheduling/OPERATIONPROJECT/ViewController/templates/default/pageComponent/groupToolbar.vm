@@ -1,0 +1,92 @@
+## revision_history
+## 18-oct-2010   Steven Davelaar
+## 1.7           Added support for custom toolbar items in form layout (in table layout
+##               they will be added to table toolbar
+## 21-apr-2010   Steven Davelaar
+## 1.6           Also generate child navigation buttons in table layout (pulldown menu nav options
+##               are not directly visible
+## 30-sep-2009   Steven Davelaar
+## 1.5           Do not render group toolbox if it will not get contents
+## 02-jul-2007   Steven Davelaar
+## 1.4           Also render form detail group buttons when group is top level group
+## 16-feb-2007   Steven Davelaar
+## 1.3           Also render form group buttons when group defined in group region
+## 03-jan-2007   Steven Davelaar
+## 1.2           Added New Child button.
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+
+## if current group is a detail group and not databound, and does not
+## have child groups on separate page, and does not have toolbar items, then we do not need a toolbar
+#if (!$JHS.current.group.hasToolbarItem && (!$JHS.current.group.databound && $JHS.page.group.name != $JHS.current.group.name && !$JHS.current.group.containsDetailGroupsSeparatePage) || $JHS.current.pageComponent.treeLayout)
+  ## do nothing
+#else
+ <af:toolbox id="#NEW_ID("tbox")">
+  <af:toolbar id="#NEW_ID("tbar")">
+    ## In context of group region, the pageComponent is the parent group's pageComponent!!!
+    #if ($JHS.current.pageComponent.formLayout || $JHS.current.group.hasTreeFormLayout || $JHS.current.group.hasFormLayout)
+      #if ($JHS.current.pageComponent.formLayout || $JHS.current.group.hasFormLayout)
+        #JHS_PARSE("FORM_BROWSE_BUTTONS" ${JHS.current.model})
+      #end
+       <af:group id="#NEW_ID("gr")">
+         #JHS_PARSE("NEW_BUTTON" ${JHS.current.model})
+         #JHS_PARSE("DELETE_BUTTON" ${JHS.current.model})
+       </af:group>
+       <af:group id="#NEW_ID("gr")">
+      ## generate buttons to go to secondary form region pages: pages created because
+      ## top region container has layout=separatePages.
+      #if (!$JHS.page.group.wizardStyle)
+        #foreach ($pageModel in ${JHS.current.group.formRegionPageModels})
+           #if (${pageModel.name}!=${JHS.page.name})
+             #JHS_PARSE("FORM_REGION_PAGE_BUTTON" ${JHS.current.model})
+           #end 
+        #end
+      #end
+
+      ## generate buttons to go to detail groups 
+      #foreach ($detailGroup in ${JHS.current.group.detailGroupsOnSeparatePage})
+         #if (${detailGroup.hasTreeFormLayout} && ${detailGroup.parentGroup.hasTreeFormLayout})
+          #JHS_PARSE("NEW_CHILD_BUTTON" $detailGroup)
+         #elseif (!$JHS.page.group.wizardStyle)
+          #JHS_PARSE("PARENT_TO_CHILD_BUTTON" ${JHS.current.model})
+         #end
+      #end
+      ## generate buttons for toolbar items
+      #foreach ($toolbarItem in ${JHS.current.group.toolbarItems})
+         #JHS_PARSE($toolbarItem.formTemplateIdentifier $toolbarItem)
+         ## add parsed popup content from any popups launched through this item here
+         $toolbarItem.parsedContent
+      #end
+       </af:group>
+    #end
+    #if ($JHS.current.pageComponent.tableLayout || $JHS.current.group.hasTableLayout)
+      <af:group id="#NEW_ID("gr")">
+      #JHS_PARSE("NEW_BUTTON_NOT_IN_FORM_LAYOUT" ${JHS.current.model})
+      </af:group>
+      <af:group id="#NEW_ID("gr")">
+      #foreach ($detailGroup in ${JHS.current.group.detailGroupsOnSeparatePage})
+          #JHS_PARSE("PARENT_TO_CHILD_BUTTON" ${JHS.current.model})
+      #end
+      </af:group>
+    #end
+    #if ($JHS.page.group.name == $JHS.current.group.name )
+      <af:group id="#NEW_ID("gr")">
+        #if ($JHS.page.group.wizardStyle)
+          <af:trainButtonBar value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"/>
+          #JHS_PARSE("WIZARD_FINISH_BUTTON" ${JHS.current.model})
+          #JHS_PARSE("WIZARD_CANCEL_BUTTON" ${JHS.current.model})
+        #else
+          #JHS_PARSE("SAVE_BUTTON" ${JHS.current.model})
+          #if (!${JHS.page.group.useAsLov})
+            #JHS_PARSE("WIZARD_CANCEL_BUTTON" ${JHS.current.model})
+          #end
+        #end
+        #if ($JHS.page.group.useAsDialog)
+          #JHS_PARSE("DIALOG_CANCEL_BUTTON" ${JHS.current.model})
+          #JHS_PARSE("DIALOG_OK_BUTTON" ${JHS.current.model})
+        #end
+      </af:group>
+    #end
+  </af:toolbar>
+</af:toolbox>
+#end

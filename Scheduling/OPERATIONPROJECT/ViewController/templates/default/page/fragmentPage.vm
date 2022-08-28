@@ -1,0 +1,39 @@
+## revision_history
+## 11-oct-2011   Steven Davelaar
+## 1.5           Use page_fragment_start/end macros to switch between facelets and jspx 
+## 04-feb-2011   Steven Davelaar
+## 1.4           replaced hardcoded JSP version number with JSP_VERSION macro
+##               Change encoding to pageEncoding
+## 10-aug-2009   Steven Davelaar
+## 1.3           Added dvt namespace
+## 07-may-2009   Paco van der Linden
+## 1.2           Added resetNamingContainerContext call
+## 27-mar-2009   Steven Davelaar
+## 1.1           Added oraFormsFaces namespace, removed graph namespace 
+## 09-sep-2008   Evert-Jan de Bruin
+## 1.0           Initial version created
+<?xml version='1.0' #PAGE_ENCODING_PROP()?>
+#PAGE_FRAGMENT_START()
+${JHS.engine.resetNamingContainerContext()}
+
+#if (${JHS.application.regionTemplate}=="/common/pageTemplates/JhsRegionTemplate.jsf" && !($JHS.page.group.enableStretching))
+ #set ($regionTemplate="/common/pageTemplates/JhsRegionTemplateNoStretch.jsf")
+#elseif (${JHS.application.regionTemplate}=="/common/pageTemplates/JhsRegionTemplate.jspx" && !($JHS.page.group.enableStretching))
+ #set ($regionTemplate="/common/pageTemplates/JhsRegionTemplateNoStretch.jspx")
+#else
+ #set ($regionTemplate=${JHS.application.regionTemplate})
+#end
+  <af:pageTemplate id="pt" viewId="${regionTemplate}">
+      #if($JHS.current.group.wizardBaseGroup)
+        <f:attribute name="showBreadcrumbs" value="false"/>
+      #else  
+        #BREADCRUMB_BEAN()      
+      #end 
+    
+    #JHS_PARSE(${JHS.page.contentTemplateIdentifier} ${JHS.current.model})
+
+  </af:pageTemplate>
+#PAGE_FRAGMENT_END()
+
+
+

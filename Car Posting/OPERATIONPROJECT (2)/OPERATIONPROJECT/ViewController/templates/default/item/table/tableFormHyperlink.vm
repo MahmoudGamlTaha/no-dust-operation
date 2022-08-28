@@ -1,0 +1,28 @@
+## revision_history
+## 26-jun-2013   Steven Davelaar / Paco van der Linden
+## 1.8           Moved ITEM_ADDITIONAL_PROPERTIES to the end so it can also be used to
+##               override generated properties (last one wins)
+## 15-sep-2011   Steven Davelaar
+## 1.7           removed actionListener, immediate properties to make it work again on Firefox when using JDev 11.1.1.4!
+## 05-oct-2010   Steven Davelaar
+## 1.6           Added call to ITEM_HINT, ITEM_ADDITIONAL_PROPERTIES
+## 18-may-2010   Steven Davelaar
+## 1.5           Moved surrounding column element to separate tableColumn.vm template
+##               Re-added ITEM_RENDERED_IN_TABLE
+## 06-jul-2007   Steven Davelaar
+## 1.4           Moved #ITEM_RENDERED_IN_TABLE() to column element
+## 24-feb-2007   Steven Davelaar
+## 1.3           Added footer template
+## 22-nov-2006   Steven Davelaar
+## 1.2           navigation case name (second arg) changed from "details" to
+##               group name concatenated with "Details"
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+  <af:link id="#NEW_ID("cl")" #ITEM_RENDERED_IN_TABLE() #ITEM_HINT() 
+                  action="${JHS.facesConfigGenerator.addNavigationCase(${JHS.current.group},${JHS.page.name}, "${JHS.current.group.name}Details", ${JHS.current.pageComponent.detailsPage.name})}"
+                  #ITEM_VALUE_IN_TABLE_WITH_PROP("text") #ITEM_ADDITIONAL_PROPERTIES()>
+  </af:link>                
+
+#ITEMS_DISPLAYED_AT_RIGHT_IN_TABLE()
+
+   

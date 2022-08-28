@@ -1,0 +1,41 @@
+## revision_history
+## 20-feb-2012   Steven Davelaar
+## 1.2           Commented out next/previous data block, not reliable enough with nested regions
+## 15-nov-2011   Steven Davelaar
+## 1.1           Added next/previous data block, first/previous/next/last row, go to details
+## 04-nov-2010   Steven Davelaar
+## 1.0           Initial creation
+
+## the arguments for the call to registerFunctionKey are:
+## - the keyboard function key code
+## - the function key display code that should be used in the "Show Keys" popup window
+## - the function key description/label that should be used in the "Show Keys" popup window
+## - the logical action that should be associated with the function key. This action is used
+##   to look up an f:attribute of the group layout container in the page by the same name. The value
+##   of the f:attribute tag contains the ID of the matching UI command component that should be queued
+##   or the popup that should be shown.
+## - boolean that indicates whether it is a page-level action (true), or group or item level action (false)
+## ${JHS.registerFunctionKey("F8","F8","#NEXT_DATA_BLOCK_LABEL()","NextPageComponent",false)}
+## ${JHS.registerFunctionKey("F9","F9","#PREVIOUS_DATA_BLOCK_LABEL()","PreviousPageComponent",false)}
+${JHS.registerFunctionKey("F8","F8","#DETAILS_LABEL()","GoToDetails",false)}
+${JHS.registerFunctionKey("shift UP","Shift+Up","#FIRST_ROW_LABEL()","FirstRow",false)}
+${JHS.registerFunctionKey("UP","Up","#PREVIOUS_ROW_LABEL()","PreviousRow",false)}
+${JHS.registerFunctionKey("DOWN","Down","#NEXT_ROW_LABEL()","NextRow",false)}
+${JHS.registerFunctionKey("shift DOWN","Shift+Down","#LAST_ROW_LABEL()","LastRow",false)}
+${JHS.registerFunctionKey("F6","F6","#ADD_ROW_BUTTON_LABEL()","CreateRow",false)}
+${JHS.registerFunctionKey("shift F6","Shift+F6","#DUPLICATE_ROW_BUTTON_LABEL()","DuplicateRow",false)}
+${JHS.registerFunctionKey("shift F7","Shift+F7","#DELETE_ROW_BUTTON_LABEL()","DeleteRow",false)}
+${JHS.registerFunctionKey("ctrl S","Ctrl+S","#SAVE_LABEL()","Commit",true)}
+${JHS.registerFunctionKey("ctrl Z","Ctrl+Z","#CANCEL_LABEL()","Rollback",true)}
+${JHS.registerFunctionKey("ctrl K","Ctrl+K","#SHOW_KEYS_LABEL()","ShowKeys",true)}
+${JHS.registerFunctionKey("ctrl L","Ctrl+L","#LIST_OF_VALUES_LABEL()","ListOfValues",false)}
+${JHS.registerFunctionKey("BACK_SPACE","Backspace","Disable Backspace button to prevent going to previous page","Disable",true)}
+${JHS.registerFunctionKey("alt 1","Alt+1","Menu Item 1","DoMenuItem",true)}
+${JHS.registerFunctionKey("alt 2","Alt+2","Menu Item 2","DoMenuItem",true)}
+${JHS.registerFunctionKey("alt 3","Alt+3","Menu Item 3","DoMenuItem",true)}
+${JHS.registerFunctionKey("alt 4","Alt+4","Menu Item 4","DoMenuItem",true)}
+${JHS.registerFunctionKey("alt 5","Alt+5","Menu Item 5","DoMenuItem",true)}
+${JHS.registerFunctionKey("alt 6","Alt+6","Menu Item 6","DoMenuItem",true)}
+${JHS.registerFunctionKey("alt 7","Alt+7","Menu Item 7","DoMenuItem",true)}
+${JHS.registerFunctionKey("alt 8","Alt+8","Menu Item 8","DoMenuItem",true)}
+${JHS.registerFunctionKey("alt 9","Alt+9","Menu Item 9","DoMenuItem",true)}

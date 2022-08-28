@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="NewCancelSalesContractsEO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="NEW_CANCEL_SALES_CONTRACTS"
+  AliasName="NewCancelSalesContractsEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="AssignDate"
+    ColumnName="ASSIGN_DATE"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="NEW_CANCEL_SALES_CONTRACTS"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="AreaId"
+    ColumnName="AREA_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="NEW_CANCEL_SALES_CONTRACTS"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="AreaName"
+    Precision="4000"
+    ColumnName="AREA_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="NEW_CANCEL_SALES_CONTRACTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DataAgent"
+    Precision="500"
+    ColumnName="DATA_AGENT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="NEW_CANCEL_SALES_CONTRACTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DriverName"
+    Precision="161"
+    ColumnName="DRIVER_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="NEW_CANCEL_SALES_CONTRACTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="161"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DrivId"
+    Precision="4000"
+    ColumnName="DRIV_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="NEW_CANCEL_SALES_CONTRACTS"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PilotName"
+    Precision="161"
+    ColumnName="PILOT_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="NEW_CANCEL_SALES_CONTRACTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="161"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PilotId"
+    Precision="4000"
+    ColumnName="PILOT_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="NEW_CANCEL_SALES_CONTRACTS"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="TotalAssignemnt"
+    ColumnName="TOTAL_ASSIGNEMNT"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="NEW_CANCEL_SALES_CONTRACTS"/>
+  <Attribute
+    Name="DeliveryType"
+    ColumnName="DELIVERY_TYPE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="NEW_CANCEL_SALES_CONTRACTS"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="AssignmentId"
+    IsNotNull="true"
+    Precision="38"
+    Scale="0"
+    ColumnName="ASSIGNMENT_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    TableName="NEW_CANCEL_SALES_CONTRACTS"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="CardNo"
+    ColumnName="CARD_NO"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="NEW_CANCEL_SALES_CONTRACTS"/>
+  <Attribute
+    Name="ClientName"
+    Precision="4000"
+    ColumnName="CLIENT_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="NEW_CANCEL_SALES_CONTRACTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DataComment"
+    Precision="4000"
+    ColumnName="DATA_COMMENT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="NEW_CANCEL_SALES_CONTRACTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Status"
+    Precision="4000"
+    ColumnName="STATUS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="NEW_CANCEL_SALES_CONTRACTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CustomerNotes"
+    Precision="4000"
+    ColumnName="CUSTOMER_NOTES"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="NEW_CANCEL_SALES_CONTRACTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CloseCodeReason"
+    Precision="4000"
+    ColumnName="CLOSE_CODE_REASON"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="NEW_CANCEL_SALES_CONTRACTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ShipmentId"
+    Precision="38"
+    Scale="0"
+    ColumnName="SHIPMENT_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    TableName="NEW_CANCEL_SALES_CONTRACTS"/>
+  <Attribute
+    Name="DataStatus"
+    ColumnName="DATA_STATUS"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="NEW_CANCEL_SALES_CONTRACTS"
+    IsNotNull="true"/>
+  <Attribute
+    Name="ContractStatus"
+    ColumnName="CONTRACT_STATUS"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="NEW_CANCEL_SALES_CONTRACTS"
+    IsNotNull="true"/>
+  <Attribute
+    Name="CloseCode"
+    ColumnName="CLOSE_CODE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="NEW_CANCEL_SALES_CONTRACTS"
+    IsNotNull="true"/>
+  <Attribute
+    Name="Duration"
+    ColumnName="DURATION"
+    SQLType="NUMERIC"
+    Type="java.lang.Long"
+    ColumnType="NUMBER"
+    TableName="NEW_CANCEL_SALES_CONTRACTS"/>
+  <Attribute
+    Name="ActualPaid"
+    ColumnName="ACTUAL_PAID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="NEW_CANCEL_SALES_CONTRACTS"/>
+  <Attribute
+    Name="AllowCredit"
+    ColumnName="ALLOW_CREDIT"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="NEW_CANCEL_SALES_CONTRACTS"/>
+  <Attribute
+    Name="PaidCredit"
+    Precision="3"
+    ColumnName="PAID_CREDIT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="NEW_CANCEL_SALES_CONTRACTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="3"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="AssignmentDownload"
+    Association="OPERATIONPROJECT.model.BC.EO.Assoc.NewCancelSalesAssoc"
+    AssociationEnd="OPERATIONPROJECT.model.BC.EO.Assoc.NewCancelSalesAssoc.AssignmentDownload"
+    AssociationOtherEnd="OPERATIONPROJECT.model.BC.EO.Assoc.NewCancelSalesAssoc.NewCancelSalesContracts"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="NewCancelSalesContractsProducts"
+    ViewLink="OPERATIONPROJECT.model.BC.VO.VL.NewCancelSalesContractProductsVL"
+    ViewLinkEnd="OPERATIONPROJECT.model.BC.VO.VL.NewCancelSalesContractProductsVL.NewCancelSalesContractsProducts"
+    ViewLinkOtherEnd="OPERATIONPROJECT.model.BC.VO.VL.NewCancelSalesContractProductsVL.NewCancelSalesContracts"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="DataTeamAgentCarReconciliation"
+    ViewLink="OPERATIONPROJECT.model.BC.VO.VL.ContractsReviewVL"
+    ViewLinkEnd="OPERATIONPROJECT.model.BC.VO.VL.ContractsReviewVL.DataTeamAgentCarReconciliation"
+    ViewLinkOtherEnd="OPERATIONPROJECT.model.BC.VO.VL.ContractsReviewVL.ContractsReview"
+    Type="OPERATIONPROJECT.model.BC.VO.DataTeamAgentCarReconciliationVORowImpl"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="ProductContract"
+    ViewLink="OPERATIONPROJECT.model.BC.VO.VL.NewCancelProductContractVL"
+    ViewLinkEnd="OPERATIONPROJECT.model.BC.VO.VL.NewCancelProductContractVL.ProductContract"
+    ViewLinkOtherEnd="OPERATIONPROJECT.model.BC.VO.VL.NewCancelProductContractVL.NewCancelSalesContracts"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="NewCancelSalesContractsCloseCodeCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_checkCondition" Value='"CLOSE_CODE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="NEW_CANCEL_SALES_CONTRACTS_CLO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.NewCancelSalesContractsEO.CloseCode"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="NewCancelSalesContractsContractStatusCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_checkCondition" Value='"CONTRACT_STATUS" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="NEW_CANCEL_SALES_CONTRACTS_CON"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.NewCancelSalesContractsEO.ContractStatus"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="NewCancelSalesContractsDataStatusCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_checkCondition" Value='"DATA_STATUS" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="NEW_CANCEL_SALES_CONTRACTS_DAT"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.NewCancelSalesContractsEO.DataStatus"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="NewcancelsalescontractseoPrimaryKey"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="NEWCANCELSALESCONTRACTSEO_PRIM"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.NewCancelSalesContractsEO.AssignDate"/>
+      <Item Value="OPERATIONPROJECT.model.BC.EO.NewCancelSalesContractsEO.AreaId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.EO.NewCancelSalesContractsEO.DrivId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.EO.NewCancelSalesContractsEO.PilotId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.EO.NewCancelSalesContractsEO.DeliveryType"/>
+      <Item Value="OPERATIONPROJECT.model.BC.EO.NewCancelSalesContractsEO.AssignmentId"/>
+    </AttrArray>
+  </Key>
+</Entity>

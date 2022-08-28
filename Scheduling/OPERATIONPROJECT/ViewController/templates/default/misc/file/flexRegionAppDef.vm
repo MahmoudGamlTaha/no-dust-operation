@@ -1,0 +1,902 @@
+<?xml version="1.0" #ENCODING_PROP()?>
+#set ($hints = '$HINTS$')
+<Service controllerConfigFile="/WEB-INF/adfc-config-flex.xml" 
+         groupBeansConfigDir="/flex/adfcConfig/"
+         name="FlexRegionService" 
+         overwriteRunTarget="false" pageIncludesVirtualDir="/flex/includes/"
+         pageLifecycleClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+         pageVirtualDir="/flex/pages/"
+         runtimeCustomizationItemsAllowed="false"
+         useFlexRegions="false"
+         xmlns="http://www.oracle.com/jheadstart/applicationStructure"
+         dataControl="${JHS.service.dataControl}" 
+         dataControlImpl="${JHS.service.dataControlImpl}">
+    <Group generatePages="true" generateBindings="true" clearBindings="true"
+           overwriteBindings="true" generateControllerGroup="true"
+           overwriteControllerConfig="true" addMenuEntry="true"
+           addVerbToFormTitle="true" advancedSearch="none"
+           advancedSearchColumns="2" autoQuery="true" columns="2"
+           databound="true" description="FlexRegionDefinitions"
+           descriptorAttribute="Name"
+           displayTitlePlural="Flex Region Definitions"
+           displayTitleSingular="Flex Region Definition"
+           formDeleteAllowed="false" formInsertAllowed="false" formLink="button"
+           formUpdateAllowed="true" generateGroupInFragment="false"
+           generateLevel2Tabs="true" generateSearchAreaInFragment="false"
+           layoutStyle="form" multiSelect="false" name="FlexRegionDefinitions"
+           passivateStateBeforeCommit="false" quickSearch="none"
+           samePage="false" samePagePosition="below"
+           showDuplicateRowButton="false" showTitle="true"
+           showTreeExpanded="false" sortable="false" stackDetailGroups="false"
+           tabName="Flex Region Definitions" tableDeleteAllowed="false"
+           tableInsertAllowed="false" tableRangeSize="10"
+           tableUpdateAllowed="false" useTableRange="true" wizardStyle="false"
+           groupUsage="region"
+           queryTypeArguments="RegionName=#{pageFlowScope.RegionName}"
+           dataCollection="JhsModelService.FlexRegionDefinitions"
+           dataCollectionImpl="FlexRegionDefinitions" enableStretching="false">
+        <Item alignment="right" attributeName="Id"
+              clearValueWhenDependsOnItemChanges="false" databound="true"
+              displayHeight="#{${hints}.displayHeight}" displayInForm="false"
+              displayInTable="false" displayInTableOverflow="false"
+              displayType="textInput" displayWidth="#{${hints}.displayWidth}"
+              javaType="Number" maximumLength="38" name="Id" promptInForm="Id"
+              required="#{${hints}.mandatory}" showInAdvancedSearch="false"
+              showInQuickSearch="false" sortable="true" updateAllowed="true">
+            <Templates/>
+            <Triggers/>
+        </Item>
+        <Item attributeName="Name" clearValueWhenDependsOnItemChanges="false"
+              databound="true" displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true"
+              displayInTableOverflow="false" displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}" javaType="String"
+              maximumLength="60" name="Name" promptInForm="Name"
+              required="#{${hints}.mandatory}" showInAdvancedSearch="true"
+              showInQuickSearch="true" sortable="true" updateAllowed="false">
+            <Templates/>
+            <Triggers/>
+        </Item>
+        <Item attributeName="GroupName"
+              clearValueWhenDependsOnItemChanges="false" databound="true"
+              displayHeight="#{${hints}.displayHeight}" displayInForm="false"
+              displayInTable="false" displayInTableOverflow="false"
+              displayType="textInput" displayWidth="30" javaType="String"
+              maximumLength="60" name="GroupName" promptInForm="GroupName"
+              required="#{${hints}.mandatory}" showInAdvancedSearch="true"
+              showInQuickSearch="true" sortable="true" updateAllowed="false">
+            <Templates/>
+            <Triggers/>
+        </Item>
+        <Item attributeName="Label" clearValueWhenDependsOnItemChanges="false"
+              databound="true" displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true"
+              displayInTableOverflow="false" displayType="textInput"
+              displayWidth="30" javaType="String" maximumLength="60"
+              name="Label" promptInForm="Header" required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true">
+            <Templates/>
+            <Triggers/>
+        </Item>
+        <Item attributeName="LabelTranslationKey"
+              clearValueWhenDependsOnItemChanges="false" databound="true"
+              displayHeight="#{${hints}.displayHeight}" displayInForm="true"
+              displayInTable="false" displayInTableOverflow="false"
+              displayWidth="30" javaType="String" maximumLength="240"
+              name="LabelTranslationKey" promptInForm="Header Translation Key"
+              showInAdvancedSearch="false" showInQuickSearch="false"
+              sortable="true" updateAllowed="true" required="false"
+              displayType="lov">
+            <Templates/>
+            <ListOfValues groupName="FlexRegionService.FlexTranslationLov"
+                          useForValidation="false">
+                <ReturnValue source="Key1" target="LabelTranslationKey"/>
+            </ListOfValues>
+            <Triggers/>
+        </Item>
+        <Item attributeName="Width" clearValueWhenDependsOnItemChanges="false"
+              databound="true" displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="false"
+              displayInTableOverflow="false" displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}" javaType="String"
+              maximumLength="10" name="Width" promptInForm="Width"
+              required="#{${hints}.mandatory}" showInAdvancedSearch="false"
+              showInQuickSearch="false" sortable="true" updateAllowed="true">
+            <Templates/>
+            <Triggers/>
+        </Item>
+        <Item attributeName="LayoutStyle"
+              clearValueWhenDependsOnItemChanges="false" databound="true"
+              displayHeight="#{${hints}.displayHeight}" displayInForm="false"
+              displayInTable="false" displayInTableOverflow="false"
+              displayType="textInput" displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="20" name="LayoutStyle"
+              promptInForm="LayoutStyle" required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true">
+            <Templates/>
+            <Triggers/>
+        </Item>
+        <Item alignment="right" attributeName="NumberOfLayoutColumns"
+              clearValueWhenDependsOnItemChanges="false" databound="true"
+              displayHeight="#{${hints}.displayHeight}" displayInForm="true"
+              displayInTable="false" displayInTableOverflow="false"
+              displayType="textInput" displayWidth="#{${hints}.displayWidth}"
+              javaType="Number" maximumLength="2" name="NumberOfLayoutColumns"
+              promptInForm="Layout Columns" required="#{${hints}.mandatory}"
+              showInAdvancedSearch="false" showInQuickSearch="false"
+              sortable="true" updateAllowed="true">
+            <Templates/>
+            <Triggers/>
+        </Item>
+        <Item attributeName="Roles" clearValueWhenDependsOnItemChanges="false"
+              databound="true" displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true"
+              displayInTableOverflow="false" displayType="textInput"
+              displayWidth="40" javaType="String" maximumLength="240"
+              name="Roles" promptInForm="Roles" required="#{${hints}.mandatory}"
+              showInAdvancedSearch="false" showInQuickSearch="false"
+              sortable="true" updateAllowed="true">
+            <Templates/>
+            <Triggers/>
+        </Item>
+        <Item attributeName="RenderedExpr"
+              clearValueWhenDependsOnItemChanges="false" databound="true"
+              displayHeight="#{${hints}.displayHeight}" displayInForm="true"
+              displayInTable="false" displayInTableOverflow="false"
+              displayType="textInput" displayWidth="40" javaType="String"
+              maximumLength="240" name="RenderedExpr"
+              promptInForm="Rendered Expression" required="#{${hints}.mandatory}"
+              showInAdvancedSearch="false" showInQuickSearch="false"
+              sortable="true" updateAllowed="true">
+            <Templates/>
+            <Triggers/>
+        </Item>
+        <Item attributeName="OrgKey" clearValueWhenDependsOnItemChanges="false"
+              databound="true" displayHeight="#{${hints}.displayHeight}"
+              displayInForm="false" displayInTable="false"
+              displayInTableOverflow="false" displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}" javaType="String"
+              maximumLength="30" name="OrgKey" promptInForm="OrgKey"
+              required="#{${hints}.mandatory}" showInAdvancedSearch="false"
+              showInQuickSearch="false" sortable="true" updateAllowed="true">
+            <Templates/>
+            <Triggers/>
+        </Item>
+        <Item alignment="right" attributeName="FrdId"
+              clearValueWhenDependsOnItemChanges="false" databound="true"
+              displayHeight="#{${hints}.displayHeight}" displayInForm="false"
+              displayInTable="false" displayInTableOverflow="false"
+              displayType="dropDownList" displayWidth="#{${hints}.displayWidth}"
+              domain="FlexRegionDefinitionsLookup" javaType="Number"
+              maximumLength="38" name="FrdId" promptInForm="Parent Region"
+              required="#{${hints}.mandatory}" showInAdvancedSearch="true"
+              showInQuickSearch="true" sortable="true" updateAllowed="true">
+            <Templates/>
+            <Triggers/>
+        </Item>
+        <RegionContainer name="Regions"/>
+        <Group generatePages="true" generateBindings="true" clearBindings="true"
+               overwriteBindings="true" generateControllerGroup="true"
+               overwriteControllerConfig="true" addMenuEntry="true"
+               addVerbToFormTitle="true" advancedSearch="none"
+               advancedSearchColumns="1" autoQuery="true" columns="2"
+               dataCollection="JhsModelService.FlexItemDefinitions"
+               dataCollectionImpl="FlexItemDefinitions" databound="true"
+               description="FlexItemDefinitions" descriptorAttribute="Name"
+               displayTitlePlural="Flex Item Definitions"
+               displayTitleSingular="Flex Item Definition"
+               formDeleteAllowed="true" formInsertAllowed="true"
+               formLink="button" formUpdateAllowed="true"
+               generateGroupInFragment="false" generateLevel2Tabs="true"
+               generateSearchAreaInFragment="false" groupUsage="dialog"
+               layoutStyle="table-form" multiSelect="false"
+               name="FlexItemDefinitions" passivateStateBeforeCommit="true"
+               quickSearch="none" samePage="true" samePagePosition="below"
+               showDuplicateRowButton="false" showTitle="true"
+               showTreeExpanded="false" sortable="false"
+               stackDetailGroups="false" tabName="Flex Item Definitions"
+               tableDeleteAllowed="false" tableInsertAllowed="false"
+               tableRangeSize="10" tableUpdateAllowed="true"
+               useTableRange="true" wizardStyle="false" enableStretching="true">
+            <Item alignment="right" attributeName="Id"
+                  clearValueWhenDependsOnItemChanges="false" databound="true"
+                  displayHeight="#{${hints}.displayHeight}" displayInForm="false"
+                  displayInTable="false" displayInTableOverflow="false"
+                  displayType="textInput" displayWidth="#{${hints}.displayWidth}"
+                  javaType="Number" maximumLength="38" name="Id"
+                  promptInForm="Id" required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="false" showInQuickSearch="false"
+                  sortable="true" updateAllowed="true">
+                <Triggers/>
+            </Item>
+            <Item alignment="right" attributeName="DisplaySequence"
+                  clearValueWhenDependsOnItemChanges="false" databound="true"
+                  displayHeight="#{${hints}.displayHeight}" displayInForm="true"
+                  displayInTable="true" displayInTableOverflow="false"
+                  displayType="textInput" displayWidth="#{${hints}.displayWidth}"
+                  javaType="Number" maximumLength="3" name="DisplaySequence"
+                  promptInForm="Display Sequence"
+                  required="#{${hints}.mandatory}" showInAdvancedSearch="true"
+                  showInQuickSearch="true" sortable="true" updateAllowed="true">
+                <Triggers/>
+            </Item>
+            <Item attributeName="Name"
+                  clearValueWhenDependsOnItemChanges="false" databound="true"
+                  displayHeight="#{${hints}.displayHeight}" displayInForm="true"
+                  displayInTable="true" displayInTableOverflow="false"
+                  displayType="textInput" displayWidth="30" javaType="String"
+                  maximumLength="60" name="Name" promptInForm="Name"
+                  required="#{${hints}.mandatory}" showInAdvancedSearch="true"
+                  showInQuickSearch="true" sortable="true" updateAllowed="true">
+                <Triggers/>
+            </Item>
+            <Item attributeName="Label"
+                  clearValueWhenDependsOnItemChanges="false" databound="true"
+                  displayHeight="#{${hints}.displayHeight}" displayInForm="true"
+                  displayInTable="true" displayInTableOverflow="false"
+                  displayType="textInput" displayWidth="30" javaType="String"
+                  maximumLength="60" name="Label" promptInForm="Label"
+                  required="#{${hints}.mandatory}" showInAdvancedSearch="true"
+                  showInQuickSearch="true" sortable="true" updateAllowed="true">
+                <Templates/>
+                <Triggers/>
+            </Item>
+            <Item attributeName="LabelTranslationKey"
+                  clearValueWhenDependsOnItemChanges="false" databound="true"
+                  displayHeight="#{${hints}.displayHeight}" displayInForm="true"
+                  displayInTable="false" displayInTableOverflow="false"
+                  displayWidth="30" javaType="String" maximumLength="240"
+                  name="LabelTranslationKey"
+                  promptInForm="Label Translation Key"
+                  showInAdvancedSearch="false" showInQuickSearch="false"
+                  sortable="true" updateAllowed="true" required="false"
+                  displayType="lov">
+                <Templates/>
+                <ListOfValues groupName="FlexRegionService.FlexTranslationLov"
+                              useForValidation="false">
+                    <ReturnValue source="Key1" target="LabelTranslationKey"/>
+                </ListOfValues>
+                <Triggers/>
+            </Item>
+            <Item attributeName="HintText"
+                  clearValueWhenDependsOnItemChanges="false" databound="true"
+                  displayHeight="#{${hints}.displayHeight}" displayInForm="true"
+                  displayInTable="false" displayInTableOverflow="false"
+                  displayType="textInput" displayWidth="50" javaType="String"
+                  maximumLength="240" name="HintText" promptInForm="Hint Text"
+                  required="#{${hints}.mandatory}" showInAdvancedSearch="true"
+                  showInQuickSearch="true" sortable="true" updateAllowed="true">
+                <Templates/>
+                <Triggers/>
+            </Item>
+            <Item attributeName="HintTextTranslationKey"
+                  clearValueWhenDependsOnItemChanges="false" databound="true"
+                  displayHeight="#{${hints}.displayHeight}" displayInForm="true"
+                  displayInTable="false" displayInTableOverflow="false"
+                  displayWidth="30" javaType="String" maximumLength="240"
+                  name="HintTextTranslationKey"
+                  promptInForm="Hint Text TranslationKey"
+                  showInAdvancedSearch="false" showInQuickSearch="false"
+                  sortable="true" updateAllowed="true" required="false"
+                  displayType="lov">
+                <Templates/>
+                <ListOfValues groupName="FlexRegionService.FlexTranslationLov"
+                              useForValidation="false">
+                    <ReturnValue source="Key1" target="HintTextTranslationKey"/>
+                </ListOfValues>
+                <Triggers/>
+            </Item>
+            <Item attributeName="DisplayType"
+                  clearValueWhenDependsOnItemChanges="false" databound="true"
+                  displayHeight="#{${hints}.displayHeight}" displayInForm="true"
+                  displayInTable="false" displayInTableOverflow="false"
+                  displayType="dropDownList"
+                  displayWidth="#{${hints}.displayWidth}"
+                  domain="FlexItemDisplayType" javaType="String"
+                  maximumLength="240" name="DisplayType"
+                  promptInForm="Display Type" required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="true" showInQuickSearch="true"
+                  sortable="true" updateAllowed="true">
+                <Triggers/>
+            </Item>
+            <Item alignment="right" attributeName="ItemDisplayWidth"
+                  clearValueWhenDependsOnItemChanges="false" databound="true"
+                  displayHeight="#{${hints}.displayHeight}" displayInForm="true"
+                  displayInTable="false" displayInTableOverflow="false"
+                  displayType="textInput" displayWidth="#{${hints}.displayWidth}"
+                  javaType="Number" maximumLength="3" name="ItemDisplayWidth"
+                  promptInForm="Display Width" required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="false" showInQuickSearch="false"
+                  sortable="true" updateAllowed="true">
+                <Triggers/>
+            </Item>
+            <Item alignment="right" attributeName="ItemDisplayHeight"
+                  clearValueWhenDependsOnItemChanges="false" databound="true"
+                  displayHeight="#{${hints}.displayHeight}" displayInForm="true"
+                  displayInTable="false" displayInTableOverflow="false"
+                  displayType="textInput" displayWidth="#{${hints}.displayWidth}"
+                  javaType="Number" maximumLength="3" name="ItemDisplayHeight"
+                  promptInForm="Display Height" required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="false" showInQuickSearch="false"
+                  sortable="true" updateAllowed="true">
+                <Triggers/>
+            </Item>
+            <Item alignment="right" attributeName="FrdId"
+                  clearValueWhenDependsOnItemChanges="false" databound="true"
+                  displayHeight="#{${hints}.displayHeight}" displayInForm="false"
+                  displayInTable="false" displayInTableOverflow="false"
+                  displayType="textInput" displayWidth="#{${hints}.displayWidth}"
+                  javaType="Number" maximumLength="38" name="FrdId"
+                  promptInForm="FrdId" required="#{${hints}.mandatory}"
+                  showInAdvancedSearch="false" showInQuickSearch="false"
+                  sortable="true" updateAllowed="true">
+                <Triggers/>
+            </Item>
+            <Item alignment="right" attributeName="FidId"
+                  clearValueWhenDependsOnItemChanges="false" databound="true"
+                  displayHeight="#{${hints}.displayHeight}" displayInForm="true"
+                  displayInTable="false" displayInTableOverflow="false"
+                  displayType="dropDownList"
+                  displayWidth="#{${hints}.displayWidth}"
+                  domain="FlexItemDefinitionsLookup" javaType="Number"
+                  maximumLength="38" name="FidId" promptInForm="Depends On Item"
+                  required="#{${hints}.mandatory}" showInAdvancedSearch="false"
+                  showInQuickSearch="false" sortable="true"
+                  updateAllowed="true">
+                <Triggers/>
+            </Item>
+            <Item attributeName="Roles"
+                  clearValueWhenDependsOnItemChanges="false" databound="true"
+                  displayHeight="#{${hints}.displayHeight}" displayInForm="true"
+                  displayInTable="false" displayInTableOverflow="false"
+                  displayType="textInput" displayWidth="40" javaType="String"
+                  maximumLength="240" name="Roles" promptInForm="Roles"
+                  required="#{${hints}.mandatory}" showInAdvancedSearch="false"
+                  showInQuickSearch="false" sortable="true"
+                  updateAllowed="true">
+                <Triggers/>
+            </Item>
+            <Item attributeName="RenderedExpr"
+                  clearValueWhenDependsOnItemChanges="false" databound="true"
+                  displayHeight="#{${hints}.displayHeight}" displayInForm="true"
+                  displayInTable="false" displayInTableOverflow="false"
+                  displayType="textInput" displayWidth="40" javaType="String"
+                  maximumLength="240" name="RenderedExpr"
+                  promptInForm="Rendered Expression"
+                  required="#{${hints}.mandatory}" showInAdvancedSearch="false"
+                  showInQuickSearch="false" sortable="true"
+                  updateAllowed="true">
+                <Triggers/>
+            </Item>
+            <RegionContainer layoutStyle="stacked" name="Regions"
+                             enableStretching="true" width="100%"
+                             height="400px">
+                <ItemRegion columns="1" generateInFragment="false"
+                            name="DefaultValue" title="Default Value">
+                    <Item attributeName="StaticDefaultValue"
+                          clearValueWhenDependsOnItemChanges="false"
+                          databound="true" displayInForm="true"
+                          displayInTable="false" displayInTableOverflow="false"
+                          displayType="textInput"
+                          hintText="Static default value can be a literal value or a JSF EL Expression."
+                          javaType="String" maximumLength="240"
+                          name="StaticDefaultValue"
+                          promptInForm="Static Default Value"
+                          required="#{${hints}.mandatory}"
+                          showInAdvancedSearch="false" showInQuickSearch="false"
+                          sortable="true" updateAllowed="true" displayWidth="80"
+                          displayHeight="1">
+                        <Templates/>
+                        <Triggers/>
+                    </Item>
+                    <Item attributeName="DefaultValueQuery"
+                          clearValueWhenDependsOnItemChanges="false"
+                          databound="true" displayHeight="5"
+                          displayInForm="true" displayInTable="false"
+                          displayInTableOverflow="false" displayType="textInput"
+                          displayWidth="80"
+                          hintText="The default value is taken from the first column in the SELECT statement. If the item depends on another flex item, you can use the keyword ':DependsOnItemValue' to refer to the value of this other item."
+                          javaType="String" maximumLength="4000"
+                          name="DefaultValueQuery"
+                          promptInForm="Default Value Query"
+                          required="#{${hints}.mandatory}"
+                          showInAdvancedSearch="false" showInQuickSearch="false"
+                          sortable="false" updateAllowed="true">
+                        <Templates/>
+                        <Triggers/>
+                    </Item>
+                    <Templates/>
+                </ItemRegion>
+                <ItemRegion columns="1" generateInFragment="false"
+                            name="Validation" title="Validation">
+                    <Item attributeName="IndMandatory"
+                          clearValueWhenDependsOnItemChanges="false"
+                          databound="true" defaultValue="N"
+                          displayHeight="#{${hints}.displayHeight}"
+                          displayInForm="true" displayInTable="false"
+                          displayInTableOverflow="false" displayType="checkBox"
+                          displayWidth="#{${hints}.displayWidth}" domain="YesNo"
+                          javaType="String" maximumLength="1"
+                          name="IndMandatory" promptInForm="Mandatory?"
+                          required="#{${hints}.mandatory}"
+                          showInAdvancedSearch="false" showInQuickSearch="false"
+                          sortable="true" updateAllowed="true">
+                        <Templates/>
+                        <Triggers/>
+                    </Item>
+                    <Item attributeName="ValidationQuery"
+                          clearValueWhenDependsOnItemChanges="false"
+                          databound="true" displayHeight="5"
+                          displayInForm="true" displayInTable="false"
+                          displayInTableOverflow="false" displayType="textInput"
+                          displayWidth="80"
+                          hintText="The validation where clause is appended to the SELECT statement 'select 1 from dual where '. The where clause must contain the keyword ':ItemValue' to refer to the value that should be validated.  If the item depends on another flex item, you can also use the keyword ':DependsOnItemValue' to refer to the value of this other item. The item value is considered valid when the SELECT statement returns a row."
+                          javaType="String" maximumLength="4000"
+                          name="ValidationQuery"
+                          promptInForm="Validation Where Clause"
+                          required="#{${hints}.mandatory}"
+                          showInAdvancedSearch="false" showInQuickSearch="false"
+                          sortable="false" updateAllowed="true">
+                        <Templates/>
+                        <Triggers/>
+                    </Item>
+                    <Item attributeName="RegularExpr"
+                          clearValueWhenDependsOnItemChanges="false"
+                          databound="true"
+                          displayHeight="#{${hints}.displayHeight}"
+                          displayInForm="true" displayInTable="false"
+                          displayInTableOverflow="false" displayType="textInput"
+                          displayWidth="80" javaType="String"
+                          maximumLength="240" name="RegularExpr"
+                          promptInForm="Regular Expression"
+                          required="#{${hints}.mandatory}"
+                          showInAdvancedSearch="false" showInQuickSearch="false"
+                          sortable="true" updateAllowed="true">
+                        <Templates/>
+                        <Triggers/>
+                    </Item>
+                    <Item alignment="right" attributeName="MaximumLength"
+                          clearValueWhenDependsOnItemChanges="false"
+                          databound="true"
+                          displayHeight="#{${hints}.displayHeight}"
+                          displayInForm="true" displayInTable="false"
+                          displayInTableOverflow="false" displayType="textInput"
+                          displayWidth="#{${hints}.displayWidth}"
+                          javaType="Number" maximumLength="4"
+                          name="MaximumLength" promptInForm="Maximum Length"
+                          required="#{${hints}.mandatory}"
+                          showInAdvancedSearch="false" showInQuickSearch="false"
+                          sortable="true" updateAllowed="true">
+                        <Templates/>
+                        <Triggers/>
+                    </Item>
+                    <Item attributeName="ErrorMessage"
+                          clearValueWhenDependsOnItemChanges="false"
+                          databound="true"
+                          displayHeight="#{${hints}.displayHeight}"
+                          displayInForm="true" displayInTable="false"
+                          displayInTableOverflow="false" displayType="textInput"
+                          displayWidth="80" javaType="String"
+                          maximumLength="240" name="ErrorMessage"
+                          promptInForm="Error Message"
+                          required="#{${hints}.mandatory}"
+                          showInAdvancedSearch="false" showInQuickSearch="false"
+                          sortable="true" updateAllowed="true">
+                        <Templates/>
+                        <Triggers/>
+                    </Item>
+                    <Item attributeName="ErrorMessageTranslationKey"
+                          clearValueWhenDependsOnItemChanges="false"
+                          databound="true"
+                          displayHeight="#{${hints}.displayHeight}"
+                          displayInForm="true" displayInTable="false"
+                          displayInTableOverflow="false"
+                          displayType="model-inputTextLov" javaType="String"
+                          maximumLength="240" name="ErrorMessageTranslationKey"
+                          promptInForm="Error Message Translation Key"
+                          required="#{${hints}.mandatory}"
+                          showInAdvancedSearch="false" showInQuickSearch="false"
+                          sortable="true" updateAllowed="true"
+                          displayWidth="80">
+                        <Templates/>
+                        <Triggers/>
+                    </Item>
+                    <Templates/>
+                </ItemRegion>
+                <RegionContainer layoutStyle="vertical" name="AllowableValues"
+                                 title="Allowable Values">
+                    <ItemRegion columns="1" generateInFragment="false"
+                                name="AVQuery">
+                        <Item attributeName="AllowableValuesQuery"
+                              clearValueWhenDependsOnItemChanges="false"
+                              databound="true" displayHeight="5"
+                              displayInForm="true" displayInTable="false"
+                              displayInTableOverflow="false"
+                              displayType="textInput" displayWidth="80"
+                              hintText="The allowable values query must be a valid  SELECT statement that selects two columns, the first column is used as value, the second column is used as label. If the item depends on another flex item, you can use the keyword ':DependsOnItemValue' to refer to the value of this other item. Example: select country_id, country_name from countries where region_id = :DependsOnItemValue. Note that if the depends on item value is compared with a character column, it should be enclosed in single quotes."
+                              javaType="String" maximumLength="4000"
+                              name="AllowableValuesQuery"
+                              promptInForm="Allowable Values Query"
+                              required="#{${hints}.mandatory}"
+                              showInAdvancedSearch="false"
+                              showInQuickSearch="false" sortable="false"
+                              updateAllowed="true">
+                            <Templates/>
+                            <Triggers/>
+                        </Item>
+                        <Templates/>
+                    </ItemRegion>
+                    <GroupRegion groupName="FlexItemAllowableValues"
+                                 name="StaticAV">
+                        <Templates/>
+                    </GroupRegion>
+                    <Templates/>
+                </RegionContainer>
+                <Templates/>
+            </RegionContainer>
+            <Group generatePages="true" generateBindings="true"
+                   clearBindings="true" overwriteBindings="true"
+                   generateControllerGroup="true"
+                   overwriteControllerConfig="true" addMenuEntry="true"
+                   addVerbToFormTitle="true" advancedSearch="none"
+                   advancedSearchColumns="1" autoQuery="true" columns="2"
+                   dataCollection="JhsModelService.FlexItemAllowableValues"
+                   dataCollectionImpl="AllowableValues" databound="true"
+                   description="FlexItemAllowableValues"
+                   descriptorAttribute="Value" formDeleteAllowed="true"
+                   formInsertAllowed="true" formLink="button"
+                   formUpdateAllowed="true" generateGroupInFragment="false"
+                   generateLevel2Tabs="true"
+                   generateSearchAreaInFragment="false" groupUsage="dialog"
+                   layoutStyle="table" multiSelect="false"
+                   name="FlexItemAllowableValues"
+                   passivateStateBeforeCommit="false" quickSearch="none"
+                   samePage="true" samePagePosition="below"
+                   showDuplicateRowButton="false" showTitle="true"
+                   showTreeExpanded="false" sortable="false"
+                   stackDetailGroups="false" tableDeleteAllowed="true"
+                   tableInsertAllowed="true" tableRangeSize="10"
+                   tableUpdateAllowed="true" useTableRange="true"
+                   wizardStyle="false" groupRegionAccess="groupUIShell"
+                   tableWidth="Stretch"
+                   displayTitlePlural="Static Allowable Values">
+                <Item alignment="right" attributeName="Id"
+                      clearValueWhenDependsOnItemChanges="false"
+                      databound="true" displayHeight="#{${hints}.displayHeight}"
+                      displayInForm="false" displayInTable="false"
+                      displayInTableOverflow="false" displayType="textInput"
+                      displayWidth="#{${hints}.displayWidth}" javaType="Number"
+                      maximumLength="38" name="Id" promptInForm="Id"
+                      required="#{${hints}.mandatory}"
+                      showInAdvancedSearch="true" showInQuickSearch="true"
+                      sortable="true" updateAllowed="true">
+                    <Templates/>
+                    <Triggers/>
+                </Item>
+                <Item alignment="right" attributeName="DisplaySequence"
+                      clearValueWhenDependsOnItemChanges="false"
+                      databound="true" displayHeight="#{${hints}.displayHeight}"
+                      displayInForm="true" displayInTable="true"
+                      displayInTableOverflow="false" displayType="textInput"
+                      displayWidth="#{${hints}.displayWidth}" javaType="Number"
+                      maximumLength="3" name="DisplaySequence"
+                      promptInForm="Display Sequence"
+                      required="#{${hints}.mandatory}"
+                      showInAdvancedSearch="true" showInQuickSearch="true"
+                      sortable="true" updateAllowed="true">
+                    <Triggers/>
+                </Item>
+                <Item attributeName="Value"
+                      clearValueWhenDependsOnItemChanges="false"
+                      databound="true" displayHeight="#{${hints}.displayHeight}"
+                      displayInForm="true" displayInTable="true"
+                      displayInTableOverflow="false" displayType="textInput"
+                      displayWidth="30" javaType="String" maximumLength="60"
+                      name="Value" promptInForm="Value"
+                      required="#{${hints}.mandatory}"
+                      showInAdvancedSearch="true" showInQuickSearch="true"
+                      sortable="true" updateAllowed="true">
+                    <Templates/>
+                    <Triggers/>
+                </Item>
+                <Item attributeName="LabelTranslationKey"
+                      clearValueWhenDependsOnItemChanges="false"
+                      databound="true" displayHeight="#{${hints}.displayHeight}"
+                      displayInForm="true" displayInTable="true"
+                      displayInTableOverflow="false" displayWidth="30"
+                      javaType="String" maximumLength="240"
+                      name="LabelTranslationKey"
+                      promptInForm="Label Translation Key"
+                      required="#{${hints}.mandatory}"
+                      showInAdvancedSearch="true" showInQuickSearch="true"
+                      sortable="true" updateAllowed="true" displayType="lov">
+                    <Templates/>
+                    <ListOfValues groupName="FlexRegionService.FlexTranslationLov"
+                                  useForValidation="false">
+                        <ReturnValue source="Key1"
+                                     target="LabelTranslationKey"/>
+                    </ListOfValues>
+                    <Triggers/>
+                </Item>
+                <Item attributeName="Label"
+                      clearValueWhenDependsOnItemChanges="false"
+                      databound="true" displayHeight="#{${hints}.displayHeight}"
+                      displayInForm="true" displayInTable="true"
+                      displayInTableOverflow="false" displayType="textInput"
+                      displayWidth="30" javaType="String" maximumLength="60"
+                      name="Label" promptInForm="Label"
+                      required="#{${hints}.mandatory}"
+                      showInAdvancedSearch="true" showInQuickSearch="true"
+                      sortable="true" updateAllowed="true">
+                    <Templates/>
+                    <Triggers/>
+                </Item>
+                <Item alignment="right" attributeName="FidId"
+                      clearValueWhenDependsOnItemChanges="false"
+                      databound="true" displayHeight="#{${hints}.displayHeight}"
+                      displayInForm="false" displayInTable="false"
+                      displayInTableOverflow="false" displayType="textInput"
+                      displayWidth="#{${hints}.displayWidth}" javaType="Number"
+                      maximumLength="38" name="FidId" promptInForm="FidId"
+                      required="#{${hints}.mandatory}"
+                      showInAdvancedSearch="true" showInQuickSearch="true"
+                      sortable="true" updateAllowed="true">
+                    <Triggers/>
+                </Item>
+                <RegionContainer name="Regions"/>
+                <Templates/>
+                <ProgramUnits/>
+                <FormTriggers/>
+                <Triggers/>
+            </Group>
+            <Templates/>
+            <ProgramUnits/>
+            <FormTriggers/>
+            <Triggers/>
+        </Group>
+        <Templates/>
+        <ProgramUnits/>
+        <FormTriggers/>
+        <Triggers/>
+        <Params>
+            <Param name="RegionName"/>
+        </Params>
+    </Group>
+    <Group generatePages="true" generateBindings="true" clearBindings="true"
+           overwriteBindings="true" generateControllerGroup="true"
+           overwriteControllerConfig="true" addMenuEntry="true"
+           addVerbToFormTitle="true" advancedSearch="none"
+           advancedSearchColumns="1" autoQuery="true" columns="1"
+           dataCollection="JhsModelService.CustomizedStandardItemByKey"
+           dataCollectionImpl="CustomizedStandardItemByKey" databound="true"
+           descriptorAttribute="ItemName"
+           displayTitlePlural="Customize Standard Item"
+           displayTitleSingular="Customize Standard Item"
+           formDeleteAllowed="true" formInsertAllowed="false" formLink="button"
+           formUpdateAllowed="true" generateGroupInFragment="false"
+           generateLevel2Tabs="true" generateSearchAreaInFragment="false"
+           layoutStyle="form" multiSelect="false" name="CustomizedStandardItem"
+           passivateStateBeforeCommit="false"
+           queryTypeArguments="CurrentPageName=#{jhsPageCustomization.currentPageName},CurrentItemName=#{jhsPageCustomization.currentItemName}"
+           quickSearch="none" samePage="false" samePagePosition="below"
+           showDuplicateRowButton="false" showTitle="true"
+           showTreeExpanded="false" sortable="false" stackDetailGroups="false"
+           tableDeleteAllowed="true" tableInsertAllowed="true"
+           tableRangeSize="10" tableUpdateAllowed="true" useTableRange="true"
+           wizardStyle="false" groupUsage="region">
+        <Item alignment="right" attributeName="Id"
+              clearValueWhenDependsOnItemChanges="false" databound="true"
+              displayHeight="#{${hints}.displayHeight}" displayInForm="false"
+              displayInTable="false" displayInTableOverflow="false"
+              displayType="textInput" displayWidth="#{${hints}.displayWidth}"
+              javaType="Number" maximumLength="38" name="Id" promptInForm="Id"
+              required="#{${hints}.mandatory}" showInAdvancedSearch="true"
+              showInQuickSearch="true" sortable="true" updateAllowed="true">
+            <Triggers/>
+        </Item>
+        <Item attributeName="PageName"
+              clearValueWhenDependsOnItemChanges="false" databound="true"
+              defaultValue="#{jhsPageCustomization.currentPageName}"
+              displayHeight="#{${hints}.displayHeight}" displayInForm="true"
+              displayInTable="true" displayInTableOverflow="false"
+              displayType="textInput" displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="60" name="PageName"
+              promptInForm="Page Name" required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="false">
+            <Triggers/>
+        </Item>
+        <Item attributeName="ItemName"
+              clearValueWhenDependsOnItemChanges="false" databound="true"
+              defaultValue="#{jhsPageCustomization.currentItemName}"
+              displayHeight="#{${hints}.displayHeight}" displayInForm="true"
+              displayInTable="true" displayInTableOverflow="false"
+              displayType="textInput" displayWidth="#{${hints}.displayWidth}"
+              javaType="String" maximumLength="60" name="ItemName"
+              promptInForm="Item Name" required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="false">
+            <Triggers/>
+        </Item>
+        <Item attributeName="IndHideInCreateMode"
+              clearValueWhenDependsOnItemChanges="false" databound="true"
+              defaultValue="N" displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true"
+              displayInTableOverflow="false" displayType="checkBox"
+              displayWidth="#{${hints}.displayWidth}" domain="YesNo"
+              javaType="String" maximumLength="1" name="IndHideInCreateMode"
+              promptInForm="Hide In Create Mode?"
+              required="#{${hints}.mandatory}" showInAdvancedSearch="true"
+              showInQuickSearch="true" sortable="true" updateAllowed="true">
+            <Triggers/>
+        </Item>
+        <Item attributeName="IndHideInEditMode"
+              clearValueWhenDependsOnItemChanges="false" databound="true"
+              defaultValue="N" displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true"
+              displayInTableOverflow="false" displayType="checkBox"
+              displayWidth="#{${hints}.displayWidth}" domain="YesNo"
+              javaType="String" maximumLength="1" name="IndHideInEditMode"
+              promptInForm="Hide In Edit Mode?" required="#{${hints}.mandatory}"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="false" updateAllowed="true">
+            <Triggers/>
+        </Item>
+        <Item attributeName="IndMandatory"
+              clearValueWhenDependsOnItemChanges="false" databound="true"
+              defaultValue="N" displayHeight="#{${hints}.displayHeight}"
+              displayInForm="true" displayInTable="true"
+              displayInTableOverflow="false" displayType="checkBox"
+              displayWidth="#{${hints}.displayWidth}" domain="YesNo"
+              javaType="String" maximumLength="1" name="IndMandatory"
+              promptInForm="Make Item Mandatory?"
+              required="#{${hints}.mandatory}" showInAdvancedSearch="true"
+              showInQuickSearch="true" sortable="true" updateAllowed="true">
+            <Triggers/>
+        </Item>
+        <Item attributeName="OrgKey" clearValueWhenDependsOnItemChanges="false"
+              databound="true" displayHeight="#{${hints}.displayHeight}"
+              displayInForm="false" displayInTable="false"
+              displayInTableOverflow="false" displayType="textInput"
+              displayWidth="#{${hints}.displayWidth}" javaType="String"
+              maximumLength="30" name="OrgKey" promptInForm="OrgKey"
+              required="#{${hints}.mandatory}" showInAdvancedSearch="true"
+              showInQuickSearch="true" sortable="true" updateAllowed="true">
+            <Triggers/>
+        </Item>
+        <RegionContainer name="Regions"/>
+        <Templates/>
+        <ProgramUnits/>
+        <FormTriggers/>
+        <Triggers/>
+    </Group>
+    <Group layoutStyle="table" dataCollection="JhsModelService.Translations"
+           dataCollectionImpl="Translations"
+           displayTitlePlural="Search, Create and Select Translations"
+           showDuplicateRowButton="true" tableOverflowStyle="inline"
+           descriptorAttribute="Key1" name="FlexTranslationLov"
+           quickSearch="dropDownList" advancedSearch="samePage"
+           singleSearchAttribute="Key1" tableDeleteAllowed="true"
+           groupUsage="lov">
+        <Item alignment="right" attributeName="Id" databound="true"
+              displayType="textInput" javaType="Number" maximumLength="38"
+              name="Id" promptInForm="Id" sortable="true" updateAllowed="true"
+              showInQuickSearch="false" showInAdvancedSearch="false"
+              displayInForm="false" displayInTable="false"
+              required="#{${hints}.mandatory}"
+              displayWidth="#{${hints}.displayWidth}"
+              displayHeight="#{${hints}.displayHeight}">
+            <Templates/>
+        </Item>
+        <Item attributeName="OrgKey" databound="true" displayType="textInput"
+              javaType="String" maximumLength="30" name="OrgKey"
+              promptInForm="OrgKey" sortable="true" updateAllowed="true"
+              showInQuickSearch="false" showInAdvancedSearch="false"
+              displayInForm="false" displayInTable="false"
+              required="#{${hints}.mandatory}"
+              displayWidth="#{${hints}.displayWidth}"
+              displayHeight="#{${hints}.displayHeight}">
+            <Templates/>
+        </Item>
+        <Item attributeName="PageName" databound="true" displayType="textInput"
+              javaType="String" maximumLength="60" name="PageName"
+              promptInForm="PageName" sortable="true" updateAllowed="true"
+              showInQuickSearch="false" showInAdvancedSearch="false"
+              displayInForm="false" displayInTable="false"
+              required="#{${hints}.mandatory}"
+              displayWidth="#{${hints}.displayWidth}"
+              displayHeight="#{${hints}.displayHeight}">
+            <Templates/>
+        </Item>
+        <Item attributeName="TextType" databound="true" displayType="textInput"
+              javaType="String" maximumLength="30" name="TextType"
+              promptInForm="TextType" sortable="true" updateAllowed="true"
+              showInQuickSearch="false" showInAdvancedSearch="false"
+              displayInForm="false" displayInTable="false"
+              required="#{${hints}.mandatory}"
+              displayWidth="#{${hints}.displayWidth}"
+              displayHeight="#{${hints}.displayHeight}">
+            <Templates/>
+        </Item>
+        <Item attributeName="Key1" databound="true" displayInForm="true"
+              displayInTable="true" displayType="textInput" javaType="String"
+              maximumLength="240" name="Key1" showInAdvancedSearch="true"
+              showInQuickSearch="true" sortable="true" promptInForm="Key"
+              updateAllowed="while_new" required="#{${hints}.mandatory}"
+              displayHeight="#{${hints}.displayHeight}" displayWidth="40">
+            <Templates/>
+        </Item>
+        <Item alignment="right" attributeName="LceId" databound="true"
+              displayInForm="true" displayInTable="true" javaType="Number"
+              maximumLength="38" name="LceId" showInAdvancedSearch="true"
+              showInQuickSearch="true" sortable="true"
+              displayType="dropDownList" domain="LocalesLookup"
+              promptInForm="Language" updateAllowed="while_new"
+              required="#{${hints}.mandatory}"
+              displayWidth="#{${hints}.displayWidth}"
+              displayHeight="#{${hints}.displayHeight}">
+            <Templates/>
+        </Item>
+        <Item attributeName="Text" databound="true" displayInForm="true"
+              displayInTable="true" displayType="textInput" javaType="String"
+              maximumLength="4000" name="Text" promptInForm="Text"
+              showInAdvancedSearch="true" showInQuickSearch="true"
+              sortable="true" updateAllowed="true"
+              required="#{${hints}.mandatory}"
+              displayHeight="#{${hints}.displayHeight}" displayWidth="60">
+            <Templates/>
+        </Item>
+        <Item attributeName="Text" databound="true" displayType="textInput"
+              javaType="String" maximumLength="4000" promptInForm="Text"
+              sortable="true" updateAllowed="true" name="TextInOverflow"
+              displayInTableOverflow="true" displayInForm="false"
+              displayInTable="false" showInQuickSearch="false"
+              showInAdvancedSearch="false" required="#{${hints}.mandatory}"
+              displayWidth="100" displayHeight="10">
+            <Templates/>
+        </Item>
+        <RegionContainer name="Regions"/>
+        <Templates/>
+    </Group>
+    <Domains>
+        <Domain dataCollection="JhsModelService.FlexRegionDefinitionsLookup"
+                dataCollectionImpl="FlexRegionDefinitions"
+                meaningAttribute="Name" name="FlexRegionDefinitionsLookup"
+                rowSpecific="false" type="dynamic" valueAttribute="Id"/>
+        <Domain dataCollection="JhsModelService.FlexItemDefinitionsLookup"
+                dataCollectionImpl="FlexItemDefinitions" meaningAttribute="Name"
+                name="FlexItemDefinitionsLookup" rowSpecific="false"
+                type="dynamic" valueAttribute="Id"/>
+        <Domain name="FlexItemDisplayType" rowSpecific="false" type="static">
+            <AllowableValue meaning="Text Input" value="textInput"/>
+            <AllowableValue meaning="Read-Only Text" value="readOnlyText"/>
+            <AllowableValue meaning="Number Input" value="numberInput"/>
+            <AllowableValue meaning="Email Address" value="emailAddress"/>
+            <AllowableValue meaning="Date" value="date"/>
+            <AllowableValue meaning="DateTime" value="dateTime"/>
+            <AllowableValue meaning="Dropdown List" value="dropDownList"/>
+            <AllowableValue meaning="Radio Group Horizontal"
+                            value="radioGroupHorizontal"/>
+            <AllowableValue meaning="Radio Group Vertical"
+                            value="radioGroupVertical"/>
+            <AllowableValue meaning="Checkbox" value="checkBox"/>
+            <AllowableValue meaning="Listbox" value="listBox"/>
+            <AllowableValue meaning="Multi-Select Listbox"
+                            value="multiSelectListBox"/>
+            <AllowableValue meaning="Multi-Select Checkbox Group"
+                            value="multiSelectCheckBox"/>
+            <AllowableValue meaning="File Upload/Download" value="file"/>
+        </Domain>
+        <Domain name="YesNo" rowSpecific="false" type="static">
+            <AllowableValue meaning="Yes" value="Y"/>
+            <AllowableValue meaning="No" value="N"/>
+        </Domain>
+        <Domain dataCollection="JhsModelService.LocalesLookup"
+                dataCollectionImpl="Locales" meaningAttribute="Description"
+                name="LocalesLookup" rowSpecific="false" type="dynamic"
+                valueAttribute="Id"/>
+    </Domains>
+    <Templates/>
+</Service>

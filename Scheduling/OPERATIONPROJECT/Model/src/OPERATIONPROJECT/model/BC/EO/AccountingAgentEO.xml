@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AccountingAgentEO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="ACCOUNTING_AGENTS"
+  AliasName="AccountingAgentEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="AgentName"
+    Precision="851"
+    ColumnName="AGENT_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="ACCOUNTING_AGENTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="851"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Username"
+    IsNotNull="true"
+    Precision="50"
+    ColumnName="USERNAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="ACCOUNTING_AGENTS"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="AccountingagenteoPrimaryKey"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="ACCOUNTINGAGENTEO_PRIMARY_KEY"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.AccountingAgentEO.Username"/>
+    </AttrArray>
+  </Key>
+</Entity>

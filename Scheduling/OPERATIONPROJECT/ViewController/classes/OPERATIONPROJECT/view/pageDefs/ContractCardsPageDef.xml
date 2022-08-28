@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="ContractCardsPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle" SkipValidation="true">
+  <parameters>
+    <parameter id="bindingContainersToPrepare" value="#{'AccountingAgentPageDef'}"/>
+  </parameters>
+  <executables>
+    <iterator id="ContractCardsIterator" Binds="ContractInvoiceSummaryVO2" DataControl="AppModuleAMDataControl"
+              RangeSize="10"/>
+    <searchRegion id="ContractCardsIteratorQuery" Binds="ContractCardsIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="ContractCardsIterator" id="ContractCardsCardNo">
+      <AttrNames>
+        <Item Value="CardNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractCardsIterator" id="ContractCardsInvoiceCount">
+      <AttrNames>
+        <Item Value="ContractNum"/>
+      </AttrNames>
+    </attributeValues>
+    <tree id="ContractCardsTable" IterBinding="ContractCardsIterator">
+      <nodeDefinition Name="ContractCards" DefName="OPERATIONPROJECT.model.BC.VO.ContractInvoiceSummaryVO">
+        <AttrNames>
+          <Item Value="CardNo"/>
+          <Item Value="ContractNum"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ContractCardsIterator" id="FirstContractCards" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="ContractCardsIterator" id="PreviousContractCards" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="ContractCardsIterator" id="NextContractCards" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="ContractCardsIterator" id="LastContractCards" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="ContractCardsIterator" id="SetCurrentRowWithKeyContractCards" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrContractCards}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="ContractCardsIterator" id="CreateContractCards" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="ContractCardsIterator" id="DeleteContractCards" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

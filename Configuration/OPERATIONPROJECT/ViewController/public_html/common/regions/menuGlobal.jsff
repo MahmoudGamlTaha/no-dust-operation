@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:panelGroupLayout id="menuGlobalToolbar" layout="horizontal" theme="dark">
+        <af:selectOneChoice id="skinSwitcher" immediate="true" autoSubmit="true"
+                            labelAndAccessKey="#{nls['SKIN_LABEL']}"
+                            valueChangeListener="#{jhsLookAndFeelBean.changeSkin}" required="true" showRequired="false"
+                            labelStyle="color:#424242;" value="#{jhsLookAndFeelBean.currentSkin}">
+            <af:selectItem label="#{nls['SMALL_FONT']}" id="si0" value="smallFont.desktop"/>
+            <af:selectItem label="#{nls['MEDIUM_FONT']}" id="si1" value="mediumFont.desktop"/>
+            <af:selectItem label="#{nls['LARGE_FONT']}" id="si2" value="largeFont.desktop"/>
+        </af:selectOneChoice>
+        <af:spacer width="8" id="mgsp0"/>
+        <af:spacer width="8" id="mgsp1"/>
+        <af:selectOneChoice id="localeSwitcher" immediate="true" autoSubmit="true" labelStyle="color:#424242;"
+                            labelAndAccessKey="#{nls['LANGUAGE_SELECTOR_LABEL']}"
+                            valueChangeListener="#{jhsLocaleManager.changeLocale}"
+                            value="#{jhsLocaleManager.currentLocale}">
+            <af:forEach items="#{jhsLocaleManager.supportedLocales}" var="row">
+                <af:selectItem value="#{row.locale}" label="#{row.description}"/>
+            </af:forEach>
+        </af:selectOneChoice>
+        <af:spacer width="8" id="mgsp2"/>
+        <af:menuBar id="mb0" visible="#{jhsUser!=null or securityContext.authenticated}" inlineStyle="height: 30px; ">
+            <af:menu text="#{AdministrationBean.userDisplayName}" id="m0" icon="/jheadstart/images/profile-icon.png"
+                     detachable="true" inlineStyle="height: 25px; "
+                     shortDesc="#{nls['WELCOME_LABEL']} #{AdministrationBean.userDisplayName}">
+                <af:commandMenuItem text="#{nls['CHANGE_PASSWORD']}" id="cmi3"
+                                    icon="/jheadstart/images/change_pass.png">
+                    <af:showPopupBehavior popupId="p1"/>
+                </af:commandMenuItem>
+                <af:goMenuItem text="#{nls['LOG_OFF_BUTTON_LABEL']}" id="gmi0"
+                               destination="/adfAuthentication?logout=true&amp;end_url=/faces/Home"
+                               icon="/jheadstart/images/logoff.png"/>
+            </af:menu>
+        </af:menuBar>
+        <af:popup id="p1" contentDelivery="lazyUncached" popupFetchListener="#{UserProfile.onPopupFetch}"
+                  autoCancel="disabled">
+            <af:dialog id="d0" type="cancel" title="#{nls['CHANGE_PASSWORD_TITLE']}">
+                <af:panelFormLayout id="pfl0">
+                    <af:inputText label="#{nls['OLD_PASSWORD']}" id="it0" required="true"
+                                  binding="#{UserProfile.changePasswordOldpassword}" secret="true"></af:inputText>
+                    <af:inputText label="#{nls['NEW_PASSWORD']}" id="it1" required="true"
+                                  binding="#{UserProfile.changePasswordNewPassword1}" secret="true">
+                        <af:validateLength minimum="8"/>
+                        <af:validateRegExp pattern=".*[0-9].*" messageDetailNoMatch="#{nls['PASSWORD_NOT_MATCH_MSG']}"
+                                           hint="#{nls['PASSWORD_NOT_MATCH_HINT']}"/>
+                    </af:inputText>
+                    <af:inputText label="#{nls['CONFIRM_NEW_PASSWORD']}" id="it2" required="true"
+                                  binding="#{UserProfile.changePasswordNewPassword2}" secret="true"></af:inputText>
+                </af:panelFormLayout>
+                <f:facet name="buttonBar">
+                    <af:commandButton text="#{nls['SAVE']}" id="cb0" action="#{UserProfile.ChangePasswordCommit}"
+                                      partialSubmit="true"/>
+                </f:facet>
+            </af:dialog>
+        </af:popup>
+    </af:panelGroupLayout>
+</ui:composition>
+  

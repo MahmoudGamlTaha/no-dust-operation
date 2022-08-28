@@ -1,0 +1,347 @@
+# --------------
+# PAGE TEMPLATES
+# --------------
+DATA_PAGE=default/page/dataPage.vm
+#DIALOG_PAGE=default/page/dialogPage.vm
+FRAGMENT_PAGE=default/page/fragmentPage.vm
+SKELETON_PAGE=default/page/dataPage.vm
+
+# ----------------------
+# PAGE CONTENT TEMPLATES
+# ----------------------
+PAGE_CONTENT=default/page/pageContent.vm
+WIZARD_PAGE_CONTENT=default/page/wizardPageContent.vm
+FIND_PAGE_CONTENT=default/page/findPageContent.vm
+FORM_PAGE_CONTENT=default/page/formPageContent.vm
+SELECT_PAGE_CONTENT=default/page/selectPageContent.vm
+TABLE_PAGE_CONTENT=default/page/tablePageContent.vm
+TREE_FORM_PAGE_CONTENT=default/page/treeFormPageContent.vm
+TREE_PAGE_CONTENT=default/page/treePageContent.vm
+SHUTTLE_PAGE_CONTENT=default/page/shuttlePageContent.vm
+
+# ----------------------
+# PAGE COMPONENT TEMPLATES
+# ----------------------
+GROUP_ACTION_ATTRIBUTES=default/pageComponent/groupActionAttributes.vm
+GROUP_CONTENT=default/pageComponent/groupContent.vm
+GROUP_TOOLBAR=default/pageComponent/groupToolbar.vm
+BREADCRUMB_AREA=default/pageComponent/breadcrumbArea.vm
+FORM_GROUP=default/pageComponent/formGroup.vm
+FORM_REGION_GROUP=default/pageComponent/formRegionGroup.vm
+REUSABLE_TREE_GROUP=default/pageComponent/reusableTreeGroup.vm
+SELECT_GROUP=default/pageComponent/selectGroup.vm
+TABLE_ACTION_COLUMN=default/pageComponent/tableActionColumn.vm
+TABLE_FOOTER=default/pageComponent/tableFooter.vm
+TABLE_GROUP=default/pageComponent/tableGroup.vm
+TABLE_MENU=default/pageComponent/tableMenu.vm
+TABLE_BROWSE_MENU=default/pageComponent/tableBrowseMenu.vm
+TABLE_OVERFLOW_AREA=default/pageComponent/tableOverflowArea.vm
+TABLE_ROW_POPUP_MENU=default/pageComponent/tableRowPopupMenu.vm
+TABLE_TOOLBAR=default/pageComponent/tableToolbar.vm
+PARENT_SHUTTLE_GROUP=default/pageComponent/parentShuttleGroup.vm
+INTERSECTION_SHUTTLE_GROUP=default/pageComponent/intersectionShuttleGroup.vm
+DETAIL_GROUPS=default/pageComponent/detailGroups.vm
+STACKED_REGION_CONTAINER=default/pageComponent/stackedRegionContainer.vm
+VERTICAL_REGION_CONTAINER=default/pageComponent/verticalRegionContainer.vm
+VERTICAL_SPLITTER_REGION_CONTAINER=default/pageComponent/splitterRegionContainer.vm
+HORIZONTAL_REGION_CONTAINER=default/pageComponent/horizontalRegionContainer.vm
+HORIZONTAL_SPLITTER_REGION_CONTAINER=default/pageComponent/splitterRegionContainer.vm
+GROUPED_ITEM_REGIONS_CONTAINER=default/pageComponent/groupedItemRegionsContainer.vm
+POPUP_REGION_CONTAINER=default/pageComponent/popupRegionContainer.vm
+ITEM_REGION=default/pageComponent/itemRegion.vm
+GROUP_REGION=default/pageComponent/groupRegion.vm
+FLEX_REGION=default/pageComponent/flexRegion.vm
+DEFINE_FLEX_REGION_LINK=default/pageComponent/defineFlexRegionLink.vm
+PARENT_CONTEXT=default/pageComponent/parentContext.vm
+LOV_POPUP=default/pageComponent/lovPopup.vm
+
+# ----------------------
+# NLS TEMPLATES
+# ----------------------
+NLS_PROPERTY_RESOURCEBUNDLE=default/nls/nlsPropertyResourceBundle.vm
+NLS_DATABASE_RESOURCEBUNDLE=default/nls/nlsDatabaseResourceBundle.vm
+NLS_DATABASE_RESOURCEBUNDLE_SQL=default/nls/nlsDatabaseResourceBundleSql.vm
+NLS_JAVA_RESOURCEBUNDLE=default/nls/nlsJavaResourceBundle.vm
+
+# Group level buttons template used when page group has table layout
+# and multiple groups are displayed on the same page
+# Group level buttons template used when page group has select-form layout
+# and group is displayed on the same page as parent group
+SELECT_GROUP_BUTTONS=default/pageComponent/selectGroupButtons.vm
+
+FORM_BROWSE_BUTTONS=default/pageComponent/formBrowseButtons.vm
+
+# ----------------
+# SEARCH TEMPLATES
+# ----------------
+ADVANCED_SEARCH_BUTTONS=default/search/advancedSearchButtons.vm
+ADVANCED_SEARCH_REGION=default/search/advancedSearchRegion.vm
+MODEL_ADVANCED_SEARCH_REGION=default/search/modelAdvancedSearchRegion.vm
+MODEL_QUICK_SEARCH_REGION=default/search/modelQuickSearchRegion.vm
+QUICK_SEARCH_BUTTONS=default/search/quickSearchButtons.vm
+QUICK_SEARCH_DROP_DOWN_REGION=default/search/quickSearchDropDownRegion.vm
+QUICK_SEARCH_SINGLE_FIELD_REGION=default/search/quickSearchSingleFieldRegion.vm
+SEARCH_AREA=default/search/searchArea.vm
+GROUP_SEARCH_AREA=default/search/groupSearchArea.vm
+
+# --------------
+# ITEM TEMPLATES
+# --------------
+DYNAMIC_DOMAIN_OPTIONS=default/item/dynamicDomainOptions.vm
+STATIC_DOMAIN_OPTIONS=default/item/staticDomainOptions.vm
+DUMMY_ITEM_FOR_INITIAL_FOCUS=default/item/dummyItemForInitialFocus.vm
+
+# -------------------
+# FORM ITEM TEMPLATES
+# -------------------
+FORM_TEXT_INPUT=default/item/form/formTextInput.vm
+FORM_CHECK_BOX=default/item/form/formCheckbox.vm
+FORM_DROP_DOWN_LIST=default/item/form/formDropDownList.vm
+FORM_RADIO_VERTICAL=default/item/form/formRadioVertical.vm
+FORM_RADIO_HORIZONTAL=default/item/form/formRadioHorizontal.vm
+FORM_LIST=default/item/form/formList.vm
+FORM_EDITOR=default/item/form/formEditor.vm
+FORM_DATE_FIELD=default/item/form/formDateField.vm
+FORM_DATE_TIME_FIELD=default/item/form/formDateTimeField.vm
+FORM_DISPLAY_FIELD=default/item/form/formDisplayField.vm
+FORM_HIDDEN_FIELD=default/item/form/formHiddenField.vm
+FORM_SECRET=default/item/form/formSecret.vm
+FORM_FILE_UPLOAD=default/item/form/formFileUpload.vm
+FORM_FILE_DOWNLOAD=default/item/form/formFileDownload.vm
+FORM_IMAGE=default/item/form/formImage.vm
+FORM_GRAPH=default/item/form/formGraph.vm
+FORM_GROUP_LINK=default/item/form/formGroupLink.vm
+FORM_HIDDEN_FIELD=default/item/form/formHiddenField.vm
+FORM_LOV_ITEM=default/item/form/formLovItem.vm
+FORM_MODEL_CHOICELIST=default/item/form/formModelChoiceList.vm
+FORM_MODEL_COMBOBOX=default/item/form/formModelComboBox.vm
+FORM_MODEL_COMBOBOX_LOV=default/item/form/formModelComboBoxLov.vm
+FORM_MODEL_INPUTTEXT_LOV=default/item/form/formModelInputTextLov.vm
+FORM_MODEL_LISTBOX=default/item/form/formModelListbox.vm
+FORM_MODEL_RADIO_HORIZONTAL=default/item/form/formModelRadioHorizontal.vm
+FORM_MODEL_RADIO_VERTICAL=default/item/form/formModelRadioVertical.vm
+
+FLEX_REGION_ITEM=default/item/form/flexRegionItem.vm
+ORA_FORMS_FACES=default/item/form/oraFormsFaces.vm
+FORM_COMMAND_BUTTON=default/item/form/formCommandButton.vm
+
+# --------------------
+# TABLE ITEM TEMPLATES
+# --------------------
+TABLE_TEXT_INPUT=default/item/table/tableTextInput.vm
+TABLE_COLUMN=default/item/table/tableColumn.vm
+TABLE_CHECK_BOX=default/item/table/tableCheckbox.vm
+TABLE_DROP_DOWN_LIST=default/item/table/tableDropDownList.vm
+TABLE_RADIO_VERTICAL=default/item/table/tableRadioVertical.vm
+TABLE_RADIO_HORIZONTAL=default/item/table/tableRadioHorizontal.vm
+TABLE_LIST=default/item/table/tableList.vm
+TABLE_EDITOR=default/item/table/tableEditor.vm
+TABLE_DATE_FIELD=default/item/table/tableDateField.vm
+TABLE_DATE_TIME_FIELD=default/item/table/tableDateTimeField.vm
+TABLE_DISPLAY_FIELD=default/item/table/tableDisplayField.vm
+TABLE_HIDDEN_FIELD=default/item/table/tableHiddenField.vm
+TABLE_SECRET=default/item/table/tableSecret.vm
+TABLE_FILE_UPLOAD=default/item/table/tableFileUpload.vm
+TABLE_FILE_DOWNLOAD=default/item/table/tableFileDownload.vm
+TABLE_IMAGE=default/item/table/tableImage.vm
+TABLE_GRAPH=default/item/table/tableGraph.vm
+TABLE_GROUP_LINK=default/item/table/tableGroupLink.vm
+TABLE_LOV_ITEM=default/item/table/tableLovItem.vm
+TABLE_MODEL_CHOICELIST=default/item/table/tableModelChoiceList.vm
+TABLE_MODEL_COMBOBOX=default/item/table/tableModelComboBox.vm
+TABLE_MODEL_COMBOBOX_LOV=default/item/table/tableModelComboBoxLov.vm
+TABLE_MODEL_INPUTTEXT_LOV=default/item/table/tableModelInputTextLov.vm
+TABLE_MODEL_LISTBOX=default/item/table/tableModelListbox.vm
+TABLE_MODEL_RADIO_HORIZONTAL=default/item/table/tableModelRadioHorizontal.vm
+TABLE_MODEL_RADIO_VERTICAL=default/item/table/tableModelRadioVertical.vm
+
+
+TABLE_FORM_HYPERLINK=default/item/table/tableFormHyperlink.vm
+TABLE_ITEM_FOOTER=default/item/table/tableItemFooter.vm
+TABLE_COMMAND_BUTTON=default/item/table/tableCommandButton.vm
+
+# -------------------
+# FIND ITEM TEMPLATES
+# -------------------
+ADVANCED_SEARCH_TEXT_INPUT=default/item/find/findTextInput.vm
+ADVANCED_SEARCH_EDITOR=default/item/find/findEditor.vm
+ADVANCED_SEARCH_SET_BY_USER_TEXT_INPUT=default/item/find/findTextInputSetByUser.vm
+ADVANCED_SEARCH_BETWEEN_TEXT_INPUT=default/item/find/findTextInputBetween.vm
+ADVANCED_SEARCH_CHECK_BOX=default/item/find/findCheckbox.vm
+ADVANCED_SEARCH_DROP_DOWN_LIST=default/item/find/findDropDownList.vm
+ADVANCED_SEARCH_RADIO_VERTICAL=default/item/find/findRadioVertical.vm
+ADVANCED_SEARCH_RADIO_HORIZONTAL=default/item/find/findRadioHorizontal.vm
+ADVANCED_SEARCH_LIST=default/item/find/findList.vm
+ADVANCED_SEARCH_EDITOR=default/item/find/findEditor.vm
+ADVANCED_SEARCH_DATE_FIELD=default/item/find/findDateField.vm
+ADVANCED_SEARCH_SET_BY_USER_DATE_FIELD=default/item/find/findDateFieldSetByUser.vm
+ADVANCED_SEARCH_BETWEEN_DATE_FIELD=default/item/find/findDateFieldBetween.vm
+ADVANCED_SEARCH_DATE_TIME_FIELD=default/item/find/findDateTimeField.vm
+ADVANCED_SEARCH_SET_BY_USER_DATE_TIME_FIELD=default/item/find/findDateTimeFieldSetByUser.vm
+ADVANCED_SEARCH_BETWEEN_DATE_TIME_FIELD=default/item/find/findDateTimeFieldBetween.vm
+ADVANCED_SEARCH_LOV_ITEM=default/item/find/findLovItem.vm
+ADVANCED_SEARCH_MODEL_LOV=default/item/find/findModelLov.vm
+
+QUICK_SEARCH_TEXT_INPUT=default/item/find/quickSearchTextInput.vm
+QUICK_SEARCH_EDITOR=default/item/find/quickSearchEditor.vm
+QUICK_SEARCH_CHECK_BOX=default/item/find/quickSearchCheckbox.vm
+QUICK_SEARCH_DROP_DOWN_LIST=default/item/find/quickSearchDropDownList.vm
+QUICK_SEARCH_RADIO_VERTICAL=default/item/find/quickSearchRadioVertical.vm
+QUICK_SEARCH_RADIO_HORIZONTAL=default/item/find/quickSearchRadioHorizontal.vm
+QUICK_SEARCH_LIST=default/item/find/quickSearchList.vm
+QUICK_SEARCH_EDITOR=default/item/find/quickSearchEditor.vm
+QUICK_SEARCH_DATE_FIELD=default/item/find/quickSearchDateField.vm
+QUICK_SEARCH_DATE_TIME_FIELD=default/item/find/quickSearchDateTimeField.vm
+QUICK_SEARCH_LOV_ITEM=default/item/find/quickSearchLovItem.vm
+QUICK_SEARCH_MODEL_LOV=default/item/find/quickSearchModelLov.vm
+
+
+# ----------------
+# BUTTON TEMPLATES
+# ----------------
+ADD_ROW_LINK=default/button/addRowLink.vm
+ADD_ROW_MENU_ITEM=default/button/addRowMenuItem.vm
+CLEAR_SEARCH_CRITERIA_BUTTON=default/button/clearSearchCriteriaButton.vm
+DELETE_BUTTON=default/button/deleteButton.vm
+DELETE_ROW_LINK=default/button/deleteRowLink.vm
+DELETE_ROW_MENU_ITEM=default/button/deleteRowMenuItem.vm
+DELETE_WARNING_DIALOG=default/button/deleteWarningDialog.vm
+DETAILS_LINK=default/button/detailsLink.vm
+DETAILS_MENU_ITEM=default/button/detailsMenuItem.vm
+DIALOG_CANCEL_BUTTON=default/button/dialogCancelButton.vm
+DIALOG_OK_BUTTON=default/button/dialogOKButton.vm
+DO_ADVANCED_SEARCH_BUTTON=default/button/doAdvancedSearchButton.vm
+DO_QUICK_SEARCH_BUTTON=default/button/doQuickSearchButton.vm
+DUPLICATE_ROW_LINK=default/button/duplicateRowLink.vm
+DUPLICATE_ROW_MENU_ITEM=default/button/duplicateRowMenuItem.vm
+EDIT_OR_VIEW_BUTTON=default/button/editOrViewButton.vm
+LOV_CANCEL_BUTTON=default/button/lovCancelButton.vm
+LOV_SELECT_BUTTON=default/button/lovSelectButton.vm
+NEW_BUTTON=default/button/newButton.vm
+NEW_BUTTON_NOT_IN_FORM_LAYOUT=default/button/newButtonNotInFormLayout.vm
+NEW_CHILD_BUTTON=default/button/newChildButton.vm
+PARENT_TO_CHILD_BUTTON=default/button/parentToChildButton.vm
+PARENT_TO_CHILD_MENU_ITEM=default/button/parentToChildMenuItem.vm
+SAVE_BUTTON=default/button/saveButton.vm
+SWITCH_TO_ADVANCED_SEARCH_BUTTON=default/button/switchToAdvancedSearchButton.vm
+SWITCH_TO_QUICK_SEARCH_BUTTON=default/button/switchToQuickSearchButton.vm
+TABLE_EXPORT_LINK=default/button/tableExportLink.vm
+TABLE_EXPORT_MENU_ITEM=default/button/tableExportMenuItem.vm
+WIZARD_CANCEL_BUTTON=default/button/wizardCancelButton.vm
+WIZARD_FINISH_BUTTON=default/button/wizardFinishButton.vm
+FORM_REGION_PAGE_BUTTON=default/button/formRegionPageButton.vm
+TOOLBAR_BUTTON=default/button/toolbarButton.vm
+GROUP_LINK_TOOLBAR_BUTTON=default/button/groupLinkToolbarButton.vm
+
+# --------------
+# MENU TEMPLATES
+# --------------
+XML_ROOT_MENU_MODEL=default/misc/menu/xmlRootMenuModel.vm
+XML_MENU_MODEL=default/misc/menu/xmlMenuModel.vm
+XML_MENU_MODEL_ITEM=default/misc/menu/xmlMenuModelItem.vm
+
+# --------------
+# TREE TEMPLATES
+# --------------
+TREE=default/misc/tree/tree.vm
+TREE_NODE=default/misc/tree/treeNode.vm
+
+# -----------------
+# INCLUDE TEMPLATES
+# -----------------
+INCLUDE=default/misc/include/include.vm
+INCLUDE_DEF=default/misc/include/includeDef.vm
+
+# -----------------------------------
+# FACES-CONFIG/ADFC-CONFIG  TEMPLATES
+# ------------------------------------
+BOUNDED_TASKFLOW_TEMPLATE=default/misc/facesConfig/boundedTaskflowTemplate.vm
+FRAGMENT_TASKFLOW_TEMPLATE=default/misc/facesConfig/fragmentTaskflowTemplate.vm
+LOV_TASKFLOW_TEMPLATE=default/misc/facesConfig/lovTaskflowTemplate.vm
+POPUP_SHELL_TASKFLOW=default/misc/facesConfig/popupShellTaskflow.vm
+SERVICE_ADFC_CONFIG=default/misc/facesConfig/serviceAdfcConfig.vm
+FACES_CONFIG=default/misc/facesConfig/facesConfig.vm
+GROUP_ADFC_CONFIG=default/misc/facesConfig/groupAdfcConfig.vm
+DOMAIN_ADFC_CONFIG=default/misc/facesConfig/domainAdfcConfig.vm
+BREADCRUMB_ADFC_CONFIG=default/misc/facesConfig/breadcrumbAdfcConfig.vm
+JHS_COMMON_BEANS=default/misc/facesConfig/jhsCommonBeans.vm
+TASK_FLOW_CALL_ACTIVITIES=default/misc/facesConfig/taskFlowCallActivities.vm
+TASK_FLOW_CONTROL_FLOW_RULES=default/misc/facesConfig/taskFlowControlFlowRules.vm
+TASK_FLOW_CUSTOM_ACTIVITIES=default/common/empty.vm
+TASK_FLOW_CUSTOM_BEANS=default/common/empty.vm
+TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES=default/common/empty.vm
+TASK_FLOW_MAIN_ROUTER=default/misc/facesConfig/taskFlowMainRouter.vm
+TASK_FLOW_MANAGER_BEAN=default/misc/facesConfig/taskFlowManagerBean.vm
+TASK_FLOW_INPUT_PARAMETERS=default/misc/facesConfig/taskFlowInputParameters.vm
+TASK_FLOW_METHOD_CALL_ACTIVITIES=default/misc/facesConfig/taskFlowMethodCallActivities.vm
+TASK_FLOW_TEMPLATE_REFERENCE=default/misc/facesConfig/taskFlowTemplateReference.vm
+TASK_FLOW_VIEW_ACTIVITIES=default/misc/facesConfig/taskFlowViewActivities.vm
+REGION_META_DATA=default/misc/facesConfig/regionMetaData.vm
+SEARCH_BEAN=default/misc/facesConfig/searchBean.vm
+TREE_BEAN=default/misc/facesConfig/treeBean.vm
+DEPENDS_ON_ITEM_BEAN=default/misc/facesConfig/dependsOnItemBean.vm
+DEPENDS_ON_SEARCH_ITEM_BEAN=default/misc/facesConfig/dependsOnSearchItemBean.vm
+LOV_ITEM_BEAN=default/misc/facesConfig/lovItemBean.vm
+LOV_ITEM_IN_TABLE_BEAN=default/misc/facesConfig/lovItemInTableBean.vm
+LOV_ITEM_IN_ADVANCED_SEARCH_BEAN=default/misc/facesConfig/lovItemInAdvancedSearchBean.vm
+LOV_ITEM_IN_QUICK_SEARCH_BEAN=default/misc/facesConfig/lovItemInQuickSearchBean.vm
+LOV_PAGE_BEAN=default/misc/facesConfig/lovPageBean.vm
+CHECKBOX_IN_TABLE_BEAN=default/misc/facesConfig/checkboxInTableBean.vm
+PARENT_SHUTTLE_BEAN=default/misc/facesConfig/parentShuttleBean.vm
+INTERSECTION_SHUTTLE_BEAN=default/misc/facesConfig/intersectionShuttleBean.vm
+TABLE_BEAN=default/misc/facesConfig/tableBean.vm
+QUERY_BIND_PARAMS_BEAN=default/misc/facesConfig/queryBindParamsBean.vm
+QUERY_BIND_PARAMS_DOMAIN_BEAN=default/misc/facesConfig/queryBindParamsDomainBean.vm
+QUERY_BIND_PARAMS_ROW_SPECIFIC_DOMAIN_BEAN=default/misc/facesConfig/queryBindParamsRowSpecificDomainBean.vm
+DEFAULT_VALUES_BEAN=default/misc/facesConfig/defaultValuesBean.vm
+CREATE_ROW_BEAN=default/misc/facesConfig/createRowBean.vm
+CANCEL_BEAN=default/misc/facesConfig/cancelBean.vm
+SAVE_BEAN=default/misc/facesConfig/saveBean.vm
+DELETE_ROW_BEAN=default/misc/facesConfig/deleteRowBean.vm
+WIZARD_PAGE_BEAN=default/misc/facesConfig/wizardPageBean.vm
+WIZARD_PAGE_LIST_BEAN=default/misc/facesConfig/wizardPageListBean.vm
+MENU_BEAN=default/misc/facesConfig/menuBean.vm
+TASK_FLOW_CONFIG_BEAN=default/misc/facesConfig/taskFlowConfigBean.vm
+LINK_GROUP_TASK_FLOW_CONFIG_BEAN=default/misc/facesConfig/linkgroupTaskFlowConfigBean.vm
+DYNAMIC_REGION_MANAGER_BEAN=default/misc/facesConfig/dynamicRegionManagerBean.vm
+FILE_HANDLER_BEAN=default/misc/facesConfig/fileHandlerBean.vm
+FILE_HANDLER_IN_TABLE_BEAN=default/misc/facesConfig/fileHandlerInTableBean.vm
+FUNCTION_KEY_HANDLER_BEAN=default/misc/facesConfig/functionKeyHandlerBean.vm
+DYNAMIC_TABS_BEANS=default/misc/facesConfig/dynamicTabsBeans.vm
+
+#-------
+# FILES 
+#-------
+FILE_GENERATOR=default/misc/file/fileGenerator.vm
+HOME_PAGE=default/misc/file/homePage.vm
+UISHELL_PAGE=default/misc/file/uiShellPage.vm
+UNEXPECTED_ERROR_PAGE=default/misc/file/unexpectedErrorPage.vm
+POPUP_SHELL_PAGE=default/misc/file/popupShellPage.vm
+# Now using Skyros template as default in 12c
+JHS_PAGE_TEMPLATE=default/misc/file/jhsPageTemplateSkyros.vm
+JHS_REGION_TEMPLATE=default/misc/file/jhsRegionTemplate.vm
+DYNAMIC_TABS=default/misc/file/dynamicTabs.vm
+BLANK_TASK_FLOW=default/misc/facesConfig/blankTaskflow.vm
+BLANK_PAGE=default/misc/file/blankPage.vm
+MENU_GLOBAL=default/misc/file/menuGlobal.vm
+PAGE_TEMPLATE_CONTENT=default/misc/file/pageTemplateContent.vm
+PAGE_TEMPLATE_TREE_MENU_CONTENT=default/misc/file/pageTemplateTreeMenuContent.vm
+PAGE_TEMPLATE_DYNAMIC_TABS_CONTENT=default/misc/file/pageTemplateDynamicTabsContent.vm
+PAGE_TEMPLATE_FOOTER=default/misc/file/pageTemplateFooter.vm
+LOGIN_PAGE=default/misc/file/loginPage.vm
+CREATE_SAMPLE_ROLES_AND_USERS=default/misc/file/createSampleRolesAndUsers.vm
+SECURITY_ADMIN_APP_DEF=default/misc/file/securityAdminAppDef.vm
+JHS_PERMISSIONS_DATA=default/misc/file/jhsPermissionsData.vm
+JHS_FLEX_REGION_DEFS_DATA=default/misc/file/jhsFlexRegionDefsData.vm
+FLEX_REGION_APP_DEF=default/misc/file/flexRegionAppDef.vm
+JHS_DYNAMIC_MENU=default/misc/file/jhsDynamicMenu.vm
+IFRAME_MENU_ITEM=default/misc/file/iFrameMenuItem.vm
+MENU_ADMIN_APP_DEF=default/misc/file/menuAdminAppDef.vm
+JHS_JAVA_SCRIPT_LIB=default/misc/file/jhsJavaScriptLib.vm
+REGISTER_FUNCTION_KEYS=default/misc/file/registerFunctionKeys.vm
+CUSTOM_FILES=default/common/empty.vm
+
+#-------
+# COMMON 
+#-------
+EMPTY=default/common/empty.vm

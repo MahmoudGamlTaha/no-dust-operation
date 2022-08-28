@@ -1,0 +1,62 @@
+## revision_history
+## 06-dec-2010   Steven Davelaar
+## 2.4           Shortened id's
+## 01-nov-2010   Steven Davelaar
+## 2.3           Aded labelAlignment property
+## 08-oct-2010   Steven Davelaar
+## 2.2           Added calls to REGION_CONTAINER_HELP macro
+## 27-may-2010   Steven Davelaar
+## 2.1           Added calls to ADD_PARTIAL_TARGET
+## 23-jun-2009   Paco van der Linden
+## 2.0           Restructured layout according to (stretching) best-practices.
+## 14-apr-2009   Steven Davelaar
+## 1.0           Initial creation
+## Only generate title if this is top-level container, otherwise title is generated in subregions loop
+#if (!${JHS.current.regionContainer.parentRegionContainer} && !($JHS.current.regionContainer.title == ""))
+  #if ($JHS.engine.stretchEnabled)
+  <af:panelStretchLayout #PANEL_HEADER_TOP_HEIGHT() id="#REGION_ID()Psl"
+                         #JHS_PROP("rendered" $JHS.current.regionContainer.rendered)
+                         #REGION_PARTIAL_TRIGGERS($JHS.current.regionContainer)>
+    <f:facet name="top">
+      <af:panelHeader text="#REGION_CONTAINER_TITLE()" id="#REGION_ID()Ph" #REGION_CONTAINER_HELP() />
+    </f:facet>
+    <f:facet name="center">
+  #else
+  <af:panelHeader text="#REGION_CONTAINER_TITLE()" id="#REGION_ID()Ph" #REGION_CONTAINER_HELP()
+                         #JHS_PROP("rendered" $JHS.current.regionContainer.rendered)
+                         #REGION_PARTIAL_TRIGGERS($JHS.current.regionContainer)>
+  #end
+  #REGION_PARTIAL_TARGET($JHS.current.regionContainer "#REGION_ID()Ph")
+#end 
+
+  $JHS.engine.pushStretchEnabled(false)
+
+  #set ($firstItemRegion = ${JHS.current.regionContainer.firstElement})
+  <af:panelFormLayout #JHS_PROP("rendered" $JHS.current.regionContainer.rendered) 
+    rows="${firstItemRegion.rows}" maxColumns="${firstItemRegion.columns}" labelAlignment="${firstItemRegion.labelAlignment}"
+#JHS_PROP("labelWidth" ${firstItemRegion.labelWidth})  #JHS_PROP("fieldWidth" ${firstItemRegion.fieldWidth})  #REGION_PARTIAL_TRIGGERS($JHS.current.regionContainer) id="#REGION_ID()PFL"> 
+    #foreach($subRegion in ${JHS.current.regionContainer.subRegions})
+      #if ((${JHS.current.pageComponent.processingAdvancedSearchArea} && ${subRegion.groupRegion})
+           || (${JHS.current.pageComponent.processingAdvancedSearchArea} && ${subRegion.itemRegion} && !${subRegion.hasAdvancedSearchItems})
+           || (${JHS.current.pageComponent.tableLayout} && ${JHS.current.group.hasTableFormLayout}&& ${subRegion.groupRegion}))
+        ## do nothing, we always skip group regions in advanced search and 
+        ## with table overflow, we skip it when the parent group has table-form layout
+        ## with advanced search, we skip it when the region does not contain search items
+      #else    
+         #JHS_PARSE($subRegion.templateIdentifier $subRegion)
+      #end  
+    #end
+  </af:panelFormLayout>
+  #REGION_PARTIAL_TARGET($firstItemRegion "#REGION_ID()PFL")
+
+  $JHS.engine.popStretchEnabled()
+
+#if (!${JHS.current.regionContainer.parentRegionContainer} && !($JHS.current.regionContainer.title == ""))
+  #if ($JHS.engine.stretchEnabled)
+    </f:facet>
+  </af:panelStretchLayout>
+  #else
+  </af:panelHeader>
+  #end
+#end 
+

@@ -1,0 +1,51 @@
+## revision_history
+## 23-jan-2011   Steven Davelaar
+## 1.4           Added iteratorBindingName property
+## 07-oct-2010   Steven Davelaar
+## 1.3           Added pageDefName property
+## 18-may-2010   Steven Davelaar
+## 1.2           Added id property to all elements
+## 05-oct-2009   Steven Davelaar
+## 1.1           Adde check breadcrumbLabelExpression not null
+## 05-jul-2008   Steven Davelaar
+## 1.0           Initial creation for R11
+<?xml version="1.0" #ENCODING_PROP() ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  
+
+#foreach($bean in ${JHS.facesConfigGenerator.breadcrumbManagedBeans})
+
+<managed-bean id="#NEW_ID("__")">
+  <managed-bean-name id="#NEW_ID("__")">${bean.beanName}</managed-bean-name>
+  <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.util.breadcrumbs.BreadcrumbConfiguration</managed-bean-class>
+  <managed-bean-scope id="#NEW_ID("__")">application</managed-bean-scope>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">key</property-name>
+    #if (${bean.group.hasTreeLayout} || ${bean.group.hasTreeFormLayout}) <value id="#NEW_ID("__")">${bean.group.treeBaseGroup.name}</value>
+    #else<value id="#NEW_ID("__")">${bean.page.name}</value>#end
+  </managed-property>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">page</property-name>
+    <value id="#NEW_ID("__")">${JHS.service.pageVirtualDir}${bean.page.name}${bean.page.extension}</value>
+  </managed-property>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">labelExpression</property-name>
+    #if (${bean.page.breadcrumbLabelExpression})
+   <value id="#NEW_ID("__")">#{"${bean.page.breadcrumbLabelExpression}"}</value>
+   #else
+   <value id="#NEW_ID("__")">#{""}</value>
+   #end
+  </managed-property>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">pageDefName</property-name>
+    <value id="#NEW_ID("__")">${bean.group.name}PageDef</value>
+  </managed-property>
+  <managed-property id="#NEW_ID("__")">
+    <property-name id="#NEW_ID("__")">iteratorBindingName</property-name>
+    <value id="#NEW_ID("__")">${bean.group.name}Iterator</value>
+  </managed-property>
+ </managed-bean>
+#end
+
+</adfc-config>
+

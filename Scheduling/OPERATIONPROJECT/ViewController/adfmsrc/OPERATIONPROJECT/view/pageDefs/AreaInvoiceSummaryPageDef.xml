@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="AreaInvoiceSummaryPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="true">
+  <parameters>
+    <parameter id="bindingContainersToPrepare" value="#{'AccountingAgentPageDef'}"/>
+  </parameters>
+  <executables>
+    <iterator id="AreaInvoiceSummaryIterator" Binds="InvoiceScheduleAccountVO2" DataControl="AppModuleAMDataControl"
+              RangeSize="10"/>
+    <iterator Binds="ContractInvoiceSummaryVO2" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="ContractInvoiceSummaryVO2Iterator"/>
+    <searchRegion Binds="ContractInvoiceSummaryVO2Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="ContractInvoiceSummaryVO2Query"/>
+    <iterator Binds="FilteredInvoicesVO1" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="FilteredInvoicesVO1Iterator"/>
+    <searchRegion Binds="FilteredInvoicesVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="FilteredInvoicesVO1Query"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="AreaInvoiceSummaryIterator" id="AreaInvoiceSummaryAreaName">
+      <AttrNames>
+        <Item Value="AreaName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AreaInvoiceSummaryIterator" id="AreaInvoiceSummaryContractNum">
+      <AttrNames>
+        <Item Value="ContractNum"/>
+      </AttrNames>
+    </attributeValues>
+    <tree id="AreaInvoiceSummaryTable" IterBinding="AreaInvoiceSummaryIterator">
+      <nodeDefinition Name="AreaInvoiceSummary" DefName="OPERATIONPROJECT.model.BC.VO.InvoiceScheduleAccountVO">
+        <AttrNames>
+          <Item Value="AreaName"/>
+          <Item Value="ContractNum"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="AreaInvoiceSummaryIterator" id="FirstAreaInvoiceSummary" RequiresUpdateModel="true"
+            Action="first"/>
+    <action IterBinding="AreaInvoiceSummaryIterator" id="PreviousAreaInvoiceSummary" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="AreaInvoiceSummaryIterator" id="NextAreaInvoiceSummary" RequiresUpdateModel="true"
+            Action="next"/>
+    <action IterBinding="AreaInvoiceSummaryIterator" id="LastAreaInvoiceSummary" RequiresUpdateModel="true"
+            Action="last"/>
+    <action IterBinding="AreaInvoiceSummaryIterator" id="SetCurrentRowWithKeyAreaInvoiceSummary"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrAreaInvoiceSummary}" NDType="java.lang.String"/>
+    </action>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+    <tree IterBinding="ContractInvoiceSummaryVO2Iterator" id="ContractInvoiceSummaryVO2">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.ContractInvoiceSummaryVO" Name="ContractInvoiceSummaryVO20">
+        <AttrNames>
+          <Item Value="AccountingAgent"/>
+          <Item Value="AreaId"/>
+          <Item Value="AreaName"/>
+          <Item Value="CardNo"/>
+          <Item Value="ContractNum"/>
+          <Item Value="WorkingDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="ContractInvoiceSummaryVO2Iterator" id="CardNo">
+      <AttrNames>
+        <Item Value="CardNo"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="FilteredInvoicesVO1Iterator" id="FilteredInvoicesVO1">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.FilteredInvoicesVO" Name="FilteredInvoicesVO10">
+        <AttrNames>
+          <Item Value="AreaId"/>
+          <Item Value="CardNo"/>
+          <Item Value="Id"/>
+          <Item Value="InvoiceAmount"/>
+          <Item Value="InvoiceDate"/>
+          <Item Value="InvoiceNo"/>
+          <Item Value="Paid"/>
+          <Item Value="Selected" Binds="Selected"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="FilteredInvoicesVO1Iterator" id="Selected" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="Selected"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <attributeValues IterBinding="ContractInvoiceSummaryVO2Iterator" id="ContractClientName">
+      <AttrNames>
+        <Item Value="ContractClientName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractInvoiceSummaryVO2Iterator" id="CityName">
+      <AttrNames>
+        <Item Value="CityName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractInvoiceSummaryVO2Iterator" id="RegionName">
+      <AttrNames>
+        <Item Value="RegionName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractInvoiceSummaryVO2Iterator" id="StreetName">
+      <AttrNames>
+        <Item Value="StreetName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractInvoiceSummaryVO2Iterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractInvoiceSummaryVO2Iterator" id="HomeNo">
+      <AttrNames>
+        <Item Value="HomeNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractInvoiceSummaryVO2Iterator" id="FloorNo">
+      <AttrNames>
+        <Item Value="FloorNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractInvoiceSummaryVO2Iterator" id="FlatNo">
+      <AttrNames>
+        <Item Value="FlatNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractInvoiceSummaryVO2Iterator" id="AreaId">
+      <AttrNames>
+        <Item Value="AreaId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractInvoiceSummaryVO2Iterator" id="AddressArea">
+      <AttrNames>
+        <Item Value="AddressArea"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractInvoiceSummaryVO2Iterator" id="CityId">
+      <AttrNames>
+        <Item Value="CityId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractInvoiceSummaryVO2Iterator" id="RegionId">
+      <AttrNames>
+        <Item Value="RegionId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractInvoiceSummaryVO2Iterator" id="StreetId">
+      <AttrNames>
+        <Item Value="StreetId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractInvoiceSummaryVO2Iterator" id="CoverDate">
+      <AttrNames>
+        <Item Value="CoverDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractInvoiceSummaryVO2Iterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractInvoiceSummaryVO2Iterator" id="Address">
+      <AttrNames>
+        <Item Value="Address"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractInvoiceSummaryVO2Iterator" id="WorkingDate">
+      <AttrNames>
+        <Item Value="WorkingDate"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

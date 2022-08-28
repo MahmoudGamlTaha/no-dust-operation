@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AreaSparesVL"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="OPERATIONPROJECT.model.BC.VO.VL.AreaSparesVL_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="AreaIdAssignedDriversAreas"
+    Cardinality="1"
+    Source="true"
+    Owner="OPERATIONPROJECT.model.BC.VO.AssignedDriversAreasVO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="AssignedDriversAreas"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.VO.AssignedDriversAreasVO.AreaId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.AssignedDriversAreasVO.CoverDate"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.AssignedDriversAreasVO.DriverId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.AssignedDriversAreasVO.WorkDate"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="AssignedDriversSpares"
+    Cardinality="-1"
+    Owner="OPERATIONPROJECT.model.BC.VO.AssignedDriversSparesVO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="AssignedDriversSpares"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.VO.AssignedDriversSparesVO.AreaId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.AssignedDriversSparesVO.CoverDate"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.AssignedDriversSparesVO.DriverId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.VO.AssignedDriversSparesVO.WorkDate"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="OPERATIONPROJECT.model.BC.ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="adfc_config_ProductContractDDownloadVO_ProductContractDDownloadVOTaskFlow_FilterProductContractDataPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator id="ProductContractDDownloadVO1Iterator" Binds="ProductContractDDownloadVO1"
+              DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <iterator id="PendingWorkAssViewVO1Iterator" Binds="PendingWorkAssViewVO1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+    <iterator id="FilteredPendingWorkVO1Iterator" Binds="FilteredPendingWorkVO1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="FilteredPendingWorkVO1Iterator" id="ContractStatus">
+      <AttrNames>
+        <Item Value="ContractStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FilteredPendingWorkVO1Iterator" id="CloseCode">
+      <AttrNames>
+        <Item Value="CloseCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FilteredPendingWorkVO1Iterator" id="CardNo">
+      <AttrNames>
+        <Item Value="CardNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FilteredPendingWorkVO1Iterator" id="ClientName">
+      <AttrNames>
+        <Item Value="ClientName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FilteredPendingWorkVO1Iterator" id="CustomerNotes">
+      <AttrNames>
+        <Item Value="CustomerNotes"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FilteredPendingWorkVO1Iterator" id="ActualPaid">
+      <AttrNames>
+        <Item Value="ActualPaid"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

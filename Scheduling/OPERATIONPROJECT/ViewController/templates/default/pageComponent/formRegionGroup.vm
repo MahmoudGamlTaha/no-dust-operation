@@ -1,0 +1,13 @@
+## revision_history
+## 28-sep-2011   Steven Davelaar
+## 1.2           Added support for group region as child of separatePages region container
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+
+#if ($JHS.page.itemRegion)
+  #JHS_PARSE($JHS.page.itemRegion.templateIdentifier $JHS.page.itemRegion)
+#elseif ($JHS.page.regionContainer)
+  #JHS_PARSE($JHS.page.regionContainer.templateIdentifier $JHS.page.regionContainer)
+#elseif ($JHS.page.groupRegion)
+  #JHS_PARSE($JHS.page.groupRegion.templateIdentifier $JHS.page.groupRegion)
+#end

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ProductContractVO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Partial"
+  RowClass="OPERATIONPROJECT.model.BC.VO.ProductContractVORowImpl"
+  ComponentClass="OPERATIONPROJECT.model.BC.VO.ProductContractVOImpl"
+  SelectList="ProductContractEO.CARD_NO, 
+       ProductContractEO.DELIVERY_FLAG, 
+       ProductContractEO.EXCHANGE_DURATION, 
+       ProductContractEO.FINANCIAL, 
+       ProductContractEO.NEW AS NEW11, 
+       ProductContractEO.PACKAGE_ID, 
+       ProductContractEO.PACKAGE_NO, 
+       ProductContractEO.PACKAGE_VERSION, 
+       ProductContractEO.PARTIAL_SUBMIT, 
+       ProductContractEO.PRICE, 
+       ProductContractEO.PRODUCT_CON_ID, 
+       ProductContractEO.PRODUCT_ID, 
+       ProductContractEO.PRODUCT_NAME, 
+       ProductContractEO.PRODUCT_SKU, 
+       ProductContractEO.QUANTITY, 
+       ProductContractEO.TREATMENT_ID, 
+       ProductContractEO.ID, 
+       ProductContractEO.ACTIVE"
+  FromList="PRODUCT_CONTRACT_VIEW ProductContractEO">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="OPERATIONPROJECT.model.BC.VO.ProductContractVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="ProductsAndPackagesROV1"
+    ViewObjectName="OPERATIONPROJECT.model.BC.VO.Lookups.ProductsAndPackagesROV"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="TreatmentTypesROV1"
+    ViewObjectName="OPERATIONPROJECT.model.BC.VO.Lookups.TreatmentTypesROV"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_ProductId"
+    ListVOName="ProductsAndPackagesROV1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ProductId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ProductId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ProductName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_TreatmentId"
+    ListVOName="TreatmentTypesROV1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="TreatmentId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="TreatmentId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="TreatmentName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="ProductContractEO"
+    Entity="OPERATIONPROJECT.model.BC.EO.ProductContractEO"/>
+  <ViewAttribute
+    Name="CardNo"
+    PrecisionRule="true"
+    EntityAttrName="CardNo"
+    EntityUsage="ProductContractEO"
+    AliasName="CARD_NO"/>
+  <ViewAttribute
+    Name="DeliveryFlag"
+    PrecisionRule="true"
+    EntityAttrName="DeliveryFlag"
+    EntityUsage="ProductContractEO"
+    AliasName="DELIVERY_FLAG"
+    DefaultValue="1"/>
+  <ViewAttribute
+    Name="ExchangeDuration"
+    PrecisionRule="true"
+    EntityAttrName="ExchangeDuration"
+    EntityUsage="ProductContractEO"
+    AliasName="EXCHANGE_DURATION"/>
+  <ViewAttribute
+    Name="Financial"
+    PrecisionRule="true"
+    EntityAttrName="Financial"
+    EntityUsage="ProductContractEO"
+    AliasName="FINANCIAL"/>
+  <ViewAttribute
+    Name="New11"
+    PrecisionRule="true"
+    EntityAttrName="New1"
+    EntityUsage="ProductContractEO"
+    AliasName="NEW11"/>
+  <ViewAttribute
+    Name="PackageId"
+    PrecisionRule="true"
+    EntityAttrName="PackageId"
+    EntityUsage="ProductContractEO"
+    AliasName="PACKAGE_ID"/>
+  <ViewAttribute
+    Name="PackageNo"
+    PrecisionRule="true"
+    EntityAttrName="PackageNo"
+    EntityUsage="ProductContractEO"
+    AliasName="PACKAGE_NO"
+    DefaultValue="0"/>
+  <ViewAttribute
+    Name="PackageVersion"
+    PrecisionRule="true"
+    EntityAttrName="PackageVersion"
+    EntityUsage="ProductContractEO"
+    AliasName="PACKAGE_VERSION"/>
+  <ViewAttribute
+    Name="PartialSubmit"
+    PrecisionRule="true"
+    EntityAttrName="PartialSubmit"
+    EntityUsage="ProductContractEO"
+    AliasName="PARTIAL_SUBMIT"/>
+  <ViewAttribute
+    Name="Price"
+    PrecisionRule="true"
+    EntityAttrName="Price"
+    EntityUsage="ProductContractEO"
+    AliasName="PRICE"/>
+  <ViewAttribute
+    Name="ProductConId"
+    PrecisionRule="true"
+    EntityAttrName="ProductConId"
+    EntityUsage="ProductContractEO"
+    AliasName="PRODUCT_CON_ID"/>
+  <ViewAttribute
+    Name="ProductId"
+    PrecisionRule="true"
+    EntityAttrName="ProductId"
+    EntityUsage="ProductContractEO"
+    AliasName="PRODUCT_ID"
+    LOVName="LOV_ProductId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ProductName"
+    PrecisionRule="true"
+    EntityAttrName="ProductName"
+    EntityUsage="ProductContractEO"
+    AliasName="PRODUCT_NAME"/>
+  <ViewAttribute
+    Name="ProductSku"
+    PrecisionRule="true"
+    EntityAttrName="ProductSku"
+    EntityUsage="ProductContractEO"
+    AliasName="PRODUCT_SKU"/>
+  <ViewAttribute
+    Name="Quantity"
+    PrecisionRule="true"
+    EntityAttrName="Quantity"
+    EntityUsage="ProductContractEO"
+    AliasName="QUANTITY"
+    DefaultValue="1"/>
+  <ViewAttribute
+    Name="TreatmentId"
+    PrecisionRule="true"
+    EntityAttrName="TreatmentId"
+    EntityUsage="ProductContractEO"
+    AliasName="TREATMENT_ID"
+    LOVName="LOV_TreatmentId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TreatmentName"
+    PrecisionRule="true"
+    AliasName="TREATMENT_NAME"
+    Type="java.lang.String"
+    ColumnType="$none$"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="Id"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="ProductContractEO"
+    AliasName="ID"
+    IsUpdateable="while_insert"/>
+  <ViewAttribute
+    Name="Active"
+    PrecisionRule="true"
+    EntityAttrName="Active"
+    EntityUsage="ProductContractEO"
+    AliasName="ACTIVE"/>
+  <ViewAttribute
+    Name="UpdatedBy"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="NewPackFlag"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.Long"
+    ColumnType="LONGINT"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"/>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="ProductId"/>
+    <Item Value="TreatmentId"/>
+    <Item Value="Id"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="OPERATIONPROJECT.model.BC.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

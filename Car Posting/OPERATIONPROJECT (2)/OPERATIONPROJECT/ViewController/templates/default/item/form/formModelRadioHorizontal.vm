@@ -1,0 +1,21 @@
+## revision_history
+## 26-jun-2013   Steven Davelaar / Paco van der Linden
+## 1.3           Moved ITEM_ADDITIONAL_PROPERTIES to the end so it can also be used to
+##               override generated properties (last one wins)
+## 18-oct-2010   Steven Davelaar
+## 1.2           Added ITEM_CONTEXT_FACET
+## 04-oct-2010   Steven Davelaar
+## 1.1           Added ITEM_HELP, ITEM_ADDITIONAL_PROPERTIES
+## 04-jul-2008   Evert-Jan de Bruin
+## 1.0           Initial creation for release 11
+
+#START_ITEMS_DISPLAYED_AT_RIGHT()
+<af:selectOneRadio #ITEM_ID_IN_FORM() #ITEM_VALUE_IN_FORM() #ITEM_PROMPT_IN_FORM()
+     #ITEM_PARTIAL_TRIGGERS() #ITEM_REQUIRED_IN_FORM() #ITEM_READ_ONLY_IN_FORM() 
+     #ITEM_RENDERED_IN_FORM() #ITEM_DISABLED_IN_FORM() #ITEM_HINT() #ITEM_HELP()   #ITEM_SIMPLE()  
+     #DEPENDS_ON_ITEM_PROPS_FORM() layout="horizontal" #ITEM_ADDITIONAL_PROPERTIES()>
+  <f:selectItems value="#{bindings.${JHS.current.item.bindingName}.items}"/>    
+  #ITEM_CONTEXT_FACET()
+</af:selectOneRadio>
+#END_ITEMS_DISPLAYED_AT_RIGHT()
+

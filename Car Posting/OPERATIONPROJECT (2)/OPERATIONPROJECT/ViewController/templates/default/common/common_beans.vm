@@ -1,0 +1,95 @@
+## revision_history
+## 19-aug-2013   Steven Davelaar / Paco van der Linden
+## 1.4           INTERSECTION_SHUTTLE_BEAN and PARENT_SHUTTLE_BEAN moved to viewScope
+## 30-dec-2008   Steven Davelaar
+## 1.3           Undo previous change, within addManagedBean the group faces config is retrieved
+##               and the logic to determine the base task flow group is added
+## 17-nov-2008   Evert-Jan de Bruin
+## 1.2           Use baseGroup to add beans to instead of current group
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+
+## Arguments addManagedBean:
+## - The Group used to determine in which faces config file the bean should be added
+## - The type of bean, this value should match with the bean name in jag-config (suffixed with "ManagedBeanModel")
+## - Name of the bean
+## - Current model pointer
+## - Current page
+## - (Optional) inBoundedTaskflow (defaults to true, if not specified)
+## - (Optional) Scope of the bean (optional, defaults to null which means the returned beanName is not prefixed with the scope).
+## The method returns the name of the bean
+
+#macro (SEARCH_BEAN)
+${JHS.facesConfigGenerator.addManagedBean(${JHS.current.group}, "search", "search${JHS.current.group.name}", ${JHS.current}, ${JHS.page}, true, "pageFlowScope")}#end
+
+#macro (DEPENDS_ON_ITEM_BEAN)                                               
+${JHS.facesConfigGenerator.addManagedBean(${JHS.current.group}, "dependsOnItem", "${JHS.current.item.bindingName}DependsOnItem", ${JHS.current}, ${JHS.page})}#end
+
+#macro (DEPENDS_ON_SEARCH_ITEM_BEAN)                                               
+${JHS.facesConfigGenerator.addManagedBean(${JHS.current.group}, "dependsOnSearchItem", "${JHS.current.item.bindingName}DependsOnSearchItem", ${JHS.current}, ${JHS.page})}#end
+
+#macro (LINK_GROUP_TASK_FLOW_CONFIG_BEAN)                                               
+${JHS.facesConfigGenerator.addManagedBean(${JHS.current.group}, "linkGroupTaskFlowConfig", "${JHS.current.item.linkGroupNameWithoutServicePrefix}LinkTaskFlowConfig", ${JHS.current}, ${JHS.page}, true, "pageFlowScope")}#end
+
+#macro (LOV_ITEM_BEAN)                                               
+${JHS.facesConfigGenerator.addManagedBean(${JHS.current.group}, "lovItem", "${JHS.current.item.bindingName}LovItem", ${JHS.current}, ${JHS.page}, true, "pageFlowScope")}#end
+
+#macro (LOV_ITEM_IN_ADVANCED_SEARCH_BEAN)                                               
+${JHS.facesConfigGenerator.addManagedBean(${JHS.current.group}, "lovItemInAdvancedSearch", "${JHS.current.item.bindingName}LovItemInAdvancedSearch", ${JHS.current}, ${JHS.page}, true, "pageFlowScope")}#end
+
+#macro (LOV_ITEM_IN_QUICK_SEARCH_BEAN)                                               
+${JHS.facesConfigGenerator.addManagedBean(${JHS.current.group}, "lovItemInQuickSearch", "${JHS.current.item.bindingName}LovItemInQuickSearch", ${JHS.current}, ${JHS.page}, true, "pageFlowScope")}#end
+
+#macro (LOV_ITEM_IN_TABLE_BEAN)                                               
+${JHS.facesConfigGenerator.addManagedBean(${JHS.current.group}, "lovItemInTable", "${JHS.current.item.bindingName}LovItemInTable", ${JHS.current}, ${JHS.page}, true, "pageFlowScope")}#end
+
+#macro (ITEM_DYNAMIC_REGION_MANAGER_BEAN $suffix)                                               
+${JHS.facesConfigGenerator.addManagedBean(${JHS.current.group}, "dynamicRegionManager", "${JHS.registerDynamicTaskFlowBinding(${JHS.current.item}, ${suffix})}Manager", ${JHS.current}, ${JHS.page}, true, "pageFlowScope")}#end
+
+#macro (GROUP_DYNAMIC_REGION_MANAGER_BEAN $suffix)                                               
+${JHS.facesConfigGenerator.addManagedBean(${JHS.current.group}, "dynamicRegionManager", "${JHS.registerDynamicTaskFlowBinding(${JHS.current.group}, ${suffix})}Manager", ${JHS.current}, ${JHS.page}, true, "pageFlowScope")}#end
+
+#macro (REGION_DYNAMIC_REGION_MANAGER_BEAN $group $suffix)
+${JHS.facesConfigGenerator.addManagedBean(${group}, "dynamicRegionManager", "${suffix}TaskFlowManager", ${JHS.current}, ${JHS.page}, true, false)}#end
+
+#macro (LOV_PAGE_BEAN)                                               
+${JHS.facesConfigGenerator.addManagedBean(${JHS.current.group}, "lovPage", "${JHS.current.group.name}Page", ${JHS.current}, ${JHS.page}, true, "pageFlowScope")}#end
+
+#macro (FILE_HANDLER_IN_TABLE_BEAN)                                               
+${JHS.facesConfigGenerator.addManagedBean(${JHS.current.group}, "fileHandlerInTable", "${JHS.current.item.bindingName}FileHandlerInTable", ${JHS.current}, ${JHS.page})}#end
+
+#macro (CHECKBOX_IN_TABLE_BEAN)                                               
+${JHS.facesConfigGenerator.addManagedBean(${JHS.current.group}, "checkboxInTable", "${JHS.current.item.bindingName}checkboxInTable", ${JHS.current}, ${JHS.page})}#end
+
+#macro (TREE_BEAN $treeBaseGroup)                                               
+${JHS.facesConfigGenerator.addManagedBean(${treeBaseGroup}, "tree", "${treeBaseGroup.name}Tree", ${JHS.current}, ${JHS.page}, ${treeBaseGroup.reusableTree})}#end
+
+#macro (PARENT_SHUTTLE_BEAN)    
+${JHS.facesConfigGenerator.addManagedBean(${JHS.current.group}, "parentShuttle", "${JHS.current.group.name}Shuttle", ${JHS.current}, ${JHS.page}, true, "viewScope")}#end
+
+#macro (INTERSECTION_SHUTTLE_BEAN)    
+${JHS.facesConfigGenerator.addManagedBean(${JHS.current.group}, "intersectionShuttle", "${JHS.current.group.name}Shuttle", ${JHS.current}, ${JHS.page}, true, "viewScope")}#end
+
+#macro (TABLE_BEAN)    
+${JHS.facesConfigGenerator.addManagedBean(${JHS.current.group}, "table", "${JHS.current.group.name}Table", ${JHS.current}, ${JHS.page}, true, "pageFlowScope")}#end
+
+#macro (DEFAULT_VALUES_BEAN)    
+${JHS.facesConfigGenerator.addManagedBean(${JHS.current.group}, "defaultValues", "${JHS.current.group.name}DefaultValues", ${JHS.current}, ${JHS.page}, true, "pageFlowScope")}#end
+
+#macro (CREATE_ROW_BEAN)
+${JHS.facesConfigGenerator.addManagedBean(${JHS.current.group}, "createRow", "Create${JHS.current.group.name}", ${JHS.current}, ${JHS.page})}#end
+
+#macro (CANCEL_BEAN)
+${JHS.facesConfigGenerator.addManagedBean(${JHS.current.group}, "cancel", "jhsRollback", ${JHS.current}, ${JHS.page})}#end
+
+#macro (SAVE_BEAN)
+${JHS.facesConfigGenerator.addManagedBean(${JHS.current.group}, "save", "Save${JHS.current.group.name}", ${JHS.current}, ${JHS.page})}#end
+
+#macro (DELETE_ROW_BEAN)
+${JHS.facesConfigGenerator.addManagedBean(${JHS.current.group}, "deleteRow", "Delete${JHS.current.group.name}", ${JHS.current}, ${JHS.page})}#end
+
+#macro (BREADCRUMB_BEAN)    
+${JHS.facesConfigGenerator.addBreadcrumbManagedBean("breadcrumb", "${JHS.page.name}Breadcrumb", ${JHS.current}, ${JHS.page})}#end
+
+#macro (FILE_HANDLER_BEAN)    
+${JHS.facesConfigGenerator.addManagedBean(${JHS.current.group}, "fileHandler", "${JHS.current.item.bindingName}FileHandlerBean", ${JHS.current}, ${JHS.page})}#end

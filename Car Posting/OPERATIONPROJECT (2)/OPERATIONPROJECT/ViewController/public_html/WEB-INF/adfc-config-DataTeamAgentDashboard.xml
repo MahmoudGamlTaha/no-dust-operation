@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <task-flow-definition id="DataTeamAgentDashboardTaskFlow">
+        <!-- DEBUG:BEGIN:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2 -->
+        <template-reference>
+            <document id="__0">/WEB-INF/jhs-fragment-taskflow-template.xml</document>
+            <id id="__1">jhs-fragment-taskflow-template</id>
+        </template-reference>
+        <!-- DEBUG:END:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2-->
+        <default-activity id="__2">StartDataTeamAgentDashboard</default-activity>
+        <!-- DEBUG:BEGIN:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2 -->
+        <input-parameter-definition id="__3">
+            <name id="__4">rowKeyStrDataTeamAgentDashboard</name>
+            <value id="__5">#{pageFlowScope.rowKeyStrDataTeamAgentDashboard}</value>
+            <class id="__6">java.lang.String</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__7">
+            <name id="__8">rowKeyValueDataTeamAgentDashboard</name>
+            <value id="__9">#{pageFlowScope.rowKeyValueDataTeamAgentDashboard}</value>
+            <class id="__10">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__11">
+            <name id="__12">rowKeyDataTeamAgentDashboard</name>
+            <value id="__13">#{pageFlowScope.rowKeyDataTeamAgentDashboard}</value>
+            <class id="__14">oracle.jbo.Key</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__15">
+            <name id="__16">altKeyNameDataTeamAgentDashboard</name>
+            <value id="__17">#{pageFlowScope.altKeyNameDataTeamAgentDashboard}</value>
+            <class id="__18">java.lang.String</class>
+        </input-parameter-definition>
+        <!-- DEBUG:END:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2 -->
+        <managed-bean id="__19">
+            <managed-bean-name id="__20">jhsTaskFlowManager</managed-bean-name>
+            <managed-bean-class id="__21">oracle.jheadstart.controller.jsf.bean.TaskFlowManager</managed-bean-class>
+            <managed-bean-scope id="__22">pageFlow</managed-bean-scope>
+            <managed-property id="__23">
+                <property-name id="__24">initializeParentContextEntries</property-name>
+                <map-entries id="__25">
+                    <map-entry id="__26">
+                        <key id="__27">jhsCurrentGroupName</key>
+                        <value id="__28">DataTeamAgentDashboard</value>
+                    </map-entry>
+                </map-entries>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2 -->
+        <managed-bean id="__29">
+            <managed-bean-name id="__30">jhsRollback</managed-bean-name>
+            <managed-bean-class id="__31">oracle.jheadstart.controller.jsf.bean.RollbackBean</managed-bean-class>
+            <managed-bean-scope id="__32">request</managed-bean-scope>
+            <managed-property id="__33">
+                <property-name id="__34">rollbackBinding</property-name>
+                <value id="__35">#{bindings.Rollback}</value>
+            </managed-property>
+            <managed-property id="__36">
+                <property-name id="__37">successOutcome</property-name>
+                <value id="__38">Cancel</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__39">
+            <managed-bean-name id="__40">DataTeamAgentDashboardTable</managed-bean-name>
+            <managed-bean-class id="__41">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__42">pageFlow</managed-bean-scope>
+            <managed-property id="__43">
+                <property-name id="__44">name</property-name>
+                <value id="__45">DataTeamAgentDashboardTable</value>
+            </managed-property>
+            <managed-property id="__46">
+                <property-name id="__47">rangeBindingExpr</property-name>
+                <value id="__48">#{'#{bindings.DataTeamAgentDashboardTable}'}</value>
+            </managed-property>
+            <managed-property id="__49">
+                <property-name id="__50">focusItemId</property-name>
+                <value id="__51">DataTeamAgentDashboardAssignDate</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2 -->
+        <router id="StartDataTeamAgentDashboard">
+            <case id="__52">
+                <expression id="__53">#{pageFlowScope.rowKeyStrDataTeamAgentDashboard!=null or
+                                      pageFlowScope.rowKeyValueDataTeamAgentDashboard!=null or
+                                      pageFlowScope.rowKeyDataTeamAgentDashboard!=null}</expression>
+                <outcome id="__54">SetCurrentRowDataTeamAgentDashboard</outcome>
+            </case>
+            <case id="__55">
+                <expression id="__56">#{pageFlowScope.isDeepLink!=null and pageFlowScope.isDeepLink}</expression>
+                <outcome id="__57">deepLinkPage</outcome>
+            </case>
+            <default-outcome id="__58">firstPage</default-outcome>
+        </router>
+        <!-- DEBUG:END:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2 -->
+        <method-call id="SetCurrentRowDataTeamAgentDashboard">
+            <method id="__59">#{jhsSetCurrentRow.execute}</method>
+            <!-- iterator param -->
+            <parameter>
+                <class id="__60">oracle.adf.model.binding.DCIteratorBinding</class>
+                <value id="__61">#{bindings.DataTeamAgentDashboardIterator}</value>
+            </parameter>
+            <!-- rowKeyStr param -->
+            <parameter>
+                <class id="__62">java.lang.String</class>
+                <value id="__63">#{pageFlowScope.rowKeyStrDataTeamAgentDashboard}</value>
+            </parameter>
+            <!-- rowKeyValue param -->
+            <parameter>
+                <class id="__64">java.lang.Object</class>
+                <value id="__65">#{pageFlowScope.rowKeyValueDataTeamAgentDashboard}</value>
+            </parameter>
+            <!-- rowKey param -->
+            <parameter>
+                <class id="__66">oracle.jbo.Key</class>
+                <value id="__67">#{pageFlowScope.rowKeyDataTeamAgentDashboard}</value>
+            </parameter>
+            <!-- altKeyName param -->
+            <parameter>
+                <class id="__68">java.lang.String</class>
+                <value id="__69">#{pageFlowScope.altKeyNameDataTeamAgentDashboard}</value>
+            </parameter>
+            <outcome id="__70">
+                <fixed-outcome id="__71">deepLinkPage</fixed-outcome>
+            </outcome>
+        </method-call>
+        <!-- DEBUG:END:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2-->
+        <task-flow-return id="CancelDataTeamAgentDashboardReturn">
+            <outcome id="__72">
+                <name id="__73">CancelDataTeamAgentDashboard</name>
+            </outcome>
+        </task-flow-return>
+        <task-flow-return id="DoneDataTeamAgentDashboardReturn">
+            <outcome id="__74">
+                <name id="__75">DoneDataTeamAgentDashboard</name>
+            </outcome>
+        </task-flow-return>
+        <!-- DEBUG:BEGIN:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2 -->
+        <view id="DataTeamAgentDashboardTable">
+            <page id="__76">/pages/DataTeamAgentDashboardTable.jsff</page>
+        </view>
+        <!-- DEBUG:END:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2 -->
+        <control-flow-rule id="__77">
+            <from-activity-id id="__78">*</from-activity-id>
+            <control-flow-case id="__79">
+                <from-outcome id="__80">SetCurrentRowDataTeamAgentDashboard</from-outcome>
+                <to-activity-id id="__81">SetCurrentRowDataTeamAgentDashboard</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__82">
+                <from-outcome id="__83">firstPage</from-outcome>
+                <to-activity-id id="__84">DataTeamAgentDashboardTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__85">
+                <from-outcome id="__86">deepLinkPage</from-outcome>
+                <to-activity-id id="__87">DataTeamAgentDashboardTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__88">
+                <from-outcome id="__89">DataTeamAgentDashboardTableBreadcrumb</from-outcome>
+                <to-activity-id id="__90">DataTeamAgentDashboardTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__91">
+                <from-outcome id="__92">Cancel</from-outcome>
+                <to-activity-id id="__93">StartDataTeamAgentDashboard</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__94">
+                <from-outcome id="__95">CancelDataTeamAgentDashboardReturn</from-outcome>
+                <to-activity-id id="__96">CancelDataTeamAgentDashboardReturn</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__97">
+                <from-outcome id="__98">DoneDataTeamAgentDashboardReturn</from-outcome>
+                <to-activity-id id="__99">DoneDataTeamAgentDashboardReturn</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <!-- DEBUG:END:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2-->
+        <use-page-fragments/>
+    </task-flow-definition>
+    <!-- This bean must be defined outside the task-flow-definition element
+       because it needs to be available in the pageFlowScope of the unbounded
+       task-flow not in the pageFlowScope of the bounded task flow itself. -->
+    <!-- DEBUG:BEGIN:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2 -->
+    <managed-bean id="__100">
+        <managed-bean-name id="__101">DataTeamAgentDashboardTaskFlowConfig</managed-bean-name>
+        <managed-bean-class id="__102">oracle.jheadstart.controller.jsf.bean.TaskFlowConfigBean</managed-bean-class>
+        <managed-bean-scope id="__103">pageFlow</managed-bean-scope>
+        <managed-property id="__104">
+            <property-name id="__105">params</property-name>
+            <property-class id="__106">java.util.Map</property-class>
+            <map-entries id="__107">
+                <map-entry id="__108">
+                    <key id="__109">parentContext</key>
+                    <value id="__110">#{pageFlowScope.parentContext}</value>
+                </map-entry>
+            </map-entries>
+        </managed-property>
+        <managed-property id="__111">
+            <property-name id="__112">name</property-name>
+            <value id="__113">DataTeamAgentDashboard</value>
+        </managed-property>
+        <managed-property id="__114">
+            <property-name id="__115">taskFlowId</property-name>
+            <value id="__116">/WEB-INF/adfc-config-DataTeamAgentDashboard.xml#DataTeamAgentDashboardTaskFlow</value>
+        </managed-property>
+        <managed-property id="__117">
+            <property-name id="__118">label</property-name>
+            <value id="__119">#{nls['MENU1_TITLE_DATATEAMAGENTDASHBOARD']}</value>
+        </managed-property>
+    </managed-bean>
+    <!-- DEBUG:END:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2-->
+</adfc-config>

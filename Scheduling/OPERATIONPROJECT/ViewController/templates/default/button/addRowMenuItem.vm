@@ -1,0 +1,20 @@
+## revision_history
+## 16-jan-2012   Steven Davelaar
+## 1.3           Changed immediate to false to ensure newly entered values in overflow items are not lost
+##               (and panel collection added as partialTrigger of table to really make that work!)
+## 24-mar-2010   Steven Davelaar
+## 1.2           Check parent row found in rendered property
+## 31-aug-2007   Sandra Muller
+## 1.1           replaced text by textAndAccessKey
+## 09-feb-2007   Steven Davelaar
+## 1.0           Initial creation
+#if ($JHS.current.group.tableInsertAllowed)
+  <af:commandMenuItem id="${JHS.current.group.shortName}Arm" textAndAccessKey="#ADD_ROW_BUTTON_LABEL()"
+     immediate="false" icon="/jheadstart/images/addRow.png"
+     partialSubmit="true"
+     actionListener="#{#TABLE_BEAN().addRow}"
+     rendered="#{#PARENT_GROUP_HAS_ROW() ${JHS.addELExpression(${JHS.current.group.insertAllowedExpression},"and")}}"
+     >
+  </af:commandMenuItem>
+    #ADD_CUR_GROUP_PARTIAL_TRIGGER("${JHS.current.group.shortName}Arm")
+#end

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CityEO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="CITY"
+  AliasName="CityEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="CityId"
+    IsNotNull="true"
+    Precision="38"
+    Scale="0"
+    ColumnName="CITY_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    TableName="CITY"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="CityName"
+    Precision="4000"
+    ColumnName="CITY_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CITY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="CityPkey"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="city_pkey"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.CityEO.CityId"/>
+    </AttrArray>
+  </Key>
+</Entity>

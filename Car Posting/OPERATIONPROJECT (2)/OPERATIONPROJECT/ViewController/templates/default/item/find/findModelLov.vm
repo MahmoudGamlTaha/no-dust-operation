@@ -1,0 +1,11 @@
+## revision_history
+## 26-jun-2013   Steven Davelaar / Paco van der Linden
+## 1.2           Moved ITEM_ADDITIONAL_PROPERTIES to the end so it can also be used to
+##               override generated properties (last one wins)
+## 04-oct-2010   Steven Davelaar
+## 1.1           Added ITEM_HELP, ITEM_ADDITIONAL_PROPERTIES
+## 08-jul-2008   Evert-Jan de Bruin
+## 1.0           Initial creation for release 11
+#START_ITEMS_DISPLAYED_AT_RIGHT()
+<af:inputText #ITEM_ID_IN_SEARCH() #ITEM_VALUE_IN_SEARCH() #ITEM_SIMPLE() #ITEM_PROMPT_IN_SEARCH() #DEPENDS_ON_ITEM_PROPS_SEARCH() #SEARCH_ITEM_PARTIAL_TRIGGERS() #ITEM_COLUMNS() #ITEM_HINT() #ITEM_HELP() #TEXT_SEARCH_MAXIMUM_LENGTH() #ITEM_ADDITIONAL_PROPERTIES()/>
+#END_ITEMS_DISPLAYED_AT_RIGHT()

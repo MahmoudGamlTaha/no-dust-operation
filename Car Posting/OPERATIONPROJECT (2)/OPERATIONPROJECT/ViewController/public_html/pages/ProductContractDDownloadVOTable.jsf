@@ -1,0 +1,380 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+        xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces" beforePhase="#{jhsPhaseListener.beforePhase}"
+        locale="#{jhsLocaleManager.currentLocale}">
+    <af:document title="#{nls['TABLE_TITLE_PRODUCTCONTRACTDDOWNLOADVO']}" id="doc0" uncommittedDataWarning="on">
+        <af:messages id="m1"/>
+        <f:facet name="metaContainer">
+            <af:resource type="javascript" source="/jheadstart/jhs11.js"/>
+        </f:facet>
+        <af:form id="dataForm">
+            <af:inputText value="#{bindings.CardNo1.inputValue}" label="#{bindings.CardNo1.hints.label}"
+                          required="#{bindings.CardNo1.hints.mandatory}"
+                     rendered="false"     columns="#{bindings.CardNo1.hints.displayWidth}"
+                          maximumLength="#{bindings.CardNo1.hints.precision}"
+                          shortDesc="#{bindings.CardNo1.hints.tooltip}" id="it3">
+                <f:validator binding="#{bindings.CardNo1.validator}"/>
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.CardNo1.format}"/>
+            </af:inputText>
+            <af:panelGroupLayout id="pgl1" layout="horizontal">
+                <af:panelLabelAndMessage label="#{bindings.CardNo.hints.label}" id="plam1">
+                    <af:outputText value="#{bindings.CardNo.inputValue}" shortDesc="#{bindings.CardNo.hints.tooltip}"
+                                   id="ot2">
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.CardNo.format}"/>
+                    </af:outputText>
+                </af:panelLabelAndMessage>
+                <af:spacer width="500" height="10" id="s1"/>
+                <af:panelLabelAndMessage label="#{bindings.ClientName.hints.label}" id="plam2">
+                    <af:outputText value="#{bindings.ClientName.inputValue}"
+                                   shortDesc="#{bindings.ClientName.hints.tooltip}" id="ot3"/>
+                </af:panelLabelAndMessage>
+            </af:panelGroupLayout>
+            <af:spacer width="10" height="10" id="s2"/>
+            <af:panelGroupLayout id="pgl2" layout="horizontal">
+                <af:selectOneChoice value="#{bindings.ContractStatus.inputValue}"
+                                    label="#{bindings.ContractStatus.label}"
+                           autoSubmit="true"         required="#{bindings.ContractStatus.hints.mandatory}"
+                                    shortDesc="#{bindings.ContractStatus.hints.tooltip}" id="soc1"
+                                    partialTriggers="soc2"
+                                    valueChangeListener="#{DataTeamAgentBean.ChangePendingCloseCode}">
+                    <f:selectItems value="#{bindings.ContractStatus.items}" id="si3"/>
+                    <f:validator binding="#{bindings.ContractStatus.validator}"/>
+                </af:selectOneChoice>
+                <af:spacer width="400" height="10" id="s3"/>
+                <af:selectOneChoice value="#{bindings.CloseCode.inputValue}" label="#{bindings.CloseCode.label}"
+                                    required="#{bindings.CloseCode.hints.mandatory}"
+                            autoSubmit="true"        shortDesc="#{bindings.CloseCode.hints.tooltip}" id="soc2">
+                    <f:selectItems value="#{bindings.CloseCode.items}" id="si4"/>
+                    <f:validator binding="#{bindings.CloseCode.validator}"/>
+                </af:selectOneChoice>
+            </af:panelGroupLayout>
+            <af:spacer width="10" height="10" id="s5"/>
+            <af:panelGroupLayout id="pgl3" layout="horizontal">
+                <af:inputText value="#{bindings.ActualPaid.inputValue}" label="#{bindings.ActualPaid.hints.label}"
+                              required="#{bindings.ActualPaid.hints.mandatory}"
+                          autoSubmit="true"    columns="#{bindings.ActualPaid.hints.displayWidth}"
+                              maximumLength="#{bindings.ActualPaid.hints.precision}"
+                              shortDesc="#{bindings.ActualPaid.hints.tooltip}" id="it1">
+                    <f:validator binding="#{bindings.ActualPaid.validator}"/>
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.ActualPaid.format}"/>
+                </af:inputText>
+                <af:spacer width="350" height="10" id="s9"/>
+                <af:selectOneChoice value="#{bindings.DataStatus.inputValue}" label="#{bindings.DataStatus.label}"
+                                    readOnly="true" required="#{bindings.DataStatus.hints.mandatory}"
+                                    shortDesc="#{bindings.DataStatus.hints.tooltip}" id="soc3">
+                    <f:selectItems value="#{bindings.DataStatus.items}" id="si5"/>
+                    <f:validator binding="#{bindings.DataStatus.validator}"/>
+                </af:selectOneChoice>
+            </af:panelGroupLayout>
+            <af:spacer width="10" height="10" id="s6"/>
+            <af:panelGroupLayout id="pgl4" layout="horizontal">
+                <af:inputText value="#{bindings.CustomerNotes.inputValue}" label="#{bindings.CustomerNotes.hints.label}"
+                              required="#{bindings.CustomerNotes.hints.mandatory}"
+                         rows="3"     columns="#{bindings.CustomerNotes.hints.displayWidth}"
+                           autoSubmit="true"   maximumLength="#{bindings.CustomerNotes.hints.precision}"
+                              shortDesc="#{bindings.CustomerNotes.hints.tooltip}" id="it2"
+                              valueChangeListener="#{DataTeamAgentBean.ChangePendingCustomerNotes}">
+                    <f:validator binding="#{bindings.CustomerNotes.validator}"/>
+                </af:inputText>
+            </af:panelGroupLayout>
+            <af:spacer width="10" height="10" id="s4"/>
+            <af:panelGroupLayout id="pgl5" layout="horizontal"/>
+            <af:spacer width="10" height="20" id="s8"/>
+            <af:panelCollection id="ProductContractDDownloadVOPC" featuresOff=" wrap    freeze "
+                                styleClass="AFStretchWidth">
+                <f:facet name="menus">
+                    <!-- DEBUG:BEGIN:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6 -->
+                    <af:menu textAndAccessKey="#{nls['ACTION_MENU_LABEL']}" id="menu0">
+                        <af:menu textAndAccessKey="#{nls['GO_TO_MENU_LABEL']}" id="menu1">
+                            <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                            <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                            <!-- DEBUG:BEGIN:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7 -->
+                            <af:group id="ProductContractDDownloadVOtbb"
+                                      rendered="#{ bindings.ProductContractDDownloadVOIterator.currentRow!=null }">
+                                <af:commandMenuItem actionListener="#{bindings.FirstProductContractDDownloadVO.execute}"
+                                                    id="ProductContractDDownloadVOFirst" partialSubmit="true"
+                                                    icon="/afr/shuttleleftall_ena.png"
+                                                    textAndAccessKey="#{nls['FIRST_ROW']}"/>
+                                <af:commandMenuItem actionListener="#{bindings.PreviousProductContractDDownloadVO.execute}"
+                                                    icon="/afr/shuttleleft_ena.png"
+                                                    textAndAccessKey="#{nls['PREVIOUS_ROW']}"
+                                                    id="ProductContractDDownloadVOPrevious" partialSubmit="true"/>
+                                <af:commandMenuItem actionListener="#{bindings.NextProductContractDDownloadVO.execute}"
+                                                    icon="/afr/shuttleright_ena.png"
+                                                    textAndAccessKey="#{nls['NEXT_ROW']}"
+                                                    id="ProductContractDDownloadVONext" partialSubmit="true"/>
+                                <af:commandMenuItem actionListener="#{bindings.LastProductContractDDownloadVO.execute}"
+                                                    icon="/afr/shuttlerightall_ena.png"
+                                                    textAndAccessKey="#{nls['LAST_ROW']}"
+                                                    id="ProductContractDDownloadVOLast" partialSubmit="true"/>
+                            </af:group>
+                            <!-- DEBUG:END:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7-->
+                        </af:menu>
+                        <!-- DEBUG:BEGIN:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7 -->
+                        <!-- DEBUG:END:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7-->
+                        <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                        <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                        <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                        <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                        <!-- DEBUG:BEGIN:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7 -->
+                        <!-- DEBUG:END:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7-->
+                    </af:menu>
+                    <!-- DEBUG:END:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6-->
+                </f:facet>
+                <f:facet name="toolbar">
+                    <!-- DEBUG:BEGIN:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6 -->
+                    <af:toolbar id="tbar1">
+                        <!-- DEBUG:BEGIN:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7 -->
+                        <!-- DEBUG:END:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7-->
+                        <!-- DEBUG:BEGIN:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7 -->
+                        <!-- DEBUG:END:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7-->
+                    </af:toolbar>
+                    
+                    <!-- DEBUG:END:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6-->
+                </f:facet>
+                <f:facet name="statusbar">
+                    <af:toolbar id="t1">
+                        <af:spacer width="10" height="10" id="s7"/>
+                        <af:button text="Mark As Done" id="b1" 
+                                   actionListener="#{DataTeamAgentBean.OpenMarkAsDoneConfirmationPopUp}"/>
+                                   
+                        <af:popup childCreation="deferred" autoCancel="disabled" contentDelivery="lazyUncached" id="p1"
+                                  binding="#{DataTeamAgentBean.markAsDoneConfirmationPopupBinding}">
+                            <af:dialog id="d1" type="cancel">
+                                <af:outputText value="Are You sure you want to Mark this assignment as done ?" id="ot1"/>
+                                <f:facet name="buttonBar">
+                                    <af:button text="Yes" id="b2" action="#{DataTeamAgentBean.MarkPendingAssAsDone}" partialSubmit="true"/>
+                                </f:facet>
+                            </af:dialog>
+                        </af:popup>
+                    </af:toolbar>
+                </f:facet>
+                <af:table id="ProductContractDDownloadVOTab" contentDelivery="immediate"
+                          value="#{bindings.ProductContractDDownloadVOTable.collectionModel}" columnStretching="last"
+                          rowBandingInterval="0" editingMode="editAll" columnSelection="multiple"
+                          contextMenuSelect="true" rowSelection="single"
+                          selectionListener="#{pageFlowScope.ProductContractDDownloadVOTable.makeCurrent}"
+                          selectedRowKeys="#{pageFlowScope.ProductContractDDownloadVOTable.selectedRow}"
+                          rowDisclosureListener="#{pageFlowScope.ProductContractDDownloadVOTable.discloseRow}" var="row"
+                          varStatus="status" fetchSize="#{bindings.ProductContractDDownloadVOTable.rangeSize}"
+                          emptyText="#{nls['NO_ROWS_FOUND']}"
+                          queryListener="#{bindings.ProductContractDDownloadVOIteratorQuery.processQuery}"
+                          filterModel="#{bindings.ProductContractDDownloadVOIteratorQuery.queryDescriptor}"
+                          filterVisible="true" binding="#{pageFlowScope.ProductContractDDownloadVOTable.table}"
+                          partialTriggers=" :::ProductContractDDownloadVOPC ::ProductContractDDownloadVOFirst ::ProductContractDDownloadVOPrevious ::ProductContractDDownloadVONext ::ProductContractDDownloadVOLast"
+                          styleClass="AFStretchWidth" summary="#{nls['TABLE_TITLE_PRODUCTCONTRACTDDOWNLOADVO']}">
+                    <!-- DEBUG:BEGIN:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6 -->
+                    <f:facet name="contextMenu">
+                        <af:popup id="ProductContractDDownloadVOTablePopup" childCreation="deferred">
+                            <af:menu id="menu2">
+                                <af:menu text="#{nls['GO_TO_MENU_LABEL']}" id="menu3">
+                                    <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                </af:menu>
+                                <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                            </af:menu>
+                        </af:popup>
+                    </f:facet><!-- DEBUG:END:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6 --><!-- DEBUG:END:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6 -->
+                    <af:column id="ProductContractDDownloadVOIndexColumn" width="20" align="center" headerText="#">
+                        <af:outputFormatted value="#{status.index+1}" id="of0"/>
+                    </af:column>
+                    <!-- DEBUG:END:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6-->
+                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                    <af:column id="ProductContractDDownloadVOComponentIdCol" sortable="true" filterable="true"
+                               noWrap="true" width="120" sortProperty="ComponentId" rowHeader="false">
+                        <f:facet name="header">
+                            <af:outputLabel value="#{bindings.ProductContractDDownloadVOTable.hints.ComponentId.label}"
+                                            id="ol0"/>
+                        </f:facet>
+                        <!-- DEBUG:BEGIN:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 7 -->
+                        <af:selectOneChoice id="ProductContractDDownloadVOComponentId"
+                                      autoSubmit="true"      value="#{row.bindings.ComponentId.inputValue}"
+                                            label="#{bindings.ProductContractDDownloadVOTable.hints.ComponentId.label}"
+                                            required="#{bindings.ProductContractDDownloadVOTable.hints.ComponentId.mandatory}"
+                                            readOnly="true"
+                                            shortDesc="#{bindings.ProductContractDDownloadVOTable.hints.ComponentId.tooltip}">
+                            <f:selectItems value="#{row.bindings.ComponentId.items}" id="si1"/>
+                        </af:selectOneChoice>
+                        <!-- DEBUG:END:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 7-->
+                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                    </af:column>
+                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                    <af:column id="ProductContractDDownloadVOTreatmentCodeCol" sortable="true" filterable="true"
+                               noWrap="true" width="100" sortProperty="TreatmentCode" rowHeader="false">
+                        <f:facet name="header">
+                            <af:outputLabel value="#{bindings.ProductContractDDownloadVOTable.hints.TreatmentCode.label}"
+                                            id="ol1"/>
+                        </f:facet>
+                        <!-- DEBUG:BEGIN:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 7 -->
+                        <af:selectOneChoice id="ProductContractDDownloadVOTreatmentCode"
+                                            value="#{row.bindings.TreatmentCode.inputValue}"
+                                          autoSubmit="true"  label="#{bindings.ProductContractDDownloadVOTable.hints.TreatmentCode.label}"
+                                            required="#{bindings.ProductContractDDownloadVOTable.hints.TreatmentCode.mandatory}"
+                                            readOnly="true"
+                                            shortDesc="#{bindings.ProductContractDDownloadVOTable.hints.TreatmentCode.tooltip}">
+                            <f:selectItems value="#{row.bindings.TreatmentCode.items}" id="si2"/>
+                        </af:selectOneChoice>
+                        <!-- DEBUG:END:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 7-->
+                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                    </af:column>
+                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                    <af:column id="ProductContractDDownloadVOPackageNoCol" sortable="true" filterable="true"
+                               noWrap="true" width="100" sortProperty="PackageNo" rowHeader="false">
+                        <f:facet name="header">
+                            <af:outputLabel value="#{bindings.ProductContractDDownloadVOTable.hints.PackageNo.label}"
+                                            id="ol2"/>
+                        </f:facet>
+                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                        <af:inputText id="ProductContractDDownloadVOPackageNo"
+                                      value="#{row.bindings.PackageNo.inputValue}"
+                                      label="#{bindings.ProductContractDDownloadVOTable.hints.PackageNo.label}"
+                                      required="#{bindings.ProductContractDDownloadVOTable.hints.PackageNo.mandatory}"
+                                      rows="#{bindings.ProductContractDDownloadVOTable.hints.PackageNo.displayHeight}"
+                                      columns="#{bindings.ProductContractDDownloadVOTable.hints.PackageNo.displayWidth}"
+                                      readOnly="true"
+                                      shortDesc="#{bindings.ProductContractDDownloadVOTable.hints.PackageNo.tooltip}">
+                            <f:validator binding="#{row.bindings.PackageNo.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ProductContractDDownloadVOTable.hints.PackageNo.format}"/>
+                        </af:inputText>
+                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                    </af:column>
+                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                    <af:column id="ProductContractDDownloadVOQuntityCol" sortable="true" filterable="true" noWrap="true"
+                               width="100" sortProperty="Quntity" rowHeader="false">
+                        <f:facet name="header">
+                            <af:outputLabel value="#{bindings.ProductContractDDownloadVOTable.hints.Quntity.label}"
+                                            id="ol3"/>
+                        </f:facet>
+                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                        <af:inputText id="ProductContractDDownloadVOQuntity" value="#{row.bindings.Quntity.inputValue}"
+                                      label="#{bindings.ProductContractDDownloadVOTable.hints.Quntity.label}"
+                                      required="#{bindings.ProductContractDDownloadVOTable.hints.Quntity.mandatory}"
+                                      rows="#{bindings.ProductContractDDownloadVOTable.hints.Quntity.displayHeight}"
+                                      columns="#{bindings.ProductContractDDownloadVOTable.hints.Quntity.displayWidth}"
+                                      readOnly="true"
+                                      shortDesc="#{bindings.ProductContractDDownloadVOTable.hints.Quntity.tooltip}"
+                                      valueChangeListener="#{DataTeamAgentBean.UpdatePendingWorkAgent}">
+                            <f:validator binding="#{row.bindings.Quntity.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ProductContractDDownloadVOTable.hints.Quntity.format}"/>
+                        </af:inputText>
+                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                    </af:column>
+                    <af:column headerText="#{bindings.ProductContractDDownloadVOTable.hints.UnitPrice.label}" id="c1">
+                     <f:facet name="header">
+                            <af:outputLabel value="Unit Price" id="ol7"/>
+                        </f:facet>
+                        <af:inputText value="#{row.bindings.UnitPrice.inputValue}"
+                                      label="#{bindings.ProductContractDDownloadVOTable.hints.UnitPrice.label}"
+                                      required="#{bindings.ProductContractDDownloadVOTable.hints.UnitPrice.mandatory}"
+                                   readOnly="true"   columns="#{bindings.ProductContractDDownloadVOTable.hints.UnitPrice.displayWidth}"
+                                      maximumLength="#{bindings.ProductContractDDownloadVOTable.hints.UnitPrice.precision}"
+                                      shortDesc="#{bindings.ProductContractDDownloadVOTable.hints.UnitPrice.tooltip}"
+                                      id="it4">
+                            <f:validator binding="#{row.bindings.UnitPrice.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ProductContractDDownloadVOTable.hints.UnitPrice.format}"/>
+                        </af:inputText>
+                    </af:column>
+                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                    <af:column id="ProductContractDDownloadVOQuntityReplacedCol" sortable="true" filterable="true"
+                               noWrap="true" width="100" sortProperty="QuntityReplaced" rowHeader="false">
+                        <f:facet name="header">
+                            <af:outputLabel value="#{bindings.ProductContractDDownloadVOTable.hints.QuntityReplaced.label}"
+                                            showRequired="#{bindings.ProductContractDDownloadVOTable.hints.QuntityReplaced.mandatory}"
+                                            id="ol4"/>
+                        </f:facet>
+                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                        <af:inputText id="ProductContractDDownloadVOQuntityReplaced"
+                                      value="#{row.bindings.QuntityReplaced.inputValue}"
+                                      label="#{bindings.ProductContractDDownloadVOTable.hints.QuntityReplaced.label}"
+                                      required="#{bindings.ProductContractDDownloadVOTable.hints.QuntityReplaced.mandatory}"
+                                  autoSubmit="true"    rows="#{bindings.ProductContractDDownloadVOTable.hints.QuntityReplaced.displayHeight}"
+                                      columns="#{bindings.ProductContractDDownloadVOTable.hints.QuntityReplaced.displayWidth}"
+                                      readOnly="#{!(MTSPermission['DataTeamAgent.update'])}"
+                                      shortDesc="#{bindings.ProductContractDDownloadVOTable.hints.QuntityReplaced.tooltip}"
+                                      valueChangeListener="#{DataTeamAgentBean.UpdatePendingWorkQuantitiesPrice}">
+                            <f:validator binding="#{row.bindings.QuntityReplaced.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ProductContractDDownloadVOTable.hints.QuntityReplaced.format}"/>
+                        </af:inputText>
+                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                    </af:column>
+                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                    <af:column id="ProductContractDDownloadVOQuantityDirtyCol" sortable="true" filterable="true"
+                               noWrap="true" width="100" sortProperty="QuantityDirty" rowHeader="false">
+                        <f:facet name="header">
+                            <af:outputLabel value="#{bindings.ProductContractDDownloadVOTable.hints.QuantityDirty.label}"
+                                            showRequired="#{bindings.ProductContractDDownloadVOTable.hints.QuantityDirty.mandatory}"
+                                            id="ol5"/>
+                        </f:facet>
+                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                        <af:inputText id="ProductContractDDownloadVOQuantityDirty"
+                                      value="#{row.bindings.QuantityDirty.inputValue}"
+                                      label="#{bindings.ProductContractDDownloadVOTable.hints.QuantityDirty.label}"
+                                      required="#{bindings.ProductContractDDownloadVOTable.hints.QuantityDirty.mandatory}"
+                                      rows="#{bindings.ProductContractDDownloadVOTable.hints.QuantityDirty.displayHeight}"
+                                      columns="#{bindings.ProductContractDDownloadVOTable.hints.QuantityDirty.displayWidth}"
+                                      readOnly="#{!(MTSPermission['DataTeamAgent.update'])}"
+                                      shortDesc="#{bindings.ProductContractDDownloadVOTable.hints.QuantityDirty.tooltip}"
+                                      valueChangeListener="#{DataTeamAgentBean.UpdatePendingWorkAgent}">
+                            <f:validator binding="#{row.bindings.QuantityDirty.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ProductContractDDownloadVOTable.hints.QuantityDirty.format}"/>
+                        </af:inputText>
+                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                    </af:column>
+                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                    <af:column id="ProductContractDDownloadVOQuantityCancelCol" sortable="true" filterable="true"
+                               noWrap="true" width="100" sortProperty="QuantityCancel" rowHeader="false">
+                        <f:facet name="header">
+                            <af:outputLabel value="#{bindings.ProductContractDDownloadVOTable.hints.QuantityCancel.label}"
+                                            showRequired="#{bindings.ProductContractDDownloadVOTable.hints.QuantityCancel.mandatory}"
+                                            id="ol6"/>
+                        </f:facet>
+                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                        <af:inputText id="ProductContractDDownloadVOQuantityCancel"
+                                      value="#{row.bindings.QuantityCancel.inputValue}"
+                                      label="#{bindings.ProductContractDDownloadVOTable.hints.QuantityCancel.label}"
+                                      required="#{bindings.ProductContractDDownloadVOTable.hints.QuantityCancel.mandatory}"
+                                      rows="#{bindings.ProductContractDDownloadVOTable.hints.QuantityCancel.displayHeight}"
+                                      columns="#{bindings.ProductContractDDownloadVOTable.hints.QuantityCancel.displayWidth}"
+                                      readOnly="#{!(MTSPermission['DataTeamAgent.update'])}"
+                                      shortDesc="#{bindings.ProductContractDDownloadVOTable.hints.QuantityCancel.tooltip}"
+                                      valueChangeListener="#{DataTeamAgentBean.UpdatePendingWorkAgent}">
+                            <f:validator binding="#{row.bindings.QuantityCancel.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ProductContractDDownloadVOTable.hints.QuantityCancel.format}"/>
+                        </af:inputText>
+                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                    </af:column>
+                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                </af:table>
+            </af:panelCollection>
+        </af:form>
+    </af:document>
+</f:view>

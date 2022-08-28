@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ActionCategoryVO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  SelectAllAttributes="false"
+  PageIterMode="Partial">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="OPERATIONPROJECT.model.BC.VO.ActionCategoryVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <EntityUsage
+    Name="ActionCategoryEO"
+    Entity="OPERATIONPROJECT.model.BC.EO.ActionCategoryEO"/>
+  <ViewAttribute
+    Name="CategoryId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CategoryId"
+    EntityUsage="ActionCategoryEO"
+    AliasName="CATEGORY_ID"
+    IsQueriable="false"/>
+  <ViewAttribute
+    Name="CategoryName"
+    PrecisionRule="true"
+    EntityAttrName="CategoryName"
+    EntityUsage="ActionCategoryEO"
+    AliasName="CATEGORY_NAME">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="25"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewLinkAccessor
+    Name="Action"
+    ViewLink="OPERATIONPROJECT.model.BC.VL.ActionCategory_ActionVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="ModelBundle"/>
+  </ResourceBundle>
+  <SortCriteria>
+    <Sort
+      Attribute="CategoryName"/>
+  </SortCriteria>
+</ViewObject>

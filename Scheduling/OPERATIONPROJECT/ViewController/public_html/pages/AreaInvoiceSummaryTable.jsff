@@ -1,0 +1,299 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsRegionTemplate.jsf">
+        <!-- DEBUG:BEGIN:TABLE_PAGE_CONTENT : default/page/tablePageContent.vm, nesting level: 2 -->
+        <!-- DEBUG:BEGIN:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3 -->
+        <f:facet name="pageContent">
+            <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4 -->
+            <af:panelStretchLayout topHeight="auto" id="AreaInvoiceSummaryTopLc"
+                                   partialTriggers=" AreaInvoiceSummaryDeleteDialog AreaInvoiceSummarySaveButton AreaInvoiceSummaryCancelButton AreaInvoiceSummaryPC:AreaInvoiceSummaryArm AreaInvoiceSummaryPC:AreaInvoiceSummaryduprmTM AreaInvoiceSummaryPC:AreaInvoiceSummarydelrmTM AreaInvoiceSummaryPC:AreaInvoiceSummaryArl AreaInvoiceSummaryPC:AreaInvoiceSummaryTab:AreaInvoiceSummaryduprm AreaInvoiceSummaryPC:AreaInvoiceSummaryTab:AreaInvoiceSummarydelrm AreaInvoiceSummaryPC:AreaInvoiceSummaryTab:AreaInvoiceSummarydelrl AreaInvoiceSummaryPC:AreaInvoiceSummaryTab:AreaInvoiceSummaryduprl">
+                <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                <f:facet name="top">
+                    <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                    <af:group id="g0">
+                        <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+                        <af:panelHeader id="ph0" text="#{nls['TABLE_TITLE_AREAINVOICESUMMARY']}">
+                            <f:facet name="toolbar">
+                                <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5 -->
+                                <af:toolbox id="tbox0">
+                                    <af:toolbar id="tbar0">
+                                        <af:group id="gr0">
+                                            <!-- DEBUG:BEGIN:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6 -->
+                                            <!-- DEBUG:END:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6-->
+                                        </af:group>
+                                        <af:group id="gr1">
+                                            <!-- DEBUG:BEGIN:PARENT_TO_CHILD_BUTTON : default/button/parentToChildButton.vm, nesting level: 6 -->
+                                            <af:button textAndAccessKey="#{nls['AREAINVOICESUMMARY_TO_CONTRACTCARDS_BUTTON']}"
+                                                       action="StartContractCards" id="cb0"
+                                                       rendered="#{!pageFlowScope.createModes.CreateAreaInvoiceSummary and  bindings.AreaInvoiceSummaryIterator.currentRow!=null }"/>
+                                            <!-- DEBUG:END:PARENT_TO_CHILD_BUTTON : default/button/parentToChildButton.vm, nesting level: 6-->
+                                        </af:group>
+                                        <af:group id="gr2">
+                                            <!-- DEBUG:BEGIN:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6 -->
+                                            <af:button action="#{SaveAreaInvoiceSummary.execute}"
+                                                       rendered="#{(((MTSPermission['AccountingAgent.create']) or (MTSPermission['AccountingAgent.update'])) or (MTSPermission['AccountingAgent.delete'])) and (!pageFlowScope.hideSaveButton)}"
+                                                       textAndAccessKey="#{nls['SAVE_BUTTON_LABEL']}"
+                                                       id="AreaInvoiceSummarySaveButton" partialSubmit="true"></af:button>
+                                            <!-- DEBUG:END:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6 -->
+                                            <af:button textAndAccessKey="#{nls['CANCEL']}" immediate="true"
+                                                       partialSubmit="true"
+                                                       rendered="#{!pageFlowScope.hideCancelButton}"
+                                                       actionListener="#{jhsRollback.execute}" action="Cancel"
+                                                       id="AreaInvoiceSummaryCancelButton"></af:button>
+                                            <!-- DEBUG:END:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6-->
+                                        </af:group>
+                                    </af:toolbar>
+                                </af:toolbox>
+                                <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5-->
+                            </f:facet>
+                            <f:facet name="context">
+                                <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5 -->
+                                <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5-->
+                            </f:facet>
+                            <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+                            <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+                        </af:panelHeader>
+                    </af:group>
+                    <!-- Popped "disabled" from stretchContext, now: enabled (default) -->
+                </f:facet>
+                <f:facet name="center">
+                    <!-- DEBUG:BEGIN:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5 -->
+                    <af:panelStretchLayout topHeight="0" id="psl0">
+                        <f:facet name="top"></f:facet>
+                        <f:facet name="center">
+                            <af:panelCollection id="AreaInvoiceSummaryPC" featuresOff="  " styleClass="AFStretchWidth">
+                                <f:facet name="menus">
+                                    <!-- DEBUG:BEGIN:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6 -->
+                                    <af:menu textAndAccessKey="#{nls['ACTION_MENU_LABEL']}" id="menu0">
+                                        <af:menu textAndAccessKey="#{nls['GO_TO_MENU_LABEL']}" id="menu1">
+                                            <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                            <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:PARENT_TO_CHILD_MENU_ITEM : default/button/parentToChildMenuItem.vm, nesting level: 7 -->
+                                            <af:commandMenuItem textAndAccessKey="#{nls['AREAINVOICESUMMARY_TO_CONTRACTCARDS_BUTTON']}"
+                                                                action="StartContractCards" id="cmi0"
+                                                                rendered="#{!pageFlowScope.createModes.CreateAreaInvoiceSummary and  bindings.AreaInvoiceSummaryIterator.currentRow!=null }"/>
+                                            <!-- DEBUG:END:PARENT_TO_CHILD_MENU_ITEM : default/button/parentToChildMenuItem.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7 -->
+                                            <af:group id="AreaInvoiceSummarytbb"
+                                                      rendered="#{ bindings.AreaInvoiceSummaryIterator.currentRow!=null }">
+                                                <af:commandMenuItem actionListener="#{bindings.FirstAreaInvoiceSummary.execute}"
+                                                                    id="AreaInvoiceSummaryFirst" partialSubmit="true"
+                                                                    icon="/afr/shuttleleftall_ena.png"
+                                                                    textAndAccessKey="#{nls['FIRST_ROW']}"></af:commandMenuItem>
+                                                <af:commandMenuItem actionListener="#{bindings.PreviousAreaInvoiceSummary.execute}"
+                                                                    icon="/afr/shuttleleft_ena.png"
+                                                                    textAndAccessKey="#{nls['PREVIOUS_ROW']}"
+                                                                    id="AreaInvoiceSummaryPrevious"
+                                                                    partialSubmit="true"></af:commandMenuItem>
+                                                <af:commandMenuItem actionListener="#{bindings.NextAreaInvoiceSummary.execute}"
+                                                                    icon="/afr/shuttleright_ena.png"
+                                                                    textAndAccessKey="#{nls['NEXT_ROW']}"
+                                                                    id="AreaInvoiceSummaryNext" partialSubmit="true"></af:commandMenuItem>
+                                                <af:commandMenuItem actionListener="#{bindings.LastAreaInvoiceSummary.execute}"
+                                                                    icon="/afr/shuttlerightall_ena.png"
+                                                                    textAndAccessKey="#{nls['LAST_ROW']}"
+                                                                    id="AreaInvoiceSummaryLast" partialSubmit="true"></af:commandMenuItem>
+                                            </af:group>
+                                            <!-- DEBUG:END:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7-->
+                                        </af:menu>
+                                        <!-- DEBUG:BEGIN:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7 -->
+                                        <af:commandMenuItem id="AreaInvoiceSummaryArm"
+                                                            textAndAccessKey="#{nls['ADD_ROW']}" immediate="false"
+                                                            icon="/jheadstart/images/addRow.png" partialSubmit="true"
+                                                            actionListener="#{pageFlowScope.AreaInvoiceSummaryTable.addRow}"
+                                                            rendered="#{(true) and (MTSPermission['AccountingAgent.create'])}"></af:commandMenuItem>
+                                        <!-- DEBUG:END:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                        <af:commandMenuItem id="AreaInvoiceSummaryduprmTM"
+                                                            textAndAccessKey="#{nls['DUPLICATE_ROW']}" immediate="true"
+                                                            icon="/jheadstart/images/duplicateRow.png"
+                                                            partialSubmit="true"
+                                                            actionListener="#{pageFlowScope.AreaInvoiceSummaryTable.duplicateRow}"
+                                                            rendered="#{MTSPermission['AccountingAgent.create']}"></af:commandMenuItem>
+                                        <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                        <af:commandMenuItem id="AreaInvoiceSummarydelrmTM"
+                                                            textAndAccessKey="#{nls['DELETE_ROW']}"
+                                                            icon="/jheadstart/images/deleteRow.png" partialSubmit="true"
+                                                            immediate="true"
+                                                            rendered="#{MTSPermission['AccountingAgent.delete']}">
+                                            <af:showPopupBehavior popupId="::AreaInvoiceSummaryDeletePopup"/>
+                                        </af:commandMenuItem>
+                                        <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7-->
+                                    </af:menu>
+                                    <!-- DEBUG:END:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6-->
+                                </f:facet>
+                                <f:facet name="toolbar">
+                                    <!-- DEBUG:BEGIN:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6 -->
+                                    <af:toolbar id="tbar1">
+                                        <!-- DEBUG:BEGIN:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7 -->
+                                        <!-- Also create CreateAreaInvoiceSummary bean so we can start table group in create mode as well -->
+                                        <af:link id="AreaInvoiceSummaryArl" immediate="false"
+                                                 rendered="#{(true) and (MTSPermission['AccountingAgent.create'])}"
+                                                 partialSubmit="true"
+                                                 actionListener="#{pageFlowScope.AreaInvoiceSummaryTable.addRow}"
+                                                 shortDesc="#{nls['ADD_ROW']}" icon="/jheadstart/images/addRow.png"/>
+                                        <!-- DEBUG:END:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7-->
+                                    </af:toolbar>
+                                    <!-- DEBUG:END:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6-->
+                                </f:facet>
+                                <f:facet name="statusbar"/>
+                                <af:table id="AreaInvoiceSummaryTab" contentDelivery="immediate"
+                                          value="#{bindings.AreaInvoiceSummaryTable.collectionModel}"
+                                          columnStretching="last" rowBandingInterval="0" editingMode="editAll"
+                                          columnSelection="multiple" contextMenuSelect="true" rowSelection="single"
+                                          selectionListener="#{pageFlowScope.AreaInvoiceSummaryTable.makeCurrent}"
+                                          selectedRowKeys="#{pageFlowScope.AreaInvoiceSummaryTable.selectedRow}"
+                                          rowDisclosureListener="#{pageFlowScope.AreaInvoiceSummaryTable.discloseRow}"
+                                          var="row" varStatus="status"
+                                          fetchSize="#{bindings.AreaInvoiceSummaryTable.rangeSize}"
+                                          emptyText="#{nls['NO_ROWS_FOUND']}"
+                                          binding="#{pageFlowScope.AreaInvoiceSummaryTable.table}"
+                                          partialTriggers=" :::AreaInvoiceSummaryPC ::AreaInvoiceSummaryFirst ::AreaInvoiceSummaryPrevious ::AreaInvoiceSummaryNext ::AreaInvoiceSummaryLast"
+                                          styleClass="AFStretchWidth"
+                                          summary="#{nls['TABLE_TITLE_AREAINVOICESUMMARY']}">
+                                    <!-- DEBUG:BEGIN:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6 -->
+                                    <f:facet name="contextMenu">
+                                        <af:popup id="AreaInvoiceSummaryTablePopup" childCreation="deferred">
+                                            <af:menu id="menu2">
+                                                <af:menu text="#{nls['GO_TO_MENU_LABEL']}" id="menu3">
+                                                    <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                                    <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                                    <!-- DEBUG:BEGIN:PARENT_TO_CHILD_MENU_ITEM : default/button/parentToChildMenuItem.vm, nesting level: 7 -->
+                                                    <af:commandMenuItem textAndAccessKey="#{nls['AREAINVOICESUMMARY_TO_CONTRACTCARDS_BUTTON']}"
+                                                                        action="StartContractCards" id="cmi1"
+                                                                        rendered="#{!pageFlowScope.createModes.CreateAreaInvoiceSummary and  bindings.AreaInvoiceSummaryIterator.currentRow!=null }"/>
+                                                    <!-- DEBUG:END:PARENT_TO_CHILD_MENU_ITEM : default/button/parentToChildMenuItem.vm, nesting level: 7-->
+                                                </af:menu>
+                                                <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                                <af:commandMenuItem id="AreaInvoiceSummaryduprm"
+                                                                    textAndAccessKey="#{nls['DUPLICATE_ROW']}"
+                                                                    immediate="true"
+                                                                    icon="/jheadstart/images/duplicateRow.png"
+                                                                    partialSubmit="true"
+                                                                    actionListener="#{pageFlowScope.AreaInvoiceSummaryTable.duplicateRow}"
+                                                                    rendered="#{MTSPermission['AccountingAgent.create']}"></af:commandMenuItem>
+                                                <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                                <af:commandMenuItem id="AreaInvoiceSummarydelrm"
+                                                                    textAndAccessKey="#{nls['DELETE_ROW']}"
+                                                                    icon="/jheadstart/images/deleteRow.png"
+                                                                    partialSubmit="true" immediate="true"
+                                                                    rendered="#{MTSPermission['AccountingAgent.delete']}">
+                                                    <af:showPopupBehavior popupId=":::AreaInvoiceSummaryDeletePopup"/>
+                                                </af:commandMenuItem>
+                                                <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                            </af:menu>
+                                        </af:popup>
+                                    </f:facet><!-- DEBUG:END:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6 --><!-- DEBUG:END:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6 -->
+                                    <af:column id="AreaInvoiceSummaryActionColumn" width="40" align="center"
+                                               headerText=" ">
+                                        <af:panelGroupLayout layout="horizontal" id="pgl0">
+                                            <!-- DEBUG:BEGIN:DETAILS_LINK : default/button/detailsLink.vm, nesting level: 7 -->
+                                            <!-- DEBUG:END:DETAILS_LINK : default/button/detailsLink.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:DELETE_ROW_LINK : default/button/deleteRowLink.vm, nesting level: 7 -->
+                                            <af:link id="AreaInvoiceSummarydelrl" partialSubmit="true" immediate="true"
+                                                     rendered="#{MTSPermission['AccountingAgent.delete']}"
+                                                     shortDesc="#{nls['DELETE_ROW']}"
+                                                     icon="/jheadstart/images/deleteRow.png">
+                                                <af:showPopupBehavior popupId=":::AreaInvoiceSummaryDeletePopup"/>
+                                            </af:link>
+                                            <!-- DEBUG:END:DELETE_ROW_LINK : default/button/deleteRowLink.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:DUPLICATE_ROW_LINK : default/button/duplicateRowLink.vm, nesting level: 7 -->
+                                            <af:link id="AreaInvoiceSummaryduprl" immediate="true" partialSubmit="true"
+                                                     actionListener="#{pageFlowScope.AreaInvoiceSummaryTable.duplicateRow}"
+                                                     rendered="#{MTSPermission['AccountingAgent.create']}"
+                                                     shortDesc="#{nls['DUPLICATE_ROW']}"
+                                                     icon="/jheadstart/images/duplicateRow.png"/>
+                                            <!-- DEBUG:END:DUPLICATE_ROW_LINK : default/button/duplicateRowLink.vm, nesting level: 7-->
+                                        </af:panelGroupLayout>
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="AreaInvoiceSummaryAreaNameCol" noWrap="true" width="500"
+                                               rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{nls['AREAINVOICESUMMARY_TABLE_AREANAME']}"
+                                                            showRequired="false" id="ol0"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                        <af:inputText id="AreaInvoiceSummaryAreaName"
+                                                      value="#{row.bindings.AreaName.inputValue}"
+                                                      label="#{nls['AREAINVOICESUMMARY_TABLE_AREANAME']}"
+                                                      required="false"
+                                                      readOnly="#{((pageFlowScope.AreaInvoiceSummaryTable.newRow) and (!(MTSPermission['AccountingAgent.create']))) or ((!pageFlowScope.AreaInvoiceSummaryTable.newRow) and (!(MTSPermission['AccountingAgent.update'])))}"
+                                                      shortDesc="#{nls['AREAINVOICESUMMARY_AREANAME_HINT']}">
+                                            <f:validator binding="#{row.bindings.AreaName.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="AreaInvoiceSummaryContractNumCol" noWrap="true" width="100"
+                                               rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{nls['AREAINVOICESUMMARY_TABLE_CONTRACTNUM']}"
+                                                            showRequired="false" id="ol1"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                        <af:inputText id="AreaInvoiceSummaryContractNum"
+                                                      value="#{row.bindings.ContractNum.inputValue}"
+                                                      label="#{nls['AREAINVOICESUMMARY_TABLE_CONTRACTNUM']}"
+                                                      required="false"
+                                                      readOnly="#{((pageFlowScope.AreaInvoiceSummaryTable.newRow) and (!(MTSPermission['AccountingAgent.create']))) or ((!pageFlowScope.AreaInvoiceSummaryTable.newRow) and (!(MTSPermission['AccountingAgent.update'])))}"
+                                                      shortDesc="#{nls['AREAINVOICESUMMARY_CONTRACTNUM_HINT']}">
+                                            <f:validator binding="#{row.bindings.ContractNum.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                </af:table>
+                            </af:panelCollection>
+                        </f:facet>
+                    </af:panelStretchLayout>
+                    <!-- DEBUG:END:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5-->
+                </f:facet>
+            </af:panelStretchLayout>
+            <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4-->
+        </f:facet>
+        <f:facet name="popups">
+            <af:panelGroupLayout id="popupsPgl">
+                <!-- DEBUG:BEGIN:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 8 -->
+                <af:popup id="AreaInvoiceSummaryDeletePopup" contentDelivery="lazyUncached" childCreation="deferred">
+                    <af:dialog type="none" title="#{nls['WARNING']}" modal="true" id="AreaInvoiceSummaryDeleteDialog">
+                        <af:outputText value="#{nls['DELETE_WARNING_AREAINVOICESUMMAR:#{bindings.AreaInvoiceSummaryIterator.currentRowIndexInRange+1}']} "
+                                       id="ot0"/>
+                        <f:attribute name="methodExpression" value="#{'#{DeleteAreaInvoiceSummary.execute}'}"/>
+                        <f:facet name="buttonBar">
+                            <af:group id="g1">
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_YES']}" id="cb1" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.confirm}"/>
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_NO']}" id="cb2" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.abort}"/>
+                            </af:group>
+                        </f:facet>
+                    </af:dialog>
+                </af:popup>
+                <!-- DEBUG:END:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 8-->
+            </af:panelGroupLayout>
+        </f:facet>
+        <!-- DEBUG:END:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3-->
+        <!-- DEBUG:END:TABLE_PAGE_CONTENT : default/page/tablePageContent.vm, nesting level: 2-->
+    </af:pageTemplate>
+</ui:composition>
+
+
+

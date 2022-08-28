@@ -1,0 +1,26 @@
+## revision_history
+## 21-jan-2011   Steven Davelaar
+## 1.4           Use end facet instead of panelGroupLayout to fix undesirable layout indentation with jdev 11.1.1.4 
+## 04-oct-2010   Steven Davelaar
+## 1.3           Added ITEM_HELP, ITEM_ADDITIONAL_PROPERTIES
+## 05-sep-2008   Evert-Jan de Bruin
+## 1.2           Changed objectMedia tag into image tag, had to remove contentType
+##               Width and height moved to inlinestyle. If no width or height are indicated, 
+##               normal size of image will be displayed in browser
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+<af:panelLabelAndMessage #ITEM_PROMPT_IN_FORM() id="${JHS.current.item.bindingName}Label" #ITEM_HINT() #ITEM_HELP()>
+  <af:image #ITEM_ID_IN_FORM() source="#{#FILE_HANDLER_BEAN().fileUrl}" 
+   inlineStyle="width: #JHS_PRESENT(${JHS.current.item.displayWidth})px; height: #JHS_PRESENT(${JHS.current.item.displayHeight})px;"
+   #if (${JHS.current.item.hintText})
+     shortDesc="${JHS.nls(${JHS.current.item.hintText}, "${JHS.current.group.name}_${JHS.current.item.name}_HINT")}"  
+   #else
+     shortDesc="${JHS.nls(${JHS.current.item.promptInForm}, "${JHS.current.group.name}_${JHS.current.item.name}")}"  
+   #end #ITEM_ADDITIONAL_PROPERTIES() />
+  <f:facet name="end">
+    <af:panelGroupLayout id="#NEW_ID("pgl")" valign="top" layout="horizontal">
+      #ITEMS_DISPLAYED_AT_RIGHT_PLM_PRIM()
+    </af:panelGroupLayout>
+  </f:facet>
+</af:panelLabelAndMessage>
+#ITEMS_DISPLAYED_AT_RIGHT_PLM_SEC()

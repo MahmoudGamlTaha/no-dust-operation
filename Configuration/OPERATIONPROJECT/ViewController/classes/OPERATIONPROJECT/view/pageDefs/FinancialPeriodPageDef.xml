@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="FinancialPeriodPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="validateCurrentRows">
+  <parameters/>
+  <executables>
+    <invokeAction id="clearDeepLinkViewCriteriaInvoke" Binds="clearDeepLinkViewCriteria" Refresh="renderModel"
+                  RefreshCondition="#{'true' != pageFlowScope.jhsQueryByKeyValue}"/>
+    <iterator id="FinancialPeriodIterator" Binds="FinancialPeiod1" DataControl="AppModuleAMDataControl" RangeSize="10"/>
+    <searchRegion id="FinancialPeriodIteratorQuery" Binds="FinancialPeriodIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="Description"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator Binds="AppModuleAMDataControl" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="AppModuleAMDataControlIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="clearDeepLinkViewCriteria" RequiresUpdateModel="true" Action="invokeMethod"
+                  DataControl="AppModuleAMDataControl" InstanceName="AppModuleAMDataControl.dataProvider"
+                  MethodName="clearDeepLinkViewCriteria"
+                  ReturnName="AppModuleAMDataControl.methodResults.AppModuleAMDataControl_dataProvider_clearDeepLinkViewCriteria_result"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="viewObjectUsage" NDValue="FinancialPeiod1" NDType="java.lang.String"/>
+      <NamedData NDName="requeryIfFound" NDValue="#{true}" NDType="java.lang.Boolean"/>
+    </methodAction>
+    <button IterBinding="FinancialPeriodIterator" id="FinancialPeriodDefault1" DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="Default1"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <button IterBinding="FinancialPeriodIterator" id="FinancialPeriodActive" DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="Active"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <tree id="FinancialPeriodTable" IterBinding="FinancialPeriodIterator">
+      <nodeDefinition Name="FinancialPeriod" DefName="OPERATIONPROJECT.model.BC.VO.FinancialPeiodVO">
+        <AttrNames>
+          <Item Value="Description"/>
+          <Item Value="FromDate"/>
+          <Item Value="ToDate"/>
+          <Item Value="Default1"/>
+          <Item Value="Active"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="FinancialPeriodIterator" id="FirstFinancialPeriod" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="FinancialPeriodIterator" id="PreviousFinancialPeriod" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="FinancialPeriodIterator" id="NextFinancialPeriod" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="FinancialPeriodIterator" id="LastFinancialPeriod" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="FinancialPeriodIterator" id="SetCurrentRowWithKeyFinancialPeriod" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrFinancialPeriod}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="FinancialPeriodIterator" id="CreateFinancialPeriod" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="FinancialPeriodIterator" id="DeleteFinancialPeriod" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

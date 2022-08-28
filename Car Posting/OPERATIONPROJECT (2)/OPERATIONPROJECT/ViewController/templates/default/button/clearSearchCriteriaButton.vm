@@ -1,0 +1,8 @@
+## revision_history
+## 22-nov-2010   Steven Davelaar
+## 1.2           Shortened id
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+<af:button textAndAccessKey="#CLEAR_LABEL()"
+                  actionListener="#{#SEARCH_BEAN().clearSearchCriteria}"
+                  id="#NEW_ID("cb")"/>

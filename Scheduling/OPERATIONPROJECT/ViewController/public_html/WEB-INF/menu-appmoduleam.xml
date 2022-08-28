@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu">
+    <itemNode id="homeMI" label="#{nls['HOME_BUTTON_LABEL']}" action="home" focusViewId="/Home"
+              icon="../jheadstart/images/home-large.png"/>
+    <sharedNode ref="#{AppModuleAMMenu}"/>
+</menu>

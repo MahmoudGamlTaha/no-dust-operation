@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <task-flow-definition id="DataTeamAgentEndOfDayReviewTaskFlow">
+        <!-- DEBUG:BEGIN:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2 -->
+        <template-reference>
+            <document id="__0">/WEB-INF/jhs-fragment-taskflow-template.xml</document>
+            <id id="__1">jhs-fragment-taskflow-template</id>
+        </template-reference>
+        <!-- DEBUG:END:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2-->
+        <default-activity id="__2">StartDataTeamAgentEndOfDayReview</default-activity>
+        <!-- DEBUG:BEGIN:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2 -->
+        <input-parameter-definition id="__3">
+            <name id="__4">rowKeyStrDataTeamAgentEndOfDayReview</name>
+            <value id="__5">#{pageFlowScope.rowKeyStrDataTeamAgentEndOfDayReview}</value>
+            <class id="__6">java.lang.String</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__7">
+            <name id="__8">rowKeyValueDataTeamAgentEndOfDayReview</name>
+            <value id="__9">#{pageFlowScope.rowKeyValueDataTeamAgentEndOfDayReview}</value>
+            <class id="__10">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__11">
+            <name id="__12">rowKeyDataTeamAgentEndOfDayReview</name>
+            <value id="__13">#{pageFlowScope.rowKeyDataTeamAgentEndOfDayReview}</value>
+            <class id="__14">oracle.jbo.Key</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__15">
+            <name id="__16">altKeyNameDataTeamAgentEndOfDayReview</name>
+            <value id="__17">#{pageFlowScope.altKeyNameDataTeamAgentEndOfDayReview}</value>
+            <class id="__18">java.lang.String</class>
+        </input-parameter-definition>
+        <!-- DEBUG:END:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2 -->
+        <managed-bean id="__19">
+            <managed-bean-name id="__20">jhsTaskFlowManager</managed-bean-name>
+            <managed-bean-class id="__21">oracle.jheadstart.controller.jsf.bean.TaskFlowManager</managed-bean-class>
+            <managed-bean-scope id="__22">pageFlow</managed-bean-scope>
+            <managed-property id="__23">
+                <property-name id="__24">initializeParentContextEntries</property-name>
+                <map-entries id="__25">
+                    <map-entry id="__26">
+                        <key id="__27">jhsCurrentGroupName</key>
+                        <value id="__28">DataTeamAgentEndOfDayReview</value>
+                    </map-entry>
+                </map-entries>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__29">
+            <managed-bean-name id="__30">DataTeamAgentEndOfDayReviewTable</managed-bean-name>
+            <managed-bean-class id="__31">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__32">pageFlow</managed-bean-scope>
+            <managed-property id="__33">
+                <property-name id="__34">name</property-name>
+                <value id="__35">DataTeamAgentEndOfDayReviewTable</value>
+            </managed-property>
+            <managed-property id="__36">
+                <property-name id="__37">rangeBindingExpr</property-name>
+                <value id="__38">#{'#{bindings.DataTeamAgentEndOfDayReviewTable}'}</value>
+            </managed-property>
+            <managed-property id="__39">
+                <property-name id="__40">focusItemId</property-name>
+                <value id="__41">DataTeamAgentEndOfDayReviewReturnDate</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__42">
+            <managed-bean-name id="__43">EndOfDayRevDetailsTable</managed-bean-name>
+            <managed-bean-class id="__44">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__45">pageFlow</managed-bean-scope>
+            <managed-property id="__46">
+                <property-name id="__47">name</property-name>
+                <value id="__48">EndOfDayRevDetailsTable</value>
+            </managed-property>
+            <managed-property id="__49">
+                <property-name id="__50">rangeBindingExpr</property-name>
+                <value id="__51">#{'#{bindings.EndOfDayRevDetailsTable}'}</value>
+            </managed-property>
+            <managed-property id="__52">
+                <property-name id="__53">focusItemId</property-name>
+                <value id="__54">EndOfDayRevDetailsStatus</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2 -->
+        <router id="StartDataTeamAgentEndOfDayReview">
+            <case id="__55">
+                <expression id="__56">#{pageFlowScope.rowKeyStrDataTeamAgentEndOfDayReview!=null or
+                                      pageFlowScope.rowKeyValueDataTeamAgentEndOfDayReview!=null or
+                                      pageFlowScope.rowKeyDataTeamAgentEndOfDayReview!=null}</expression>
+                <outcome id="__57">SetCurrentRowDataTeamAgentEndOfDayReview</outcome>
+            </case>
+            <case id="__58">
+                <expression id="__59">#{pageFlowScope.isDeepLink!=null and pageFlowScope.isDeepLink}</expression>
+                <outcome id="__60">deepLinkPage</outcome>
+            </case>
+            <default-outcome id="__61">firstPage</default-outcome>
+        </router>
+        <!-- DEBUG:END:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2 -->
+        <method-call id="SetCurrentRowDataTeamAgentEndOfDayReview">
+            <method id="__62">#{jhsSetCurrentRow.execute}</method>
+            <!-- iterator param -->
+            <parameter>
+                <class id="__63">oracle.adf.model.binding.DCIteratorBinding</class>
+                <value id="__64">#{bindings.DataTeamAgentEndOfDayReviewIterator}</value>
+            </parameter>
+            <!-- rowKeyStr param -->
+            <parameter>
+                <class id="__65">java.lang.String</class>
+                <value id="__66">#{pageFlowScope.rowKeyStrDataTeamAgentEndOfDayReview}</value>
+            </parameter>
+            <!-- rowKeyValue param -->
+            <parameter>
+                <class id="__67">java.lang.Object</class>
+                <value id="__68">#{pageFlowScope.rowKeyValueDataTeamAgentEndOfDayReview}</value>
+            </parameter>
+            <!-- rowKey param -->
+            <parameter>
+                <class id="__69">oracle.jbo.Key</class>
+                <value id="__70">#{pageFlowScope.rowKeyDataTeamAgentEndOfDayReview}</value>
+            </parameter>
+            <!-- altKeyName param -->
+            <parameter>
+                <class id="__71">java.lang.String</class>
+                <value id="__72">#{pageFlowScope.altKeyNameDataTeamAgentEndOfDayReview}</value>
+            </parameter>
+            <outcome id="__73">
+                <fixed-outcome id="__74">deepLinkPage</fixed-outcome>
+            </outcome>
+        </method-call>
+        <!-- DEBUG:END:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2-->
+        <task-flow-return id="CancelDataTeamAgentEndOfDayReviewReturn">
+            <outcome id="__75">
+                <name id="__76">CancelDataTeamAgentEndOfDayReview</name>
+            </outcome>
+        </task-flow-return>
+        <task-flow-return id="DoneDataTeamAgentEndOfDayReviewReturn">
+            <outcome id="__77">
+                <name id="__78">DoneDataTeamAgentEndOfDayReview</name>
+            </outcome>
+        </task-flow-return>
+        <!-- DEBUG:BEGIN:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2 -->
+        <view id="DataTeamAgentEndOfDayReviewTable">
+            <page id="__79">/pages/DataTeamAgentEndOfDayReviewTable.jsff</page>
+        </view>
+        <view id="DataTeamAgentEndOfDayReview">
+            <page id="__80">/pages/DataTeamAgentEndOfDayReview.jsff</page>
+        </view>
+        <!-- DEBUG:END:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2 -->
+        <control-flow-rule id="__81">
+            <from-activity-id id="__82">*</from-activity-id>
+            <control-flow-case id="__83">
+                <from-outcome id="__84">SetCurrentRowDataTeamAgentEndOfDayReview</from-outcome>
+                <to-activity-id id="__85">SetCurrentRowDataTeamAgentEndOfDayReview</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__86">
+                <from-outcome id="__87">firstPage</from-outcome>
+                <to-activity-id id="__88">DataTeamAgentEndOfDayReviewTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__89">
+                <from-outcome id="__90">deepLinkPage</from-outcome>
+                <to-activity-id id="__91">DataTeamAgentEndOfDayReview</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__92">
+                <from-outcome id="__93">DataTeamAgentEndOfDayReviewTableBreadcrumb</from-outcome>
+                <to-activity-id id="__94">DataTeamAgentEndOfDayReviewTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__95">
+                <from-outcome id="__96">DataTeamAgentEndOfDayReviewBreadcrumb</from-outcome>
+                <to-activity-id id="__97">DataTeamAgentEndOfDayReview</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__98">
+                <from-outcome id="__99">Cancel</from-outcome>
+                <to-activity-id id="__100">StartDataTeamAgentEndOfDayReview</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__101">
+                <from-outcome id="__102">CancelDataTeamAgentEndOfDayReviewReturn</from-outcome>
+                <to-activity-id id="__103">CancelDataTeamAgentEndOfDayReviewReturn</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__104">
+                <from-outcome id="__105">DoneDataTeamAgentEndOfDayReviewReturn</from-outcome>
+                <to-activity-id id="__106">DoneDataTeamAgentEndOfDayReviewReturn</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__107">
+            <from-activity-id id="__108">DataTeamAgentEndOfDayReviewTable</from-activity-id>
+            <control-flow-case id="__109">
+                <from-outcome id="__110">DataTeamAgentEndOfDayReviewDetails</from-outcome>
+                <to-activity-id id="__111">DataTeamAgentEndOfDayReview</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <!-- DEBUG:END:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2-->
+        <use-page-fragments/>
+    </task-flow-definition>
+    <!-- This bean must be defined outside the task-flow-definition element
+       because it needs to be available in the pageFlowScope of the unbounded
+       task-flow not in the pageFlowScope of the bounded task flow itself. -->
+    <!-- DEBUG:BEGIN:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2 -->
+    <managed-bean id="__112">
+        <managed-bean-name id="__113">DataTeamAgentEndOfDayReviewTaskFlowConfig</managed-bean-name>
+        <managed-bean-class id="__114">oracle.jheadstart.controller.jsf.bean.TaskFlowConfigBean</managed-bean-class>
+        <managed-bean-scope id="__115">pageFlow</managed-bean-scope>
+        <managed-property id="__116">
+            <property-name id="__117">params</property-name>
+            <property-class id="__118">java.util.Map</property-class>
+            <map-entries id="__119">
+                <map-entry id="__120">
+                    <key id="__121">parentContext</key>
+                    <value id="__122">#{pageFlowScope.parentContext}</value>
+                </map-entry>
+            </map-entries>
+        </managed-property>
+        <managed-property id="__123">
+            <property-name id="__124">name</property-name>
+            <value id="__125">DataTeamAgentEndOfDayReview</value>
+        </managed-property>
+        <managed-property id="__126">
+            <property-name id="__127">taskFlowId</property-name>
+            <value id="__128">/WEB-INF/adfc-config-DataTeamAgentEndOfDayReview.xml#DataTeamAgentEndOfDayReviewTaskFlow</value>
+        </managed-property>
+        <managed-property id="__129">
+            <property-name id="__130">label</property-name>
+            <value id="__131">#{nls['MENU1_TITLE_DATATEAMAGENTENDOFDAYREVIEW']}</value>
+        </managed-property>
+    </managed-bean>
+    <!-- DEBUG:END:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2-->
+</adfc-config>

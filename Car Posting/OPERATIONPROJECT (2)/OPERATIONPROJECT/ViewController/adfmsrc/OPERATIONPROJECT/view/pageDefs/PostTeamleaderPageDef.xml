@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="PostTeamleaderPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="validateCurrentRows">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Name="PostTeamleaderNewItemVar" Type="String"/>
+    </variableIterator>
+    <iterator id="CarPostIterator" Binds="CarReconciliation1" DataControl="AppModuleAMDataControl" RangeSize="10"/>
+    <searchRegion id="CarPostIteratorQuery" Binds="CarPostIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="ReturnDate"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator id="DriverPaymentIterator" Binds="DriverPaymnet1" DataControl="AppModuleAMDataControl" RangeSize="50"/>
+    <searchRegion id="DriverPaymentIteratorQuery" Binds="DriverPaymentIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="Date"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator id="PilotPaymentIterator" Binds="PilotPayment1" DataControl="AppModuleAMDataControl" RangeSize="50"/>
+    <searchRegion id="PilotPaymentIteratorQuery" Binds="PilotPaymentIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="Date"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator Binds="CarIssueVO1" RangeSize="25" DataControl="AppModuleAMDataControl" id="CarIssueVO1Iterator"/>
+    <searchRegion Binds="CarIssueVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="CarIssueVO1Query"/>
+    <iterator Binds="CarIssueViewVO1" RangeSize="25" DataControl="AppModuleAMDataControl" id="CarIssueViewVO1Iterator"/>
+    <iterator Binds="CarIssueDetViewVO1" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="CarIssueDetViewVO1Iterator"/>
+  </executables>
+  <bindings>
+    <tree id="CarPostTable" IterBinding="CarPostIterator">
+      <nodeDefinition Name="CarPost" DefName="OPERATIONPROJECT.model.BC.VO.CarReconciliationVO">
+        <AttrNames>
+          <Item Value="ReturnDate"/>
+          <Item Value="DriverName"/>
+          <Item Value="CoverDate"/>
+          <Item Value="ToCoverDate"/>
+          <Item Value="StatusName"/>
+          <Item Value="DataStatus"/>
+          <Item Value="OperationAgent"/>
+          <Item Value="CoverDate1"/>
+          <Item Value="ToCoverDate1"/>
+          <Item Value="ShipmentDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="CarPostIterator" id="FirstCarPost" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="CarPostIterator" id="PreviousCarPost" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="CarPostIterator" id="NextCarPost" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="CarPostIterator" id="LastCarPost" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="CarPostIterator" id="SetCurrentRowWithKeyCarPost" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrCarPost}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="CarPostIterator" id="CreateCarPost" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="CarPostIterator" id="DeleteCarPost" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <tree id="DriverPaymentTable" IterBinding="DriverPaymentIterator">
+      <nodeDefinition Name="DriverPayment" DefName="OPERATIONPROJECT.model.BC.VO.DriverPaymnetVO">
+        <AttrNames>
+          <Item Value="Date"/>
+          <Item Value="DriverName"/>
+          <Item Value="DueDate"/>
+          <Item Value="PaymentStatus"/>
+          <Item Value="PaymentRefrence"/>
+          <Item Value="PaymentLocation"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="DriverPaymentIterator" id="FirstDriverPayment" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="DriverPaymentIterator" id="PreviousDriverPayment" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="DriverPaymentIterator" id="NextDriverPayment" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="DriverPaymentIterator" id="LastDriverPayment" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="DriverPaymentIterator" id="SetCurrentRowWithKeyDriverPayment" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrDriverPayment}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="DriverPaymentIterator" id="CreateDriverPayment" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="DriverPaymentIterator" id="DeleteDriverPayment" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <tree id="PilotPaymentTable" IterBinding="PilotPaymentIterator">
+      <nodeDefinition Name="PilotPayment" DefName="OPERATIONPROJECT.model.BC.VO.PilotPaymentVO">
+        <AttrNames>
+          <Item Value="Date"/>
+          <Item Value="DriverName"/>
+          <Item Value="DueDate"/>
+          <Item Value="PaymentStatus"/>
+          <Item Value="PaymentRefrence"/>
+          <Item Value="PaymentLocation"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="PilotPaymentIterator" id="FirstPilotPayment" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="PilotPaymentIterator" id="PreviousPilotPayment" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="PilotPaymentIterator" id="NextPilotPayment" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="PilotPaymentIterator" id="LastPilotPayment" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="PilotPaymentIterator" id="SetCurrentRowWithKeyPilotPayment" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrPilotPayment}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="PilotPaymentIterator" id="CreatePilotPayment" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="PilotPaymentIterator" id="DeletePilotPayment" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+    <tree IterBinding="CarIssueVO1Iterator" id="CarIssueVO1">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.CarIssueVO" Name="CarIssueVO10">
+        <AttrNames>
+          <Item Value="AgentdriverName"/>
+          <Item Value="CarNo"/>
+          <Item Value="CaseNotes"/>
+          <Item Value="DriverId"/>
+          <Item Value="Id"/>
+          <Item Value="IssueCardNo"/>
+          <Item Value="PostAgent"/>
+          <Item Value="PostDate"/>
+          <Item Value="ReviewCoaching"/>
+          <Item Value="ReviewTime"/>
+          <Item Value="ShipmentDate"/>
+          <Item Value="ShipmentId"/>
+          <Item Value="TeamleaderReview"/>
+          <Item Value="PostagentSignature"/>
+          <Item Value="TeamSpvsignature"/>
+          <Item Value="DataSpvsignature"/>
+          <Item Value="EmployeeSignature"/>
+          <Item Value="CarWorkDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="CarIssueViewVO1Iterator" id="CarIssueViewVO1">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.CarIssueViewVO" Name="CarIssueViewVO10">
+        <AttrNames>
+          <Item Value="AccManagerDate"/>
+          <Item Value="AccManagerSignature"/>
+          <Item Value="AgentdriverName"/>
+          <Item Value="AmountReturned"/>
+          <Item Value="CarNo"/>
+          <Item Value="CarWorkDate"/>
+          <Item Value="CaseNotes"/>
+          <Item Value="DataSpvsignature"/>
+          <Item Value="DriverId"/>
+          <Item Value="DriverName"/>
+          <Item Value="EmployeeSignature"/>
+          <Item Value="HrDate"/>
+          <Item Value="HrSignature"/>
+          <Item Value="Id"/>
+          <Item Value="IssueCardNo"/>
+          <Item Value="ItReview"/>
+          <Item Value="ItSignature"/>
+          <Item Value="Paid"/>
+          <Item Value="PostAgent"/>
+          <Item Value="PostDate"/>
+          <Item Value="PostagentSignature"/>
+          <Item Value="ReviewCoaching"/>
+          <Item Value="ReviewTime"/>
+          <Item Value="ShipmentDate"/>
+          <Item Value="ShipmentId"/>
+          <Item Value="Status"/>
+          <Item Value="TeamSpvsignature"/>
+          <Item Value="TeamleaderReview"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="CarIssueDetViewVO1Iterator" id="CarIssueDetViewVO1">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.CarIssueDetViewVO" Name="CarIssueDetViewVO10">
+        <AttrNames>
+          <Item Value="CarIssueId"/>
+          <Item Value="Id"/>
+          <Item Value="IssueId"/>
+          <Item Value="IssueName"/>
+          <Item Value="IssueType"/>
+          <Item Value="ShipmentId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="CarIssueViewVO1Iterator" id="CarNo">
+      <AttrNames>
+        <Item Value="CarNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CarIssueViewVO1Iterator" id="PostAgent">
+      <AttrNames>
+        <Item Value="PostAgent"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CarIssueViewVO1Iterator" id="DriverName">
+      <AttrNames>
+        <Item Value="DriverName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CarIssueViewVO1Iterator" id="PostDate">
+      <AttrNames>
+        <Item Value="PostDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CarIssueViewVO1Iterator" id="ReviewTime">
+      <AttrNames>
+        <Item Value="ReviewTime"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CarIssueViewVO1Iterator" id="IssueCardNo">
+      <AttrNames>
+        <Item Value="IssueCardNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CarIssueViewVO1Iterator" id="CaseNotes">
+      <AttrNames>
+        <Item Value="CaseNotes"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CarIssueViewVO1Iterator" id="ReviewCoaching">
+      <AttrNames>
+        <Item Value="ReviewCoaching"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CarIssueViewVO1Iterator" id="AmountReturned">
+      <AttrNames>
+        <Item Value="AmountReturned"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CarIssueViewVO1Iterator" id="DataSpvsignature">
+      <AttrNames>
+        <Item Value="DataSpvsignature"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CarIssueViewVO1Iterator" id="TeamSpvsignature">
+      <AttrNames>
+        <Item Value="TeamSpvsignature"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CarIssueViewVO1Iterator" id="ItReview">
+      <AttrNames>
+        <Item Value="ItReview"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CarIssueViewVO1Iterator" id="ItSignature">
+      <AttrNames>
+        <Item Value="ItSignature"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CarIssueViewVO1Iterator" id="AccManagerSignature">
+      <AttrNames>
+        <Item Value="AccManagerSignature"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CarIssueViewVO1Iterator" id="AccManagerDate">
+      <AttrNames>
+        <Item Value="AccManagerDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CarIssueViewVO1Iterator" id="HrSignature">
+      <AttrNames>
+        <Item Value="HrSignature"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CarIssueViewVO1Iterator" id="HrDate">
+      <AttrNames>
+        <Item Value="HrDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CarIssueViewVO1Iterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

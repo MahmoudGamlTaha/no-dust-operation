@@ -1,0 +1,488 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsRegionTemplate.jsf">
+        <f:attribute name="showBreadcrumbs" value="false"/>
+        <!-- DEBUG:BEGIN:WIZARD_PAGE_CONTENT : default/page/wizardPageContent.vm, nesting level: 2 -->
+        <f:facet name="processTrain">
+            <af:train value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}" id="tr0"/>
+        </f:facet>
+        <!-- DEBUG:BEGIN:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3 -->
+        <f:facet name="pageContent">
+            <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4 -->
+            <af:panelSplitter orientation="vertical" styleClass="AFStretchWidth" id="ps0"
+                              partialTriggers=" AddressDeleteDialog Addressfbb AddressNewButton AddressDelB AddressCancelButton"
+                              splitterPosition="100">
+                <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                <f:facet name="first">
+                    <af:panelGroupLayout layout="scroll" id="AddressTopLc"
+                                         partialTriggers=" AddressDeleteDialog Addressfbb AddressNewButton AddressDelB AddressCancelButton">
+                        <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                        <f:facet name="separator">
+                            <af:spacer width="10" height="10" id="sp0"/>
+                        </f:facet>
+                        <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                        <af:panelHeader id="ph0"
+                                        text="#{pageFlowScope.createModes.CreateAddress ? nls['INSERT_TITLE_ADDRESS'] :  (MTSPermission['Address.update'] ? nls['EDIT_TITLE_ADDRES: #{bindings.AddressCityId.inputValue}'] : nls['VIEW_TITLE_ADDRES: #{bindings.AddressCityId.inputValue}'])  }">
+                            <f:facet name="toolbar">
+                                <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5 -->
+                                <af:toolbox id="tbox0">
+                                    <af:toolbar id="tbar0">
+                                        <!-- DEBUG:BEGIN:FORM_BROWSE_BUTTONS : custom/pageComponent/MtsformBrowseButtons.vm, nesting level: 6 -->
+                                        <af:panelGroupLayout id="Addressfbb" layout="horizontal"
+                                                             rendered="#{ bindings.AddressIterator.currentRow!=null  and bindings.AddressIterator.estimatedRowCount>1 and !pageFlowScope.createModes.CreateAddress and !pageFlowScope.hideFormBrowseButtons}"
+                                                             partialTriggers="AddressFirst AddressPrevious AddressNext AddressLast">
+                                            <af:button actionListener="#{bindings.FirstAddress.execute}"
+                                                       id="AddressFirst" partialSubmit="true"
+                                                       icon="/afr/shuttleleftall_ena.png"
+                                                       shortDesc="#{nls['FIRST_ROW']}"
+                                                       rendered="#{bindings.AddressIterator.rangeStart+bindings.AddressIterator.currentRowIndexInRange+1>1}"></af:button>
+                                            <af:image source="/afr/shuttleleftall_dis.png"
+                                                      rendered="#{!(bindings.AddressIterator.rangeStart+bindings.AddressIterator.currentRowIndexInRange+1>1)}"
+                                                      id="img0"/>
+                                            <af:button actionListener="#{bindings.PreviousAddress.execute}"
+                                                       icon="/afr/shuttleleft_ena.png"
+                                                       shortDesc="#{nls['PREVIOUS_ROW']}" id="AddressPrevious"
+                                                       partialSubmit="true"
+                                                       rendered="#{bindings.AddressIterator.rangeStart+bindings.AddressIterator.currentRowIndexInRange+1>1}"></af:button>
+                                            <af:image source="/afr/shuttleleft_dis.png"
+                                                      rendered="#{!(bindings.AddressIterator.rangeStart+bindings.AddressIterator.currentRowIndexInRange+1>1)}"
+                                                      id="img1"/>
+                                            <af:spacer width="4" height="1" id="sp1"/>
+                                            <af:outputFormatted styleUsage="instruction"
+                                                                inlineStyle="white-space:nowrap; vertical-align:bottom;"
+                                                                value=" [#{bindings.AddressIterator.rangeStart+bindings.AddressIterator.currentRowIndexInRange+1} / #{bindings.AddressIterator.estimatedRowCount}] "
+                                                                id="of0"/>
+                                            <af:button actionListener="#{bindings.NextAddress.execute}"
+                                                       icon="/afr/shuttleright_ena.png" shortDesc="#{nls['NEXT_ROW']}"
+                                                       id="AddressNext" partialSubmit="true"
+                                                       rendered="#{bindings.AddressIterator.rangeStart+bindings.AddressIterator.currentRowIndexInRange+1 lt bindings.AddressIterator.estimatedRowCount}"></af:button>
+                                            <af:image source="/afr/shuttleright_dis.png"
+                                                      rendered="#{!(bindings.AddressIterator.rangeStart+bindings.AddressIterator.currentRowIndexInRange+1 lt bindings.AddressIterator.estimatedRowCount)}"
+                                                      id="img2"/>
+                                            <af:button actionListener="#{bindings.LastAddress.execute}"
+                                                       icon="/afr/shuttlerightall_ena.png"
+                                                       shortDesc="#{nls['LAST_ROW']}" id="AddressLast"
+                                                       partialSubmit="true"
+                                                       rendered="#{bindings.AddressIterator.rangeStart+bindings.AddressIterator.currentRowIndexInRange+1 lt bindings.AddressIterator.estimatedRowCount}"></af:button>
+                                            <af:image source="/afr/shuttlerightall_dis.png"
+                                                      rendered="#{!(bindings.AddressIterator.rangeStart+bindings.AddressIterator.currentRowIndexInRange+1 lt bindings.AddressIterator.estimatedRowCount)}"
+                                                      id="img3"/>
+                                        </af:panelGroupLayout>
+                                        <!-- DEBUG:END:FORM_BROWSE_BUTTONS : custom/pageComponent/MtsformBrowseButtons.vm, nesting level: 6-->
+                                        <af:group id="gr0">
+                                            <!-- DEBUG:BEGIN:NEW_BUTTON : custom/button/MtsnewButton.vm, nesting level: 6 -->
+                                            <af:button actionListener="#{CreateAddress.execute}" action="CreateAddress"
+                                                       icon="/jheadstart/images/newRowInForm.png" partialSubmit="true"
+                                                       shortDesc="#{nls['NEW_BUTTON_LABEL_ADDRESS']}"
+                                                       rendered="#{!pageFlowScope.createModes.CreateAddress and (true) and (MTSPermission['Address.create'])}"
+                                                       id="AddressNewButton"></af:button>
+                                            <!-- DEBUG:END:NEW_BUTTON : custom/button/MtsnewButton.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:DELETE_BUTTON : default/button/deleteButton.vm, nesting level: 6 -->
+                                            <af:button action="DeleteAddress" partialSubmit="true"
+                                                       icon="/jheadstart/images/deleteRow.png"
+                                                       shortDesc="#{nls['DELETE_BUTTON_LABEL_ADDRESS']}"
+                                                       rendered="#{!pageFlowScope.createModes.CreateAddress and  bindings.AddressIterator.currentRow!=null   and (MTSPermission['Address.delete'])}"
+                                                       immediate="true" id="AddressDelB">
+                                                <af:showPopupBehavior popupId="AddressDeletePopup"/>
+                                            </af:button>
+                                            <!-- DEBUG:END:DELETE_BUTTON : default/button/deleteButton.vm, nesting level: 6-->
+                                        </af:group>
+                                        <af:group id="gr1"></af:group>
+                                        <af:group id="gr2">
+                                            <af:trainButtonBar value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"/>
+                                            <!-- DEBUG:BEGIN:WIZARD_FINISH_BUTTON : default/button/wizardFinishButton.vm, nesting level: 6 -->
+                                            <af:button action="#{SaveAddress.execute}"
+                                                       textAndAccessKey="#{nls['FINISH']}"
+                                                       id="AddressWizardFinishButton"></af:button>
+                                            <!-- DEBUG:END:WIZARD_FINISH_BUTTON : default/button/wizardFinishButton.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6 -->
+                                            <af:button textAndAccessKey="#{nls['CANCEL']}" immediate="true"
+                                                       partialSubmit="true"
+                                                       rendered="#{!pageFlowScope.hideCancelButton}"
+                                                       actionListener="#{jhsRollback.execute}" action="Cancel"
+                                                       id="AddressCancelButton"></af:button>
+                                            <!-- DEBUG:END:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6-->
+                                        </af:group>
+                                    </af:toolbar>
+                                </af:toolbox>
+                                <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5-->
+                            </f:facet>
+                            <f:facet name="context">
+                                <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5 -->
+                                <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5-->
+                            </f:facet>
+                            <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+                            <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+                            <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+                            <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+                        </af:panelHeader>
+                        <!-- DEBUG:BEGIN:FORM_GROUP : custom/pageComponent/MtsformGroup.vm, nesting level: 5 -->
+                        <af:switcher rendered="#{bindings.AddressIterator.findMode!='true'}" id="AddressSw"
+                                     defaultFacet="hasRows"
+                                     facetName="#{( bindings.AddressIterator.currentRow!=null ) ? 'hasRows' : 'noRows'}">
+                            <f:facet name="noRows">
+                                <af:outputFormatted value="#{nls['NO_ROWS_FOUND']}" styleUsage="pageStamp"
+                                                    id="AddressNoRowsFound"/>
+                            </f:facet>
+                            <f:facet name="hasRows">
+                                <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm), disabled (custom/pageComponent/MtsformGroup.vm) -->
+                                <af:panelGroupLayout id="AddressFC" layout="vertical">
+                                    <f:facet name="separator">
+                                        <af:spacer width="10" height="10" id="sp2"/>
+                                    </f:facet>
+                                    <af:panelFormLayout rows="1" labelAlignment="start" maxColumns="1" id="AddressFI">
+                                        <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                        <af:inputText id="AddressCityName"
+                                                      value="#{bindings.AddressCityName.inputValue}"
+                                                      label="#{nls['ADDRESS_CITYNAME']}"
+                                                      required="#{bindings.AddressCityName.hints.mandatory}"
+                                                      rows="#{bindings.AddressCityName.hints.displayHeight}"
+                                                      columns="#{bindings.AddressCityName.hints.displayWidth}"
+                                                      maximumLength="4000"
+                                                      readOnly="#{((pageFlowScope.createModes.CreateAddress) and (!(MTSPermission['Address.create']))) or ((!pageFlowScope.createModes.CreateAddress) and (!(MTSPermission['Address.update'])))}"
+                                                      shortDesc="#{bindings.AddressCityName.hints.tooltip}">
+                                            <f:validator binding="#{bindings.AddressCityName.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                                    </af:panelFormLayout>
+                                    <!-- DEBUG:BEGIN:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 6 -->
+                                    <!-- DEBUG:END:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 6-->
+                                </af:panelGroupLayout>
+                                <!-- Popped "disabled" from stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                            </f:facet>
+                        </af:switcher>
+                        <!-- DEBUG:END:FORM_GROUP : custom/pageComponent/MtsformGroup.vm, nesting level: 5-->
+                        <!-- Popped "disabled" from stretchContext, now: enabled (default) -->
+                    </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="second">
+                    <!-- DEBUG:BEGIN:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 5 -->
+                    <af:panelTabbed position="above" childCreation="lazy" id="pst0" dimensionsFrom="auto">
+                        <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 6 -->
+                        <af:showDetailItem stretchChildren="first" text="#{nls['TABLE_TITLE_REGION']}"
+                                           partialTriggers=" AddressTopLc RegionDeleteDialog as_Region RegionPC:RegionArm RegionPC:RegionduprmTM RegionPC:RegiondelrmTM RegionPC:RegionArl RegionPC:RegionTab:Regionduprm RegionPC:RegionTab:Regiondelrm RegionPC:RegionTab:Regiondelrl RegionPC:RegionTab:Regionduprl"
+                                           id="RegionTopLcSdi">
+                            <af:panelStretchLayout topHeight="auto" id="RegionTopLc"
+                                                   partialTriggers=" AddressTopLc RegionDeleteDialog as_Region RegionPC:RegionArm RegionPC:RegionduprmTM RegionPC:RegiondelrmTM RegionPC:RegionArl RegionPC:RegionTab:Regionduprm RegionPC:RegionTab:Regiondelrm RegionPC:RegionTab:Regiondelrl RegionPC:RegionTab:Regionduprl">
+                                <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 7 -->
+                                <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 7-->
+                                <f:facet name="top">
+                                    <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                                    <af:group id="g1">
+                                        <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 7 -->
+                                        <!-- DEBUG:BEGIN:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 8 -->
+                                        <af:panelGroupLayout id="modelSearchAreaRegion"
+                                                             rendered="#{!pageFlowScope.createModes.CreateRegion and !pageFlowScope.hideSearchArea}"
+                                                             partialTriggers="">
+                                            <f:attribute name="JhsIgnoreChanges" value="true"/>
+                                            <!-- DEBUG:BEGIN:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 9 -->
+                                            <af:query id="as_Region" headerText="#{nls['ADVANCED_SEARCH']}"
+                                                      disclosed="true"
+                                                      value="#{bindings.RegionIteratorQuery.queryDescriptor}"
+                                                      model="#{bindings.RegionIteratorQuery.queryModel}"
+                                                      queryListener="#{bindings.RegionIteratorQuery.processQuery}"
+                                                      queryOperationListener="#{bindings.RegionIteratorQuery.processQueryOperation}"
+                                                      rows="1" labelAlignment="start" maxColumns="1"></af:query>
+                                            <!-- DEBUG:END:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 9-->
+                                        </af:panelGroupLayout>
+                                        <!-- DEBUG:END:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 8-->
+                                        <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 7-->
+                                        <af:spacer width="10" height="10" id="sp3"/>
+                                    </af:group>
+                                    <!-- Popped "disabled" from stretchContext, now: enabled (default) -->
+                                </f:facet>
+                                <f:facet name="center">
+                                    <!-- DEBUG:BEGIN:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 7 -->
+                                    <af:panelStretchLayout topHeight="0" id="psl0">
+                                        <f:facet name="top"></f:facet>
+                                        <f:facet name="center">
+                                            <!-- Pushed "enabled" on stretchContext, now: enabled (default), enabled (custom/pageComponent/MtstableGroup.vm) -->
+                                            <af:panelSplitter orientation="vertical" styleClass="AFStretchWidth"
+                                                              id="ps1" splitterPosition="540">
+                                                <f:facet name="first">
+                                                    <af:panelCollection id="RegionPC" featuresOff="  "
+                                                                        styleClass="AFStretchWidth">
+                                                        <f:facet name="menus">
+                                                            <!-- DEBUG:BEGIN:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 8 -->
+                                                            <af:menu textAndAccessKey="#{nls['ACTION_MENU_LABEL']}"
+                                                                     id="menu0">
+                                                                <af:menu textAndAccessKey="#{nls['GO_TO_MENU_LABEL']}"
+                                                                         id="menu1">
+                                                                    <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9 -->
+                                                                    <af:commandMenuItem id="mi0"
+                                                                                        textAndAccessKey="#{nls['DETAIL_VIEW_BUTTON_LABEL']}"
+                                                                                        action="RegionDetails"></af:commandMenuItem>
+                                                                    <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9-->
+                                                                    <!-- DEBUG:BEGIN:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 9 -->
+                                                                    <af:group id="Regiontbb"
+                                                                              rendered="#{ bindings.RegionIterator.currentRow!=null }">
+                                                                        <af:commandMenuItem actionListener="#{bindings.FirstRegion.execute}"
+                                                                                            id="RegionFirst"
+                                                                                            partialSubmit="true"
+                                                                                            icon="/afr/shuttleleftall_ena.png"
+                                                                                            textAndAccessKey="#{nls['FIRST_ROW']}"></af:commandMenuItem>
+                                                                        <af:commandMenuItem actionListener="#{bindings.PreviousRegion.execute}"
+                                                                                            icon="/afr/shuttleleft_ena.png"
+                                                                                            textAndAccessKey="#{nls['PREVIOUS_ROW']}"
+                                                                                            id="RegionPrevious"
+                                                                                            partialSubmit="true"></af:commandMenuItem>
+                                                                        <af:commandMenuItem actionListener="#{bindings.NextRegion.execute}"
+                                                                                            icon="/afr/shuttleright_ena.png"
+                                                                                            textAndAccessKey="#{nls['NEXT_ROW']}"
+                                                                                            id="RegionNext"
+                                                                                            partialSubmit="true"></af:commandMenuItem>
+                                                                        <af:commandMenuItem actionListener="#{bindings.LastRegion.execute}"
+                                                                                            icon="/afr/shuttlerightall_ena.png"
+                                                                                            textAndAccessKey="#{nls['LAST_ROW']}"
+                                                                                            id="RegionLast"
+                                                                                            partialSubmit="true"></af:commandMenuItem>
+                                                                    </af:group>
+                                                                    <!-- DEBUG:END:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 9-->
+                                                                </af:menu>
+                                                                <!-- DEBUG:BEGIN:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 9 -->
+                                                                <af:commandMenuItem id="RegionArm"
+                                                                                    textAndAccessKey="#{nls['ADD_ROW']}"
+                                                                                    immediate="false"
+                                                                                    icon="/jheadstart/images/addRow.png"
+                                                                                    partialSubmit="true"
+                                                                                    actionListener="#{pageFlowScope.RegionTable.addRow}"
+                                                                                    rendered="#{ bindings.AddressIterator.currentRow!=null  and (MTSPermission['Address.create'])}"></af:commandMenuItem>
+                                                                <!-- DEBUG:END:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 9-->
+                                                                <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9 -->
+                                                                <af:commandMenuItem id="RegionduprmTM"
+                                                                                    textAndAccessKey="#{nls['DUPLICATE_ROW']}"
+                                                                                    immediate="true"
+                                                                                    icon="/jheadstart/images/duplicateRow.png"
+                                                                                    partialSubmit="true"
+                                                                                    actionListener="#{pageFlowScope.RegionTable.duplicateRow}"
+                                                                                    rendered="#{MTSPermission['Address.create']}"></af:commandMenuItem>
+                                                                <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9-->
+                                                                <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9 -->
+                                                                <af:commandMenuItem id="RegiondelrmTM"
+                                                                                    textAndAccessKey="#{nls['DELETE_ROW']}"
+                                                                                    icon="/jheadstart/images/deleteRow.png"
+                                                                                    partialSubmit="true"
+                                                                                    immediate="true"
+                                                                                    rendered="#{MTSPermission['Address.delete']}">
+                                                                    <af:showPopupBehavior popupId="::RegionDeletePopup"/>
+                                                                </af:commandMenuItem>
+                                                                <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9-->
+                                                                <!-- DEBUG:BEGIN:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 9 -->
+                                                                <!-- DEBUG:END:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 9-->
+                                                            </af:menu>
+                                                            <!-- DEBUG:END:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 8-->
+                                                        </f:facet>
+                                                        <f:facet name="toolbar">
+                                                            <!-- DEBUG:BEGIN:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 8 -->
+                                                            <af:toolbar id="tbar1">
+                                                                <!-- DEBUG:BEGIN:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 9 -->
+                                                                <!-- Also create CreateRegion bean so we can start table group in create mode as well -->
+                                                                <af:link id="RegionArl" immediate="false"
+                                                                         rendered="#{ bindings.AddressIterator.currentRow!=null  and (MTSPermission['Address.create'])}"
+                                                                         partialSubmit="true"
+                                                                         actionListener="#{pageFlowScope.RegionTable.addRow}"
+                                                                         shortDesc="#{nls['ADD_ROW']}"
+                                                                         icon="/jheadstart/images/addRow.png"/>
+                                                                <!-- DEBUG:END:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 9-->
+                                                                <!-- DEBUG:BEGIN:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 9 -->
+                                                                <!-- DEBUG:END:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 9-->
+                                                            </af:toolbar>
+                                                            <!-- DEBUG:END:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 8-->
+                                                        </f:facet>
+                                                        <f:facet name="statusbar"/>
+                                                        <af:table id="RegionTab" contentDelivery="immediate"
+                                                                  value="#{bindings.RegionTable.collectionModel}"
+                                                                  columnStretching="last" rowBandingInterval="0"
+                                                                  editingMode="editAll" columnSelection="multiple"
+                                                                  contextMenuSelect="true" rowSelection="single"
+                                                                  selectionListener="#{pageFlowScope.RegionTable.makeCurrent}"
+                                                                  selectedRowKeys="#{pageFlowScope.RegionTable.selectedRow}"
+                                                                  rowDisclosureListener="#{pageFlowScope.RegionTable.discloseRow}"
+                                                                  var="row" varStatus="status"
+                                                                  fetchSize="#{bindings.RegionTable.rangeSize}"
+                                                                  emptyText="#{nls['NO_ROWS_FOUND']}"
+                                                                  queryListener="#{bindings.RegionIteratorQuery.processQuery}"
+                                                                  filterModel="#{bindings.RegionIteratorQuery.queryDescriptor}"
+                                                                  filterVisible="true"
+                                                                  binding="#{pageFlowScope.RegionTable.table}"
+                                                                  partialTriggers=" :::as_Region :::RegionPC ::RegionFirst ::RegionPrevious ::RegionNext ::RegionLast"
+                                                                  styleClass="AFStretchWidth"
+                                                                  summary="#{nls['TABLE_TITLE_REGION']}">
+                                                            <!-- DEBUG:BEGIN:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 8 -->
+                                                            <f:facet name="contextMenu">
+                                                                <af:popup id="RegionTablePopup"
+                                                                          childCreation="deferred">
+                                                                    <af:menu id="menu2">
+                                                                        <af:menu text="#{nls['GO_TO_MENU_LABEL']}"
+                                                                                 id="menu3">
+                                                                            <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9 -->
+                                                                            <af:commandMenuItem id="mi1"
+                                                                                                textAndAccessKey="#{nls['DETAIL_VIEW_BUTTON_LABEL']}"
+                                                                                                action="RegionDetails"></af:commandMenuItem>
+                                                                            <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9-->
+                                                                        </af:menu>
+                                                                        <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9 -->
+                                                                        <af:commandMenuItem id="Regionduprm"
+                                                                                            textAndAccessKey="#{nls['DUPLICATE_ROW']}"
+                                                                                            immediate="true"
+                                                                                            icon="/jheadstart/images/duplicateRow.png"
+                                                                                            partialSubmit="true"
+                                                                                            actionListener="#{pageFlowScope.RegionTable.duplicateRow}"
+                                                                                            rendered="#{MTSPermission['Address.create']}"></af:commandMenuItem>
+                                                                        <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9-->
+                                                                        <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9 -->
+                                                                        <af:commandMenuItem id="Regiondelrm"
+                                                                                            textAndAccessKey="#{nls['DELETE_ROW']}"
+                                                                                            icon="/jheadstart/images/deleteRow.png"
+                                                                                            partialSubmit="true"
+                                                                                            immediate="true"
+                                                                                            rendered="#{MTSPermission['Address.delete']}">
+                                                                            <af:showPopupBehavior popupId=":::RegionDeletePopup"/>
+                                                                        </af:commandMenuItem>
+                                                                        <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9-->
+                                                                    </af:menu>
+                                                                </af:popup>
+                                                            </f:facet><!-- DEBUG:END:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 8--><!-- DEBUG:BEGIN:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 8 --><!-- DEBUG:END:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 8--><!-- DEBUG:BEGIN:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 8 -->
+                                                            <af:column id="RegionActionColumn" width="60" align="center"
+                                                                       headerText=" ">
+                                                                <af:panelGroupLayout layout="horizontal" id="pgl0">
+                                                                    <!-- DEBUG:BEGIN:DETAILS_LINK : default/button/detailsLink.vm, nesting level: 9 -->
+                                                                    <af:link action="RegionDetails" id="RegionGtd"
+                                                                             shortDesc="#{nls['DETAIL_VIEW_BUTTON_LABEL']}"
+                                                                             icon="/jheadstart/images/editRow.png"/>
+                                                                    <!-- DEBUG:END:DETAILS_LINK : default/button/detailsLink.vm, nesting level: 9-->
+                                                                    <!-- DEBUG:BEGIN:DELETE_ROW_LINK : default/button/deleteRowLink.vm, nesting level: 9 -->
+                                                                    <af:link id="Regiondelrl" partialSubmit="true"
+                                                                             immediate="true"
+                                                                             rendered="#{MTSPermission['Address.delete']}"
+                                                                             shortDesc="#{nls['DELETE_ROW']}"
+                                                                             icon="/jheadstart/images/deleteRow.png">
+                                                                        <af:showPopupBehavior popupId=":::RegionDeletePopup"/>
+                                                                    </af:link>
+                                                                    <!-- DEBUG:END:DELETE_ROW_LINK : default/button/deleteRowLink.vm, nesting level: 9-->
+                                                                    <!-- DEBUG:BEGIN:DUPLICATE_ROW_LINK : default/button/duplicateRowLink.vm, nesting level: 9 -->
+                                                                    <af:link id="Regionduprl" immediate="true"
+                                                                             partialSubmit="true"
+                                                                             actionListener="#{pageFlowScope.RegionTable.duplicateRow}"
+                                                                             rendered="#{MTSPermission['Address.create']}"
+                                                                             shortDesc="#{nls['DUPLICATE_ROW']}"
+                                                                             icon="/jheadstart/images/duplicateRow.png"/>
+                                                                    <!-- DEBUG:END:DUPLICATE_ROW_LINK : default/button/duplicateRowLink.vm, nesting level: 9-->
+                                                                </af:panelGroupLayout>
+                                                            </af:column>
+                                                            <!-- DEBUG:END:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 8-->
+                                                            <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                                            <af:column id="RegionRegionNameCol" sortable="true"
+                                                                       filterable="true" noWrap="true" width="300"
+                                                                       sortProperty="RegionName" rowHeader="false">
+                                                                <f:facet name="header">
+                                                                    <af:outputLabel value="#{bindings.RegionTable.hints.RegionName.label}"
+                                                                                    showRequired="#{bindings.RegionTable.hints.RegionName.mandatory}"
+                                                                                    id="ol0"/>
+                                                                </f:facet>
+                                                                <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                                <af:inputText id="RegionRegionName"
+                                                                              value="#{row.bindings.RegionName.inputValue}"
+                                                                              label="#{bindings.RegionTable.hints.RegionName.label}"
+                                                                              required="#{bindings.RegionTable.hints.RegionName.mandatory}"
+                                                                              rows="#{bindings.RegionTable.hints.RegionName.displayHeight}"
+                                                                              columns="#{bindings.RegionTable.hints.RegionName.displayWidth}"
+                                                                              maximumLength="4000"
+                                                                              readOnly="#{((pageFlowScope.RegionTable.newRow) and (!(MTSPermission['Address.create']))) or ((!pageFlowScope.RegionTable.newRow) and (!(MTSPermission['Address.update'])))}"
+                                                                              shortDesc="#{bindings.RegionTable.hints.RegionName.tooltip}">
+                                                                    <f:validator binding="#{row.bindings.RegionName.validator}"/>
+                                                                </af:inputText>
+                                                                <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                                <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                                <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                                            </af:column>
+                                                            <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                                        </af:table>
+                                                    </af:panelCollection>
+                                                </f:facet>
+                                                <f:facet name="second">
+                                                    <!-- DEBUG:BEGIN:TABLE_OVERFLOW_AREA : default/pageComponent/tableOverflowArea.vm, nesting level: 8 -->
+                                                    <!-- Pushed "disabled" on stretchContext, now: enabled (default), enabled (custom/pageComponent/MtstableGroup.vm), disabled (default/pageComponent/tableOverflowArea.vm) -->
+                                                    <af:panelGroupLayout id="pgl1"
+                                                                         rendered="#{bindings.RegionIterator.estimatedRowCount>0}"
+                                                                         partialTriggers="RegionPC:RegionTab"
+                                                                         layout="scroll">
+                                                        <f:facet name="separator">
+                                                            <af:spacer width="10" height="10" id="sp4"/>
+                                                        </f:facet>
+                                                        <af:panelFormLayout rows="1" maxColumns="1"
+                                                                            labelAlignment="start" id="pfl0"></af:panelFormLayout>
+                                                        <!-- DEBUG:BEGIN:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 9-->
+                                                    </af:panelGroupLayout>
+                                                    <!-- Popped "disabled" from stretchContext, now: enabled (default), enabled (custom/pageComponent/MtstableGroup.vm) -->
+                                                    <!-- DEBUG:END:TABLE_OVERFLOW_AREA : default/pageComponent/tableOverflowArea.vm, nesting level: 8-->
+                                                </f:facet>
+                                            </af:panelSplitter>
+                                            <!-- Popped "enabled" from stretchContext, now: enabled (default) -->
+                                        </f:facet>
+                                    </af:panelStretchLayout>
+                                    <!-- DEBUG:END:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 7-->
+                                </f:facet>
+                            </af:panelStretchLayout>
+                        </af:showDetailItem>
+                        <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 6-->
+                    </af:panelTabbed>
+                    <!-- DEBUG:END:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 5-->
+                </f:facet>
+            </af:panelSplitter>
+            <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4-->
+        </f:facet>
+        <f:facet name="popups">
+            <af:panelGroupLayout id="popupsPgl">
+                <!-- DEBUG:BEGIN:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 7 -->
+                <af:popup id="AddressDeletePopup" contentDelivery="lazyUncached" childCreation="deferred">
+                    <af:dialog type="none" title="#{nls['WARNING']}" modal="true" id="AddressDeleteDialog">
+                        <af:outputText value="#{nls['DELETE_WARNING_ADDRES:#{bindings.AddressIterator.currentRowIndexInRange+1}']} "
+                                       id="ot0"/>
+                        <f:attribute name="methodExpression" value="#{'#{DeleteAddress.execute}'}"/>
+                        <f:facet name="buttonBar">
+                            <af:group id="g0">
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_YES']}" id="cb0" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.confirm}"/>
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_NO']}" id="cb1" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.abort}"/>
+                            </af:group>
+                        </f:facet>
+                    </af:dialog>
+                </af:popup>
+                <!-- DEBUG:END:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 7-->
+                <!-- DEBUG:BEGIN:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 10 -->
+                <af:popup id="RegionDeletePopup" contentDelivery="lazyUncached" childCreation="deferred">
+                    <af:dialog type="none" title="#{nls['WARNING']}" modal="true" id="RegionDeleteDialog">
+                        <af:outputText value="#{nls['DELETE_WARNING_REGIO:#{bindings.RegionIterator.currentRowIndexInRange+1}']} "
+                                       id="ot1"/>
+                        <f:attribute name="methodExpression" value="#{'#{DeleteRegion.execute}'}"/>
+                        <f:facet name="buttonBar">
+                            <af:group id="g2">
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_YES']}" id="cb2" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.confirm}"/>
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_NO']}" id="cb3" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.abort}"/>
+                            </af:group>
+                        </f:facet>
+                    </af:dialog>
+                </af:popup>
+                <!-- DEBUG:END:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 10-->
+            </af:panelGroupLayout>
+        </f:facet>
+        <!-- DEBUG:END:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3-->
+        <!-- DEBUG:END:WIZARD_PAGE_CONTENT : default/page/wizardPageContent.vm, nesting level: 2-->
+    </af:pageTemplate>
+</ui:composition>
+
+
+

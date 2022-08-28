@@ -1,0 +1,1353 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="WeekDaysVOPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="validateCurrentRows">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Name="WeekDaysVORowKeyVar" Type="java.lang.String"
+                DefaultValue="#{bindings.WeekDaysVOIterator.currentRowKeyString}"/>
+    </variableIterator>
+    <invokeAction id="clearDeepLinkViewCriteriaInvoke" Binds="clearDeepLinkViewCriteria" Refresh="renderModel"
+                  RefreshCondition="#{'true' != pageFlowScope.jhsQueryByKeyValue}"/>
+    <iterator id="WeekDaysVOIterator" Binds="WeekDaysVO" DataControl="AppModuleAMDataControl" RangeSize="10" />
+    <iterator id="TeamleaderDashboardVOIterator" Binds="TeamleaderDashboardVO" DataControl="AppModuleAMDataControl"
+              RangeSize="10"/>
+    <searchRegion id="TeamleaderDashboardVOIteratorQuery" Binds="TeamleaderDashboardVOIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true"
+                  DefaultQuickSearchAttrName="AreaName"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator id="AreaSmsVOIterator" Binds="AreaSmsVO" DataControl="AppModuleAMDataControl" RangeSize="10"/>
+    <searchRegion id="AreaSmsVOIteratorQuery" Binds="AreaSmsVOIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="AreaName"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator id="OperationWorkVOIterator" Binds="OperationWorkVO" DataControl="AppModuleAMDataControl" RangeSize="10"/>
+    <searchRegion id="OperationWorkVOIteratorQuery" Binds="OperationWorkVOIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="Agent"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator id="SchedulingTableIncludeVOIterator" Binds="SchedulingTableIncludeVO"
+              DataControl="AppModuleAMDataControl" RangeSize="10"/>
+    <searchRegion id="SchedulingTableIncludeVOIteratorQuery" Binds="SchedulingTableIncludeVOIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true" DefaultQuickSearchAttrName="Agent"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator id="SchedulingTableExcludeVOIterator" Binds="SchedulingTableExcludeVO"
+              DataControl="AppModuleAMDataControl" RangeSize="10"/>
+    <searchRegion id="SchedulingTableExcludeVOIteratorQuery" Binds="SchedulingTableExcludeVOIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true" DefaultQuickSearchAttrName="Agent"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <searchRegion Criteria="OperationWorkVOCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="OperationWorkVOIterator" id="OperationWorkVOCriteriaQuery"/>
+    <iterator Binds="SchedulingSummaryVO2" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="SchedulingSummaryVO2Iterator"/>
+    <iterator Binds="CityROV1" RangeSize="-1" DataControl="AppModuleAMDataControl" id="CityROV1Iterator"/>
+    <iterator Binds="RegionROV1" RangeSize="-1" DataControl="AppModuleAMDataControl" id="RegionROV1Iterator"/>
+    <iterator Binds="AreaContractInformationVO" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="AreaContractInformationVOIterator"/>
+    <iterator Binds="AreaContractInformationVO1" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="AreaContractInformationVO1Iterator"/>
+    <iterator Binds="TeamLeaderAgentSummaryVO1" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="TeamLeaderAgentSummaryVO1Iterator"/>
+    <iterator Binds="TeamLeaderPriorityVO1" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="TeamLeaderPriorityVO1Iterator"/>
+    <iterator Binds="TeamLeaderNeedCallVO1" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="TeamLeaderNeedCallVO1Iterator"/>
+    <iterator Binds="TeamLeaderDaySummaryVO2" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="TeamLeaderDaySummaryVO2Iterator"/>
+    <iterator Binds="AreaContractInformationVO2" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="AreaContractInformationVO2Iterator"/>
+    <iterator Binds="RegionROV2" RangeSize="25" DataControl="AppModuleAMDataControl" id="RegionROV2Iterator"/>
+    <iterator Binds="BulkSMSAddressVO1" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="BulkSMSAddressVO1Iterator"/>
+    <searchRegion Criteria="__ImplicitViewCriteria__" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="BulkSMSAddressVO1Iterator" id="ImplicitViewCriteriaQuery1"/>
+    <searchRegion Criteria="__ImplicitViewCriteria__" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="BulkSMSAddressVO1Iterator" id="ImplicitViewCriteriaQuery2"/>
+    <searchRegion Criteria="BulkSMSAddressVOCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="BulkSMSAddressVO1Iterator" id="BulkSMSAddressVOCriteriaQuery"/>
+    <iterator Binds="TeamLeaderTotalsVO1" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="TeamLeaderTotalsVO1Iterator"/>
+    <searchRegion Binds="TeamLeaderTotalsVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="TeamLeaderTotalsVO1Query"/>
+    <iterator Binds="ContractDataVO1" RangeSize="25" DataControl="AppModuleAMDataControl" id="ContractDataVO1Iterator"/>
+    <iterator Binds="WeekDaysAgentVO" RangeSize="10" DataControl="AppModuleAMDataControl" id="WeekDaysAgentVOIterator"/>
+    <iterator Binds="SelectedDayVO1" RangeSize="10" DataControl="AppModuleAMDataControl" id="SelectedDayVO1Iterator"/>
+    <iterator Binds="SMSTempVO1" RangeSize="25" DataControl="AppModuleAMDataControl" id="SMSTempVO1Iterator"/>
+    <iterator Binds="AdhocContractsVO1" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="AdhocContractsVO1Iterator"/>
+    <searchRegion Criteria="AdhocContractsVOCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="AdhocContractsVO1Iterator" id="AdhocContractsVOCriteriaQuery"/>
+    <iterator Binds="AreaContractVO2" RangeSize="10" DataControl="AppModuleAMDataControl" id="AreaContractVO2Iterator"/>
+    <iterator Binds="ContractDataVO2" RangeSize="25" DataControl="AppModuleAMDataControl" id="ContractDataVO2Iterator"/>
+    <iterator Binds="AssignmentVO3" RangeSize="25" DataControl="AppModuleAMDataControl" id="AssignmentVO3Iterator"/>
+    <searchRegion Binds="AssignmentVO3Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="AssignmentVO3Query"/>
+    <iterator Binds="ProductContractDeliveryDetVO2" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="ProductContractDeliveryDetVO2Iterator"/>
+    <searchRegion Binds="ProductContractDeliveryDetVO2Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ProductContractDeliveryDetVO2Query"/>
+    <iterator Binds="CollectionDetailsVO2" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="CollectionDetailsVO2Iterator"/>
+    <searchRegion Binds="CollectionDetailsVO2Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="CollectionDetailsVO2Query"/>
+    <iterator Binds="ContractResultVO3" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="ContractResultVO3Iterator"/>
+    <searchRegion Binds="ContractResultVO3Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="ContractResultVO3Query"/>
+    <iterator Binds="MobileAuditVO1" RangeSize="25" DataControl="AppModuleAMDataControl" id="MobileAuditVO1Iterator"/>
+    <searchRegion Binds="MobileAuditVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="MobileAuditVO1Query"/>
+    <iterator Binds="OpenTicketVO2" RangeSize="25" DataControl="AppModuleAMDataControl" id="OpenTicketVO2Iterator"/>
+    <searchRegion Binds="OpenTicketVO2Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="OpenTicketVO2Query"/>
+    <iterator Binds="ArchiveDeliveryVO3" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="ArchiveDeliveryVO3Iterator"/>
+    <searchRegion Binds="ArchiveDeliveryVO3Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="ArchiveDeliveryVO3Query"/>
+    <iterator Binds="ArchiveDeliveryDetVO2" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="ArchiveDeliveryDetVO2Iterator"/>
+    <searchRegion Binds="ArchiveDeliveryDetVO2Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="ArchiveDeliveryDetVO2Query"/>
+    <iterator Binds="ArchiveCollectionVO2" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="ArchiveCollectionVO2Iterator"/>
+    <searchRegion Binds="ArchiveCollectionVO2Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="ArchiveCollectionVO2Query"/>
+    <iterator Binds="ArchiveContractResVO2" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="ArchiveContractResVO2Iterator"/>
+    <searchRegion Binds="ArchiveContractResVO2Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="ArchiveContractResVO2Query"/>
+    <iterator Binds="ArchiveMobileAuditVO4" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="ArchiveMobileAuditVO4Iterator"/>
+    <searchRegion Binds="ArchiveMobileAuditVO4Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="ArchiveMobileAuditVO4Query"/>
+    <iterator Binds="ContractDeliveryScheduleVO3" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="ContractDeliveryScheduleVO3Iterator"/>
+    <iterator Binds="ProductContractVO1" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="ProductContractVO1Iterator"/>
+    <searchRegion Binds="ProductContractVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="ProductContractVO1Query"/>
+    <searchRegion Binds="PromosDeliveryVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="PromosDeliveryVO1Query"/>
+    <iterator Binds="PromosDeliveryVO1" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="PromosDeliveryVO1Iterator"/>
+    <iterator Binds="PromosLookupVO1" RangeSize="10" DataControl="AppModuleAMDataControl" id="PromosLookupVO1Iterator"/>
+    <iterator id="ProductsAndPackagesROV1Iterator" Binds="ProductsAndPackagesROV1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+    <iterator Binds="BulkSMSVO1" RangeSize="25" DataControl="AppModuleAMDataControl" id="BulkSMSVO1Iterator"/>
+    <searchRegion Criteria="BulkSMSVOCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="BulkSMSVO1Iterator" id="BulkSMSVOCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="clearDeepLinkViewCriteria" RequiresUpdateModel="true" Action="invokeMethod"
+                  DataControl="AppModuleAMDataControl" InstanceName="AppModuleAMDataControl.dataProvider"
+                  MethodName="clearDeepLinkViewCriteria"
+                  ReturnName="AppModuleAMDataControl.methodResults.AppModuleAMDataControl_dataProvider_clearDeepLinkViewCriteria_result"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="viewObjectUsage" NDValue="WeekDaysVO" NDType="java.lang.String"/>
+      <NamedData NDName="requeryIfFound" NDValue="#{true}" NDType="java.lang.Boolean"/>
+    </methodAction>
+    <attributeValues IterBinding="WeekDaysVOIterator" id="WeekDaysVOWorkingDate">
+      <AttrNames>
+        <Item Value="WorkingDate"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="WeekDaysVOIterator" id="FirstWeekDaysVO" RequiresUpdateModel="true" />
+    <action IterBinding="WeekDaysVOIterator" id="PreviousWeekDaysVO" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="WeekDaysVOIterator" id="NextWeekDaysVO" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="WeekDaysVOIterator" id="LastWeekDaysVO" RequiresUpdateModel="true" Action="last"/>
+    <attributeValues IterBinding="variables" id="WeekDaysVORowKey">
+      <AttrNames>
+        <Item Value="WeekDaysVORowKeyVar"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="WeekDaysVOIterator" id="SetCurrentRowWithKeyWeekDaysVO" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{bindings.WeekDaysVORowKey}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="WeekDaysVOIterator" id="CreateWeekDaysVO" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="WeekDaysVOIterator" id="DeleteWeekDaysVO" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <tree id="TeamleaderDashboardVOTable" IterBinding="TeamleaderDashboardVOIterator">
+      <nodeDefinition Name="TeamleaderDashboardVO" DefName="OPERATIONPROJECT.model.BC.VO.TeamleaderDashboardVO">
+        <AttrNames>
+          <Item Value="AreaName"/>
+          <Item Value="Total10"/>
+          <Item Value="TotalPromo"/>
+          <Item Value="BoverLostConfirmed"/>
+          <Item Value="BoverLostDispatched"/>
+          <Item Value="TotalDispatched"/>
+          <Item Value="StatusName"/>
+          <Item Value="CoverDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="TeamleaderDashboardVOIterator" id="SetCurrentRowWithKeyTeamleaderDashboardVO"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrTeamleaderDashboardVO}"
+                 NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="TeamleaderDashboardVOIterator" id="CreateTeamleaderDashboardVO" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="TeamleaderDashboardVOIterator" id="DeleteTeamleaderDashboardVO" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <tree id="AreaSmsVOTable" IterBinding="AreaSmsVOIterator">
+      <nodeDefinition Name="AreaSmsVO" DefName="OPERATIONPROJECT.model.BC.VO.AreaSmsVO">
+        <AttrNames>
+          <Item Value="AreaId"/>
+          <Item Value="AreaName"/>
+          <Item Value="AreaStatus"/>
+          <Item Value="CoverDate"/>
+          <Item Value="Id"/>
+          <Item Value="Splitted"/>
+          <Item Value="SelectTrans"/>
+          <Item Value="SmsFlag"/>
+          <Item Value="StatusName"/>
+          <Item Value="MessageContent"/>
+          <Item Value="SendTime"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="AreaSmsVOIterator" id="FirstAreaSmsVO" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="AreaSmsVOIterator" id="PreviousAreaSmsVO" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="AreaSmsVOIterator" id="NextAreaSmsVO" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="AreaSmsVOIterator" id="LastAreaSmsVO" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="AreaSmsVOIterator" id="SetCurrentRowWithKeyAreaSmsVO" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrAreaSmsVO}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="AreaSmsVOIterator" id="CreateAreaSmsVO" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="AreaSmsVOIterator" id="DeleteAreaSmsVO" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <tree id="OperationWorkVOTable" IterBinding="OperationWorkVOIterator">
+      <nodeDefinition Name="OperationWorkVO" DefName="OPERATIONPROJECT.model.BC.VO.OperationWorkVO">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="Agent"/>
+          <Item Value="AddedBy"/>
+          <Item Value="InsertTime"/>
+          <Item Value="Deleted"/>
+          <Item Value="DeletedBy"/>
+          <Item Value="DeletedAt"/>
+          <Item Value="AreaId"/>
+          <Item Value="PNumForDispatch"/>
+          <Item Value="TotalContracts"/>
+          <Item Value="DispatchableContracts"/>
+          <Item Value="BatchSplitted" Binds="BatchSplitted"/>
+          <Item Value="Splitted2Drivers" Binds="Splitted2Drivers"/>
+          <Item Value="CoverDate"/>
+          <Item Value="AreaName"/>
+          <Item Value="UpdatedBy"/>
+          <Item Value="UpdatedAt"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="OperationWorkVOIterator" id="SetCurrentRowWithKeyOperationWorkVO" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrOperationWorkVO}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="OperationWorkVOIterator" id="CreateOperationWorkVO" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="OperationWorkVOIterator" id="DeleteOperationWorkVO" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <tree id="SchedulingTableIncludeVOTable" IterBinding="SchedulingTableIncludeVOIterator">
+      <nodeDefinition Name="SchedulingTableIncludeVO" DefName="OPERATIONPROJECT.model.BC.VO.SchedulingTableVO">
+        <AttrNames>
+          <Item Value="Agent"/>
+          <Item Value="AreaId"/>
+          <Item Value="AreaName"/>
+          <Item Value="BCount"/>
+          <Item Value="Bover"/>
+          <Item Value="DayName"/>
+          <Item Value="DispatchableContracts"/>
+          <Item Value="ExcludeReason"/>
+          <Item Value="Id"/>
+          <Item Value="IncludeExclude"/>
+          <Item Value="Lost"/>
+          <Item Value="NeedCallContracts"/>
+          <Item Value="OutOfSchedule"/>
+          <Item Value="PerfectIssueBoverContracts"/>
+          <Item Value="PerfectIssueContracts"/>
+          <Item Value="Priority10Contracts"/>
+          <Item Value="Priority8Contracts"/>
+          <Item Value="Priority9Contracts"/>
+          <Item Value="PullNextWeek" Binds="PullNextWeek"/>
+          <Item Value="ScheduleDate"/>
+          <Item Value="Scheduled"/>
+          <Item Value="SelectedContracts"/>
+          <Item Value="TotalContracts"/>
+          <Item Value="TotalContractsLost"/>
+          <Item Value="Week1Contracts"/>
+          <Item Value="Week2Contracts"/>
+          <Item Value="Week3Contracts"/>
+          <Item Value="ZerobContracts"/>
+          <Item Value="ExcludeTrans" Binds="ExcludeTrans"/>
+          <Item Value="IssueBover"/>
+          <Item Value="Perfect"/>
+          <Item Value="WorkFlag"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SchedulingTableIncludeVOIterator" id="SetCurrentRowWithKeySchedulingTableIncludeVO"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrSchedulingTableIncludeVO}"
+                 NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="SchedulingTableIncludeVOIterator" id="CreateSchedulingTableIncludeVO"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="SchedulingTableIncludeVOIterator" id="DeleteSchedulingTableIncludeVO"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <tree id="SchedulingTableExcludeVOTable" IterBinding="SchedulingTableExcludeVOIterator">
+      <nodeDefinition Name="SchedulingTableExcludeVO" DefName="OPERATIONPROJECT.model.BC.VO.SchedulingTableVO">
+        <AttrNames>
+          <Item Value="Agent"/>
+          <Item Value="AreaId"/>
+          <Item Value="AreaName"/>
+          <Item Value="BCount"/>
+          <Item Value="Bover"/>
+          <Item Value="DayName"/>
+          <Item Value="DispatchableContracts"/>
+          <Item Value="ExcludeReason"/>
+          <Item Value="Id"/>
+          <Item Value="IncludeExclude"/>
+          <Item Value="Lost"/>
+          <Item Value="NeedCallContracts"/>
+          <Item Value="OutOfSchedule"/>
+          <Item Value="PerfectIssueBoverContracts"/>
+          <Item Value="PerfectIssueContracts"/>
+          <Item Value="Priority10Contracts"/>
+          <Item Value="Priority8Contracts"/>
+          <Item Value="Priority9Contracts"/>
+          <Item Value="PullNextWeek"/>
+          <Item Value="ScheduleDate"/>
+          <Item Value="Scheduled"/>
+          <Item Value="SelectedContracts"/>
+          <Item Value="TotalContracts"/>
+          <Item Value="TotalContractsLost"/>
+          <Item Value="Week1Contracts"/>
+          <Item Value="Week2Contracts"/>
+          <Item Value="Week3Contracts"/>
+          <Item Value="ZerobContracts"/>
+          <Item Value="IncludeTrans" Binds="IncludeTrans"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SchedulingTableExcludeVOIterator" id="SetCurrentRowWithKeySchedulingTableExcludeVO"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrSchedulingTableExcludeVO}"
+                 NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="SchedulingTableExcludeVOIterator" id="CreateSchedulingTableExcludeVO"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="SchedulingTableExcludeVOIterator" id="DeleteSchedulingTableExcludeVO"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+    <list IterBinding="WeekDaysVOIterator" ListOperMode="navigation" ListIter="WeekDaysVOIterator" id="WeekDaysVO"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="WorkingDate"/>
+        <Item Value="DayName"/>
+      </AttrNames>
+    </list>
+    <button IterBinding="SchedulingTableIncludeVOIterator" id="PullNextWeek" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="PullNextWeek"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <button IterBinding="SchedulingTableExcludeVOIterator" id="IncludeTrans" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="IncludeTrans"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <button IterBinding="SchedulingTableIncludeVOIterator" id="ExcludeTrans" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="ExcludeTrans"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <button IterBinding="OperationWorkVOIterator" id="BatchSplitted" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="BatchSplitted"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <button IterBinding="OperationWorkVOIterator" id="Splitted2Drivers" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="Splitted2Drivers"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <action id="Commit" DataControl="AppModuleAMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <tree IterBinding="SchedulingSummaryVO2Iterator" id="SchedulingSummaryVO2">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.SchedulingSummaryVO" Name="SchedulingSummaryVO20">
+        <AttrNames>
+          <Item Value="TotalContracts"/>
+          <Item Value="ZerobContracts"/>
+          <Item Value="TotalContractsLost"/>
+          <Item Value="Lost"/>
+          <Item Value="NeedCallContracts"/>
+          <Item Value="Priority8Contracts"/>
+          <Item Value="Priority9Contracts"/>
+          <Item Value="Priority10Contracts"/>
+          <Item Value="DispatchableContracts"/>
+          <Item Value="Week1Contracts"/>
+          <Item Value="Week2Contracts"/>
+          <Item Value="Week3Contracts"/>
+          <Item Value="IssueBover"/>
+          <Item Value="Perfect"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="WeekDaysVOIterator" id="B_Num">
+      <AttrNames>
+        <Item Value="B_Num"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="CityROV1Iterator" ListOperMode="navigation" ListIter="CityROV1Iterator" id="CityROV1"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="CityName"/>
+      </AttrNames>
+    </list>
+    <list IterBinding="RegionROV1Iterator" ListOperMode="navigation" ListIter="RegionROV1Iterator" id="RegionROV1"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="RegionName"/>
+      </AttrNames>
+    </list>
+    <list IterBinding="AreaContractInformationVOIterator" StaticList="false" Uses="LOV_CityId" id="CityId"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="AreaContractInformationVOIterator" StaticList="false" Uses="LOV_RegionId" id="RegionId"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="AreaContractInformationVO1Iterator" StaticList="false" Uses="LOV_CityId" id="CityId1"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="AreaContractInformationVO1Iterator" StaticList="false" Uses="LOV_RegionId" id="RegionId1"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <tree IterBinding="TeamLeaderAgentSummaryVO1Iterator" id="TeamLeaderAgentSummaryVO1">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.TeamLeaderAgentSummaryVO" Name="TeamLeaderAgentSummaryVO10">
+        <AttrNames>
+          <Item Value="AgentName"/>
+          <Item Value="AreaName"/>
+          <Item Value="StatusName"/>
+          <Item Value="TotalContracts"/>
+          <Item Value="DispatchableContracts"/>
+          <Item Value="ConfirmedDelivery"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="TeamLeaderPriorityVO1Iterator" id="TeamLeaderPriorityVO1">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.TeamLeaderPriorityVO" Name="TeamLeaderPriorityVO10">
+        <AttrNames>
+          <Item Value="Priority"/>
+          <Item Value="TotalContracts"/>
+          <Item Value="DispatchableContracts"/>
+          <Item Value="ConfirmedDelivery"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="TeamLeaderNeedCallVO1Iterator" id="TeamLeaderNeedCallVO1">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.TeamLeaderNeedCallVO" Name="TeamLeaderNeedCallVO10">
+        <AttrNames>
+          <Item Value="AgentName"/>
+          <Item Value="NeedCallContracts"/>
+          <Item Value="CallResult"/>
+          <Item Value="ConfirmedPostponed"/>
+          <Item Value="Cancel"/>
+          <Item Value="Dispatched"/>
+          <Item Value="NoAnswer"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="TeamLeaderDaySummaryVO2Iterator" id="TeamLeaderDaySummaryVO2">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.TeamLeaderDaySummaryVO" Name="TeamLeaderDaySummaryVO20">
+        <AttrNames>
+          <Item Value="CoverDate"/>
+          <Item Value="TotalContracts"/>
+          <Item Value="DispatchableContracts"/>
+          <Item Value="ConfirmedDelivery"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="AreaContractInformationVO2Iterator" StaticList="false" Uses="LOV_CityId" id="CityId2"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="AreaContractInformationVO2Iterator" StaticList="false" Uses="LOV_RegionId" id="RegionId2"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <listOfValues IterBinding="AreaContractInformationVO2Iterator" StaticList="false" Uses="LOV_CityId" id="CityId3"/>
+    <listOfValues IterBinding="AreaContractInformationVO2Iterator" StaticList="false" Uses="LOV_RegionId"
+                  id="RegionId3"/>
+    <list IterBinding="AreaContractInformationVO1Iterator" ListOperMode="navigation"
+          ListIter="AreaContractInformationVO1Iterator" id="AreaContractInformationVO1" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="RegionId"/>
+      </AttrNames>
+    </list>
+    <list IterBinding="AreaContractInformationVO2Iterator" id="CityId4" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          Uses="LOV_CityId" StaticList="false">
+      <AttrNames>
+        <Item Value="CityId"/>
+      </AttrNames>
+    </list>
+    <list IterBinding="AreaContractInformationVO2Iterator" id="RegionId4" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          Uses="LOV_RegionId" StaticList="false">
+      <AttrNames>
+        <Item Value="RegionId"/>
+      </AttrNames>
+    </list>
+    <list IterBinding="AreaContractInformationVO2Iterator" ListOperMode="multiSelect"
+          ListIter="AreaContractInformationVO2Iterator" id="AreaContractInformationVO2"
+          SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="CardNo"/>
+      </AttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="CityId"/>
+        <Item Value="RegionId"/>
+        <Item Value="AddressArea"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="BulkSMSAddressVO1Iterator" id="CityId5" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="CityROV1Iterator">
+      <AttrNames>
+        <Item Value="CityId"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="CityId"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="CityName"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="BulkSMSAddressVO1Iterator" id="RegionId5" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="RegionROV1Iterator">
+      <AttrNames>
+        <Item Value="RegionId"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="RegionId"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="RegionName"/>
+      </ListDisplayAttrNames>
+    </list>
+    <tree IterBinding="BulkSMSAddressVO1Iterator" id="BulkSMSAddressVO1">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.BulkSMSAddressVO" Name="BulkSMSAddressVO10">
+        <AttrNames>
+          <Item Value="AddressArea"/>
+          <Item Value="AreaName"/>
+          <Item Value="CardNo"/>
+          <Item Value="CityName"/>
+          <Item Value="ContractClientName"/>
+          <Item Value="RegionName"/>
+          <Item Value="Remarks"/>
+          <Item Value="StreetName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="BulkSMSAddressVO1Iterator" id="BulkSMSAddressVO11">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.BulkSMSAddressVO" Name="BulkSMSAddressVO110">
+        <AttrNames>
+          <Item Value="Address"/>
+          <Item Value="AddressArea"/>
+          <Item Value="AreaId"/>
+          <Item Value="AreaName"/>
+          <Item Value="BOver"/>
+          <Item Value="CardNo"/>
+          <Item Value="CityId"/>
+          <Item Value="CityName"/>
+          <Item Value="CloseCode"/>
+          <Item Value="ContractClientName"/>
+          <Item Value="ContractMobile"/>
+          <Item Value="ContractMobile2"/>
+          <Item Value="ContractPhone"/>
+          <Item Value="ContractPhone2"/>
+          <Item Value="CoverDate"/>
+          <Item Value="DefaultPriority"/>
+          <Item Value="Dispatchable"/>
+          <Item Value="Duration"/>
+          <Item Value="ExpectedDeliveryDate"/>
+          <Item Value="FlatNo"/>
+          <Item Value="FloorNo"/>
+          <Item Value="FuNote"/>
+          <Item Value="HaveTickets"/>
+          <Item Value="HomeNo"/>
+          <Item Value="LastChangedDate"/>
+          <Item Value="Lost"/>
+          <Item Value="NeedCall"/>
+          <Item Value="NextDeliveryDate"/>
+          <Item Value="PNum"/>
+          <Item Value="PerfectIssue"/>
+          <Item Value="Priority"/>
+          <Item Value="Priority10"/>
+          <Item Value="Priority8"/>
+          <Item Value="Priority9"/>
+          <Item Value="RegionId"/>
+          <Item Value="RegionName"/>
+          <Item Value="Remarks"/>
+          <Item Value="StreetId"/>
+          <Item Value="StreetName"/>
+          <Item Value="WorkDate"/>
+          <Item Value="ZeroB"/>
+          <Item Value="LastPilot"/>
+          <Item Value="selectBSMS" Binds="selectBSMS"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="BulkSMSAddressVO1Iterator" id="selectBSMS" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="selectBSMS"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <tree IterBinding="TeamLeaderTotalsVO1Iterator" id="TeamLeaderTotalsVO1">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.TeamLeaderTotalsVO" Name="TeamLeaderTotalsVO10">
+        <AttrNames>
+          <Item Value="AgentName"/>
+          <Item Value="TotalContracts"/>
+          <Item Value="DispatchableContracts"/>
+          <Item Value="ConfirmedDelivery"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="TeamLeaderAgentSummaryVO1Iterator" id="TeamLeaderAgentSummaryVO11">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.TeamLeaderAgentSummaryVO"
+                      Name="TeamLeaderAgentSummaryVO110">
+        <AttrNames>
+          <Item Value="AreaName"/>
+          <Item Value="StatusName"/>
+          <Item Value="TotalContracts"/>
+          <Item Value="DispatchableContracts"/>
+          <Item Value="ConfirmedDelivery"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="WeekDaysVOIterator" id="SMSContent">
+      <AttrNames>
+        <Item Value="SMSContent"/>
+      </AttrNames>
+    </attributeValues>
+    <button IterBinding="ContractDataVO1Iterator" id="selectBSMS1" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="selectBSMS"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <action IterBinding="WeekDaysAgentVOIterator" id="Execute" InstanceName="AppModuleAMDataControl.WeekDaysAgentVO"
+            DataControl="AppModuleAMDataControl" RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <action IterBinding="SchedulingSummaryVO2Iterator" id="Execute1"
+            InstanceName="AppModuleAMDataControl.SchedulingSummaryVO2" DataControl="AppModuleAMDataControl"
+            RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <attributeValues IterBinding="SchedulingTableIncludeVOIterator" id="WorkFlag">
+      <AttrNames>
+        <Item Value="WorkFlag"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit1" DataControl="AppModuleAMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <attributeValues IterBinding="SelectedDayVO1Iterator" id="CurrentDate">
+      <AttrNames>
+        <Item Value="CurrentDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SMSTempVO1Iterator" id="TemplateContent">
+      <AttrNames>
+        <Item Value="TemplateContent"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SMSTempVO1Iterator" id="TemplateContentAr">
+      <AttrNames>
+        <Item Value="TemplateContentAr"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="AdhocContractsVO1Iterator" id="AdhocContractsVO1">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.AdhocContractsVO" Name="AdhocContractsVO10">
+        <AttrNames>
+          <Item Value="Active"/>
+          <Item Value="ActiveFrom"/>
+          <Item Value="ActiveTo"/>
+          <Item Value="AreaId"/>
+          <Item Value="BOver"/>
+          <Item Value="CancelDate"/>
+          <Item Value="CancelReason"/>
+          <Item Value="CancelReasonId"/>
+          <Item Value="CardNo"/>
+          <Item Value="ContNo"/>
+          <Item Value="ContractAddress"/>
+          <Item Value="ContractClientName"/>
+          <Item Value="ContractDate"/>
+          <Item Value="ContractEmail"/>
+          <Item Value="ContractInfoId"/>
+          <Item Value="ContractMobile"/>
+          <Item Value="ContractMobile2"/>
+          <Item Value="ContractPhone"/>
+          <Item Value="ContractPhone2"/>
+          <Item Value="ContractStatus"/>
+          <Item Value="CurrentPriority"/>
+          <Item Value="CustomerId"/>
+          <Item Value="DefaultPriority"/>
+          <Item Value="Discount"/>
+          <Item Value="DiscountPer"/>
+          <Item Value="DispatchFlag"/>
+          <Item Value="FeesFlag"/>
+          <Item Value="HaveTickets"/>
+          <Item Value="LastChangedDate"/>
+          <Item Value="LastUpdateTime"/>
+          <Item Value="Lost"/>
+          <Item Value="MustCall"/>
+          <Item Value="NeedCall"/>
+          <Item Value="NextDeliveryDate"/>
+          <Item Value="PNum"/>
+          <Item Value="PerfectIssue"/>
+          <Item Value="Priority10"/>
+          <Item Value="Priority8"/>
+          <Item Value="Priority9"/>
+          <Item Value="ReplacementDuration"/>
+          <Item Value="UpdatedBy"/>
+          <Item Value="X"/>
+          <Item Value="Y"/>
+          <Item Value="ZeroB"/>
+          <Item Value="CloseCodeReason"/>
+          <Item Value="FuNote"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="AreaContractVO2Iterator" id="CardNo1">
+      <AttrNames>
+        <Item Value="CardNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AdhocContractsVO1Iterator" id="CardNo">
+      <AttrNames>
+        <Item Value="CardNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AdhocContractsVO1Iterator" id="ContractClientName">
+      <AttrNames>
+        <Item Value="ContractClientName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractDataVO2Iterator" id="MustCall">
+      <AttrNames>
+        <Item Value="MustCall"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractDataVO2Iterator" id="FlatNo">
+      <AttrNames>
+        <Item Value="FlatNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractDataVO2Iterator" id="Duration">
+      <AttrNames>
+        <Item Value="Duration"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractDataVO2Iterator" id="PNum">
+      <AttrNames>
+        <Item Value="PNum"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractDataVO2Iterator" id="CityName">
+      <AttrNames>
+        <Item Value="CityName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AdhocContractsVO1Iterator" id="LastChangedDate">
+      <AttrNames>
+        <Item Value="LastChangedDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractDataVO2Iterator" id="RegionName">
+      <AttrNames>
+        <Item Value="RegionName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractDataVO2Iterator" id="FloorNo">
+      <AttrNames>
+        <Item Value="FloorNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractDataVO2Iterator" id="Area2Name">
+      <AttrNames>
+        <Item Value="Area2Name"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractDataVO2Iterator" id="ContractAddress">
+      <AttrNames>
+        <Item Value="ContractAddress"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractDataVO2Iterator" id="StreetName">
+      <AttrNames>
+        <Item Value="StreetName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractDataVO2Iterator" id="HomeNo">
+      <AttrNames>
+        <Item Value="HomeNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractDataVO2Iterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="AssignmentVO3Iterator" id="AssignmentVO3">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.AssignmentVO" Name="AssignmentVO30">
+        <AttrNames>
+          <Item Value="ActionDate"/>
+          <Item Value="ActionId"/>
+          <Item Value="ActionX"/>
+          <Item Value="ActionY"/>
+          <Item Value="Address"/>
+          <Item Value="Aid"/>
+          <Item Value="AllowCredit"/>
+          <Item Value="Area2Name"/>
+          <Item Value="AreaId"/>
+          <Item Value="AreaName"/>
+          <Item Value="AssignDate"/>
+          <Item Value="AssignId"/>
+          <Item Value="AssignmentId"/>
+          <Item Value="AssignmentType"/>
+          <Item Value="Bonus"/>
+          <Item Value="CardNo"/>
+          <Item Value="ChangedState"/>
+          <Item Value="CityName"/>
+          <Item Value="ClientName"/>
+          <Item Value="CloseCode"/>
+          <Item Value="CloseCodeReason"/>
+          <Item Value="CreatedAt"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreatedState"/>
+          <Item Value="CustomerNotes"/>
+          <Item Value="CustomerType"/>
+          <Item Value="DataComment"/>
+          <Item Value="DeliveryState"/>
+          <Item Value="DrivId"/>
+          <Item Value="Duration"/>
+          <Item Value="FlatNo"/>
+          <Item Value="FloorNo"/>
+          <Item Value="FromTime"/>
+          <Item Value="FuNote"/>
+          <Item Value="HomeNo"/>
+          <Item Value="LastChanged"/>
+          <Item Value="LastDownload"/>
+          <Item Value="LastUpdate"/>
+          <Item Value="LocConfirmed"/>
+          <Item Value="Mobile"/>
+          <Item Value="Mobile2"/>
+          <Item Value="NewCustomer"/>
+          <Item Value="OldId"/>
+          <Item Value="OperationComment"/>
+          <Item Value="OrderDelivery"/>
+          <Item Value="PCount"/>
+          <Item Value="PayCredit"/>
+          <Item Value="Performer"/>
+          <Item Value="PhoneNo"/>
+          <Item Value="PilotId"/>
+          <Item Value="Priority"/>
+          <Item Value="ReceiptNo"/>
+          <Item Value="RegionName"/>
+          <Item Value="Remarks"/>
+          <Item Value="SpareId"/>
+          <Item Value="Status"/>
+          <Item Value="StreetName"/>
+          <Item Value="TicketingNotes"/>
+          <Item Value="ToTime"/>
+          <Item Value="TotalPricePaid"/>
+          <Item Value="Updated"/>
+          <Item Value="X"/>
+          <Item Value="Y"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="ProductContractDeliveryDetVO2Iterator" id="ProductContractDeliveryDetVO2">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.ProductContractDeliveryDetVO"
+                      Name="ProductContractDeliveryDetVO20">
+        <AttrNames>
+          <Item Value="Aid"/>
+          <Item Value="Id"/>
+          <Item Value="AssignId"/>
+          <Item Value="AssignmentId"/>
+          <Item Value="CardNo"/>
+          <Item Value="DeliveryType"/>
+          <Item Value="InsertTime"/>
+          <Item Value="LastUpdated"/>
+          <Item Value="ProductConId"/>
+          <Item Value="ProductId"/>
+          <Item Value="ProductSku"/>
+          <Item Value="Quantity"/>
+          <Item Value="QuantityCancelled"/>
+          <Item Value="QuantityDirty"/>
+          <Item Value="QuantityReplaced"/>
+          <Item Value="TreatmentId"/>
+          <Item Value="PackageVersion"/>
+          <Item Value="Price"/>
+          <Item Value="PackageId"/>
+          <Item Value="PackageNo"/>
+          <Item Value="TreatmentName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="CollectionDetailsVO2Iterator" id="CollectionDetailsVO2">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.CollectionDetailsVO" Name="CollectionDetailsVO20">
+        <AttrNames>
+          <Item Value="Amount"/>
+          <Item Value="AssignId"/>
+          <Item Value="AssignmentId"/>
+          <Item Value="CardNo"/>
+          <Item Value="Id"/>
+          <Item Value="InvoiceDate"/>
+          <Item Value="InvoiceNo"/>
+          <Item Value="PaidAmount"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="ContractResultVO3Iterator" id="ContractResultVO3">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.ContractResultVO" Name="ContractResultVO30">
+        <AttrNames>
+          <Item Value="ActionDate"/>
+          <Item Value="ActualPaid"/>
+          <Item Value="Aid"/>
+          <Item Value="AssignResultId"/>
+          <Item Value="CRNo"/>
+          <Item Value="CancelCloseCodeReason"/>
+          <Item Value="CardNo"/>
+          <Item Value="ChangedState"/>
+          <Item Value="CloseCode"/>
+          <Item Value="CloseCodeCancel"/>
+          <Item Value="CloseCodeReason"/>
+          <Item Value="ContractStatus"/>
+          <Item Value="CreatedState"/>
+          <Item Value="CustomerNote"/>
+          <Item Value="DeliveryMan"/>
+          <Item Value="DeliveryState"/>
+          <Item Value="FuNote"/>
+          <Item Value="GeocodeX"/>
+          <Item Value="GeocodeY"/>
+          <Item Value="Id"/>
+          <Item Value="OracleFlag"/>
+          <Item Value="TotalPricePaid"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="MobileAuditVO1Iterator" id="MobileAuditVO1">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.MobileAuditVO" Name="MobileAuditVO10">
+        <AttrNames>
+          <Item Value="Aid"/>
+          <Item Value="Description"/>
+          <Item Value="Id"/>
+          <Item Value="Latitude"/>
+          <Item Value="Longitude"/>
+          <Item Value="TransactionDate"/>
+          <Item Value="TransactionName"/>
+          <Item Value="UserName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="OpenTicketVO2Iterator" id="OpenTicketVO2">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.OpenTicketVO" Name="OpenTicketVO20">
+        <AttrNames>
+          <Item Value="TicketId"/>
+          <Item Value="TicketCode"/>
+          <Item Value="TicketType"/>
+          <Item Value="CreationDate"/>
+          <Item Value="TicketSeverity"/>
+          <Item Value="TicketPriority"/>
+          <Item Value="TicketDirection"/>
+          <Item Value="TicketChannel"/>
+          <Item Value="TicketFamily"/>
+          <Item Value="TicketClassification"/>
+          <Item Value="TicketCase"/>
+          <Item Value="TicketState"/>
+          <Item Value="TicketStatus"/>
+          <Item Value="LastExitCode"/>
+          <Item Value="LastExitReason"/>
+          <Item Value="CurrentTeam"/>
+          <Item Value="CurrentSubteam"/>
+          <Item Value="CurrentAgent"/>
+          <Item Value="CreationTeam"/>
+          <Item Value="ResolutionTeam"/>
+          <Item Value="SlaProfileId"/>
+          <Item Value="ClosureTeam"/>
+          <Item Value="LastAgent"/>
+          <Item Value="Notes"/>
+          <Item Value="EndToEndSla"/>
+          <Item Value="CreationSla"/>
+          <Item Value="ResolutionSla"/>
+          <Item Value="ClosureSla"/>
+          <Item Value="EndToEndSlaStatus"/>
+          <Item Value="CreationSlaStatus"/>
+          <Item Value="ResolutionSlaStatus"/>
+          <Item Value="ClosureSlaStatus"/>
+          <Item Value="ResolutionDate"/>
+          <Item Value="AccountNumber"/>
+          <Item Value="ClosureDate"/>
+          <Item Value="ContactNumber"/>
+          <Item Value="Creator"/>
+          <Item Value="CustomerSegmentaion"/>
+          <Item Value="Landline"/>
+          <Item Value="Name"/>
+          <Item Value="GroupId"/>
+          <Item Value="ProcessInstance"/>
+          <Item Value="AreaCode"/>
+          <Item Value="PendingCustomerFlag"/>
+          <Item Value="FreezeFlag"/>
+          <Item Value="Deleted"/>
+          <Item Value="ResSlaVal"/>
+          <Item Value="CloSlaVal"/>
+          <Item Value="EndSlaVal"/>
+          <Item Value="CreSlaVal"/>
+          <Item Value="ReleaseTime"/>
+          <Item Value="FreezeTime"/>
+          <Item Value="LastStatus"/>
+          <Item Value="NoHoursPending"/>
+          <Item Value="PendingReason"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="Aid"/>
+          <Item Value="ActionId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="ArchiveDeliveryVO3Iterator" id="ArchiveDeliveryVO3">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.ArchiveDeliveryVO" Name="ArchiveDeliveryVO30">
+        <AttrNames>
+          <Item Value="AssignDate"/>
+          <Item Value="Area2Name"/>
+          <Item Value="CardNo"/>
+          <Item Value="DrivId"/>
+          <Item Value="PilotId"/>
+          <Item Value="Status"/>
+          <Item Value="CloseCodeReason"/>
+          <Item Value="Priority"/>
+          <Item Value="FuNote"/>
+          <Item Value="Performer"/>
+          <Item Value="FromTime"/>
+          <Item Value="ToTime"/>
+          <Item Value="ActionDate"/>
+          <Item Value="ActionId"/>
+          <Item Value="ActionX"/>
+          <Item Value="ActionY"/>
+          <Item Value="Address"/>
+          <Item Value="AddressArea"/>
+          <Item Value="Aid"/>
+          <Item Value="AllowCredit"/>
+          <Item Value="AreaId"/>
+          <Item Value="AreaName"/>
+          <Item Value="AssignId"/>
+          <Item Value="AssignmentId"/>
+          <Item Value="AssignmentType"/>
+          <Item Value="Bonus"/>
+          <Item Value="ChangedState"/>
+          <Item Value="CityId"/>
+          <Item Value="CityName"/>
+          <Item Value="ClientName"/>
+          <Item Value="CloseCode"/>
+          <Item Value="CreatedAt"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreatedState"/>
+          <Item Value="CustomerNotes"/>
+          <Item Value="CustomerType"/>
+          <Item Value="DataComment"/>
+          <Item Value="DeliveryState"/>
+          <Item Value="Duration"/>
+          <Item Value="FlatNo"/>
+          <Item Value="FloorNo"/>
+          <Item Value="HomeNo"/>
+          <Item Value="LastChanged"/>
+          <Item Value="LastDownload"/>
+          <Item Value="LastUpdate"/>
+          <Item Value="LocConfirmed"/>
+          <Item Value="Mobile"/>
+          <Item Value="Mobile2"/>
+          <Item Value="NewCustomer"/>
+          <Item Value="OldId"/>
+          <Item Value="OperationComment"/>
+          <Item Value="OrderDelivery"/>
+          <Item Value="PCount"/>
+          <Item Value="PayCredit"/>
+          <Item Value="PhoneNo"/>
+          <Item Value="ReceiptNo"/>
+          <Item Value="RegionId"/>
+          <Item Value="RegionName"/>
+          <Item Value="Remarks"/>
+          <Item Value="SpareId"/>
+          <Item Value="StreetId"/>
+          <Item Value="StreetName"/>
+          <Item Value="TicketingNotes"/>
+          <Item Value="TotalPricePaid"/>
+          <Item Value="Updated"/>
+          <Item Value="X"/>
+          <Item Value="Y"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="ArchiveDeliveryDetVO2Iterator" id="ArchiveDeliveryDetVO2">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.ArchiveDeliveryDetVO" Name="ArchiveDeliveryDetVO20">
+        <AttrNames>
+          <Item Value="ActualQuantity"/>
+          <Item Value="Aid"/>
+          <Item Value="AssignId"/>
+          <Item Value="AssignmentId"/>
+          <Item Value="CardNo"/>
+          <Item Value="ComponentId"/>
+          <Item Value="DeliveryFlag"/>
+          <Item Value="DeliveryType"/>
+          <Item Value="Id"/>
+          <Item Value="InsertTime"/>
+          <Item Value="ItemId"/>
+          <Item Value="LastUpdated"/>
+          <Item Value="PackageId"/>
+          <Item Value="PackageNo"/>
+          <Item Value="PackageVersion"/>
+          <Item Value="Price"/>
+          <Item Value="ProductConId"/>
+          <Item Value="ProductId"/>
+          <Item Value="ProductName"/>
+          <Item Value="ProductSku"/>
+          <Item Value="Quantity"/>
+          <Item Value="QuantityCancelled"/>
+          <Item Value="QuantityConfirmed"/>
+          <Item Value="QuantityDirty"/>
+          <Item Value="QuantityReplaced"/>
+          <Item Value="TreatmentId"/>
+          <Item Value="TreatmentName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="ArchiveCollectionVO2Iterator" id="ArchiveCollectionVO2">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.ArchiveCollectionVO" Name="ArchiveCollectionVO20">
+        <AttrNames>
+          <Item Value="Amount"/>
+          <Item Value="AssignId"/>
+          <Item Value="AssignmentId"/>
+          <Item Value="CardNo"/>
+          <Item Value="Id"/>
+          <Item Value="InvoiceDate"/>
+          <Item Value="InvoiceNo"/>
+          <Item Value="PaidAmount"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="ArchiveContractResVO2Iterator" id="ArchiveContractResVO2">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.ArchiveContractResVO" Name="ArchiveContractResVO20">
+        <AttrNames>
+          <Item Value="ActionDate"/>
+          <Item Value="ActualPaid"/>
+          <Item Value="Aid"/>
+          <Item Value="AssignResultId"/>
+          <Item Value="CRNo"/>
+          <Item Value="CancelCloseCodeReason"/>
+          <Item Value="CardNo"/>
+          <Item Value="ChangedState"/>
+          <Item Value="CloseCode"/>
+          <Item Value="CloseCodeCancel"/>
+          <Item Value="CloseCodeReason"/>
+          <Item Value="ContractStatus"/>
+          <Item Value="CreatedState"/>
+          <Item Value="CustomerNote"/>
+          <Item Value="DeliveryMan"/>
+          <Item Value="DeliveryState"/>
+          <Item Value="FuNote"/>
+          <Item Value="GeocodeX"/>
+          <Item Value="GeocodeY"/>
+          <Item Value="Id"/>
+          <Item Value="OracleFlag"/>
+          <Item Value="TotalPricePaid"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="ArchiveMobileAuditVO4Iterator" id="ArchiveMobileAuditVO4">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.ArchiveMobileAuditVO" Name="ArchiveMobileAuditVO40">
+        <AttrNames>
+          <Item Value="Aid"/>
+          <Item Value="Description"/>
+          <Item Value="Id"/>
+          <Item Value="Latitude"/>
+          <Item Value="Longitude"/>
+          <Item Value="TransactionDate"/>
+          <Item Value="TransactionName"/>
+          <Item Value="UserName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="ContractDataVO2Iterator" id="DeliveryDate">
+      <AttrNames>
+        <Item Value="DeliveryDate"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="ContractDataVO2Iterator" StaticList="false" Uses="LOV_CloseCode" id="CloseCode"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="ContractDataVO2Iterator" StaticList="false" Uses="LOV_CloseReason" id="CloseReason"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="ContractDataVO2Iterator" id="OperationComment">
+      <AttrNames>
+        <Item Value="OperationComment"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="ProductContractVO1Iterator" id="ProductContractVO1">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.ProductContractVO" Name="ProductContractVO10">
+        <AttrNames>
+          <Item Value="CardNo"/>
+          <Item Value="DeliveryFlag" Binds="DeliveryFlag"/>
+          <Item Value="ExchangeDuration"/>
+          <Item Value="Financial"/>
+          <Item Value="New11"/>
+          <Item Value="PackageId"/>
+          <Item Value="PackageNo"/>
+          <Item Value="PackageVersion"/>
+          <Item Value="PartialSubmit"/>
+          <Item Value="Price"/>
+          <Item Value="ProductConId"/>
+          <Item Value="ProductId"/>
+          <Item Value="ProductName"/>
+          <Item Value="ProductSku"/>
+          <Item Value="Quantity"/>
+          <Item Value="TreatmentId"/>
+          <Item Value="TreatmentName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="ProductContractVO1Iterator" id="DeliveryFlag" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="DeliveryFlag"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <tree IterBinding="PromosDeliveryVO1Iterator" id="PromosDeliveryVO1">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.PromosDeliveryVO" Name="PromosDeliveryVO10">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="ProductName"/>
+          <Item Value="ProductSku"/>
+          <Item Value="AssignDate"/>
+          <Item Value="CardNo"/>
+          <Item Value="AreaId"/>
+          <Item Value="Quantity"/>
+          <Item Value="assignPromos"/>
+          <Item Value="DeliveryFlag" Binds="DeliveryFlag1"/>
+          <Item Value="NextDeliveryDate"/>
+          <Item Value="PromoPrice"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="PromosDeliveryVO1Iterator" id="DeliveryFlag1" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="DeliveryFlag"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <action IterBinding="PromosDeliveryVO1Iterator" id="CreateInsert"
+            InstanceName="AppModuleAMDataControl.PromosDeliveryVO1" DataControl="AppModuleAMDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <attributeValues IterBinding="ContractDataVO2Iterator" id="TotalProduct">
+      <AttrNames>
+        <Item Value="TotalProduct"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractDataVO2Iterator" id="TotalPromo">
+      <AttrNames>
+        <Item Value="TotalPromo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractDataVO2Iterator" id="TotalOrder">
+      <AttrNames>
+        <Item Value="TotalOrder"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PromosLookupVO1Iterator" id="SellingPrice">
+      <AttrNames>
+        <Item Value="SellingPrice"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="ProductContractVO1Iterator" id="CreateInsert1"
+            InstanceName="AppModuleAMDataControl.ProductContractVO1" DataControl="AppModuleAMDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <attributeValues IterBinding="ContractDataVO2Iterator" id="CheckPackageName">
+      <AttrNames>
+        <Item Value="CheckPackageName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractDataVO2Iterator" id="VALID">
+      <AttrNames>
+        <Item Value="VALID"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractDataVO2Iterator" id="SelectedId">
+      <AttrNames>
+        <Item Value="SelectedId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractDataVO2Iterator" id="PackSelected">
+      <AttrNames>
+        <Item Value="PackSelected"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractDataVO2Iterator" id="DId">
+      <AttrNames>
+        <Item Value="DId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PromosDeliveryVO1Iterator" id="PromoPrice">
+      <AttrNames>
+        <Item Value="PromoPrice"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractDataVO2Iterator" id="PromosPrice">
+      <AttrNames>
+        <Item Value="PromosPrice"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractDataVO2Iterator" id="AddressArea">
+      <AttrNames>
+        <Item Value="AddressArea"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="BulkSMSVO1Iterator" id="BulkSMSVO1">
+      <nodeDefinition DefName="OPERATIONPROJECT.model.BC.VO.BulkSMSVO" Name="BulkSMSVO10">
+        <AttrNames>
+          <Item Value="CardNo"/>
+          <Item Value="ContractClientName"/>
+          <Item Value="PilotId"/>
+          <Item Value="Checked" Binds="Checked"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="BulkSMSVO1Iterator" id="Checked" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="Checked"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+  </bindings>
+</pageDefinition>

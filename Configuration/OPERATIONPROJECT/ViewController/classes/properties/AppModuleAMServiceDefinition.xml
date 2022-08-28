@@ -1,0 +1,712 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Service xmlns="http://www.oracle.com/jheadstart/applicationStructure" name="AppModuleAM" description="Service Definition for AppModuleAM" menuModelFile="/WEB-INF/menu-appmoduleam.xml" menuTitle="NoDust Operation " controllerConfigFile="/WEB-INF/adfc-config-appmoduleam.xml" dataControl="AppModuleAMDataControl" dataControlImpl="OPERATIONPROJECT.model.BC.AM.AppModuleAM" insertAllowedExpression="#{MTSPermission['$BASE_GROUP_SHORT_NAME$.create']}" updateAllowedExpression="#{MTSPermission['$BASE_GROUP_SHORT_NAME$.update']}" deleteAllowedExpression="#{MTSPermission['$BASE_GROUP_SHORT_NAME$.delete']}" runSQLScripts="false" alwaysGenerateFormBindings="false" generateBindingsHiddenItems="false">
+    <Group name="ActionCategory" dataCollection="ActionCategory1" dataCollectionImpl="ActionCategoryVO" layoutStyle="table-form" wizardStyle="true" tableOverflowStyle="belowWithSplitter" stackDetailGroups="true" advancedSearch="model-samePage" advancedSearchColumns="3" tabName="Action Category" displayTitlePlural="Action Category" displayTitleSingular="Action Category" descriptorAttribute="CategoryId" groupHeight="100" tableWidth="Stretch" enableStretching="true" filterTable="true">
+        <Item databound="true" name="CategoryId" attributeName="CategoryId" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="CategoryName" attributeName="CategoryName" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Category Name" promptInTable="Category Name" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <RegionContainer name="Regions"/>
+        <Group name="Action" dataCollection="Action1" dataCollectionImpl="ActionVO" layoutStyle="table" stackDetailGroups="true" samePage="true" samePagePosition="belowWithSplitter" advancedSearch="model-samePage" advancedSearchColumns="3" tabName="Action" displayTitlePlural="Action" displayTitleSingular="Action" descriptorAttribute="ActionId" groupHeight="100" tableWidth="Stretch" enableStretching="true" filterTable="true">
+            <Item databound="true" name="ActionId" attributeName="ActionId" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="CategoryId" attributeName="CategoryId" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="Description" attributeName="Description" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" promptInTable="Description" promptShort="Description :" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="500" hintText="#{$HINTS$.tooltip}" columnWidth="300" sortable="true" wrap="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true" promptInSearch="Description">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="DurationForPoint" attributeName="DurationForPoint" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" promptInTable="Points Duartion" promptShort="Points Duartion :" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="150" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="FinancialPeriod" attributeName="FinancialPeriod" javaType="BigInteger" displayType="model-choiceList" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" promptInTable="Financial Period" promptShort="Financial Period :" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" columnWidth="250" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="Factor" attributeName="Factor" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="Fixed" attributeName="Fixed" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="TransactionSource" attributeName="TransactionSource" javaType="String" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <RegionContainer name="Regions"/>
+            <Templates/>
+        </Group>
+        <Templates/>
+    </Group>
+    <Group name="Address" dataCollection="City1" dataCollectionImpl="CityVO" layoutStyle="table-form" wizardStyle="true" tableOverflowStyle="belowWithSplitter" stackDetailGroups="true" advancedSearch="model-samePage" quickSearch="none" singleSearchAttribute="CityName" tabName="Address" displayTitlePlural="Address" descriptorAttribute="CityId" groupWidth="100" groupHeight="100" tableWidth="Stretch" enableStretching="true" filterTable="true" tableRangeSize="25">
+        <Item databound="true" name="CityId" attributeName="CityId" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="CityName" attributeName="CityName" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="City Name" promptInTable="City Name" promptShort="City Name" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <RegionContainer name="Regions"/>
+        <Group name="Region" dataCollection="Region1" dataCollectionImpl="RegionVO" layoutStyle="table-form" tableOverflowStyle="belowWithSplitter" stackDetailGroups="false" samePage="true" samePagePosition="belowWithSplitter" advancedSearch="model-samePage" tabName="Regions" displayTitlePlural="Regions" displayTitleSingular="Regions" descriptorAttribute="RegionId" groupWidth="100" groupHeight="100" tableWidth="Stretch" enableStretching="true" filterTable="true" tableRangeSize="25">
+            <Item databound="true" name="CityId" attributeName="CityId" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="RegionId" attributeName="RegionId" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="RegionName" attributeName="RegionName" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <RegionContainer name="Regions"/>
+            <Group name="Area" dataCollection="Area1" dataCollectionImpl="AreaVO" layoutStyle="table-form" wizardStyle="true" tableOverflowStyle="belowWithSplitter" stackDetailGroups="false" samePage="true" samePagePosition="belowWithSplitter" advancedSearch="model-samePage" displayTitlePlural="Areas" displayTitleSingular="Areas" descriptorAttribute="AreaId" groupWidth="100" groupHeight="100" tableWidth="Stretch" enableStretching="true" filterTable="true" tableRangeSize="25">
+                <Item databound="true" name="AreaId" attributeName="AreaId" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                    <Templates/>
+                </Item>
+                <Item databound="true" name="AreaName" attributeName="AreaName" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true"/>
+                <Item databound="true" name="CityId" attributeName="CityId" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                    <Templates/>
+                </Item>
+                <Item databound="true" name="OldArea" attributeName="OldArea" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                    <Templates/>
+                </Item>
+                <Item databound="true" name="RegionId" attributeName="RegionId" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                    <Templates/>
+                </Item>
+                <RegionContainer name="Regions"/>
+                <Group name="Street" dataCollection="Street1" dataCollectionImpl="StreetVO" layoutStyle="table-form" tableOverflowStyle="belowWithSplitter" stackDetailGroups="false" samePage="true" samePagePosition="belowWithSplitter" advancedSearch="model-samePage" tabName="Street" displayTitlePlural="Street" displayTitleSingular="Street" descriptorAttribute="StreetId" groupWidth="100" groupHeight="100" tableWidth="Stretch" enableStretching="true" filterTable="true" tableRangeSize="25">
+                    <Item databound="true" name="AreaId" attributeName="AreaId" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                        <Templates/>
+                    </Item>
+                    <Item databound="true" name="CityId" attributeName="CityId" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                        <Templates/>
+                    </Item>
+                    <Item databound="true" name="OldStreet" attributeName="OldStreet" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                        <Templates/>
+                    </Item>
+                    <Item databound="true" name="RegionId" attributeName="RegionId" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                        <Templates/>
+                    </Item>
+                    <Item databound="true" name="StreetId" attributeName="StreetId" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                        <Templates/>
+                    </Item>
+                    <Item databound="true" name="StreetName" attributeName="StreetName" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true"/>
+                    <RegionContainer name="Regions"/>
+                    <Group name="ContractAddress" dataCollection="ContractAddress1" dataCollectionImpl="ContractAddressVO" layoutStyle="table" stackDetailGroups="false" samePage="true" samePagePosition="belowWithSplitter" advancedSearch="model-samePage" advancedSearchColumns="3" displayTitlePlural="Contract Address" displayTitleSingular="Contract Address" descriptorAttribute="AddressId" groupHeight="100" tableWidth="Stretch" enableStretching="true" filterTable="true" tableRangeSize="25">
+                        <Item databound="true" name="CardNo" attributeName="CardNo" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="while_new" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                            <Templates/>
+                        </Item>
+                        <Item databound="true" name="Remarks" attributeName="Remarks" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="200" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                            <Templates/>
+                        </Item>
+                        <Item databound="true" name="HomeNo" attributeName="HomeNo" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="50" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                            <Templates/>
+                        </Item>
+                        <Item databound="true" name="FloorNo" attributeName="FloorNo" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="50" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                            <Templates/>
+                        </Item>
+                        <Item databound="true" name="FlatNo" attributeName="FlatNo" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="50" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                            <Templates/>
+                        </Item>
+                        <Item databound="true" name="ActiveFrom" attributeName="ActiveFrom" javaType="Timestamp" displayType="dateField" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" updateAllowed="while_new" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                            <Templates/>
+                        </Item>
+                        <Item databound="true" name="ActiveTo" attributeName="ActiveTo" javaType="Timestamp" displayType="dateField" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" updateAllowed="false" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                            <Templates/>
+                        </Item>
+                        <Item databound="true" name="Active" attributeName="Active" javaType="BigDecimal" displayType="checkBox" domain="Active_Domain" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="50" sortable="true" alignment="right" defaultValue="1" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                            <Templates/>
+                        </Item>
+                        <Item databound="true" name="Address" attributeName="Address" javaType="String" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                            <Templates/>
+                        </Item>
+                        <Item databound="true" name="AddressId" attributeName="AddressId" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                            <Templates/>
+                        </Item>
+                        <Item databound="true" name="AreaId" attributeName="AreaId" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                            <Templates/>
+                        </Item>
+                        <Item databound="true" name="CityId" attributeName="CityId" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                            <Templates/>
+                        </Item>
+                        <Item databound="true" name="RegionId" attributeName="RegionId" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                            <Templates/>
+                        </Item>
+                        <Item databound="true" name="StreetId" attributeName="StreetId" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                            <Templates/>
+                        </Item>
+                        <RegionContainer name="Regions"/>
+                        <Templates/>
+                    </Group>
+                    <Templates/>
+                </Group>
+                <Templates/>
+            </Group>
+            <Templates/>
+        </Group>
+        <Templates/>
+    </Group>
+    <Group name="CustomerProfile" dataCollection="CustomerProfile1" dataCollectionImpl="CustomerProfileVO" treeDataCollection="CustomerProfile1" treeDataCollectionImpl="CustomerProfileVO" layoutStyle="table-form" wizardStyle="true" showTreeExpanded="true" tableOverflowStyle="belowWithSplitter" stackDetailGroups="true" advancedSearch="model-samePage" advancedSearchColumns="3" tabName="Customer Profile" displayTitlePlural="Customer Profile" displayTitleSingular="Customer Profile" descriptorAttribute="CustomerId" groupHeight="150" columns="3" tableWidth="Stretch" enableStretching="true" filterTable="true" tableRangeSize="25" tableFreezeStyle="none">
+        <Item databound="true" name="CustomerName" attributeName="CustomerName" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Customer Name :" promptInTable="Customer Name" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="300" sortable="true" wrap="true" alignment="left" updateAllowed="while_new" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="CustomerClassification" attributeName="CustomerClassification" javaType="BigInteger" displayType="model-choiceList" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Customer Classification :" promptInTable="Customer Classification" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" alignment="left" updateAllowed="while_new" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="CustomerChannel" attributeName="CustomerChannel" javaType="BigInteger" displayType="model-choiceList" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Customer Channel :" promptInTable="Customer Channel" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" alignment="left" updateAllowed="while_new" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="CollectionType" attributeName="CollectionType" javaType="BigInteger" displayType="model-choiceList" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Payment Type :" promptInTable="Payment Type" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" columnWidth="150" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="CustomerEmail" attributeName="CustomerEmail" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Customer Email :" promptInTable="Customer Email" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="CustomerMobile" attributeName="CustomerMobile" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Customer Mobile:" promptInTable="Customer Mobile" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="CustomerPhone" attributeName="CustomerPhone" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Customer Phone :" promptInTable="Customer Phone" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="CustomerParent" attributeName="CustomerParent" javaType="BigInteger" displayType="model-inputTextLov" useLovForValidation="true" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Customer Parent :" promptInTable="Customer Parent" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="left" updateAllowed="while_new" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="Active" attributeName="Active" javaType="BigDecimal" displayType="checkBox" domain="Active_Domain" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Active :" promptInTable="Active" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="100" hintText="#{$HINTS$.tooltip}" columnWidth="25" sortable="true" alignment="left" defaultValue="0" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="CustomerId" attributeName="CustomerId" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="LoggedFlag" attributeName="LoggedFlag" javaType="BigDecimal" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="Password" attributeName="Password" javaType="String" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="Username" attributeName="Username" javaType="String" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <RegionContainer name="Regions">
+            <Templates/>
+        </RegionContainer>
+        <Group name="Contract" dataCollection="ContractInfoVO1" dataCollectionImpl="ContractInfoVO" layoutStyle="table-form" wizardStyle="true" tableOverflowStyle="belowWithSplitter" stackDetailGroups="true" samePage="true" samePagePosition="belowWithSplitter" advancedSearch="model-samePage" searchAreaHeight="200" advancedSearchColumns="4" autoQuery="true" tabName="Contracts" displayTitlePlural="Contracts" displayTitleSingular="Contracts" descriptorAttribute="CardNo" groupHeight="100" columns="4" tableWidth="Stretch" enableStretching="true" filterTable="true">
+            <Item databound="true" name="CardNo" attributeName="CardNo" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Card No :" promptInTable="Card No" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" alignment="right" updateAllowed="false" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="ContractClientName" attributeName="ContractClientName" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Client Name :" promptInTable="Client Name" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="200" sortable="true" wrap="true" alignment="left" clearValueWhenDependsOnItemChanges="false" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="ContractDate" attributeName="ContractDate" javaType="Timestamp" displayType="dateField" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Contract Date :" promptInTable="Contract Date" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="150" sortable="true" alignment="left" updateAllowed="while_new" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="ReplacementDuration" attributeName="ReplacementDuration" javaType="BigInteger" displayType="model-choiceList" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Duration :" promptInTable="Duration" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="false" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="AreaId" attributeName="AreaId" javaType="BigDecimal" displayType="model-choiceList" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Area Name :" promptInTable="Area Name" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="150" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="ContractEmail" attributeName="ContractEmail" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Contract Email :" promptInTable="Contract Email " displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="150" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="ContractMobile" attributeName="ContractMobile" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Contract Mobile :" promptInTable="Contract Mobile" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="150" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="ContractMobile2" attributeName="ContractMobile2" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Contract Mobile 2 :" promptInTable="Contract Mobile 2" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="150" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="ContractPhone" attributeName="ContractPhone" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Contract Phone :" promptInTable="Contract Phone" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="150" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="ContractPhone2" attributeName="ContractPhone2" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Contract Phone 2 :" promptInTable="Contract Phone 2" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="150" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="PNum" attributeName="PNum" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="P Num :" promptInTable="P Num" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="75" sortable="true" alignment="left" updateAllowed="false" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="NextDeliveryDate" attributeName="NextDeliveryDate" javaType="Timestamp" displayType="dateField" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Next Delivery Date :" promptInTable="Next Delivery Date " displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" alignment="left" updateAllowed="false" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="LastChangedDate" attributeName="LastChangedDate" javaType="Timestamp" displayType="dateField" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Last Changed Date :" promptInTable="Last Changed Date" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" alignment="left" updateAllowed="false" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="X" attributeName="X" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="X :" promptInTable="X" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="Y" attributeName="Y" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Y :" promptInTable="Y" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="CancelDate" attributeName="CancelDate" javaType="Timestamp" displayType="dateField" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Cancel Date :" promptInTable="Cancel Date" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="150" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="CancelReason" attributeName="CancelReason" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Cancel Reason :" promptInTable="Cancel Reason" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="150" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="Active" attributeName="Active" javaType="BigDecimal" displayType="checkBox" domain="Active_Domain" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Active :" promptInTable="Activee" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="50" sortable="true" alignment="left" defaultValue="1" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="ContractAddress" attributeName="ContractAddress" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="ContractInfoId" attributeName="ContractInfoId" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="false" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="false" showInAdvancedSearch="false">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="CustomerId" attributeName="CustomerId" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="DefaultPriority" attributeName="DefaultPriority" javaType="BigDecimal" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="LastUpdateTime" attributeName="LastUpdateTime" javaType="Timestamp" displayType="dateField" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="false" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="MustCall" attributeName="MustCall" javaType="BigDecimal" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="UpdatedBy" attributeName="UpdatedBy" javaType="String" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <RegionContainer name="Regions"/>
+            <Group name="NewGroup" dependentDataCollection="true" dataCollection="ContractAddressVO1" dataCollectionImpl="ContractAddressVO" layoutStyle="table" tableOverflowStyle="inline" stackDetailGroups="true" samePage="true" samePagePosition="belowWithSplitter" tabName="Add1" displayTitlePlural="Add1" displayTitleSingular="Add11" descriptorAttribute="CardNo" enableStretching="true">
+                <Item databound="true" name="Active" attributeName="Active" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true"/>
+                <Item databound="true" name="ActiveFrom" attributeName="ActiveFrom" javaType="Timestamp" displayType="dateField" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true"/>
+                <Item databound="true" name="ActiveTo" attributeName="ActiveTo" javaType="Timestamp" displayType="dateField" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true"/>
+                <Item databound="true" name="Address" attributeName="Address" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true"/>
+                <Item databound="true" name="AddressId" attributeName="AddressId" javaType="BigInteger" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="false" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="false" showInAdvancedSearch="false"/>
+                <Item databound="true" name="AreaId" attributeName="AreaId" javaType="BigInteger" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="false" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="false" showInAdvancedSearch="false"/>
+                <Item databound="true" name="CardNo" attributeName="CardNo" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true"/>
+                <Item databound="true" name="CityId" attributeName="CityId" javaType="BigInteger" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="false" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="false" showInAdvancedSearch="false"/>
+                <Item databound="true" name="FlatNo" attributeName="FlatNo" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true"/>
+                <Item databound="true" name="FloorNo" attributeName="FloorNo" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true"/>
+                <Item databound="true" name="HomeNo" attributeName="HomeNo" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true"/>
+                <Item databound="true" name="RegionId" attributeName="RegionId" javaType="BigInteger" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="false" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="false" showInAdvancedSearch="false"/>
+                <Item databound="true" name="Remarks" attributeName="Remarks" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true"/>
+                <Item databound="true" name="StreetId" attributeName="StreetId" javaType="BigInteger" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="false" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="false" showInAdvancedSearch="false"/>
+                <RegionContainer name="Regions"/>
+                <Templates/>
+            </Group>
+            <Templates/>
+        </Group>
+        <Templates/>
+    </Group>
+    <Group name="ContractManagment" dataCollection="ContractDataVO1" dataCollectionImpl="ContractDataVO" layoutStyle="table-form" wizardStyle="true" tableOverflowStyle="belowWithSplitter" stackDetailGroups="true" samePage="false" samePagePosition="belowWithSplitter" advancedSearch="model-samePage" searchAreaHeight="200" advancedSearchColumns="4" autoQuery="true" tabName="Contracts" displayTitlePlural="Contracts" displayTitleSingular="Contracts" descriptorAttribute="CardNo" groupHeight="100" columns="4" tableWidth="Stretch" enableStretching="true" filterTable="true" tableRangeSize="25">
+        <Item databound="true" name="CardNo" attributeName="CardNo" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Card No :" promptInTable="Card No" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" alignment="right" updateAllowed="false" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="ContractClientName" attributeName="ContractClientName" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Client Name :" promptInTable="Client Name" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="200" sortable="true" wrap="true" alignment="left" clearValueWhenDependsOnItemChanges="false" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="ContractDate" attributeName="ContractDate" javaType="Timestamp" displayType="dateField" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Contract Date :" promptInTable="Contract Date" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="150" sortable="true" alignment="left" updateAllowed="while_new" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="ReplacementDuration" attributeName="ReplacementDuration" javaType="BigInteger" displayType="model-choiceList" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Duration :" promptInTable="Duration" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="false" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="AreaId" attributeName="AreaId" javaType="BigDecimal" displayType="model-choiceList" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Area Name :" promptInTable="Area Name" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="150" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="ContractEmail" attributeName="ContractEmail" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Contract Email :" promptInTable="Contract Email " displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="150" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="ContractMobile" attributeName="ContractMobile" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Contract Mobile :" promptInTable="Contract Mobile" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="150" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="ContractMobile2" attributeName="ContractMobile2" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Contract Mobile 2 :" promptInTable="Contract Mobile 2" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="150" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="ContractPhone" attributeName="ContractPhone" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Contract Phone :" promptInTable="Contract Phone" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="150" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="ContractPhone2" attributeName="ContractPhone2" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Contract Phone 2 :" promptInTable="Contract Phone 2" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="150" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="PNum" attributeName="PNum" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="P Num :" promptInTable="P Num" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="75" sortable="true" alignment="left" updateAllowed="false" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="NextDeliveryDate" attributeName="NextDeliveryDate" javaType="Timestamp" displayType="dateField" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Next Delivery Date :" promptInTable="Next Delivery Date " displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" alignment="left" updateAllowed="false" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="LastChangedDate" attributeName="LastChangedDate" javaType="Timestamp" displayType="dateField" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Last Changed Date :" promptInTable="Last Changed Date" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" alignment="left" updateAllowed="false" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="X" attributeName="X" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="X :" promptInTable="X" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="Y" attributeName="Y" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Y :" promptInTable="Y" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="CancelDate" attributeName="CancelDate" javaType="Timestamp" displayType="dateField" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Cancel Date :" promptInTable="Cancel Date" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="150" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="CancelReason" attributeName="CancelReason" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Cancel Reason :" promptInTable="Cancel Reason" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="150" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="Active" attributeName="Active" javaType="BigDecimal" displayType="checkBox" domain="Active_Domain" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Active :" promptInTable="Activee" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="50" sortable="true" alignment="left" defaultValue="1" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="ContractAddress" attributeName="ContractAddress" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="ContractInfoId" attributeName="ContractInfoId" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="false" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="false" showInAdvancedSearch="false">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="CustomerId" attributeName="CustomerId" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="DefaultPriority" attributeName="DefaultPriority" javaType="BigDecimal" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="LastUpdateTime" attributeName="LastUpdateTime" javaType="Timestamp" displayType="dateField" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="false" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="MustCall" attributeName="MustCall" javaType="BigDecimal" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="UpdatedBy" attributeName="UpdatedBy" javaType="String" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <RegionContainer name="Regions"/>
+        <Group name="pContract" dataCollection="ProductContractVO2" dataCollectionImpl="ProductContractVO" layoutStyle="table-form" wizardStyle="true" tableOverflowStyle="belowWithSplitter" stackDetailGroups="true" samePage="true" samePagePosition="belowWithSplitter" tabName="Product con" displayTitlePlural="Product con" displayTitleSingular="Product con" descriptorAttribute="Id">
+            <Item databound="true" name="Active" attributeName="Active" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true"/>
+            <Item databound="true" name="ActiveFrom" attributeName="ActiveFrom" javaType="Timestamp" displayType="dateField" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true"/>
+            <Item databound="true" name="ActiveTo" attributeName="ActiveTo" javaType="Timestamp" displayType="dateField" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true"/>
+            <Item databound="true" name="CardNo" attributeName="CardNo" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="false" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="false" showInAdvancedSearch="false"/>
+            <Item databound="true" name="Id" attributeName="Id" javaType="BigInteger" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="false" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="false" showInAdvancedSearch="false"/>
+            <Item databound="true" name="PackageNo" attributeName="PackageNo" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true"/>
+            <Item databound="true" name="PackageVersion" attributeName="PackageVersion" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true"/>
+            <Item databound="true" name="PendingConfirmation" attributeName="PendingConfirmation" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="false" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="false" showInAdvancedSearch="false"/>
+            <Item databound="true" name="ProductId" attributeName="ProductId" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true"/>
+            <Item databound="true" name="ProductSku" attributeName="ProductSku" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" sortable="false" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="false" showInAdvancedSearch="false"/>
+            <Item databound="true" name="Quantity" attributeName="Quantity" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="false" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="false" showInAdvancedSearch="false"/>
+            <Item databound="true" name="TreatmentId" attributeName="TreatmentId" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true"/>
+            <Item databound="true" name="UnitPrice" attributeName="UnitPrice" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="false" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="false" showInAdvancedSearch="false"/>
+            <RegionContainer name="Regions"/>
+            <Templates/>
+        </Group>
+        <Templates/>
+    </Group>
+    <Group name="FinancialPeriod" dataCollection="FinancialPeiod1" dataCollectionImpl="FinancialPeiodVO" layoutStyle="table" advancedSearch="model-samePage" advancedSearchColumns="3" tabName="FinancialPeriod" displayTitlePlural="Financial Period" displayTitleSingular="Financial Period" descriptorAttribute="Id" tableWidth="Stretch">
+        <Item databound="true" name="Description" attributeName="Description" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" promptInTable="Description" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="500" hintText="#{$HINTS$.tooltip}" columnWidth="300" sortable="true" wrap="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true" promptInSearch="Description :">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="FromDate" attributeName="FromDate" javaType="Timestamp" displayType="dateField" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" promptInTable="From Date" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="150" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true" promptInSearch="From Date :">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="ToDate" attributeName="ToDate" javaType="Timestamp" displayType="dateField" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" promptInTable="To Date" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="150" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true" promptInSearch="To Date :">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="Default1" attributeName="Default1" javaType="BigDecimal" displayType="checkBox" domain="Active_Domain" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" promptInTable="Default" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" alignment="left" defaultValue="0" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true" promptInSearch="Default :">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="Active" attributeName="Active" javaType="BigDecimal" displayType="checkBox" domain="Active_Domain" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="left" defaultValue="1" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true" promptInSearch="Active :">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="Id" attributeName="Id" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <RegionContainer name="Regions"/>
+        <Templates/>
+    </Group>
+    <Group name="ddd" dataCollection="Countries1" dataCollectionImpl="CountriesVO" displayTitlePlural="ds" descriptorAttribute="CountryId" addMenuEntry="false">
+        <Item databound="true" name="CountryId" attributeName="CountryId" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="2" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true"/>
+        <Item databound="true" name="CountryName" attributeName="CountryName" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="40" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true"/>
+        <Item databound="true" name="RegionId" attributeName="RegionId" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true"/>
+        <RegionContainer name="Regions"/>
+        <Templates/>
+    </Group>
+    <Group name="OperationSchedule" shortName="OperationSchedule" dataCollection="OperationSchedule1" dataCollectionImpl="OperationScheduleVO" layoutStyle="table" wizardStyle="true" stackDetailGroups="true" advancedSearch="model-samePage" quickSearch="none" advancedSearchColumns="3" tabName="Operation Schedule" displayTitlePlural="Operation Schedule" displayTitleSingular="Operation Schedule" descriptorAttribute="ScheduleId" tableWidth="Stretch" enableStretching="true" filterTable="true" tableRangeSize="25" tableFreezeStyle="none">
+        <Item databound="true" name="Day" attributeName="Day" javaType="String" displayType="model-choiceList" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="200" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="AreaName" attributeName="AreaName" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="250" sortable="true" alignment="left" updateAllowed="while_new" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="PNumForDispatch" attributeName="PNumForDispatch" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="ActiveFrom" attributeName="ActiveFrom" javaType="Date" displayType="dateField" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="ActiveTo" attributeName="ActiveTo" javaType="Date" displayType="dateField" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="left" updateAllowed="false" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="Active" attributeName="Active" javaType="Number" displayType="checkBox" domain="Active_Domain" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="50" sortable="true" alignment="left" defaultValue="1" clearValueWhenDependsOnItemChanges="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="AreaId" attributeName="AreaId" javaType="BigInteger" displayType="hidden" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="false" showInAdvancedSearch="false">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="MotherArea" attributeName="MotherArea" javaType="BigInteger" displayType="hidden" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="false" showInAdvancedSearch="false">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="ScheduleId" attributeName="ScheduleId" javaType="BigInteger" displayType="hidden" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="false" showInAdvancedSearch="false">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="SubArea" attributeName="SubArea" javaType="BigInteger" displayType="hidden" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="false" showInAdvancedSearch="false">
+            <Templates/>
+        </Item>
+        <RegionContainer name="Regions">
+            <Templates/>
+        </RegionContainer>
+        <Templates/>
+    </Group>
+    <Group name="Package" dataCollection="Package1" dataCollectionImpl="PackageVO" layoutStyle="table-form" wizardStyle="true" tableOverflowStyle="belowWithSplitter" stackDetailGroups="true" advancedSearch="model-samePage" advancedSearchColumns="3" tabName="Package" displayTitlePlural="Package" displayTitleSingular="Package" descriptorAttribute="Id" groupHeight="150" columns="2" tableWidth="Stretch" enableStretching="true" filterTable="true" tableRangeSize="25" tableFreezeStyle="none">
+        <Item databound="true" name="PackageName" attributeName="PackageName" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Package Name :" promptInTable="Package Name" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="350" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true" promptInSearch="Package Name:">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="PackageVersion" attributeName="PackageVersion" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Package Version :" promptInTable="Package Version" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="left" updateAllowed="false" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true" promptInSearch="Package Version :">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="ActiveFrom" attributeName="ActiveFrom" javaType="Timestamp" displayType="dateField" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Active From :" promptInTable="Active From" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="left" updateAllowed="false" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true" promptInSearch="Active From :">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="ActiveTo" attributeName="ActiveTo" javaType="Timestamp" displayType="dateField" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Active To :" promptInTable="Active To" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="left" updateAllowed="false" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true" promptInSearch="Active To:">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="Active" attributeName="Active" javaType="BigDecimal" displayType="checkBox" domain="Active_Domain" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Active :" promptInTable="Active" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="left" defaultValue="1" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true" promptInSearch="Active :">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="PackageId" attributeName="PackageId" javaType="String" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="while_new" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="Id" attributeName="Id" javaType="BigDecimal" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <RegionContainer name="Regions"/>
+        <Group name="PackageProduct" dataCollection="PackageProduct1" dataCollectionImpl="PackageProductVO" layoutStyle="table" stackDetailGroups="true" samePage="true" samePagePosition="belowWithSplitter" advancedSearch="model-samePage" advancedSearchColumns="3" tabName="Package Product" displayTitlePlural="Package Product" displayTitleSingular="Package Product" descriptorAttribute="Id" groupHeight="150" tableWidth="Stretch" enableStretching="true">
+            <Item databound="true" name="PackageId" attributeName="PackageId" javaType="String" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="50" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="PackageVersion" attributeName="PackageVersion" javaType="BigDecimal" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="ProductId" attributeName="ProductId" javaType="String" displayType="model-choiceList" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Product " promptInTable="Product" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" alignment="left" updateAllowed="while_new" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true" promptInSearch="Product :">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="TreatmentId" attributeName="TreatmentId" javaType="BigDecimal" displayType="model-choiceList" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Treatment" promptInTable="Treatment" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" alignment="left" updateAllowed="while_new" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true" promptInSearch="Treatment :">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="Price1w" attributeName="Price1w" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Price 1 Week" promptInTable="Price 1 Week" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true" promptInSearch="Price 1 Week :">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="Price2w" attributeName="Price2w" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Price 2 Weeks" promptInTable="Price 2 Weeks" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true" promptInSearch="Price 2 Weeks :">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="Price4w" attributeName="Price4w" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Price 4 Weeks" promptInTable="Price 4 Weeks" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true" promptInSearch="Price 4 Weeks :">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="Quantity" attributeName="Quantity" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Quantity" promptInTable="Quantity" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true" promptInSearch="Quantity :">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="ProductSku" attributeName="ProductSku" javaType="String" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="50" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="while_new" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="Id" attributeName="Id" javaType="BigDecimal" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="false" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="false" showInAdvancedSearch="false">
+                <Templates/>
+            </Item>
+            <RegionContainer name="Regions">
+                <Templates/>
+            </RegionContainer>
+            <Templates/>
+        </Group>
+        <Templates/>
+    </Group>
+    <Group name="CollectionPlanType" dataCollection="CollectionPlanType1" dataCollectionImpl="CollectionPlanTypeVO" layoutStyle="table-form" wizardStyle="true" stackDetailGroups="true" advancedSearch="model-samePage" quickSearch="none" advancedSearchColumns="3" tabName="Payment Plan Type" displayTitlePlural="Payment Plan Type" displayTitleSingular="Payment Plan Type" descriptorAttribute="TypeId" groupHeight="100" tableWidth="Stretch" enableStretching="true" filterTable="true" tableRangeSize="25">
+        <Item databound="true" name="TypeId" attributeName="TypeId" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="TypeName" attributeName="TypeName" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Plan Type :" promptInTable="Plan Type" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <RegionContainer name="Regions"/>
+        <Group name="CollectionPlan" dataCollection="CollectionPlan2" dataCollectionImpl="CollectionPlanVO" layoutStyle="table" wizardStyle="true" stackDetailGroups="true" samePage="true" samePagePosition="belowWithSplitter" advancedSearch="model-samePage" quickSearch="none" advancedSearchColumns="3" tabName="Payment Plan" displayTitlePlural="Payment Plan" displayTitleSingular="Payment Plan" descriptorAttribute="PlanId" groupHeight="100" tableWidth="Stretch" enableStretching="true" filterTable="true">
+            <Item databound="true" name="PlanName" attributeName="PlanName" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" promptInTable="Payment Plan" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" columnWidth="250" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="PlanId" attributeName="PlanId" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="Ratio" attributeName="Ratio" javaType="BinaryDouble1" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="Limit" attributeName="Limit" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <Item databound="true" name="TypeId" attributeName="TypeId" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+                <Templates/>
+            </Item>
+            <RegionContainer name="Regions"/>
+            <Templates/>
+        </Group>
+        <Templates/>
+    </Group>
+    <Group name="PointCatalog" dataCollection="PointCatalog1" dataCollectionImpl="PointCatalogVO" layoutStyle="table" advancedSearch="model-samePage" advancedSearchColumns="3" tabName="Point Catalog" displayTitlePlural="Point Catalog" displayTitleSingular="Point Catalog" descriptorAttribute="Id" tableWidth="Stretch" enableStretching="true" filterTable="true">
+        <Item databound="true" name="Description" attributeName="Description" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="DestinationTableName" attributeName="DestinationTableName" javaType="String" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="Id" attributeName="Id" javaType="BigInteger" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="38" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="NumOfPoints" attributeName="NumOfPoints" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <RegionContainer name="Regions"/>
+        <Templates/>
+    </Group>
+    <Group name="SchedulingExcludeReason" dataCollection="SchedulingExcludeReasonVO1" dataCollectionImpl="SchedulingExcludeReasonVO" layoutStyle="table" advancedSearch="model-samePage" tabName="Scheduling Exclude Reason" displayTitlePlural="Scheduling Exclude Reason" displayTitleSingular="Scheduling Exclude Reason" descriptorAttribute="ReasonId" tableWidth="Stretch" enableStretching="true" filterTable="true" tableRangeSize="25">
+        <Item databound="true" name="ReasonId" attributeName="ReasonId" javaType="BigDecimal" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="false" showInAdvancedSearch="false">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="ReasonName" attributeName="ReasonName" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" promptInTable="Reason Name" promptShort="Reason Name" displayWidth="200" displayHeight="#{$HINTS$.displayHeight}" maximumLength="500" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <RegionContainer name="Regions"/>
+        <Templates/>
+    </Group>
+    <Group name="TemplateConfiguration" dataCollection="TemplateConfigurationVO1" dataCollectionImpl="TemplateConfigurationVO" layoutStyle="table" wizardStyle="true" advancedSearch="model-samePage" advancedSearchColumns="3" tabName="Template Configuration" displayTitlePlural="Template Configuration" displayTitleSingular="Template Configuration" descriptorAttribute="Id" tableInsertAllowed="false" tableDeleteAllowed="false" tableWidth="Stretch" enableStretching="true" filterTable="true" showDuplicateRowButton="false" tableRangeSize="25">
+        <Item databound="true" name="Id" attributeName="Id" javaType="String" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="20" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="TemplateName" attributeName="TemplateName" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Template" promptInTable="Template" promptShort="Template" displayWidth="250" displayHeight="#{$HINTS$.displayHeight}" maximumLength="500" hintText="#{$HINTS$.tooltip}" columnWidth="300" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true" promptInSearch="Template :">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="TemplateContent" attributeName="TemplateContent" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Template Content English" promptInTable="Template Content English" promptShort="Template Content English" displayWidth="250" displayHeight="#{$HINTS$.displayHeight}" maximumLength="500" hintText="#{$HINTS$.tooltip}" columnWidth="300" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true" promptInSearch="Template Content English :">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="TemplateContentAr" attributeName="TemplateContentAr" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="Template Content Arabic" promptInTable="Template Content Arabic" promptShort="Template Content Arabic" displayWidth="250" displayHeight="#{$HINTS$.displayHeight}" maximumLength="500" hintText="#{$HINTS$.tooltip}" columnWidth="300" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true" promptInSearch="Template Content Arabic :">
+            <Templates/>
+        </Item>
+        <RegionContainer name="Regions"/>
+        <Templates/>
+    </Group>
+    <Group name="Users" dataCollection="UsersVO1" dataCollectionImpl="UsersVO" layoutStyle="table" advancedSearch="model-samePage" advancedSearchColumns="3" tabName="Users" displayTitlePlural="Users" displayTitleSingular="Users" descriptorAttribute="Userid" tableWidth="Stretch" tableRangeSize="25">
+        <Item databound="true" name="UserName" attributeName="UserName" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" promptInTable="User Name" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="60" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" alignment="left" updateAllowed="while_new" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true" promptInSearch="User Name:">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="FullNameEn" attributeName="FullNameEn" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" promptInTable="Full Name English" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="100" hintText="#{$HINTS$.tooltip}" columnWidth="200" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true" promptInSearch="Full Name English :">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="FullNameAr" attributeName="FullNameAr" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" promptInTable="Full Name Arabic" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="100" hintText="#{$HINTS$.tooltip}" columnWidth="200" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true" promptInSearch="Full Name Arabic :">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="UsergroupId" attributeName="UsergroupId" javaType="Integer" displayType="model-choiceList" useLovForValidation="true" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" promptInTable="User Group" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true" promptInSearch="User Group :">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="EmployeeCode" attributeName="EmployeeCode" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" promptInTable="Employee Code" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true" promptInSearch="Employee Code :">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="PassWord" attributeName="PassWord" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" promptInTable="Password" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="15" hintText="#{$HINTS$.tooltip}" columnWidth="100" sortable="true" alignment="left" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true" promptInSearch="Password :">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="ActiveFlag" attributeName="ActiveFlag" javaType="Integer" displayType="checkBox" domain="Active_Domain" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" promptInTable="Active" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="2" hintText="#{$HINTS$.tooltip}" columnWidth="25" sortable="true" alignment="left" defaultValue="1" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="AssigntoImie" attributeName="AssigntoImie" javaType="String" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="Image" attributeName="Image" javaType="BlobDomain" displayType="fileUpload" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="false" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="false" showInAdvancedSearch="false">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="LastLogged" attributeName="LastLogged" javaType="Timestamp" displayType="dateField" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="LoginImie" attributeName="LoginImie" javaType="String" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="Userid" attributeName="Userid" javaType="BigDecimal" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="VerficationCode" attributeName="VerficationCode" javaType="String" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="VerficationLocation" attributeName="VerficationLocation" javaType="String" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="VerficationTime" attributeName="VerficationTime" javaType="Timestamp" displayType="dateField" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <RegionContainer name="Regions">
+            <Templates/>
+        </RegionContainer>
+        <Templates/>
+    </Group>
+    <Group name="Products" dataCollection="ProductDataVO1" dataCollectionImpl="ProductDataVO" layoutStyle="table" wizardStyle="true" advancedSearch="model-samePage" advancedSearchColumns="3" tabName="Product" displayTitlePlural="Product" displayTitleSingular="Product" descriptorAttribute="ProductId" tableWidth="Stretch" enableStretching="true" filterTable="true" tableRangeSize="25">
+        <Item databound="true" name="DmsProductId" attributeName="DmsProductId" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="while_new" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="HandleSkuCode" attributeName="HandleSkuCode" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="while_new" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="IsHandle" attributeName="IsHandle" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="while_new" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="Kind" attributeName="Kind" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="Price1w" attributeName="Price1w" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="Price2w" attributeName="Price2w" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="Price3w" attributeName="Price3w" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="Price4w" attributeName="Price4w" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="ProductCategory" attributeName="ProductCategory" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="ProductId" attributeName="ProductId" javaType="BigDecimal" displayType="textInput" displayInForm="false" displayInTable="false" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="ProductName" attributeName="ProductName" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="ProductSku" attributeName="ProductSku" javaType="String" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" maximumLength="4000" hintText="#{$HINTS$.tooltip}" sortable="true" updateAllowed="while_new" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="SellingPrice" attributeName="SellingPrice" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true">
+            <Templates/>
+        </Item>
+        <Item databound="true" name="TreatmentId" attributeName="TreatmentId" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true"/>
+        <Item databound="true" name="Type" attributeName="Type" javaType="BigDecimal" displayType="textInput" displayInForm="true" displayInTable="true" displayInTableOverflow="false" promptInForm="#{$HINTS$.label}" displayWidth="#{$HINTS$.displayWidth}" displayHeight="#{$HINTS$.displayHeight}" hintText="#{$HINTS$.tooltip}" sortable="true" alignment="right" updateAllowed="true" required="#{$HINTS$.mandatory}" showInQuickSearch="true" showInAdvancedSearch="true"/>
+        <RegionContainer name="Regions"/>
+        <Templates/>
+    </Group>
+    <Domains>
+        <Domain name="Active_Domain" type="static" rowSpecific="true" requeryCondition="#{true}">
+            <AllowableValue value="1" meaning="Active"/>
+            <AllowableValue value="0" meaning="Not Active"/>
+        </Domain>
+        <Domain name="Customerlkup" type="dynamic" dataCollection="CustomerLookupVO1" rowSpecific="true" dataCollectionImpl="CustomerLookupVO" valueAttribute="CustomerId" meaningAttribute="CustomerName"/>
+        <Domain name="CustomerChannel" type="dynamic" dataCollection="CustomerChannel1" rowSpecific="true" dataCollectionImpl="CustomerChannelVO" valueAttribute="ChannelId" meaningAttribute="ChannelName"/>
+    </Domains>
+    <Templates>
+        <TemplateBinding templateIdentifier="PAGE_CONTENT" templateFile="default/page/MtspageContent.vm"/>
+        <TemplateBinding templateIdentifier="FORM_GROUP" templateFile="custom/pageComponent/MtsformGroup.vm"/>
+        <TemplateBinding templateIdentifier="TABLE_GROUP" templateFile="custom/pageComponent/MtstableGroup.vm"/>
+        <TemplateBinding templateIdentifier="SELECT_GROUP" templateFile="custom/pageComponent/MtslistViewSelectGroup.vm"/>
+        <TemplateBinding templateIdentifier="FORM_BROWSE_BUTTONS" templateFile="custom/pageComponent/MtsformBrowseButtons.vm"/>
+        <TemplateBinding templateIdentifier="ADD_ROW_LINK" templateFile="custom/button/MtsaddRowLink.vm"/>
+        <TemplateBinding templateIdentifier="DELETE_WARNING_DIALOG" templateFile="custom/button/MtsdeleteWarningDialog.vm"/>
+        <TemplateBinding templateIdentifier="NEW_BUTTON" templateFile="custom/button/MtsnewButton.vm"/>
+        <TemplateBinding templateIdentifier="NEW_BUTTON_NOT_IN_FORM_LAYOUT" templateFile="custom/button/MtsnewButtonNotInFormLayout.vm"/>
+        <TemplateBinding templateIdentifier="WIZARD_CANCEL_BUTTON" templateFile="custom/button/MtswizardCancelButton.vm"/>
+        <TemplateBinding templateIdentifier="SEARCH_AREA" templateFile="custom/search/MtssearchArea.vm"/>
+        <TemplateBinding templateIdentifier="MODEL_ADVANCED_SEARCH_REGION" templateFile="custom/search/MtsmodelAdvancedSearchRegion.vm"/>
+        <TemplateBinding templateIdentifier="TABLE_ACTION_COLUMN" templateFile="custom/pageComponent/MtstableActionColumn.vm"/>
+        <TemplateBinding templateIdentifier="FILE_GENERATOR" templateFile="custom/misc/file/MtsfileGenerator.vm "/>
+        <TemplateBinding templateIdentifier="HOME_PAGE" templateFile="custom/misc/file/MtshomePage.vm "/>
+        <TemplateBinding templateIdentifier="UISHELL_PAGE" templateFile="custom/misc/file/MtsuiShellPage.vm"/>
+        <TemplateBinding templateIdentifier="JHS_PAGE_TEMPLATE" templateFile="custom/misc/file/MtsjhsPageTemplateSkyros.vm"/>
+        <TemplateBinding templateIdentifier="PAGE_TEMPLATE_CONTENT" templateFile="custom/misc/file/MtspageTemplateContent.vm"/>
+        <TemplateBinding templateIdentifier="PAGE_TEMPLATE_TREE_MENU_CONTENT" templateFile="custom/misc/file/MtspageTemplateTreeMenuContent.vm"/>
+        <TemplateBinding templateIdentifier="MENU_GLOBAL" templateFile="custom/misc/file/MtsmenuGlobal.vm"/>
+        <TemplateBinding templateIdentifier="LOGIN_PAGE" templateFile="custom/misc/file/MtsloginPage.vm"/>
+        <TemplateBinding templateIdentifier="JHS_PERMISSIONS_DATA" templateFile="custom/misc/file/MtsjhsPermissionsData.vm"/>
+        <TemplateBinding templateIdentifier="XML_MENU_MODEL" templateFile="custom/misc/menu/MtsxmlRootMenuModel.vm"/>
+        <TemplateBinding templateIdentifier="XML_MENU_MODEL_ITEM" templateFile="custom/misc/menu/MtsxmlMenuModelItem.vm"/>
+    </Templates>
+</Service>

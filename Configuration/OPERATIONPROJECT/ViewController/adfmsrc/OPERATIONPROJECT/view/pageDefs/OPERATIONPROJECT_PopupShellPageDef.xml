@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="OPERATIONPROJECT_PopupShellPageDef" Package="OPERATIONPROJECT.view.pageDefs"
+                SkipValidation="validateCurrentRows"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="popupRegion" activation="deferred" taskFlowId="#{pageFlowScope.taskFlowId}"
+              parametersMap="#{pageFlowScope.parametersMap}" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings/>
+</pageDefinition>

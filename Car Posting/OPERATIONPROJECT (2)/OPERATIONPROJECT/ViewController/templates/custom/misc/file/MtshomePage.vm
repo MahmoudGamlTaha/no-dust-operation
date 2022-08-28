@@ -1,0 +1,104 @@
+## revision_history
+## 31-oct-2013   Steven Davelaar
+## 2.5           Moved metaContainer facet to separate macro, use PAGE_TEMPLATE_ID macro
+## 11-oct-2011   Steven Davelaar
+## 2.4           Use page_start/end macros to switch between facelets and jspx 
+## 11-oct-2011   Steven Davelaar
+## 2.3           Get page extension from application view type instead of hardcoding .jspx
+## 04-feb-2011   Steven Davelaar
+## 2.2           replaced hardcoded JSP version number with JSP_VERSION macro
+##               Change encoding to pageEncoding
+## 01-nov-2010   Steven Davelaar
+## 2.1           Added call to keyboard server listener
+## 10-jul-2010   Steven Davelaar
+## 2.1           Do not use JhsDynamicTabsPageTemplate when set at application level
+##               Hide menu tabs when already shown in menu global area
+## 23-jun-2009   Paco van der Linden
+## 2.0           Restructured layout according to stretching best-practices.
+## 09-sep-2008   Steven Davelaar
+## 1.1           R11 upgrade
+## 17-jun-2007   Steven Davelaar
+## 1.0           Initial creation
+<?xml version='1.0' #PAGE_ENCODING_PROP()?>
+#PAGE_START()
+    <af:document title="#HOME_PAGE_TITLE()" id="#NEW_ID("doc")">
+      #META_CONTAINER_FACET()
+      <af:form id="dataForm" usesUpload="true">
+
+${JHS.engine.resetNamingContainerContext()}
+
+        ## do not use dynamic tabs template for this page
+        <af:pageTemplate id="#PAGE_TEMPLATE_ID()" viewId="/common/pageTemplates/JhsPageTemplate${JHS.application.pageExtension}">
+##        <af:pageTemplate id="#PAGE_TEMPLATE_ID()" viewId="${JHS.application.pageTemplate}" #if (${JHS.application.useDynamicTabs}) value="#{bindings.jhsPageTemplateBinding}" #end>
+          <f:attribute name="showMessagesInline" value="${JHS.application.showMessagesInline}"/>
+          #if (${JHS.application.runtimeCustomizationMenuAllowed})
+##            <f:attribute name="headerImage1" value="#{jhsDynamicMenu.currentModule.uisHeaderImage1}"/>
+##            <f:attribute name="headerImage2" value="#{jhsDynamicMenu.currentModule.uisHeaderImage2}"/>
+          #else
+            #if (${JHS.application.startMenuLevel}!='0')
+              ## top-level menu entries already shown in menu global
+              <f:attribute name="showMenu1" value="false"/>
+            #else
+              <f:attribute name="menuModel" value="#{RootMenu}"/>
+              <f:attribute name="menuStartLevel" value="0"/>
+            #end
+          #end
+	  <f:attribute name="brandingTitle" value="#{nls['PRODUCT_TITLE']}"/>
+          <f:facet name="pageContent">
+	   <af:switcher id="#NEW_ID("s")" facetName="#{MTSPermission['isAuthorized'] ? 'Authorized' : 'NotAuthorized' }" defaultFacet="NotAuthorized">
+	     <f:facet name="Authorized">
+            <af:panelGroupLayout id="#NEW_ID("pgl")" layout="vertical">
+              <af:panelGridLayout id="#NEW_ID("pgl")">
+                <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="#NEW_ID("gr")">
+                  <af:gridCell marginStart="5px" width="34%" id="#NEW_ID("gc")">
+                  </af:gridCell>
+                <af:gridCell marginStart="5px" width="33%" id="#NEW_ID("gc")" valign="middle">
+                  <af:panelGroupLayout id="#NEW_ID("pgl")" layout="vertical" halign="center">
+                    <af:image source="/jheadstart/images/Customer Logo.png" id="#NEW_ID("i")"/>
+                    <af:spacer width="10" height="10" id="#NEW_ID("s")"/>
+                    <af:outputFormatted value="#{nls['PRODUCT_TITLE']}" id="#NEW_ID("of")" 
+                                    inlineStyle="font-size: 30px; font-weight: bold; font-family: 'Times New Roman'; color: #313131;" />
+                  </af:panelGroupLayout>
+                </af:gridCell>
+                <af:gridCell marginStart="5px" width="33%" marginEnd="5px" id="gc4"/>
+              </af:gridRow>
+            </af:panelGridLayout>
+           <af:listView id="homeMenu" var="menuItem" varStatus="stat" value="#{RootMenu}" selection="single">
+             <af:listItem id="pt_li1" rendered="#{menuItem.rendered and menuItem.focusViewId ne '/Home'}" shortDesc="#{menuItem.label}" 
+			              inlineStyle="border: #F7F7F7 solid;  background-color: White;"
+                          styleClass="WBDisplayBlock WBDisplayBlockPadding WBDisplayBlockCenterUndo">
+                <af:panelGroupLayout id="pt_pgl3">
+                    <af:panelGridLayout id="pt_pgl4">
+                       <af:gridRow marginTop="0px" marginBottom="0px" id="pt_gr1" height="80px">
+                           <af:gridCell id="gc1">
+                             <af:image source="#{menuItem.icon}" id="#NEW_ID("i")" styleClass="WBImage" shortDesc="#{menuItem.label}"/>
+                           </af:gridCell>
+                           <af:gridCell marginStart="10px" width="200px" marginEnd="10px" valign="top" id="pt_gc1">
+                             <af:panelGroupLayout id="pgl1" layout="vertical">
+                                <af:outputFormatted id="Items1" inlineStyle="font-size: medium; font-weight: bold;" value="#{menuItem.label}"/>
+                                <af:outputFormatted id="Items23" inlineStyle="color: #878c90; font-size:14px;" value="#{menuItem.label}"/>
+                              </af:panelGroupLayout>
+                           </af:gridCell>
+                       </af:gridRow>
+                     </af:panelGridLayout>
+                 </af:panelGroupLayout>
+                 <af:button action="#{menuItem.doAction}" id="CfgGovernrateGtd" immediate="true"
+                            actionListener="#{pageFlowScope.pendingChangesBean.revert}"
+                            inlineStyle="cursor:pointer; bottom: 0px; width: 100.0%; height: 100%; position: absolute; background-color: transparent; #{facesContext.viewRoot.locale.language=='en' ? 'right: 0; background-image:url();' : 'left: 0; background-image:url();'}"/>
+              </af:listItem>
+            </af:listView>
+          </af:panelGroupLayout>
+         </f:facet>
+         <f:facet name="NotAuthorized">
+            <af:panelHeader text="#{nls['NOT_AUTHORIZED_ERROR']}" id="#NEW_ID("ph")" size="-1"/>
+         </f:facet>
+       </af:switcher>
+     </f:facet>
+
+        </af:pageTemplate>
+      </af:form>
+      #KEYBOARD_SERVER_LISTENER()
+    </af:document>
+#PAGE_END()
+
+

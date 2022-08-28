@@ -1,0 +1,24 @@
+## revision_history
+## 17-sep-2007   Steven Davelaar
+## 1.1           Renamed column key to key1 
+## 04-Jun-2007   Marcel Marsman
+## 1.0           Initial creation
+  -- create locale 
+  MERGE INTO jhs_locales loc
+  USING (select '${JHS.nlsGenerator.bundleFileLocale}' description, '${JHS.nlsGenerator.bundleFileLocale}' code from dual) new_locale
+  ON (loc.code = new_locale.code)
+    WHEN NOT MATCHED THEN INSERT (loc.id, loc.code, loc.description) VALUES (Jhs_Seq.Nextval, new_locale.code, new_locale.description);
+     
+  -- create all key, value pairs
+#foreach ($entry in $JHS.nlsGenerator.entries)
+    MERGE INTO jhs_translations org 
+    USING (select '${entry.key}' key1, '${entry.value}' text, (SELECT id from jhs_locales where code='${JHS.nlsGenerator.bundleFileLocale}') lce_id from dual) new_trans 
+    ON (org.key1 = new_trans.key1 AND org.lce_id = new_trans.lce_id) 
+#if(${JHS.application.overwriteNlsEntries})
+      WHEN MATCHED THEN UPDATE SET org.text = new_trans.text 
+#end
+    WHEN NOT MATCHED THEN INSERT (org.id, org.key1, org.text, org.lce_id)  
+                        VALUES (Jhs_Seq.Nextval, new_trans.key1, new_trans.text, new_trans.lce_id); 
+#end
+
+commit; 

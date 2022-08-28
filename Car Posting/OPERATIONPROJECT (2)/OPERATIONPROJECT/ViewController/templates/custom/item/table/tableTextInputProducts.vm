@@ -1,0 +1,5 @@
+<af:link text="Products" id="l1" action="GoToProducts"
+                                                         useWindow="true" windowHeight="500" windowWidth="1100">
+                                                    <af:setActionListener from="#{row.bindings.AssignmentId.inputValue}"
+                                                                          to="#{pageFlowScope.AssignmentId}"/>
+                                                </af:link>

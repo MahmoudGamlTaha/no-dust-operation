@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="SchedulingExcludeReasonPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="validateCurrentRows">
+  <parameters/>
+  <executables>
+    <invokeAction id="clearDeepLinkViewCriteriaInvoke" Binds="clearDeepLinkViewCriteria" Refresh="renderModel"
+                  RefreshCondition="#{'true' != pageFlowScope.jhsQueryByKeyValue}"/>
+    <iterator id="SchedulingExcludeReasonIterator" Binds="SchedulingExcludeReasonVO1"
+              DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <searchRegion id="SchedulingExcludeReasonIteratorQuery" Binds="SchedulingExcludeReasonIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true"
+                  DefaultQuickSearchAttrName="ReasonName"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+  </executables>
+  <bindings>
+    <methodAction id="clearDeepLinkViewCriteria" RequiresUpdateModel="true" Action="invokeMethod"
+                  DataControl="AppModuleAMDataControl" InstanceName="AppModuleAMDataControl.dataProvider"
+                  MethodName="clearDeepLinkViewCriteria"
+                  ReturnName="AppModuleAMDataControl.methodResults.AppModuleAMDataControl_dataProvider_clearDeepLinkViewCriteria_result"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="viewObjectUsage" NDValue="SchedulingExcludeReasonVO1" NDType="java.lang.String"/>
+      <NamedData NDName="requeryIfFound" NDValue="#{true}" NDType="java.lang.Boolean"/>
+    </methodAction>
+    <tree id="SchedulingExcludeReasonTable" IterBinding="SchedulingExcludeReasonIterator">
+      <nodeDefinition Name="SchedulingExcludeReason" DefName="OPERATIONPROJECT.model.BC.VO.SchedulingExcludeReasonVO">
+        <AttrNames>
+          <Item Value="ReasonName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SchedulingExcludeReasonIterator" id="FirstSchedulingExcludeReason" RequiresUpdateModel="true"
+            Action="first"/>
+    <action IterBinding="SchedulingExcludeReasonIterator" id="PreviousSchedulingExcludeReason"
+            RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="SchedulingExcludeReasonIterator" id="NextSchedulingExcludeReason" RequiresUpdateModel="true"
+            Action="next"/>
+    <action IterBinding="SchedulingExcludeReasonIterator" id="LastSchedulingExcludeReason" RequiresUpdateModel="true"
+            Action="last"/>
+    <action IterBinding="SchedulingExcludeReasonIterator" id="SetCurrentRowWithKeySchedulingExcludeReason"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrSchedulingExcludeReason}"
+                 NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="SchedulingExcludeReasonIterator" id="CreateSchedulingExcludeReason" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SchedulingExcludeReasonIterator" id="DeleteSchedulingExcludeReason" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

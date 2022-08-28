@@ -1,0 +1,71 @@
+## revision_history
+## 13-feb-2012  Steven Davelaar
+## 1.2          Removed doValidation, clearSearchCriteria, oneRowFound, manyRowsFound, noRowsFound
+## 31-jan-2012  Steven Davelaar
+## 1.1          create rule removed, now created in taskFlowMethodCallActivities
+## 15-nov-2010  Steven Davelaar
+## 1.0          Initial creation, extracted from groupAdfcConfig.vm
+
+#set ($group = ${JHS.current.group})
+#set ($groupName = ${JHS.current.group.name})
+
+  <control-flow-rule id="#NEW_ID("__")">
+    <from-activity-id id="#NEW_ID("__")">*</from-activity-id>
+#if( $JHS.current.group.reusableTree )
+    <control-flow-case id="#NEW_ID("__")">
+      <from-outcome id="#NEW_ID("__")">deepLinkTree</from-outcome>
+      <to-activity-id id="#NEW_ID("__")">deepLinkTree</to-activity-id>
+    </control-flow-case>    
+#end
+  #if ($JHS.current.group.databound && !$JHS.current.group.reusableTree)
+    <control-flow-case id="#NEW_ID("__")">
+      <from-outcome id="#NEW_ID("__")">SetCurrentRow${groupName}</from-outcome>
+      <to-activity-id id="#NEW_ID("__")">SetCurrentRow${groupName}</to-activity-id>
+    </control-flow-case>
+  #end
+    <control-flow-case id="#NEW_ID("__")">
+      <from-outcome id="#NEW_ID("__")">firstPage</from-outcome>
+      <to-activity-id id="#NEW_ID("__")">${firstPage}</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="#NEW_ID("__")">
+      <from-outcome id="#NEW_ID("__")">deepLinkPage</from-outcome>
+      <to-activity-id id="#NEW_ID("__")">${deepLinkPage}</to-activity-id>
+    </control-flow-case>
+  ## breadcrumb flow rules to all view ids in task flow
+  #foreach ($page in ${JHS.current.groupFacesConfig.pages})
+    <control-flow-case id="#NEW_ID("__")">
+      <from-outcome id="#NEW_ID("__")">${page.name}Breadcrumb</from-outcome>
+      <to-activity-id id="#NEW_ID("__")">${page.name}</to-activity-id>
+    </control-flow-case>
+  #end
+  #foreach($parentAction in ${JHS.current.groupFacesConfig.parentActions})
+    <control-flow-case id="#NEW_ID("__")">
+      <from-outcome id="#NEW_ID("__")">${parentAction}</from-outcome>
+      <to-activity-id id="#NEW_ID("__")">${parentAction}</to-activity-id>
+    </control-flow-case>
+  #end
+    <control-flow-case id="#NEW_ID("__")">
+      <from-outcome id="#NEW_ID("__")">Cancel</from-outcome>
+      <to-activity-id id="#NEW_ID("__")">$cancelAction</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="#NEW_ID("__")">
+      <from-outcome id="#NEW_ID("__")">Cancel${JHS.current.group.name}Return</from-outcome>
+      <to-activity-id id="#NEW_ID("__")">Cancel${JHS.current.group.name}Return</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="#NEW_ID("__")">
+      <from-outcome id="#NEW_ID("__")">Done${JHS.current.group.name}Return</from-outcome>
+      <to-activity-id id="#NEW_ID("__")">Done${JHS.current.group.name}Return</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+
+#foreach ($rule in ${JHS.current.groupFacesConfig.navigationRules})
+<control-flow-rule id="#NEW_ID("__")">
+  <from-activity-id id="#NEW_ID("__")">$rule.fromViewIdWithoutExtension</from-activity-id>
+  #foreach ($case in $rule.navigationCases)
+  <control-flow-case id="#NEW_ID("__")">
+    <from-outcome id="#NEW_ID("__")">$case.fromOutcome</from-outcome>
+    <to-activity-id id="#NEW_ID("__")">$case.toViewIdWithoutExtension</to-activity-id>
+  </control-flow-case>
+  #end
+</control-flow-rule>
+#end

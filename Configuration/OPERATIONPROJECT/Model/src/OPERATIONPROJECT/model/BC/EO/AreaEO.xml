@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AreaEO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="AREA"
+  AliasName="AreaEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="AreaId"
+    IsNotNull="true"
+    Precision="38"
+    Scale="0"
+    ColumnName="AREA_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    TableName="AREA"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="AreaName"
+    Precision="4000"
+    ColumnName="AREA_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="AREA">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="RegionId"
+    Precision="38"
+    Scale="0"
+    ColumnName="REGION_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    TableName="AREA"
+    IsNotNull="true"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="OldArea"
+    Precision="38"
+    Scale="0"
+    ColumnName="OLD_AREA"
+    SQLType="NUMERIC"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    TableName="AREA"/>
+  <Attribute
+    Name="CityId"
+    Precision="38"
+    Scale="0"
+    ColumnName="CITY_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    TableName="AREA"
+    IsNotNull="true"
+    PrimaryKey="true"/>
+  <Key
+    Name="AreaCityIdCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_checkCondition" Value='"CITY_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="AREA_CITY_ID_CHECK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.AreaEO.CityId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="AreaPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="AREA_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.AreaEO.AreaId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.EO.AreaEO.RegionId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.EO.AreaEO.CityId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="AreaRegionIdCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_checkCondition" Value='"REGION_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="AREA_REGION_ID_CHECK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.AreaEO.RegionId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="AreaFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="region_pkey"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="AREA_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.AreaEO.CityId"/>
+      <Item Value="OPERATIONPROJECT.model.BC.EO.AreaEO.RegionId"/>
+    </AttrArray>
+  </Key>
+</Entity>

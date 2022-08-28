@@ -1,0 +1,229 @@
+## revision_history
+## 25-jan-2012   Steven Davelaar
+## 2.16          Added selectedRowKeys property for singleSelect LOV group
+## 08-mar-2011   Steven Davelaar
+## 2.15          Back to simple autoHeightRows rangeSize expression, works fine in JDev 11.1.2
+## 15-nov-2011   Steven Davelaar
+## 2.14          - Added call to ADD_INITIAL_FOCUS_ID
+##               - selectionListener now calls makeCurrent on table bean, so we can prevent
+##                 the item focus being set on a detail table that is refreshed as a result
+##                 of the selection event
+## 14-oct-2011   Steven Davelaar
+## 2.13          if tableRangeSize==-1, set autoHeightRows to estimatedRowCount
+## 06-jul-2011   Steven Davelaar
+## 2.12          Moved featuresOff to macro PANEL_COLLECTION_FEATURES_OFF
+## 08-mar-2011   Steven Davelaar
+## 2.11          Now using conditional expression in autoHeightRows to wrok horizontal
+##               scrollbar issue in JDev 11.1.1.4
+## 25-feb-2011   Steven Davelaar
+## 2.10          Added call to JHS.current.pageComponent.setTablePath
+## 21-jan-2011   Steven Davelaar
+## 2.9           Removed parsing of DELETE_WARNING_DIALOG in top facet, all popups are 
+##               now placed at bottom of page
+## 22-dec-2010   Steven davelaar
+## 2.8           Use AFStretchWidth on af:table when width is 100%
+## 06-dec-2010   Steven davelaar
+## 2.7           Use AFStretchWidth style class with panelSplitters
+## 22-nov-2010   Steven davelaar
+## 2.6           Replace $group with $JHS.current.group, see comment 2.3!
+## 07-jun-2010   Sandra Muller
+## 2.5           Use AFStretchWidth instead of inlineStyle if width = 100%
+## 14-apr-2010   Steven Davelaar
+## 2.4           Commented out displayRow property
+## 09-apr-2010   Steven Davelaar
+## 2.4           Only add filterModel property when filter table is checked, otherwise 
+##               the filter table icon is displayed in panel collection but is doing nothing
+## 05-oct-2009   Steven Davelaar
+## 2.3           Do NOT use template vars like $pageComponent and $group as shortcut
+##               for current group and page component. When processing nested table group templates
+##               through table overflow, those variables get a different value, leading to
+##               unexpected results (like double overflow) when returning in parent template!!
+## 07-aug-2009   Steven Davelaar
+## 2.2           Added support for overflow below/right with splitter
+## 07-jul-2009   Steven Davelaar
+## 2.1           Do not stretch when pageComponent.stretchable is true
+## 23-jun-2009   Paco van der Linden
+## 2.0           Restructured layout according to (stretching) best-practices.
+## 07-may-2009   Paco van der Linden
+## 1.10          Shortened some id's to improve PPR performance
+## 15-jun-2007   Jaco Verheul. R11
+## 02-mar-2007   Steven Davelaar
+## 1.9           - Also add requiredRowItems javscript call when table is updateable to get
+##                 consistent error messages for both new and existing rows
+## 24-feb-2007   Steven Davelaar
+## 1.8           - Created separate templates for table selection and table footer facets
+## 16-feb-2007   Steven Davelaar
+## 1.7           - Changed javascript call setTableRowCount, and moved hidden column to end
+## 05-feb-2007   Steven Davelaar
+## 1.6           - Added support for multiSelect LOV, added call to GROUP_PARTIAL_TRIGGERS macro
+##               required to correctly display multi-selected lov rows.
+##               - Made table emptyText NLS-enabled
+##               - added calls to ADD_ROW_BUTTON, DUPLICATE_ROW_BUTTON templates
+## 12-jan-2007   Jaco Verheul
+## 1.5           Only generate script when generateJavaScript is true
+## 21-dec-2006   Jaco Verheul
+## 1.4           Check for empty required items enabled for inline detail tables.
+## 22-nov-2006   Steven Davelaar
+## 1.3           Added table property rangeChangeListener, added disabled
+##               property to tableSelectOne element
+## 17-nov-2006   Jaco Verheul
+## 1.2           Added call to addrequired javascript function.
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+
+#if ($JHS.engine.stretchEnabled)
+<af:panelStretchLayout topHeight="0" id="#NEW_ID("psl")">
+  <f:facet name="top">
+#else
+<af:panelGroupLayout layout="vertical" id="#NEW_ID("pgl")">
+#end
+
+   #if ($JHS.engine.stretchEnabled)
+   </f:facet>
+   <f:facet name="center">
+   #end
+
+    #if($JHS.current.pageComponent.hasOverflowRightWithSplitter)
+      $JHS.engine.pushStretchEnabled(true)
+
+      <af:panelSplitter orientation="horizontal" styleClass="AFStretchWidth" id="#NEW_ID("ps")"
+                        splitterPosition="${group.realTableWidth}">
+        <f:facet name="first">
+    #elseif($JHS.current.pageComponent.hasOverflowBelowWithSplitter)
+      $JHS.engine.pushStretchEnabled(true)
+      <af:panelSplitter orientation="vertical" styleClass="AFStretchWidth" id="#NEW_ID("ps")"
+                        splitterPosition="${group.defaultTableHeight}">
+        <f:facet name="first">
+    #elseif($JHS.current.pageComponent.hasOverflowRight)
+      <af:panelGroupLayout layout="horizontal"  valign="top" id="#NEW_ID("ps")">
+        <f:facet name="separator">
+          #MARGIN_SPACER()
+        </f:facet>
+    #end
+
+    ${JHS.engine.pushNamingContainer("${JHS.current.group.shortName}PC")}
+    <af:panelCollection id="${JHS.current.group.shortName}PC"
+      #PANEL_COLLECTION_FEATURES_OFF()
+      #if ($JHS.current.group.tableWidth=="100%")
+        styleClass="AFStretchWidth"
+        #if(${JHS.current.group.tableHeight}!="")
+          inlineStyle="#INLINE_STYLE_HEIGHT(${JHS.current.group.tableHeight})"
+        #end 
+      #else 
+        inlineStyle="#INLINE_STYLE_WIDTH(${JHS.current.group.tableWidth}) #INLINE_STYLE_HEIGHT(${JHS.current.group.tableHeight})" 
+      #end
+      >
+      ${JHS.current.pageComponent.setTablePath("${JHS.engine.fullNamingContainerPath}${JHS.current.group.shortName}Tab")}
+      <f:facet name="menus">
+         #JHS_PARSE("TABLE_MENU" ${JHS.current.model})
+      </f:facet>
+      <f:facet name="toolbar">
+         #JHS_PARSE("TABLE_TOOLBAR" ${JHS.current.model})
+      </f:facet>
+      <f:facet name="statusbar"/>
+
+      ${JHS.engine.pushNamingContainer("${JHS.current.group.shortName}Tab")}
+
+      <af:table id="${JHS.current.group.shortName}Tab" contentDelivery="immediate"
+                value="#{#BINDINGS_TABLE().collectionModel}"
+                columnStretching="last"
+                rowBandingInterval="0"
+                editingMode="${JHS.current.group.tableEditMode}"
+                columnSelection="multiple"
+                contextMenuSelect="true"
+## commented out displayRow property: causes redisplay (flickering) of table, since we now add new rows just below
+## the current row, we don't need to scroll the current row into view using this property
+##                displayRow="selected"   
+
+                #if ($JHS.current.group.useAsLov && $JHS.current.group.multiSelect)
+                  rowSelection="multiple"
+                #else
+                  rowSelection="single"
+                #end
+                #if( $JHS.current.group.useAsLov)
+                  selectionListener="#{#LOV_PAGE_BEAN().selectionListener}"
+                  selectedRowKeys="#{#LOV_PAGE_BEAN().selectedRowKeySet}"
+                #else  
+                  selectionListener="#{#TABLE_BEAN().makeCurrent}"
+                  selectedRowKeys="#{#TABLE_BEAN().selectedRow}"
+                #end
+
+                rowDisclosureListener="#{#TABLE_BEAN().discloseRow}"
+                var="row" varStatus="status"
+                ## if stretching not possible, use range size as number of rows to display
+                #if (!$JHS.engine.stretchEnabled || !$JHS.current.pageComponent.stretchable)
+                  rows="#{#BINDINGS_TABLE().rangeSize}"
+                  #if ($JHS.current.group.tableHeight=='')
+                    autoHeightRows="#{#BINDINGS_TABLE().rangeSize}"
+                  #end
+                #end
+                fetchSize="#{#BINDINGS_TABLE().rangeSize}"
+                emptyText="#NO_ROWS_FOUND_LABEL()"
+                #if( $JHS.current.pageComponent.hasModelQuickSearchArea || $JHS.current.group.filterTable)
+                    queryListener="#{bindings.${JHS.current.group.quickSearchRegionBinding}.processQuery}"
+                #end
+                #if ($JHS.current.group.filterTable)
+                    filterModel="#{bindings.${JHS.current.group.quickSearchRegionBinding}.queryDescriptor}"
+                    filterVisible="true"
+                #end
+                #if ($JHS.current.group.useAsLov)
+                  binding="#{#LOV_PAGE_BEAN().lovTable}"
+                #else
+                  binding="#{#TABLE_BEAN().table}"
+                #end
+                #TABLE_PARTIAL_TRIGGERS()
+                #if ($JHS.current.group.tableWidth=="100%") styleClass="AFStretchWidth"  #else #JHS_PROP("width" $JHS.current.group.tableWidth) #end
+                summary="#TABLE_SUMMARY($JHS.current.group)">
+        #JHS_PARSE("TABLE_ROW_POPUP_MENU" ${JHS.current.model})
+        #JHS_PARSE("TABLE_FOOTER" ${JHS.current.model})
+        #JHS_PARSE("TABLE_ACTION_COLUMN" ${JHS.current.model})
+        #TABLE_COLUMNS()
+
+        #if ($JHS.current.pageComponent.hasOverflowInline)
+          $JHS.engine.pushStretchEnabled(false)
+
+          <f:facet name="detailStamp">
+            #JHS_PARSE("TABLE_OVERFLOW_AREA" ${JHS.current.model})
+          </f:facet>
+
+          $JHS.engine.popStretchEnabled()
+        #end
+
+      </af:table>
+      ${JHS.engine.popNamingContainer()}
+
+    </af:panelCollection>
+    ${JHS.engine.popNamingContainer()}
+
+    #if($JHS.current.pageComponent.hasOverflowRightWithSplitter || $JHS.current.pageComponent.hasOverflowBelowWithSplitter)
+      </f:facet>
+      <f:facet name="second">
+          #JHS_PARSE("TABLE_OVERFLOW_AREA" ${JHS.current.model})
+      </f:facet>
+    </af:panelSplitter>
+
+    $JHS.engine.popStretchEnabled()
+
+    #elseif($JHS.current.pageComponent.hasOverflowRight)
+        #JHS_PARSE("TABLE_OVERFLOW_AREA" ${JHS.current.model})
+      </af:panelGroupLayout>
+    #end
+
+    ## if table has no rows, or is readonly without updateable overflow items, we set add row link
+    ## as focus
+    #ADD_INITIAL_FOCUS_ID("${JHS.current.group.shortName}PC:${JHS.current.group.shortName}Arl")
+
+  #if ($JHS.engine.stretchEnabled)
+  </f:facet>
+  #end
+
+  #if($JHS.current.pageComponent.hasOverflowBelow)
+    #MARGIN_SPACER()
+    #JHS_PARSE("TABLE_OVERFLOW_AREA" ${JHS.current.model})
+  #end
+
+#if ($JHS.engine.stretchEnabled)
+</af:panelStretchLayout>
+#else
+</af:panelGroupLayout>
+#end

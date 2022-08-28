@@ -1,0 +1,94 @@
+## revision_history
+## 15-dec-2017   Ahmed Magdy
+##		 Add Search & Total count items attributes
+## 05-apr-2012   Steven Davelaar
+## 2.5           shortened search area id
+## 09-nov-2011   Steven Davelaar
+## 2.4           Added call to SET_INITIAL_FOCUS_ID
+## 06-jul-2011   Steven Davelaar
+## 2.3           Added MODEL_QUERY_ADDITIONAL_PROPERTIES
+## 10-mar-2010   Steven Davelaar
+## 2.2           labelAlignment now taken from group property
+## 01-dec-2009   Steven Davelaar
+## 2.1           Added rows, labelAlignment and maxColumns props
+## 23-jun-2009   Paco van der Linden
+## 2.0           Restructured layout according to (stretching) best-practices.
+## 2-sep-2008    Evert-Jan de Bruin
+## 1.0           Initial version
+
+#if (!($pageComponent.hasJhsQuickSearchArea) && !($pageComponent.hasModelQuickSearchArea))
+  #SET_INITIAL_FOCUS_ID("as_${JHS.current.group.shortName}:value00")
+#end  
+<af:query id="as_${JHS.current.group.shortName}" 
+          headerText="${JHS.nls('Search','SEARCH')}"
+          disclosed=#if(${JHS.current.group.getCustomProperty("AdvancedSearchDisclosed")}=='') "true" #else "${JHS.current.group.getCustomProperty("AdvancedSearchDisclosed")}" #end modeChangeVisible="false"
+          value="#{bindings.${JHS.current.group.searchRegionBinding}.queryDescriptor}"
+          model="#{bindings.${JHS.current.group.searchRegionBinding}.queryModel}"
+          queryListener="#{bindings.${JHS.current.group.searchRegionBinding}.processQuery}"
+          queryOperationListener="#{bindings.${JHS.current.group.searchRegionBinding}.processQueryOperation}"
+        #if ($JHS.current.pageComponent.hasQuickSearchArea)
+          rendered="#{!#SEARCH_BEAN().quickSearchMode}"
+        #end
+      rows="1" labelAlignment="${JHS.current.group.labelAlignment}" maxColumns="${JHS.current.group.advancedSearchColumns}"
+	  saveQueryMode="readOnly"
+resetButtonText="${JHS.nls('Reset','ADVANCED_SEARCH_RESET')}"
+       #MODEL_QUERY_ADDITIONAL_PROPERTIES()>
+  <f:facet name="toolbar">
+   #if ($JHS.current.pageComponent.hasQuickSearchArea)
+    #JHS_PARSE("SWITCH_TO_QUICK_SEARCH_BUTTON" ${JHS.current.model})
+   #end  
+    <af:toolbar id="#NEW_ID("tbar")">
+      <af:outputText value="${JHS.nls('Search Results','SEARCH_RESULTS')} #{bindings.${JHS.current.group.shortName}Iterator.estimatedRowCount}" id="#NEW_ID("ot")"
+                     inlineStyle="background-color:Highlight; color:white; border:4px solid white; border-radius:20px; padding:4px 7px; display:inline-block; font-size:14px; font-weight:bold;" />
+      #if(${JHS.current.group.getCustomProperty("TotalCountName")}!='') 
+        <af:outputText value="${JHS.nls('Total Count','${JHS.current.group.getCustomProperty("TotalCountName")}')} #{bindings.return.inputValue}" id="#NEW_ID("ot")"
+                       inlineStyle="background-color: green;color: white;border: 4px solid white;border-radius: 20px;padding: 4px 7px;display: inline-block;font-size: 14px;font-weight: bold;" />
+      #end
+    </af:toolbar>
+  </f:facet>
+                
+#ADD_CUR_GROUP_PARTIAL_TRIGGER("as_${JHS.current.group.shortName}")
+</af:query>
+
+#if(${JHS.current.group.getCustomProperty("TotalCountName")}!='') 
+#macro (GET_TOTALROWS_FOR_ALL_GROUPS)
+
+<methodAction id="getTotalRows" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getTotalRows"
+                  IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="bindings.getTotalRows.dataControl.dataProvider"
+                  ReturnName="data.AppModuleDataControl.methodResults.getTotalRows_getTotalRows_dataControl_dataProvider_getTotalRows_result">
+      <NamedData NDName="groupName" NDValue="${JHS.current.group.shortName}" NDType="java.lang.String"/>
+ </methodAction>
+#end
+${JHS.pageDefGenerator.addBinding($JHS.page,"getTotalRows","#GET_TOTALROWS_FOR_ALL_GROUPS()")}
+
+
+#macro (GET_TOTALROWS_Return)
+
+<attributeValues IterBinding="variables" id="return">
+      <AttrNames>
+        <Item Value="getTotalRows_return"/>
+      </AttrNames>
+    </attributeValues>
+#end
+${JHS.pageDefGenerator.addBinding($JHS.page,"return","#GET_TOTALROWS_Return()")}
+
+
+#macro (INVOKE_ACTION_FOR_GETTOTALROWS)
+    <invokeAction id="callTotalMethodAction" Binds="getTotalRows" Refresh="renderModel"/>        
+
+#end
+${JHS.pageDefGenerator.addExecutable($JHS.page,"callTotalMethodAction","#INVOKE_ACTION_FOR_GETTOTALROWS()")}
+
+
+
+#macro (GET_VARIABLE_EXECUTABLE)
+<variableIterator id="variables">
+      <variable Type="int" Name="getTotalRows_return" IsQueriable="false" IsUpdateable="0"
+                DefaultValue="${bindings.getTotalRows.result}"/>
+ </variableIterator>
+#end
+${JHS.pageDefGenerator.addExecutable($JHS.page,"variables","#GET_VARIABLE_EXECUTABLE()")}
+
+#end
+  

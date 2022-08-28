@@ -1,0 +1,1105 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+        xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces" beforePhase="#{jhsPhaseListener.beforePhase}"
+        locale="#{jhsLocaleManager.currentLocale}">
+    <af:document title="#{nls['FORM_TITLE_PILOTCOVERGROUP']}" id="doc0" uncommittedDataWarning="on">
+        <f:facet name="metaContainer">
+            <af:resource type="javascript" source="/jheadstart/jhs11.js"/>
+        </f:facet>
+        <af:form id="dataForm" usesUpload="true">
+            <f:facet name="popups">
+                <af:panelGroupLayout id="popupsPgl">
+                    <!-- DEBUG:BEGIN:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 10 -->
+                    <af:popup id="PilotCoverReconDriverPilotDeletePopup" contentDelivery="lazyUncached"
+                              childCreation="deferred">
+                        <af:dialog type="none" title="#{nls['WARNING']}" modal="true"
+                                   id="PilotCoverReconDriverPilotDeleteDialog">
+                            <af:outputText value="#{nls['DELETE_WARNING_PILOTCOVERRECONDRIVERPILO:#{bindings.PilotCoverReconDriverPilotIterator.currentRowIndexInRange+1}']} "
+                                           id="ot0"/>
+                            <f:attribute name="methodExpression"
+                                         value="#{'#{DeletePilotCoverReconDriverPilot.execute}'}"/>
+                            <f:facet name="buttonBar">
+                                <af:group id="g1">
+                                    <af:button textAndAccessKey="#{nls['af_dialog.LABEL_YES']}" id="cb0"
+                                               immediate="true"
+                                               actionListener="#{ExecuteActionAfterConfirmation.confirm}"/>
+                                    <af:button textAndAccessKey="#{nls['af_dialog.LABEL_NO']}" id="cb1" immediate="true"
+                                               actionListener="#{ExecuteActionAfterConfirmation.abort}"/>
+                                </af:group>
+                            </f:facet>
+                        </af:dialog>
+                    </af:popup>
+                    <!-- DEBUG:END:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 10-->
+                    <!-- DEBUG:BEGIN:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 12 -->
+                    <af:popup id="PilotCoverPilotCoverProductDeletePopup" contentDelivery="lazyUncached"
+                              childCreation="deferred">
+                        <af:dialog type="none" title="#{nls['WARNING']}" modal="true"
+                                   id="PilotCoverPilotCoverProductDeleteDialog">
+                            <af:outputText value="#{nls['DELETE_WARNING_PILOTCOVERPILOTCOVERPRODUC:#{bindings.PilotCoverPilotCoverProductIterator.currentRowIndexInRange+1}']} "
+                                           id="ot3"/>
+                            <f:attribute name="methodExpression"
+                                         value="#{'#{DeletePilotCoverPilotCoverProduct.execute}'}"/>
+                            <f:facet name="buttonBar">
+                                <af:group id="g5">
+                                    <af:button textAndAccessKey="#{nls['af_dialog.LABEL_YES']}" id="cb6"
+                                               immediate="true"
+                                               actionListener="#{ExecuteActionAfterConfirmation.confirm}"/>
+                                    <af:button textAndAccessKey="#{nls['af_dialog.LABEL_NO']}" id="cb7" immediate="true"
+                                               actionListener="#{ExecuteActionAfterConfirmation.abort}"/>
+                                </af:group>
+                            </f:facet>
+                        </af:dialog>
+                    </af:popup>
+                    <!-- DEBUG:END:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 12-->
+                </af:panelGroupLayout>
+            </f:facet>
+            <f:facet name="pageContent">
+                <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4 -->
+                <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4-->
+            </f:facet>
+            <af:panelStretchLayout topHeight="auto" id="psl0"
+                                   partialTriggers=" PilotCoverGroupSaveButton PilotCoverGroupCancelButton">
+                <f:facet name="top">
+                    <af:panelGroupLayout layout="scroll" id="PilotCoverGroupTopLc"
+                                         partialTriggers=" PilotCoverGroupSaveButton PilotCoverGroupCancelButton">
+                        <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                        <f:facet name="separator">
+                            <af:spacer width="10" height="10" id="sp0"/>
+                        </f:facet>
+                        <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                        <af:panelHeader id="ph0" text="#{nls['FORM_TITLE_PILOTCOVERGROUP']}">
+                            <f:facet name="toolbar">
+                                <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5 -->
+                                <af:toolbox id="tbox0">
+                                    <af:toolbar id="tbar0">
+                                        <!-- DEBUG:BEGIN:FORM_BROWSE_BUTTONS : custom/pageComponent/MtsformBrowseButtons.vm, nesting level: 6 -->
+                                        <!-- DEBUG:END:FORM_BROWSE_BUTTONS : custom/pageComponent/MtsformBrowseButtons.vm, nesting level: 6-->
+                                        <af:group id="gr0">
+                                            <!-- DEBUG:BEGIN:NEW_BUTTON : custom/button/MtsnewButton.vm, nesting level: 6 -->
+                                            <!-- DEBUG:END:NEW_BUTTON : custom/button/MtsnewButton.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:DELETE_BUTTON : default/button/deleteButton.vm, nesting level: 6 -->
+                                            <!-- DEBUG:END:DELETE_BUTTON : default/button/deleteButton.vm, nesting level: 6-->
+                                        </af:group>
+                                        <af:group id="gr1"/>
+                                        <af:group id="gr2">
+                                            <!-- DEBUG:BEGIN:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6 -->
+                                            <!--<af:button action="#{SavePilotCoverGroup.execute}"
+                                                       rendered="#{((((((MTSPermission['PilotCoverGroup.create']) or (MTSPermission['DataTeamAgentCarReconciliation.update'])) or (MTSPermission['PilotCoverGroup.delete'])) or (MTSPermission['PilotCoverGroup.create'])) or (MTSPermission['DataTeamAgentCarReconciliation.update'])) or (MTSPermission['PilotCoverGroup.delete'])) and (!pageFlowScope.hideSaveButton)}"
+                                                       textAndAccessKey="#{nls['SAVE_BUTTON_LABEL']}"
+                                                       id="PilotCoverGroupSaveButton" partialSubmit="true"/>-->
+                                            <af:button text="Amend Changes"
+                                                       rendered="#{pageFlowScope.PilotCoverEdited eq 0}" id="b1">
+                                                <af:showPopupBehavior popupId="p1"/>
+                                            </af:button>
+                                            <af:popup childCreation="deferred" contentDelivery="lazyUncached"
+                                                      autoCancel="disabled" id="p1">
+                                                <af:dialog id="d1" title="Apply Changes" type="cancel">
+                                                    <af:outputText value="Are you sure you want to apply changes ?!"
+                                                                   id="ot1"/>
+                                                    <f:facet name="buttonBar">
+                                                        <af:button text="ok" id="b2"
+                                                                   action="#{DataTeamAgentBean.SubmitPilotCoverDetailsChanges}"/>
+                                                    </f:facet>
+                                                </af:dialog>
+                                            </af:popup>
+                                            <!-- DEBUG:END:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6-->
+                                            <!-- DEBUG:BEGIN:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6 -->
+                                            <af:button textAndAccessKey="#{nls['CANCEL']}" immediate="true"
+                                                       partialSubmit="true"
+                                                       rendered="#{!pageFlowScope.hideCancelButton}"
+                                                       action="DonePilotCoverGroupReturn"
+                                                       id="PilotCoverGroupCancelButton"/>
+                                            <!-- DEBUG:END:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6-->
+                                        </af:group>
+                                    </af:toolbar>
+                                </af:toolbox>
+                                <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5-->
+                            </f:facet>
+                            <f:facet name="context">
+                                <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5 -->
+                                <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5-->
+                            </f:facet>
+                            <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+                            <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+                            <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+                            <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+                        </af:panelHeader>
+                        <!-- DEBUG:BEGIN:FORM_GROUP : custom/pageComponent/MtsformGroup.vm, nesting level: 5 -->
+                        <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm), disabled (custom/pageComponent/MtsformGroup.vm) -->
+                        <af:panelGroupLayout id="PilotCoverGroupFC" layout="vertical">
+                            <f:facet name="separator">
+                                <af:spacer width="10" height="10" id="sp1"/>
+                            </f:facet>
+                            <af:panelFormLayout rows="1" labelAlignment="start" maxColumns="1" id="PilotCoverGroupFI">
+                                <!-- DEBUG:BEGIN:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6 -->
+                                <af:inputText id="PilotCoverGroupComment"
+                                              value="#{bindings.PilotCoverGroupComment.inputValue}" rows="3"
+                                              columns="100" label="Comment " required="true" autoSubmit="true"
+                                              rendered="#{pageFlowScope.PilotCoverEdited eq 0}"
+                                              shortDesc="#{nls['PILOTCOVERGROUP_COMMENT_HINT']}">
+                                    <f:validator binding="#{bindings.PilotCoverGroupComment.validator}"/>
+                                </af:inputText>
+                                <!-- DEBUG:END:FORM_TEXT_INPUT : default/item/form/formTextInput.vm, nesting level: 6-->
+                            </af:panelFormLayout>
+                            <!-- DEBUG:BEGIN:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 6 -->
+                            <!-- DEBUG:END:VERTICAL_REGION_CONTAINER : default/pageComponent/verticalRegionContainer.vm, nesting level: 6-->
+                        </af:panelGroupLayout>
+                        <!-- Popped "disabled" from stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                        <!-- DEBUG:END:FORM_GROUP : custom/pageComponent/MtsformGroup.vm, nesting level: 5-->
+                        <!-- Popped "disabled" from stretchContext, now: enabled (default) -->
+                        <af:spacer width="10" height="10" id="sp2"/>
+                    </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="center">
+                    <!-- DEBUG:BEGIN:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 5 -->
+                    <af:panelAccordion discloseMany="true" id="pst0" dimensionsFrom="auto">
+                        <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 6 -->
+                        <af:showDetailItem stretchChildren="first"
+                                           text="#{nls['TABLE_TITLE_PILOTCOVERRECONDRIVERPILOT']}"
+                                           partialTriggers=" PilotCoverGroupTopLc PilotCoverReconDriverPilotDeleteDialog PilotCoverReconDriverPilotPC:PilotCoverReconDriverPilotArm PilotCoverReconDriverPilotPC:PilotCoverReconDriverPilotduprmTM PilotCoverReconDriverPilotPC:PilotCoverReconDriverPilotdelrmTM PilotCoverReconDriverPilotPC:PilotCoverReconDriverPilotArl PilotCoverReconDriverPilotPC:PilotCoverReconDriverPilotTab:PilotCoverReconDriverPilotduprm PilotCoverReconDriverPilotPC:PilotCoverReconDriverPilotTab:PilotCoverReconDriverPilotdelrm PilotCoverReconDriverPilotPC:PilotCoverReconDriverPilotTab:PilotCoverReconDriverPilotdelrl PilotCoverReconDriverPilotPC:PilotCoverReconDriverPilotTab:PilotCoverReconDriverPilotduprl"
+                                           id="PilotCoverReconDriverPilotTopLcSdi">
+                            <f:facet name="toolbar">
+                                <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 7 -->
+                                <af:toolbox id="tbox1">
+                                    <af:toolbar id="tbar1">
+                                        <af:group id="gr3">
+                                            <!-- DEBUG:BEGIN:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 8 -->
+                                            <!-- DEBUG:END:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 8-->
+                                        </af:group>
+                                        <af:group id="gr4"/>
+                                    </af:toolbar>
+                                </af:toolbox>
+                                <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 7-->
+                            </f:facet>
+                            <af:panelStretchLayout topHeight="auto" id="psl1"
+                                                   partialTriggers=" PilotCoverGroupTopLc PilotCoverReconDriverPilotDeleteDialog PilotCoverReconDriverPilotPC:PilotCoverReconDriverPilotArm PilotCoverReconDriverPilotPC:PilotCoverReconDriverPilotduprmTM PilotCoverReconDriverPilotPC:PilotCoverReconDriverPilotdelrmTM PilotCoverReconDriverPilotPC:PilotCoverReconDriverPilotArl PilotCoverReconDriverPilotPC:PilotCoverReconDriverPilotTab:PilotCoverReconDriverPilotduprm PilotCoverReconDriverPilotPC:PilotCoverReconDriverPilotTab:PilotCoverReconDriverPilotdelrm PilotCoverReconDriverPilotPC:PilotCoverReconDriverPilotTab:PilotCoverReconDriverPilotdelrl PilotCoverReconDriverPilotPC:PilotCoverReconDriverPilotTab:PilotCoverReconDriverPilotduprl">
+                                <f:facet name="top">
+                                    <af:panelGroupLayout layout="scroll" id="PilotCoverReconDriverPilotTopLc"
+                                                         partialTriggers=" PilotCoverGroupTopLc PilotCoverReconDriverPilotDeleteDialog PilotCoverReconDriverPilotPC:PilotCoverReconDriverPilotArm PilotCoverReconDriverPilotPC:PilotCoverReconDriverPilotduprmTM PilotCoverReconDriverPilotPC:PilotCoverReconDriverPilotdelrmTM PilotCoverReconDriverPilotPC:PilotCoverReconDriverPilotArl PilotCoverReconDriverPilotPC:PilotCoverReconDriverPilotTab:PilotCoverReconDriverPilotduprm PilotCoverReconDriverPilotPC:PilotCoverReconDriverPilotTab:PilotCoverReconDriverPilotdelrm PilotCoverReconDriverPilotPC:PilotCoverReconDriverPilotTab:PilotCoverReconDriverPilotdelrl PilotCoverReconDriverPilotPC:PilotCoverReconDriverPilotTab:PilotCoverReconDriverPilotduprl">
+                                        <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 7-->
+                                        <f:facet name="separator">
+                                            <af:spacer width="10" height="10" id="sp3"/>
+                                        </f:facet>
+                                        <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                                        <af:group id="g0">
+                                            <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 7 -->
+                                            <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 7 -->
+                                            <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 7-->
+                                        </af:group>
+                                        <!-- DEBUG:BEGIN:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 7 -->
+                                        <af:panelGroupLayout layout="vertical" id="pgl0">
+                                            <af:panelCollection id="PilotCoverReconDriverPilotPC"
+                                                                featuresOff=" wrap    freeze "
+                                                                styleClass="AFStretchWidth">
+                                                <f:facet name="menus">
+                                                    <!-- DEBUG:BEGIN:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 8 -->
+                                                    <af:menu textAndAccessKey="#{nls['ACTION_MENU_LABEL']}" id="menu0">
+                                                        <af:menu textAndAccessKey="#{nls['GO_TO_MENU_LABEL']}"
+                                                                 id="menu1">
+                                                            <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9 -->
+                                                            <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9-->
+                                                            <!-- DEBUG:BEGIN:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 9 -->
+                                                            <af:group id="PilotCoverReconDriverPilottbb"
+                                                                      rendered="#{ bindings.PilotCoverReconDriverPilotIterator.currentRow!=null }">
+                                                                <af:commandMenuItem actionListener="#{bindings.FirstPilotCoverReconDriverPilot.execute}"
+                                                                                    id="PilotCoverReconDriverPilotFirst"
+                                                                                    partialSubmit="true"
+                                                                                    icon="/afr/shuttleleftall_ena.png"
+                                                                                    textAndAccessKey="#{nls['FIRST_ROW']}"/>
+                                                                <af:commandMenuItem actionListener="#{bindings.PreviousPilotCoverReconDriverPilot.execute}"
+                                                                                    icon="/afr/shuttleleft_ena.png"
+                                                                                    textAndAccessKey="#{nls['PREVIOUS_ROW']}"
+                                                                                    id="PilotCoverReconDriverPilotPrevious"
+                                                                                    partialSubmit="true"/>
+                                                                <af:commandMenuItem actionListener="#{bindings.NextPilotCoverReconDriverPilot.execute}"
+                                                                                    icon="/afr/shuttleright_ena.png"
+                                                                                    textAndAccessKey="#{nls['NEXT_ROW']}"
+                                                                                    id="PilotCoverReconDriverPilotNext"
+                                                                                    partialSubmit="true"/>
+                                                                <af:commandMenuItem actionListener="#{bindings.LastPilotCoverReconDriverPilot.execute}"
+                                                                                    icon="/afr/shuttlerightall_ena.png"
+                                                                                    textAndAccessKey="#{nls['LAST_ROW']}"
+                                                                                    id="PilotCoverReconDriverPilotLast"
+                                                                                    partialSubmit="true"/>
+                                                            </af:group>
+                                                            <!-- DEBUG:END:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 9-->
+                                                        </af:menu>
+                                                        <!-- DEBUG:BEGIN:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 9 -->
+                                                        <af:commandMenuItem id="PilotCoverReconDriverPilotArm"
+                                                                            textAndAccessKey="#{nls['ADD_ROW']}"
+                                                                            immediate="false"
+                                                                            icon="/jheadstart/images/addRow.png"
+                                                                            partialSubmit="true"
+                                                                            actionListener="#{pageFlowScope.PilotCoverReconDriverPilotTable.addRow}"
+                                                                            rendered="#{ true and (MTSPermission['PilotCoverGroup.create'])}"/>
+                                                        <!-- DEBUG:END:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9 -->
+                                                        <af:commandMenuItem id="PilotCoverReconDriverPilotduprmTM"
+                                                                            textAndAccessKey="#{nls['DUPLICATE_ROW']}"
+                                                                            immediate="true"
+                                                                            icon="/jheadstart/images/duplicateRow.png"
+                                                                            partialSubmit="true"
+                                                                            actionListener="#{pageFlowScope.PilotCoverReconDriverPilotTable.duplicateRow}"
+                                                                            rendered="#{MTSPermission['PilotCoverGroup.create']}"/>
+                                                        <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9 -->
+                                                        <af:commandMenuItem id="PilotCoverReconDriverPilotdelrmTM"
+                                                                            textAndAccessKey="#{nls['DELETE_ROW']}"
+                                                                            icon="/jheadstart/images/deleteRow.png"
+                                                                            partialSubmit="true" immediate="true"
+                                                                            rendered="#{MTSPermission['PilotCoverGroup.delete']}">
+                                                            <af:showPopupBehavior popupId="::PilotCoverReconDriverPilotDeletePopup"/>
+                                                        </af:commandMenuItem>
+                                                        <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 9-->
+                                                    </af:menu>
+                                                    <!-- DEBUG:END:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 8-->
+                                                </f:facet>
+                                                <f:facet name="toolbar">
+                                                    <!-- DEBUG:BEGIN:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 8 -->
+                                                    <af:toolbar id="tbar2">
+                                                        <!-- DEBUG:BEGIN:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 9 -->
+                                                        <!-- Also create CreatePilotCoverReconDriverPilot bean so we can start table group in create mode as well -->
+                                                        <af:link id="PilotCoverReconDriverPilotArl" immediate="false"
+                                                                 rendered="#{ true and (MTSPermission['PilotCoverGroup.create'])}"
+                                                                 partialSubmit="true"
+                                                                 actionListener="#{pageFlowScope.PilotCoverReconDriverPilotTable.addRow}"
+                                                                 shortDesc="#{nls['ADD_ROW']}"
+                                                                 icon="/jheadstart/images/addRow.png"/>
+                                                        <!-- DEBUG:END:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 9-->
+                                                    </af:toolbar>
+                                                    <!-- DEBUG:END:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 8-->
+                                                </f:facet>
+                                                <f:facet name="statusbar"/>
+                                                <af:table id="PilotCoverReconDriverPilotTab" contentDelivery="immediate"
+                                                          value="#{bindings.PilotCoverReconDriverPilotTable.collectionModel}"
+                                                          columnStretching="last" rowBandingInterval="0"
+                                                          editingMode="editAll" columnSelection="multiple"
+                                                          contextMenuSelect="true" rowSelection="single"
+                                                          selectionListener="#{pageFlowScope.PilotCoverReconDriverPilotTable.makeCurrent}"
+                                                          selectedRowKeys="#{pageFlowScope.PilotCoverReconDriverPilotTable.selectedRow}"
+                                                          rowDisclosureListener="#{pageFlowScope.PilotCoverReconDriverPilotTable.discloseRow}"
+                                                          var="row" varStatus="status"
+                                                          rows="#{bindings.PilotCoverReconDriverPilotTable.rangeSize}"
+                                                          autoHeightRows="#{bindings.PilotCoverReconDriverPilotTable.rangeSize}"
+                                                          fetchSize="#{bindings.PilotCoverReconDriverPilotTable.rangeSize}"
+                                                          emptyText="#{nls['NO_ROWS_FOUND']}"
+                                                          queryListener="#{bindings.PilotCoverReconDriverPilotIteratorQuery.processQuery}"
+                                                          filterModel="#{bindings.PilotCoverReconDriverPilotIteratorQuery.queryDescriptor}"
+                                                          filterVisible="true"
+                                                          binding="#{pageFlowScope.PilotCoverReconDriverPilotTable.table}"
+                                                          partialTriggers=" :::PilotCoverReconDriverPilotPC ::PilotCoverReconDriverPilotFirst ::PilotCoverReconDriverPilotPrevious ::PilotCoverReconDriverPilotNext ::PilotCoverReconDriverPilotLast"
+                                                          styleClass="AFStretchWidth"
+                                                          summary="#{nls['TABLE_TITLE_PILOTCOVERRECONDRIVERPILOT']}">
+                                                    <!-- DEBUG:BEGIN:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 8 -->
+                                                    <f:facet name="contextMenu">
+                                                        <af:popup id="PilotCoverReconDriverPilotTablePopup"
+                                                                  childCreation="deferred">
+                                                            <af:menu id="menu2">
+                                                                <af:menu text="#{nls['GO_TO_MENU_LABEL']}" id="menu3">
+                                                                    <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9 -->
+                                                                    <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 9-->
+                                                                </af:menu>
+                                                                <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9 -->
+                                                                <af:commandMenuItem id="PilotCoverReconDriverPilotduprm"
+                                                                                    textAndAccessKey="#{nls['DUPLICATE_ROW']}"
+                                                                                    immediate="true"
+                                                                                    icon="/jheadstart/images/duplicateRow.png"
+                                                                                    partialSubmit="true"
+                                                                                    actionListener="#{pageFlowScope.PilotCoverReconDriverPilotTable.duplicateRow}"
+                                                                                    rendered="#{MTSPermission['PilotCoverGroup.create']}"/>
+                                                                <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 9-->
+                                                                <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9 -->
+                                                                <af:commandMenuItem id="PilotCoverReconDriverPilotdelrm"
+                                                                                    textAndAccessKey="#{nls['DELETE_ROW']}"
+                                                                                    icon="/jheadstart/images/deleteRow.png"
+                                                                                    partialSubmit="true"
+                                                                                    immediate="true"
+                                                                                    rendered="#{MTSPermission['PilotCoverGroup.delete']}">
+                                                                    <af:showPopupBehavior popupId=":::PilotCoverReconDriverPilotDeletePopup"/>
+                                                                </af:commandMenuItem>
+                                                                <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 9-->
+                                                            </af:menu>
+                                                        </af:popup>
+                                                    </f:facet><!-- DEBUG:END:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 8--><!-- DEBUG:BEGIN:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 8 --><!-- DEBUG:END:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 8--><!-- DEBUG:BEGIN:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 8 -->
+                                                    <af:column id="PilotCoverReconDriverPilotIndexColumn" width="20"
+                                                               align="center" headerText="#">
+                                                        <af:outputFormatted value="#{status.index+1}" id="of0"/>
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 8-->
+                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                                    <af:column id="PilotCoverReconDriverPilotReturnDateCol"
+                                                               sortable="true" filterable="true" noWrap="true"
+                                                               width="100" sortProperty="ReturnDate" rowHeader="false">
+                                                        <f:facet name="header">
+                                                            <af:outputLabel value="#{bindings.PilotCoverReconDriverPilotTable.hints.ReturnDate.label}"
+                                                                            showRequired="#{bindings.PilotCoverReconDriverPilotTable.hints.ReturnDate.mandatory}"
+                                                                            id="ol0"/>
+                                                        </f:facet>
+                                                        <!-- DEBUG:BEGIN:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 9 -->
+                                                        <f:facet name="filter">
+                                                            <af:inputDate value="#{status.filterCriteria.ReturnDate}"
+                                                                          id="id0">
+                                                                <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                                            </af:inputDate>
+                                                        </f:facet>
+                                                        <af:inputDate id="PilotCoverReconDriverPilotReturnDate"
+                                                                      value="#{row.bindings.ReturnDate.inputValue}"
+                                                                      label="#{bindings.PilotCoverReconDriverPilotTable.hints.ReturnDate.label}"
+                                                                      required="#{bindings.PilotCoverReconDriverPilotTable.hints.ReturnDate.mandatory}"
+                                                                      readOnly="true"
+                                                                      shortDesc="#{bindings.PilotCoverReconDriverPilotTable.hints.ReturnDate.tooltip}">
+                                                            <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                                        </af:inputDate>
+                                                        <!-- DEBUG:END:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                                    <af:column id="PilotCoverReconDriverPilotPilotIdCol" sortable="true"
+                                                               filterable="true" noWrap="true" width="500"
+                                                               sortProperty="PilotId" rowHeader="false">
+                                                        <f:facet name="header">
+                                                            <af:outputLabel value="#{bindings.PilotCoverReconDriverPilotTable.hints.PilotId.label}"
+                                                                            showRequired="#{bindings.PilotCoverReconDriverPilotTable.hints.PilotId.mandatory}"
+                                                                            id="ol1"/>
+                                                        </f:facet>
+                                                        <!-- DEBUG:BEGIN:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 9 -->
+                                                        <af:selectOneChoice id="PilotCoverReconDriverPilotPilotId"
+                                                                            value="#{row.bindings.PilotId.inputValue}"
+                                                                            label="#{bindings.PilotCoverReconDriverPilotTable.hints.PilotId.label}"
+                                                                            required="#{bindings.PilotCoverReconDriverPilotTable.hints.PilotId.mandatory}"
+                                                                            readOnly="true"
+                                                                            shortDesc="#{bindings.PilotCoverReconDriverPilotTable.hints.PilotId.tooltip}">
+                                                            <f:selectItems value="#{row.bindings.PilotId.items}"
+                                                                           id="si1"/>
+                                                        </af:selectOneChoice>
+                                                        <!-- DEBUG:END:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                                    <af:column id="PilotCoverReconDriverPilotActualMoneyCol"
+                                                               sortable="true" filterable="true" noWrap="true"
+                                                               width="100" sortProperty="ActualMoney" rowHeader="false">
+                                                        <f:facet name="header">
+                                                            <af:outputLabel value="#{bindings.PilotCoverReconDriverPilotTable.hints.ActualMoney.label}"
+                                                                            showRequired="#{bindings.PilotCoverReconDriverPilotTable.hints.ActualMoney.mandatory}"
+                                                                            id="ol2"/>
+                                                        </f:facet>
+                                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                        <af:inputText id="PilotCoverReconDriverPilotActualMoney"
+                                                                      value="#{row.bindings.ActualMoney.inputValue}"
+                                                                      label="#{bindings.PilotCoverReconDriverPilotTable.hints.ActualMoney.label}"
+                                                                      required="#{bindings.PilotCoverReconDriverPilotTable.hints.ActualMoney.mandatory}"
+                                                                      rows="#{bindings.PilotCoverReconDriverPilotTable.hints.ActualMoney.displayHeight}"
+                                                                      columns="#{bindings.PilotCoverReconDriverPilotTable.hints.ActualMoney.displayWidth}"
+                                                                      readOnly="true"
+                                                                      shortDesc="#{bindings.PilotCoverReconDriverPilotTable.hints.ActualMoney.tooltip}">
+                                                            <f:validator binding="#{row.bindings.ActualMoney.validator}"/>
+                                                            <af:convertNumber groupingUsed="false"
+                                                                              pattern="#{bindings.PilotCoverReconDriverPilotTable.hints.ActualMoney.format}"/>
+                                                        </af:inputText>
+                                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8 -->
+                                                    <af:column id="PilotCoverReconDriverPilotNewAmountCol"
+                                                               sortable="true" filterable="true" noWrap="true"
+                                                               width="100" sortProperty="NewAmount" rowHeader="false">
+                                                        <f:facet name="header">
+                                                            <af:outputLabel value="#{bindings.PilotCoverReconDriverPilotTable.hints.NewAmount.label}"
+                                                                            showRequired="#{bindings.PilotCoverReconDriverPilotTable.hints.NewAmount.mandatory}"
+                                                                            id="ol3"/>
+                                                        </f:facet>
+                                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                        <af:inputText id="PilotCoverReconDriverPilotNewAmount"
+                                                                      value="#{row.bindings.NewAmount.inputValue}"
+                                                                      label="#{bindings.PilotCoverReconDriverPilotTable.hints.NewAmount.label}"
+                                                                      required="#{bindings.PilotCoverReconDriverPilotTable.hints.NewAmount.mandatory}"
+                                                                      rows="#{bindings.PilotCoverReconDriverPilotTable.hints.NewAmount.displayHeight}"
+                                                                      columns="#{bindings.PilotCoverReconDriverPilotTable.hints.NewAmount.displayWidth}"
+                                                                      readOnly="#{((!(MTSPermission['DataTeamAgentCarReconciliation.update'])) or (pageFlowScope.PilotCoverEdited eq 1)) or (row.bindings.Document.inputValue ne 'Has File')}"
+                                                                      autoSubmit="true"
+                                                                      partialTriggers="if1"
+                                                                      shortDesc="#{bindings.PilotCoverReconDriverPilotTable.hints.NewAmount.tooltip}"
+                                                                      valueChangeListener="#{DataTeamAgentBean.ChangeDriverPilotReconAgent}">
+                                                            <f:validator binding="#{row.bindings.NewAmount.validator}"/>
+                                                            <af:convertNumber groupingUsed="false"
+                                                                              pattern="#{bindings.PilotCoverReconDriverPilotTable.hints.NewAmount.format}"/>
+                                                        </af:inputText>
+                                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                                    </af:column>
+                                                    <af:column id="c1" sortable="true" filterable="true" noWrap="true"
+                                                               width="100" rowHeader="false" rendered="#{pageFlowScope.PilotCoverEdited eq 0}">
+                                                        <f:facet name="header">
+                                                            <af:outputLabel value="Document" showRequired="" id="ol18"/>
+                                                        </f:facet>
+                                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                        <af:inputFile label="" id="if1" autoSubmit="true"
+                                                                      valueChangeListener="#{DataTeamAgentBean.DocumentChangeListener}"/>
+                                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                                    </af:column>
+                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 8-->
+                                                </af:table>
+                                            </af:panelCollection>
+                                        </af:panelGroupLayout>
+                                        <!-- DEBUG:END:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 7-->
+                                        <!-- Popped "disabled" from stretchContext, now: enabled (default) -->
+                                        <af:spacer width="10" height="10" id="sp4"/>
+                                    </af:panelGroupLayout>
+                                </f:facet>
+                                <f:facet name="center">
+                                    <!-- DEBUG:BEGIN:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 7 -->
+                                    <af:panelAccordion discloseMany="true" id="pst1" dimensionsFrom="auto">
+                                        <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 8 -->
+                                        <af:showDetailItem stretchChildren="first"
+                                                           text="#{nls['TABLE_TITLE_PILOTCOVERPILOTCOVERPRODUCT']}"
+                                                           partialTriggers=" PilotCoverReconDriverPilotPC:PilotCoverReconDriverPilotTab PilotCoverReconDriverPilotTopLc PilotCoverPilotCoverProductDeleteDialog PilotCoverPilotCoverProductPC:PilotCoverPilotCoverProductArm PilotCoverPilotCoverProductPC:PilotCoverPilotCoverProductduprmTM PilotCoverPilotCoverProductPC:PilotCoverPilotCoverProductdelrmTM PilotCoverPilotCoverProductPC:PilotCoverPilotCoverProductArl PilotCoverPilotCoverProductPC:PilotCoverPilotCoverProductTab:PilotCoverPilotCoverProductduprm PilotCoverPilotCoverProductPC:PilotCoverPilotCoverProductTab:PilotCoverPilotCoverProductdelrm PilotCoverPilotCoverProductPC:PilotCoverPilotCoverProductTab:PilotCoverPilotCoverProductdelrl PilotCoverPilotCoverProductPC:PilotCoverPilotCoverProductTab:PilotCoverPilotCoverProductduprl"
+                                                           id="PilotCoverPilotCoverProductTopLcSdi">
+                                            <f:facet name="toolbar">
+                                                <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 9 -->
+                                                <af:toolbox id="tbox2">
+                                                    <af:toolbar id="tbar3">
+                                                        <af:group id="gr5">
+                                                            <!-- DEBUG:BEGIN:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 10 -->
+                                                            <!-- DEBUG:END:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 10-->
+                                                        </af:group>
+                                                        <af:group id="gr6"/>
+                                                    </af:toolbar>
+                                                </af:toolbox>
+                                                <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 9-->
+                                            </f:facet>
+                                            <af:panelStretchLayout topHeight="auto"
+                                                                   id="PilotCoverPilotCoverProductTopLc"
+                                                                   partialTriggers=" PilotCoverReconDriverPilotPC:PilotCoverReconDriverPilotTab PilotCoverReconDriverPilotTopLc PilotCoverPilotCoverProductDeleteDialog PilotCoverPilotCoverProductPC:PilotCoverPilotCoverProductArm PilotCoverPilotCoverProductPC:PilotCoverPilotCoverProductduprmTM PilotCoverPilotCoverProductPC:PilotCoverPilotCoverProductdelrmTM PilotCoverPilotCoverProductPC:PilotCoverPilotCoverProductArl PilotCoverPilotCoverProductPC:PilotCoverPilotCoverProductTab:PilotCoverPilotCoverProductduprm PilotCoverPilotCoverProductPC:PilotCoverPilotCoverProductTab:PilotCoverPilotCoverProductdelrm PilotCoverPilotCoverProductPC:PilotCoverPilotCoverProductTab:PilotCoverPilotCoverProductdelrl PilotCoverPilotCoverProductPC:PilotCoverPilotCoverProductTab:PilotCoverPilotCoverProductduprl">
+                                                <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 9 -->
+                                                <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 9-->
+                                                <f:facet name="top">
+                                                    <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                                                    <af:group id="g4">
+                                                        <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 9-->
+                                                        <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 9 -->
+                                                        <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 9-->
+                                                    </af:group>
+                                                    <!-- Popped "disabled" from stretchContext, now: enabled (default) -->
+                                                </f:facet>
+                                                <f:facet name="center">
+                                                    <!-- DEBUG:BEGIN:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 9 -->
+                                                    <af:panelStretchLayout topHeight="0" id="psl2">
+                                                        <f:facet name="top"/>
+                                                        <f:facet name="center">
+                                                            <af:panelCollection id="PilotCoverPilotCoverProductPC"
+                                                                                featuresOff=" wrap    freeze "
+                                                                                styleClass="AFStretchWidth">
+                                                                <f:facet name="menus">
+                                                                    <!-- DEBUG:BEGIN:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 10 -->
+                                                                    <af:menu textAndAccessKey="#{nls['ACTION_MENU_LABEL']}"
+                                                                             id="menu4">
+                                                                        <af:menu textAndAccessKey="#{nls['GO_TO_MENU_LABEL']}"
+                                                                                 id="menu5">
+                                                                            <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 11 -->
+                                                                            <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 11-->
+                                                                            <!-- DEBUG:BEGIN:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 11 -->
+                                                                            <af:group id="PilotCoverPilotCoverProducttbb"
+                                                                                      rendered="#{ bindings.PilotCoverPilotCoverProductIterator.currentRow!=null }">
+                                                                                <af:commandMenuItem actionListener="#{bindings.FirstPilotCoverPilotCoverProduct.execute}"
+                                                                                                    id="PilotCoverPilotCoverProductFirst"
+                                                                                                    partialSubmit="true"
+                                                                                                    icon="/afr/shuttleleftall_ena.png"
+                                                                                                    textAndAccessKey="#{nls['FIRST_ROW']}"/>
+                                                                                <af:commandMenuItem actionListener="#{bindings.PreviousPilotCoverPilotCoverProduct.execute}"
+                                                                                                    icon="/afr/shuttleleft_ena.png"
+                                                                                                    textAndAccessKey="#{nls['PREVIOUS_ROW']}"
+                                                                                                    id="PilotCoverPilotCoverProductPrevious"
+                                                                                                    partialSubmit="true"/>
+                                                                                <af:commandMenuItem actionListener="#{bindings.NextPilotCoverPilotCoverProduct.execute}"
+                                                                                                    icon="/afr/shuttleright_ena.png"
+                                                                                                    textAndAccessKey="#{nls['NEXT_ROW']}"
+                                                                                                    id="PilotCoverPilotCoverProductNext"
+                                                                                                    partialSubmit="true"/>
+                                                                                <af:commandMenuItem actionListener="#{bindings.LastPilotCoverPilotCoverProduct.execute}"
+                                                                                                    icon="/afr/shuttlerightall_ena.png"
+                                                                                                    textAndAccessKey="#{nls['LAST_ROW']}"
+                                                                                                    id="PilotCoverPilotCoverProductLast"
+                                                                                                    partialSubmit="true"/>
+                                                                            </af:group>
+                                                                            <!-- DEBUG:END:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 11-->
+                                                                        </af:menu>
+                                                                        <!-- DEBUG:BEGIN:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 11 -->
+                                                                        <af:commandMenuItem id="PilotCoverPilotCoverProductArm"
+                                                                                            textAndAccessKey="#{nls['ADD_ROW']}"
+                                                                                            immediate="false"
+                                                                                            icon="/jheadstart/images/addRow.png"
+                                                                                            partialSubmit="true"
+                                                                                            actionListener="#{pageFlowScope.PilotCoverPilotCoverProductTable.addRow}"
+                                                                                            rendered="#{ bindings.PilotCoverReconDriverPilotIterator.currentRow!=null  and (MTSPermission['PilotCoverGroup.create'])}"/>
+                                                                        <!-- DEBUG:END:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 11-->
+                                                                        <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 11 -->
+                                                                        <af:commandMenuItem id="PilotCoverPilotCoverProductduprmTM"
+                                                                                            textAndAccessKey="#{nls['DUPLICATE_ROW']}"
+                                                                                            immediate="true"
+                                                                                            icon="/jheadstart/images/duplicateRow.png"
+                                                                                            partialSubmit="true"
+                                                                                            actionListener="#{pageFlowScope.PilotCoverPilotCoverProductTable.duplicateRow}"
+                                                                                            rendered="#{MTSPermission['PilotCoverGroup.create']}"/>
+                                                                        <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 11-->
+                                                                        <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 11 -->
+                                                                        <af:commandMenuItem id="PilotCoverPilotCoverProductdelrmTM"
+                                                                                            textAndAccessKey="#{nls['DELETE_ROW']}"
+                                                                                            icon="/jheadstart/images/deleteRow.png"
+                                                                                            partialSubmit="true"
+                                                                                            immediate="true"
+                                                                                            rendered="#{MTSPermission['PilotCoverGroup.delete']}">
+                                                                            <af:showPopupBehavior popupId="::PilotCoverPilotCoverProductDeletePopup"/>
+                                                                        </af:commandMenuItem>
+                                                                        <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 11-->
+                                                                        <!-- DEBUG:BEGIN:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 11 -->
+                                                                        <!-- DEBUG:END:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 11-->
+                                                                    </af:menu>
+                                                                    <!-- DEBUG:END:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 10-->
+                                                                </f:facet>
+                                                                <f:facet name="toolbar">
+                                                                    <!-- DEBUG:BEGIN:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 10 -->
+                                                                    <af:toolbar id="tbar4">
+                                                                        <!-- DEBUG:BEGIN:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 11 -->
+                                                                        <!-- Also create CreatePilotCoverPilotCoverProduct bean so we can start table group in create mode as well -->
+                                                                        <af:link id="PilotCoverPilotCoverProductArl"
+                                                                                 immediate="false"
+                                                                                 rendered="#{ bindings.PilotCoverReconDriverPilotIterator.currentRow!=null  and (MTSPermission['PilotCoverGroup.create'])}"
+                                                                                 partialSubmit="true"
+                                                                                 actionListener="#{pageFlowScope.PilotCoverPilotCoverProductTable.addRow}"
+                                                                                 shortDesc="#{nls['ADD_ROW']}"
+                                                                                 icon="/jheadstart/images/addRow.png"/>
+                                                                        <!-- DEBUG:END:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 11-->
+                                                                        <!-- DEBUG:BEGIN:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 11 -->
+                                                                        <!-- DEBUG:END:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 11-->
+                                                                    </af:toolbar>
+                                                                    <!-- DEBUG:END:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 10-->
+                                                                </f:facet>
+                                                                <f:facet name="statusbar"/>
+                                                                <af:table id="PilotCoverPilotCoverProductTab"
+                                                                          contentDelivery="immediate"
+                                                                          value="#{bindings.PilotCoverPilotCoverProductTable.collectionModel}"
+                                                                          columnStretching="last" rowBandingInterval="0"
+                                                                          editingMode="editAll"
+                                                                          columnSelection="multiple"
+                                                                          contextMenuSelect="true" rowSelection="single"
+                                                                          selectionListener="#{pageFlowScope.PilotCoverPilotCoverProductTable.makeCurrent}"
+                                                                          selectedRowKeys="#{pageFlowScope.PilotCoverPilotCoverProductTable.selectedRow}"
+                                                                          rowDisclosureListener="#{pageFlowScope.PilotCoverPilotCoverProductTable.discloseRow}"
+                                                                          var="row" varStatus="status"
+                                                                          fetchSize="#{bindings.PilotCoverPilotCoverProductTable.rangeSize}"
+                                                                          emptyText="#{nls['NO_ROWS_FOUND']}"
+                                                                          queryListener="#{bindings.PilotCoverPilotCoverProductIteratorQuery.processQuery}"
+                                                                          filterModel="#{bindings.PilotCoverPilotCoverProductIteratorQuery.queryDescriptor}"
+                                                                          filterVisible="true"
+                                                                          binding="#{pageFlowScope.PilotCoverPilotCoverProductTable.table}"
+                                                                          partialTriggers=" :::PilotCoverPilotCoverProductPC ::PilotCoverPilotCoverProductFirst ::PilotCoverPilotCoverProductPrevious ::PilotCoverPilotCoverProductNext ::PilotCoverPilotCoverProductLast"
+                                                                          styleClass="AFStretchWidth"
+                                                                          summary="#{nls['TABLE_TITLE_PILOTCOVERPILOTCOVERPRODUCT']}">
+                                                                    <!-- DEBUG:BEGIN:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 10 -->
+                                                                    <f:facet name="contextMenu">
+                                                                        <af:popup id="PilotCoverPilotCoverProductTablePopup"
+                                                                                  childCreation="deferred">
+                                                                            <af:menu id="menu6">
+                                                                                <af:menu text="#{nls['GO_TO_MENU_LABEL']}"
+                                                                                         id="menu7">
+                                                                                    <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 11 -->
+                                                                                    <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 11-->
+                                                                                </af:menu>
+                                                                                <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 11 -->
+                                                                                <af:commandMenuItem id="PilotCoverPilotCoverProductduprm"
+                                                                                                    textAndAccessKey="#{nls['DUPLICATE_ROW']}"
+                                                                                                    immediate="true"
+                                                                                                    icon="/jheadstart/images/duplicateRow.png"
+                                                                                                    partialSubmit="true"
+                                                                                                    actionListener="#{pageFlowScope.PilotCoverPilotCoverProductTable.duplicateRow}"
+                                                                                                    rendered="#{MTSPermission['PilotCoverGroup.create']}"/>
+                                                                                <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 11-->
+                                                                                <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 11 -->
+                                                                                <af:commandMenuItem id="PilotCoverPilotCoverProductdelrm"
+                                                                                                    textAndAccessKey="#{nls['DELETE_ROW']}"
+                                                                                                    icon="/jheadstart/images/deleteRow.png"
+                                                                                                    partialSubmit="true"
+                                                                                                    immediate="true"
+                                                                                                    rendered="#{MTSPermission['PilotCoverGroup.delete']}">
+                                                                                    <af:showPopupBehavior popupId=":::PilotCoverPilotCoverProductDeletePopup"/>
+                                                                                </af:commandMenuItem>
+                                                                                <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 11-->
+                                                                            </af:menu>
+                                                                        </af:popup>
+                                                                    </f:facet><!-- DEBUG:END:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 10--><!-- DEBUG:BEGIN:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 10 --><!-- DEBUG:END:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 10--><!-- DEBUG:BEGIN:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 10 -->
+                                                                    <af:column id="PilotCoverPilotCoverProductIndexColumn"
+                                                                               width="20" align="center" headerText="#">
+                                                                        <af:outputFormatted value="#{status.index+1}"
+                                                                                            id="of1"/>
+                                                                    </af:column>
+                                                                    <!-- DEBUG:END:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 10-->
+                                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 10 -->
+                                                                    <af:column id="PilotCoverPilotCoverProductAssignDateCol"
+                                                                               sortable="true" filterable="true"
+                                                                               noWrap="true" width="100"
+                                                                               sortProperty="AssignDate"
+                                                                               rowHeader="false">
+                                                                        <f:facet name="header">
+                                                                            <af:outputLabel value="#{bindings.PilotCoverPilotCoverProductTable.hints.AssignDate.label}"
+                                                                                            showRequired="#{bindings.PilotCoverPilotCoverProductTable.hints.AssignDate.mandatory}"
+                                                                                            id="ol4"/>
+                                                                        </f:facet>
+                                                                        <!-- DEBUG:BEGIN:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 11 -->
+                                                                        <f:facet name="filter">
+                                                                            <af:inputDate value="#{status.filterCriteria.AssignDate}"
+                                                                                          id="id1">
+                                                                                <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                                                            </af:inputDate>
+                                                                        </f:facet>
+                                                                        <af:inputDate id="PilotCoverPilotCoverProductAssignDate"
+                                                                                      value="#{row.bindings.AssignDate.inputValue}"
+                                                                                      label="#{bindings.PilotCoverPilotCoverProductTable.hints.AssignDate.label}"
+                                                                                      required="#{bindings.PilotCoverPilotCoverProductTable.hints.AssignDate.mandatory}"
+                                                                                      readOnly="true"
+                                                                                      shortDesc="#{bindings.PilotCoverPilotCoverProductTable.hints.AssignDate.tooltip}">
+                                                                            <af:convertDateTime pattern="#{nls.datepattern}"/>
+                                                                        </af:inputDate>
+                                                                        <!-- DEBUG:END:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 11-->
+                                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 11 -->
+                                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 11-->
+                                                                    </af:column>
+                                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 10-->
+                                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 10 -->
+                                                                    <af:column id="PilotCoverPilotCoverProductPilotIdCol"
+                                                                               sortable="true" filterable="true"
+                                                                               noWrap="true" width="200"
+                                                                               sortProperty="PilotId" rowHeader="false">
+                                                                        <f:facet name="header">
+                                                                            <af:outputLabel value="#{bindings.PilotCoverPilotCoverProductTable.hints.PilotId.label}"
+                                                                                            showRequired="#{bindings.PilotCoverPilotCoverProductTable.hints.PilotId.mandatory}"
+                                                                                            id="ol5"/>
+                                                                        </f:facet>
+                                                                        <!-- DEBUG:BEGIN:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 11 -->
+                                                                        <af:selectOneChoice id="PilotCoverPilotCoverProductPilotId"
+                                                                                            value="#{row.bindings.PilotId.inputValue}"
+                                                                                            label="#{bindings.PilotCoverPilotCoverProductTable.hints.PilotId.label}"
+                                                                                            required="#{bindings.PilotCoverPilotCoverProductTable.hints.PilotId.mandatory}"
+                                                                                            readOnly="true"
+                                                                                            shortDesc="#{bindings.PilotCoverPilotCoverProductTable.hints.PilotId.tooltip}">
+                                                                            <f:selectItems value="#{row.bindings.PilotId.items}"
+                                                                                           id="si2"/>
+                                                                        </af:selectOneChoice>
+                                                                        <!-- DEBUG:END:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 11-->
+                                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 11 -->
+                                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 11-->
+                                                                    </af:column>
+                                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 10-->
+                                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 10 -->
+                                                                    <af:column id="PilotCoverPilotCoverProductProductIdCol"
+                                                                               sortable="true" filterable="true"
+                                                                               noWrap="true" width="100"
+                                                                               sortProperty="ProductId"
+                                                                               rowHeader="false">
+                                                                        <f:facet name="header">
+                                                                            <af:outputLabel value="#{bindings.PilotCoverPilotCoverProductTable.hints.ProductId.label}"
+                                                                                            showRequired="#{bindings.PilotCoverPilotCoverProductTable.hints.ProductId.mandatory}"
+                                                                                            id="ol6"/>
+                                                                        </f:facet>
+                                                                        <!-- DEBUG:BEGIN:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 11 -->
+                                                                        <af:selectOneChoice id="PilotCoverPilotCoverProductProductId"
+                                                                                            value="#{row.bindings.ProductId.inputValue}"
+                                                                                            label="#{bindings.PilotCoverPilotCoverProductTable.hints.ProductId.label}"
+                                                                                            required="#{bindings.PilotCoverPilotCoverProductTable.hints.ProductId.mandatory}"
+                                                                                            readOnly="true"
+                                                                                            shortDesc="#{bindings.PilotCoverPilotCoverProductTable.hints.ProductId.tooltip}">
+                                                                            <f:selectItems value="#{row.bindings.ProductId.items}"
+                                                                                           id="si3"/>
+                                                                        </af:selectOneChoice>
+                                                                        <!-- DEBUG:END:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 11-->
+                                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 11 -->
+                                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 11-->
+                                                                    </af:column>
+                                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 10-->
+                                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 10 -->
+                                                                    <af:column id="PilotCoverPilotCoverProductTreatmentIdCol"
+                                                                               sortable="true" filterable="true"
+                                                                               noWrap="true" width="100"
+                                                                               sortProperty="TreatmentId"
+                                                                               rowHeader="false">
+                                                                        <f:facet name="header">
+                                                                            <af:outputLabel value="#{bindings.PilotCoverPilotCoverProductTable.hints.TreatmentId.label}"
+                                                                                            showRequired="#{bindings.PilotCoverPilotCoverProductTable.hints.TreatmentId.mandatory}"
+                                                                                            id="ol7"/>
+                                                                        </f:facet>
+                                                                        <!-- DEBUG:BEGIN:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 11 -->
+                                                                        <af:selectOneChoice id="PilotCoverPilotCoverProductTreatmentId"
+                                                                                            value="#{row.bindings.TreatmentId.inputValue}"
+                                                                                            label="#{bindings.PilotCoverPilotCoverProductTable.hints.TreatmentId.label}"
+                                                                                            required="#{bindings.PilotCoverPilotCoverProductTable.hints.TreatmentId.mandatory}"
+                                                                                            readOnly="true"
+                                                                                            shortDesc="#{bindings.PilotCoverPilotCoverProductTable.hints.TreatmentId.tooltip}">
+                                                                            <f:selectItems value="#{row.bindings.TreatmentId.items}"
+                                                                                           id="si4"/>
+                                                                        </af:selectOneChoice>
+                                                                        <!-- DEBUG:END:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 11-->
+                                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 11 -->
+                                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 11-->
+                                                                    </af:column>
+                                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 10-->
+                                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 10 -->
+                                                                    <af:column id="PilotCoverPilotCoverProductQuantityCol"
+                                                                               sortable="true" filterable="true"
+                                                                               noWrap="true" width="60"
+                                                                               sortProperty="Quantity"
+                                                                               rowHeader="false">
+                                                                        <f:facet name="header">
+                                                                            <af:outputLabel value="#{bindings.PilotCoverPilotCoverProductTable.hints.Quantity.label}"
+                                                                                            showRequired="#{bindings.PilotCoverPilotCoverProductTable.hints.Quantity.mandatory}"
+                                                                                            id="ol8"/>
+                                                                        </f:facet>
+                                                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 11 -->
+                                                                        <af:inputText id="PilotCoverPilotCoverProductQuantity"
+                                                                                      value="#{row.bindings.Quantity.inputValue}"
+                                                                                      label="#{bindings.PilotCoverPilotCoverProductTable.hints.Quantity.label}"
+                                                                                      required="#{bindings.PilotCoverPilotCoverProductTable.hints.Quantity.mandatory}"
+                                                                                      rows="#{bindings.PilotCoverPilotCoverProductTable.hints.Quantity.displayHeight}"
+                                                                                      columns="#{bindings.PilotCoverPilotCoverProductTable.hints.Quantity.displayWidth}"
+                                                                                      readOnly="true"
+                                                                                      shortDesc="#{bindings.PilotCoverPilotCoverProductTable.hints.Quantity.tooltip}">
+                                                                            <f:validator binding="#{row.bindings.Quantity.validator}"/>
+                                                                            <af:convertNumber groupingUsed="false"
+                                                                                              pattern="#{bindings.PilotCoverPilotCoverProductTable.hints.Quantity.format}"/>
+                                                                        </af:inputText>
+                                                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 11-->
+                                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 11 -->
+                                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 11-->
+                                                                    </af:column>
+                                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 10-->
+                                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 10 -->
+                                                                    <af:column id="PilotCoverPilotCoverProductNewOutQtyCol"
+                                                                               sortable="true" filterable="true"
+                                                                               noWrap="true" width="60"
+                                                                               sortProperty="NewOutQty"
+                                                                               rowHeader="false">
+                                                                        <f:facet name="header">
+                                                                            <af:outputLabel value="#{bindings.PilotCoverPilotCoverProductTable.hints.NewOutQty.label}"
+                                                                                            showRequired="#{bindings.PilotCoverPilotCoverProductTable.hints.NewOutQty.mandatory}"
+                                                                                            id="ol9"/>
+                                                                        </f:facet>
+                                                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 11 -->
+                                                                        <af:inputText id="PilotCoverPilotCoverProductNewOutQty"
+                                                                                      value="#{row.bindings.NewOutQty.inputValue}"
+                                                                                      label="#{bindings.PilotCoverPilotCoverProductTable.hints.NewOutQty.label}"
+                                                                                      required="#{bindings.PilotCoverPilotCoverProductTable.hints.NewOutQty.mandatory}"
+                                                                                      rows="#{bindings.PilotCoverPilotCoverProductTable.hints.NewOutQty.displayHeight}"
+                                                                                      columns="#{bindings.PilotCoverPilotCoverProductTable.hints.NewOutQty.displayWidth}"
+                                                                                      readOnly="#{((!(MTSPermission['DataTeamAgentCarReconciliation.update'])) or (pageFlowScope.PilotCoverEdited eq 1)) or (row.bindings.Document.inputValue ne 'Has File')}"
+                                                                                      autoSubmit="true"
+                                                                                      partialTriggers="if2"
+                                                                                      shortDesc="#{bindings.PilotCoverPilotCoverProductTable.hints.NewOutQty.tooltip}"
+                                                                                      valueChangeListener="#{DataTeamAgentBean.ChangePilotCoverAgent}">
+                                                                            <f:validator binding="#{row.bindings.NewOutQty.validator}"/>
+                                                                            <af:convertNumber groupingUsed="false"
+                                                                                              pattern="#{bindings.PilotCoverPilotCoverProductTable.hints.NewOutQty.format}"/>
+                                                                        </af:inputText>
+                                                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 11-->
+                                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 11 -->
+                                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 11-->
+                                                                    </af:column>
+                                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 10-->
+                                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 10 -->
+                                                                    <af:column id="PilotCoverPilotCoverProductActualCleanCol"
+                                                                               sortable="true" filterable="true"
+                                                                               noWrap="true" width="60"
+                                                                               sortProperty="ActualClean"
+                                                                               rowHeader="false">
+                                                                        <f:facet name="header">
+                                                                            <af:outputLabel value="#{bindings.PilotCoverPilotCoverProductTable.hints.ActualClean.label}"
+                                                                                            showRequired="#{bindings.PilotCoverPilotCoverProductTable.hints.ActualClean.mandatory}"
+                                                                                            id="ol10"/>
+                                                                        </f:facet>
+                                                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 11 -->
+                                                                        <af:inputText id="PilotCoverPilotCoverProductActualClean"
+                                                                                      value="#{row.bindings.ActualClean.inputValue}"
+                                                                                      label="#{bindings.PilotCoverPilotCoverProductTable.hints.ActualClean.label}"
+                                                                                      required="#{bindings.PilotCoverPilotCoverProductTable.hints.ActualClean.mandatory}"
+                                                                                      rows="#{bindings.PilotCoverPilotCoverProductTable.hints.ActualClean.displayHeight}"
+                                                                                      columns="#{bindings.PilotCoverPilotCoverProductTable.hints.ActualClean.displayWidth}"
+                                                                                      readOnly="true"
+                                                                                      shortDesc="#{bindings.PilotCoverPilotCoverProductTable.hints.ActualClean.tooltip}">
+                                                                            <f:validator binding="#{row.bindings.ActualClean.validator}"/>
+                                                                            <af:convertNumber groupingUsed="false"
+                                                                                              pattern="#{bindings.PilotCoverPilotCoverProductTable.hints.ActualClean.format}"/>
+                                                                        </af:inputText>
+                                                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 11-->
+                                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 11 -->
+                                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 11-->
+                                                                    </af:column>
+                                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 10-->
+                                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 10 -->
+                                                                    <af:column id="PilotCoverPilotCoverProductNewCleanQtyCol"
+                                                                               sortable="true" filterable="true"
+                                                                               noWrap="true" width="60"
+                                                                               sortProperty="NewCleanQty"
+                                                                               rowHeader="false">
+                                                                        <f:facet name="header">
+                                                                            <af:outputLabel value="#{bindings.PilotCoverPilotCoverProductTable.hints.NewCleanQty.label}"
+                                                                                            showRequired="#{bindings.PilotCoverPilotCoverProductTable.hints.NewCleanQty.mandatory}"
+                                                                                            id="ol11"/>
+                                                                        </f:facet>
+                                                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 11 -->
+                                                                        <af:inputText id="PilotCoverPilotCoverProductNewCleanQty"
+                                                                                      value="#{row.bindings.NewCleanQty.inputValue}"
+                                                                                      label="#{bindings.PilotCoverPilotCoverProductTable.hints.NewCleanQty.label}"
+                                                                                      required="#{bindings.PilotCoverPilotCoverProductTable.hints.NewCleanQty.mandatory}"
+                                                                                      rows="#{bindings.PilotCoverPilotCoverProductTable.hints.NewCleanQty.displayHeight}"
+                                                                                      columns="#{bindings.PilotCoverPilotCoverProductTable.hints.NewCleanQty.displayWidth}"
+                                                                                      readOnly="#{((!(MTSPermission['DataTeamAgentCarReconciliation.update'])) or (pageFlowScope.PilotCoverEdited eq 1)) or (row.bindings.Document.inputValue ne 'Has File')}"
+                                                                                      autoSubmit="true"
+                                                                                      partialTriggers="if2"
+                                                                                      shortDesc="#{bindings.PilotCoverPilotCoverProductTable.hints.NewCleanQty.tooltip}"
+                                                                                      valueChangeListener="#{DataTeamAgentBean.ChangePilotCoverAgent}">
+                                                                            <f:validator binding="#{row.bindings.NewCleanQty.validator}"/>
+                                                                            <af:convertNumber groupingUsed="false"
+                                                                                              pattern="#{bindings.PilotCoverPilotCoverProductTable.hints.NewCleanQty.format}"/>
+                                                                        </af:inputText>
+                                                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 11-->
+                                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 11 -->
+                                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 11-->
+                                                                    </af:column>
+                                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 10-->
+                                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 10 -->
+                                                                    <af:column id="PilotCoverPilotCoverProductActualDirtyCol"
+                                                                               sortable="true" filterable="true"
+                                                                               noWrap="true" width="60"
+                                                                               sortProperty="ActualDirty"
+                                                                               rowHeader="false">
+                                                                        <f:facet name="header">
+                                                                            <af:outputLabel value="#{bindings.PilotCoverPilotCoverProductTable.hints.ActualDirty.label}"
+                                                                                            showRequired="#{bindings.PilotCoverPilotCoverProductTable.hints.ActualDirty.mandatory}"
+                                                                                            id="ol12"/>
+                                                                        </f:facet>
+                                                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 11 -->
+                                                                        <af:inputText id="PilotCoverPilotCoverProductActualDirty"
+                                                                                      value="#{row.bindings.ActualDirty.inputValue}"
+                                                                                      label="#{bindings.PilotCoverPilotCoverProductTable.hints.ActualDirty.label}"
+                                                                                      required="#{bindings.PilotCoverPilotCoverProductTable.hints.ActualDirty.mandatory}"
+                                                                                      rows="#{bindings.PilotCoverPilotCoverProductTable.hints.ActualDirty.displayHeight}"
+                                                                                      columns="#{bindings.PilotCoverPilotCoverProductTable.hints.ActualDirty.displayWidth}"
+                                                                                      readOnly="true"
+                                                                                      shortDesc="#{bindings.PilotCoverPilotCoverProductTable.hints.ActualDirty.tooltip}">
+                                                                            <f:validator binding="#{row.bindings.ActualDirty.validator}"/>
+                                                                            <af:convertNumber groupingUsed="false"
+                                                                                              pattern="#{bindings.PilotCoverPilotCoverProductTable.hints.ActualDirty.format}"/>
+                                                                        </af:inputText>
+                                                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 11-->
+                                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 11 -->
+                                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 11-->
+                                                                    </af:column>
+                                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 10-->
+                                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 10 -->
+                                                                    <af:column id="PilotCoverPilotCoverProductNewDirtyQtyCol"
+                                                                               sortable="true" filterable="true"
+                                                                               noWrap="true" width="60"
+                                                                               sortProperty="NewDirtyQty"
+                                                                               rowHeader="false">
+                                                                        <f:facet name="header">
+                                                                            <af:outputLabel value="#{bindings.PilotCoverPilotCoverProductTable.hints.NewDirtyQty.label}"
+                                                                                            showRequired="#{bindings.PilotCoverPilotCoverProductTable.hints.NewDirtyQty.mandatory}"
+                                                                                            id="ol13"/>
+                                                                        </f:facet>
+                                                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 11 -->
+                                                                        <af:inputText id="PilotCoverPilotCoverProductNewDirtyQty"
+                                                                                      value="#{row.bindings.NewDirtyQty.inputValue}"
+                                                                                      label="#{bindings.PilotCoverPilotCoverProductTable.hints.NewDirtyQty.label}"
+                                                                                      required="#{bindings.PilotCoverPilotCoverProductTable.hints.NewDirtyQty.mandatory}"
+                                                                                      rows="#{bindings.PilotCoverPilotCoverProductTable.hints.NewDirtyQty.displayHeight}"
+                                                                                      columns="#{bindings.PilotCoverPilotCoverProductTable.hints.NewDirtyQty.displayWidth}"
+                                                                                      readOnly="#{((!(MTSPermission['DataTeamAgentCarReconciliation.update'])) or (pageFlowScope.PilotCoverEdited eq 1)) or (row.bindings.Document.inputValue ne 'Has File')}"
+                                                                                      autoSubmit="true"
+                                                                                      partialTriggers="if2"
+                                                                                      shortDesc="#{bindings.PilotCoverPilotCoverProductTable.hints.NewDirtyQty.tooltip}"
+                                                                                      valueChangeListener="#{DataTeamAgentBean.ChangePilotCoverAgent}">
+                                                                            <f:validator binding="#{row.bindings.NewDirtyQty.validator}"/>
+                                                                            <af:convertNumber groupingUsed="false"
+                                                                                              pattern="#{bindings.PilotCoverPilotCoverProductTable.hints.NewDirtyQty.format}"/>
+                                                                        </af:inputText>
+                                                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 11-->
+                                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 11 -->
+                                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 11-->
+                                                                    </af:column>
+                                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 10-->
+                                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 10 -->
+                                                                    <af:column id="PilotCoverPilotCoverProductActualCancelCol"
+                                                                               sortable="true" filterable="true"
+                                                                               noWrap="true" width="60"
+                                                                               sortProperty="ActualCancel"
+                                                                               rowHeader="false">
+                                                                        <f:facet name="header">
+                                                                            <af:outputLabel value="#{bindings.PilotCoverPilotCoverProductTable.hints.ActualCancel.label}"
+                                                                                            showRequired="#{bindings.PilotCoverPilotCoverProductTable.hints.ActualCancel.mandatory}"
+                                                                                            id="ol14"/>
+                                                                        </f:facet>
+                                                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 11 -->
+                                                                        <af:inputText id="PilotCoverPilotCoverProductActualCancel"
+                                                                                      value="#{row.bindings.ActualCancel.inputValue}"
+                                                                                      label="#{bindings.PilotCoverPilotCoverProductTable.hints.ActualCancel.label}"
+                                                                                      required="#{bindings.PilotCoverPilotCoverProductTable.hints.ActualCancel.mandatory}"
+                                                                                      rows="#{bindings.PilotCoverPilotCoverProductTable.hints.ActualCancel.displayHeight}"
+                                                                                      columns="#{bindings.PilotCoverPilotCoverProductTable.hints.ActualCancel.displayWidth}"
+                                                                                      readOnly="true"
+                                                                                      shortDesc="#{bindings.PilotCoverPilotCoverProductTable.hints.ActualCancel.tooltip}">
+                                                                            <f:validator binding="#{row.bindings.ActualCancel.validator}"/>
+                                                                            <af:convertNumber groupingUsed="false"
+                                                                                              pattern="#{bindings.PilotCoverPilotCoverProductTable.hints.ActualCancel.format}"/>
+                                                                        </af:inputText>
+                                                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 11-->
+                                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 11 -->
+                                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 11-->
+                                                                    </af:column>
+                                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 10-->
+                                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 10 -->
+                                                                    <af:column id="PilotCoverPilotCoverProductNewCancelQtyCol"
+                                                                               sortable="true" filterable="true"
+                                                                               noWrap="true" width="60"
+                                                                               sortProperty="NewCancelQty"
+                                                                               rowHeader="false">
+                                                                        <f:facet name="header">
+                                                                            <af:outputLabel value="#{bindings.PilotCoverPilotCoverProductTable.hints.NewCancelQty.label}"
+                                                                                            showRequired="#{bindings.PilotCoverPilotCoverProductTable.hints.NewCancelQty.mandatory}"
+                                                                                            id="ol15"/>
+                                                                        </f:facet>
+                                                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 11 -->
+                                                                        <af:inputText id="PilotCoverPilotCoverProductNewCancelQty"
+                                                                                      value="#{row.bindings.NewCancelQty.inputValue}"
+                                                                                      label="#{bindings.PilotCoverPilotCoverProductTable.hints.NewCancelQty.label}"
+                                                                                      required="#{bindings.PilotCoverPilotCoverProductTable.hints.NewCancelQty.mandatory}"
+                                                                                      rows="#{bindings.PilotCoverPilotCoverProductTable.hints.NewCancelQty.displayHeight}"
+                                                                                      columns="#{bindings.PilotCoverPilotCoverProductTable.hints.NewCancelQty.displayWidth}"
+                                                                                      readOnly="#{((!(MTSPermission['DataTeamAgentCarReconciliation.update'])) or (pageFlowScope.PilotCoverEdited eq 1)) or (row.bindings.Document.inputValue ne 'Has File')}"
+                                                                                      autoSubmit="true"
+                                                                                      partialTriggers="if2"
+                                                                                      shortDesc="#{bindings.PilotCoverPilotCoverProductTable.hints.NewCancelQty.tooltip}"
+                                                                                      valueChangeListener="#{DataTeamAgentBean.ChangePilotCoverAgent}">
+                                                                            <f:validator binding="#{row.bindings.NewCancelQty.validator}"/>
+                                                                            <af:convertNumber groupingUsed="false"
+                                                                                              pattern="#{bindings.PilotCoverPilotCoverProductTable.hints.NewCancelQty.format}"/>
+                                                                        </af:inputText>
+                                                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 11-->
+                                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 11 -->
+                                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 11-->
+                                                                    </af:column>
+                                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 10-->
+                                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 10 -->
+                                                                    <af:column id="PilotCoverPilotCoverProductManualNewCol"
+                                                                               sortable="true" filterable="true"
+                                                                               noWrap="true" width="60"
+                                                                               sortProperty="ManualNew"
+                                                                               rowHeader="false">
+                                                                        <f:facet name="header">
+                                                                            <af:outputLabel value="#{bindings.PilotCoverPilotCoverProductTable.hints.ManualNew.label}"
+                                                                                            showRequired="#{bindings.PilotCoverPilotCoverProductTable.hints.ManualNew.mandatory}"
+                                                                                            id="ol16"/>
+                                                                        </f:facet>
+                                                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 11 -->
+                                                                        <af:inputText id="PilotCoverPilotCoverProductManualNew"
+                                                                                      value="#{row.bindings.ManualNew.inputValue}"
+                                                                                      label="#{bindings.PilotCoverPilotCoverProductTable.hints.ManualNew.label}"
+                                                                                      required="#{bindings.PilotCoverPilotCoverProductTable.hints.ManualNew.mandatory}"
+                                                                                      rows="#{bindings.PilotCoverPilotCoverProductTable.hints.ManualNew.displayHeight}"
+                                                                                      columns="#{bindings.PilotCoverPilotCoverProductTable.hints.ManualNew.displayWidth}"
+                                                                                      readOnly="true"
+                                                                                      shortDesc="#{bindings.PilotCoverPilotCoverProductTable.hints.ManualNew.tooltip}">
+                                                                            <f:validator binding="#{row.bindings.ManualNew.validator}"/>
+                                                                            <af:convertNumber groupingUsed="false"
+                                                                                              pattern="#{bindings.PilotCoverPilotCoverProductTable.hints.ManualNew.format}"/>
+                                                                        </af:inputText>
+                                                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 11-->
+                                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 11 -->
+                                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 11-->
+                                                                    </af:column>
+                                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 10-->
+                                                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 10 -->
+                                                                    <af:column id="PilotCoverPilotCoverProductNewNewQtyCol"
+                                                                               sortable="true" filterable="true"
+                                                                               noWrap="true" width="60"
+                                                                               sortProperty="NewNewQty"
+                                                                               rowHeader="false">
+                                                                        <f:facet name="header">
+                                                                            <af:outputLabel value="#{bindings.PilotCoverPilotCoverProductTable.hints.NewNewQty.label}"
+                                                                                            showRequired="#{bindings.PilotCoverPilotCoverProductTable.hints.NewNewQty.mandatory}"
+                                                                                            id="ol17"/>
+                                                                        </f:facet>
+                                                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 11 -->
+                                                                        <af:inputText id="PilotCoverPilotCoverProductNewNewQty"
+                                                                                      value="#{row.bindings.NewNewQty.inputValue}"
+                                                                                      label="#{bindings.PilotCoverPilotCoverProductTable.hints.NewNewQty.label}"
+                                                                                      required="#{bindings.PilotCoverPilotCoverProductTable.hints.NewNewQty.mandatory}"
+                                                                                      rows="#{bindings.PilotCoverPilotCoverProductTable.hints.NewNewQty.displayHeight}"
+                                                                                      columns="#{bindings.PilotCoverPilotCoverProductTable.hints.NewNewQty.displayWidth}"
+                                                                                      readOnly="#{((!(MTSPermission['DataTeamAgentCarReconciliation.update'])) or (pageFlowScope.PilotCoverEdited eq 1)) or (row.bindings.Document.inputValue ne 'Has File')}"
+                                                                                      autoSubmit="true"
+                                                                                      partialTriggers="if2"
+                                                                                      shortDesc="#{bindings.PilotCoverPilotCoverProductTable.hints.NewNewQty.tooltip}"
+                                                                                      valueChangeListener="#{DataTeamAgentBean.ChangePilotCoverAgent}">
+                                                                            <f:validator binding="#{row.bindings.NewNewQty.validator}"/>
+                                                                            <af:convertNumber groupingUsed="false"
+                                                                                              pattern="#{bindings.PilotCoverPilotCoverProductTable.hints.NewNewQty.format}"/>
+                                                                        </af:inputText>
+                                                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 11-->
+                                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 11 -->
+                                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 11-->
+                                                                    </af:column>
+                                                                    <af:column id="c2" sortable="true" filterable="true"
+                                                                               noWrap="true" width="100"
+                                                                            rendered="false"   rowHeader="false" >
+                                                                        <f:facet name="header">
+                                                                            <af:outputLabel value="Document"
+                                                                                            showRequired="" id="ol19"/>
+                                                                        </f:facet>
+                                                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9 -->
+                                                                        <af:inputFile label="" id="if2"
+                                                                                      autoSubmit="true"
+                                                                                      valueChangeListener="#{DataTeamAgentBean.ProductDocumentChangeListener}"/>
+                                                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 9-->
+                                                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9 -->
+                                                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 9-->
+                                                                    </af:column>
+                                                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 10-->
+                                                                </af:table>
+                                                            </af:panelCollection>
+                                                        </f:facet>
+                                                    </af:panelStretchLayout>
+                                                    <!-- DEBUG:END:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 9-->
+                                                </f:facet>
+                                            </af:panelStretchLayout>
+                                        </af:showDetailItem>
+                                        <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 8-->
+                                    </af:panelAccordion>
+                                    <!-- DEBUG:END:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 7-->
+                                </f:facet>
+                            </af:panelStretchLayout>
+                        </af:showDetailItem>
+                        <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 6-->
+                    </af:panelAccordion>
+                    <!-- DEBUG:END:DETAIL_GROUPS : default/pageComponent/detailGroups.vm, nesting level: 5-->
+                </f:facet>
+            </af:panelStretchLayout>
+        </af:form>
+    </af:document>
+</f:view>

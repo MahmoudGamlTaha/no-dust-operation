@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="Customer_Profile_HistoryTaskFlow">
+    <!-- DEBUG:BEGIN:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2 -->
+    <template-reference>
+      <document id="__0">/WEB-INF/jhs-fragment-taskflow-template.xml</document>
+      <id id="__1">jhs-fragment-taskflow-template</id>
+    </template-reference>
+    <!-- DEBUG:END:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2-->
+    <default-activity id="__2">StartCustomer_Profile_History</default-activity>
+    <!-- DEBUG:BEGIN:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2 -->
+    <input-parameter-definition id="__3">
+      <name id="__4">createCustomer_Profile_History</name>
+      <value id="__5">#{pageFlowScope.createCustomer_Profile_History}</value>
+      <class id="__6">java.lang.Object</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__7">
+      <name id="__8">rowKeyStrCustomer_Profile_History</name>
+      <value id="__9">#{pageFlowScope.rowKeyStrCustomer_Profile_History}</value>
+      <class id="__10">java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__11">
+      <name id="__12">rowKeyValueCustomer_Profile_History</name>
+      <value id="__13">#{pageFlowScope.rowKeyValueCustomer_Profile_History}</value>
+      <class id="__14">java.lang.Object</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__15">
+      <name id="__16">rowKeyCustomer_Profile_History</name>
+      <value id="__17">#{pageFlowScope.rowKeyCustomer_Profile_History}</value>
+      <class id="__18">oracle.jbo.Key</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__19">
+      <name id="__20">altKeyNameCustomer_Profile_History</name>
+      <value id="__21">#{pageFlowScope.altKeyNameCustomer_Profile_History}</value>
+      <class id="__22">java.lang.String</class>
+    </input-parameter-definition>
+    <!-- DEBUG:END:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2 -->
+    <managed-bean id="__23">
+      <managed-bean-name id="__24">jhsTaskFlowManager</managed-bean-name>
+      <managed-bean-class id="__25">oracle.jheadstart.controller.jsf.bean.TaskFlowManager</managed-bean-class>
+      <managed-bean-scope id="__26">pageFlow</managed-bean-scope>
+      <managed-property id="__27">
+        <property-name id="__28">initializeParentContextEntries</property-name>
+        <map-entries id="__29">
+          <map-entry id="__30">
+            <key id="__31">jhsCurrentGroupName</key>
+            <value id="__32">Customer_Profile_History</value>
+          </map-entry>
+        </map-entries>
+      </managed-property>
+    </managed-bean>
+    <!-- DEBUG:END:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2 -->
+    <managed-bean id="__33">
+      <managed-bean-name id="__34">jhsRollback</managed-bean-name>
+      <managed-bean-class id="__35">oracle.jheadstart.controller.jsf.bean.RollbackBean</managed-bean-class>
+      <managed-bean-scope id="__36">request</managed-bean-scope>
+      <managed-property id="__37">
+        <property-name id="__38">rollbackBinding</property-name>
+        <value id="__39">#{bindings.Rollback}</value>
+      </managed-property>
+      <managed-property id="__40">
+        <property-name id="__41">successOutcome</property-name>
+        <value id="__42">Cancel</value>
+      </managed-property>
+    </managed-bean>
+    <!-- DEBUG:END:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+    <managed-bean id="__43">
+      <managed-bean-name id="__44">Customer_Profile_HistoryTable</managed-bean-name>
+      <managed-bean-class id="__45">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+      <managed-bean-scope id="__46">pageFlow</managed-bean-scope>
+      <managed-property id="__47">
+        <property-name id="__48">name</property-name>
+        <value id="__49">Customer_Profile_HistoryTable</value>
+      </managed-property>
+      <managed-property id="__50">
+        <property-name id="__51">rangeBindingExpr</property-name>
+        <value id="__52">#{'#{bindings.Customer_Profile_HistoryTable}'}</value>
+      </managed-property>
+      <managed-property id="__53">
+        <property-name id="__54">focusItemId</property-name>
+        <value id="__55">Customer_Profile_HistoryHistoryDate</value>
+      </managed-property>
+    </managed-bean>
+    <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2 -->
+    <!-- DEBUG:END:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2 -->
+    <router id="StartCustomer_Profile_History">
+      <case id="__56">
+        <expression id="__57">#{pageFlowScope.createCustomer_Profile_History!=null}</expression>
+        <outcome id="__58">createCustomer_Profile_History</outcome>
+      </case>
+      <case id="__59">
+        <expression id="__60">#{pageFlowScope.rowKeyStrCustomer_Profile_History!=null or
+                              pageFlowScope.rowKeyValueCustomer_Profile_History!=null or
+                              pageFlowScope.rowKeyCustomer_Profile_History!=null}</expression>
+        <outcome id="__61">SetCurrentRowCustomer_Profile_History</outcome>
+      </case>
+      <case id="__62">
+        <expression id="__63">#{pageFlowScope.isDeepLink!=null and pageFlowScope.isDeepLink}</expression>
+        <outcome id="__64">deepLinkPage</outcome>
+      </case>
+      <default-outcome id="__65">firstPage</default-outcome>
+    </router>
+    <!-- DEBUG:END:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2 -->
+    <method-call id="CreateCustomer_Profile_History">
+      <method id="__66">#{CreateCustomer_Profile_History.execute}</method>
+      <!-- execute condition param -->
+      <parameter>
+        <class id="__67">java.lang.Object</class>
+        <value id="__68">#{pageFlowScope.createCustomer_Profile_History}</value>
+      </parameter>
+      <outcome id="__69">
+        <to-string/>
+      </outcome>
+    </method-call>
+    <method-call id="SetCurrentRowCustomer_Profile_History">
+      <method id="__70">#{jhsSetCurrentRow.execute}</method>
+      <!-- iterator param -->
+      <parameter>
+        <class id="__71">oracle.adf.model.binding.DCIteratorBinding</class>
+        <value id="__72">#{bindings.Customer_Profile_HistoryIterator}</value>
+      </parameter>
+      <!-- rowKeyStr param -->
+      <parameter>
+        <class id="__73">java.lang.String</class>
+        <value id="__74">#{pageFlowScope.rowKeyStrCustomer_Profile_History}</value>
+      </parameter>
+      <!-- rowKeyValue param -->
+      <parameter>
+        <class id="__75">java.lang.Object</class>
+        <value id="__76">#{pageFlowScope.rowKeyValueCustomer_Profile_History}</value>
+      </parameter>
+      <!-- rowKey param -->
+      <parameter>
+        <class id="__77">oracle.jbo.Key</class>
+        <value id="__78">#{pageFlowScope.rowKeyCustomer_Profile_History}</value>
+      </parameter>
+      <!-- altKeyName param -->
+      <parameter>
+        <class id="__79">java.lang.String</class>
+        <value id="__80">#{pageFlowScope.altKeyNameCustomer_Profile_History}</value>
+      </parameter>
+      <outcome id="__81">
+        <fixed-outcome id="__82">deepLinkPage</fixed-outcome>
+      </outcome>
+    </method-call>
+    <!-- DEBUG:END:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2 -->
+    <!-- DEBUG:END:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2-->
+    <task-flow-return id="CancelCustomer_Profile_HistoryReturn">
+      <outcome id="__83">
+        <name id="__84">CancelCustomer_Profile_History</name>
+      </outcome>
+    </task-flow-return>
+    <task-flow-return id="DoneCustomer_Profile_HistoryReturn">
+      <outcome id="__85">
+        <name id="__86">DoneCustomer_Profile_History</name>
+      </outcome>
+    </task-flow-return>
+    <!-- DEBUG:BEGIN:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2 -->
+    <view id="Customer_Profile_HistoryTable">
+      <page id="__87">/pages/Customer_Profile_HistoryTable.jsff</page>
+    </view>
+    <!-- DEBUG:END:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2 -->
+    <!-- DEBUG:END:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2 -->
+    <control-flow-rule id="__88">
+      <from-activity-id id="__89">*</from-activity-id>
+      <control-flow-case id="__90">
+        <from-outcome id="__91">SetCurrentRowCustomer_Profile_History</from-outcome>
+        <to-activity-id id="__92">SetCurrentRowCustomer_Profile_History</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__93">
+        <from-outcome id="__94">firstPage</from-outcome>
+        <to-activity-id id="__95">Customer_Profile_HistoryTable</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__96">
+        <from-outcome id="__97">deepLinkPage</from-outcome>
+        <to-activity-id id="__98">Customer_Profile_HistoryTable</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__99">
+        <from-outcome id="__100">Customer_Profile_HistoryTableBreadcrumb</from-outcome>
+        <to-activity-id id="__101">Customer_Profile_HistoryTable</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__102">
+        <from-outcome id="__103">Cancel</from-outcome>
+        <to-activity-id id="__104">StartCustomer_Profile_History</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__105">
+        <from-outcome id="__106">CancelCustomer_Profile_HistoryReturn</from-outcome>
+        <to-activity-id id="__107">CancelCustomer_Profile_HistoryReturn</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__108">
+        <from-outcome id="__109">DoneCustomer_Profile_HistoryReturn</from-outcome>
+        <to-activity-id id="__110">DoneCustomer_Profile_HistoryReturn</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__111">
+      <from-activity-id id="__112">*</from-activity-id>
+      <control-flow-case id="__113">
+        <from-outcome id="__114">createCustomer_Profile_History</from-outcome>
+        <to-activity-id id="__115">CreateCustomer_Profile_History</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <!-- DEBUG:END:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2 -->
+    <!-- DEBUG:END:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2-->
+    <use-page-fragments/>
+  </task-flow-definition>
+  <!-- This bean must be defined outside the task-flow-definition element
+       because it needs to be available in the pageFlowScope of the unbounded
+       task-flow not in the pageFlowScope of the bounded task flow itself. -->
+  <!-- DEBUG:BEGIN:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2 -->
+  <managed-bean id="__116">
+    <managed-bean-name id="__117">Customer_Profile_HistoryTaskFlowConfig</managed-bean-name>
+    <managed-bean-class id="__118">oracle.jheadstart.controller.jsf.bean.TaskFlowConfigBean</managed-bean-class>
+    <managed-bean-scope id="__119">pageFlow</managed-bean-scope>
+    <managed-property id="__120">
+      <property-name id="__121">params</property-name>
+      <property-class id="__122">java.util.Map</property-class>
+      <map-entries id="__123">
+        <map-entry id="__124">
+          <key id="__125">parentContext</key>
+          <value id="__126">#{pageFlowScope.parentContext}</value>
+        </map-entry>
+      </map-entries>
+    </managed-property>
+    <managed-property id="__127">
+      <property-name id="__128">name</property-name>
+      <value id="__129">Customer_Profile_History</value>
+    </managed-property>
+    <managed-property id="__130">
+      <property-name id="__131">taskFlowId</property-name>
+      <value id="__132">/WEB-INF/adfc-config-Customer_Profile_History.xml#Customer_Profile_HistoryTaskFlow</value>
+    </managed-property>
+    <managed-property id="__133">
+      <property-name id="__134">label</property-name>
+      <value id="__135">#{nls['MENU1_TITLE_CUSTOMER_PROFILE_HISTORY']}</value>
+    </managed-property>
+  </managed-bean>
+  <!-- DEBUG:END:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2-->
+</adfc-config>

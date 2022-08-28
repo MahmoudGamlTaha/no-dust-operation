@@ -1,0 +1,25 @@
+## revision_history
+## 04-Jun-2007   Marcel Marsman
+## 1.0           Initial creation
+package ${JHS.nlsGenerator.bundlePackageName};
+import java.util.ListResourceBundle; 
+
+public class ${JHS.nlsGenerator.bundleFileName} extends ListResourceBundle 
+{
+  private static final Object[][] sMessageStrings = new String[][] 
+  { 
+    #foreach($entry in $JHS.nlsGenerator.entries)
+    {"${entry.key}", "${entry.value}"},
+    #end
+    {"JHS_LASTENTRY_KEY", "JHS_LASTENTRY_VALUE"}
+  };
+
+  /**
+   * Return String Identifiers and corresponding Messages in a two-dimensional array.
+   */
+  protected Object[][] getContents()
+  {
+    return sMessageStrings;
+  }
+}
+  

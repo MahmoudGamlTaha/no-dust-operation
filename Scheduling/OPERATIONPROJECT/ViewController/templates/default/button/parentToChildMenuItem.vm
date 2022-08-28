@@ -1,0 +1,9 @@
+## revision_history
+## 31-aug-2007   Sandra Muller
+## 1.2           replaced text by textAndAccessKey
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+<af:commandMenuItem textAndAccessKey="#PARENT_TO_CHILD_BUTTON_LABEL($detailGroup)"
+     action="#NAVIGATE_TO_GROUP($detailGroup)" id="#NEW_ID("cmi")"
+     rendered="#{#GROUP_NOT_IN_CREATE_MODE() and #GROUP_HAS_ROW()#if ($detailGroup.roles) and jhsUserRoles['$detailGroup.roles'] #end}"
+     />

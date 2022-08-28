@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="OperationWorkVO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  SelectAllAttributes="false"
+  PageIterMode="Partial">
+  <ViewAccessor
+    Name="OperationWorkVO_WeekDaysVOLookup"
+    ViewObjectName="OPERATIONPROJECT.model.BC.VO.WeekDaysVO"
+    RowLevelBinds="false"/>
+  <ViewAccessor
+    Name="AgentsROV"
+    ViewObjectName="OPERATIONPROJECT.model.BC.VO.Lookups.AgentsROV"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_WorkDate"
+    ListVOName="OperationWorkVO_WeekDaysVOLookup"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="LOV_WorkDate_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="WorkDate"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="WorkingDate"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="DayName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Agent"
+    ListVOName="AgentsROV"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Agent"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="AgentName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="AgentName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="OperationWorkEO"
+    Entity="OPERATIONPROJECT.model.BC.EO.OperationWorkEO"/>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="OperationWorkEO"
+    AliasName="ID"/>
+  <ViewAttribute
+    Name="WorkDate"
+    PrecisionRule="true"
+    EntityAttrName="WorkDate"
+    EntityUsage="OperationWorkEO"
+    AliasName="WORK_DATE"
+    LOVName="LOV_WorkDate">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <DISPLAYWIDTH
+          Value="36"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Agent"
+    PrecisionRule="true"
+    EntityAttrName="Agent"
+    EntityUsage="OperationWorkEO"
+    AliasName="AGENT"
+    LOVName="LOV_Agent">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AddedBy"
+    PrecisionRule="true"
+    EntityAttrName="AddedBy"
+    EntityUsage="OperationWorkEO"
+    AliasName="ADDED_BY"/>
+  <ViewAttribute
+    Name="InsertTime"
+    PrecisionRule="true"
+    EntityAttrName="InsertTime"
+    EntityUsage="OperationWorkEO"
+    AliasName="INSERT_TIME"/>
+  <ViewAttribute
+    Name="Deleted"
+    PrecisionRule="true"
+    EntityAttrName="Deleted"
+    EntityUsage="OperationWorkEO"
+    AliasName="DELETED"/>
+  <ViewAttribute
+    Name="DeletedBy"
+    PrecisionRule="true"
+    EntityAttrName="DeletedBy"
+    EntityUsage="OperationWorkEO"
+    AliasName="DELETED_BY"/>
+  <ViewAttribute
+    Name="DeletedAt"
+    PrecisionRule="true"
+    EntityAttrName="DeletedAt"
+    EntityUsage="OperationWorkEO"
+    AliasName="DELETED_AT"/>
+  <ViewAttribute
+    Name="AreaId"
+    PrecisionRule="true"
+    EntityAttrName="AreaId"
+    EntityUsage="OperationWorkEO"
+    AliasName="AREA_ID"/>
+  <ViewAttribute
+    Name="PNumForDispatch"
+    PrecisionRule="true"
+    EntityAttrName="PNumForDispatch"
+    EntityUsage="OperationWorkEO"
+    AliasName="P_NUM_FOR_DISPATCH"/>
+  <ViewAttribute
+    Name="TotalContracts"
+    PrecisionRule="true"
+    EntityAttrName="TotalContracts"
+    EntityUsage="OperationWorkEO"
+    AliasName="TOTAL_CONTRACTS"/>
+  <ViewAttribute
+    Name="DispatchableContracts"
+    PrecisionRule="true"
+    EntityAttrName="DispatchableContracts"
+    EntityUsage="OperationWorkEO"
+    AliasName="DISPATCHABLE_CONTRACTS"/>
+  <ViewAttribute
+    Name="BatchSplitted"
+    PrecisionRule="true"
+    EntityAttrName="BatchSplitted"
+    EntityUsage="OperationWorkEO"
+    AliasName="BATCH_SPLITTED"/>
+  <ViewAttribute
+    Name="Splitted2Drivers"
+    PrecisionRule="true"
+    EntityAttrName="Splitted2Drivers"
+    EntityUsage="OperationWorkEO"
+    AliasName="SPLITTED_2_DRIVERS"/>
+  <ViewAttribute
+    Name="CoverDate"
+    PrecisionRule="true"
+    EntityAttrName="CoverDate"
+    EntityUsage="OperationWorkEO"
+    AliasName="COVER_DATE"/>
+  <ViewAttribute
+    Name="AreaName"
+    PrecisionRule="true"
+    EntityAttrName="AreaName"
+    EntityUsage="OperationWorkEO"
+    AliasName="AREA_NAME"/>
+  <ViewAttribute
+    Name="UpdatedBy"
+    PrecisionRule="true"
+    EntityAttrName="UpdatedBy"
+    EntityUsage="OperationWorkEO"
+    AliasName="UPDATED_BY"/>
+  <ViewAttribute
+    Name="UpdatedAt"
+    PrecisionRule="true"
+    EntityAttrName="UpdatedAt"
+    EntityUsage="OperationWorkEO"
+    AliasName="UPDATED_AT"/>
+</ViewObject>

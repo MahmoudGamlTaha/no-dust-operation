@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <managed-bean id="__0">
+        <managed-bean-name id="__1">FinancialPeriodTableBreadcrumb</managed-bean-name>
+        <managed-bean-class id="__2">oracle.jheadstart.controller.jsf.util.breadcrumbs.BreadcrumbConfiguration</managed-bean-class>
+        <managed-bean-scope id="__3">application</managed-bean-scope>
+        <managed-property id="__4">
+            <property-name id="__5">key</property-name>
+            <value id="__6">FinancialPeriodTable</value>
+        </managed-property>
+        <managed-property id="__7">
+            <property-name id="__8">page</property-name>
+            <value id="__9">/pages/FinancialPeriodTable.jsff</value>
+        </managed-property>
+        <managed-property id="__10">
+            <property-name id="__11">labelExpression</property-name>
+            <value id="__12">#{"#{nls['TABLE_TITLE_FINANCIALPERIOD']}
+                             (#{pageFlowScope.FinancialPeriodTable.currentRowAttributeValues.Id})"}</value>
+        </managed-property>
+        <managed-property id="__13">
+            <property-name id="__14">pageDefName</property-name>
+            <value id="__15">FinancialPeriodPageDef</value>
+        </managed-property>
+        <managed-property id="__16">
+            <property-name id="__17">iteratorBindingName</property-name>
+            <value id="__18">FinancialPeriodIterator</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean id="__19">
+        <managed-bean-name id="__20">dddBreadcrumb</managed-bean-name>
+        <managed-bean-class id="__21">oracle.jheadstart.controller.jsf.util.breadcrumbs.BreadcrumbConfiguration</managed-bean-class>
+        <managed-bean-scope id="__22">application</managed-bean-scope>
+        <managed-property id="__23">
+            <property-name id="__24">key</property-name>
+            <value id="__25">ddd</value>
+        </managed-property>
+        <managed-property id="__26">
+            <property-name id="__27">page</property-name>
+            <value id="__28">/pages/ddd.jsff</value>
+        </managed-property>
+        <managed-property id="__29">
+            <property-name id="__30">labelExpression</property-name>
+            <value id="__31">#{"#{pageFlowScope.createModes.Createddd ? nls['INSERT_TITLE_DDD'] :
+                             (MTSPermission['ddd.update'] ? nls['EDIT_TITLE_DD: #{bindings.dddCountryId.inputValue}'] :
+                             nls['VIEW_TITLE_DD: #{bindings.dddCountryId.inputValue}']) }"}</value>
+        </managed-property>
+        <managed-property id="__32">
+            <property-name id="__33">pageDefName</property-name>
+            <value id="__34">dddPageDef</value>
+        </managed-property>
+        <managed-property id="__35">
+            <property-name id="__36">iteratorBindingName</property-name>
+            <value id="__37">dddIterator</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean id="__38">
+        <managed-bean-name id="__39">PointCatalogTableBreadcrumb</managed-bean-name>
+        <managed-bean-class id="__40">oracle.jheadstart.controller.jsf.util.breadcrumbs.BreadcrumbConfiguration</managed-bean-class>
+        <managed-bean-scope id="__41">application</managed-bean-scope>
+        <managed-property id="__42">
+            <property-name id="__43">key</property-name>
+            <value id="__44">PointCatalogTable</value>
+        </managed-property>
+        <managed-property id="__45">
+            <property-name id="__46">page</property-name>
+            <value id="__47">/pages/PointCatalogTable.jsff</value>
+        </managed-property>
+        <managed-property id="__48">
+            <property-name id="__49">labelExpression</property-name>
+            <value id="__50">#{"#{nls['TABLE_TITLE_POINTCATALOG']}
+                             (#{pageFlowScope.PointCatalogTable.currentRowAttributeValues.Id})"}</value>
+        </managed-property>
+        <managed-property id="__51">
+            <property-name id="__52">pageDefName</property-name>
+            <value id="__53">PointCatalogPageDef</value>
+        </managed-property>
+        <managed-property id="__54">
+            <property-name id="__55">iteratorBindingName</property-name>
+            <value id="__56">PointCatalogIterator</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean id="__57">
+        <managed-bean-name id="__58">SchedulingExcludeReasonTableBreadcrumb</managed-bean-name>
+        <managed-bean-class id="__59">oracle.jheadstart.controller.jsf.util.breadcrumbs.BreadcrumbConfiguration</managed-bean-class>
+        <managed-bean-scope id="__60">application</managed-bean-scope>
+        <managed-property id="__61">
+            <property-name id="__62">key</property-name>
+            <value id="__63">SchedulingExcludeReasonTable</value>
+        </managed-property>
+        <managed-property id="__64">
+            <property-name id="__65">page</property-name>
+            <value id="__66">/pages/SchedulingExcludeReasonTable.jsff</value>
+        </managed-property>
+        <managed-property id="__67">
+            <property-name id="__68">labelExpression</property-name>
+            <value id="__69">#{"#{nls['TABLE_TITLE_SCHEDULINGEXCLUDEREASON']}
+                             (#{pageFlowScope.SchedulingExcludeReasonTable.currentRowAttributeValues.ReasonId})"}</value>
+        </managed-property>
+        <managed-property id="__70">
+            <property-name id="__71">pageDefName</property-name>
+            <value id="__72">SchedulingExcludeReasonPageDef</value>
+        </managed-property>
+        <managed-property id="__73">
+            <property-name id="__74">iteratorBindingName</property-name>
+            <value id="__75">SchedulingExcludeReasonIterator</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean id="__76">
+        <managed-bean-name id="__77">UsersTableBreadcrumb</managed-bean-name>
+        <managed-bean-class id="__78">oracle.jheadstart.controller.jsf.util.breadcrumbs.BreadcrumbConfiguration</managed-bean-class>
+        <managed-bean-scope id="__79">application</managed-bean-scope>
+        <managed-property id="__80">
+            <property-name id="__81">key</property-name>
+            <value id="__82">UsersTable</value>
+        </managed-property>
+        <managed-property id="__83">
+            <property-name id="__84">page</property-name>
+            <value id="__85">/pages/UsersTable.jsff</value>
+        </managed-property>
+        <managed-property id="__86">
+            <property-name id="__87">labelExpression</property-name>
+            <value id="__88">#{"#{nls['TABLE_TITLE_USERS']}
+                             (#{pageFlowScope.UsersTable.currentRowAttributeValues.Userid})"}</value>
+        </managed-property>
+        <managed-property id="__89">
+            <property-name id="__90">pageDefName</property-name>
+            <value id="__91">UsersPageDef</value>
+        </managed-property>
+        <managed-property id="__92">
+            <property-name id="__93">iteratorBindingName</property-name>
+            <value id="__94">UsersIterator</value>
+        </managed-property>
+    </managed-bean>
+</adfc-config>
+

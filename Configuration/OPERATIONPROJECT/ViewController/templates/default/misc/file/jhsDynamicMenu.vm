@@ -1,0 +1,105 @@
+## revision_history
+## 22-feb-2010   Steven Davelaar
+## 1.6           Check for group property addMenuEntry
+## 29-dec-2008   Steven Davelaar
+## 1.5           Use jsf_action column to implement support for dynamic regions, and 
+## 15-sep-2008   Steven Davelaar
+## 1.4           Added generation of global nav cases
+## 06-may-2008   Steven Davelaar
+## 1.3           SubCounter for menu level 2 mst be initialized BEFORE foreach loop 
+##               over level 2 menu items
+## 17-sep-2007   Steven Davelaar
+## 1.2           Renamed column key to key1, do not update module display sequence 
+## 17-jun-2007    Steven Davelaar
+## 1.1           Skip level 2 menus when group on same page and no table-form 
+##               layout, use tabName instead of group name as label, set roles 
+##               use new property overwriteMenuEntries 
+## 08-jun-2007    Marcel Marsman
+## 1.0           Initial creation
+##
+## INSERT MODULES
+###
+MERGE INTO jhs_modules jmod
+USING (select 'MODULE_${JHS.service.name.toUpperCase()}' label_translation_key,  '$JHS.service.menuTitle' label, '$JHS.service.name' name, nvl(max(DISPLAY_SEQUENCE),0)+1 display_sequence, #if ($JHS.service.roles) '${JHS.service.roles}' #else ''#end roles from jhs_modules) new_jmod
+ON (jmod.name = new_jmod.name)
+#if(${JHS.service.overwriteMenuEntries})
+WHEN MATCHED THEN  UPDATE SET #if(${JHS.application.bundleType}=='databaseTable')jmod.LABEL_TRANSLATION_KEY = new_jmod.label_translation_key,#end jmod.LABEL = new_jmod.label,jmod.ROLES = new_jmod.ROLES
+#end
+WHEN NOT MATCHED THEN insert (ID, #if(${JHS.application.bundleType}=='databaseTable')LABEL_TRANSLATION_KEY,#end LABEL, NAME, DISPLAY_SEQUENCE, ROLES)
+VALUES (JHS_SEQ.nextval, #if(${JHS.application.bundleType}=='databaseTable')new_jmod.label_translation_key,#end new_jmod.label, new_jmod.name, new_jmod.display_sequence, new_jmod.roles);
+
+##
+## INSERT TRANSLATION KEY MODULE
+##
+#if(${JHS.application.bundleType}=='databaseTable')
+  -- create locale if not exists 
+MERGE INTO jhs_locales loc
+USING (select '${JHS.application.defaultLocale}' description, '${JHS.application.defaultLocale}' code from dual) new_locale
+ON (loc.code = new_locale.code)
+  WHEN NOT MATCHED THEN INSERT (loc.id, loc.code, loc.description) VALUES (Jhs_Seq.Nextval, new_locale.code, new_locale.description);
+
+MERGE INTO jhs_translations org 
+USING (select 'MODULE_${JHS.service.name.toUpperCase()}' key1, '${JHS.service.name}' text, (SELECT id from jhs_locales where code='${JHS.application.defaultLocale}') lce_id from dual) new_trans 
+ON (org.key1 = new_trans.key1 AND org.lce_id = new_trans.lce_id) 
+#if(${JHS.application.overwriteNlsEntries})
+  WHEN MATCHED THEN UPDATE SET org.text = new_trans.text 
+#end
+WHEN NOT MATCHED THEN INSERT (org.id, org.key1, org.text, org.lce_id)  
+                    VALUES (Jhs_Seq.Nextval, new_trans.key1, new_trans.text, new_trans.lce_id); 
+#end
+
+
+#if ($JHS.application.standAlonePagesUsed)
+  #set ($menuActionPrefix = "abandon:")
+#else
+  #set ($menuActionPrefix = "")
+#end
+
+#set ($counter = 1)
+#foreach ($group in $JHS.service.baseGroups)
+
+#if ($group.addMenuEntry)
+  
+    #if (${group.groupUsage} == 'region')
+      #if (${group.groupRegionAccess}=='commonUIShell')
+         #set ($jsfAction = "uishell:${group.name}")   
+      #else
+         #set ($jsfAction=${JHS.facesConfigGenerator.addGlobalNavigationCase("Start${group.name}", "${group.name}",true)})   
+      #end
+    #elseif (${group.useAsStandalonePage})
+      #set ($jsfAction=${JHS.facesConfigGenerator.addGlobalNavigationCase("Start${group.name}", "Start${group.name}",true)})   
+    #end
+
+##
+## INSERT MENU ITEMS LEVEL1
+##
+MERGE INTO jhs_menu_items jmi
+USING (select 'false' disabled_expr, '$group.name' launching_group_name, '$group.name' name, #if(${JHS.application.bundleType}=='databaseTable')'MENU1_TITLE_${group.name.toUpperCase()}' label_translation_key,#end '$group.tabName' label, 'true' rendered_expr, #if ($group.roles) '${group.roles}' #else ''#end roles, '' iframe_url, (select id from jhs_modules m where m.name='$JHS.service.name') mde_id, '$counter' DISPLAY_SEQUENCE , '${menuActionPrefix}${jsfAction}' JSF_ACTION from dual) new_jmi
+ON (jmi.name = new_jmi.name)
+#if(${JHS.service.overwriteMenuEntries})
+WHEN MATCHED THEN UPDATE SET DISABLED_EXPR=new_jmi.DISABLED_EXPR, LAUNCHING_GROUP_NAME=new_jmi.LAUNCHING_GROUP_NAME, #if(${JHS.application.bundleType}=='databaseTable')LABEL_TRANSLATION_KEY=new_jmi.LABEL_TRANSLATION_KEY,#end RENDERED_EXPR=new_jmi.RENDERED_EXPR, ROLES=new_jmi.ROLES, IFRAME_URL=new_jmi.IFRAME_URL, MDE_ID=new_jmi.MDE_ID, DISPLAY_SEQUENCE=new_jmi.display_sequence, JSF_ACTION=new_jmi.jsf_action
+#end
+WHEN NOT MATCHED THEN INSERT (ID, DISABLED_EXPR, LAUNCHING_GROUP_NAME, NAME, #if(${JHS.application.bundleType}=='databaseTable')LABEL_TRANSLATION_KEY,#end  LABEL, RENDERED_EXPR, ROLES, IFRAME_URL, MDE_ID, DISPLAY_SEQUENCE, JSF_ACTION)
+values (JHS_SEQ.nextval, new_jmi.disabled_expr, new_jmi.LAUNCHING_GROUP_NAME,new_jmi.NAME,#if(${JHS.application.bundleType}=='databaseTable')new_jmi.LABEL_TRANSLATION_KEY,#end new_jmi.LABEL,new_jmi.RENDERED_EXPR, new_jmi.ROLES, new_jmi.IFRAME_URL, new_jmi.MDE_ID, new_jmi.DISPLAY_SEQUENCE, new_jmi.jsf_action);
+
+##
+## INSERT TRANSLATION KEY MENU ITEMS LEVEL1
+##
+#if(${JHS.application.bundleType}=='databaseTable')
+MERGE INTO jhs_translations org 
+USING (select 'MENU1_TITLE_${group.name.toUpperCase()}' key1, '${group.tabName}' text, (SELECT id from jhs_locales where code='${JHS.application.defaultLocale}') lce_id from dual) new_trans 
+ON (org.key1 = new_trans.key1 AND org.lce_id = new_trans.lce_id) 
+#if(${JHS.application.overwriteNlsEntries})
+  WHEN MATCHED THEN UPDATE SET org.text = new_trans.text 
+#end
+WHEN NOT MATCHED THEN INSERT (org.id, org.key1, org.text, org.lce_id)  
+                    VALUES (Jhs_Seq.Nextval, new_trans.key1, new_trans.text, new_trans.lce_id); 
+#end
+
+#set ($counter = $counter + 1)   
+
+#end
+#end
+
+commit;
+

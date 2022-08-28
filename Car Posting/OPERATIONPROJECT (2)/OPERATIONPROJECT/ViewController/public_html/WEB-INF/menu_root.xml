@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu">
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <itemNode id="PostTeamleaderMI" label="#{nls['MENU1_TITLE_POSTTEAMLEADER']}"
+              icon="../jheadstart/images/group-icon.png" action="abandon:uishell:PostTeamleader"
+              focusViewId="PostTeamleader" rendered="#{MTSPermission['PostTeamleader.view']}"></itemNode>
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <itemNode id="DataTeamLeaderScreenMI" label="#{nls['MENU1_TITLE_DATATEAMLEADERSCREEN']}"
+              icon="../jheadstart/images/group-icon.png" action="abandon:uishell:DataTeamLeaderScreen"
+              focusViewId="DataTeamLeaderScreen" rendered="#{MTSPermission['DataTeamLeaderScreen.view']}"></itemNode>
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <itemNode id="PostScreenMI" label="#{nls['MENU1_TITLE_POSTSCREEN']}" icon="../jheadstart/images/group-icon.png"
+              action="abandon:uishell:PostScreen" focusViewId="PostScreen"
+              rendered="#{MTSPermission['PostScreen.view']}"></itemNode>
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <itemNode id="DataTeamAgentMI" label="#{nls['MENU1_TITLE_DATATEAMAGENT']}"
+              icon="../jheadstart/images/group-icon.png" action="abandon:uishell:DataTeamAgent"
+              focusViewId="DataTeamAgent" rendered="#{MTSPermission['DataTeamAgent.view']}"></itemNode>
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <itemNode id="DataTeamAgentCarReconciliationMI" label="#{nls['MENU1_TITLE_DATATEAMAGENTCARRECONCILIATION']}"
+              icon="../jheadstart/images/group-icon.png" action="abandon:uishell:DataTeamAgentCarReconciliation"
+              focusViewId="DataTeamAgentCarReconciliation"
+              rendered="#{MTSPermission['DataTeamAgentCarReconciliation.view']}"></itemNode>
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+    <!-- DEBUG:BEGIN:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2 -->
+    <!-- DEBUG:END:XML_MENU_MODEL_ITEM : custom/misc/menu/MtsxmlMenuModelItem.vm, nesting level: 2-->
+</menu>

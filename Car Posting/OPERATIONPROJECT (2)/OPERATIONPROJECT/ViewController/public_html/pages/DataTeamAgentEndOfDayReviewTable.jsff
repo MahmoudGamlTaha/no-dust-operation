@@ -1,0 +1,313 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsRegionTemplate.jsf">
+        <!-- DEBUG:BEGIN:TABLE_PAGE_CONTENT : default/page/tablePageContent.vm, nesting level: 2 -->
+        <!-- DEBUG:BEGIN:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3 -->
+        <f:facet name="pageContent">
+            <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4 -->
+            <af:panelStretchLayout topHeight="auto" id="DataTeamAgentEndOfDayReviewTopLc"
+                                   partialTriggers=" as_DataTeamAgentEndOfDayReview">
+                <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                <f:facet name="top">
+                    <!-- Pushed "disabled" on stretchContext, now: enabled (default), disabled (default/pageComponent/groupContent.vm) -->
+                    <af:group id="g0">
+                        <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+                        <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+                        <!-- DEBUG:BEGIN:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 6 -->
+                        <af:panelGroupLayout id="modelSearchAreaDataTeamAgentEndOfDayReview"
+                                             rendered="#{!pageFlowScope.createModes.CreateDataTeamAgentEndOfDayReview and !pageFlowScope.hideSearchArea}"
+                                             partialTriggers="">
+                            <f:attribute name="JhsIgnoreChanges" value="true"/>
+                            <!-- DEBUG:BEGIN:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 7 -->
+                            <af:query id="as_DataTeamAgentEndOfDayReview" headerText="#{nls['SEARCH']}" disclosed="true"
+                                      modeChangeVisible="false"
+                                      value="#{bindings.DataTeamAgentEndOfDayReviewIteratorSearchQuery.queryDescriptor}"
+                                      model="#{bindings.DataTeamAgentEndOfDayReviewIteratorSearchQuery.queryModel}"
+                                      queryListener="#{bindings.DataTeamAgentEndOfDayReviewIteratorSearchQuery.processQuery}"
+                                      queryOperationListener="#{bindings.DataTeamAgentEndOfDayReviewIteratorSearchQuery.processQueryOperation}"
+                                      rows="1" labelAlignment="start" maxColumns="2" saveQueryMode="readOnly"
+                                      resetButtonText="#{nls['ADVANCED_SEARCH_RESET']}">
+                                <f:facet name="toolbar">
+                                    <af:toolbar id="tbar0">
+                                        <af:outputText value="#{nls['SEARCH_RESULTS']} #{bindings.DataTeamAgentEndOfDayReviewIterator.estimatedRowCount}"
+                                                       id="ot0"
+                                                       inlineStyle="background-color:Highlight; color:white; border:4px solid white; border-radius:20px; padding:4px 7px; display:inline-block; font-size:14px; font-weight:bold;"/>
+                                    </af:toolbar>
+                                </f:facet>
+                            </af:query>
+                            <!-- DEBUG:END:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 7-->
+                        </af:panelGroupLayout>
+                        <!-- DEBUG:END:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 6-->
+                        <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+                        <af:spacer width="10" height="10" id="sp0"/>
+                    </af:group>
+                    <!-- Popped "disabled" from stretchContext, now: enabled (default) -->
+                </f:facet>
+                <f:facet name="center">
+                    <!-- DEBUG:BEGIN:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5 -->
+                    <af:panelStretchLayout topHeight="0" id="psl0">
+                        <f:facet name="top"></f:facet>
+                        <f:facet name="center">
+                            <af:panelCollection id="DataTeamAgentEndOfDayReviewPC" featuresOff=" wrap    freeze "
+                                                styleClass="AFStretchWidth">
+                                <f:facet name="menus">
+                                    <!-- DEBUG:BEGIN:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6 -->
+                                    <af:menu textAndAccessKey="#{nls['ACTION_MENU_LABEL']}" id="menu0">
+                                        <af:menu textAndAccessKey="#{nls['GO_TO_MENU_LABEL']}" id="menu1">
+                                            <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                            <af:commandMenuItem id="mi0"
+                                                                textAndAccessKey="#{nls['DETAIL_VIEW_BUTTON_LABEL']}"
+                                                                action="DataTeamAgentEndOfDayReviewDetails"></af:commandMenuItem>
+                                            <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7 -->
+                                            <af:group id="DataTeamAgentEndOfDayReviewtbb"
+                                                      rendered="#{ bindings.DataTeamAgentEndOfDayReviewIterator.currentRow!=null }">
+                                                <af:commandMenuItem actionListener="#{bindings.FirstDataTeamAgentEndOfDayReview.execute}"
+                                                                    id="DataTeamAgentEndOfDayReviewFirst"
+                                                                    partialSubmit="true"
+                                                                    icon="/afr/shuttleleftall_ena.png"
+                                                                    textAndAccessKey="#{nls['FIRST_ROW']}"></af:commandMenuItem>
+                                                <af:commandMenuItem actionListener="#{bindings.PreviousDataTeamAgentEndOfDayReview.execute}"
+                                                                    icon="/afr/shuttleleft_ena.png"
+                                                                    textAndAccessKey="#{nls['PREVIOUS_ROW']}"
+                                                                    id="DataTeamAgentEndOfDayReviewPrevious"
+                                                                    partialSubmit="true"></af:commandMenuItem>
+                                                <af:commandMenuItem actionListener="#{bindings.NextDataTeamAgentEndOfDayReview.execute}"
+                                                                    icon="/afr/shuttleright_ena.png"
+                                                                    textAndAccessKey="#{nls['NEXT_ROW']}"
+                                                                    id="DataTeamAgentEndOfDayReviewNext"
+                                                                    partialSubmit="true"></af:commandMenuItem>
+                                                <af:commandMenuItem actionListener="#{bindings.LastDataTeamAgentEndOfDayReview.execute}"
+                                                                    icon="/afr/shuttlerightall_ena.png"
+                                                                    textAndAccessKey="#{nls['LAST_ROW']}"
+                                                                    id="DataTeamAgentEndOfDayReviewLast"
+                                                                    partialSubmit="true"></af:commandMenuItem>
+                                            </af:group>
+                                            <!-- DEBUG:END:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7-->
+                                        </af:menu>
+                                        <!-- DEBUG:BEGIN:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7-->
+                                    </af:menu>
+                                    <!-- DEBUG:END:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6-->
+                                </f:facet>
+                                <f:facet name="toolbar">
+                                    <!-- DEBUG:BEGIN:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6 -->
+                                    <af:toolbar id="tbar1">
+                                        <!-- DEBUG:BEGIN:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7-->
+                                    </af:toolbar>
+                                    <!-- DEBUG:END:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6-->
+                                </f:facet>
+                                <f:facet name="statusbar"/>
+                                <af:table id="DataTeamAgentEndOfDayReviewTab" contentDelivery="immediate"
+                                          value="#{bindings.DataTeamAgentEndOfDayReviewTable.collectionModel}"
+                                          columnStretching="last" rowBandingInterval="0" editingMode="editAll"
+                                          columnSelection="multiple" contextMenuSelect="true" rowSelection="single"
+                                          selectionListener="#{pageFlowScope.DataTeamAgentEndOfDayReviewTable.makeCurrent}"
+                                          selectedRowKeys="#{pageFlowScope.DataTeamAgentEndOfDayReviewTable.selectedRow}"
+                                          rowDisclosureListener="#{pageFlowScope.DataTeamAgentEndOfDayReviewTable.discloseRow}"
+                                          var="row" varStatus="status"
+                                          fetchSize="#{bindings.DataTeamAgentEndOfDayReviewTable.rangeSize}"
+                                          emptyText="#{nls['NO_ROWS_FOUND']}"
+                                          queryListener="#{bindings.DataTeamAgentEndOfDayReviewIteratorQuery.processQuery}"
+                                          filterModel="#{bindings.DataTeamAgentEndOfDayReviewIteratorQuery.queryDescriptor}"
+                                          filterVisible="true"
+                                          binding="#{pageFlowScope.DataTeamAgentEndOfDayReviewTable.table}"
+                                          partialTriggers=" :::as_DataTeamAgentEndOfDayReview :::DataTeamAgentEndOfDayReviewPC ::DataTeamAgentEndOfDayReviewFirst ::DataTeamAgentEndOfDayReviewPrevious ::DataTeamAgentEndOfDayReviewNext ::DataTeamAgentEndOfDayReviewLast"
+                                          styleClass="AFStretchWidth"
+                                          summary="#{nls['TABLE_TITLE_DATATEAMAGENTENDOFDAYREVIEW']}">
+                                    <!-- DEBUG:BEGIN:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6 -->
+                                    <f:facet name="contextMenu">
+                                        <af:popup id="DataTeamAgentEndOfDayReviewTablePopup" childCreation="deferred">
+                                            <af:menu id="menu2">
+                                                <af:menu text="#{nls['GO_TO_MENU_LABEL']}" id="menu3">
+                                                    <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                                    <af:commandMenuItem id="mi1"
+                                                                        textAndAccessKey="#{nls['DETAIL_VIEW_BUTTON_LABEL']}"
+                                                                        action="DataTeamAgentEndOfDayReviewDetails"></af:commandMenuItem>
+                                                    <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                                </af:menu>
+                                                <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                                <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                            </af:menu>
+                                        </af:popup>
+                                    </f:facet><!-- DEBUG:END:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6 --><!-- DEBUG:END:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6 -->
+                                    <af:column id="DataTeamAgentEndOfDayReviewIndexColumn" width="20" align="center"
+                                               headerText="#">
+                                        <af:outputFormatted value="#{status.index+1}" id="of0"/>
+                                    </af:column>
+                                    <af:column id="DataTeamAgentEndOfDayReviewActionColumn" width="20" align="center"
+                                               headerText=" ">
+                                        <af:panelGroupLayout layout="horizontal" id="pgl0">
+                                            <!-- DEBUG:BEGIN:DETAILS_LINK : default/button/detailsLink.vm, nesting level: 7 -->
+                                            <af:link action="DataTeamAgentEndOfDayReviewDetails"
+                                                     id="DataTeamAgentEndOfDayReviewGtd"
+                                                     shortDesc="#{nls['DETAIL_VIEW_BUTTON_LABEL']}"
+                                                     icon="/jheadstart/images/editRow.png"/>
+                                            <!-- DEBUG:END:DETAILS_LINK : default/button/detailsLink.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:DELETE_ROW_LINK : default/button/deleteRowLink.vm, nesting level: 7 -->
+                                            <!-- DEBUG:END:DELETE_ROW_LINK : default/button/deleteRowLink.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:DUPLICATE_ROW_LINK : default/button/duplicateRowLink.vm, nesting level: 7 -->
+                                            <!-- DEBUG:END:DUPLICATE_ROW_LINK : default/button/duplicateRowLink.vm, nesting level: 7-->
+                                        </af:panelGroupLayout>
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="DataTeamAgentEndOfDayReviewReturnDateCol" sortable="true"
+                                               filterable="true" noWrap="true" width="100" sortProperty="ReturnDate"
+                                               rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.ReturnDate.label}"
+                                                            id="ol0"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 7 -->
+                                        <f:facet name="filter">
+                                            <af:inputDate value="#{status.filterCriteria.ReturnDate}" id="id0">
+                                                <af:convertDateTime pattern="dd-MM-yyyy"/>
+                                            </af:inputDate>
+                                        </f:facet>
+                                        <af:inputDate id="DataTeamAgentEndOfDayReviewReturnDate"
+                                                      value="#{row.bindings.ReturnDate.inputValue}"
+                                                      label="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.ReturnDate.label}"
+                                                      required="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.ReturnDate.mandatory}"
+                                                      readOnly="true"
+                                                      shortDesc="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.ReturnDate.tooltip}">
+                                            <af:convertDateTime pattern="dd-MM-yyyy"/>
+                                        </af:inputDate>
+                                        <!-- DEBUG:END:TABLE_DATE_FIELD : default/item/table/tableDateField.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="DataTeamAgentEndOfDayReviewAreaNameCol" sortable="true"
+                                               filterable="true" noWrap="true" width="200" sortProperty="AreaName"
+                                               rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.AreaName.label}"
+                                                            id="ol1"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                        <af:inputText id="DataTeamAgentEndOfDayReviewAreaName"
+                                                      value="#{row.bindings.AreaName.inputValue}"
+                                                      label="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.AreaName.label}"
+                                                      required="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.AreaName.mandatory}"
+                                                      rows="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.AreaName.displayHeight}"
+                                                      columns="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.AreaName.displayWidth}"
+                                                      maximumLength="4000" readOnly="true"
+                                                      shortDesc="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.AreaName.tooltip}">
+                                            <f:validator binding="#{row.bindings.AreaName.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                    <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                    <af:column id="DataTeamAgentEndOfDayReviewDriverNameCol" sortable="true"
+                                               filterable="true" noWrap="true" width="200" sortProperty="DriverName"
+                                               rowHeader="false">
+                                        <f:facet name="header">
+                                            <af:outputLabel value="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.DriverName.label}"
+                                                            id="ol2"/>
+                                        </f:facet>
+                                        <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                        <af:inputText id="DataTeamAgentEndOfDayReviewDriverName"
+                                                      value="#{row.bindings.DriverName.inputValue}"
+                                                      label="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.DriverName.label}"
+                                                      required="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.DriverName.mandatory}"
+                                                      rows="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.DriverName.displayHeight}"
+                                                      columns="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.DriverName.displayWidth}"
+                                                      maximumLength="161" readOnly="true"
+                                                      shortDesc="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.DriverName.tooltip}">
+                                            <f:validator binding="#{row.bindings.DriverName.validator}"/>
+                                        </af:inputText>
+                                        <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                    </af:column>
+                                    <af:column headerText="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.TotalContracts.label}"
+                                               id="c1">
+                                               <f:facet name="header">
+                                            <af:outputLabel value="Total Assignments" id="ol3"/>
+                                        </f:facet>
+                                        <af:inputText value="#{row.bindings.TotalContracts.inputValue}"
+                                                      label="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.TotalContracts.label}"
+                                                   readOnly="true"   required="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.TotalContracts.mandatory}"
+                                                      columns="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.TotalContracts.displayWidth}"
+                                                      maximumLength="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.TotalContracts.precision}"
+                                                      shortDesc="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.TotalContracts.tooltip}"
+                                                      id="it1">
+                                            <f:validator binding="#{row.bindings.TotalContracts.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.TotalContracts.format}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.DoneContracts.label}"
+                                               id="c2">
+                                               <f:facet name="header">
+                                            <af:outputLabel value="Done Assignments" id="ol4"/>
+                                        </f:facet>
+                                        <af:inputText value="#{row.bindings.DoneContracts.inputValue}"
+                                                  readOnly="true"    label="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.DoneContracts.label}"
+                                                      required="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.DoneContracts.mandatory}"
+                                                      columns="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.DoneContracts.displayWidth}"
+                                                      maximumLength="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.DoneContracts.precision}"
+                                                      shortDesc="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.DoneContracts.tooltip}"
+                                                      id="it2">
+                                            <f:validator binding="#{row.bindings.DoneContracts.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.DoneContracts.format}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.DonePer.label}"
+                                               id="c3">
+                                               <f:facet name="header">
+                                            <af:outputLabel value="Completed %" id="ol5"/>
+                                        </f:facet>
+                                        <af:inputText value="#{row.bindings.DonePer.inputValue}"
+                                                      label="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.DonePer.label}"
+                                                  readOnly="true"    required="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.DonePer.mandatory}"
+                                                      columns="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.DonePer.displayWidth}"
+                                                      maximumLength="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.DonePer.precision}"
+                                                      shortDesc="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.DonePer.tooltip}"
+                                                      id="it3">
+                                            <f:validator binding="#{row.bindings.DonePer.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.DataTeamAgentEndOfDayReviewTable.hints.DonePer.format}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                </af:table>
+                            </af:panelCollection>
+                        </f:facet>
+                    </af:panelStretchLayout>
+                    <!-- DEBUG:END:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5-->
+                </f:facet>
+            </af:panelStretchLayout>
+            <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4-->
+        </f:facet>
+        <f:facet name="popups">
+            <af:panelGroupLayout id="popupsPgl"></af:panelGroupLayout>
+        </f:facet>
+        <!-- DEBUG:END:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3-->
+        <!-- DEBUG:END:TABLE_PAGE_CONTENT : default/page/tablePageContent.vm, nesting level: 2-->
+    </af:pageTemplate>
+</ui:composition>
+
+
+

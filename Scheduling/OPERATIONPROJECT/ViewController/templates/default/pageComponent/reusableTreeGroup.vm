@@ -1,0 +1,31 @@
+## revision_history
+## 26-apr-2013   Steven Davelaar
+## 1.3           Reverted back to cur group partial triggers macro
+## 23-sep-2011   Steven Davelaar
+## 1.2           Replaced cur group partial triggers with binding to refreshComponent
+## 06-dec-2010   Steven Davelaar
+## 1.1           Shortened id
+## 15-jan-2010   Steven Davelaar
+## 1.0           initial creation
+
+<af:panelSplitter id="#NEW_ID("ps")" 
+                  orientation="horizontal" 
+                  #if (${JHS.current.group.treeBaseGroup.treeWidth}!='') splitterPosition="${JHS.current.group.treeBaseGroup.treeWidth}" #else splitterPosition="150" #end>
+  <f:facet name="first">
+    #JHS_PARSE("TREE" ${JHS.treeGenerator.getTree(${JHS.current.group.treeBaseGroup.name})})
+  </f:facet>
+
+  <f:facet name="second"> 
+    <af:panelStretchLayout  id="#NEW_ID("psl")" #CUR_GROUP_PARTIAL_TRIGGERS()>
+      <f:facet name="center">
+        <af:switcher facetName="#{pageFlowScope.#TREE_BEAN($JHS.current.group.treeBaseGroup).selectedNodeType}" id="#NEW_ID("sw")" defaultFacet="${JHS.current.group.treeBaseGroup.name}">
+          #foreach($regionContainer in $JHS.current.group.allNestedRegionContainers)
+            <f:facet name="${regionContainer.parentGroup.name}">
+              #JHS_PARSE(${regionContainer.templateIdentifier} ${regionContainer})          
+            </f:facet>
+          #end
+        </af:switcher>
+      </f:facet>  
+    </af:panelStretchLayout>
+  </f:facet>
+</af:panelSplitter>

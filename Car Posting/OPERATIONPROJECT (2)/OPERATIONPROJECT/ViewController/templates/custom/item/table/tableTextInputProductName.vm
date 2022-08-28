@@ -1,0 +1,7 @@
+<af:link text="" id="l1" action="GoToProductDetails" useWindow="true" windowHeight="500" windowWidth="1100">
+                                                                                    <af:outputText id="PilotsLostNewProductName" value="#{row.bindings.ProductName.inputValue}" shortDesc="#{bindings.PilotsLostNewTable.hints.ProductName.tooltip}"/>
+                                                                                    <af:setActionListener from="#{bindings.ShipmentId.inputValue}"
+                                                                                                          to="#{pageFlowScope.ShipmentId}"/>
+                                                                                    <af:setActionListener from="#{row.bindings.ProductId.inputValue}"
+                                                                                                          to="#{pageFlowScope.ProductId}"/>
+                                                                                </af:link>

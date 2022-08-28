@@ -1,0 +1,407 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:pageTemplate id="pt" viewId="/common/pageTemplates/JhsRegionTemplateNoStretch.jsf">
+        <!-- DEBUG:BEGIN:TABLE_PAGE_CONTENT : default/page/tablePageContent.vm, nesting level: 2 -->
+        <!-- DEBUG:BEGIN:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3 -->
+        <f:facet name="pageContent">
+            <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+            <af:panelGroupLayout id="pcpg" layout="scroll">
+                <!-- DEBUG:BEGIN:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4 -->
+                <af:panelGroupLayout layout="vertical" id="UsersTopLc"
+                                     partialTriggers=" UsersDeleteDialog UsersSaveButton UsersCancelButton as_Users UsersPC:UsersArm UsersPC:UsersduprmTM UsersPC:UsersdelrmTM UsersPC:UsersArl UsersPC:UsersTab:Usersduprm UsersPC:UsersTab:Usersdelrm UsersPC:UsersTab:Usersdelrl UsersPC:UsersTab:Usersduprl">
+                    <!-- DEBUG:BEGIN:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5 -->
+                    <!-- DEBUG:END:GROUP_ACTION_ATTRIBUTES : default/pageComponent/groupActionAttributes.vm, nesting level: 5-->
+                    <f:facet name="separator">
+                        <af:spacer width="10" height="10" id="sp0"/>
+                    </f:facet>
+                    <!-- Pushed "disabled" on stretchContext, now: Stretching disabled on group level. -->
+                    <af:panelHeader id="ph0" text="#{nls['TABLE_TITLE_USERS']}">
+                        <f:facet name="toolbar">
+                            <!-- DEBUG:BEGIN:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5 -->
+                            <af:toolbox id="tbox0">
+                                <af:toolbar id="tbar0">
+                                    <af:group id="gr0">
+                                        <!-- DEBUG:BEGIN:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6 -->
+                                        <!-- DEBUG:END:NEW_BUTTON_NOT_IN_FORM_LAYOUT : custom/button/MtsnewButtonNotInFormLayout.vm, nesting level: 6-->
+                                    </af:group>
+                                    <af:group id="gr1"></af:group>
+                                    <af:group id="gr2">
+                                        <!-- DEBUG:BEGIN:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6 -->
+                                        <af:button action="#{SaveUsers.execute}"
+                                                   rendered="#{(((MTSPermission['Users.create']) or (MTSPermission['Users.update'])) or (MTSPermission['Users.delete'])) and (!pageFlowScope.hideSaveButton)}"
+                                                   textAndAccessKey="#{nls['SAVE_BUTTON_LABEL']}" id="UsersSaveButton"
+                                                   partialSubmit="true"></af:button>
+                                        <!-- DEBUG:END:SAVE_BUTTON : default/button/saveButton.vm, nesting level: 6-->
+                                        <!-- DEBUG:BEGIN:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6 -->
+                                        <af:button textAndAccessKey="#{nls['CANCEL']}" immediate="true"
+                                                   partialSubmit="true" rendered="#{!pageFlowScope.hideCancelButton}"
+                                                   actionListener="#{jhsRollback.execute}" action="Cancel"
+                                                   id="UsersCancelButton"></af:button>
+                                        <!-- DEBUG:END:WIZARD_CANCEL_BUTTON : custom/button/MtswizardCancelButton.vm, nesting level: 6-->
+                                    </af:group>
+                                </af:toolbar>
+                            </af:toolbox>
+                            <!-- DEBUG:END:GROUP_TOOLBAR : default/pageComponent/groupToolbar.vm, nesting level: 5-->
+                        </f:facet>
+                        <f:facet name="context">
+                            <!-- DEBUG:BEGIN:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5 -->
+                            <!-- DEBUG:END:PARENT_CONTEXT : default/pageComponent/parentContext.vm, nesting level: 5-->
+                        </f:facet>
+                        <!-- DEBUG:BEGIN:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5 -->
+                        <!-- DEBUG:END:DUMMY_ITEM_FOR_INITIAL_FOCUS : default/item/dummyItemForInitialFocus.vm, nesting level: 5-->
+                        <!-- DEBUG:BEGIN:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5 -->
+                        <!-- DEBUG:BEGIN:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 6 -->
+                        <af:panelGroupLayout id="modelSearchAreaUsers"
+                                             rendered="#{!pageFlowScope.createModes.CreateUsers and !pageFlowScope.hideSearchArea}"
+                                             partialTriggers="">
+                            <f:attribute name="JhsIgnoreChanges" value="true"/>
+                            <!-- DEBUG:BEGIN:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 7 -->
+                            <af:query id="as_Users" headerText="#{nls['ADVANCED_SEARCH']}" disclosed="true"
+                                      value="#{bindings.UsersIteratorQuery.queryDescriptor}"
+                                      model="#{bindings.UsersIteratorQuery.queryModel}"
+                                      queryListener="#{bindings.UsersIteratorQuery.processQuery}"
+                                      queryOperationListener="#{bindings.UsersIteratorQuery.processQueryOperation}"
+                                      rows="1" labelAlignment="start" maxColumns="3"></af:query>
+                            <!-- DEBUG:END:MODEL_ADVANCED_SEARCH_REGION : custom/search/MtsmodelAdvancedSearchRegion.vm, nesting level: 7-->
+                        </af:panelGroupLayout>
+                        <!-- DEBUG:END:SEARCH_AREA : custom/search/MtssearchArea.vm, nesting level: 6-->
+                        <!-- DEBUG:END:GROUP_SEARCH_AREA : default/search/groupSearchArea.vm, nesting level: 5-->
+                    </af:panelHeader>
+                    <!-- DEBUG:BEGIN:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5 -->
+                    <af:panelGroupLayout layout="vertical" id="pgl0">
+                        <af:panelCollection id="UsersPC" featuresOff="  " styleClass="AFStretchWidth">
+                            <f:facet name="menus">
+                                <!-- DEBUG:BEGIN:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6 -->
+                                <af:menu textAndAccessKey="#{nls['ACTION_MENU_LABEL']}" id="menu0">
+                                    <af:menu textAndAccessKey="#{nls['GO_TO_MENU_LABEL']}" id="menu1">
+                                        <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7 -->
+                                        <af:group id="Userstbb" rendered="#{ bindings.UsersIterator.currentRow!=null }">
+                                            <af:commandMenuItem actionListener="#{bindings.FirstUsers.execute}"
+                                                                id="UsersFirst" partialSubmit="true"
+                                                                icon="/afr/shuttleleftall_ena.png"
+                                                                textAndAccessKey="#{nls['FIRST_ROW']}"></af:commandMenuItem>
+                                            <af:commandMenuItem actionListener="#{bindings.PreviousUsers.execute}"
+                                                                icon="/afr/shuttleleft_ena.png"
+                                                                textAndAccessKey="#{nls['PREVIOUS_ROW']}"
+                                                                id="UsersPrevious" partialSubmit="true"></af:commandMenuItem>
+                                            <af:commandMenuItem actionListener="#{bindings.NextUsers.execute}"
+                                                                icon="/afr/shuttleright_ena.png"
+                                                                textAndAccessKey="#{nls['NEXT_ROW']}" id="UsersNext"
+                                                                partialSubmit="true"></af:commandMenuItem>
+                                            <af:commandMenuItem actionListener="#{bindings.LastUsers.execute}"
+                                                                icon="/afr/shuttlerightall_ena.png"
+                                                                textAndAccessKey="#{nls['LAST_ROW']}" id="UsersLast"
+                                                                partialSubmit="true"></af:commandMenuItem>
+                                        </af:group>
+                                        <!-- DEBUG:END:TABLE_BROWSE_MENU : default/pageComponent/tableBrowseMenu.vm, nesting level: 7-->
+                                    </af:menu>
+                                    <!-- DEBUG:BEGIN:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7 -->
+                                    <af:commandMenuItem id="UsersArm" textAndAccessKey="#{nls['ADD_ROW']}"
+                                                        immediate="false" icon="/jheadstart/images/addRow.png"
+                                                        partialSubmit="true"
+                                                        actionListener="#{pageFlowScope.UsersTable.addRow}"
+                                                        rendered="#{(true) and (MTSPermission['Users.create'])}"></af:commandMenuItem>
+                                    <!-- DEBUG:END:ADD_ROW_MENU_ITEM : default/button/addRowMenuItem.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                    <af:commandMenuItem id="UsersduprmTM" textAndAccessKey="#{nls['DUPLICATE_ROW']}"
+                                                        immediate="true" icon="/jheadstart/images/duplicateRow.png"
+                                                        partialSubmit="true"
+                                                        actionListener="#{pageFlowScope.UsersTable.duplicateRow}"
+                                                        rendered="#{MTSPermission['Users.create']}"></af:commandMenuItem>
+                                    <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                    <af:commandMenuItem id="UsersdelrmTM" textAndAccessKey="#{nls['DELETE_ROW']}"
+                                                        icon="/jheadstart/images/deleteRow.png" partialSubmit="true"
+                                                        immediate="true" rendered="#{MTSPermission['Users.delete']}">
+                                        <af:showPopupBehavior popupId="::UsersDeletePopup"/>
+                                    </af:commandMenuItem>
+                                    <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_EXPORT_MENU_ITEM : default/button/tableExportMenuItem.vm, nesting level: 7-->
+                                </af:menu>
+                                <!-- DEBUG:END:TABLE_MENU : default/pageComponent/tableMenu.vm, nesting level: 6-->
+                            </f:facet>
+                            <f:facet name="toolbar">
+                                <!-- DEBUG:BEGIN:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6 -->
+                                <af:toolbar id="tbar1">
+                                    <!-- DEBUG:BEGIN:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7 -->
+                                    <!-- Also create CreateUsers bean so we can start table group in create mode as well -->
+                                    <af:link id="UsersArl" immediate="false"
+                                             rendered="#{(true) and (MTSPermission['Users.create'])}"
+                                             partialSubmit="true" actionListener="#{pageFlowScope.UsersTable.addRow}"
+                                             shortDesc="#{nls['ADD_ROW']}" icon="/jheadstart/images/addRow.png"/>
+                                    <!-- DEBUG:END:ADD_ROW_LINK : custom/button/MtsaddRowLink.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_EXPORT_LINK : default/button/tableExportLink.vm, nesting level: 7-->
+                                </af:toolbar>
+                                <!-- DEBUG:END:TABLE_TOOLBAR : default/pageComponent/tableToolbar.vm, nesting level: 6-->
+                            </f:facet>
+                            <f:facet name="statusbar"/>
+                            <af:table id="UsersTab" contentDelivery="immediate"
+                                      value="#{bindings.UsersTable.collectionModel}" columnStretching="last"
+                                      rowBandingInterval="0" editingMode="editAll" columnSelection="multiple"
+                                      contextMenuSelect="true" rowSelection="single"
+                                      selectionListener="#{pageFlowScope.UsersTable.makeCurrent}"
+                                      selectedRowKeys="#{pageFlowScope.UsersTable.selectedRow}"
+                                      rowDisclosureListener="#{pageFlowScope.UsersTable.discloseRow}" var="row"
+                                      varStatus="status" rows="#{bindings.UsersTable.rangeSize}"
+                                      autoHeightRows="#{bindings.UsersTable.rangeSize}"
+                                      fetchSize="#{bindings.UsersTable.rangeSize}" emptyText="#{nls['NO_ROWS_FOUND']}"
+                                      binding="#{pageFlowScope.UsersTable.table}"
+                                      partialTriggers=" :::as_Users :::UsersPC ::UsersFirst ::UsersPrevious ::UsersNext ::UsersLast"
+                                      styleClass="AFStretchWidth" summary="#{nls['TABLE_TITLE_USERS']}">
+                                <!-- DEBUG:BEGIN:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6 -->
+                                <f:facet name="contextMenu">
+                                    <af:popup id="UsersTablePopup" childCreation="deferred">
+                                        <af:menu id="menu2">
+                                            <af:menu text="#{nls['GO_TO_MENU_LABEL']}" id="menu3">
+                                                <!-- DEBUG:BEGIN:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7 -->
+                                                <!-- DEBUG:END:DETAILS_MENU_ITEM : default/button/detailsMenuItem.vm, nesting level: 7-->
+                                            </af:menu>
+                                            <!-- DEBUG:BEGIN:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7 -->
+                                            <af:commandMenuItem id="Usersduprm"
+                                                                textAndAccessKey="#{nls['DUPLICATE_ROW']}"
+                                                                immediate="true"
+                                                                icon="/jheadstart/images/duplicateRow.png"
+                                                                partialSubmit="true"
+                                                                actionListener="#{pageFlowScope.UsersTable.duplicateRow}"
+                                                                rendered="#{MTSPermission['Users.create']}"></af:commandMenuItem>
+                                            <!-- DEBUG:END:DUPLICATE_ROW_MENU_ITEM : default/button/duplicateRowMenuItem.vm, nesting level: 7-->
+                                            <!-- DEBUG:BEGIN:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7 -->
+                                            <af:commandMenuItem id="Usersdelrm" textAndAccessKey="#{nls['DELETE_ROW']}"
+                                                                icon="/jheadstart/images/deleteRow.png"
+                                                                partialSubmit="true" immediate="true"
+                                                                rendered="#{MTSPermission['Users.delete']}">
+                                                <af:showPopupBehavior popupId=":::UsersDeletePopup"/>
+                                            </af:commandMenuItem>
+                                            <!-- DEBUG:END:DELETE_ROW_MENU_ITEM : default/button/deleteRowMenuItem.vm, nesting level: 7-->
+                                        </af:menu>
+                                    </af:popup>
+                                </f:facet><!-- DEBUG:END:TABLE_ROW_POPUP_MENU : default/pageComponent/tableRowPopupMenu.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6 --><!-- DEBUG:END:TABLE_FOOTER : default/pageComponent/tableFooter.vm, nesting level: 6--><!-- DEBUG:BEGIN:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6 -->
+                                <af:column id="UsersActionColumn" width="40" align="center" headerText=" ">
+                                    <af:panelGroupLayout layout="horizontal" id="pgl1">
+                                        <!-- DEBUG:BEGIN:DETAILS_LINK : default/button/detailsLink.vm, nesting level: 7 -->
+                                        <!-- DEBUG:END:DETAILS_LINK : default/button/detailsLink.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:DELETE_ROW_LINK : default/button/deleteRowLink.vm, nesting level: 7 -->
+                                        <af:link id="Usersdelrl" partialSubmit="true" immediate="true"
+                                                 rendered="#{MTSPermission['Users.delete']}"
+                                                 shortDesc="#{nls['DELETE_ROW']}"
+                                                 icon="/jheadstart/images/deleteRow.png">
+                                            <af:showPopupBehavior popupId=":::UsersDeletePopup"/>
+                                        </af:link>
+                                        <!-- DEBUG:END:DELETE_ROW_LINK : default/button/deleteRowLink.vm, nesting level: 7-->
+                                        <!-- DEBUG:BEGIN:DUPLICATE_ROW_LINK : default/button/duplicateRowLink.vm, nesting level: 7 -->
+                                        <af:link id="Usersduprl" immediate="true" partialSubmit="true"
+                                                 actionListener="#{pageFlowScope.UsersTable.duplicateRow}"
+                                                 rendered="#{MTSPermission['Users.create']}"
+                                                 shortDesc="#{nls['DUPLICATE_ROW']}"
+                                                 icon="/jheadstart/images/duplicateRow.png"/>
+                                        <!-- DEBUG:END:DUPLICATE_ROW_LINK : default/button/duplicateRowLink.vm, nesting level: 7-->
+                                    </af:panelGroupLayout>
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_ACTION_COLUMN : custom/pageComponent/MtstableActionColumn.vm, nesting level: 6-->
+                                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                <af:column id="UsersUserNameCol" sortable="true" noWrap="true" width="100"
+                                           sortProperty="UserName" rowHeader="false">
+                                    <f:facet name="header">
+                                        <af:outputLabel value="#{nls['USERS_TABLE_USERNAME']}"
+                                                        showRequired="#{bindings.UsersTable.hints.UserName.mandatory}"
+                                                        id="ol0"/>
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                    <af:inputText id="UsersUserName" value="#{row.bindings.UserName.inputValue}"
+                                                  label="#{nls['USERS_TABLE_USERNAME']}"
+                                                  required="#{bindings.UsersTable.hints.UserName.mandatory}"
+                                                  rows="#{bindings.UsersTable.hints.UserName.displayHeight}"
+                                                  columns="#{bindings.UsersTable.hints.UserName.displayWidth}"
+                                                  maximumLength="60"
+                                                  readOnly="#{(((pageFlowScope.UsersTable.newRow) and (!(MTSPermission['Users.create']))) or ((!pageFlowScope.UsersTable.newRow) and (!(MTSPermission['Users.update'])))) or (!(pageFlowScope.UsersTable.newRow))}"
+                                                  shortDesc="#{bindings.UsersTable.hints.UserName.tooltip}">
+                                        <f:validator binding="#{row.bindings.UserName.validator}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                <af:column id="UsersFullNameEnCol" sortable="true" noWrap="true" width="200"
+                                           sortProperty="FullNameEn" rowHeader="false">
+                                    <f:facet name="header">
+                                        <af:outputLabel value="#{nls['USERS_TABLE_FULLNAMEEN']}"
+                                                        showRequired="#{bindings.UsersTable.hints.FullNameEn.mandatory}"
+                                                        id="ol1"/>
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                    <af:inputText id="UsersFullNameEn" value="#{row.bindings.FullNameEn.inputValue}"
+                                                  label="#{nls['USERS_TABLE_FULLNAMEEN']}"
+                                                  required="#{bindings.UsersTable.hints.FullNameEn.mandatory}"
+                                                  rows="#{bindings.UsersTable.hints.FullNameEn.displayHeight}"
+                                                  columns="#{bindings.UsersTable.hints.FullNameEn.displayWidth}"
+                                                  maximumLength="100"
+                                                  readOnly="#{((pageFlowScope.UsersTable.newRow) and (!(MTSPermission['Users.create']))) or ((!pageFlowScope.UsersTable.newRow) and (!(MTSPermission['Users.update'])))}"
+                                                  shortDesc="#{bindings.UsersTable.hints.FullNameEn.tooltip}">
+                                        <f:validator binding="#{row.bindings.FullNameEn.validator}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                <af:column id="UsersFullNameArCol" sortable="true" noWrap="true" width="200"
+                                           sortProperty="FullNameAr" rowHeader="false">
+                                    <f:facet name="header">
+                                        <af:outputLabel value="#{nls['USERS_TABLE_FULLNAMEAR']}"
+                                                        showRequired="#{bindings.UsersTable.hints.FullNameAr.mandatory}"
+                                                        id="ol2"/>
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                    <af:inputText id="UsersFullNameAr" value="#{row.bindings.FullNameAr.inputValue}"
+                                                  label="#{nls['USERS_TABLE_FULLNAMEAR']}"
+                                                  required="#{bindings.UsersTable.hints.FullNameAr.mandatory}"
+                                                  rows="#{bindings.UsersTable.hints.FullNameAr.displayHeight}"
+                                                  columns="#{bindings.UsersTable.hints.FullNameAr.displayWidth}"
+                                                  maximumLength="100"
+                                                  readOnly="#{((pageFlowScope.UsersTable.newRow) and (!(MTSPermission['Users.create']))) or ((!pageFlowScope.UsersTable.newRow) and (!(MTSPermission['Users.update'])))}"
+                                                  shortDesc="#{bindings.UsersTable.hints.FullNameAr.tooltip}">
+                                        <f:validator binding="#{row.bindings.FullNameAr.validator}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                <af:column id="UsersUsergroupIdCol" sortable="true" noWrap="true" width="100"
+                                           sortProperty="UsergroupId" rowHeader="false">
+                                    <f:facet name="header">
+                                        <af:outputLabel value="#{nls['USERS_TABLE_USERGROUPID']}"
+                                                        showRequired="#{bindings.UsersTable.hints.UsergroupId.mandatory}"
+                                                        id="ol3"/>
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 7 -->
+                                    <af:selectOneChoice id="UsersUsergroupId"
+                                                        value="#{row.bindings.UsergroupId.inputValue}"
+                                                        label="#{nls['USERS_TABLE_USERGROUPID']}"
+                                                        required="#{bindings.UsersTable.hints.UsergroupId.mandatory}"
+                                                        readOnly="#{((pageFlowScope.UsersTable.newRow) and (!(MTSPermission['Users.create']))) or ((!pageFlowScope.UsersTable.newRow) and (!(MTSPermission['Users.update'])))}"
+                                                        shortDesc="#{bindings.UsersTable.hints.UsergroupId.tooltip}"
+                                                        autoSubmit="true">
+                                        <f:selectItems value="#{row.bindings.UsergroupId.items}"/>
+                                    </af:selectOneChoice>
+                                    <!-- DEBUG:END:TABLE_MODEL_CHOICELIST : default/item/table/tableModelChoiceList.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                <af:column id="UsersEmployeeCodeCol" sortable="true" noWrap="true" width="100"
+                                           sortProperty="EmployeeCode" rowHeader="false">
+                                    <f:facet name="header">
+                                        <af:outputLabel value="#{nls['USERS_TABLE_EMPLOYEECODE']}"
+                                                        showRequired="#{bindings.UsersTable.hints.EmployeeCode.mandatory}"
+                                                        id="ol4"/>
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                    <af:inputText id="UsersEmployeeCode" value="#{row.bindings.EmployeeCode.inputValue}"
+                                                  label="#{nls['USERS_TABLE_EMPLOYEECODE']}"
+                                                  required="#{bindings.UsersTable.hints.EmployeeCode.mandatory}"
+                                                  rows="#{bindings.UsersTable.hints.EmployeeCode.displayHeight}"
+                                                  columns="#{bindings.UsersTable.hints.EmployeeCode.displayWidth}"
+                                                  readOnly="#{((pageFlowScope.UsersTable.newRow) and (!(MTSPermission['Users.create']))) or ((!pageFlowScope.UsersTable.newRow) and (!(MTSPermission['Users.update'])))}"
+                                                  shortDesc="#{bindings.UsersTable.hints.EmployeeCode.tooltip}">
+                                        <f:validator binding="#{row.bindings.EmployeeCode.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.UsersTable.hints.EmployeeCode.format}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                <af:column id="UsersPassWordCol" sortable="true" noWrap="true" width="100"
+                                           sortProperty="PassWord" rowHeader="false">
+                                    <f:facet name="header">
+                                        <af:outputLabel value="#{nls['USERS_TABLE_PASSWORD']}"
+                                                        showRequired="#{bindings.UsersTable.hints.PassWord.mandatory}"
+                                                        id="ol5"/>
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7 -->
+                                    <af:inputText id="UsersPassWord" value="#{row.bindings.PassWord.inputValue}"
+                                                  label="#{nls['USERS_TABLE_PASSWORD']}"
+                                                  required="#{bindings.UsersTable.hints.PassWord.mandatory}"
+                                                  rows="#{bindings.UsersTable.hints.PassWord.displayHeight}"
+                                                  columns="#{bindings.UsersTable.hints.PassWord.displayWidth}"
+                                                  maximumLength="15"
+                                                  readOnly="#{((pageFlowScope.UsersTable.newRow) and (!(MTSPermission['Users.create']))) or ((!pageFlowScope.UsersTable.newRow) and (!(MTSPermission['Users.update'])))}"
+                                                  shortDesc="#{bindings.UsersTable.hints.PassWord.tooltip}">
+                                        <f:validator binding="#{row.bindings.PassWord.validator}"/>
+                                    </af:inputText>
+                                    <!-- DEBUG:END:TABLE_TEXT_INPUT : default/item/table/tableTextInput.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                                <!-- DEBUG:BEGIN:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6 -->
+                                <af:column id="UsersActiveFlagCol" sortable="true" noWrap="true" width="25"
+                                           sortProperty="ActiveFlag" rowHeader="false">
+                                    <f:facet name="header">
+                                        <af:outputLabel value="#{nls['USERS_TABLE_ACTIVEFLAG']}"
+                                                        showRequired="#{bindings.UsersTable.hints.ActiveFlag.mandatory}"
+                                                        id="ol6"/>
+                                    </f:facet>
+                                    <!-- DEBUG:BEGIN:TABLE_CHECK_BOX : default/item/table/tableCheckbox.vm, nesting level: 7 -->
+                                    <af:selectBooleanCheckbox id="UsersActiveFlag"
+                                                              label="#{nls['USERS_TABLE_ACTIVEFLAG']}"
+                                                              value="#{UsersActiveFlagcheckboxInTable.value}"
+                                                              readOnly="#{((pageFlowScope.UsersTable.newRow) and (!(MTSPermission['Users.create']))) or ((!pageFlowScope.UsersTable.newRow) and (!(MTSPermission['Users.update'])))}"
+                                                              shortDesc="#{bindings.UsersTable.hints.ActiveFlag.tooltip}"></af:selectBooleanCheckbox>
+                                    <!-- DEBUG:END:TABLE_CHECK_BOX : default/item/table/tableCheckbox.vm, nesting level: 7-->
+                                    <!-- DEBUG:BEGIN:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7 -->
+                                    <!-- DEBUG:END:TABLE_ITEM_FOOTER : default/item/table/tableItemFooter.vm, nesting level: 7-->
+                                </af:column>
+                                <!-- DEBUG:END:TABLE_COLUMN : default/item/table/tableColumn.vm, nesting level: 6-->
+                            </af:table>
+                        </af:panelCollection>
+                    </af:panelGroupLayout>
+                    <!-- DEBUG:END:TABLE_GROUP : custom/pageComponent/MtstableGroup.vm, nesting level: 5-->
+                    <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+                </af:panelGroupLayout>
+                <!-- DEBUG:END:GROUP_CONTENT : default/pageComponent/groupContent.vm, nesting level: 4-->
+            </af:panelGroupLayout>
+            <!-- Popped "disabled" from stretchContext, now: Stretching disabled on group level. -->
+        </f:facet>
+        <f:facet name="popups">
+            <af:panelGroupLayout id="popupsPgl">
+                <!-- DEBUG:BEGIN:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 8 -->
+                <af:popup id="UsersDeletePopup" contentDelivery="lazyUncached" childCreation="deferred">
+                    <af:dialog type="none" title="#{nls['WARNING']}" modal="true" id="UsersDeleteDialog">
+                        <af:outputText value="#{nls['DELETE_WARNING_USER:#{bindings.UsersIterator.currentRowIndexInRange+1}']} "
+                                       id="ot0"/>
+                        <f:attribute name="methodExpression" value="#{'#{DeleteUsers.execute}'}"/>
+                        <f:facet name="buttonBar">
+                            <af:group id="g0">
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_YES']}" id="cb0" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.confirm}"/>
+                                <af:button textAndAccessKey="#{nls['af_dialog.LABEL_NO']}" id="cb1" immediate="true"
+                                           actionListener="#{ExecuteActionAfterConfirmation.abort}"/>
+                            </af:group>
+                        </f:facet>
+                    </af:dialog>
+                </af:popup>
+                <!-- DEBUG:END:DELETE_WARNING_DIALOG : custom/button/MtsdeleteWarningDialog.vm, nesting level: 8-->
+            </af:panelGroupLayout>
+        </f:facet>
+        <!-- DEBUG:END:PAGE_CONTENT : default/page/MtspageContent.vm, nesting level: 3-->
+        <!-- DEBUG:END:TABLE_PAGE_CONTENT : default/page/tablePageContent.vm, nesting level: 2-->
+    </af:pageTemplate>
+</ui:composition>
+
+
+

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="ProductContractDDownloadVOPageDef" Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="validateCurrentRows">
+  <parameters/>
+  <executables>
+    <iterator id="ProductContractDDownloadVOIterator" Binds="ProductContractDDownloadVO1"
+              DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <searchRegion id="ProductContractDDownloadVOIteratorQuery" Binds="ProductContractDDownloadVOIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true"
+                  DefaultQuickSearchAttrName="ComponentId"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator Binds="PendingWorkAssViewVO1" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="PendingWorkAssViewVO1Iterator"/>
+    <iterator Binds="CloseCodesGroupsVO1" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="CloseCodesGroupsVO1Iterator"/>
+    <iterator Binds="CloseCodeReasonsVO1" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="CloseCodeReasonsVO1Iterator"/>
+    <iterator Binds="PendingAssViewVO1" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="PendingAssViewVO1Iterator"/>
+    <iterator Binds="FilteredPendingWorkVO1" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="FilteredPendingWorkVO1Iterator"/>
+    <iterator id="DataTeamAgentPendingWorkVO1Iterator" Binds="DataTeamAgentPendingWorkVO1"
+              DataControl="AppModuleAMDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <tree id="ProductContractDDownloadVOTable" IterBinding="ProductContractDDownloadVOIterator">
+      <nodeDefinition Name="ProductContractDDownloadVO"
+                      DefName="OPERATIONPROJECT.model.BC.VO.ProductContractDDownloadVO">
+        <AttrNames>
+          <Item Value="ComponentId"/>
+          <Item Value="TreatmentCode"/>
+          <Item Value="PackageNo"/>
+          <Item Value="Quntity"/>
+          <Item Value="QuntityReplaced"/>
+          <Item Value="QuantityDirty"/>
+          <Item Value="QuantityCancel"/>
+          <Item Value="UnitPrice"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ProductContractDDownloadVOIterator" id="FirstProductContractDDownloadVO"
+            RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="ProductContractDDownloadVOIterator" id="PreviousProductContractDDownloadVO"
+            RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="ProductContractDDownloadVOIterator" id="NextProductContractDDownloadVO"
+            RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="ProductContractDDownloadVOIterator" id="LastProductContractDDownloadVO"
+            RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="ProductContractDDownloadVOIterator" id="SetCurrentRowWithKeyProductContractDDownloadVO"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrProductContractDDownloadVO}"
+                 NDType="java.lang.String"/>
+    </action>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+    <list IterBinding="CloseCodesGroupsVO1Iterator" ListOperMode="navigation" ListIter="CloseCodesGroupsVO1Iterator"
+          id="CloseCodesGroupsVO1" DTSupportsMRU="true" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="GroupName"/>
+      </AttrNames>
+    </list>
+    <list IterBinding="CloseCodeReasonsVO1Iterator" ListOperMode="navigation" ListIter="CloseCodeReasonsVO1Iterator"
+          id="CloseCodeReasonsVO1" DTSupportsMRU="true" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="CloseCodeReasonEn"/>
+      </AttrNames>
+    </list>
+    <attributeValues IterBinding="CloseCodesGroupsVO1Iterator" id="GroupId">
+      <AttrNames>
+        <Item Value="GroupId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CloseCodeReasonsVO1Iterator" id="CloseCodeId">
+      <AttrNames>
+        <Item Value="CloseCodeId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FilteredPendingWorkVO1Iterator" id="CardNo">
+      <AttrNames>
+        <Item Value="CardNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FilteredPendingWorkVO1Iterator" id="ClientName">
+      <AttrNames>
+        <Item Value="ClientName"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="FilteredPendingWorkVO1Iterator" StaticList="false" Uses="LOV_ContractStatus"
+          id="ContractStatus" DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="FilteredPendingWorkVO1Iterator" StaticList="false" Uses="LOV_CloseCode" id="CloseCode"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="FilteredPendingWorkVO1Iterator" id="ActualPaid">
+      <AttrNames>
+        <Item Value="ActualPaid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="FilteredPendingWorkVO1Iterator" id="CustomerNotes">
+      <AttrNames>
+        <Item Value="CustomerNotes"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PendingWorkAssViewVO1Iterator" id="CardNo1">
+      <AttrNames>
+        <Item Value="CardNo"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="FilteredPendingWorkVO1Iterator" StaticList="false" Uses="LOV_DataStatus" id="DataStatus"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+  </bindings>
+</pageDefinition>

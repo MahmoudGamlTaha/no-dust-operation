@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="PackagePageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <invokeAction id="clearDeepLinkViewCriteriaInvoke" Binds="clearDeepLinkViewCriteria" Refresh="renderModel"
+                  RefreshCondition="#{'true' != pageFlowScope.jhsQueryByKeyValue}"/>
+    <iterator id="PackageIterator" Binds="Package1" DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <searchRegion id="PackageIteratorQuery" Binds="PackageIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="PackageName"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator Binds="AppModuleAMDataControl" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="AppModuleAMDataControlIterator"/>
+    <iterator id="PackageProductIterator" Binds="PackageProduct1" DataControl="AppModuleAMDataControl" RangeSize="10"/>
+    <searchRegion id="PackageProductIteratorQuery" Binds="PackageProductIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="PackageId"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+  </executables>
+  <bindings>
+    <methodAction id="clearDeepLinkViewCriteria" RequiresUpdateModel="true" Action="invokeMethod"
+                  DataControl="AppModuleAMDataControl" InstanceName="AppModuleAMDataControl.dataProvider"
+                  MethodName="clearDeepLinkViewCriteria"
+                  ReturnName="AppModuleAMDataControl.methodResults.AppModuleAMDataControl_dataProvider_clearDeepLinkViewCriteria_result"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="viewObjectUsage" NDValue="Package1" NDType="java.lang.String"/>
+      <NamedData NDName="requeryIfFound" NDValue="#{true}" NDType="java.lang.Boolean"/>
+    </methodAction>
+    <attributeValues IterBinding="PackageIterator" id="PackagePackageName">
+      <AttrNames>
+        <Item Value="PackageName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PackageIterator" id="PackagePackageVersion">
+      <AttrNames>
+        <Item Value="PackageVersion"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PackageIterator" id="PackageActiveFrom">
+      <AttrNames>
+        <Item Value="ActiveFrom"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PackageIterator" id="PackageActiveTo">
+      <AttrNames>
+        <Item Value="ActiveTo"/>
+      </AttrNames>
+    </attributeValues>
+    <button IterBinding="PackageIterator" id="PackageActive" DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="Active"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <tree id="PackageTable" IterBinding="PackageIterator">
+      <nodeDefinition Name="Package" DefName="OPERATIONPROJECT.model.BC.VO.PackageVO">
+        <AttrNames>
+          <Item Value="PackageName"/>
+          <Item Value="PackageVersion"/>
+          <Item Value="ActiveFrom"/>
+          <Item Value="ActiveTo"/>
+          <Item Value="Active"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="PackageIterator" id="FirstPackage" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="PackageIterator" id="PreviousPackage" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="PackageIterator" id="NextPackage" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="PackageIterator" id="LastPackage" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="PackageIterator" id="SetCurrentRowWithKeyPackage" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrPackage}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="PackageIterator" id="CreatePackage" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="PackageIterator" id="DeletePackage" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <tree id="PackageProductTable" IterBinding="PackageProductIterator">
+      <nodeDefinition Name="PackageProduct" DefName="OPERATIONPROJECT.model.BC.VO.PackageProductVO">
+        <AttrNames>
+          <Item Value="ProductId"/>
+          <Item Value="TreatmentId"/>
+          <Item Value="Price1w"/>
+          <Item Value="Price2w"/>
+          <Item Value="Price4w"/>
+          <Item Value="Quantity"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="PackageProductIterator" id="FirstPackageProduct" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="PackageProductIterator" id="PreviousPackageProduct" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="PackageProductIterator" id="NextPackageProduct" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="PackageProductIterator" id="LastPackageProduct" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="PackageProductIterator" id="SetCurrentRowWithKeyPackageProduct" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrPackageProduct}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="PackageProductIterator" id="CreatePackageProduct" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="PackageProductIterator" id="DeletePackageProduct" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

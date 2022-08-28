@@ -1,0 +1,19 @@
+## revision_history
+## 15-nov-2011   Steven Davelaar
+## 1.3           Added call to SET_INITIAL_FOCUS_ID 
+## 15-jun-2007   Jaco Verheul
+## 1.2           R11  
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+${JHS.current.pageComponent.setProcessingQuickSearchArea(true)}
+  <af:panelGroupLayout id="qsArea${JHS.current.group.shortName}"
+                      layout="horizontal"
+                      rendered="#{#SEARCH_BEAN().quickSearchMode}">
+    <af:outputText value="#FILTER_BY_LABEL()" styleClass="AFFieldText" id="qsLabel${JHS.current.group.shortName}"/>
+    <af:spacer width="4" id="qsArea${JHS.current.group.shortName}Spacer1"/>
+    #SET_INITIAL_FOCUS_ID("${group.shortName}Sbf:QuickSearch${JHS.current.group.singleSearchItem.id}")
+    #JHS_PARSE(${JHS.current.group.singleSearchItem.quickSearchTemplateIdentifier} ${JHS.current.group.singleSearchItem})
+    #JHS_PARSE("QUICK_SEARCH_BUTTONS" ${JHS.current.model})
+  </af:panelGroupLayout>
+${JHS.current.pageComponent.setProcessingQuickSearchArea(false)}
+

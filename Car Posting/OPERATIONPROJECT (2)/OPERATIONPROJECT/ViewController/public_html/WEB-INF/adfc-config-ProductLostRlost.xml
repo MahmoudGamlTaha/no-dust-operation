@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <task-flow-definition id="ProductLostRlostTaskFlow">
+        <!-- DEBUG:BEGIN:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2 -->
+        <template-reference>
+            <document id="__0">/WEB-INF/jhs-bounded-taskflow-template.xml</document>
+            <id id="__1">jhs-bounded-taskflow-template</id>
+        </template-reference>
+        <!-- DEBUG:END:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2-->
+        <default-activity id="__2">FilterLostHistory</default-activity>
+        <!-- DEBUG:BEGIN:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2 -->
+        <input-parameter-definition id="__3">
+            <name id="__4">rowKeyStrProductLostRlost</name>
+            <value id="__5">#{pageFlowScope.rowKeyStrProductLostRlost}</value>
+            <class id="__6">java.lang.String</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__7">
+            <name id="__8">rowKeyValueProductLostRlost</name>
+            <value id="__9">#{pageFlowScope.rowKeyValueProductLostRlost}</value>
+            <class id="__10">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__11">
+            <name id="__12">rowKeyProductLostRlost</name>
+            <value id="__13">#{pageFlowScope.rowKeyProductLostRlost}</value>
+            <class id="__14">oracle.jbo.Key</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__15">
+            <name id="__16">altKeyNameProductLostRlost</name>
+            <value id="__17">#{pageFlowScope.altKeyNameProductLostRlost}</value>
+            <class id="__18">java.lang.String</class>
+        </input-parameter-definition>
+        <!-- DEBUG:END:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2 -->
+        <input-parameter-definition id="__141">
+            <name>ShipmentId</name>
+            <value>#{pageFlowScope.ShipmentId}</value>
+        </input-parameter-definition>
+        <input-parameter-definition id="__142">
+            <name>ProductId</name>
+            <value>#{pageFlowScope.ProductId}</value>
+        </input-parameter-definition>
+        <input-parameter-definition id="__143">
+            <name>PilotId</name>
+            <value>#{pageFlowScope.PilotId}</value>
+        </input-parameter-definition>
+        <managed-bean id="__19">
+            <managed-bean-name id="__20">jhsTaskFlowManager</managed-bean-name>
+            <managed-bean-class id="__21">oracle.jheadstart.controller.jsf.bean.TaskFlowManager</managed-bean-class>
+            <managed-bean-scope id="__22">pageFlow</managed-bean-scope>
+            <managed-property id="__23">
+                <property-name id="__24">initializeParentContextEntries</property-name>
+                <map-entries id="__25">
+                    <map-entry id="__26">
+                        <key id="__27">jhsCurrentGroupName</key>
+                        <value id="__28">ProductLostRlost</value>
+                    </map-entry>
+                </map-entries>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2-->
+        <managed-bean id="__29">
+            <managed-bean-name id="__30">MenuViewIdMapping</managed-bean-name>
+            <managed-bean-class id="__31">java.util.HashMap</managed-bean-class>
+            <managed-bean-scope id="__32">pageFlow</managed-bean-scope>
+            <map-entries id="__33">
+                <map-entry id="__34">
+                    <key id="__35">/ProductLostRlostTaskFlow/ProductLostRlostTable</key>
+                    <value id="__36">ProductLostRlost</value>
+                </map-entry>
+            </map-entries>
+        </managed-bean>
+        <!-- DEBUG:BEGIN:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2 -->
+        <managed-bean id="__37">
+            <managed-bean-name id="__38">SaveProductLostRlost</managed-bean-name>
+            <managed-bean-class id="__39">oracle.jheadstart.controller.jsf.bean.CommitBean</managed-bean-class>
+            <managed-bean-scope id="__40">request</managed-bean-scope>
+            <managed-property id="__41">
+                <property-name id="__42">commitBinding</property-name>
+                <value id="__43">#{bindings.Commit}</value>
+            </managed-property>
+            <managed-property id="__44">
+                <property-name id="__45">successOutcome</property-name>
+                <value id="__46">Commit</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2 -->
+        <managed-bean id="__47">
+            <managed-bean-name id="__48">jhsRollback</managed-bean-name>
+            <managed-bean-class id="__49">oracle.jheadstart.controller.jsf.bean.RollbackBean</managed-bean-class>
+            <managed-bean-scope id="__50">request</managed-bean-scope>
+            <managed-property id="__51">
+                <property-name id="__52">rollbackBinding</property-name>
+                <value id="__53">#{bindings.Rollback}</value>
+            </managed-property>
+            <managed-property id="__54">
+                <property-name id="__55">successOutcome</property-name>
+                <value id="__56">Cancel</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__57">
+            <managed-bean-name id="__58">ProductLostRlostTable</managed-bean-name>
+            <managed-bean-class id="__59">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__60">pageFlow</managed-bean-scope>
+            <managed-property id="__61">
+                <property-name id="__62">name</property-name>
+                <value id="__63">ProductLostRlostTable</value>
+            </managed-property>
+            <managed-property id="__64">
+                <property-name id="__65">rangeBindingExpr</property-name>
+                <value id="__66">#{'#{bindings.ProductLostRlostTable}'}</value>
+            </managed-property>
+            <managed-property id="__67">
+                <property-name id="__68">focusItemId</property-name>
+                <value id="__69">ProductLostRlostLostQuantity</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2 -->
+        <managed-bean id="__138">
+            <managed-bean-name>DataTeamAgentBean</managed-bean-name>
+            <managed-bean-class>MTS.security.MTSClasses.DataTeamAgentBean</managed-bean-class>
+            <managed-bean-scope>request</managed-bean-scope>
+        </managed-bean>
+        <router id="StartProductLostRlost">
+            <case id="__70">
+                <expression id="__71">#{pageFlowScope.rowKeyStrProductLostRlost!=null or
+                                      pageFlowScope.rowKeyValueProductLostRlost!=null or
+                                      pageFlowScope.rowKeyProductLostRlost!=null}</expression>
+                <outcome id="__72">SetCurrentRowProductLostRlost</outcome>
+            </case>
+            <case id="__73">
+                <expression id="__74">#{pageFlowScope.isDeepLink!=null and pageFlowScope.isDeepLink}</expression>
+                <outcome id="__75">deepLinkPage</outcome>
+            </case>
+            <default-outcome id="__76">firstPage</default-outcome>
+        </router>
+        <!-- DEBUG:END:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2 -->
+        <method-call id="SetCurrentRowProductLostRlost">
+            <method id="__77">#{jhsSetCurrentRow.execute}</method>
+            <!-- iterator param -->
+            <parameter>
+                <class id="__78">oracle.adf.model.binding.DCIteratorBinding</class>
+                <value id="__79">#{bindings.ProductLostRlostIterator}</value>
+            </parameter>
+            <!-- rowKeyStr param -->
+            <parameter>
+                <class id="__80">java.lang.String</class>
+                <value id="__81">#{pageFlowScope.rowKeyStrProductLostRlost}</value>
+            </parameter>
+            <!-- rowKeyValue param -->
+            <parameter>
+                <class id="__82">java.lang.Object</class>
+                <value id="__83">#{pageFlowScope.rowKeyValueProductLostRlost}</value>
+            </parameter>
+            <!-- rowKey param -->
+            <parameter>
+                <class id="__84">oracle.jbo.Key</class>
+                <value id="__85">#{pageFlowScope.rowKeyProductLostRlost}</value>
+            </parameter>
+            <!-- altKeyName param -->
+            <parameter>
+                <class id="__86">java.lang.String</class>
+                <value id="__87">#{pageFlowScope.altKeyNameProductLostRlost}</value>
+            </parameter>
+            <outcome id="__88">
+                <fixed-outcome id="__89">deepLinkPage</fixed-outcome>
+            </outcome>
+        </method-call>
+        <!-- DEBUG:END:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2-->
+        <task-flow-return id="CancelProductLostRlostReturn">
+            <outcome id="__90">
+                <name id="__91">CancelProductLostRlost</name>
+            </outcome>
+        </task-flow-return>
+        <task-flow-return id="DoneProductLostRlostReturn">
+            <outcome id="__92">
+                <name id="__93">DoneProductLostRlost</name>
+            </outcome>
+        </task-flow-return>
+        <!-- DEBUG:BEGIN:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2 -->
+        <view id="ProductLostRlostTable">
+            <page id="__94">/pages/ProductLostRlostTable.jsf</page>
+        </view>
+        <!-- DEBUG:END:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2 -->
+        <method-call id="FilterLostHistory">
+            <method>#{DataTeamAgentBean.FilterLostHistory}</method>
+            <outcome>
+                <fixed-outcome>GoToPage</fixed-outcome>
+            </outcome>
+        </method-call>
+        <control-flow-rule id="__95">
+            <from-activity-id id="__96">*</from-activity-id>
+            <control-flow-case id="__97">
+                <from-outcome id="__98">SetCurrentRowProductLostRlost</from-outcome>
+                <to-activity-id id="__99">SetCurrentRowProductLostRlost</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__100">
+                <from-outcome id="__101">firstPage</from-outcome>
+                <to-activity-id id="__102">ProductLostRlostTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__103">
+                <from-outcome id="__104">deepLinkPage</from-outcome>
+                <to-activity-id id="__105">ProductLostRlostTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__106">
+                <from-outcome id="__107">ProductLostRlostTableBreadcrumb</from-outcome>
+                <to-activity-id id="__108">ProductLostRlostTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__109">
+                <from-outcome id="__110">Cancel</from-outcome>
+                <to-activity-id id="__111">StartProductLostRlost</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__112">
+                <from-outcome id="__113">CancelProductLostRlostReturn</from-outcome>
+                <to-activity-id id="__114">CancelProductLostRlostReturn</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__115">
+                <from-outcome id="__116">DoneProductLostRlostReturn</from-outcome>
+                <to-activity-id id="__117">DoneProductLostRlostReturn</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <!-- DEBUG:END:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2-->
+        <control-flow-rule id="__139">
+            <from-activity-id>FilterLostHistory</from-activity-id>
+            <control-flow-case id="__140">
+                <from-outcome>GoToPage</from-outcome>
+                <to-activity-id>ProductLostRlostTable</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+    </task-flow-definition>
+    <!-- This bean must be defined outside the task-flow-definition element
+       because it needs to be available in the pageFlowScope of the unbounded
+       task-flow not in the pageFlowScope of the bounded task flow itself. -->
+    <!-- DEBUG:BEGIN:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2 -->
+    <managed-bean id="__118">
+        <managed-bean-name id="__119">ProductLostRlostTaskFlowConfig</managed-bean-name>
+        <managed-bean-class id="__120">oracle.jheadstart.controller.jsf.bean.TaskFlowConfigBean</managed-bean-class>
+        <managed-bean-scope id="__121">pageFlow</managed-bean-scope>
+        <managed-property id="__122">
+            <property-name id="__123">params</property-name>
+            <property-class id="__124">java.util.Map</property-class>
+            <map-entries id="__125">
+                <map-entry id="__126">
+                    <key id="__127">parentContext</key>
+                    <value id="__128">#{pageFlowScope.parentContext}</value>
+                </map-entry>
+            </map-entries>
+        </managed-property>
+        <managed-property id="__129">
+            <property-name id="__130">name</property-name>
+            <value id="__131">ProductLostRlost</value>
+        </managed-property>
+        <managed-property id="__132">
+            <property-name id="__133">taskFlowId</property-name>
+            <value id="__134">/WEB-INF/adfc-config-ProductLostRlost.xml#ProductLostRlostTaskFlow</value>
+        </managed-property>
+        <managed-property id="__135">
+            <property-name id="__136">label</property-name>
+            <value id="__137">#{nls['MENU1_TITLE_PRODUCTLOSTRLOST']}</value>
+        </managed-property>
+    </managed-bean>
+    <!-- DEBUG:END:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2-->
+</adfc-config>

@@ -1,0 +1,40 @@
+## revision_history
+## 29-jun-2007   Steven Davelaar
+## 1.0           Initial creation
+
+#if ($JHS.page.pageReadOnly)
+  ## render button does not save changes, just closes window
+  <af:button 
+       textAndAccessKey="#OK_LABEL()"
+       id="#NEW_ID("cb")">
+     <af:returnActionListener/>
+  </af:button> 
+#elseif ($JHS.page.saveAllowedExpression)
+  ## conditonally render a button that saves changes or not
+  <af:button 
+       actionListener="#{#SAVE_BEAN().execute}"
+       action="Commit" 
+       textAndAccessKey="#OK_LABEL()"
+       #JHS_PROP("rendered" $JHS.page.saveAllowedExpression)
+       id="#NEW_ID("cb")">
+     <af:returnActionListener/>
+  </af:button> 
+
+  <af:button 
+       textAndAccessKey="#OK_LABEL()"
+       #JHS_PROP("rendered" $JHS.page.saveNotAllowedExpression)
+       id="#NEW_ID("cb")">
+     <af:returnActionListener/>
+  </af:button> 
+
+#else
+  ## always render button that saves changes
+  <af:button 
+       actionListener="#{#SAVE_BEAN().execute}"
+       action="Commit" 
+       textAndAccessKey="#OK_LABEL()"
+       #JHS_PROP("rendered" $JHS.page.saveAllowedExpression)
+       id="${JHS.current.group.shortName}OkWithSaveButton">
+     <af:returnActionListener/>
+  </af:button> 
+#end

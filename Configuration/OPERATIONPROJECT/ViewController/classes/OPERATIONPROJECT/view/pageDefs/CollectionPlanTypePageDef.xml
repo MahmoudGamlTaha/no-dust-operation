@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="CollectionPlanTypePageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <invokeAction id="clearDeepLinkViewCriteriaInvoke" Binds="clearDeepLinkViewCriteria" Refresh="renderModel"
+                  RefreshCondition="#{'true' != pageFlowScope.jhsQueryByKeyValue}"/>
+    <iterator id="CollectionPlanTypeIterator" Binds="CollectionPlanType1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+    <searchRegion id="CollectionPlanTypeIteratorQuery" Binds="CollectionPlanTypeIterator"
+                  Criteria="__ImplicitViewCriteria__" InitialQueryOverridden="true" DefaultQuickSearchAttrName="TypeId"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator id="CollectionPlanIterator" Binds="CollectionPlan2" DataControl="AppModuleAMDataControl" RangeSize="10"/>
+    <searchRegion id="CollectionPlanIteratorQuery" Binds="CollectionPlanIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="PlanName"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+  </executables>
+  <bindings>
+    <methodAction id="clearDeepLinkViewCriteria" RequiresUpdateModel="true" Action="invokeMethod"
+                  DataControl="AppModuleAMDataControl" InstanceName="AppModuleAMDataControl.dataProvider"
+                  MethodName="clearDeepLinkViewCriteria"
+                  ReturnName="AppModuleAMDataControl.methodResults.AppModuleAMDataControl_dataProvider_clearDeepLinkViewCriteria_result"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="viewObjectUsage" NDValue="CollectionPlanType1" NDType="java.lang.String"/>
+      <NamedData NDName="requeryIfFound" NDValue="#{true}" NDType="java.lang.Boolean"/>
+    </methodAction>
+    <attributeValues IterBinding="CollectionPlanTypeIterator" id="CollectionPlanTypeTypeName">
+      <AttrNames>
+        <Item Value="TypeName"/>
+      </AttrNames>
+    </attributeValues>
+    <tree id="CollectionPlanTypeTable" IterBinding="CollectionPlanTypeIterator">
+      <nodeDefinition Name="CollectionPlanType" DefName="OPERATIONPROJECT.model.BC.VO.CollectionPlanTypeVO">
+        <AttrNames>
+          <Item Value="TypeName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="CollectionPlanTypeIterator" id="FirstCollectionPlanType" RequiresUpdateModel="true"
+            Action="first"/>
+    <action IterBinding="CollectionPlanTypeIterator" id="PreviousCollectionPlanType" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="CollectionPlanTypeIterator" id="NextCollectionPlanType" RequiresUpdateModel="true"
+            Action="next"/>
+    <action IterBinding="CollectionPlanTypeIterator" id="LastCollectionPlanType" RequiresUpdateModel="true"
+            Action="last"/>
+    <action IterBinding="CollectionPlanTypeIterator" id="SetCurrentRowWithKeyCollectionPlanType"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrCollectionPlanType}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="CollectionPlanTypeIterator" id="CreateCollectionPlanType" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="CollectionPlanTypeIterator" id="DeleteCollectionPlanType" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <tree id="CollectionPlanTable" IterBinding="CollectionPlanIterator">
+      <nodeDefinition Name="CollectionPlan" DefName="OPERATIONPROJECT.model.BC.VO.CollectionPlanVO">
+        <AttrNames>
+          <Item Value="PlanName"/>
+          <Item Value="Ratio"/>
+          <Item Value="Limit"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="CollectionPlanIterator" id="FirstCollectionPlan" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="CollectionPlanIterator" id="PreviousCollectionPlan" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="CollectionPlanIterator" id="NextCollectionPlan" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="CollectionPlanIterator" id="LastCollectionPlan" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="CollectionPlanIterator" id="SetCurrentRowWithKeyCollectionPlan" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{pageFlowScope.rowKeyStrCollectionPlan}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="CollectionPlanIterator" id="CreateCollectionPlan" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="CollectionPlanIterator" id="DeleteCollectionPlan" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

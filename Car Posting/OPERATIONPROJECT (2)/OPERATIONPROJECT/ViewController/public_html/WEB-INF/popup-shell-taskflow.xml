@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <task-flow-definition id="popup-shell-taskflow">
+        <default-activity id="__0">PopupShell</default-activity>
+        <data-control-scope id="__1">
+            <shared/>
+        </data-control-scope>
+        <input-parameter-definition id="__2">
+            <name id="__3">taskFlowId</name>
+            <value id="__4">#{pageFlowScope.taskFlowId}</value>
+            <class id="__5">java.lang.String</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__6">
+            <name id="__7">parametersMap</name>
+            <value id="__8">#{pageFlowScope.parametersMap}</value>
+            <class id="__9">java.util.Map</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__10">
+            <name id="__11">popupTitle</name>
+            <value id="__12">#{pageFlowScope.popupTitle}</value>
+            <class id="__13">java.lang.String</class>
+        </input-parameter-definition>
+        <view id="PopupShell">
+            <page id="__14">/pages/PopupShell.jsf</page>
+        </view>
+        <task-flow-return id="Done">
+            <outcome id="__15">
+                <name id="__16">Done</name>
+            </outcome>
+        </task-flow-return>
+        <control-flow-rule id="__17">
+            <from-activity-id id="__18">*</from-activity-id>
+            <control-flow-case id="__19">
+                <from-outcome id="__20">Done</from-outcome>
+                <to-activity-id id="__21">Done</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+    </task-flow-definition>
+</adfc-config>

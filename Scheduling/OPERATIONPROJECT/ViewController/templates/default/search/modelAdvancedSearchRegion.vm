@@ -1,0 +1,39 @@
+## revision_history
+## 05-apr-2012   Steven Davelaar
+## 2.5           shortened search area id
+## 09-nov-2011   Steven Davelaar
+## 2.4           Added call to SET_INITIAL_FOCUS_ID
+## 06-jul-2011   Steven Davelaar
+## 2.3           Added MODEL_QUERY_ADDITIONAL_PROPERTIES
+## 10-mar-2010   Steven Davelaar
+## 2.2           labelAlignment now taken from group property
+## 01-dec-2009   Steven Davelaar
+## 2.1           Added rows, labelAlignment and maxColumns props
+## 23-jun-2009   Paco van der Linden
+## 2.0           Restructured layout according to (stretching) best-practices.
+## 2-sep-2008    Evert-Jan de Bruin
+## 1.0           Initial version
+
+#if (!($pageComponent.hasJhsQuickSearchArea) && !($pageComponent.hasModelQuickSearchArea))
+  #SET_INITIAL_FOCUS_ID("as_${JHS.current.group.shortName}:value00")
+#end  
+<af:query id="as_${JHS.current.group.shortName}" 
+          headerText="#ADVANCED_SEARCH_LABEL_DESC()"
+          disclosed="true"
+          value="#{bindings.${JHS.current.group.searchRegionBinding}.queryDescriptor}"
+          model="#{bindings.${JHS.current.group.searchRegionBinding}.queryModel}"
+          queryListener="#{bindings.${JHS.current.group.searchRegionBinding}.processQuery}"
+          queryOperationListener="#{bindings.${JHS.current.group.searchRegionBinding}.processQueryOperation}"
+        #if ($JHS.current.pageComponent.hasQuickSearchArea)
+          rendered="#{!#SEARCH_BEAN().quickSearchMode}"
+        #end
+      rows="1" labelAlignment="${JHS.current.group.labelAlignment}" maxColumns="${JHS.current.group.advancedSearchColumns}"
+       #MODEL_QUERY_ADDITIONAL_PROPERTIES() >
+#if ($JHS.current.pageComponent.hasQuickSearchArea)
+  <f:facet name="toolbar">
+    #JHS_PARSE("SWITCH_TO_QUICK_SEARCH_BUTTON" ${JHS.current.model})
+  </f:facet>
+#end                  
+#ADD_CUR_GROUP_PARTIAL_TRIGGER("as_${JHS.current.group.shortName}")
+</af:query>          
+  

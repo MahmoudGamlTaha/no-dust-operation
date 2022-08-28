@@ -1,0 +1,7 @@
+## revision_history
+## 19-dec-2008   Steven Davelaar
+## 1.2           Move quick search switch button to toolbar facet of advanced search showDetailHeader
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+#JHS_PARSE("DO_ADVANCED_SEARCH_BUTTON" ${JHS.current.model})
+#JHS_PARSE("CLEAR_SEARCH_CRITERIA_BUTTON" ${JHS.current.model})

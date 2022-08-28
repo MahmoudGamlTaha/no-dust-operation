@@ -1,0 +1,64 @@
+## revision_history
+## 10-okt-2008   Steven Davelaar
+## 1.7           removed bindingsExpr property, only need rangeBinding
+## 30-sep-2008   Evert-Jan de Bruin
+## 1.6           Changed scope to pageFlow, change bindings and rangeBindings to strings, 
+##               Changed param lovPage to use LOV_PAGE_BEAN macro
+## 19-sep-2008   Steven Davelaar
+## 1.5           R11 changes: removed newRows, showNewRowsAtTop, jhsPageLifecycle
+## 09-feb-2007   Steven Davelaar
+## 1.4           Added check for hasNewRows
+## 02-feb-2007   Steven Davelaar
+## 1.3           Added insertAllowed property
+## 22-nov-2006   Steven Davelaar
+## 1.2           Added properties name, lovPage
+## 30-sep-2006   JHeadstart Team
+## 1.1           Revision history added, base version is 10.1.3.0.97 (SU1)
+#set ($bean = ${JHS.current.managedBean})
+#set ($group = ${JHS.current.group})
+
+<managed-bean>
+  <managed-bean-name>${bean.beanName}</managed-bean-name>
+  <managed-bean-class>oracle.jheadstart.controller.jsf.bean.JhsCollectionModel</managed-bean-class>
+  <managed-bean-scope>pageFlow</managed-bean-scope>
+    <managed-property>
+      <property-name>name</property-name>
+      <value>${bean.beanName}</value>
+    </managed-property>
+    <managed-property>
+      <property-name>rangeBindingExpr</property-name>
+      <value>#{'#{bindings.${group.name}Table}'}</value>
+    </managed-property>
+    #if ($group.setCurrentRowOnDetailDisclosure)
+    <managed-property>
+      <property-name>setCurrentRowOnDetailDisclosure</property-name>
+      <value>true</value>
+    </managed-property>
+    #end
+    #if ($group.hasDefaultValues)
+    <managed-property>
+      <property-name>defaultValuesBean</property-name>
+      <value>#{pageFlowScope.Create${JHS.current.group.name}DefaultValues}</value>
+    </managed-property>
+    #end
+  #if (${group.tableInsertAllowed}) 
+    #if (${JHS.current.group.insertAllowedExpression})
+    <managed-property>
+      <property-name>insertAllowed</property-name>
+      <value>${JHS.current.group.insertAllowedExpression}</value>
+    </managed-property>
+    #end
+  #end 
+  #if (${group.isDisplayedInOverflowInlineParentTable}) 
+    <managed-property>
+      <property-name>parentCollectionModel</property-name>
+      <value>#{pageFlowScope.${group.parentGroup.name}CollectionModel}</value>
+    </managed-property>
+  #end  
+  #if (${group.useAsLov}) 
+    <managed-property>
+      <property-name>lovPage</property-name>
+      <value>#{#LOV_PAGE_BEAN()}</value>
+    </managed-property>        
+  #end  
+  </managed-bean>

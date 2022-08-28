@@ -1,0 +1,29 @@
+## revision_history
+## 15-sep-2011   Steven Davelaar
+## 1.4           Use custom buttons instead of dialogListener, so we can set immediate=true
+##               and prevent validation errors that otherwise are shown in R11.2
+## 25-feb-2011   Steven Davelaar
+## 1.3           - Added call to POPUP_DEFERRED_CHILD_CREATION
+## 21-jan-2011   Steven Davelaar
+## 1.2           - Removed calls to ADD_CUR_GROUP_ACTION and ADD_CUR_GROUP_PARTIAL_TRIGGER
+##               now done in groupContent because relative path in popup id should be computed from group header
+##               - Added contentDelivery property
+## 20-nov-2010   Steven Davelaar
+## 1.1           Added call to ADD_CUR_GROUP_ACTION
+## 24-sep-2008   Steven Davelaar
+## 1.0           Initial creation
+<af:popup id="${JHS.current.group.shortName}DeletePopup" contentDelivery="lazyUncached" #POPUP_DEFERRED_CHILD_CREATION()>
+  <af:dialog type="none" title="#WARNING_LABEL()"
+             modal="true" id="${JHS.current.group.shortName}DeleteDialog">
+    <af:outputText value="#DELETE_WARNING(${JHS.current.group})" id="#NEW_ID("ot")"/>
+    <f:attribute name="methodExpression" value="#{'#{#DELETE_ROW_BEAN().execute}'}"/>
+    <f:facet name="buttonBar">
+      <af:group id="#NEW_ID("g")">
+        <af:button textAndAccessKey="#{nls['af_dialog.LABEL_YES']}" id="#NEW_ID("cb")" immediate="true"
+                          actionListener="#{ExecuteActionAfterConfirmation.confirm}"/>
+        <af:button textAndAccessKey="#{nls['af_dialog.LABEL_NO']}" id="#NEW_ID("cb")" immediate="true"
+                          actionListener="#{ExecuteActionAfterConfirmation.abort}"/>
+      </af:group>
+    </f:facet>
+  </af:dialog>
+</af:popup>

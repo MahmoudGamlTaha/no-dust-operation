@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="AddressContractPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs"
+                ControllerClass="oracle.jheadstart.controller.jsf.lifecycle.JhsPageLifecycle" SkipValidation="true">
+  <parameters>
+    <parameter id="bindingContainersToPrepare" value="#{'ContractManagmentPageDef'}"/>
+  </parameters>
+  <executables>
+    <iterator id="AddressContractIterator" Binds="ContractAddressVO1" DataControl="AppModuleAMDataControl"
+              RangeSize="10"/>
+    <searchRegion id="AddressContractIteratorQuery" Binds="AddressContractIterator" Criteria="__ImplicitViewCriteria__"
+                  InitialQueryOverridden="true" DefaultQuickSearchAttrName="Active"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <variableIterator id="variables">
+      <variable Name="AddressContractRowKeyVar" Type="java.lang.String"
+                DefaultValue="#{bindings.AddressContractIterator.currentRowKeyString}"/>
+    </variableIterator>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="AddressContractIterator" id="AddressContractActive">
+      <AttrNames>
+        <Item Value="Active"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AddressContractIterator" id="AddressContractActiveFrom">
+      <AttrNames>
+        <Item Value="ActiveFrom"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AddressContractIterator" id="AddressContractActiveTo">
+      <AttrNames>
+        <Item Value="ActiveTo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AddressContractIterator" id="AddressContractAddress">
+      <AttrNames>
+        <Item Value="Address"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AddressContractIterator" id="AddressContractAddressId">
+      <AttrNames>
+        <Item Value="AddressId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AddressContractIterator" id="AddressContractAreaId">
+      <AttrNames>
+        <Item Value="AreaId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AddressContractIterator" id="AddressContractCardNo">
+      <AttrNames>
+        <Item Value="CardNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AddressContractIterator" id="AddressContractCityId">
+      <AttrNames>
+        <Item Value="CityId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AddressContractIterator" id="AddressContractFlatNo">
+      <AttrNames>
+        <Item Value="FlatNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AddressContractIterator" id="AddressContractFloorNo">
+      <AttrNames>
+        <Item Value="FloorNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AddressContractIterator" id="AddressContractHomeNo">
+      <AttrNames>
+        <Item Value="HomeNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AddressContractIterator" id="AddressContractRegionId">
+      <AttrNames>
+        <Item Value="RegionId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AddressContractIterator" id="AddressContractRemarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AddressContractIterator" id="AddressContractStreetId">
+      <AttrNames>
+        <Item Value="StreetId"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="AddressContractIterator" id="FirstAddressContract" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="AddressContractIterator" id="PreviousAddressContract" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="AddressContractIterator" id="NextAddressContract" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="AddressContractIterator" id="LastAddressContract" RequiresUpdateModel="true" Action="last"/>
+    <attributeValues IterBinding="variables" id="AddressContractRowKey">
+      <AttrNames>
+        <Item Value="AddressContractRowKeyVar"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="AddressContractIterator" id="SetCurrentRowWithKeyAddressContract" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKeyStr" NDValue="#{bindings.AddressContractRowKey}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="AddressContractIterator" id="CreateAddressContract" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="AddressContractIterator" id="DeleteAddressContract" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

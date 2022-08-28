@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!---->
+<BC4JConfig xmlns="http://xmlns.oracle.com/bc4j/configuration" version="11.1">
+  <AppModuleConfigBag ApplicationName="OPERATIONPROJECT.model.BC.AM.AppModuleAM">
+    <AppModuleConfig name="AppModuleAMLocal" jbo.project="OPERATIONPROJECT.model.Model"
+                     ApplicationName="OPERATIONPROJECT.model.BC.AM.AppModuleAM" DeployPlatform="LOCAL">
+      <Database jbo.TypeMapEntries="OracleApps" JDBCDataSource="java:comp/env/jdbc/Connection1DS"/>
+      <Security AppModuleJndiName="OPERATIONPROJECT.model.BC.AM.AppModuleAM"/>
+    </AppModuleConfig>
+    <AppModuleConfig name="AppModuleAMShared" jbo.project="OPERATIONPROJECT.model.Model"
+                     ApplicationName="OPERATIONPROJECT.model.BC.AM.AppModuleAM" DeployPlatform="LOCAL">
+      <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+      <Database jbo.TypeMapEntries="OracleApps" JDBCDataSource="java:comp/env/jdbc/Connection1DS"/>
+      <Security AppModuleJndiName="OPERATIONPROJECT.model.BC.AM.AppModuleAM"/>
+    </AppModuleConfig>
+  </AppModuleConfigBag>
+  <AppModuleConfigBag ApplicationName="OPERATIONPROJECT.model.BC.EO.AppModuleAM">
+    <AppModuleConfig name="AppModuleAMLocal" jbo.project="OPERATIONPROJECT.model.Model"
+                     ApplicationName="OPERATIONPROJECT.model.BC.EO.AppModuleAM" DeployPlatform="LOCAL">
+      <Database jbo.TypeMapEntries="OracleApps" JDBCDataSource="java:comp/env/jdbc/NoDust@rptDS"/>
+      <Security AppModuleJndiName="OPERATIONPROJECT.model.BC.EO.AppModuleAM"/>
+    </AppModuleConfig>
+    <AppModuleConfig name="AppModuleAMShared" jbo.project="OPERATIONPROJECT.model.Model"
+                     ApplicationName="OPERATIONPROJECT.model.BC.EO.AppModuleAM" DeployPlatform="LOCAL">
+      <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+      <Database jbo.TypeMapEntries="OracleApps" JDBCDataSource="java:comp/env/jdbc/NoDust@rptDS"/>
+      <Security AppModuleJndiName="OPERATIONPROJECT.model.BC.EO.AppModuleAM"/>
+    </AppModuleConfig>
+  </AppModuleConfigBag>
+</BC4JConfig>

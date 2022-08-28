@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="adfc_config_PilotCoverGroup_PilotCoverGroupTaskFlow_FilterPilotCoverGroupPageDef"
+                Package="OPERATIONPROJECT.view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator id="PilotCoverPilotCoverProductVO1Iterator" Binds="PilotCoverPilotCoverProductVO1"
+              DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <iterator id="PilotCoverReconDriverPilotVO1Iterator" Binds="PilotCoverReconDriverPilotVO1"
+              DataControl="AppModuleAMDataControl" RangeSize="25"/>
+  </executables>
+  <bindings/>
+</pageDefinition>

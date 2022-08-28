@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <task-flow-definition id="ProductContractDDownloadVOTaskFlow">
+        <!-- DEBUG:BEGIN:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2 -->
+        <template-reference>
+            <document id="__0">/WEB-INF/jhs-bounded-taskflow-template.xml</document>
+            <id id="__1">jhs-bounded-taskflow-template</id>
+        </template-reference>
+        <!-- DEBUG:END:TASK_FLOW_TEMPLATE_REFERENCE : default/misc/facesConfig/taskFlowTemplateReference.vm, nesting level: 2-->
+        <default-activity id="__2">FilterProductContractData</default-activity>
+        <data-control-scope id="__3">
+            <isolated/>
+        </data-control-scope>
+        <!-- DEBUG:BEGIN:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2 -->
+        <input-parameter-definition id="__4">
+            <name id="__5">rowKeyStrProductContractDDownloadVO</name>
+            <value id="__6">#{pageFlowScope.rowKeyStrProductContractDDownloadVO}</value>
+            <class id="__7">java.lang.String</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__8">
+            <name id="__9">rowKeyValueProductContractDDownloadVO</name>
+            <value id="__10">#{pageFlowScope.rowKeyValueProductContractDDownloadVO}</value>
+            <class id="__11">java.lang.Object</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__12">
+            <name id="__13">rowKeyProductContractDDownloadVO</name>
+            <value id="__14">#{pageFlowScope.rowKeyProductContractDDownloadVO}</value>
+            <class id="__15">oracle.jbo.Key</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__16">
+            <name id="__17">altKeyNameProductContractDDownloadVO</name>
+            <value id="__18">#{pageFlowScope.altKeyNameProductContractDDownloadVO}</value>
+            <class id="__19">java.lang.String</class>
+        </input-parameter-definition>
+        <!-- DEBUG:END:TASK_FLOW_INPUT_PARAMETERS : default/misc/facesConfig/taskFlowInputParameters.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2 -->
+        <input-parameter-definition id="__142">
+            <name>AssignmentId</name>
+            <value>#{pageFlowScope.AssignmentId}</value>
+        </input-parameter-definition>
+        <managed-bean id="__20">
+            <managed-bean-name id="__21">jhsTaskFlowManager</managed-bean-name>
+            <managed-bean-class id="__22">oracle.jheadstart.controller.jsf.bean.TaskFlowManager</managed-bean-class>
+            <managed-bean-scope id="__23">pageFlow</managed-bean-scope>
+            <managed-property id="__24">
+                <property-name id="__25">initializeParentContextEntries</property-name>
+                <map-entries id="__26">
+                    <map-entry id="__27">
+                        <key id="__28">jhsCurrentGroupName</key>
+                        <value id="__29">ProductContractDDownloadVO</value>
+                    </map-entry>
+                </map-entries>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TASK_FLOW_MANAGER_BEAN : default/misc/facesConfig/taskFlowManagerBean.vm, nesting level: 2-->
+        <managed-bean id="__30">
+            <managed-bean-name id="__31">MenuViewIdMapping</managed-bean-name>
+            <managed-bean-class id="__32">java.util.HashMap</managed-bean-class>
+            <managed-bean-scope id="__33">pageFlow</managed-bean-scope>
+            <map-entries id="__34">
+                <map-entry id="__35">
+                    <key id="__36">/ProductContractDDownloadVOTaskFlow/ProductContractDDownloadVOTable</key>
+                    <value id="__37">ProductContractDDownloadVO</value>
+                </map-entry>
+            </map-entries>
+        </managed-bean>
+        <!-- DEBUG:BEGIN:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2 -->
+        <managed-bean id="__38">
+            <managed-bean-name id="__39">SaveProductContractDDownloadVO</managed-bean-name>
+            <managed-bean-class id="__40">oracle.jheadstart.controller.jsf.bean.CommitBean</managed-bean-class>
+            <managed-bean-scope id="__41">request</managed-bean-scope>
+            <managed-property id="__42">
+                <property-name id="__43">commitBinding</property-name>
+                <value id="__44">#{bindings.Commit}</value>
+            </managed-property>
+            <managed-property id="__45">
+                <property-name id="__46">successOutcome</property-name>
+                <value id="__47">Commit</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:SAVE_BEAN : default/misc/facesConfig/saveBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2 -->
+        <managed-bean id="__48">
+            <managed-bean-name id="__49">jhsRollback</managed-bean-name>
+            <managed-bean-class id="__50">oracle.jheadstart.controller.jsf.bean.RollbackBean</managed-bean-class>
+            <managed-bean-scope id="__51">request</managed-bean-scope>
+            <managed-property id="__52">
+                <property-name id="__53">rollbackBinding</property-name>
+                <value id="__54">#{bindings.Rollback}</value>
+            </managed-property>
+            <managed-property id="__55">
+                <property-name id="__56">successOutcome</property-name>
+                <value id="__57">Cancel</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:CANCEL_BEAN : default/misc/facesConfig/cancelBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2 -->
+        <managed-bean id="__58">
+            <managed-bean-name id="__59">ProductContractDDownloadVOTable</managed-bean-name>
+            <managed-bean-class id="__60">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+            <managed-bean-scope id="__61">pageFlow</managed-bean-scope>
+            <managed-property id="__62">
+                <property-name id="__63">name</property-name>
+                <value id="__64">ProductContractDDownloadVOTable</value>
+            </managed-property>
+            <managed-property id="__65">
+                <property-name id="__66">rangeBindingExpr</property-name>
+                <value id="__67">#{'#{bindings.ProductContractDDownloadVOTable}'}</value>
+            </managed-property>
+            <managed-property id="__68">
+                <property-name id="__69">focusItemId</property-name>
+                <value id="__70">ProductContractDDownloadVOComponentId</value>
+            </managed-property>
+        </managed-bean>
+        <!-- DEBUG:END:TABLE_BEAN : default/misc/facesConfig/tableBean.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_BEANS : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2 -->
+        <managed-bean id="__139">
+            <managed-bean-name>DataTeamAgentBean</managed-bean-name>
+            <managed-bean-class>MTS.security.MTSClasses.DataTeamAgentBean</managed-bean-class>
+            <managed-bean-scope>request</managed-bean-scope>
+        </managed-bean>
+        <router id="StartProductContractDDownloadVO">
+            <case id="__71">
+                <expression id="__72">#{pageFlowScope.rowKeyStrProductContractDDownloadVO!=null or
+                                      pageFlowScope.rowKeyValueProductContractDDownloadVO!=null or
+                                      pageFlowScope.rowKeyProductContractDDownloadVO!=null}</expression>
+                <outcome id="__73">SetCurrentRowProductContractDDownloadVO</outcome>
+            </case>
+            <case id="__74">
+                <expression id="__75">#{pageFlowScope.isDeepLink!=null and pageFlowScope.isDeepLink}</expression>
+                <outcome id="__76">deepLinkPage</outcome>
+            </case>
+            <default-outcome id="__77">firstPage</default-outcome>
+        </router>
+        <!-- DEBUG:END:TASK_FLOW_MAIN_ROUTER : default/misc/facesConfig/taskFlowMainRouter.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2 -->
+        <method-call id="SetCurrentRowProductContractDDownloadVO">
+            <method id="__78">#{jhsSetCurrentRow.execute}</method>
+            <!-- iterator param -->
+            <parameter>
+                <class id="__79">oracle.adf.model.binding.DCIteratorBinding</class>
+                <value id="__80">#{bindings.ProductContractDDownloadVOIterator}</value>
+            </parameter>
+            <!-- rowKeyStr param -->
+            <parameter>
+                <class id="__81">java.lang.String</class>
+                <value id="__82">#{pageFlowScope.rowKeyStrProductContractDDownloadVO}</value>
+            </parameter>
+            <!-- rowKeyValue param -->
+            <parameter>
+                <class id="__83">java.lang.Object</class>
+                <value id="__84">#{pageFlowScope.rowKeyValueProductContractDDownloadVO}</value>
+            </parameter>
+            <!-- rowKey param -->
+            <parameter>
+                <class id="__85">oracle.jbo.Key</class>
+                <value id="__86">#{pageFlowScope.rowKeyProductContractDDownloadVO}</value>
+            </parameter>
+            <!-- altKeyName param -->
+            <parameter>
+                <class id="__87">java.lang.String</class>
+                <value id="__88">#{pageFlowScope.altKeyNameProductContractDDownloadVO}</value>
+            </parameter>
+            <outcome id="__89">
+                <fixed-outcome id="__90">deepLinkPage</fixed-outcome>
+            </outcome>
+        </method-call>
+        <!-- DEBUG:END:TASK_FLOW_METHOD_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowMethodCallActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CALL_ACTIVITIES : default/misc/facesConfig/taskFlowCallActivities.vm, nesting level: 2-->
+        <task-flow-return id="CancelProductContractDDownloadVOReturn">
+            <outcome id="__91">
+                <name id="__92">CancelProductContractDDownloadVO</name>
+            </outcome>
+        </task-flow-return>
+        <task-flow-return id="DoneProductContractDDownloadVOReturn">
+            <outcome id="__93">
+                <name id="__94">DoneProductContractDDownloadVO</name>
+            </outcome>
+        </task-flow-return>
+        <!-- DEBUG:BEGIN:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2 -->
+        <view id="ProductContractDDownloadVOTable">
+            <page id="__95">/pages/ProductContractDDownloadVOTable.jsf</page>
+        </view>
+        <!-- DEBUG:END:TASK_FLOW_VIEW_ACTIVITIES : default/misc/facesConfig/taskFlowViewActivities.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_ACTIVITIES : default/common/empty.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2 -->
+        <method-call id="FilterProductContractData">
+            <method>#{DataTeamAgentBean.FilterProductContractView}</method>
+            <outcome>
+                <fixed-outcome>GoToPage</fixed-outcome>
+            </outcome>
+        </method-call>
+        <control-flow-rule id="__96">
+            <from-activity-id id="__97">*</from-activity-id>
+            <control-flow-case id="__98">
+                <from-outcome id="__99">SetCurrentRowProductContractDDownloadVO</from-outcome>
+                <to-activity-id id="__100">SetCurrentRowProductContractDDownloadVO</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__101">
+                <from-outcome id="__102">firstPage</from-outcome>
+                <to-activity-id id="__103">ProductContractDDownloadVOTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__104">
+                <from-outcome id="__105">deepLinkPage</from-outcome>
+                <to-activity-id id="__106">ProductContractDDownloadVOTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__107">
+                <from-outcome id="__108">ProductContractDDownloadVOTableBreadcrumb</from-outcome>
+                <to-activity-id id="__109">ProductContractDDownloadVOTable</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__110">
+                <from-outcome id="__111">Cancel</from-outcome>
+                <to-activity-id id="__112">StartProductContractDDownloadVO</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__113">
+                <from-outcome id="__114">CancelProductContractDDownloadVOReturn</from-outcome>
+                <to-activity-id id="__115">CancelProductContractDDownloadVOReturn</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__116">
+                <from-outcome id="__117">DoneProductContractDDownloadVOReturn</from-outcome>
+                <to-activity-id id="__118">DoneProductContractDDownloadVOReturn</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <!-- DEBUG:END:TASK_FLOW_CONTROL_FLOW_RULES : default/misc/facesConfig/taskFlowControlFlowRules.vm, nesting level: 2-->
+        <!-- DEBUG:BEGIN:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2 -->
+        <!-- DEBUG:END:TASK_FLOW_CUSTOM_CONTROL_FLOW_RULES : default/common/empty.vm, nesting level: 2-->
+        <control-flow-rule id="__140">
+            <from-activity-id>FilterProductContractData</from-activity-id>
+            <control-flow-case id="__141">
+                <from-outcome>GoToPage</from-outcome>
+                <to-activity-id>ProductContractDDownloadVOTable</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+    </task-flow-definition>
+    <!-- This bean must be defined outside the task-flow-definition element
+       because it needs to be available in the pageFlowScope of the unbounded
+       task-flow not in the pageFlowScope of the bounded task flow itself. -->
+    <!-- DEBUG:BEGIN:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2 -->
+    <managed-bean id="__119">
+        <managed-bean-name id="__120">ProductContractDDownloadVOTaskFlowConfig</managed-bean-name>
+        <managed-bean-class id="__121">oracle.jheadstart.controller.jsf.bean.TaskFlowConfigBean</managed-bean-class>
+        <managed-bean-scope id="__122">pageFlow</managed-bean-scope>
+        <managed-property id="__123">
+            <property-name id="__124">params</property-name>
+            <property-class id="__125">java.util.Map</property-class>
+            <map-entries id="__126">
+                <map-entry id="__127">
+                    <key id="__128">parentContext</key>
+                    <value id="__129">#{pageFlowScope.parentContext}</value>
+                </map-entry>
+            </map-entries>
+        </managed-property>
+        <managed-property id="__130">
+            <property-name id="__131">name</property-name>
+            <value id="__132">ProductContractDDownloadVO</value>
+        </managed-property>
+        <managed-property id="__133">
+            <property-name id="__134">taskFlowId</property-name>
+            <value id="__135">/WEB-INF/adfc-config-ProductContractDDownloadVO.xml#ProductContractDDownloadVOTaskFlow</value>
+        </managed-property>
+        <managed-property id="__136">
+            <property-name id="__137">label</property-name>
+            <value id="__138">#{nls['MENU1_TITLE_PRODUCTCONTRACTDDOWNLOADVO']}</value>
+        </managed-property>
+    </managed-bean>
+    <!-- DEBUG:END:TASK_FLOW_CONFIG_BEAN : default/misc/facesConfig/taskFlowConfigBean.vm, nesting level: 2-->
+</adfc-config>

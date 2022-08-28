@@ -1,0 +1,32 @@
+<?xml version="1.0" #PAGE_ENCODING_PROP() ?>
+## revision_history
+## 14-feb-2011   Steven Davelaar
+## 1.5           Also loop over imported services added through ADF library
+## 27-jul-2010   Jaco Verheul
+## 1.4           Generate rendered expression for security
+##               start with base groups current service
+## 08-jul-2010   Steven davelaar
+## 1.3           Generate service-level entries as ItemNode instead of sahredNode when using tree-style menu, and tree should
+##               start with base groups current service
+## 02-jul-2009   Steven davelaar
+## 1.2           Do not generate home groupNode when menu start level is 1
+## 23-jun-2009   Paco van der Linden
+## 1.1           Restructured layout according to (stretching) best-practices.
+## 05-feb-2009   Steven Davelaar
+## 1.0           initial creation
+
+<menu xmlns="http://myfaces.apache.org/trinidad/menu">
+  <itemNode id="homeMI" label="#HOME_BUTTON_LABEL()" action="home" focusViewId="/Home"/>
+
+#foreach ($service in $JHS.application.getAllServices(true))
+  #if ($service.menuModelFile!='')
+    #if ($JHS.application.contentTopLevelMenu=='serviceGroups' && ($JHS.application.useJhsTreeMenuPageTemplate || $JHS.application.useDynamicTabs))
+       <itemNode id="${service.name}" label="#SERVICE_MENU_TITLE($service)" action="uishell:submenu:${service.name}Menu" 
+       #if ($service.roles) rendered="#{jhsUserRoles['${service.roles}']}"#end
+       focusViewId="${service.name}Menu" />
+    #else 
+       <sharedNode ref="#{${service.name}Menu}"/>
+    #end    
+  #end  
+#end
+</menu>

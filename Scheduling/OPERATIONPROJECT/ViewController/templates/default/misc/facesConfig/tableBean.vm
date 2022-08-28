@@ -1,0 +1,43 @@
+## revision_history
+## 18-may-2010   Steven Davelaar
+## 1.1           Added id property to all elements
+## 28-jan-2009   Steven Davelaar
+## 1.0           initial creation
+#set ($bean = ${JHS.current.managedBean})
+#set ($group = ${JHS.current.group})
+
+<managed-bean id="#NEW_ID("__")">
+  <managed-bean-name id="#NEW_ID("__")">${bean.beanName}</managed-bean-name>
+  <managed-bean-class id="#NEW_ID("__")">oracle.jheadstart.controller.jsf.bean.TableBean</managed-bean-class>
+  <managed-bean-scope id="#NEW_ID("__")">pageFlow</managed-bean-scope>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">name</property-name>
+      <value id="#NEW_ID("__")">${bean.beanName}</value>
+    </managed-property>
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">rangeBindingExpr</property-name>
+      <value id="#NEW_ID("__")">#{'#{bindings.${group.name}Table}'}</value>
+    </managed-property>
+    #if ($group.setCurrentRowOnDetailDisclosure)
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">setCurrentRowOnDetailDisclosure</property-name>
+      <value id="#NEW_ID("__")">true</value>
+    </managed-property>
+    #end
+    #if ($group.hasDefaultValues)
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">defaultValuesBean</property-name>
+      <value id="#NEW_ID("__")">#{pageFlowScope.${JHS.current.group.name}DefaultValues}</value>
+    </managed-property>
+    #end
+  #if (${group.useAsLov}) 
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">lovPage</property-name>
+      <value id="#NEW_ID("__")">#{#LOV_PAGE_BEAN()}</value>
+    </managed-property>        
+  #end  
+    <managed-property id="#NEW_ID("__")">
+      <property-name id="#NEW_ID("__")">focusItemId</property-name>
+      <value id="#NEW_ID("__")">#FIRST_DISPLAYED_TABLE_ITEM()</value>
+    </managed-property>        
+  </managed-bean>

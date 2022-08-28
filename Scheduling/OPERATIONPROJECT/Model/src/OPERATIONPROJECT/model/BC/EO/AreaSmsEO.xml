@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AreaSmsEO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="AREA_SMS"
+  AliasName="AreaSmsEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="AreaId"
+    ColumnName="AREA_ID"
+    SQLType="NUMERIC"
+    Type="java.lang.Long"
+    ColumnType="NUMBER"
+    TableName="AREA_SMS"/>
+  <Attribute
+    Name="AreaStatus"
+    ColumnName="AREA_STATUS"
+    SQLType="NUMERIC"
+    Type="java.lang.Long"
+    ColumnType="NUMBER"
+    TableName="AREA_SMS"/>
+  <Attribute
+    Name="AreaName"
+    Precision="4000"
+    ColumnName="AREA_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="AREA_SMS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="WorkDate"
+    ColumnName="WORK_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="AREA_SMS"/>
+  <Attribute
+    Name="CoverDate"
+    Precision="18"
+    ColumnName="COVER_DATE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="AREA_SMS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="18"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Splitted"
+    ColumnName="SPLITTED"
+    SQLType="NUMERIC"
+    Type="java.lang.Long"
+    ColumnType="NUMBER"
+    TableName="AREA_SMS"/>
+  <Attribute
+    Name="Id"
+    IsNotNull="true"
+    ColumnName="ID"
+    SQLType="NUMERIC"
+    Type="java.lang.Long"
+    ColumnType="NUMBER"
+    TableName="AREA_SMS"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="SmsFlag"
+    ColumnName="SMS_FLAG"
+    SQLType="NUMERIC"
+    Type="java.lang.Long"
+    ColumnType="NUMBER"
+    TableName="AREA_SMS"/>
+  <Attribute
+    Name="StatusName"
+    Precision="4000"
+    ColumnName="STATUS_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="AREA_SMS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="MessageContent"
+    Precision="4000"
+    ColumnName="MESSAGE_CONTENT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="AREA_SMS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SendTime"
+    ColumnName="SEND_TIME"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="AREA_SMS"/>
+  <Key
+    Name="AreasmseoPrimaryKey"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="AREASMSEO_PRIMARY_KEY"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="OPERATIONPROJECT.model.BC.EO.AreaSmsEO.Id"/>
+    </AttrArray>
+  </Key>
+</Entity>
